@@ -53,15 +53,19 @@ function drawMap(containerID, dataID, title, units){
   var keyWidth = 30
   var keyHeight = 15
   legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q0-4")
-  legend.append("text")
-  	.attr("x",0)
-    .attr("class","legend-labels")
-  	.attr("y",0)
-  	.text(min)
   legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q1-4").attr("x",keyWidth)
   legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q2-4").attr("x",keyWidth*2)
   legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q3-4").attr("x",keyWidth*3)
   legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q4-4").attr("x",keyWidth*4)
+
+  for (i=0; i<=5; i++){
+    legend.append("text")
+      .attr("x",-5+keyWidth*i)
+      .attr("class","legend-labels " + dataID)
+      .attr("y",-5)
+      .text(min+step*i + units)
+  }
+
 
   legend.attr("transform","translate("+ (width+margin.left+margin.right - keyWidth*5)/2 +",20)")
 
@@ -80,18 +84,26 @@ function drawMap(containerID, dataID, title, units){
         .attr("class", function(d) {
         	var state = slice.filter(function(obj){return obj.geography.fips == d.id})	;
 	        	if(state.length > 0){
-        		return "states " + quantize(state[0].value)
+        		return "states " + dataID + " " + quantize(state[0].value)
         	}
         	else{
-        		return "states NA"
+        		return "states NA " + dataID
         	}
     	})
-        .attr("id", function(d) { return "state-outline_" + d.id ;})
+        .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
         .attr("d", path)
-        // .on("mouseover", function(d){mouseover(d,states,x,y,aca,king)})
+        .on("mouseover", function(d){mouseover(dataID,d)})
 
         // mouseover(_.find(states, function(d) {return d.values[0].state.name == "5" }),states,x,y,aca,king);
+  }
 
+  function mouseover(dataID,element){
+// state case
+    if(typeof(element) == "object" && element.type == "Feature"){
+      d3.select("#state-outline_" + dataID + "_" + element.id)
+      // .parentNode.appendChild(this)
+      .classed("hover",true)
+    }
   }
 }
 
@@ -150,4 +162,4 @@ function getNiceBreaks(min,max,bins){
 	return breaks
 }
 
-drawMap("testing","GOVT",null,null)
+drawMap("testing","RUC",null,"%")

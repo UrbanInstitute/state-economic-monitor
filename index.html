@@ -1,9 +1,20 @@
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 <style>
-
+/*Map Legend*/
+.legend-labels{
+	font-family: 'Lato';	
+	font-weight: 300;
+	font-size: 12px;
+}
+/*Map*/
 .counties {
   fill: none;
+}
+
+.hover{
+	stroke: red !important;
 }
 
 .states {
@@ -23,7 +34,7 @@
 
 <body>
 	<div id = "testing" style = "width:400px"></div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/vendor/jquery.min.js"></script>
 	<script src ="js/vendor/d3.min.js"></script>
 	<script src = "js/vendor/queue.min.js"></script>
 	<script src = "js/vendor/topojson.js"></script>
