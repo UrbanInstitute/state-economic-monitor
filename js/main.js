@@ -27,8 +27,6 @@ function drawMap(containerID, dataID, title, units){
   	  max = breaks.max;
   var step = (max-min)/5
 
-  console.log(breaks,min, min+step, min+ step*2, min+ step*3, min + step*4, max)
-
   var quantize = d3.scale.quantize()
       .domain([min, max])
       .range(d3.range(4).map(function(i) { return "q" + i + "-4"; }));
@@ -100,9 +98,10 @@ function drawMap(containerID, dataID, title, units){
   function mouseover(dataID,element){
 // state case
     if(typeof(element) == "object" && element.type == "Feature"){
-      d3.select("#state-outline_" + dataID + "_" + element.id)
-      // .parentNode.appendChild(this)
-      .classed("hover",true)
+      var state = d3.select("#state-outline_" + dataID + "_" + element.id)
+      var node = state[0][0]
+      node.parentNode.appendChild(node)
+      state.classed("hover",true)
     }
   }
 }
