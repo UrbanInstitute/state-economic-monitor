@@ -1,6 +1,3 @@
-// var figureData;
-// var figureDataURL = "data/figureData.js"
-
 function drawMap(containerID, dataID, title, units){
  // data is an array of objects, each of form
  //    {
@@ -13,7 +10,7 @@ function drawMap(containerID, dataID, title, units){
   var $graphic = $("#"+containerID);
 
   var aspect_width = 2;
-  var aspect_height = 3;
+  var aspect_height = 2;
   var margin = { top: 10, right: 10, bottom: 10, left: 10 };
   var width = $graphic.width() - margin.left - margin.right;
 
@@ -31,12 +28,6 @@ function drawMap(containerID, dataID, title, units){
       .domain([min, max])
       .range(d3.range(4).map(function(i) { return "q" + i + "-4"; }));
 
-  var projection = d3.geo.albersUsa()
-      .scale(width + margin.left + margin.right)
-      .translate([(width+margin.left+margin.right) / 2, (height+margin.top+margin.bottom)/ 4]);
-
-  var path = d3.geo.path()
-      .projection(projection);
 
   var svg = d3.select("#"+containerID)
     .attr("height", height)
@@ -44,19 +35,74 @@ function drawMap(containerID, dataID, title, units){
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
 
+
+// Bar chart axes
+var x = d3.scale.ordinal()
+    .rangeBands([0, width-margin.left-margin.right-50])
+    .domain(slice.map(function(d) { return d.geography.code; }))
+
+var y = d3.scale.linear()
+    .range([height, 0])
+    .domain([0,max])
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+
+
+  svg.selectAll(".bar")
+      .data(slice)
+    .enter().append("rect")
+      .attr("class", function(d){ return "states " + dataID + " " + quantize(d.value)})
+      .attr("id", function(d) { return "bar-outline_" + dataID + "_" + d.geography.fips ;})
+      .attr("x", function(d) { return x(d.geography.code); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return height/2 + y(d.value); })
+      .attr("height", function(d) { return height/2 - y(d.value); });
+
+
+
+  var projection = d3.geo.albersUsa()
+      .scale(width + margin.left + margin.right)
+      .translate([(width+margin.left+margin.right) / 2, (height+margin.top+margin.bottom)/ 4]);
+
+  var path = d3.geo.path()
+      .projection(projection);
+
+
+
   var legend = svg.append("g")
   			   .attr("width",width+margin.left+margin.right)
   			   .attr("height",50)
 
   var keyWidth = 30
   var keyHeight = 15
-  legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q0-4")
-  legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q1-4").attr("x",keyWidth)
-  legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q2-4").attr("x",keyWidth*2)
-  legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q3-4").attr("x",keyWidth*3)
-  legend.append("rect").attr("width",keyWidth).attr("height",keyHeight).attr("class","q4-4").attr("x",keyWidth*4)
 
   for (i=0; i<=5; i++){
+    if(i !== 5){
+      legend.append("rect")
+        .attr("width",keyWidth)
+        .attr("height",keyHeight)
+        .attr("class",dataID + " q" + i + "-4")
+        .attr("x",keyWidth*i)
+        .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "hover") })
+        .on("mouseout", function(){mouseEvent(dataID,this,"exit")})
+    }
+
     legend.append("text")
       .attr("x",-5+keyWidth*i)
       .attr("class","legend-labels " + dataID)
@@ -90,21 +136,43 @@ function drawMap(containerID, dataID, title, units){
     	})
         .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
         .attr("d", path)
-        .on("mouseover", function(d){mouseover(dataID,d)})
-
-        // mouseover(_.find(states, function(d) {return d.values[0].state.name == "5" }),states,x,y,aca,king);
+        .on("mouseover", function(d){mouseEvent(dataID,d,"hover")})
+        .on("mouseout", function(d){mouseEvent(dataID,d,"exit")})
   }
 
-  function mouseover(dataID,element){
+  function mouseEvent(dataID,element,event){
 // state case
-    if(typeof(element) == "object" && element.type == "Feature"){
+    if(element.type == "Feature"){
       var state = d3.select("#state-outline_" + dataID + "_" + element.id)
-      var node = state[0][0]
-      node.parentNode.appendChild(node)
+      var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
+      console.log(bar)
+      var stateNode = state[0][0]
+      var barNode = bar[0][0]
+
+      stateNode.parentNode.appendChild(stateNode)
+      barNode.parentNode.appendChild(barNode)
+
       state.classed("hover",true)
+      bar.classed("hover",true)
+
+    }
+// legend case
+    else if(element.type == "Legend"){
+      var states = d3.selectAll("." + dataID + "." + element.class)
+      states.classed("hover", true)
+      states[0].forEach(function(s){ s.parentNode.appendChild(s)})
+    }
+
+    if(event == "exit"){
+      d3.selectAll(".hover").classed("hover",false)
     }
   }
 }
+
+
+
+
+
 
 function drawScatterPlot(container, xData, yData, title, xUnits, yUnits){
  // xData and yData are arrays of objects, each of form
@@ -120,12 +188,6 @@ function drawFigures(){
 	// slice figureData and pass it to drawMap and drawScatterPlot calls
 }
 
-// d3.json(figureDataURL, function(error, data) {
-//     figureData = data;
-
-//     drawFigures();
-//     window.onresize = drawFigures;
-// }
 
 function getNiceBreaks(min,max,bins){
 	function isNice(val){
@@ -162,3 +224,4 @@ function getNiceBreaks(min,max,bins){
 }
 
 drawMap("testing","RUC",null,"%")
+// drawMap("other","RUC",null,"%")

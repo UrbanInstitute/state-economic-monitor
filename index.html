@@ -14,7 +14,8 @@
 }
 
 .hover{
-	stroke: red !important;
+	stroke: #000 !important;
+	stroke-width: 1.5pt;
 }
 
 .states {
@@ -29,11 +30,31 @@
 .q3-4 { fill:#00578b; }
 .q4-4 { fill:#000000; }
 
+
+
+/*Bar*/
+.axis {
+  font: 10px Lato;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
 </style>
 </head>
 
 <body>
-	<div id = "testing" style = "width:400px"></div>
+	<div id = "testing" style = "width:800px"></div>
+	<div id = "other" style = "width:400px"></div>
+
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src ="js/vendor/d3.min.js"></script>
 	<script src = "js/vendor/queue.min.js"></script>
