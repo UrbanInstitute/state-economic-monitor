@@ -1,6 +1,6 @@
 <html>
 <head>
-<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'> -->
 <style>
 /*Map Legend*/
 .legend-labels{
@@ -13,8 +13,8 @@
   fill: none;
 }
 
-.hover{
-	stroke: #000 !important;
+.hover, .click{
+	stroke: #00ff00 !important;
 	stroke-width: 1.5pt;
 }
 
@@ -22,6 +22,10 @@
   fill: none;
   stroke: #fff;
   stroke-linejoin: round;
+}
+
+.demphasized{
+	fill: #dcdcdc !important;
 }
 
 .q0-4 { fill:#b0d5f1; }
@@ -52,7 +56,8 @@
 </head>
 
 <body>
-	<div id = "testing" style = "width:800px"></div>
+	<div id = "value"></div>
+	<div id = "testing" style = "width:100%"></div>
 	<div id = "other" style = "width:400px"></div>
 
 	<script src="js/vendor/jquery.min.js"></script>

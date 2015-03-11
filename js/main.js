@@ -1,24 +1,29 @@
+var MAP_SCALE = .6 
+var BAR_BOTTOM = 1
+var BAR_TOP = 1.5
+
 function drawMap(containerID, dataID, title, units){
  // data is an array of objects, each of form
- //    {
- //      "geography": "AK",
- //      "year": "2014",
- //      "month": "11",
- //      "value": "6.3"
- //    }
+// {
+//   "geography":
+//      {"code": "AK", "fips": "2", "name": "Alaska"},
+//    "value": 6.3
+// }
 
   var $graphic = $("#"+containerID);
+  
+  $graphic.empty()
 
   var aspect_width = 2;
-  var aspect_height = 2;
-  var margin = { top: 10, right: 10, bottom: 10, left: 10 };
+  var aspect_height = 1.4;
+  var margin = { top: 10, right: 10, bottom: 10, left: 20 };
   var width = $graphic.width() - margin.left - margin.right;
 
   var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
   var slice = figureData[dataID]["data"]
   var minIn = Math.min.apply(Math,slice.map(function(o){return o.value;}))
   var maxIn = Math.max.apply(Math,slice.map(function(o){return o.value;}))
-  			
+  
   var breaks = getNiceBreaks(minIn,maxIn,5),
   	  min = breaks.min,
   	  max = breaks.max;
@@ -26,7 +31,7 @@ function drawMap(containerID, dataID, title, units){
 
   var quantize = d3.scale.quantize()
       .domain([min, max])
-      .range(d3.range(4).map(function(i) { return "q" + i + "-4"; }));
+      .range(d3.range(5).map(function(i) { return "q" + i + "-4"; }));
 
 
   var svg = d3.select("#"+containerID)
@@ -34,15 +39,21 @@ function drawMap(containerID, dataID, title, units){
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
+    // .append("rect")
+    //   .attr("width", width + margin.left + margin.right)
+    //   .attr("height", height + margin.top + margin.bottom)
+      .on("click",function(){mouseEvent(null,{"type":"Background"},"click")});
 
 
 // Bar chart axes
 var x = d3.scale.ordinal()
-    .rangeBands([0, width-margin.left-margin.right-50])
-    .domain(slice.map(function(d) { return d.geography.code; }))
+    .rangeRoundBands([margin.left, width - margin.left - margin.right],.15)
+    .domain(slice.sort(function(a,b){ return b.value-a.value}).map(function(d) { return d.geography.code; }));
+
 
 var y = d3.scale.linear()
-    .range([height, 0])
+    .range([height/BAR_BOTTOM,height/BAR_TOP])
     .domain([0,max])
 
 var xAxis = d3.svg.axis()
@@ -52,7 +63,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10);
+    .ticks(10)
 
   svg.append("g")
       .attr("class", "x axis")
@@ -61,7 +72,15 @@ var yAxis = d3.svg.axis()
 
   svg.append("g")
       .attr("class", "y axis")
+      .attr("transform","translate(" + margin.left + ",0)")
       .call(yAxis)
+      // .append("text")
+      //   .attr("transform", "rotate(-90)")
+      //   .attr("y", 2)
+      //   .attr("dy", ".71em")
+      //   .style("text-anchor", "end")
+      //   .text("Frequency");
+
 
 
   svg.selectAll(".bar")
@@ -71,13 +90,17 @@ var yAxis = d3.svg.axis()
       .attr("id", function(d) { return "bar-outline_" + dataID + "_" + d.geography.fips ;})
       .attr("x", function(d) { return x(d.geography.code); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return height/2 + y(d.value); })
-      .attr("height", function(d) { return height/2 - y(d.value); });
+      .attr("y", function(d) { return y(d.value) })
+      .attr("height", function(d) { return height - y(d.value);})
+      .on("mouseover",function(d){ mouseEvent(dataID, {"value": d.value, "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "hover") })
+      .on("mouseout", function(){ mouseEvent(dataID,this,"exit")})
+      .on("click",function(d){ mouseEvent(dataID, {"value": d.value, "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "click") })
+      ;
 
 
 
   var projection = d3.geo.albersUsa()
-      .scale(width + margin.left + margin.right)
+      .scale(width*MAP_SCALE + margin.left + margin.right)
       .translate([(width+margin.left+margin.right) / 2, (height+margin.top+margin.bottom)/ 4]);
 
   var path = d3.geo.path()
@@ -101,6 +124,8 @@ var yAxis = d3.svg.axis()
         .attr("x",keyWidth*i)
         .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "hover") })
         .on("mouseout", function(){mouseEvent(dataID,this,"exit")})
+        .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "click") })
+
     }
 
     legend.append("text")
@@ -138,33 +163,49 @@ var yAxis = d3.svg.axis()
         .attr("d", path)
         .on("mouseover", function(d){mouseEvent(dataID,d,"hover")})
         .on("mouseout", function(d){mouseEvent(dataID,d,"exit")})
+        .on("click", function(d){mouseEvent(dataID,d,"click")})
+
   }
 
   function mouseEvent(dataID,element,event){
+    // stopPropagation() means that clicks on bars and map do not trigger click on background
+    d3.event.stopPropagation();
 // state case
-    if(element.type == "Feature"){
+    
+    if(element.type == "Feature" || element.type == "Bar"){
+
       var state = d3.select("#state-outline_" + dataID + "_" + element.id)
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
-      console.log(bar)
       var stateNode = state[0][0]
       var barNode = bar[0][0]
+
+      console.log(stateNode.classed("click"))
 
       stateNode.parentNode.appendChild(stateNode)
       barNode.parentNode.appendChild(barNode)
 
-      state.classed("hover",true)
-      bar.classed("hover",true)
+      var value = slice.filter(function(obj){return obj.geography.fips == element.id})[0].value
+      d3.select("#value").text(value)
+      state.classed(event,true)
+      bar.classed(event,true)
 
     }
 // legend case
     else if(element.type == "Legend"){
+      d3.selectAll("path." + dataID + ".states")
+      .classed("demphasized",true)
+
       var states = d3.selectAll("." + dataID + "." + element.class)
-      states.classed("hover", true)
+      states.classed({"hover": true, "demphasized": false})
       states[0].forEach(function(s){ s.parentNode.appendChild(s)})
     }
 
+// bar case
+    // else if(element.type == )
+
     if(event == "exit"){
       d3.selectAll(".hover").classed("hover",false)
+      d3.selectAll(".demphasized").classed("demphasized",false)
     }
   }
 }
@@ -223,5 +264,11 @@ function getNiceBreaks(min,max,bins){
 	return breaks
 }
 
-drawMap("testing","RUC",null,"%")
-// drawMap("other","RUC",null,"%")
+
+function drawGraphic(){
+  drawMap("testing","RUC",null,"%")
+  // drawMap("other","RUC",null,"%")
+}
+
+drawGraphic();
+window.onresize = drawGraphic;
