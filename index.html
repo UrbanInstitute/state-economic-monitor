@@ -1,7 +1,41 @@
+<!DOCTYPE HTML>
 <html>
 <head>
 <!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'> -->
 <style>
+/*Map tooltip*/
+.tooltip-container{
+	margin: 0 auto;
+}
+.tooltip-title{
+	font-family: Lato;
+	font-size: 10pt;
+	color: #666666;
+	font-weight: 200;
+}
+.tooltip-data{
+	font-family: Lato;
+	font-size: 20pt;
+	color: #29abe2;
+	font-weight: 400;
+}
+.region-text, .value-text, .quarter-text{
+	float: left;
+	margin-right: 30px;
+}
+
+.year-text{
+	float: left;
+}
+
+
+/*Map graphic containers*/
+.map-container{
+	width: 67%;
+	margin: 0 auto;
+}
+
+
 /*Map Legend*/
 .legend-labels{
 	font-family: 'Lato';	
@@ -14,8 +48,8 @@
 }
 
 .hover, .click{
-	stroke: #00ff00 !important;
-	stroke-width: 1.5pt;
+	fill: #fdbf11 !important;
+	/*stroke-width: 1.5pt;*/
 }
 
 .states {
@@ -37,6 +71,10 @@
 
 
 /*Bar*/
+rect.states{
+	stroke: none;
+}
+
 .axis {
   font: 10px Lato;
 }
@@ -48,17 +86,19 @@
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
+.y.axis path {
   display: none;
+}
+
+.grid-line{
+	stroke: #cccccc;
 }
 
 </style>
 </head>
 
 <body>
-	<div id = "value"></div>
-	<div id = "testing" style = "width:100%"></div>
-	<div id = "other" style = "width:400px"></div>
+	<div id = "testing" style = "width:951px"></div>
 
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src ="js/vendor/d3.min.js"></script>

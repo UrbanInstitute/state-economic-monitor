@@ -36,7 +36,7 @@ def parseXlSM():
 		                if isinstance(value, float) or isinstance(value,int):
 		                	out.append(value)
 		                else:
-		                	out.append(value.encode('utf8'))
+		                	out.append("No data")
 		            writer.writerow(out)
 
 def parseCell(val):
