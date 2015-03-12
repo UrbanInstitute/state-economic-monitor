@@ -36,7 +36,7 @@ def parseXlSM():
 		                if isinstance(value, float) or isinstance(value,int):
 		                	out.append(value)
 		                else:
-		                	out.append("No data")
+		                	out.append(value.encode('utf8'))
 		            writer.writerow(out)
 
 def parseCell(val):
@@ -68,10 +68,6 @@ def parseMapData():
 		value = parseCell(row[3])
 		geography = row[4]
 		code = row[5]
-###############FIX ME 
-		if geography == "US":
-			continue
-###############FIX ME
 		if code not in figureData:
 			figureData[code] = OrderedDict()
 			figureData[code]["fullName"] = "placeholder"
@@ -94,10 +90,6 @@ def parseTable1():
 	newCode("UNEMP","Unemployment rate (%)")
 	newCode("UNEMPChg","Year-over-year change in unemployment rate (percentage points)")
 	for row in cr:
-###############FIX ME 
-		if row[7] == "US":
-			continue
-###############FIX ME
 		if row[7] == "":
 			#after last state there are some empty rows with notes, we don't want these
 			break
@@ -115,15 +107,10 @@ def parseTable2():
 	cr = csv.reader(open("data/source/sheets/Table 2.csv","rU"))
 	title = cr.next()
 	header = cr.next()
-	newCode("INC","Personal income tax (%)")
-	newCode("CORPINC","Corporate income tax (%)")
-	newCode("SALES","Sales tax (%)")
+	newCode("INC","Personal income tax")
+	newCode("CORPINC","Corporate income tax")
+	newCode("SALES","Sales tax")
 	for row in cr:
-
-###############FIX ME 
-		if row[5] == "US":
-			continue
-###############FIX ME
 		if row[5] == "":
 			#after last state there are some empty rows with notes, we don't want these
 			break
@@ -150,10 +137,6 @@ def parseTable3():
 	newCode("HPChgYr","One-Year Change in Housing Prices (%)")
 	newCode("HPChgPeak","Change in Housing Prices Since Q1 2007 (Peak)")
 	for row in cr:
-###############FIX ME 
-		if row[4] == "US":
-			continue
-###############FIX ME
 		if row[4] == "":
 			#after last state there are some empty rows with notes, we don't want these
 			break
@@ -167,7 +150,7 @@ def parseTable3():
 		figureData["HPChgYr"]["data"].append(hpChgYr)
 		figureData["HPChgPeak"]["data"].append(hpChgPeak)
 
-	with open("test.js", "w") as fp:
+	with open("figureData.js", "w") as fp:
 		fp.write("var figureData = ")
 		fp.write(json.dumps(figureData, sort_keys=False))
 

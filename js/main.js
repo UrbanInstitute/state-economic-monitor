@@ -9,29 +9,24 @@ function drawMapFigure(containerID, dataID, title, units){
 // }
 
     var slice = figureData[dataID]["data"]
-    var minIn = Math.min.apply(Math,slice.map(function(o){return o.value;}))
-    var maxIn = Math.max.apply(Math,slice.map(function(o){return o.value;}))
+    var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
+    var maxIn = Math.max.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
     
     var breaks = getNiceBreaks(minIn,maxIn,5),
         min = breaks.min,
         max = breaks.max;
     var step = (max-min)/5.0
 
-    // console.log(minIn, maxIn, min, max, step)
+    var quantize = d3.scale.quantize()
+    .domain([min, max])
+    .range(d3.range(5).map(function(i) {return "q" + i + "-4"; }));
 
-        var quantize = d3.scale.quantize()
-        .domain([min, max])
-        .range(d3.range(5).map(function(i) { return "q" + i + "-4"; }));
-
-
-
-    // var $graphic = $("#"+containerID);
     var parent = d3.select("#"+containerID)
     $("#"+containerID).empty()
 
-    title = parent.append("div")
+    parent.append("div")
       .attr("id",containerID + "_title")
-    barChart = parent.append("div")
+    parent.append("div")
       .attr("id",containerID + "_bar-chart")
     parent.append("div")
       .attr("id",containerID + "_tooltip")
@@ -42,6 +37,7 @@ function drawMapFigure(containerID, dataID, title, units){
     drawMap()
     drawBars()
     drawTooltip()
+    drawTitle()
 
   function drawMap(){
 
@@ -127,7 +123,7 @@ function drawMapFigure(containerID, dataID, title, units){
           .attr("class", function(d) {
             var state = slice.filter(function(obj){return obj.geography.fips == d.id})  ;
               if(state.length > 0){
-              return "states " + dataID + " " + quantize(state[0].value)
+              return "states " + dataID + " " + quantize(parseVal(state[0].value,"color"))
             }
             else{
               return "states NA " + dataID
@@ -150,14 +146,14 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 20, left: 20 };
+    var margin = { top: 20, right: 0, bottom: 0, left: 20 };
     var width = $graphic.width() - margin.left - margin.right;
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
     // Bar chart axes
     var x = d3.scale.ordinal()
         .rangeBands([margin.left, width],0.285)
-        .domain(slice.sort(function(a,b){ return b.value-a.value}).map(function(d) { return d.geography.code; }));
+        .domain(slice.sort(function(a,b){ return parseVal(b.value,"sort")-parseVal(a.value,"sort")}).map(function(d) { return d.geography.code; }));
 
 
     var svg = d3.select("#"+containerID + "_bar-chart")
@@ -235,16 +231,25 @@ var barSvg, barXAxis, barBase;
       svg.selectAll(".bar")
           .data(slice)
         .enter().append("rect")
-          .attr("class", function(d){ return "states " + dataID + " " + quantize(d.value)})
+          .attr("class", function(d){
+            var isUS;
+            if(d.geography.fips == -99){
+              isUS = "usa-bar "
+            }
+            else{
+              isUS = ""
+            }
+            return isUS + "states " + dataID + " " + quantize(parseVal(d.value,"color"))
+          })
           .attr("id", function(d) { return "bar-outline_" + dataID + "_" + d.geography.fips ;})
           .attr("x", function(d) { return x(d.geography.code); })
           .attr("width", x.rangeBand())
           //to handle negative bars, Bars either start at 0 or at neg value
-          .attr("y", function(d) { return y(Math.max(0, d.value)) })
-          .attr("height", function(d) { return Math.abs(y(0) - y(d.value));})
-          .on("mouseover",function(d){ mouseEvent(dataID, {"value": d.value, "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "hover") })
+          .attr("y", function(d) { return y(Math.max(0, parseVal(d.value,"draw"))) })
+          .attr("height", function(d) { return Math.abs(y(0) - y(parseVal(d.value,"draw")));})
+          .on("mouseover",function(d){ mouseEvent(dataID, {"value": parseVal(d.value,"text"), "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "hover") })
           .on("mouseout", function(){ mouseEvent(dataID,this,"exit")})
-          .on("click",function(d){ mouseEvent(dataID, {"value": d.value, "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "click") })
+          .on("click",function(d){ mouseEvent(dataID, {"value": parseVal(d.value,"text"), "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "click") })
           ;
 
       svg.append("g")
@@ -270,8 +275,14 @@ var barSvg, barXAxis, barBase;
 
     var xTicks = $("#"+containerID + "_bar-chart .x.axis .tick text")
     xTicks.each(function(index,tick){
-      var value = slice.filter(function(obj){return obj.geography.code == tick.innerHTML})[0].value
-      if(value <= 0){
+      if(tick.innerHTML == "US"){
+        $(tick).attr("class", "usa-tick")
+      }
+      var value = parseVal(slice.filter(function(obj){return obj.geography.code == tick.innerHTML})[0].value,"color")
+      if(typeof(value) == "undefined"){
+        $(tick).attr("class","nullTick")
+      }
+      else if(value <= 0){
         $(tick).attr("dy","-.71em")  
       }
     });
@@ -287,7 +298,7 @@ var barSvg, barXAxis, barBase;
 
     var graphic = d3.select("#"+containerID + "_tooltip");
     var tooltip = graphic.append('div')
-      .attr('class',"tooltip-container")
+      .attr('class',"tooltip-container " + dataID)
 
     var region = tooltip.append('div')
       .attr('class',"region-text")
@@ -296,9 +307,10 @@ var barSvg, barXAxis, barBase;
         .text('REGION/STATE')
     region.append('div')
         .attr('class','tooltip-data')
+        .text("Click or hover to select")
 
     var value = tooltip.append('div')
-      .attr('class',"value-text")
+      .attr('class',"value-text hidden")
     value.append('div')
         .attr('class','tooltip-title')
         .text('VALUE')
@@ -306,7 +318,7 @@ var barSvg, barXAxis, barBase;
         .attr('class','tooltip-data')
 
     var quarter = tooltip.append('div')
-      .attr('class',"quarter-text")
+      .attr('class',"quarter-text hidden")
     quarter.append('div')
         .attr('class','tooltip-title')
         .text('QUARTER')
@@ -315,7 +327,7 @@ var barSvg, barXAxis, barBase;
         .text(quarterNames[quarterUpdated])  
 
     var year = tooltip.append('div')
-      .attr('class',"year-text")
+      .attr('class',"year-text hidden")
     year.append('div')
         .attr('class','tooltip-title')
         .text('YEAR')
@@ -323,20 +335,57 @@ var barSvg, barXAxis, barBase;
         .attr('class','tooltip-data')
         .text(yearUpdated)
 
-    // tooltip.attr("style","width:" + resizeTooltip() + "px");
-    resizeTooltip();
+    // tooltip.att)r("style","width:" + resizeTooltip() + "px");
+    resizeTooltip(dataID);
 
   }
 
-  function resizeTooltip(){
+  function resizeTooltip(dataID){
   //Make width of tooltip text shrink-wrapped to width of elements. 3 margins, 3 px extra for rounding errors,
   //plus the widths of the elements
     var totalWidth = 30*3 + 1
-    $(".tooltip-data")
+    $(".tooltip-container." + dataID + " .tooltip-data")
     .each(function(index,value) {
       totalWidth += $(value).width();
     });
     d3.select("#"+containerID + "_tooltip .tooltip-container").attr("style","width:" + totalWidth + "px")
+  }
+
+  function drawTitle(){
+    var data = figureData[dataID]
+    var monthUpdated = data.monthUpdated
+    var yearUpdated = data.yearUpdated
+    var dateText;
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ];
+    if(typeof(monthUpdated) == "undefined" && typeof(yearUpdated) != "undefined"){
+      dateText = " as of " + yearUpdated
+    }
+    else if(typeof(yearUpdated) == "undefined"){
+//Note this will mean no date is displayed when a month but no year is specified
+      dateText = " as of data collection"
+    }
+    else{
+      dateText = " as of " + monthNames[parseInt(monthUpdated)-1] + ", " + yearUpdated
+    }
+    var titleText = data.fullName
+    var formatter = d3.format(".1f")
+
+    var usAvg = formatter(parseVal(slice.filter(function(obj){return obj.geography.code == "US"})[0].value,"text"))
+
+    var graphic = d3.select("#"+containerID + "_title");
+
+    var title = graphic.append('div')
+      .attr('class',"title-container " + dataID)
+    title.append('div')
+      .attr('class','title-text')
+      .text(titleText)
+
+    title.append('div')
+      .attr('class','title-value')
+      .html('The national average was <span id = "usa-text_' + dataID + '">'  + usAvg + '</span>' + dateText)
+
   }
 
   function mouseEvent(dataID,element,event){
@@ -345,46 +394,62 @@ var barSvg, barXAxis, barBase;
 // state case
     
     if(element.type == "Feature" || element.type == "Bar"){
-
       var state = d3.select("#state-outline_" + dataID + "_" + element.id)
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
       var stateNode = state[0][0]
-      var barNode = bar[0][0] 
+      var barNode = bar[0][0]
 
-      // console.log(stateNode.classed("click"))
+      if(bar.classed("usa-bar")){
+        d3.selectAll('#usa-text_' + dataID)
+          .classed('text-highlight',true)
+      }
 
-      stateNode.parentNode.appendChild(stateNode)
-      barNode.parentNode.appendChild(barNode)
+      else{
 
-      var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
-      var name = obj.geography.name
-      var formatter = d3.format(".1f")
-      var value = formatter(obj.value)
-      var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
-      var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
+        d3.selectAll(".tooltip-container." + dataID + " .year-text").classed("hidden",false)
+        d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
+        d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
 
-      nameDiv.text(name)
-      valueDiv.text(value)
-      resizeTooltip();
+        stateNode.parentNode.appendChild(stateNode)
+        barNode.parentNode.appendChild(barNode)
 
+        var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
+        var name = obj.geography.name
+        var formatter = d3.format(".1f")
+        var value = formatter(obj.value)
+        //handle here instead of in parseVal bc formatter returns strings
+        if (value == "NaN"){
+          value = "No Data"
+        }
+        var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
+        var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
 
-      state.classed(event,true)
-      bar.classed(event,true)
+        nameDiv.text(name)
+        valueDiv.text(value)
+        resizeTooltip(dataID);
+
+        if(event == "hover"){
+          state.classed(event,true)
+          bar.classed(event,true)
+        }
+        if(event == "click"){
+          // console.log(state.classed(event))
+          var clicked;
+          if(element.type == "Feature"){
+            clicked = state.classed(event)
+          }
+          if(element.type == "Bar"){
+            clicked = bar.classed(event)
+
+          }
+          state.classed(event, !clicked)
+          state.classed("hover",false)
+          bar.classed(event, !clicked)
+          bar.classed("hover",false)
+        }
+      }
       reapppendAxis()
 
-
-
-      // var margin = { top: 20, right: 10, bottom: 20, left: 20 };
-      // var aspect_width = 41;
-      // var aspect_height = 5;
-      // var width = $("#"+containerID + "_bar-chart").width() - margin.left - margin.right;
-      // var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
-
-      // d3.select("#"+containerID + "_bar-chart svg")
-      // .append("g")
-      //     .attr("class", "x axis")
-      //     .attr("transform", "translate(0," + height + ")")
-      //     .call(xAxis);
 
     }
 // legend case
@@ -403,6 +468,7 @@ var barSvg, barXAxis, barBase;
     if(event == "exit"){
       d3.selectAll(".hover").classed("hover",false)
       d3.selectAll(".demphasized").classed("demphasized",false)
+      d3.selectAll(".text-highlight").classed("text-highlight",false)
       reapppendAxis()
 
     }
@@ -410,7 +476,24 @@ var barSvg, barXAxis, barBase;
 }
 
 
+function parseVal(value, useCase){
+  if(typeof(value) == "number"){
+      return value
+  }
+  else{
+    switch(useCase){
+      case "text":
+        return "No Data"
+      case "sort":
+        return Number.NEGATIVE_INFINITY
+      case "draw":
+        return 0
+      case "color":
+        return undefined
+    }
+  }
 
+}
 
 
 
@@ -465,7 +548,10 @@ function getNiceBreaks(min,max,bins){
 
 
 function drawGraphic(){
-  drawMapFigure("testing","AWWChg",null,"%")
+  drawMapFigure("testing","INC",null,"%")
+  drawMapFigure("testing2","AWWChg",null,"%")
+  drawMapFigure("testing3","RUC",null,"%")
+
   // drawMap("other","RUC",null,"%")
 }
 
