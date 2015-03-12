@@ -143,7 +143,7 @@ function drawMapFigure(containerID, dataID, title, units){
   }
 
 
-var barG, barXAxis, barBase;
+var barSvg, barXAxis, barBase;
 
   function drawBars(){
     var $graphic = $("#"+containerID + "_bar-chart");
@@ -247,11 +247,11 @@ var barG, barXAxis, barBase;
           .on("click",function(d){ mouseEvent(dataID, {"value": d.value, "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "click") })
           ;
 
-      // svg.append("g")
-      //     .attr("class", "x axis")
-      //     .attr("transform", "translate(0," + y(0)+ ")")
-      //     .call(xAxis);
-      barG = svg.append("g").attr("class", "x axis")
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + y(0)+ ")")
+          .call(xAxis);
+      barSvg = svg
       barXAxis = xAxis
       barBase = y(0)
 
@@ -262,9 +262,11 @@ var barG, barXAxis, barBase;
   }
 
   function reapppendAxis(){
-    barG
-    .attr("transform", "translate(0," + barBase+ ")")
-    .call(barXAxis);
+    d3.selectAll("#"+containerID + "_bar-chart .x.axis .tick text").remove()
+    barSvg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + barBase+ ")")
+      .call(barXAxis);
 
     var xTicks = $("#"+containerID + "_bar-chart .x.axis .tick text")
     xTicks.each(function(index,tick){
@@ -368,6 +370,7 @@ var barG, barXAxis, barBase;
 
       state.classed(event,true)
       bar.classed(event,true)
+      reapppendAxis()
 
 
 
