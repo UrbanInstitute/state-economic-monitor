@@ -12,15 +12,21 @@
 	background: #fdbf11;
 }
 
-.title-value{
+.title-subtitle{
 	font: 12pt Lato;
 	font-style: italic;
 	font-weight: 300;
+	margin-top: 10px;
+	margin-left: 17px;
 }
 
 .title-text{
 	font: 14pt Lato;
 	font-weight: 700;
+}
+.title-unit{
+	font: 12pt Lato;
+	font-weight: 300;
 }
 /*Map tooltip*/
 .tooltip-container{
@@ -90,7 +96,7 @@
 .q3-4 { fill:#00578b; }
 .q4-4 { fill:#000000; }
 
-.states.undefined{ fill: #e6e7e8;}
+.states.no-data{ fill: #e6e7e8;}
 
 
 /*Bar*/
@@ -139,24 +145,67 @@ p{
 </head>
 
 <body>
-	<div id = "testing" ></div>
+	<div id = "figure_unemployment" ></div>
 	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
 	</p>
 	<p>
 	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
 	</p>
-	<div id = "testing2"></div>
+	<div id = "figure_nonfarm-employment"></div>
 	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
 	</p>
 	<p>
 	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
 	</p>
-	<div id = "testing3"></div>
+	<div id = "figure_wages"></div>
 	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
 	</p>
 	<p>
 	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
 	</p>
+	<div id = "figure_wages-change"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_house-prices"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_total-taxes"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_wages"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_income-taxes"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_corporate-taxes"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+	<div id = "figure_sales-taxes"></div>
+	<p>Bacon ipsum dolor amet prosciutto turkey doner, hamburger shank t-bone corned beef sausage beef kielbasa. Cow meatloaf boudin shank spare ribs turkey. Landjaeger short loin chicken prosciutto ball tip pork chop, ham hock sirloin rump corned beef. Bresaola flank strip steak ball tip picanha tail tenderloin beef sirloin salami prosciutto. Corned beef pig landjaeger tri-tip tenderloin short loin ham jowl ground round bacon filet mignon prosciutto. Flank pastrami boudin tenderloin tongue.
+	</p>
+	<p>
+	Short ribs shoulder doner flank biltong. Pork belly pork boudin beef ribs leberkas brisket. Prosciutto chicken alcatra, chuck short loin ham hock flank rump cow pork belly beef swine. Tongue kielbasa ground round shank tail chicken landjaeger short loin pork belly, porchetta chuck turkey ball tip. Sirloin short loin flank ribeye ham hock swine pig bacon filet mignon jerky biltong venison pork loin. Ham sirloin sausage pork loin filet mignon doner capicola meatball tongue. Salami landjaeger tongue bacon.
+	</p>
+
 
 
 	<script src="js/vendor/jquery.min.js"></script>
@@ -164,6 +213,7 @@ p{
 	<script src = "js/vendor/queue.min.js"></script>
 	<script src = "js/vendor/topojson.js"></script>
 	<script src = "figureData.js"></script>
+	<script src = "semConfig.js"></script>
 	<script src = "js/main.js"></script>
 </body>
 </html>

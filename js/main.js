@@ -1,27 +1,46 @@
-
-
-function drawMapFigure(containerID, dataID, title, units){
+function drawMapFigure(dataID, config){
  // data is an array of objects, each of form
 // {
 //   "geography":
 //      {"code": "AK", "fips": "2", "name": "Alaska"},
 //    "value": 6.3
 // }
+    var containerID = config.id
+    var units = "%"
 
     var slice = figureData[dataID]["data"]
     var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
     var maxIn = Math.max.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
+    var breaks = parseBreaks(minIn, maxIn)
     
     var breaks = getNiceBreaks(minIn,maxIn,5),
         min = breaks.min,
         max = breaks.max;
     var step = (max-min)/5.0
+    var tempBreaks = parseBreaks(minIn, maxIn)
+    // console.log(breaks)
 
-    var quantize = d3.scale.quantize()
-    .domain([min, max])
-    .range(d3.range(5).map(function(i) {return "q" + i + "-4"; }));
+    // var quantize = d3.scale.quantize()
+    // .domain([min, max])
+    // .range(d3.range(5).map(function(i) {return "q" + i + "-4"; }));
+
+    var quantize = function(d){
+      if(typeof(d) == "undefined"){
+        return "no-data"
+      }
+      else{
+        for(var i = 0; i < tempBreaks.length-1; i++){
+          if(d > tempBreaks[i] && d <= tempBreaks[i+1]){
+            return "q" + i + "-4"
+            break
+          }
+        }
+      }
+      
+    }
 
     var parent = d3.select("#"+containerID)
+    parent.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
     $("#"+containerID).empty()
 
     parent.append("div")
@@ -61,10 +80,7 @@ function drawMapFigure(containerID, dataID, title, units){
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
-      // .append("rect")
-      //   .attr("width", width + margin.left + margin.right)
-      //   .attr("height", height + margin.top + margin.bottom)
-        .on("click",function(){mouseEvent(null,{"type":"Background"},"click")});
+
 
 
   
@@ -102,7 +118,18 @@ function drawMapFigure(containerID, dataID, title, units){
           .attr("x",-5+keyWidth*i)
           .attr("class","legend-labels " + dataID)
           .attr("y",-5)
-          .text(min+step*i + units)
+          .text(function(){
+            if (config["unit-type"] == "percent"){
+              return tempBreaks[i] + "%"
+            }
+            else if (config["unit-type"] == "dollar"){
+              var formatter = d3.format("$")
+              return formatter(tempBreaks[i])
+            }
+            else{
+              return tempBreaks[i]
+            }
+          })
       }
 
 
@@ -123,10 +150,10 @@ function drawMapFigure(containerID, dataID, title, units){
           .attr("class", function(d) {
             var state = slice.filter(function(obj){return obj.geography.fips == d.id})  ;
               if(state.length > 0){
-              return "states " + dataID + " " + quantize(parseVal(state[0].value,"color"))
+              return "states " + dataID + " " + quantize(parseVal(state[0].value,"color")) + " FIPS_" + d.id
             }
             else{
-              return "states NA " + dataID
+              return "states NA " + dataID + " FIPS_" + d.id
             }
         })
           .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
@@ -162,7 +189,6 @@ var barSvg, barXAxis, barBase;
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
-        .on("click",function(){mouseEvent(null,{"type":"Background"},"click")});
 
     var lowerBound;
     if(min < 0){
@@ -239,7 +265,7 @@ var barSvg, barXAxis, barBase;
             else{
               isUS = ""
             }
-            return isUS + "states " + dataID + " " + quantize(parseVal(d.value,"color"))
+            return isUS + "states " + dataID + " " + quantize(parseVal(d.value,"color")) + " FIPS_" + d.geography.fips
           })
           .attr("id", function(d) { return "bar-outline_" + dataID + "_" + d.geography.fips ;})
           .attr("x", function(d) { return x(d.geography.code); })
@@ -293,8 +319,8 @@ var barSvg, barXAxis, barBase;
     var data = figureData[dataID]
     var yearUpdated = data.yearUpdated
     //Get quarter from month, then subtract 1 to make it zero indexed
-    var quarterUpdated = Math.ceil(data.monthUpdated/3) - 1
-    var quarterNames = ["First","Second","Third","Fourth"]
+    // var quarterUpdated = Math.ceil(data.monthUpdated/3) - 1
+   
 
     var graphic = d3.select("#"+containerID + "_tooltip");
     var tooltip = graphic.append('div')
@@ -324,7 +350,7 @@ var barSvg, barXAxis, barBase;
         .text('QUARTER')
     quarter.append('div')
         .attr('class','tooltip-data')
-        .text(quarterNames[quarterUpdated])  
+        .text(getQuarter(data.monthUpdated))  
 
     var year = tooltip.append('div')
       .attr('class',"year-text hidden")
@@ -356,23 +382,12 @@ var barSvg, barXAxis, barBase;
     var monthUpdated = data.monthUpdated
     var yearUpdated = data.yearUpdated
     var dateText;
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-    ];
-    if(typeof(monthUpdated) == "undefined" && typeof(yearUpdated) != "undefined"){
-      dateText = " as of " + yearUpdated
-    }
-    else if(typeof(yearUpdated) == "undefined"){
-//Note this will mean no date is displayed when a month but no year is specified
-      dateText = " as of data collection"
-    }
-    else{
-      dateText = " as of " + monthNames[parseInt(monthUpdated)-1] + ", " + yearUpdated
-    }
-    var titleText = data.fullName
-    var formatter = d3.format(".1f")
 
-    var usAvg = formatter(parseVal(slice.filter(function(obj){return obj.geography.code == "US"})[0].value,"text"))
+    var titleText = config.title
+    var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
+    var subtitleText = parseConfigText("subtitle", monthUpdated, yearUpdated, usAvg)
+    // var formatter = d3.format(".1f")
+
 
     var graphic = d3.select("#"+containerID + "_title");
 
@@ -383,19 +398,110 @@ var barSvg, barXAxis, barBase;
       .text(titleText)
 
     title.append('div')
-      .attr('class','title-value')
-      .html('The national average was <span id = "usa-text_' + dataID + '">'  + usAvg + '</span>' + dateText)
+      .attr('class','title-unit')
+      .text(config.unit)
+    title.append('div')
+      .attr('class','title-subtitle')
+      .html(subtitleText)
 
   }
 
+  function getQuarter(q){
+    var quarterNames = ["First","Second","Third","Fourth"]
+    return quarterNames[Math.ceil(q/3)-1]
+  }
+
+  function parseBreaks(min, max){
+    var breaks = config.breaks
+    for (var i = 0; i < breaks.length; i++) {
+      var val = breaks[i]
+      if(typeof(val) != "number"){
+        if ((val) == "{{min}}"){
+          breaks[i] = Math.floor(min)
+          continue
+        }
+        else if ((val) == "{{max}}"){
+          breaks[i] = Math.ceil(max)
+          continue
+        }
+      }
+    }
+    return breaks
+  }
+  function parseConfigText(field, excelMonth, excelYear, usAvg){
+    var configDate = config["date-updated"]
+    var configFormat = config["date-format"]
+    var unitType = config["unit-type"]
+    var inStr = config[field];
+
+    var month, year, prevYear;
+    if (configDate == "{{excel}}"){
+      month = excelMonth
+      year = excelYear
+      prevYear = year -1
+    }
+    else{
+      month = parseInt(configDate.split("/")[0])
+      year = parseInt(configDate.split("/")[1])
+      prevYear = year -1
+    }
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ];
+
+    var datePrevious, dateUpdated, usaValue, usaChanged;
+    if (configFormat == "month"){
+      dateUpdated = monthNames[month - 1] + ", " + year
+      datePrevious = monthNames[month - 1] + ", " + prevYear
+    }
+    else if (configFormat == "quarter"){
+      dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
+      datePrevious = "the " + getQuarter(month).toLowerCase() + " quarter of " + prevYear
+    }
+
+    var formatter = d3.format(".1f");
+    if(unitType == "percent"){
+      usaValue = formatter(usAvg) + "%"
+    }
+    else if(unitType == "dollar"){
+      var dollarFormatter = d3.format("$0f")
+      usaValue = dollarFormatter(usAvg)
+    }
+
+    
+    usaValue = "<span id = \"usa-text_" + dataID + "\">" + usaValue + "</span>"
+
+    if(formatter(usAvg) == "0.0"){
+      usaChanged = " did not change"
+    }
+    else if(usAvg > 0){
+      usaChanged = "increased by " + usaValue 
+    }
+    else if(usAvg < 0){
+      usaChanged = "decreased by " + usaValue
+    }
+
+    return inStr
+                .replace("{{date-updated}}", dateUpdated)
+                .replace("{{date-previous}}", datePrevious)
+                .replace("{{usa-value}}", usaValue)
+                .replace("{{usa-changed}}", usaChanged)
+
+  }
+
+
   function mouseEvent(dataID,element,event){
     // stopPropagation() means that clicks on bars and map do not trigger click on background
+
     d3.event.stopPropagation();
+    // console.log(element,event)
 // state case
     
     if(element.type == "Feature" || element.type == "Bar"){
       var state = d3.select("#state-outline_" + dataID + "_" + element.id)
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
+
+      var states = d3.selectAll(".FIPS_" + element.id)
       var stateNode = state[0][0]
       var barNode = bar[0][0]
 
@@ -433,7 +539,6 @@ var barSvg, barXAxis, barBase;
           bar.classed(event,true)
         }
         if(event == "click"){
-          // console.log(state.classed(event))
           var clicked;
           if(element.type == "Feature"){
             clicked = state.classed(event)
@@ -442,8 +547,8 @@ var barSvg, barXAxis, barBase;
             clicked = bar.classed(event)
 
           }
-          state.classed(event, !clicked)
-          state.classed("hover",false)
+          states.classed(event, !clicked)
+          states.classed("hover",false)
           bar.classed(event, !clicked)
           bar.classed("hover",false)
         }
@@ -460,6 +565,10 @@ var barSvg, barXAxis, barBase;
       var states = d3.selectAll("." + dataID + "." + element.class)
       states.classed({"demphasized": false})
       states[0].forEach(function(s){ s.parentNode.appendChild(s)})
+    }
+
+    else if(element.type == "Background"){
+      d3.selectAll(".click").classed("click",false)
     }
 
 // bar case
@@ -548,9 +657,15 @@ function getNiceBreaks(min,max,bins){
 
 
 function drawGraphic(){
-  drawMapFigure("testing","INC",null,"%")
-  drawMapFigure("testing2","AWWChg",null,"%")
-  drawMapFigure("testing3","RUC",null,"%")
+  // drawMapFigure("testing","INC",null,"%")
+  // drawMapFigure("testing2","AWWChg",null,"%")
+  // drawMapFigure("testing3","RUC",null,"%")
+  $.each(semConfig.Figures, function(dataID, config) {
+    // console.log(key, value);
+    if(config.type == "one-variable"){
+      drawMapFigure(dataID, config)
+    }
+  });
 
   // drawMap("other","RUC",null,"%")
 }
