@@ -1,0 +1,53 @@
+State_name,State_postal_code,State_FIPS,Census_region,AWW__Average_Weekly_Earnings__Private_Employment,AWW__month_updated,AWW__year_updated
+Alabama,AL,1,South,738.05,11,2014
+Alaska,AK,2,West,922.71,11,2014
+Arizona,AZ,4,West,780.75,11,2014
+Arkansas,AR,5,South,673.03,11,2014
+California,CA,6,West,954.23,11,2014
+Colorado,CO,8,West,898.54,11,2014
+Connecticut,CT,9,Northeast,960.6,11,2014
+Delaware,DE,10,South,727.04,11,2014
+District of Columbia,DC,11,South,1379.89,11,2014
+Florida,FL,12,South,762.45,11,2014
+Georgia,GA,13,South,832.83,11,2014
+Hawaii,HI,15,West,810.03,11,2014
+Idaho,ID,16,West,724.61,11,2014
+Illinois,IL,17,Midwest,880.64,11,2014
+Indiana,IN,18,Midwest,803.58,11,2014
+Iowa,IA,19,Midwest,768.85,11,2014
+Kansas,KS,20,Midwest,772.8,11,2014
+Kentucky,KY,21,South,740.89,11,2014
+Louisiana,LA,22,South,804.83,11,2014
+Maine,ME,23,Northeast,740.43,11,2014
+Maryland,MD,24,South,924.05,11,2014
+Massachusetts,MA,25,Northeast,999.98,11,2014
+Michigan,MI,26,Midwest,815.71,11,2014
+Minnesota,MN,27,Midwest,877.73,11,2014
+Mississippi,MS,28,South,692.37,11,2014
+Missouri,MO,29,Midwest,746.79,11,2014
+Montana,MT,30,West,698.1,11,2014
+Nebraska,NE,31,Midwest,740.72,11,2014
+Nevada,NV,32,West,711.81,11,2014
+New Hampshire,NH,33,Northeast,807.76,11,2014
+New Jersey,NJ,34,Northeast,921.05,11,2014
+New Mexico,NM,35,West,707.88,11,2014
+New York,NY,36,Northeast,955.06,11,2014
+North Carolina,NC,37,South,760.73,11,2014
+North Dakota,ND,38,Midwest,891.07,11,2014
+Ohio,OH,39,Midwest,765.4,11,2014
+Oklahoma,OK,40,South,764.54,11,2014
+Oregon,OR,41,West,771.89,11,2014
+Pennsylvania,PA,42,Northeast,801.74,11,2014
+Rhode Island,RI,44,Northeast,819.89,11,2014
+South Carolina,SC,45,South,742.98,11,2014
+South Dakota,SD,46,Midwest,698.36,11,2014
+Tennessee,TN,47,South,725.06,11,2014
+Texas,TX,48,South,883.52,11,2014
+Utah,UT,49,West,830.27,11,2014
+Vermont,VT,50,Northeast,763.55,11,2014
+Virginia,VA,51,South,893.09,11,2014
+Washington,WA,53,West,983.78,11,2014
+West Virginia,WV,54,South,719.2,11,2014
+Wisconsin,WI,55,Midwest,786.48,11,2014
+Wyoming,WY,56,West,816.66,11,2014
+United States of America,US,-99,USA,849.78,11,2014

@@ -1,0 +1,53 @@
+State_name,State_postal_code,State_FIPS,Census_region,RUC__Unemployment_Rate,RUC__month_updated,RUC__year_updated
+Alabama,AL,1,South,5.7,11,2014
+Alaska,AK,2,West,6.3,11,2014
+Arizona,AZ,4,West,6.7,11,2014
+Arkansas,AR,5,South,5.7,11,2014
+California,CA,6,West,7.0,11,2014
+Colorado,CO,8,West,4.0,11,2014
+Connecticut,CT,9,Northeast,6.4,11,2014
+Delaware,DE,10,South,5.4,11,2014
+District of Columbia,DC,11,South,7.3,11,2014
+Florida,FL,12,South,5.6,11,2014
+Georgia,GA,13,South,6.9,11,2014
+Hawaii,HI,15,West,4.0,11,2014
+Idaho,ID,16,West,3.7,11,2014
+Illinois,IL,17,Midwest,6.2,11,2014
+Indiana,IN,18,Midwest,5.8,11,2014
+Iowa,IA,19,Midwest,4.1,11,2014
+Kansas,KS,20,Midwest,4.2,11,2014
+Kentucky,KY,21,South,5.7,11,2014
+Louisiana,LA,22,South,6.7,11,2014
+Maine,ME,23,Northeast,5.5,11,2014
+Maryland,MD,24,South,5.5,11,2014
+Massachusetts,MA,25,Northeast,5.5,11,2014
+Michigan,MI,26,Midwest,6.3,11,2014
+Minnesota,MN,27,Midwest,3.6,11,2014
+Mississippi,MS,28,South,7.2,11,2014
+Missouri,MO,29,Midwest,5.4,11,2014
+Montana,MT,30,West,4.2,11,2014
+Nebraska,NE,31,Midwest,2.9,11,2014
+Nevada,NV,32,West,6.8,11,2014
+New Hampshire,NH,33,Northeast,4.0,11,2014
+New Jersey,NJ,34,Northeast,6.2,11,2014
+New Mexico,NM,35,West,6.1,11,2014
+New York,NY,36,Northeast,5.8,11,2014
+North Carolina,NC,37,South,5.5,11,2014
+North Dakota,ND,38,Midwest,2.8,11,2014
+Ohio,OH,39,Midwest,4.8,11,2014
+Oklahoma,OK,40,South,4.2,11,2014
+Oregon,OR,41,West,6.7,11,2014
+Pennsylvania,PA,42,Northeast,4.8,11,2014
+Rhode Island,RI,44,Northeast,6.8,11,2014
+South Carolina,SC,45,South,6.5,11,2014
+South Dakota,SD,46,Midwest,3.3,11,2014
+Tennessee,TN,47,South,6.6,11,2014
+Texas,TX,48,South,4.6,11,2014
+Utah,UT,49,West,3.5,11,2014
+Vermont,VT,50,Northeast,4.2,11,2014
+Virginia,VA,51,South,4.8,11,2014
+Washington,WA,53,West,6.3,11,2014
+West Virginia,WV,54,South,6.0,11,2014
+Wisconsin,WI,55,Midwest,5.2,11,2014
+Wyoming,WY,56,West,4.2,11,2014
+United States of America,US,-99,USA,5.6,11,2014

@@ -1,0 +1,53 @@
+State_name,State_postal_code,State_FIPS,Census_region,UNEMP__Unemployment_Rate,UNEMPChg__One_Year_Change_in_Unemployment_Rate
+Alabama,AL,1,South,5.7,-0.39999999999999947
+Alaska,AK,2,West,6.3,-0.10000000000000053
+Arizona,AZ,4,West,6.7,-0.8999999999999995
+Arkansas,AR,5,South,5.7,-1.7000000000000002
+California,CA,6,West,7.0,-1.3000000000000007
+Colorado,CO,8,West,4.0,-2.2
+Connecticut,CT,9,Northeast,6.4,-1.0
+Delaware,DE,10,South,5.4,-0.7999999999999998
+District of Columbia,DC,11,South,7.3,-0.2999999999999998
+Florida,FL,12,South,5.6,-0.7000000000000002
+Georgia,GA,13,South,6.9,-0.5
+Hawaii,HI,15,West,4.0,-0.7000000000000002
+Idaho,ID,16,West,3.7,-1.8999999999999995
+Illinois,IL,17,Midwest,6.2,-2.7
+Indiana,IN,18,Midwest,5.8,-1.0
+Iowa,IA,19,Midwest,4.1,-0.10000000000000053
+Kansas,KS,20,Midwest,4.2,-0.7000000000000002
+Kentucky,KY,21,South,5.7,-2.2
+Louisiana,LA,22,South,6.7,1.2999999999999998
+Maine,ME,23,Northeast,5.5,-0.9000000000000004
+Maryland,MD,24,South,5.5,-0.5999999999999996
+Massachusetts,MA,25,Northeast,5.5,-1.5999999999999996
+Michigan,MI,26,Midwest,6.3,-2.000000000000001
+Minnesota,MN,27,Midwest,3.6,-1.1
+Mississippi,MS,28,South,7.2,-0.5999999999999996
+Missouri,MO,29,Midwest,5.4,-0.5999999999999996
+Montana,MT,30,West,4.2,-1.2000000000000002
+Nebraska,NE,31,Midwest,2.9,-0.7000000000000002
+Nevada,NV,32,West,6.8,-2.2
+New Hampshire,NH,33,Northeast,4.0,-1.2000000000000002
+New Jersey,NJ,34,Northeast,6.2,-1.0
+New Mexico,NM,35,West,6.1,-0.5
+New York,NY,36,Northeast,5.8,-1.2000000000000002
+North Carolina,NC,37,South,5.5,-1.4000000000000004
+North Dakota,ND,38,Midwest,2.8,0.09999999999999964
+Ohio,OH,39,Midwest,4.8,-2.3
+Oklahoma,OK,40,South,4.2,-1.2000000000000002
+Oregon,OR,41,West,6.7,-0.39999999999999947
+Pennsylvania,PA,42,Northeast,4.8,-2.0
+Rhode Island,RI,44,Northeast,6.8,-2.500000000000001
+South Carolina,SC,45,South,6.5,-0.09999999999999964
+South Dakota,SD,46,Midwest,3.3,-0.30000000000000027
+Tennessee,TN,47,South,6.6,-1.1000000000000005
+Texas,TX,48,South,4.6,-1.4000000000000004
+Utah,UT,49,West,3.5,-0.5
+Vermont,VT,50,Northeast,4.2,0.0
+Virginia,VA,51,South,4.8,-0.40000000000000036
+Washington,WA,53,West,6.3,-0.40000000000000036
+West Virginia,WV,54,South,6.0,0.0
+Wisconsin,WI,55,Midwest,5.2,-1.0999999999999996
+Wyoming,WY,56,West,4.2,-0.20000000000000018
+United States of America,US,-99,USA,5.6,-1.1000000000000005

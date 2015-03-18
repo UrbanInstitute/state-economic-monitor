@@ -52,7 +52,7 @@ var semConfig = {
 					"subtitle": "Public-sector employment growth continues to lag total employment growth. Total public-sector employment {{y-usa-changed}} from {{y-date-previous}} to {{y-date-updated}}, well below the {{x-usa-value}} increase in total employment.",
 					"source": "Both datasets from the Bureau of Labor Statistics",
 					"x":{
-						"id":"TOTAL",
+						"id":"EMP",
 						"label": "Total Employment",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",

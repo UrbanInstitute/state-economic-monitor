@@ -740,7 +740,6 @@ function drawScatterPlot(config){
         .attr("transform","translate(" + parseInt(15 + (i*width/8)) + ",10)")
         .on("mouseover", function(){
           var region  = this.innerHTML
-          console.log(region)
           d3.selectAll("#" + containerID + " " + ".dot")
           .classed("demphasized",true)
 

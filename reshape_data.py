@@ -2,11 +2,11 @@ import csv
 import xlrd
 from collections import OrderedDict
 import json
-import cPickle as pickle
+import time
 
 figureData = OrderedDict()
-figureVars = {"Figure1":"RUC","Figure2":("UNEMP","UNEMPChg"),"Figure3":"EMP","Figure4":("EMP","GOVT"),"Figure5":"AWW","Figure6":"AWWChg","Figure7":"HPI","Figure8":("HPChgYr","HPChgPeak"),"Figure9":"TOTAL","Figure10":"INC","Figure11":"CORPINC","Figure12":"SALES"}
-varFullNames = {}
+figureVars = {"Figure1":["RUC"],"Figure2":["UNEMP","UNEMPChg"],"Figure3":["EMP"],"Figure4":["EMP","GOVT"],"Figure5":["AWW"],"Figure6":["AWWChg"],"Figure7":["HPI"],"Figure8":["HPChgYr","HPChgPeak"],"Figure9":["TOTAL"],"Figure10":["INC"],"Figure11":["CORPINC"],"Figure12":["SALES"]}
+fullNames = {"RUC":"Unemployment Rate","AWW":"Average Weekly Earnings, Private Employment","AWWChg":"Changes in Real Average Weekly Earnings, Private Employment","GOVT":"Public Sector Employment","TOTAL":"Total Employment","HPI":"Housing Price Index","PHCI":"Coincident indices, 3-month change","SLIND":"State Leading Index","EMP":"Nonfarm Payroll Employment Change","UNEMP":"Unemployment Rate","UNEMPChg":"One Year Change in Unemployment Rate","INC":"Personal Income Tax Revenue","CORPINC":"Corporate Income Tax Revenue","SALES":"Sales Tax Revenue","HPChgYr":"Housing Price Percent Change Year-Over-Year","HPChgPeak":"Change in Housing Prices Since Q1 2007"}
 
 stateFIPS = {}
 
@@ -160,7 +160,47 @@ def parseTable3():
 		ruc.write(json.dumps(figureData["RUC"]["data"], sort_keys=False))
 
 def createCSV():
-	print figureData
+	for figure in figureVars:
+		data = []
+		headerNames = ["State_name","State_postal_code","State_FIPS","Census_region"]
+		fileName = time.strftime("%Y-%m-%d") + "-" + figure + "-"
+		i = 0
+		for var in figureVars[figure]:
+			if i==1:
+				fileName += "_vs_"
+			fileName += var
+			data.append(figureData[var])
+			headerNames.append(var + "__" + fullNames[var].replace(" ","_").replace(",","_"))
+			if("monthUpdated" in figureData[var]):
+				headerNames.append(var + "__month_updated")
+			if("yearUpdated" in figureData[var]):
+				headerNames.append(var + "__year_updated")
+			i+=1
+		fileName += ".csv"
+
+		cw = csv.writer(open("data/download/" + fileName, "wb"))
+		cw.writerow(headerNames)
+		for obj in data[0]["data"]:
+			row = [obj["geography"]["name"], obj["geography"]["code"], obj["geography"]["fips"], obj["geography"]["region"]]
+			row.append(obj["value"])
+			if("monthUpdated" in data[0]):
+				row.append(data[0]["monthUpdated"])
+			if("yearUpdated" in data[0]):
+				row.append(data[0]["yearUpdated"])
+
+			if len(data) > 1:
+				for secondObj in data[1]["data"]:
+					if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+						row.append(secondObj["value"])
+						if("monthUpdated" in data[1]):
+							row.append(data[1]["monthUpdated"])
+						if("yearUpdated" in data[1]):
+							row.append(data[1]["yearUpdated"])
+						break
+			cw.writerow(row)
+
+
+# geography', OrderedDict([('code', 'TX'), ('fips', '48'), ('name', 'Texas'), ('region', 'South')])
 
 def parseData():
 	parseXlSM()
@@ -168,6 +208,7 @@ def parseData():
 	parseTable1()
 	parseTable2()
 	parseTable3()
+	createCSV()
 
 buildStateFIPS()
 parseData()
