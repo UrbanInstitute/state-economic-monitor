@@ -11,10 +11,10 @@ varFullNames = {}
 stateFIPS = {}
 
 def buildStateFIPS():
-	cr = csv.reader(open("shapefile/state-fips.csv"))
+	cr = csv.reader(open("shapefile/state-fips.csv","rU"))
 	header = cr.next()
 	for row in cr:
-		stateFIPS[row[1]]={"fips":row[0],"name":row[2]}
+		stateFIPS[row[1]]={"fips":row[0],"name":row[2],"region":row[3]}
 
 
 
@@ -55,6 +55,8 @@ def geographyDict(abbrev):
 	obj["code"] = abbrev
 	obj["fips"] = stateFIPS[abbrev]["fips"]
 	obj["name"] = stateFIPS[abbrev]["name"]
+	obj["region"] = stateFIPS[abbrev]["region"]
+
 
 	return obj
 
@@ -158,10 +160,7 @@ def parseTable3():
 		ruc.write(json.dumps(figureData["RUC"]["data"], sort_keys=False))
 
 def createCSV():
-	print "foo"
-
-def createJS():
-	print "foo"
+	print figureData
 
 def parseData():
 	parseXlSM()

@@ -23,10 +23,77 @@ Many of the fields in this configuration will not change, but they can be config
 * "breaks" is a list of the break points for legends on one-variable figures. It should be a list of numbers (with no quotes), with special end points "{{min}}" and "{{max}}" referring to the minimum and maxium values rounded down and up respectively
 ********************************/
 var semConfig = {
-	"Figures":{
+	"ScatterPlots":{
+		"Figure1":{
+					"id": "figure_level_vs_change_unemployment",
+					"title": "Unemployment Rate: Level vs. One-Year-Change",
+					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
+					"source": "Both datasets from the Bureau of Labor Statistics",
+					"x":{
+						"id":"UNEMP",
+						"label": "Unemployment Rate",
+						"date-format": "month",
+						"unit": "Rate (%), Seasonally Adjusted",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+					"y":{
+						"id":"UNEMPChg",
+						"label": "One Year Change in Unemployment Rate",
+						"date-format": "month",
+						"unit": "Percent Change Year-Over-Year",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+				},
+		"Figure2":{
+					"id": "total_change_emp_vs_public_change_emp",
+					"title": "Year-Over-Year Change in Total Employment vs. Year-Over-Year Change in Public Sector Employment",
+					"subtitle": "Public-sector employment growth continues to lag total employment growth. Total public-sector employment {{y-usa-changed}} from {{y-date-previous}} to {{y-date-updated}}, well below the {{x-usa-value}} increase in total employment.",
+					"source": "Both datasets from the Bureau of Labor Statistics",
+					"x":{
+						"id":"TOTAL",
+						"label": "Total Employment",
+						"date-format": "month",
+						"unit": "Percent Change Year-Over-Year",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+					"y":{
+						"id":"GOVT",
+						"label": "Public Sector Employment",
+						"date-format": "month",
+						"unit": "Percent Change Year-Over-Year",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+				},
+		"Figure3":{
+					"id": "housing_change_vs_2007_housing_change",
+					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
+					"subtitle": "National house prices in the third quarter of 2014 were still 6.2 percent below the peak in house prices during the first quarter of 2007.",
+					"source": "Federal Housing Finance Administration, State House Price Indexes",
+					"x":{
+						"id":"HPChgYr",
+						"label": "Percent Change Year-Over-Year",
+						"date-format": "month",
+						"unit": "Percent",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+					"y":{
+						"id":"HPChgPeak",
+						"label": "Change in Housing Prices Since Q1 2007",
+						"date-format": "month",
+						"unit": "Percent Change Year-Over-Year",
+						"unit-type": "percent",
+						"date-updated": "11/2014",
+					},
+				}
+	},
+	"Maps":{
 		"RUC":	{
 					"id": "figure_unemployment",
-					"type": "one-variable",
 					"title": "Unemployment Rate",
 					"date-format": "month",
 					"subtitle": "The national unemployment rate was {{usa-value}} as of {{date-updated}}",
@@ -35,10 +102,9 @@ var semConfig = {
 					"date-updated": "{{excel}}",
 					"breaks": ["{{min}}",4,5,6,7,"{{max}}"],
 					"source": "Bureau of Labor Statistics"
-				},
+				},		
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
-					"type": "one-variable",
 					"title": "Nonfarm Payroll Employment",
 					"date-format": "month",
 					"subtitle": "Total (public and private) nonfarm payroll employment {{usa-changed}} from {{date-previous}} to {{date-updated}}",
@@ -50,7 +116,6 @@ var semConfig = {
 				},
 		"AWW":	{
 					"id": "figure_wages",
-					"type": "one-variable",
 					"title": "Average Weekly Earnings, Private Employment",
 					"date-format": "month",
 					"subtitle": "National real weekly earnings (i.e., earnings adjusted for inflation) for all US private employees averaged {{usa-value}} in {{date-updated}}",
@@ -62,7 +127,6 @@ var semConfig = {
 				},
 		"AWWChg":	{
 					"id": "figure_wages-change",
-					"type": "one-variable",
 					"title": "Changes in Real Average Weekly Earnings, Private Employment",
 					"date-format": "month",
 					"subtitle": "National real (inflation adjusted) average weekly earnings  {{usa-changed}} from {{date-previous}} to {{date-updated}}",
@@ -74,7 +138,6 @@ var semConfig = {
 				},
 		"HPChgYr":	{
 					"id": "figure_house-prices",
-					"type": "one-variable",
 					"title": "House Prices",
 					"date-format": "quarter",
 					"subtitle": "National house prices {{usa-changed}} from {{date-previous}} to {{date-updated}}",
@@ -86,7 +149,6 @@ var semConfig = {
 				},
 		"TOTAL":	{
 					"id": "figure_total-taxes",
-					"type": "one-variable",
 					"title": "Total Tax Revenue",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
@@ -98,7 +160,6 @@ var semConfig = {
 				},
 		"INC":	{
 					"id": "figure_income-taxes",
-					"type": "one-variable",
 					"title": "Personal Income Tax Revenue",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
@@ -110,7 +171,6 @@ var semConfig = {
 				},
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
-					"type": "one-variable",
 					"title": "Corporate Income Tax Revenue",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
@@ -122,7 +182,6 @@ var semConfig = {
 				},
 		"SALES":	{
 					"id": "figure_sales-taxes",
-					"type": "one-variable",
 					"title": "Sales Tax Revenue",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",

@@ -1,3 +1,7 @@
+var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ]
+
 function drawMapFigure(dataID, config){
  // data is an array of objects, each of form
 // {
@@ -6,7 +10,6 @@ function drawMapFigure(dataID, config){
 //    "value": 6.3
 // }
     var containerID = config.id
-    var units = "%"
 
     var slice = figureData[dataID]["data"]
     var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
@@ -18,11 +21,6 @@ function drawMapFigure(dataID, config){
         max = breaks.max;
     var step = (max-min)/5.0
     var tempBreaks = parseBreaks(minIn, maxIn)
-    // console.log(breaks)
-
-    // var quantize = d3.scale.quantize()
-    // .domain([min, max])
-    // .range(d3.range(5).map(function(i) {return "q" + i + "-4"; }));
 
     var quantize = function(d){
       if(typeof(d) == "undefined"){
@@ -42,6 +40,7 @@ function drawMapFigure(dataID, config){
     var parent = d3.select("#"+containerID)
     parent.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
     $("#"+containerID).empty()
+    parent.attr("class", "figure-container")
 
     parent.append("div")
       .attr("id",containerID + "_title")
@@ -52,7 +51,10 @@ function drawMapFigure(dataID, config){
     parent.append("div")
       .attr("id",containerID + "_map")
       .attr("class", "map-container")
-    
+    parent.append("div")
+      .attr("id", containerID + "_source")
+      .attr("class", "map-source")
+
     drawMap()
     drawBars()
     drawTooltip()
@@ -62,12 +64,10 @@ function drawMapFigure(dataID, config){
 
     var $graphic = $("#"+containerID + "_map");
     
-    // $graphic.empty()
-
     var aspect_width = 10;
     var aspect_height = 7;
     var margin = { top: 10, right: 10, bottom: 10, left: 20 };
-    var width = $graphic.width() - margin.left - margin.right;
+    var width = ($graphic.width() - margin.left - margin.right);
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -247,7 +247,6 @@ var barSvg, barXAxis, barBase;
           }
         })
         .tickSize(0)
-    // console.log(parseInt(4) === 4)
 
       svg.append("g")
           .attr("class", "y axis")
@@ -347,10 +346,20 @@ var barSvg, barXAxis, barBase;
       .attr('class',"quarter-text hidden")
     quarter.append('div')
         .attr('class','tooltip-title')
-        .text('QUARTER')
+        .text(function(){
+          if (config["date-format"] == "month"){ return 'MONTH' }
+          else if (config["date-format"] == "quarter"){ return 'QUARTER' } 
+        })
     quarter.append('div')
         .attr('class','tooltip-data')
-        .text(getQuarter(data.monthUpdated))  
+        .text(function(){
+          if (config["date-format"] == "month"){ return MONTHNAMES[data.monthUpdated] }
+          else if (config["date-format"] == "quarter"){ return getQuarter(data.monthUpdated) } 
+
+        })
+    if(typeof(data.monthUpdated) == "undefined"){
+      quarter.remove()
+    }
 
     var year = tooltip.append('div')
       .attr('class',"year-text hidden")
@@ -360,6 +369,9 @@ var barSvg, barXAxis, barBase;
     year.append('div')
         .attr('class','tooltip-data')
         .text(yearUpdated)
+    if(typeof(data.yearUpdated) == "undefined"){
+      year.remove()
+    }
 
     // tooltip.att)r("style","width:" + resizeTooltip() + "px");
     resizeTooltip(dataID);
@@ -378,17 +390,18 @@ var barSvg, barXAxis, barBase;
   }
 
   function drawTitle(){
+//Writes out title, subtitle, units, and source line
     var data = figureData[dataID]
     var monthUpdated = data.monthUpdated
     var yearUpdated = data.yearUpdated
-    var dateText;
 
     var titleText = config.title
     var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
-    var subtitleText = parseConfigText("subtitle", monthUpdated, yearUpdated, usAvg)
-    // var formatter = d3.format(".1f")
-
-
+    var subtitleText = parseConfigText(config, dataID, config.subtitle, monthUpdated, yearUpdated, usAvg)
+    
+    var sourceText = "Source: " + parseConfigText(config, dataID, config.source, monthUpdated, yearUpdated, usAvg)
+    d3.select("#" + containerID + "_source").text(sourceText)
+    
     var graphic = d3.select("#"+containerID + "_title");
 
     var title = graphic.append('div')
@@ -404,11 +417,6 @@ var barSvg, barXAxis, barBase;
       .attr('class','title-subtitle')
       .html(subtitleText)
 
-  }
-
-  function getQuarter(q){
-    var quarterNames = ["First","Second","Third","Fourth"]
-    return quarterNames[Math.ceil(q/3)-1]
   }
 
   function parseBreaks(min, max){
@@ -428,73 +436,11 @@ var barSvg, barXAxis, barBase;
     }
     return breaks
   }
-  function parseConfigText(field, excelMonth, excelYear, usAvg){
-    var configDate = config["date-updated"]
-    var configFormat = config["date-format"]
-    var unitType = config["unit-type"]
-    var inStr = config[field];
-
-    var month, year, prevYear;
-    if (configDate == "{{excel}}"){
-      month = excelMonth
-      year = excelYear
-      prevYear = year -1
-    }
-    else{
-      month = parseInt(configDate.split("/")[0])
-      year = parseInt(configDate.split("/")[1])
-      prevYear = year -1
-    }
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-    ];
-
-    var datePrevious, dateUpdated, usaValue, usaChanged;
-    if (configFormat == "month"){
-      dateUpdated = monthNames[month - 1] + ", " + year
-      datePrevious = monthNames[month - 1] + ", " + prevYear
-    }
-    else if (configFormat == "quarter"){
-      dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
-      datePrevious = "the " + getQuarter(month).toLowerCase() + " quarter of " + prevYear
-    }
-
-    var formatter = d3.format(".1f");
-    if(unitType == "percent"){
-      usaValue = formatter(usAvg) + "%"
-    }
-    else if(unitType == "dollar"){
-      var dollarFormatter = d3.format("$0f")
-      usaValue = dollarFormatter(usAvg)
-    }
-
-    
-    usaValue = "<span id = \"usa-text_" + dataID + "\">" + usaValue + "</span>"
-
-    if(formatter(usAvg) == "0.0"){
-      usaChanged = " did not change"
-    }
-    else if(usAvg > 0){
-      usaChanged = "increased by " + usaValue 
-    }
-    else if(usAvg < 0){
-      usaChanged = "decreased by " + usaValue
-    }
-
-    return inStr
-                .replace("{{date-updated}}", dateUpdated)
-                .replace("{{date-previous}}", datePrevious)
-                .replace("{{usa-value}}", usaValue)
-                .replace("{{usa-changed}}", usaChanged)
-
-  }
-
 
   function mouseEvent(dataID,element,event){
     // stopPropagation() means that clicks on bars and map do not trigger click on background
 
     d3.event.stopPropagation();
-    // console.log(element,event)
 // state case
     
     if(element.type == "Feature" || element.type == "Bar"){
@@ -511,6 +457,11 @@ var barSvg, barXAxis, barBase;
       }
 
       else{
+        var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
+        var name = obj.geography.name
+        var formatter = d3.format(".1f")
+        var dollarFormatter = d3.format("$0f")
+        var value = formatter(obj.value)
 
         d3.selectAll(".tooltip-container." + dataID + " .year-text").classed("hidden",false)
         d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
@@ -519,19 +470,24 @@ var barSvg, barXAxis, barBase;
         stateNode.parentNode.appendChild(stateNode)
         barNode.parentNode.appendChild(barNode)
 
-        var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
-        var name = obj.geography.name
-        var formatter = d3.format(".1f")
-        var value = formatter(obj.value)
-        //handle here instead of in parseVal bc formatter returns strings
-        if (value == "NaN"){
-          value = "No Data"
-        }
+
+
         var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
         var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
 
         nameDiv.text(name)
-        valueDiv.text(value)
+        valueDiv.text(function(){
+          //handle here instead of in parseVal bc formatter returns strings
+            if (value == "NaN"){
+              return "No Data"
+            }
+            else if(config["unit-type"] == "percent"){
+              return formatter(value) + "%"
+            }
+            else if(config["unit-type"] == "dollar"){
+              return dollarFormatter(value)
+            }
+          })
         resizeTooltip(dataID);
 
         if(event == "hover"){
@@ -606,20 +562,378 @@ function parseVal(value, useCase){
 
 
 
-function drawScatterPlot(container, xData, yData, title, xUnits, yUnits){
- // xData and yData are arrays of objects, each of form
- //    {
- //      "geography": "AK",
- //      "year": "2014",
- //      "month": "11",
- //      "value": "6.3"
- //    }
+function drawScatterPlot(config){
+  var containerID = config.id
+
+  var xSlice = figureData[config.x.id]["data"]
+  var ySlice = figureData[config.y.id]["data"]
+  var data = []
+
+  for(i=0; i<xSlice.length; i++){
+    data[i] = {}
+    data[i]["x"] = xSlice[i]
+    data[i]["y"] = ySlice[i]
+  }
+
+  var parent = d3.select("#"+containerID)
+  $("#"+containerID).empty()
+
+  parent.append("div")
+    .attr("id",containerID + "_title")
+  parent.append("div")
+    .attr("id",containerID + "_tooltip")
+  parent.append("div")
+    .attr("id",containerID + "_plot")
+    .attr("class", "plot-container")
+  parent.append("div")
+    .attr("id",containerID + "_source")
+    .attr("class", "plot-source")
+
+  parent.attr("class","figure-container")
+
+  drawTooltip()
+  drawTitle()
+  drawPlot()
+
+  function drawTitle(){
+    var monthUpdatedX = config.x.monthUpdated
+    var yearUpdatedX = config.x.yearUpdated
+    var monthUpdatedY = config.x.monthUpdated
+    var yearUpdatedY = config.x.yearUpdated
+
+    var titleText = config.title
+    var usAvgX = xSlice.filter(function(obj){return obj.geography.code == "US"})[0].value
+    var usAvgY = ySlice.filter(function(obj){return obj.geography.code == "US"})[0].value
+    var subtitleText = parseConfigText(config, [config.x.id, config.y.id], config.subtitle, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
+
+    var sourceText = "Source: " + parseConfigText(config, [config.x.id, config.y.id], config.source, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
+
+    d3.select("#" + containerID + "_source").text(sourceText)
+
+    var graphic = d3.select("#"+containerID + "_title");
+
+    var title = graphic.append('div')
+      .attr('class',"title-container " + config.x.id + "v" + config.y.id)
+    title.append('div')
+      .attr('class','title-text')
+      .text(titleText)
+
+    title.append('div')
+      .attr('class','title-unit')
+      .text(config.unit)
+    title.append('div')
+      .attr('class','title-subtitle')
+      .html(subtitleText)
+
+  }
+
+  function drawTooltip(){
+    var graphic = d3.select("#"+containerID + "_tooltip");
+    var tooltip = graphic.append('div')
+      .attr('class',"tooltip-container scatter " + config.x.id + "v" + config.y.id)
+
+    var region = tooltip.append('div')
+      .attr('class',"region-text")
+    region.append('div')
+        .attr('class','tooltip-title')
+        .text('REGION/STATE')
+    region.append('div')
+        .attr('class','tooltip-data')
+        .text("Click or hover to select")
+
+    var value = tooltip.append('div')
+      .attr('class',"value-text x hidden")
+    value.append('div')
+        .attr('class','tooltip-title')
+        .text("X-VALUE")
+    value.append('div')
+        .attr('class','tooltip-data')
+
+    var value = tooltip.append('div')
+      .attr('class',"value-text y hidden")
+    value.append('div')
+        .attr('class','tooltip-title')
+        .text("Y-VALUE")
+    value.append('div')
+        .attr('class','tooltip-data')
+
+
+    resizeTooltip(config.x.id + "v" + config.y.id);
+
+  }
+
+
+  function resizeTooltip(dataID){
+  //Make width of tooltip text shrink-wrapped to width of elements. 3 margins, 3 px extra for rounding errors,
+  //plus the widths of the elements
+    var totalWidth = 30*2 + 2
+    $(".tooltip-container." + dataID + " .tooltip-data")
+    .each(function(index,value) {
+      if($(value).text() == "United States of America"){
+//man this is some janky nonsense, wasn't pulling in the correct width for USA text...ugh
+        totalWidth += 290
+      }
+      else{
+        totalWidth += $(value).width();
+      }
+    });
+    d3.select("#"+containerID + "_tooltip .tooltip-container").attr("style","width:" + totalWidth + "px")
+  }
+
+
+  function drawPlot(){
+    var $graphic = $("#"+containerID + "_plot");
+
+    var aspect_width = 2;
+    var aspect_height = 1;
+    var margin = { top: 30, right: 20, bottom: 30, left: 40 };
+    var width = $graphic.width() - margin.left - margin.right;
+
+    var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
+
+    var x = d3.scale.linear()
+        .range([0, width]);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var color = d3.scale.category10();
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .ticks(4)
+
+    var svg = d3.select("#"+containerID + "_plot").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var legend = svg.append("g")
+      .attr("transform", "translate(-19 ,-20)");
+    var regions = ["Northeast", "Midwest", "South", "West"]
+    for(var i = 0; i< regions.length; i++){
+      legend.append("rect")
+        .attr("class", "plot-key " + regions[i])
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("transform", "translate(" + i*width/8 + ",0)")
+        .on("mouseover", function(){
+          var region  = this.getAttribute("class").replace("plot-key ","")
+          d3.selectAll("#" + containerID + " " + ".dot")
+          .classed("demphasized",true)
+
+          d3.selectAll("#" + containerID + " " + ".dot." + region)
+          .classed("demphasized",false)
+
+        })
+        .on("mouseout",function(){ d3.selectAll(".dot").classed("demphasized",false) });   
+      
+      legend.append("text")
+        .attr("class","legend-labels")
+        .text(regions[i])
+        .attr("transform","translate(" + parseInt(15 + (i*width/8)) + ",10)")
+        .on("mouseover", function(){
+          var region  = this.innerHTML
+          console.log(region)
+          d3.selectAll("#" + containerID + " " + ".dot")
+          .classed("demphasized",true)
+
+          d3.selectAll("#" + containerID + " " + ".dot." + region)
+          .classed("demphasized",false)
+
+        })
+        .on("mouseout",function(){ d3.selectAll(".dot").classed("demphasized",false) });
+    }
+
+    x.domain(d3.extent(xSlice, function(d) { return d.value; })).nice();
+    y.domain(d3.extent(ySlice, function(d) { return d.value; })).nice();
+    svg.selectAll(".dot-line")
+        .data(data)
+      .enter().append("line")
+        .attr("class", "dot-line")
+        .attr("x1",function(d) { return x(d.x.value); })
+        .attr("x2",function(d) { return x(d.x.value); })
+        .attr("y1",function(d) { return y(d.y.value); })
+        .attr("y2", y(0))
+
+
+
+    svg.append("g")
+        .attr("class", "x axis scatter")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("x", width)
+        .attr("y", -6)
+        .style("text-anchor", "end")
+        .text(config.x.label);
+
+    svg.append("g")
+        .attr("class", "y axis scatter")
+        .call(yAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("y", 6)
+        .attr("dx", "-2em")
+        .attr("dy", ".71em")
+        .text(config.y.label)
+
+    svg.append("line")
+        .attr("class","scatter-baseline")
+        .attr("x1",x(0))
+        .attr("x2",x(0))
+        .attr("y1",20)
+        .attr("y2",height)
+
+    svg.selectAll(".y.axis.scatter .tick line")
+      .attr("x1",0)
+      .attr("x2",width)
+      .attr("class","scatter-grid")
+
+    svg.append("line")
+        .attr("class","scatter-baseline")
+        .attr("x1",0)
+        .attr("x2",width)
+        .attr("y1",y(0))
+        .attr("y2",y(0))
+
+
+
+    svg.selectAll(".dot")
+        .data(data)
+      .enter().append("circle")
+        .attr("class", function(d) {return "dot " + d.x.geography.region + " FIPS_" + d.x.geography.fips;})
+        .attr("r", 7)
+        .attr("cx", function(d) { return x(d.x.value); })
+        .attr("cy", function(d) { return y(d.y.value); })
+        .on("mouseover", function(d){
+          if(d.x.geography.fips == -99){
+            d3.select("#usa-text_" + config.x.id).classed("text-highlight", true)
+            d3.select("#usa-text_" + config.y.id).classed("text-highlight", true)
+          }
+          else{
+            d3.select(this).classed("hover",true)
+          }
+          d3.select(".tooltip-container." + config.x.id + "v" + config.y.id + " .region-text .tooltip-data").text(d.x.geography.name)
+          d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text").classed("hidden",false)
+          var formatter = d3.format(".1f")
+          var dollarFormatter = d3.format("$0f")
+          d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text.x .tooltip-data").text(function(){
+            if(config.x["unit-type"] == "percent"){
+              return formatter(d.x.value) + "%"
+            }
+            else if(config.x["unit-type"] == "dollar"){
+              return dollarFormatter(d.x.value)
+            }
+          })
+          d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text.y .tooltip-data").text(function(){
+            if(config.y["unit-type"] == "percent"){
+              return formatter(d.y.value) + "%"
+            }
+            else if(config.y["unit-type"] == "dollar"){
+              return dollarFormatter(d.y.value)
+            }
+          })
+
+          resizeTooltip(config.x.id + "v" + config.y.id);
+        })
+        .on("mouseout", function(){
+          d3.selectAll(".dot").classed("hover",false)
+          d3.selectAll(".text-highlight").classed("text-highlight",false)
+        })
+        .on("click",function(d){
+          if(d.x.geography.fips != -99){
+            var clicked = d3.select(this).classed("click")
+            d3.selectAll(".FIPS_" + d.x.geography.fips).classed("click",!clicked)
+            d3.select(this).classed("click", !clicked).classed("hover",false)
+          }
+        })
+    }
 }
 
-function drawFigures(){
-	// slice figureData and pass it to drawMap and drawScatterPlot calls
+
+
+function parseConfigText(config, dataID, text, excelMonth, excelYear, usAvg){
+  var outStr
+  if (dataID.constructor !== Array){
+    outStr = parseText(config, dataID, text, config["date-updated"], excelMonth, excelYear, usAvg, "")
+  }
+  else{
+    tempStr = parseText(config.x, dataID[0], text, config.x["date-updated"], excelMonth[0], excelYear[1], usAvg[0], "x-")
+    outStr = parseText(config.y, dataID[1], tempStr, config.y["date-updated"], excelMonth[0], excelYear[1], usAvg[1], "y-")
+
+  }
+
+  function parseText(conf, dID, text, cDate, eMonth, eYear, avg, prefix){
+    var configFormat = conf["date-format"]
+    var unitType = conf["unit-type"]
+    var inStr = text;
+
+    var month, year, prevYear;
+    if (cDate == "{{excel}}"){
+      month = eMonth
+      year = eYear
+      prevYear = year -1
+    }
+    else{
+      month = parseInt(cDate.split("/")[0])
+      year = parseInt(cDate.split("/")[1])
+      prevYear = year -1
+    }
+
+    var datePrevious, dateUpdated, usaValue, usaChanged;
+    if (configFormat == "month"){
+      dateUpdated = MONTHNAMES[month - 1] + ", " + year
+      datePrevious = MONTHNAMES[month - 1] + ", " + prevYear
+    }
+    else if (configFormat == "quarter"){
+      dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
+      datePrevious = "the " + getQuarter(month).toLowerCase() + " quarter of " + prevYear
+    }
+
+    var formatter = d3.format(".1f");
+    if(unitType == "percent"){
+      usaValue = formatter(Math.abs(avg)) + "%"
+    }
+    else if(unitType == "dollar"){
+      var dollarFormatter = d3.format("$0f")
+      usaValue = dollarFormatter(Math.abs(avg))
+    }
+
+    
+    usaValue = "<span id = \"usa-text_" + dID + "\">" + usaValue + "</span>"
+
+    if(formatter(avg) == "0.0"){
+      usaChanged = " did not change"
+    }
+    else if(avg > 0){
+      usaChanged = "increased by " + usaValue 
+    }
+    else if(avg < 0){
+      usaChanged = "decreased by " + usaValue
+    }
+
+    return inStr
+                .replace("{{" + prefix + "date-updated}}", dateUpdated)
+                .replace("{{" + prefix + "date-previous}}", datePrevious)
+                .replace("{{" + prefix + "usa-value}}", usaValue)
+                .replace("{{" + prefix + "usa-changed}}", usaChanged)
+  }
+  return outStr
+
 }
 
+function getQuarter(q){
+  var quarterNames = ["First","Second","Third","Fourth"]
+  return quarterNames[Math.ceil(q/3)-1]
+}
 
 function getNiceBreaks(min,max,bins){
 	function isNice(val){
@@ -657,17 +971,17 @@ function getNiceBreaks(min,max,bins){
 
 
 function drawGraphic(){
-  // drawMapFigure("testing","INC",null,"%")
-  // drawMapFigure("testing2","AWWChg",null,"%")
-  // drawMapFigure("testing3","RUC",null,"%")
-  $.each(semConfig.Figures, function(dataID, config) {
-    // console.log(key, value);
-    if(config.type == "one-variable"){
-      drawMapFigure(dataID, config)
-    }
+
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { d3.selectAll(".click").classed("click",false) }// escape key deselects everything
   });
 
-  // drawMap("other","RUC",null,"%")
+  $.each(semConfig.Maps, function(dataID, config) {
+      drawMapFigure(dataID, config)
+  });
+  $.each(semConfig.ScatterPlots, function(figureName, config) {
+      drawScatterPlot(config)
+  });
 }
 
 drawGraphic();

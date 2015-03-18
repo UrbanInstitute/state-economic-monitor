@@ -1,62 +1,1 @@
-id,code,name
-1,AL,Alabama
-2,AK,Alaska
-4,AZ,Arizona
-5,AR,Arkansas
-6,CA,California
-8,CO,Colorado
-9,CT,Connecticut
-10,DE,Delaware
-11,DC,District of Columbia
-12,FL,Florida
-13,GA,Georgia
-15,HI,Hawaii
-16,ID,Idaho
-17,IL,Illinois
-18,IN,Indiana
-19,IA,Iowa
-20,KS,Kansas
-21,KY,Kentucky
-22,LA,Louisiana
-23,ME,Maine
-24,MD,Maryland
-25,MA,Massachusetts
-26,MI,Michigan
-27,MN,Minnesota
-28,MS,Mississippi
-29,MO,Missouri
-30,MT,Montana
-31,NE,Nebraska
-32,NV,Nevada
-33,NH,New Hampshire
-34,NJ,New Jersey
-35,NM,New Mexico
-36,NY,New York
-37,NC,North Carolina
-38,ND,North Dakota
-39,OH,Ohio
-40,OK,Oklahoma
-41,OR,Oregon
-42,PA,Pennsylvania
-44,RI,Rhode Island
-45,SC,South Carolina
-46,SD,South Dakota
-47,TN,Tennessee
-48,TX,Texas
-49,UT,Utah
-50,VT,Vermont
-51,VA,Virginia
-53,WA,Washington
-54,WV,West Virginia
-55,WI,Wisconsin
-56,WY,Wyoming
-60,AS,America Samoa
-64,FM,Federated States of Micronesia
-66,GU,Guam
-68,MH,Marshall Islands
-69,MP,Northern Mariana Islands
-70,PW,Palau
-72,PR,Puerto Rico
-74,UM,U.S. Minor Outlying Islands
-78,VI,Virgin Islands of the United States
--99,US,United States of America
+id,code,name,region1,AL,Alabama,South2,AK,Alaska,West4,AZ,Arizona,West5,AR,Arkansas,South6,CA,California,West8,CO,Colorado,West9,CT,Connecticut,Northeast10,DE,Delaware,South11,DC,District of Columbia,South12,FL,Florida,South13,GA,Georgia,South15,HI,Hawaii,West16,ID,Idaho,West17,IL,Illinois,Midwest18,IN,Indiana,Midwest19,IA,Iowa,Midwest20,KS,Kansas,Midwest21,KY,Kentucky,South22,LA,Louisiana,South23,ME,Maine,Northeast24,MD,Maryland,South25,MA,Massachusetts,Northeast26,MI,Michigan,Midwest27,MN,Minnesota,Midwest28,MS,Mississippi,South29,MO,Missouri,Midwest30,MT,Montana,West31,NE,Nebraska,Midwest32,NV,Nevada,West33,NH,New Hampshire,Northeast34,NJ,New Jersey,Northeast35,NM,New Mexico,West36,NY,New York,Northeast37,NC,North Carolina,South38,ND,North Dakota,Midwest39,OH,Ohio,Midwest40,OK,Oklahoma,South41,OR,Oregon,West42,PA,Pennsylvania,Northeast44,RI,Rhode Island,Northeast45,SC,South Carolina,South46,SD,South Dakota,Midwest47,TN,Tennessee,South48,TX,Texas,South49,UT,Utah,West50,VT,Vermont,Northeast51,VA,Virginia,South53,WA,Washington,West54,WV,West Virginia,South55,WI,Wisconsin,Midwest56,WY,Wyoming,West60,AS,America Samoa,NA64,FM,Federated States of Micronesia,NA66,GU,Guam,NA68,MH,Marshall Islands,NA69,MP,Northern Mariana Islands,NA70,PW,Palau,NA72,PR,Puerto Rico,NA74,UM,U.S. Minor Outlying Islands,NA78,VI,Virgin Islands of the United States,NA-99,US,United States of America,USA
