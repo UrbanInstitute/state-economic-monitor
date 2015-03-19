@@ -132,6 +132,8 @@ function drawMapFigure(dataID, config){
           })
       }
 
+      // mouseEvent
+
 
       legend.attr("transform","translate("+ (width+margin.left+margin.right - keyWidth*5)/2 +",20)")
 
@@ -272,7 +274,7 @@ var barSvg, barXAxis, barBase;
           //to handle negative bars, Bars either start at 0 or at neg value
           .attr("y", function(d) { return y(Math.max(0, parseVal(d.value,"draw"))) })
           .attr("height", function(d) { return Math.abs(y(0) - y(parseVal(d.value,"draw")));})
-          .on("mouseover",function(d){ mouseEvent(dataID, {"value": parseVal(d.value,"text"), "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "hover") })
+          .on("mouseover", function(d){ mouseEvent(dataID, {"value": parseVal(d.value,"text"), "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "hover") })
           .on("mouseout", function(){ mouseEvent(dataID,this,"exit")})
           .on("click",function(d){ mouseEvent(dataID, {"value": parseVal(d.value,"text"), "type": "Bar", "id": this.id.replace("bar-outline_","").replace(dataID,"").replace("_","")}, "click") })
           ;
@@ -320,6 +322,7 @@ var barSvg, barXAxis, barBase;
     //Get quarter from month, then subtract 1 to make it zero indexed
     // var quarterUpdated = Math.ceil(data.monthUpdated/3) - 1
    
+    var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
 
     var graphic = d3.select("#"+containerID + "_tooltip");
     var tooltip = graphic.append('div')
@@ -332,18 +335,24 @@ var barSvg, barXAxis, barBase;
         .text('REGION/STATE')
     region.append('div')
         .attr('class','tooltip-data')
-        .text("Click or hover to select")
+        .text("United States of America")
 
     var value = tooltip.append('div')
-      .attr('class',"value-text hidden")
+      .attr('class',"value-text")
     value.append('div')
         .attr('class','tooltip-title')
         .text('VALUE')
     value.append('div')
         .attr('class','tooltip-data')
+        .text(function(){
+          var formatter = d3.format(".1f")
+          var dollarFormatter = d3.format("$0f")
+          if (config["unit-type"] == "percent") { return formatter(usAvg) + "%" }
+          else if (config["unit-type"] == "dollar"){ return dollarFormatter(usAvg)}
+        })
 
     var quarter = tooltip.append('div')
-      .attr('class',"quarter-text hidden")
+      .attr('class',"quarter-text")
     quarter.append('div')
         .attr('class','tooltip-title')
         .text(function(){
@@ -362,7 +371,7 @@ var barSvg, barXAxis, barBase;
     }
 
     var year = tooltip.append('div')
-      .attr('class',"year-text hidden")
+      .attr('class',"year-text")
     year.append('div')
         .attr('class','tooltip-title')
         .text('YEAR')
@@ -373,7 +382,6 @@ var barSvg, barXAxis, barBase;
       year.remove()
     }
 
-    // tooltip.att)r("style","width:" + resizeTooltip() + "px");
     resizeTooltip(dataID);
 
   }
@@ -398,7 +406,7 @@ var barSvg, barXAxis, barBase;
     var titleText = config.title
     var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
     var subtitleText = parseConfigText(config, dataID, config.subtitle, monthUpdated, yearUpdated, usAvg)
-    
+
     var sourceText = "Source: " + parseConfigText(config, dataID, config.source, monthUpdated, yearUpdated, usAvg)
     d3.select("#" + containerID + "_source").text(sourceText)
     
@@ -441,8 +449,8 @@ var barSvg, barXAxis, barBase;
     // stopPropagation() means that clicks on bars and map do not trigger click on background
 
     d3.event.stopPropagation();
+
 // state case
-    
     if(element.type == "Feature" || element.type == "Bar"){
       var state = d3.select("#state-outline_" + dataID + "_" + element.id)
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
@@ -451,30 +459,29 @@ var barSvg, barXAxis, barBase;
       var stateNode = state[0][0]
       var barNode = bar[0][0]
 
+      var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
+      var name = obj.geography.name
+      var formatter = d3.format(".1f")
+      var dollarFormatter = d3.format("$0f")
+      var value = formatter(obj.value)
+
+      d3.selectAll(".tooltip-container." + dataID + " .year-text").classed("hidden",false)
+      d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
+      d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
+
+      barNode.parentNode.appendChild(barNode)
+
+      var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
+      var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
+      nameDiv.text(name)
       if(bar.classed("usa-bar")){
         d3.selectAll('#usa-text_' + dataID)
           .classed('text-highlight',true)
+        resizeTooltip(dataID);
       }
 
       else{
-        var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
-        var name = obj.geography.name
-        var formatter = d3.format(".1f")
-        var dollarFormatter = d3.format("$0f")
-        var value = formatter(obj.value)
-
-        d3.selectAll(".tooltip-container." + dataID + " .year-text").classed("hidden",false)
-        d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
-        d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
-
         stateNode.parentNode.appendChild(stateNode)
-        barNode.parentNode.appendChild(barNode)
-
-
-
-        var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
-        var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
-
         nameDiv.text(name)
         valueDiv.text(function(){
           //handle here instead of in parseVal bc formatter returns strings
@@ -526,9 +533,6 @@ var barSvg, barXAxis, barBase;
     else if(element.type == "Background"){
       d3.selectAll(".click").classed("click",false)
     }
-
-// bar case
-    // else if(element.type == )
 
     if(event == "exit"){
       d3.selectAll(".hover").classed("hover",false)
@@ -594,9 +598,13 @@ function drawScatterPlot(config){
 
   parent.attr("class","figure-container")
 
+  var usAvgX = xSlice.filter(function(obj){return obj.geography.code == "US"})[0].value
+  var usAvgY = ySlice.filter(function(obj){return obj.geography.code == "US"})[0].value
+
   drawTooltip()
   drawTitle()
   drawPlot()
+
 
   function drawTitle(){
     var monthUpdatedX = config.x.monthUpdated
@@ -605,8 +613,6 @@ function drawScatterPlot(config){
     var yearUpdatedY = config.x.yearUpdated
 
     var titleText = config.title
-    var usAvgX = xSlice.filter(function(obj){return obj.geography.code == "US"})[0].value
-    var usAvgY = ySlice.filter(function(obj){return obj.geography.code == "US"})[0].value
     var subtitleText = parseConfigText(config, [config.x.id, config.y.id], config.subtitle, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
 
     var sourceText = "Source: " + parseConfigText(config, [config.x.id, config.y.id], config.source, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
@@ -642,23 +648,34 @@ function drawScatterPlot(config){
         .text('REGION/STATE')
     region.append('div')
         .attr('class','tooltip-data')
-        .text("Click or hover to select")
+        .text("UNITED STATES OF AMERICA")
 
-    var value = tooltip.append('div')
-      .attr('class',"value-text x hidden")
-    value.append('div')
+    var formatter = d3.format(".1f")
+    var dollarFormatter = d3.format("$0f")
+    
+    var xValue = tooltip.append('div')
+      .attr('class',"value-text x")
+    xValue.append('div')
         .attr('class','tooltip-title')
         .text("X-VALUE")
-    value.append('div')
+    xValue.append('div')
         .attr('class','tooltip-data')
+        .text(function(){
+          if (config.x["unit-type"] == "percent") { return formatter(usAvgX) + "%" }
+          else if (config.x["unit-type"] == "dollar"){ return dollarFormatter(usAvgX)}
+        })
 
-    var value = tooltip.append('div')
-      .attr('class',"value-text y hidden")
-    value.append('div')
+    var yValue = tooltip.append('div')
+      .attr('class',"value-text y")
+    yValue.append('div')
         .attr('class','tooltip-title')
         .text("Y-VALUE")
-    value.append('div')
+    yValue.append('div')
         .attr('class','tooltip-data')
+        .text(function(){
+          if (config.y["unit-type"] == "percent") { return formatter(usAvgY) + "%" }
+          else if (config.y["unit-type"] == "dollar"){ return dollarFormatter(usAvgY)}
+        })
 
 
     resizeTooltip(config.x.id + "v" + config.y.id);
