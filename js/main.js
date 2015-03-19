@@ -572,7 +572,10 @@ function drawScatterPlot(config){
   for(i=0; i<xSlice.length; i++){
     data[i] = {}
     data[i]["x"] = xSlice[i]
-    data[i]["y"] = ySlice[i]
+    var result = ySlice.filter(function( obj ) {
+      return obj.geography.fips == xSlice[i].geography.fips;
+    });
+    data[i]["y"] = result[0]
   }
 
   var parent = d3.select("#"+containerID)
