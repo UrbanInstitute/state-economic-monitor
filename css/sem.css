@@ -1,3 +1,444 @@
+html, body{
+    
+ font-family:lato;
+    font-weight:300;
+    
+}
+
+
+/************ open HEADER ***********/
+
+#header{
+    
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+    z-index:20;
+}
+
+
+#sem{
+    
+    height:75px;
+    width:100%;
+    background-color:#333;   
+}
+
+
+h1{
+    
+    color: #ffffff;
+    font-family: Lato;
+    font-size: 36px;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;   
+    margin:0px;
+    padding-top:15px;
+ 
+}
+
+
+#menu{
+ 
+    height: 40px;
+    background-color: #222222;
+    width:100%;
+ 
+}
+
+#menu ul{
+     height: 40px;   
+    list-style: none;
+    text-align: center;
+    margin:0px;
+    padding: 0px;
+    
+}
+
+
+#menu ul li{
+    
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    height:40px;
+    margin:0px;
+    padding-top:10px;
+    padding-bottom:0px;
+    padding-left:0px;
+    padding-right:0px;
+width:22%;
+}
+
+
+#menu a{
+ color:#fff;   
+    
+}
+
+#menu ul li:hover{
+    
+    background-color: rgba(0, 166, 210, .8);
+}
+
+.active{
+  border-bottom-color: #00a6d2;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    
+}
+/************ end HEADER ***********/
+
+
+
+/**** headroom.js that allows the header to appear on scroll up **/
+
+ .slide {
+     transition: all 0.25s ease-in-out 0s;
+}
+
+.slide--reset {
+     transform: translateY(0px);
+}
+
+.slide--up {
+     transform: translateY(-230%);
+}
+
+.animated {
+     animation-duration: 0.5s;
+     animation-fill-mode: both;
+}
+
+
+/**********/
+
+
+
+
+
+/********** INTRO ***********/
+
+    .section100 {
+        
+    margin-top:100px;   
+    
+}
+
+    #intro {
+    
+   color: #777777;
+    font-size: 22px;
+    font-style: italic;
+    margin-top:0;
+    margin-bottom:50px;
+        margin-left: auto;
+        margin-right: auto;
+    text-align: center;
+    width: 65%;
+
+
+}
+
+
+
+
+/**********  end INTRO ***********/
+
+    .section50 {
+        margin-top:50px;   
+    
+}
+
+    .section25 {
+        margin-top:25px;   
+    
+}
+
+.section170{
+padding-top:230px;   
+    
+}
+
+
+h2{
+    Color:#00a6d2;
+    font-size: 22px;
+    padding: 0px;
+    margin:0px;
+    font-weight: 700; 
+    
+}
+
+h3{
+    
+ font-size:17px;
+text-transform:uppercase;
+        font-weight: 700; 
+}
+hr{
+margin-top:10px;
+    border-top:2px solid #eee;
+    
+}
+
+
+.subhead{
+    
+ font-size: 15px;
+    font-style: italic;
+    font-weight:400;
+}
+
+
+.explainerText{
+ font-size:16px;   
+ font-weight:400;
+    line-height: 1.5;
+    
+}
+/********** secondary MENU ***********/
+
+
+    #secondarymenu{
+        
+    height:355px;
+    width:100%;
+    margin:0 auto;
+
+}
+
+    .visuals{
+    background-color: #999999;
+    height: 240px;
+    margin-bottom: 4%;
+    width: 43%;
+    }
+
+
+    .left{
+     margin-left: 5%;
+    float:left;
+    }
+
+
+    .right{
+     margin-right: 5%;  
+     float:right;  
+        
+    }
+
+
+/*********************** close secondary MENU ***************/
+
+
+
+
+
+
+/********** FOOTER ***********/
+
+
+footer{
+ margin-top: 75px;
+ margin-bottom: 0px;
+    padding-bottom:10px;
+       padding-top:10px;
+    background-color:#000;
+    
+}
+
+
+footer img{
+  
+  float:left;
+}
+
+footer p{
+ float:right; 
+  color:#fff;
+    margin-top:40px;
+  
+}
+
+footer a{
+    
+ color:#00a6d2;   
+}
+
+footer a:hover{
+   color:#fff; 
+ text-decoration: none;
+    
+}
+
+/********** CLOSE FOOTER ***********/
+
+
+
+
+
+
+
+
+#share {
+    height: 48px;
+    position: relative;
+}
+
+#logo {
+    display: inline-block;
+}
+
+#smallLogo {
+    display: none;
+}
+#shareMaster {
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #cccccc;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    display: inline !important;
+    float: right;
+    height: 48px;
+    opacity: 1;
+    padding-left: 20px;
+    width: 70px;
+}
+.circle {
+    background-color: #cccccc;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: center;
+    width: 25px;
+}
+.circle:hover {
+    background-color: #0096d2;
+}
+#socials a {
+    color: #ffffff;
+}
+#socials a:hover {
+    color: #0096d2;
+}
+#socials {
+    color: #ffffff;
+    float: right;
+    opacity: 0;
+    transition-delay: 0s;
+    transition-duration: 0.25s;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+}
+#share:hover #shareMaster {
+    opacity: 0.5;
+    transition-delay: 0s;
+    transition-duration: 0.25s;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+}
+#share:hover #socials {
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.25s;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+}
+.navbar-default {
+    background-color: #ffffff;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+
+#fullLogo {
+    display: none;
+}
+#smallLogo {
+    display: inline-block;
+}
+    
+    #header{
+ position:absolute;
+    }
+      
+    #menu{
+    position: fixed;
+     bottom:0px;
+    height:55px;
+    }
+    
+  #menu ul{
+   height: 55px;   
+      
+  }
+    
+#menu ul li{
+    
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    padding-top:20px;
+     padding-bottom: 30px;
+width:20%;
+}
+    
+    .active{
+     border-bottom: none;
+     border-top: solid #00a6d2 4px;
+        
+    }
+
+    
+    
+    
+.slide {
+     transition: none;
+}
+
+.slide--reset {
+     transform:none;
+}
+
+.slide--up {
+   transform:none;
+}
+
+.animated {
+     animation-duration: 0.5s;
+     animation-fill-mode: both;
+}
+
+    
+
+}
+
+
+
+
+
+
+
+
+
+
 /*Container for all figures*/
 .figure-container{
   display: block;
@@ -196,9 +637,3 @@ rect.states{
 }
 
 
-/*Temporary p tag styles*/
-p{
-	font: 14px Lato;
-	width: 60%;
-	margin: 0 auto;
-}
