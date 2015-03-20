@@ -430,15 +430,6 @@ width:20%;
 
 }
 
-
-
-
-
-
-
-
-
-
 /*Container for all figures*/
 .figure-container{
   display: block;
@@ -510,11 +501,11 @@ width:20%;
 	font: 10pt Lato;
 }
 
-.South{ fill: #b0d5f1; }
-.Northeast{ fill: #82c4e9; }
-.Midwest{ fill: #1696d2; }
-.West{ fill: #00578b; }
-.USA{ fill: #ec008c; }
+.South{ fill: #555555;}
+.Northeast{ fill: #82c4e9;}
+.Midwest{ fill:  #ec008c;}
+.West{ fill: #00578b;}
+.USA{ fill: #ffecc5;}
 
 .dot-line{
   stroke: #b3b3b3;
@@ -598,13 +589,13 @@ width:20%;
 .q1-4 { fill:#82c4e9; }
 .q2-4 { fill:#1696d2; }
 .q3-4 { fill:#00578b; }
-.q4-4 { fill:#000000; }
+.q4-4 { fill:#061b5a; }
 
 .states.no-data{ fill: #e6e7e8;}
 
 /*Bar Chart*/
 .usa-bar{
-	fill: #ec008c;
+	fill: #ffecc5;
 }
 .usa-tick{
 	font-weight: 800;
