@@ -2,6 +2,7 @@ html, body{
     
  font-family:lato;
     font-weight:300;
+    font-size: 16px;
     
 }
 
@@ -115,6 +116,66 @@ width:22%;
 /**********/
 
 
+/*****INDEX INTRO AND IMAGE STYLES*******/
+
+#introText{
+ margin-top: 70px;     
+    margin-bottom: 40px; 
+}
+
+h3{
+ font-style: italic;
+font-size:20px;
+ color:#00a6d2;
+text-transform: none;
+    text-align: center;
+    padding-right:3%;
+    line-height: 1.4;
+}
+
+/*this holds the images in a smaller div than container avoiding making the thumbs huge and thus eating up more depth than they need to 
+#homeImages{
+    width:71%;
+    margin: 0 auto;  
+    
+}*/
+
+
+
+#imageone, #imagethree{
+    
+    clear: both;
+    float: left;
+    margin-bottom: 3%;
+    
+    
+}
+
+#imagetwo, #imagefour{
+    
+ float:right;
+margin-bottom: 3%;
+    
+}
+
+#imageone, #imagethree, #imagetwo, #imagefour{
+  width:48%;  
+   
+}
+
+#homeImages img{
+ width:100%;   
+    
+}
+
+#imageone p, #imagethree p, #imagetwo p, #imagefour p{
+    
+ position: relative;
+    top:20%;
+    color:#fff;
+    
+}
+
 
 
 
@@ -151,8 +212,8 @@ width:22%;
     
 }
 
-    .section25 {
-        margin-top:25px;   
+    .section10 {
+        margin-top:10px;   
     
 }
 
@@ -171,15 +232,11 @@ h2{
     
 }
 
-h3{
-    
- font-size:17px;
-text-transform:uppercase;
-        font-weight: 700; 
-}
+
 hr{
 margin-top:10px;
-    border-top:2px solid #eee;
+margin-bottom:10px;   
+border-top:2px solid #eee;
     
 }
 
@@ -231,6 +288,7 @@ margin-top:10px;
 
 
 /*********************** close secondary MENU ***************/
+
 
 
 
@@ -366,6 +424,233 @@ footer a:hover{
 
 
 
+
+/*Container for all figures*/
+.figure-container{
+  display: block;
+  overflow: auto;
+}
+
+/*Styles for source annotations*/
+.map-source, .plot-source{
+  font: 9pt Lato;
+  position: relative;
+  float: right;
+  font-weight: 200;
+}
+
+.map-source{
+  bottom: 25px;
+  right: 10%;
+  width: 34%;
+}
+
+.plot-source{
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+/*Tooltips for both figure types*/
+
+.tooltip-container {
+border-bottom-color: #eeeeee;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 80px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    padding-bottom: 0;
+}
+
+
+.tooltip-container.scatter{
+	margin-bottom: 15px;
+}
+.tooltip-title{
+	font-family: Lato;
+	font-size: 10pt;
+	color: #666666;
+	font-weight: 300;
+}
+.tooltip-data{
+	font-family: Lato;
+	font-size: 20pt;
+	color: #29abe2;
+	font-weight: 400;
+}
+.region-text, .value-text, .quarter-text{
+	float: left;
+	margin-right: 30px;
+}
+
+.value-text.y{
+	margin-right: 0px !important;
+}
+.year-text{
+	float: left;
+}
+
+.hidden{
+	display: none;
+} 
+
+/******** Scatter Plot styles *********/
+.plot-legend{
+	position: relative;
+	width:100%;
+	height: 50px;
+	top: 50px;
+	font: 10pt Lato;
+}
+
+.South{ fill: #8a8a8a;}
+.Northeast{ fill: #00a6d2;}
+.Midwest{ fill:  #ec008c;}
+.West{ fill: #00578b;}
+.USA{ fill: #000000;}
+
+.dot-line{
+  stroke: #b3b3b3;
+  shape-rendering: crispEdges;
+}
+
+.x.axis.scatter path{
+	display: none;
+}
+.scatter-baseline{
+	stroke: #000;
+  	shape-rendering: crispEdges;
+}
+
+.scatter-grid{
+	stroke: #b3b3b3 !important;
+}
+
+.plot-container{
+ margin-top:40px;   
+    
+}
+
+/******** Map styles *********/
+
+/*title*/
+[id^=usa-text]{
+	padding: 2px;
+}
+
+.text-highlight{
+	background: #fdbf11;
+}
+
+.title-subtitle{
+	font: 12pt Lato;
+	font-style: italic;
+	font-weight: 300;
+	margin-top: 10px;
+
+}
+
+.title-text{
+	margin-top: 15px;
+	font: 14pt Lato;
+	font-weight: 700;
+}
+.title-unit{
+	font: 12pt Lato;
+	font-weight: 300;
+}
+
+/*Map graphic containers*/
+.map-container{
+	width: 80%;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height:auto;
+}
+
+
+/*Map Legend*/
+.legend-labels{
+	font-family: 'Lato';	
+	font-weight: 700;
+	font-size: 12px;
+}
+
+/*Map*/
+
+#map-states{
+    
+ width:90%;   
+}
+
+.counties {
+  fill: none;
+}
+
+.hover, .click{
+	fill: #fdbf11 !important;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+.demphasized{
+	fill: #dcdcdc !important;
+}
+
+.q0-4 { fill:#b0d5f1; }
+.q1-4 { fill:#82c4e9; }
+.q2-4 { fill:#1696d2; }
+.q3-4 { fill:#00578b; }
+.q4-4 { fill:#061b5a; }
+
+.states.no-data{ fill: #e6e7e8;}
+
+/*Bar Chart*/
+.usa-bar{
+	fill: #c6c6c6;
+   /*fill: #fdbf11;*/
+}
+.usa-tick{
+	font-weight: 800;
+}
+rect.states{
+	stroke: none;
+}
+
+.axis {
+  font: 10px Lato;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.nullTick{
+	fill: #e6e7e8;
+}
+
+.y.axis path {
+  display: none;
+}
+
+.grid-line{
+	stroke: #cccccc;
+}
+
+
+
 @media (max-width: 768px) {
 
 #fullLogo {
@@ -405,9 +690,23 @@ width:20%;
      border-top: solid #00a6d2 4px;
         
     }
+    
+    
+ /*in mobile the extra padding above the page title is not needed */   
+.section170{
+padding-top:180px;   
+    
+}
 
-    
-    
+.map-container{
+	width: 100%;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height:auto;
+}
+  
     
 .slide {
      transition: none;
@@ -429,202 +728,4 @@ width:20%;
     
 
 }
-
-/*Container for all figures*/
-.figure-container{
-  display: block;
-  overflow: auto;
-}
-
-/*Styles for source annotations*/
-.map-source, .plot-source{
-  font: 9pt Lato;
-  position: relative;
-  float: right;
-  font-weight: 200;
-}
-
-.map-source{
-  bottom: 25px;
-  right: 10%;
-  width: 34%;
-}
-
-.plot-source{
-  bottom: 0;
-  right: 0;
-  margin-bottom: 10px;
-}
-
-/*Tooltips for both figure types*/
-.tooltip-container{
-	margin: 0 auto;
-}
-
-.tooltip-container.scatter{
-	margin-bottom: 15px;
-}
-.tooltip-title{
-	font-family: Lato;
-	font-size: 10pt;
-	color: #666666;
-	font-weight: 200;
-}
-.tooltip-data{
-	font-family: Lato;
-	font-size: 20pt;
-	color: #29abe2;
-	font-weight: 400;
-}
-.region-text, .value-text, .quarter-text{
-	float: left;
-	margin-right: 30px;
-}
-
-.value-text.y{
-	margin-right: 0px !important;
-}
-.year-text{
-	float: left;
-}
-
-.hidden{
-	display: none;
-} 
-
-/******** Scatter Plot styles *********/
-.plot-legend{
-	position: relative;
-	width:100%;
-	height: 50px;
-	top: 50px;
-	font: 10pt Lato;
-}
-
-.South{ fill: #555555;}
-.Northeast{ fill: #82c4e9;}
-.Midwest{ fill:  #ec008c;}
-.West{ fill: #00578b;}
-.USA{ fill: #ffecc5;}
-
-.dot-line{
-  stroke: #b3b3b3;
-  shape-rendering: crispEdges;
-}
-
-.x.axis.scatter path{
-	display: none;
-}
-.scatter-baseline{
-	stroke: #000;
-  	shape-rendering: crispEdges;
-}
-
-.scatter-grid{
-	stroke: #b3b3b3 !important;
-}
-
-/******** Map styles *********/
-
-/*title*/
-[id^=usa-text]{
-	padding: 2px;
-}
-
-.text-highlight{
-	background: #fdbf11;
-}
-
-.title-subtitle{
-	font: 12pt Lato;
-	font-style: italic;
-	font-weight: 300;
-	margin-top: 10px;
-	margin-left: 17px;
-}
-
-.title-text{
-	margin-top: 15px;
-	font: 14pt Lato;
-	font-weight: 700;
-}
-.title-unit{
-	font: 12pt Lato;
-	font-weight: 300;
-}
-
-/*Map graphic containers*/
-.map-container{
-	width: 67%;
-	margin: 0 auto;
-}
-
-/*Map Legend*/
-.legend-labels{
-	font-family: 'Lato';	
-	font-weight: 700;
-	font-size: 12px;
-}
-
-/*Map*/
-.counties {
-  fill: none;
-}
-
-.hover, .click{
-	fill: #fdbf11 !important;
-}
-
-.states {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-}
-
-.demphasized{
-	fill: #dcdcdc !important;
-}
-
-.q0-4 { fill:#b0d5f1; }
-.q1-4 { fill:#82c4e9; }
-.q2-4 { fill:#1696d2; }
-.q3-4 { fill:#00578b; }
-.q4-4 { fill:#061b5a; }
-
-.states.no-data{ fill: #e6e7e8;}
-
-/*Bar Chart*/
-.usa-bar{
-	fill: #ffecc5;
-}
-.usa-tick{
-	font-weight: 800;
-}
-rect.states{
-	stroke: none;
-}
-
-.axis {
-  font: 10px Lato;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.nullTick{
-	fill: #e6e7e8;
-}
-
-.y.axis path {
-  display: none;
-}
-
-.grid-line{
-	stroke: #cccccc;
-}
-
 
