@@ -519,16 +519,12 @@ margin-top:20px;
 /*Tooltips for both figure types*/
 
 .tooltip-container {
-border-bottom-color: #eeeeee;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    height: 80px;
-    margin-bottom: 0;
+  height: 80px;
+    margin-bottom: 13px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
-    padding-bottom: 0;
-}
+    margin-top: 30px;
+    padding-bottom: 0;}
 
 
 .tooltip-container.scatter{
@@ -536,7 +532,7 @@ border-bottom-color: #eeeeee;
 }
 .tooltip-title{
 	font-family: Lato;
-	font-size: 10pt;
+	font-size: 13px;
 	color: #666666;
 	font-weight: 300;
 }
@@ -545,6 +541,14 @@ border-bottom-color: #eeeeee;
 	font-size: 20pt;
 	color: #29abe2;
 	font-weight: 400;
+}
+
+.tooltip-usa-average{
+
+   color: #555555;
+    font-size: 13px;
+    margin-top: 13px;
+
 }
 .region-text, .value-text, .quarter-text{
 	float: left;
@@ -595,7 +599,7 @@ border-bottom-color: #eeeeee;
 }
 
 .plot-container{
- margin-top:40px;   
+ margin-top:20px;   
     
 }
 
