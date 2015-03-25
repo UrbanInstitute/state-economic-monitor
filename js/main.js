@@ -65,7 +65,7 @@ function drawMapFigure(dataID, config){
     var $graphic = $("#"+containerID + "_map");
     
     var aspect_width = 10;
-    var aspect_height = 7;
+    var aspect_height = 4;
     var margin = { top: 10, right: 10, bottom: 10, left: 20 };
     var width = ($graphic.width() - margin.left - margin.right);
 
@@ -86,7 +86,7 @@ function drawMapFigure(dataID, config){
   
 
       var projection = d3.geo.albersUsa()
-          .scale(width + margin.left + margin.right)
+          .scale(width*.7 + margin.left + margin.right)
           .translate([(width+margin.left+margin.right) / 2, (height+margin.top+margin.bottom)/ 2]);
 
       var path = d3.geo.path()
@@ -418,9 +418,10 @@ var barSvg, barXAxis, barBase;
       .attr('class','title-text')
       .text(titleText)
 
-    title.append('div')
+    .append('span')
       .attr('class','title-unit')
-      .text(config.unit)
+      .text('(' + config.unit + ')')
+
     title.append('div')
       .attr('class','title-subtitle')
       .html(subtitleText)
