@@ -418,9 +418,10 @@ var barSvg, barXAxis, barBase;
       .attr('class','title-text')
       .text(titleText)
 
-    title.append('div')
+    .append('span')
       .attr('class','title-unit')
-      .text(config.unit)
+      .text('(' + config.unit + ')')
+
     title.append('div')
       .attr('class','title-subtitle')
       .html(subtitleText)
