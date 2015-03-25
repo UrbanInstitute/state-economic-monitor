@@ -157,57 +157,153 @@ def parseTable3():
 		fp.write("var figureData = ")
 		fp.write(json.dumps(figureData, sort_keys=False))
 
-def createCSV():
+def createXLS():
 	book = xlwt.Workbook()
+
+	employment = book.add_sheet("employment")
+	employment.write(0,0,"state_name")
+	employment.write(0,1,"state_postal_code")
+	employment.write(0,2,"state_FIPS")
+	employment.write(0,3,"census_region")
+
+	employment.write(0,4,"unemployment_rate_(%)")
+	employment.write(0,5,"unemployment_rate_(percent_change_year_over_year)")
+	employment.write(0,6,"total_nonfarm_payroll_employment_(percent_change_year_over_year)")
+	employment.write(0,7,"public_sector_employment_(percent_change_year_over_year)")
+
+	rucData = figureData['RUC']['data']
+	unempChgData = figureData['UNEMPChg']['data']
+	empChgData = figureData['EMP']['data']
+	govtData = figureData['GOVT']['data']
+
+	for i in range (0, len(rucData)):
+		row = i+1
+		obj = rucData[i]
+		employment.write(row, 0, obj["geography"]["name"])
+		employment.write(row, 1, obj["geography"]["code"])
+		if obj["geography"]["fips"] != "-99":
+			employment.write(row, 2, obj["geography"]["fips"])
+		else:
+			employment.write(row, 2, 'NA')
+		employment.write(row, 3, obj["geography"]["region"])
+		employment.write(row, 4, obj["value"])
+		for secondObj in unempChgData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				employment.write(row, 5, secondObj["value"])
+ 				break
+		for secondObj in empChgData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				employment.write(row, 6, secondObj["value"])
+ 				break
+		for secondObj in govtData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				employment.write(row, 7, secondObj["value"])
+ 				break
+
+
+
 	wages = book.add_sheet("wages")
-	wages.write(0,0,"State_name")
-	wages.write(0,1,"State_postal_code")
-	wages.write(0,2,"State_FIPS")
-	wages.write(0,3,"Census_region")
-	wages.write(0,4,"Average_weekly_earnings-all_private_employees_($)")
-	wages.write(0,5,"Percent_change_year_over_year-Average_weekly_earnings-all_private_employees_(%)")
+	wages.write(0,0,"state_name")
+	wages.write(0,1,"state_postal_code")
+	wages.write(0,2,"state_FIPS")
+	wages.write(0,3,"census_region")
+
+	wages.write(0,4,"average_weekly_earnings-all_private_employees_($)")
+	wages.write(0,5,"average_weekly_earnings-all_private_employees_(percent_change_year_over_year)")
+
+	awwData = figureData['AWW']['data']
+	awwChgData = figureData['AWWChg']['data']
+
+	for i in range (0, len(awwData)):
+		row = i+1
+		obj = awwData[i]
+		wages.write(row, 0, obj["geography"]["name"])
+		wages.write(row, 1, obj["geography"]["code"])
+		if obj["geography"]["fips"] != "-99":
+			wages.write(row, 2, obj["geography"]["fips"])
+		else:
+			wages.write(row, 2, 'NA')
+		wages.write(row, 3, obj["geography"]["region"])
+		wages.write(row, 4, obj["value"])
+		for secondObj in awwChgData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				wages.write(row, 5, secondObj["value"])
+ 				break
+
+
+
+	housing = book.add_sheet("housing")
+	housing.write(0,0,"state_name")
+	housing.write(0,1,"state_postal_code")
+	housing.write(0,2,"state_FIPS")
+	housing.write(0,3,"census_region")
+
+	housing.write(0,4,"housing_price_one_year_change_(percent_change_year_over_year)")
+	housing.write(0,5,"housing_price_change_since_q1_2007_(percent_change)")
+
+	hpChgYrData = figureData['HPChgYr']['data']
+	hpChgPeakData = figureData['HPChgPeak']['data']
+
+	for i in range (0, len(hpChgYrData)):
+		row = i+1
+		obj = hpChgYrData[i]
+		housing.write(row, 0, obj["geography"]["name"])
+		housing.write(row, 1, obj["geography"]["code"])
+		if obj["geography"]["fips"] != "-99":
+			housing.write(row, 2, obj["geography"]["fips"])
+		else:
+			housing.write(row, 2, 'NA')
+		housing.write(row, 3, obj["geography"]["region"])
+		housing.write(row, 4, obj["value"])
+		for secondObj in hpChgPeakData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				housing.write(row, 5, secondObj["value"])
+ 				break
+
+
+
+ 	taxes = book.add_sheet("taxes")
+	taxes.write(0,0,"state_name")
+	taxes.write(0,1,"state_postal_code")
+	taxes.write(0,2,"state_FIPS")
+	taxes.write(0,3,"census_region")
+
+	taxes.write(0,4,"total_tax_revenue_(percent_change_year_over_year)")
+	taxes.write(0,5,"personal_income_tax_revenue_(percent_change_year_over_year)")
+	taxes.write(0,6,"corporate_income_tax_revenue_(percent_change_year_over_year)")
+	taxes.write(0,7,"sales_tax_revenue_(percent_change_year_over_year)")
+
+	totalData = figureData['TOTAL']['data']
+	incPeakData = figureData['INC']['data']
+	corpincData = figureData['CORPINC']['data']
+	salesData = figureData['SALES']['data']
+
+	for i in range (0, len(totalData)):
+		row = i+1
+		obj = totalData[i]
+		taxes.write(row, 0, obj["geography"]["name"])
+		taxes.write(row, 1, obj["geography"]["code"])
+		if obj["geography"]["fips"] != "-99":
+			taxes.write(row, 2, obj["geography"]["fips"])
+		else:
+			taxes.write(row, 2, 'NA')
+		taxes.write(row, 3, obj["geography"]["region"])
+		taxes.write(row, 4, obj["value"])
+ 		for secondObj in incPeakData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				taxes.write(row, 5, secondObj["value"])
+ 				break
+		for secondObj in corpincData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				taxes.write(row, 6, secondObj["value"])
+ 				break
+		for secondObj in salesData:
+ 			if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+ 				taxes.write(row, 7, secondObj["value"])
+ 				break
+
 	book.save('data/download/' + time.strftime("%Y-%m-%d") + '-SEM_data.xls')
-	# for figure in figureVars:
-	# 	data = []
-	# 	headerNames = ["State_name","State_postal_code","State_FIPS","Census_region"]
-	# 	fileName = time.strftime("%Y-%m-%d") + "-" + figure + "-"
-	# 	i = 0
-	# 	for var in figureVars[figure]:
-	# 		if i==1:
-	# 			fileName += "_vs_"
-	# 		fileName += var
-	# 		data.append(figureData[var])
-	# 		headerNames.append(var + "__" + fullNames[var].replace(" ","_").replace(",","_"))
-	# 		if("monthUpdated" in figureData[var]):
-	# 			headerNames.append(var + "__month_updated")
-	# 		if("yearUpdated" in figureData[var]):
-	# 			headerNames.append(var + "__year_updated")
-	# 		i+=1
-	# 	fileName += ".csv"
 
-	# 	cw = csv.writer(open("data/download/" + fileName, "wb"))
-	# 	cw.writerow(headerNames)
-	# 	for obj in data[0]["data"]:
-	# 		row = [obj["geography"]["name"], obj["geography"]["code"], obj["geography"]["fips"], obj["geography"]["region"]]
-	# 		row.append(obj["value"])
-	# 		if("monthUpdated" in data[0]):
-	# 			row.append(data[0]["monthUpdated"])
-	# 		if("yearUpdated" in data[0]):
-	# 			row.append(data[0]["yearUpdated"])
-
-	# 		if len(data) > 1:
-	# 			for secondObj in data[1]["data"]:
-	# 				if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
-	# 					row.append(secondObj["value"])
-	# 					if("monthUpdated" in data[1]):
-	# 						row.append(data[1]["monthUpdated"])
-	# 					if("yearUpdated" in data[1]):
-	# 						row.append(data[1]["yearUpdated"])
-	# 					break
-	# 		cw.writerow(row)
-
-
-# geography', OrderedDict([('code', 'TX'), ('fips', '48'), ('name', 'Texas'), ('region', 'South')])
 
 def parseData():
 	parseXlSM()
@@ -215,7 +311,7 @@ def parseData():
 	parseTable1()
 	parseTable2()
 	parseTable3()
-	createCSV()
+	createXLS()
 
 buildStateFIPS()
 parseData()

@@ -48,6 +48,7 @@ function drawMapFigure(dataID, config){
       .attr("id",containerID + "_bar-chart")
     parent.append("div")
       .attr("id",containerID + "_tooltip")
+    parent.append("hr")
     parent.append("div")
       .attr("id",containerID + "_map")
       .attr("class", "map-container")
@@ -408,7 +409,7 @@ var barSvg, barXAxis, barBase;
     var subtitleText = parseConfigText(config, dataID, config.subtitle, monthUpdated, yearUpdated, usAvg)
 
     var sourceText = "Source: " + parseConfigText(config, dataID, config.source, monthUpdated, yearUpdated, usAvg)
-    d3.select("#" + containerID + "_source").text(sourceText)
+    d3.select("#" + containerID + "_source").html(sourceText)
     
     var graphic = d3.select("#"+containerID + "_title");
 
@@ -475,27 +476,29 @@ var barSvg, barXAxis, barBase;
       var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
       var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
       nameDiv.text(name)
+
       if(bar.classed("usa-bar")){
-        d3.selectAll('#usa-text_' + dataID)
+        bar.classed("hover",true)
+        d3.selectAll('.usa-text_' + dataID)
           .classed('text-highlight',true)
         resizeTooltip(dataID);
       }
-
       else{
         stateNode.parentNode.appendChild(stateNode)
-        nameDiv.text(name)
-        valueDiv.text(function(){
-          //handle here instead of in parseVal bc formatter returns strings
-            if (value == "NaN"){
-              return "No Data"
-            }
-            else if(config["unit-type"] == "percent"){
-              return formatter(value) + "%"
-            }
-            else if(config["unit-type"] == "dollar"){
-              return dollarFormatter(value)
-            }
-          })
+
+
+        var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
+        if(config["unit-type"] == "percent"){
+          usAvg = formatter(usAvg) + "%"
+        }
+        else if(config["unit-type"] == "dollar"){
+          usAvg = dollarFormatter(usAvg)
+        }
+
+        nameDiv.append("div")
+        .attr("class","tooltip-usa-average")
+        .html("US Average: " + "<span class = usa_text-" + dataID + ">" + usAvg + "</span>" )
+
         resizeTooltip(dataID);
 
         if(event == "hover"){
@@ -518,6 +521,21 @@ var barSvg, barXAxis, barBase;
         }
       }
       reapppendAxis()
+      valueDiv.text(function(){
+        //handle here instead of in parseVal bc formatter returns strings
+          if (value == "NaN"){
+            return "No Data"
+          }
+          else if(config["unit-type"] == "percent"){
+            return formatter(value) + "%"
+          }
+          else if(config["unit-type"] == "dollar"){
+            return dollarFormatter(value)
+          }
+
+        })
+      resizeTooltip(dataID);
+
 
 
     }
@@ -590,6 +608,7 @@ function drawScatterPlot(config){
     .attr("id",containerID + "_title")
   parent.append("div")
     .attr("id",containerID + "_tooltip")
+  parent.append("hr")
   parent.append("div")
     .attr("id",containerID + "_plot")
     .attr("class", "plot-container")
@@ -618,7 +637,7 @@ function drawScatterPlot(config){
 
     var sourceText = "Source: " + parseConfigText(config, [config.x.id, config.y.id], config.source, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
 
-    d3.select("#" + containerID + "_source").text(sourceText)
+    d3.select("#" + containerID + "_source").html(sourceText)
 
     var graphic = d3.select("#"+containerID + "_title");
 
@@ -835,8 +854,8 @@ function drawScatterPlot(config){
         .attr("cy", function(d) { return y(d.y.value); })
         .on("mouseover", function(d){
           if(d.x.geography.fips == -99){
-            d3.select("#usa-text_" + config.x.id).classed("text-highlight", true)
-            d3.select("#usa-text_" + config.y.id).classed("text-highlight", true)
+            d3.select(".usa-text_" + config.x.id).classed("text-highlight", true)
+            d3.select(".usa-text_" + config.y.id).classed("text-highlight", true)
           }
           else{
             d3.select(this).classed("hover",true)
@@ -928,7 +947,7 @@ function parseConfigText(config, dataID, text, excelMonth, excelYear, usAvg){
     }
 
     
-    usaValue = "<span id = \"usa-text_" + dID + "\">" + usaValue + "</span>"
+    usaValue = "<span class = \"usa-text_" + dID + "\">" + usaValue + "</span>"
 
     if(formatter(avg) == "0.0"){
       usaChanged = " did not change"

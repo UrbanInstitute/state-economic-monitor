@@ -555,6 +555,13 @@ margin-top:20px;
 	margin-right: 30px;
 }
 
+.tooltip-usa-average{
+  font-size: 12pt;
+  font-style: italic;
+  color: black;
+  margin-top: 5px;
+}
+
 .value-text.y{
 	margin-right: 0px !important;
 }
