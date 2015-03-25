@@ -30,7 +30,7 @@ var semConfig = {
 					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
 					"source": "Both datasets from the Bureau of Labor Statistics",
 					"x":{
-						"id":"UNEMP",
+						"id":"RUC",
 						"label": "Unemployment Rate",
 						"date-format": "month",
 						"unit": "Rate (%), Seasonally Adjusted",
@@ -105,7 +105,7 @@ var semConfig = {
 				},		
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
-					"title": "Nonfarm Payroll Employment",
+					"title": "Total (Nonfarm) Payroll Employment",
 					"date-format": "month",
 					"subtitle": "Total (public and private) nonfarm payroll employment {{usa-changed}} from {{date-previous}} to {{date-updated}}",
 					"unit": "Percent Change Year-Over-Year",
