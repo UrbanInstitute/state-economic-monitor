@@ -1,5 +1,6 @@
 import csv
 import xlrd
+import xlwt
 from collections import OrderedDict
 import json
 import time
@@ -152,52 +153,58 @@ def parseTable3():
 		figureData["HPChgYr"]["data"].append(hpChgYr)
 		figureData["HPChgPeak"]["data"].append(hpChgPeak)
 
-	with open("figureData.js", "w") as fp:
+	with open("js/figureData.js", "w") as fp:
 		fp.write("var figureData = ")
 		fp.write(json.dumps(figureData, sort_keys=False))
 
-	with open("RUC.json","w") as ruc:
-		ruc.write(json.dumps(figureData["RUC"]["data"], sort_keys=False))
-
 def createCSV():
-	for figure in figureVars:
-		data = []
-		headerNames = ["State_name","State_postal_code","State_FIPS","Census_region"]
-		fileName = time.strftime("%Y-%m-%d") + "-" + figure + "-"
-		i = 0
-		for var in figureVars[figure]:
-			if i==1:
-				fileName += "_vs_"
-			fileName += var
-			data.append(figureData[var])
-			headerNames.append(var + "__" + fullNames[var].replace(" ","_").replace(",","_"))
-			if("monthUpdated" in figureData[var]):
-				headerNames.append(var + "__month_updated")
-			if("yearUpdated" in figureData[var]):
-				headerNames.append(var + "__year_updated")
-			i+=1
-		fileName += ".csv"
+	book = xlwt.Workbook()
+	wages = book.add_sheet("wages")
+	wages.write(0,0,"State_name")
+	wages.write(0,1,"State_postal_code")
+	wages.write(0,2,"State_FIPS")
+	wages.write(0,3,"Census_region")
+	wages.write(0,4,"Average_weekly_earnings-all_private_employees_($)")
+	wages.write(0,5,"Percent_change_year_over_year-Average_weekly_earnings-all_private_employees_(%)")
+	book.save('data/download/' + time.strftime("%Y-%m-%d") + '-SEM_data.xls')
+	# for figure in figureVars:
+	# 	data = []
+	# 	headerNames = ["State_name","State_postal_code","State_FIPS","Census_region"]
+	# 	fileName = time.strftime("%Y-%m-%d") + "-" + figure + "-"
+	# 	i = 0
+	# 	for var in figureVars[figure]:
+	# 		if i==1:
+	# 			fileName += "_vs_"
+	# 		fileName += var
+	# 		data.append(figureData[var])
+	# 		headerNames.append(var + "__" + fullNames[var].replace(" ","_").replace(",","_"))
+	# 		if("monthUpdated" in figureData[var]):
+	# 			headerNames.append(var + "__month_updated")
+	# 		if("yearUpdated" in figureData[var]):
+	# 			headerNames.append(var + "__year_updated")
+	# 		i+=1
+	# 	fileName += ".csv"
 
-		cw = csv.writer(open("data/download/" + fileName, "wb"))
-		cw.writerow(headerNames)
-		for obj in data[0]["data"]:
-			row = [obj["geography"]["name"], obj["geography"]["code"], obj["geography"]["fips"], obj["geography"]["region"]]
-			row.append(obj["value"])
-			if("monthUpdated" in data[0]):
-				row.append(data[0]["monthUpdated"])
-			if("yearUpdated" in data[0]):
-				row.append(data[0]["yearUpdated"])
+	# 	cw = csv.writer(open("data/download/" + fileName, "wb"))
+	# 	cw.writerow(headerNames)
+	# 	for obj in data[0]["data"]:
+	# 		row = [obj["geography"]["name"], obj["geography"]["code"], obj["geography"]["fips"], obj["geography"]["region"]]
+	# 		row.append(obj["value"])
+	# 		if("monthUpdated" in data[0]):
+	# 			row.append(data[0]["monthUpdated"])
+	# 		if("yearUpdated" in data[0]):
+	# 			row.append(data[0]["yearUpdated"])
 
-			if len(data) > 1:
-				for secondObj in data[1]["data"]:
-					if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
-						row.append(secondObj["value"])
-						if("monthUpdated" in data[1]):
-							row.append(data[1]["monthUpdated"])
-						if("yearUpdated" in data[1]):
-							row.append(data[1]["yearUpdated"])
-						break
-			cw.writerow(row)
+	# 		if len(data) > 1:
+	# 			for secondObj in data[1]["data"]:
+	# 				if secondObj["geography"]["fips"] == obj["geography"]["fips"]:
+	# 					row.append(secondObj["value"])
+	# 					if("monthUpdated" in data[1]):
+	# 						row.append(data[1]["monthUpdated"])
+	# 					if("yearUpdated" in data[1]):
+	# 						row.append(data[1]["yearUpdated"])
+	# 					break
+	# 		cw.writerow(row)
 
 
 # geography', OrderedDict([('code', 'TX'), ('fips', '48'), ('name', 'Texas'), ('region', 'South')])
