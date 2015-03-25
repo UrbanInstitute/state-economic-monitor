@@ -265,6 +265,7 @@ border-top:2px solid #eee;
  font-size:16px;   
  font-weight:400;
     line-height: 1.5;
+    margin-top:15px;
     
 }
 /********** secondary MENU ***********/
@@ -448,7 +449,8 @@ footer a:hover{
   font: 9pt Lato;
   position: relative;
   float: right;
-  font-weight: 200;
+  font-weight: 400;
+  color:#555;
 }
 
 .map-source{
@@ -462,6 +464,57 @@ footer a:hover{
   right: 0;
   margin-bottom: 10px;
 }
+
+.label{
+     font-size: 12px;
+    font-weight: 400;   
+    
+}
+
+/*data download button */
+.download a{
+     background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #00a6d2;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    font-weight: 500;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration-color: -moz-use-text-color;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    width: 155px;
+}
+
+
+.download :hover {
+  background: #00578b;
+  text-decoration: none;
+}
+
+.download a{
+ color:#fff;  
+      text-decoration: none;
+}
+
+.download {
+margin-top:20px;
+    
+    
+}
+
 
 /*Tooltips for both figure types*/
 
@@ -632,6 +685,11 @@ border-bottom-color: #eeeeee;
 .usa-bar{
 	fill: #c6c6c6;
    /*fill: #fdbf11;*/
+}
+
+.usa-bar:hover {
+fill:  #fdbf11; 
+    
 }
 .usa-tick{
 	font-weight: 800;
