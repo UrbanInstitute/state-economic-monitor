@@ -217,6 +217,12 @@ margin-bottom: 3%;
     
 }
 
+.section25{
+    
+     margin-top:25px;   
+      
+}
+
 .section170{
 padding-top:230px;   
     
@@ -240,7 +246,13 @@ border-top:2px solid #eee;
     
 }
 
-
+.grey{
+    
+  color: #777777;
+    font-size: 13px;
+    text-transform: uppercase;
+    
+}
 .subhead{
     
  font-size: 15px;
@@ -546,21 +558,23 @@ border-bottom-color: #eeeeee;
 }
 
 .title-subtitle{
-	font: 12pt Lato;
+	font: 14px;
 	font-style: italic;
-	font-weight: 300;
+	font-weight: 400;
 	margin-top: 10px;
 
 }
 
 .title-text{
 	margin-top: 15px;
-	font: 14pt Lato;
+	font: 18px Lato;
 	font-weight: 700;
 }
 .title-unit{
-	font: 12pt Lato;
+	font: 14px Lato;
 	font-weight: 300;
+    padding-left:10px;
+    
 }
 
 /*Map graphic containers*/
