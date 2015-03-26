@@ -2,6 +2,9 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
 
+var EMP_DATE = "2/2015"
+var TAX_DATE = "4/2014"
+
 function drawMapFigure(dataID, config){
  // data is an array of objects, each of form
 // {
@@ -9,6 +12,13 @@ function drawMapFigure(dataID, config){
 //      {"code": "AK", "fips": "2", "name": "Alaska"},
 //    "value": 6.3
 // }
+    var dateUpdated;
+    if(config["date-format"] == "quarter"){
+      dateUpdated = TAX_DATE
+    }
+    else if(config["date-format"] == "month"){
+      dateUpdated = EMP_DATE
+    }
     var containerID = config.id
 
     var slice = figureData[dataID]["data"]
@@ -319,7 +329,8 @@ var barSvg, barXAxis, barBase;
 
   function drawTooltip(){
     var data = figureData[dataID]
-    var yearUpdated = data.yearUpdated
+    var yearUpdated = dateUpdated.split("/")[1]
+
     //Get quarter from month, then subtract 1 to make it zero indexed
     // var quarterUpdated = Math.ceil(data.monthUpdated/3) - 1
    
@@ -342,7 +353,7 @@ var barSvg, barXAxis, barBase;
       .attr('class',"value-text")
     value.append('div')
         .attr('class','tooltip-title')
-        .text('VALUE')
+        .html(config["short-label"])
     value.append('div')
         .attr('class','tooltip-data')
         .text(function(){
@@ -363,11 +374,11 @@ var barSvg, barXAxis, barBase;
     quarter.append('div')
         .attr('class','tooltip-data')
         .text(function(){
-          if (config["date-format"] == "month"){ return MONTHNAMES[data.monthUpdated] }
-          else if (config["date-format"] == "quarter"){ return getQuarter(data.monthUpdated) } 
+          if (config["date-format"] == "month"){ return MONTHNAMES[parseInt(dateUpdated.split("/")[0])-1] }
+          else if (config["date-format"] == "quarter"){ return getQuarter(parseInt(dateUpdated.split("/")[0])) } 
 
         })
-    if(typeof(data.monthUpdated) == "undefined"){
+    if(typeof(dateUpdated.split("/")[0]) == "undefined"){
       quarter.remove()
     }
 
@@ -379,7 +390,7 @@ var barSvg, barXAxis, barBase;
     year.append('div')
         .attr('class','tooltip-data')
         .text(yearUpdated)
-    if(typeof(data.yearUpdated) == "undefined"){
+    if(typeof(dateUpdated.split("/")[1]) == "undefined"){
       year.remove()
     }
 
@@ -401,14 +412,14 @@ var barSvg, barXAxis, barBase;
   function drawTitle(){
 //Writes out title, subtitle, units, and source line
     var data = figureData[dataID]
-    var monthUpdated = data.monthUpdated
-    var yearUpdated = data.yearUpdated
+    var monthUpdated = dateUpdated.split("/")[0]
+    var yearUpdated = dateUpdated.split("/")[1]
 
     var titleText = config.title
     var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
-    var subtitleText = parseConfigText(config, dataID, config.subtitle, monthUpdated, yearUpdated, usAvg)
+    var subtitleText = parseConfigText(config, dataID, config.subtitle, dateUpdated, usAvg)
 
-    var sourceText = "Source: " + parseConfigText(config, dataID, config.source, monthUpdated, yearUpdated, usAvg)
+    var sourceText = "Source: " + parseConfigText(config, dataID, config.source, dateUpdated, usAvg)
     d3.select("#" + containerID + "_source").html(sourceText)
     
     var graphic = d3.select("#"+containerID + "_title");
@@ -586,6 +597,13 @@ function parseVal(value, useCase){
 
 
 function drawScatterPlot(config){
+  var dateUpdated;
+  if(config.x["date-format"] == "quarter"){
+    dateUpdated = TAX_DATE
+  }
+  else if(config.x["date-format"] == "month"){
+    dateUpdated = EMP_DATE
+  }
   var containerID = config.id
 
   var xSlice = figureData[config.x.id]["data"]
@@ -633,9 +651,9 @@ function drawScatterPlot(config){
     var yearUpdatedY = config.x.yearUpdated
 
     var titleText = config.title
-    var subtitleText = parseConfigText(config, [config.x.id, config.y.id], config.subtitle, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
+    var subtitleText = parseConfigText(config, [config.x.id, config.y.id], config.subtitle, dateUpdated, [usAvgX, usAvgY])
 
-    var sourceText = "Source: " + parseConfigText(config, [config.x.id, config.y.id], config.source, [monthUpdatedX, monthUpdatedY], [yearUpdatedX, yearUpdatedY], [usAvgX, usAvgY])
+    var sourceText = "Source: " + parseConfigText(config, [config.x.id, config.y.id], config.source, dateUpdated, [usAvgX, usAvgY])
 
     d3.select("#" + containerID + "_source").html(sourceText)
 
@@ -677,7 +695,7 @@ function drawScatterPlot(config){
       .attr('class',"value-text x")
     xValue.append('div')
         .attr('class','tooltip-title')
-        .text("X-VALUE")
+        .html(config.x["short-label"])
     xValue.append('div')
         .attr('class','tooltip-data')
         .text(function(){
@@ -689,7 +707,7 @@ function drawScatterPlot(config){
       .attr('class',"value-text y")
     yValue.append('div')
         .attr('class','tooltip-title')
-        .text("Y-VALUE")
+        .html(config.y["short-label"])
     yValue.append('div')
         .attr('class','tooltip-data')
         .text(function(){
@@ -899,33 +917,28 @@ function drawScatterPlot(config){
 
 
 
-function parseConfigText(config, dataID, text, excelMonth, excelYear, usAvg){
+function parseConfigText(config, dataID, text, dateUpdated, usAvg){
   var outStr
   if (dataID.constructor !== Array){
-    outStr = parseText(config, dataID, text, config["date-updated"], excelMonth, excelYear, usAvg, "")
+    outStr = parseText(config, dataID, text, dateUpdated, usAvg, "")
   }
   else{
-    tempStr = parseText(config.x, dataID[0], text, config.x["date-updated"], excelMonth[0], excelYear[1], usAvg[0], "x-")
-    outStr = parseText(config.y, dataID[1], tempStr, config.y["date-updated"], excelMonth[0], excelYear[1], usAvg[1], "y-")
+    tempStr = parseText(config.x, dataID[0], text, dateUpdated, usAvg[0], "x-")
+    outStr = parseText(config.y, dataID[1], tempStr, dateUpdated, usAvg[1], "y-")
 
   }
 
-  function parseText(conf, dID, text, cDate, eMonth, eYear, avg, prefix){
+  function parseText(conf, dID, text, dateUpdated, avg, prefix){
     var configFormat = conf["date-format"]
     var unitType = conf["unit-type"]
     var inStr = text;
 
     var month, year, prevYear;
-    if (cDate == "{{excel}}"){
-      month = eMonth
-      year = eYear
-      prevYear = year -1
-    }
-    else{
-      month = parseInt(cDate.split("/")[0])
-      year = parseInt(cDate.split("/")[1])
-      prevYear = year -1
-    }
+
+    month = parseInt(dateUpdated.split("/")[0])
+    year = parseInt(dateUpdated.split("/")[1])
+    prevYear = year -1
+    
 
     var datePrevious, dateUpdated, usaValue, usaChanged;
     if (configFormat == "month"){

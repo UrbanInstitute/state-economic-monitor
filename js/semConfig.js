@@ -32,14 +32,16 @@ var semConfig = {
 					"x":{
 						"id":"RUC",
 						"label": "Unemployment Rate",
+						"short-label": "RATE",
 						"date-format": "month",
 						"unit": "Rate (%), Seasonally Adjusted",
 						"unit-type": "percent",
-						"date-updated": "11/2014",
+						"date-updated": "{{EMP_MONTH}}",
 					},
 					"y":{
 						"id":"UNEMPChg",
 						"label": "One Year Change in Unemployment Rate",
+						"short-label": "CHANGE",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -54,6 +56,7 @@ var semConfig = {
 					"x":{
 						"id":"EMP",
 						"label": "Total Employment",
+						"short-label": "TOTAL",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -62,6 +65,7 @@ var semConfig = {
 					"y":{
 						"id":"GOVT",
 						"label": "Public Sector Employment",
+						"short-label": "PUBLIC",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -76,6 +80,7 @@ var semConfig = {
 					"x":{
 						"id":"HPChgYr",
 						"label": "Percent Change Year-Over-Year",
+						"short-label": "&Delta; ANNUAL",
 						"date-format": "month",
 						"unit": "Percent",
 						"unit-type": "percent",
@@ -84,6 +89,7 @@ var semConfig = {
 					"y":{
 						"id":"HPChgPeak",
 						"label": "Change in Housing Prices Since Q1 2007",
+						"short-label": "&Delta; PEAK",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -189,7 +195,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "Census: Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}"
+					"source": "<a href = 'www.google.com'>Census</a>: Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}"
 				}
 		
 	}
