@@ -2,9 +2,6 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
 
-var EMP_DATE = "2/2015"
-var TAX_DATE = "4/2014"
-
 function drawMapFigure(dataID, config){
  // data is an array of objects, each of form
 // {
