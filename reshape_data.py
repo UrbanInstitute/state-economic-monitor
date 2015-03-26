@@ -4,7 +4,17 @@ import xlwt
 from collections import OrderedDict
 import json
 import time
+import sys
 
+try:
+	EMP_DATE = sys.argv[1]
+	TAX_DATE = sys.argv[2]
+	print "Dates must be formatted as MM/YYYY"
+	print "Employment data date is " + EMP_DATE
+	print "Tax data date is " + TAX_DATE
+except IndexError:
+	print "You must specify the date for the current data set"
+	sys.exit()
 figureData = OrderedDict()
 figureVars = {"Figure1":["RUC"],"Figure2":["UNEMP","UNEMPChg"],"Figure3":["EMP"],"Figure4":["EMP","GOVT"],"Figure5":["AWW"],"Figure6":["AWWChg"],"Figure7":["HPI"],"Figure8":["HPChgYr","HPChgPeak"],"Figure9":["TOTAL"],"Figure10":["INC"],"Figure11":["CORPINC"],"Figure12":["SALES"]}
 fullNames = {"RUC":"Unemployment Rate","AWW":"Average Weekly Earnings, Private Employment","AWWChg":"Changes in Real Average Weekly Earnings, Private Employment","GOVT":"Public Sector Employment","TOTAL":"Total Employment","HPI":"Housing Price Index","PHCI":"Coincident indices, 3-month change","SLIND":"State Leading Index","EMP":"Nonfarm Payroll Employment Change","UNEMP":"Unemployment Rate","UNEMPChg":"One Year Change in Unemployment Rate","INC":"Personal Income Tax Revenue","CORPINC":"Corporate Income Tax Revenue","SALES":"Sales Tax Revenue","HPChgYr":"Housing Price Percent Change Year-Over-Year","HPChgPeak":"Change in Housing Prices Since Q1 2007"}
@@ -66,16 +76,12 @@ def parseMapData():
 	cr = csv.reader(open("data/source/sheets/MapData.csv","rU"))
 	header = cr.next()
 	for row in cr:
-		month = int(parseCell(row[0]))
-		year = int(parseCell(row[1]))
 		value = parseCell(row[3])
 		geography = row[4]
 		code = row[5]
 		if code not in figureData:
 			figureData[code] = OrderedDict()
 			figureData[code]["fullName"] = "placeholder"
-			figureData[code]["yearUpdated"] = year
-			figureData[code]["monthUpdated"] = month
 			figureData[code]["data"] = []
 			# figureData[code]["value"] = value
 
@@ -156,6 +162,8 @@ def parseTable3():
 	with open("js/figureData.js", "w") as fp:
 		fp.write("var figureData = ")
 		fp.write(json.dumps(figureData, sort_keys=False))
+		fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
+		fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
 
 def createXLS():
 	book = xlwt.Workbook()
@@ -302,7 +310,7 @@ def createXLS():
  				taxes.write(row, 7, secondObj["value"])
  				break
 
-	book.save('data/download/' + time.strftime("%Y-%m-%d") + '-SEM_data.xls')
+	book.save('data/download/' + '' + '-SEM_data.xls')
 
 
 def parseData():

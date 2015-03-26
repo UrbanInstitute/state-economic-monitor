@@ -32,14 +32,16 @@ var semConfig = {
 					"x":{
 						"id":"RUC",
 						"label": "Unemployment Rate",
+						"short-label": "RATE",
 						"date-format": "month",
 						"unit": "Rate (%), Seasonally Adjusted",
 						"unit-type": "percent",
-						"date-updated": "11/2014",
+						"date-updated": "{{EMP_MONTH}}",
 					},
 					"y":{
 						"id":"UNEMPChg",
 						"label": "One Year Change in Unemployment Rate",
+						"short-label": "CHANGE",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -54,6 +56,7 @@ var semConfig = {
 					"x":{
 						"id":"EMP",
 						"label": "Total Employment",
+						"short-label": "TOTAL",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -62,6 +65,7 @@ var semConfig = {
 					"y":{
 						"id":"GOVT",
 						"label": "Public Sector Employment",
+						"short-label": "PUBLIC",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -76,6 +80,7 @@ var semConfig = {
 					"x":{
 						"id":"HPChgYr",
 						"label": "Percent Change Year-Over-Year",
+						"short-label": "&Delta; ANNUAL",
 						"date-format": "month",
 						"unit": "Percent",
 						"unit-type": "percent",
@@ -84,6 +89,7 @@ var semConfig = {
 					"y":{
 						"id":"HPChgPeak",
 						"label": "Change in Housing Prices Since Q1 2007",
+						"short-label": "&Delta; PEAK",
 						"date-format": "month",
 						"unit": "Percent Change Year-Over-Year",
 						"unit-type": "percent",
@@ -97,6 +103,7 @@ var semConfig = {
 					"title": "Unemployment Rate",
 					"date-format": "month",
 					"subtitle": "The national unemployment rate was {{usa-value}} as of {{date-updated}}",
+					"short-label": "RATE",
 					"unit": "Rate (%), Seasonally Adjusted",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
@@ -106,6 +113,7 @@ var semConfig = {
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
 					"title": "Total (Nonfarm) Payroll Employment",
+					"short-label": "CHANGE",
 					"date-format": "month",
 					"subtitle": "Total (public and private) nonfarm payroll employment {{usa-changed}} from {{date-previous}} to {{date-updated}}",
 					"unit": "Percent Change Year-Over-Year",
@@ -117,6 +125,7 @@ var semConfig = {
 		"AWW":	{
 					"id": "figure_wages",
 					"title": "Average Weekly Earnings, Private Employment",
+					"short-label": "EARNINGS",
 					"date-format": "month",
 					"subtitle": "National real weekly earnings (i.e., earnings adjusted for inflation) for all US private employees averaged {{usa-value}} in {{date-updated}}",
 					"unit": "Weekly Earnings ($)",
@@ -128,6 +137,7 @@ var semConfig = {
 		"AWWChg":	{
 					"id": "figure_wages-change",
 					"title": "Changes in Real Average Weekly Earnings, Private Employment",
+					"short-label": "CHANGE",
 					"date-format": "month",
 					"subtitle": "National real (inflation adjusted) average weekly earnings  {{usa-changed}} from {{date-previous}} to {{date-updated}}",
 					"unit": "Percent Change Year-Over-Year",
@@ -139,6 +149,7 @@ var semConfig = {
 		"HPChgYr":	{
 					"id": "figure_house-prices",
 					"title": "House Prices",
+					"short-label": "CHANGE",
 					"date-format": "quarter",
 					"subtitle": "National house prices {{usa-changed}} from {{date-previous}} to {{date-updated}}",
 					"unit": "Percent Change Year-Over-Year",
@@ -150,6 +161,7 @@ var semConfig = {
 		"TOTAL":	{
 					"id": "figure_total-taxes",
 					"title": "Total Tax Revenue",
+					"short-label": "CHANGE",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
 					"unit": "Percent Change Year-Over-Year",
@@ -161,6 +173,7 @@ var semConfig = {
 		"INC":	{
 					"id": "figure_income-taxes",
 					"title": "Personal Income Tax Revenue",
+					"short-label": "CHANGE",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
 					"unit": "Percent Change Year-Over-Year",
@@ -172,6 +185,7 @@ var semConfig = {
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
 					"title": "Corporate Income Tax Revenue",
+					"short-label": "CHANGE",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
 					"unit": "Percent Change Year-Over-Year",
@@ -183,13 +197,14 @@ var semConfig = {
 		"SALES":	{
 					"id": "figure_sales-taxes",
 					"title": "Sales Tax Revenue",
+					"short-label": "CHANGE",
 					"date-format": "quarter",
 					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
 					"unit": "Percent Change Year-Over-Year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "Census: Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}"
+					"source": "<a href = 'www.google.com'>Census</a>: Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}"
 				}
 		
 	}
