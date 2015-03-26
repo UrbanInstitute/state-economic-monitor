@@ -130,9 +130,11 @@ width:22%;
 /*****INDEX INTRO AND IMAGE STYLES*******/
 
 #introText{
- margin-bottom: 20px;
-    margin-top: 50px; 
-}
+   margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 80%;}
 
 h3{
  font-style: italic;
@@ -230,15 +232,27 @@ margin-bottom: 1%;
 
 
 .introSectionText{
-     font-size:16px;   
- font-weight:400;
+ color: #555555;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 1.5;
-margin:40px auto 20px auto;
-    width:75%;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    text-align: center;
+    width: 75%; 
     
-    
+}
 
-    
+
+.grey {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    top: 15px;
     
 }
 
@@ -285,16 +299,8 @@ border-top:2px solid #eee;
     
 }
 
-.grey{
-    
-    font-weight: 700;
-    font-size: 13px;
-  
-       position: relative;
-    text-transform: uppercase;
-    top: 5px;
-    
-}
+
+
 .subhead{
     
  font-size: 15px;
