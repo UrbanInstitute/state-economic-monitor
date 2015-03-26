@@ -39,6 +39,17 @@ h1{
  
 }
 
+h1 a{
+ color:#fff;   
+    
+}
+
+
+h1 a:hover{
+ color:#00a6d2;   
+    text-decoration: none;
+    
+}
 
 #menu{
  
@@ -119,8 +130,8 @@ width:22%;
 /*****INDEX INTRO AND IMAGE STYLES*******/
 
 #introText{
- margin-top: 70px;     
-    margin-bottom: 40px; 
+ margin-bottom: 20px;
+    margin-top: 50px; 
 }
 
 h3{
@@ -141,12 +152,19 @@ text-transform: none;
 }*/
 
 
+.updated{
+ text-align: center;
+font-size:14px;
+    color:#555;
+
+    
+}
 
 #imageone, #imagethree{
     
     clear: both;
     float: left;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     
     
 }
@@ -154,7 +172,7 @@ text-transform: none;
 #imagetwo, #imagefour{
     
  float:right;
-margin-bottom: 3%;
+margin-bottom: 1%;
     
 }
 
@@ -170,12 +188,19 @@ margin-bottom: 3%;
 
 #imageone p, #imagethree p, #imagetwo p, #imagefour p{
     
- position: relative;
-    top:20%;
-    color:#fff;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    position: relative;
+    text-align: center;
+    top: 150px;
+    width: 250px;
     
 }
-
 
 
 
@@ -204,6 +229,19 @@ margin-bottom: 3%;
 
 
 
+.introSectionText{
+     font-size:16px;   
+ font-weight:400;
+    line-height: 1.5;
+margin:40px auto 20px auto;
+    width:75%;
+    
+    
+
+    
+    
+}
+
 
 /**********  end INTRO ***********/
 
@@ -231,11 +269,12 @@ padding-top:230px;
 
 h2{
     Color:#00a6d2;
-    font-size: 22px;
+    font-size: 28px;
     padding: 0px;
     margin:0px;
-    font-weight: 700; 
-    
+    font-weight: 300; 
+    text-align: center;
+    text-transform: uppercase;
 }
 
 
@@ -248,9 +287,12 @@ border-top:2px solid #eee;
 
 .grey{
     
-  color: #777777;
+    font-weight: 700;
     font-size: 13px;
+  
+       position: relative;
     text-transform: uppercase;
+    top: 5px;
     
 }
 .subhead{
@@ -265,9 +307,12 @@ border-top:2px solid #eee;
  font-size:16px;   
  font-weight:400;
     line-height: 1.5;
-    margin-top:15px;
-    
+margin:0 auto;
+    width:75%;
+
 }
+
+
 /********** secondary MENU ***********/
 
 
@@ -481,11 +526,6 @@ footer a:hover{
     background-position: 0 0;
     background-repeat: repeat;
     background-size: auto auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
     font-weight: 500;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -520,10 +560,10 @@ margin-top:20px;
 
 .tooltip-container {
   height: 80px;
-    margin-bottom: 13px;
+    margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 25px;
     padding-bottom: 0;}
 
 
@@ -533,12 +573,12 @@ margin-top:20px;
 .tooltip-title{
 	font-family: Lato;
 	font-size: 13px;
-	color: #666666;
-	font-weight: 300;
+	color: #000;
+	font-weight: 400;
 }
 .tooltip-data{
 	font-family: Lato;
-	font-size: 20pt;
+	font-size: 20px;
 	color: #29abe2;
 	font-weight: 400;
 }
@@ -547,20 +587,19 @@ margin-top:20px;
 
    color: #555555;
     font-size: 13px;
-    margin-top: 13px;
+    margin-top: 5px;
 
 }
+
+/*    color: #777777;
+    font-size: 16px;
+    margin-top: 9px;*/
+
 .region-text, .value-text, .quarter-text{
 	float: left;
 	margin-right: 30px;
 }
 
-.tooltip-usa-average{
-  font-size: 12pt;
-  font-style: italic;
-  color: black;
-  margin-top: 5px;
-}
 
 .value-text.y{
 	margin-right: 0px !important;
@@ -625,13 +664,13 @@ margin-top:20px;
 	font: 14px;
 	font-style: italic;
 	font-weight: 400;
-	margin-top: 10px;
+	margin-top: 8px;
 
 }
 
 .title-text{
 	margin-top: 15px;
-	font: 18px Lato;
+	font: 22px Lato;
 	font-weight: 700;
 }
 .title-unit{
