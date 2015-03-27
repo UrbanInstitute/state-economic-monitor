@@ -730,7 +730,7 @@ function drawScatterPlot(config){
 
     var aspect_width = 2;
     var aspect_height = 1;
-    var margin = { top: 30, right: 20, bottom: 30, left: 40 };
+    var margin = { top: 30, right: 20, bottom: 30, left: 60 };
     var width = $graphic.width() - margin.left - margin.right;
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
@@ -822,10 +822,11 @@ function drawScatterPlot(config){
         .attr("class", "y axis scatter")
         .call(yAxis)
       .append("text")
+        .attr("transform","rotate(-90)")
         .attr("class", "label")
         .attr("y", 6)
-        .attr("dx", "-2em")
-        .attr("dy", ".71em")
+        .attr("dx", function(){ console.log(this); return "-25em"})
+        .attr("dy", "-4em")
         .text(config.y.label)
 
     svg.append("line")
