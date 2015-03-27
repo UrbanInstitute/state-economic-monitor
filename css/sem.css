@@ -9,21 +9,40 @@ html, body{
 
 /************ open HEADER ***********/
 
-#header{
+/*#header{
     
     margin-top: 50px;
     position: fixed;
     width: 100%;
     z-index:20;
+}*/
+
+
+#header{
+   margin-top: 70px;
+    position: fixed;
+    width: 100%;
+    z-index:20;   
+    
 }
 
 
+
+
+/*h1 for the website */
 #sem{
+    
+    height:65px;
+    float:none;
+
+}
+
+/*#sem{
     
     height:75px;
     width:100%;
     background-color:#333;   
-}
+}*/
 
 
 h1{
@@ -134,7 +153,9 @@ width:22%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    width: 80%;}
+    width: 80%;
+     text-align: center;
+}
 
 h3{
  font-style: italic;
@@ -146,30 +167,23 @@ text-transform: none;
     line-height: 1.4;
 }
 
-/*this holds the images in a smaller div than container avoiding making the thumbs huge and thus eating up more depth than they need to 
-#homeImages{
-    width:71%;
-    margin: 0 auto;  
-    
-}*/
-
 
 .updated{
  text-align: center;
 font-size:14px;
     color:#555;
-
-    
 }
+
+
 
 #imageone, #imagethree{
     
     clear: both;
     float: left;
     margin-bottom: 1%;
-    
-    
+ 
 }
+
 
 #imagetwo, #imagefour{
     
@@ -188,6 +202,7 @@ margin-bottom: 1%;
     
 }
 
+/* style/placement of the image labels */
 #imageone p, #imagethree p, #imagetwo p, #imagefour p{
     
     color: #ffffff;
@@ -202,6 +217,13 @@ margin-bottom: 1%;
     top: 150px;
     width: 250px;
     
+}
+
+/*image hover styling */
+
+#imageone:hover, #imagethree:hover, #imagetwo:hover, #imagefour:hover{
+
+    opacity: .6;
 }
 
 
@@ -276,10 +298,15 @@ margin-bottom: 1%;
 }
 
 .section170{
-padding-top:230px;   
+padding-top:170px;   
     
 }
 
+
+/*.section170{
+padding-top:230px;   
+    
+}*/
 
 h2{
     Color:#00a6d2;
@@ -409,13 +436,20 @@ footer a:hover{
     position: relative;
 }
 
-#logo {
+/*#logo {
     display: inline-block;
-}
+}*/
 
+#logo {
+   display: inline-block;
+    float: left;
+    height: 55px;
+    margin-top: 11px;
+}
+/*
 #smallLogo {
     display: none;
-}
+}*/
 #shareMaster {
     border-left-color-ltr-source: physical;
     border-left-color-rtl-source: physical;
@@ -480,12 +514,20 @@ footer a:hover{
     transition-property: opacity;
     transition-timing-function: ease-in-out;
 }
-.navbar-default {
+/*.navbar-default {
     background-color: #ffffff;
+}*/
+
+.navbar-default {
+    
+ background-color:#333;   
+border:none;
 }
 
-
-
+.navbar{
+    
+    min-height: 70px;   
+}
 
 
 
