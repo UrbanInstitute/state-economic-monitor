@@ -73,14 +73,11 @@ function drawMapFigure(dataID, config){
     var $graphic = $("#"+containerID + "_map");
     
     var aspect_width = 10;
-    var aspect_height = 4;
+    var aspect_height = 3.3;
     var margin = { top: 10, right: 10, bottom: 10, left: 20 };
     var width = ($graphic.width() - margin.left - margin.right);
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
-
-
-
 
     var svg = d3.select("#"+containerID + "_map")
       .attr("height", height)
@@ -89,18 +86,12 @@ function drawMapFigure(dataID, config){
       .attr("height", height + margin.top + margin.bottom)
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
 
-
-
-  
-
       var projection = d3.geo.albersUsa()
           .scale(width*.7 + margin.left + margin.right)
           .translate([(width+margin.left+margin.right) / 2, (height+margin.top+margin.bottom)/ 2]);
 
       var path = d3.geo.path()
           .projection(projection);
-
-
 
       var legend = svg.append("g")
       			   .attr("width",width+margin.left+margin.right)
@@ -123,9 +114,10 @@ function drawMapFigure(dataID, config){
         }
 
         legend.append("text")
-          .attr("x",-5+keyWidth*i)
+          .attr("x",5)
           .attr("class","legend-labels " + dataID)
-          .attr("y",-5)
+          .attr("y",5+keyWidth*i)
+          .attr("transform", function(){return "rotate(-90)"})
           .text(function(){
             if (config["unit-type"] == "percent"){
               return tempBreaks[i] + "%"
@@ -140,10 +132,7 @@ function drawMapFigure(dataID, config){
           })
       }
 
-      // mouseEvent
-
-
-      legend.attr("transform","translate("+ (width+margin.left+margin.right - keyWidth*5)/2 +",20)")
+      legend.attr("transform","translate("+ (width*1.05 - keyWidth*5) +",20) rotate(90)")
 
       d3.select(self.frameElement).style("height", height + "px");
 
