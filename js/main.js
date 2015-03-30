@@ -55,7 +55,6 @@ function drawMapFigure(dataID, config){
       .attr("id",containerID + "_bar-chart")
     parent.append("div")
       .attr("id",containerID + "_tooltip")
-    parent.append("hr")
     parent.append("div")
       .attr("id",containerID + "_map")
       .attr("class", "map-container")
@@ -612,7 +611,6 @@ function drawScatterPlot(config){
     .attr("id",containerID + "_title")
   parent.append("div")
     .attr("id",containerID + "_tooltip")
-  parent.append("hr")
   parent.append("div")
     .attr("id",containerID + "_plot")
     .attr("class", "plot-container")
@@ -676,6 +674,7 @@ function drawScatterPlot(config){
 
     var formatter = d3.format(".1f")
     var dollarFormatter = d3.format("$0f")
+    var usX, usY;
     
     var xValue = tooltip.append('div')
       .attr('class',"value-text x")
@@ -685,8 +684,8 @@ function drawScatterPlot(config){
     xValue.append('div')
         .attr('class','tooltip-data')
         .text(function(){
-          if (config.x["unit-type"] == "percent") { return formatter(usAvgX) + "%" }
-          else if (config.x["unit-type"] == "dollar"){ return dollarFormatter(usAvgX)}
+          if (config.x["unit-type"] == "percent") { usX = formatter(usAvgX) + "%"; return usX }
+          else if (config.x["unit-type"] == "dollar"){ usX = dollarFormatter(usAvgX); return usX}
         })
 
     var yValue = tooltip.append('div')
@@ -697,10 +696,13 @@ function drawScatterPlot(config){
     yValue.append('div')
         .attr('class','tooltip-data')
         .text(function(){
-          if (config.y["unit-type"] == "percent") { return formatter(usAvgY) + "%" }
-          else if (config.y["unit-type"] == "dollar"){ return dollarFormatter(usAvgY)}
+          if (config.y["unit-type"] == "percent") { usY = formatter(usAvgY) + "%"; return usY;}
+          else if (config.y["unit-type"] == "dollar"){ usY = dollarFormatter(usAvgY); return usY;}
         })
-
+    
+    region.append("div")
+        .attr("class","tooltip-usa-average")
+        .html("US Average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of" + usY + "</span>" )
 
     resizeTooltip(config.x.id + "v" + config.y.id);
 
@@ -774,6 +776,10 @@ function drawScatterPlot(config){
 
           d3.selectAll("#" + containerID + " " + ".dot." + region)
           .classed("demphasized",false)
+
+        region.append("div")
+          .attr("class","tooltip-usa-average")
+          .html("US Average: " + "<span class = usa_text-" + "dataID" + ">" + "usAvg" + "</span>" )
 
         })
         .on("mouseout",function(){ d3.selectAll(".dot").classed("demphasized",false) });   
