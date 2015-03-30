@@ -422,14 +422,19 @@ font-size: 22px;
 }
 
 .archiveMonth a{
- font-size:20px;
+ font-size:18px;
  font-weight:700;
     color:#00a6d2;
     
 }
 
 
+.archiveText{
 
+    text-align: center;
+
+    
+}
 
 
 /********** FOOTER ***********/
