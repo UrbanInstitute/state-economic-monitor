@@ -147,6 +147,13 @@ width:22%;
 
 
 /*****INDEX INTRO AND IMAGE STYLES*******/
+#container{
+    margin-left: auto;
+    margin-right: auto;
+    min-height:100%;
+    position: relative;
+
+}
 
 #introText{
    margin-bottom: 40px;
@@ -201,6 +208,8 @@ margin-bottom: 1%;
  width:100%;   
     
 }
+
+
 
 /* style/placement of the image labels */
 #imageone p, #imagethree p, #imagetwo p, #imagefour p{
@@ -302,6 +311,21 @@ padding-top:170px;
     
 }
 
+    .section150 {
+        
+    margin-top:150px;   
+    
+}
+
+
+.sectionfooter{
+    margin-top: 20px;
+    min-height: 100%;
+    padding-bottom: 75px;
+ 
+    
+}
+
 
 /*.section170{
 padding-top:230px;   
@@ -309,7 +333,7 @@ padding-top:230px;
 }*/
 
 h2{
-    Color:#00a6d2;
+
     font-size: 28px;
     padding: 0px;
     margin:0px;
@@ -385,16 +409,44 @@ margin:0 auto;
 
 
 
+/*******ARCHIVE **********/
+
+li{
+ list-style: none;
+    
+}
+
+.archiveYear{
+font-size: 22px;
+
+}
+
+.archiveMonth a{
+ font-size:20px;
+ font-weight:700;
+    color:#00a6d2;
+    
+}
+
+
+
+
 
 /********** FOOTER ***********/
 
-
+.shortpages{
+ position: absolute;
+    bottom:0px;
+    width:100%;
+    
+}
 footer{
  margin-top: 75px;
  margin-bottom: 0px;
     padding-bottom:10px;
        padding-top:10px;
     background-color:#000;
+ 
     
 }
 
