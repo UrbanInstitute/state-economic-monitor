@@ -655,8 +655,9 @@ border:none;
 }
 
 .download {
-margin-top:20px;
-    
+
+        margin-bottom: 50px;
+    margin-top: 20px;
     
 }
 
@@ -955,4 +956,37 @@ padding-top:180px;
     
 
 }
+
+/********PRINT STYLES **********/
+
+@media print {
+
+    
+body {
+    width:100%;
+    margin:0;
+font-family: "Georgia", "Times New Roman", serif;
+line-height: 1.3;
+text-align: left;
+}
+
+#header, #menu, footer, img, .download{ display:none;   }
+    
+
+.explainerText { width:100%;}
+
+.map-container{ margin-left:0px; margin-right:0px; width:700px;}
+
+@page {
+margin: 0.5cm;
+}
+
+   
+    
+    svg {
+        
+     width:100%;   
+    }
+}
+
 
