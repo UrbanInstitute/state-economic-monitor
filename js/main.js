@@ -702,7 +702,7 @@ function drawScatterPlot(config){
     
     region.append("div")
         .attr("class","tooltip-usa-average")
-        .html("US Average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of" + usY + "</span>" )
+        .html("US Average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of " + usY + "</span>" )
 
     resizeTooltip(config.x.id + "v" + config.y.id);
 
@@ -731,8 +731,8 @@ function drawScatterPlot(config){
     var $graphic = $("#"+containerID + "_plot");
 
     var aspect_width = 2;
-    var aspect_height = 1;
-    var margin = { top: 30, right: 20, bottom: 30, left: 60 };
+    var aspect_height = .8;
+    var margin = { top: 30, right: 40, bottom: 30, left: 80 };
     var width = $graphic.width() - margin.left - margin.right;
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
@@ -839,7 +839,7 @@ function drawScatterPlot(config){
         .attr("class","scatter-baseline")
         .attr("x1",x(0))
         .attr("x2",x(0))
-        .attr("y1",20)
+        .attr("y1",0)
         .attr("y2",height)
 
     svg.selectAll(".y.axis.scatter .tick line")
