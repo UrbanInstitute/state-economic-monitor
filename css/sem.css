@@ -321,7 +321,7 @@ padding-top:170px;
 .sectionfooter{
     margin-top: 20px;
     min-height: 100%;
-    padding-bottom: 75px;
+    padding-bottom: 90px;
  
     
 }
@@ -364,7 +364,7 @@ border-top:2px solid #eee;
  font-size:16px;   
  font-weight:400;
     line-height: 1.5;
-margin:0 auto;
+margin:10px auto;
     width:75%;
 
 }
@@ -604,7 +604,7 @@ border:none;
 }
 
 .map-source{
-  bottom: 4px;
+  bottom: 0px;
   right: 10%;
   width: 34%;
 }
@@ -655,8 +655,9 @@ border:none;
 }
 
 .download {
-margin-top:20px;
-    
+
+        margin-bottom: 50px;
+    margin-top: 20px;
     
 }
 
@@ -668,7 +669,7 @@ margin-top:20px;
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 25px;
+    margin-top: 20px;
     padding-bottom: 0;}
 
 
@@ -791,7 +792,7 @@ margin-top:20px;
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 0px;
     height:auto;
 }
 
@@ -955,4 +956,37 @@ padding-top:180px;
     
 
 }
+
+/********PRINT STYLES **********/
+
+@media print {
+
+    
+body {
+    width:100%;
+    margin:0;
+font-family: "Georgia", "Times New Roman", serif;
+line-height: 1.3;
+text-align: left;
+}
+
+#header, #menu, footer, img, .download{ display:none;   }
+    
+
+.explainerText { width:100%;}
+
+.map-container{ margin-left:0px; margin-right:0px; width:700px;}
+
+@page {
+margin: 0.5cm;
+}
+
+   
+    
+    svg {
+        
+     width:100%;   
+    }
+}
+
 
