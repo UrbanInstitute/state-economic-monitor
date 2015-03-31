@@ -1,7 +1,7 @@
 html, body{
     
  font-family:lato;
-    font-weight:300;
+   
     font-size: 16px;
     
 }
@@ -465,6 +465,7 @@ footer p{
  float:right; 
   color:#fff;
     margin-top:40px;
+font-weight:300;
   
 }
 
@@ -674,7 +675,7 @@ border:none;
 
 
 .tooltip-container.scatter{
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 .tooltip-title{
 	font-family: Lato;
@@ -751,7 +752,7 @@ border:none;
 }
 
 .plot-container{
- margin-top:20px;   
+ margin-top:5px;   
     
 }
 
