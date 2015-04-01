@@ -30,7 +30,7 @@ var semConfig = {
 					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
 					"source": "Both datasets from the Bureau of Labor Statistics",
 					"x":{
-						"id":"RUC",
+						"id":"UNEMP",
 						"label": "Unemployment Rate",
 						"short-label": "RATE",
 						"date-format": "month",
@@ -98,7 +98,7 @@ var semConfig = {
 				}
 	},
 	"Maps":{
-		"RUC":	{
+		"UNEMP":	{
 					"id": "figure_unemployment",
 					"title": "Unemployment Rate",
 					"date-format": "month",
