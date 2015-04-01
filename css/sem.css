@@ -156,12 +156,12 @@ width:22%;
 }
 
 #introText{
-   margin-bottom: 40px;
+  margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 40px;
+    text-align: center;
     width: 80%;
-     text-align: center;
 }
 
 h3{
