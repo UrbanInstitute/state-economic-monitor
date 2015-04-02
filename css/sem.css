@@ -79,6 +79,10 @@ h1 a:hover{
     margin-top: 11px;
 }
 
+#smallLogo{
+    
+ display:none;   
+}
 
 .navbar-default {
     
@@ -503,6 +507,7 @@ footer{
 footer img{
   
   float:left;
+    width:46%;
 }
 
 footer p{
@@ -510,7 +515,9 @@ footer p{
   color:#fff;
     margin-top:40px;
 font-weight:300;
-  
+width: 45%;
+    
+
 }
 
 footer a{
@@ -974,10 +981,7 @@ margin-top:15px;
 margin-bottom:50px;
 }
     
-    footer p {
-        
-     margin-top:15px;   
-    }
+footer p { margin-top:15px; margin-left:5px;}
 
 }
 
