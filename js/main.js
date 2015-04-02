@@ -835,6 +835,8 @@ function drawScatterPlot(config){
   parent.append("div")
     .attr("id",containerID + "_title")
   parent.append("div")
+    .attr("id",containerID + "_mobile-select")
+  parent.append("div")
     .attr("id",containerID + "_tooltip")
   parent.append("div")
     .attr("id",containerID + "_plot")
@@ -851,8 +853,41 @@ function drawScatterPlot(config){
   drawTooltip()
   drawTitle()
   if(!MOBILE){ drawPlot() }
+  if(MOBILE){ drawMobile() }
 
 
+  function drawMobile(){
+    var names = xSlice.map(function(obj){return obj.geography.name})
+    var index = names.indexOf("United States of America");
+    names.splice(index, 1)
+    names.sort()
+    var container = d3.select("#" + containerID + "_mobile-select")
+    container.append("hr")
+    container.append("select")
+      .selectAll("option")
+      .data(names)
+      .enter()
+      .append("option")
+    .text(function(d) {return d;})
+    container.append("hr")
+
+
+    d3.select("#" + containerID + "_mobile-select select")
+      .on("change", function(){
+        // var xVal = xSlice.filter()
+
+      names.sort()
+      var name = names[this.selectedIndex];
+      var xObject = xSlice.filter(function(obj){ return obj.geography.name == name})[0]
+      var yObject = ySlice.filter(function(obj){ return obj.geography.name == name})[0]
+
+      console.log(xObject, yObject)
+
+      });
+
+
+
+  }
   function drawTitle(){
     var monthUpdatedX = config.x.monthUpdated
     var yearUpdatedX = config.x.yearUpdated
@@ -1160,8 +1195,8 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
 
     var datePrevious, dateUpdated, usaValue, usaChanged;
     if (configFormat == "month"){
-      dateUpdated = MONTHNAMES[month - 1] + ", " + year
-      datePrevious = MONTHNAMES[month - 1] + ", " + prevYear
+      dateUpdated = MONTHNAMES[month - 1] + " " + year
+      datePrevious = MONTHNAMES[month - 1] + " " + prevYear
     }
     else if (configFormat == "quarter"){
       dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
@@ -1170,7 +1205,7 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
 
     var formatter = d3.format(".1f");
     if(unitType == "percent"){
-      usaValue = formatter(Math.abs(avg)) + "%"
+      usaValue = formatter(Math.abs(avg)) + " percent"
     }
     else if(unitType == "dollar"){
       var dollarFormatter = d3.format("$0f")

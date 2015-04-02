@@ -1047,6 +1047,15 @@ margin: 0.5cm;
   display: none;
 }
 
+.scatter .value-text{
+  display: block !important;
+}
+
+/*.scatter .region-text{
+  display: block !important;
+}
+*/
+
 .mobile h1{
   font-size: 20pt;
   padding-top: 6px;
