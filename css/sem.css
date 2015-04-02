@@ -940,8 +940,12 @@ width:20%;
         
     }
     
-  
-  
+  .mobile h1 {
+    font-size: 18pt;
+    padding-top: 23px;
+  }
+    
+    
     
  .container{
  width:95%;     
@@ -997,6 +1001,8 @@ right:0%;
         
         
     }
+    
+    
 
  /*in mobile the extra padding above the page title is not needed */   
 .section170 {
@@ -1042,6 +1048,15 @@ footer{
 
 }
 
+
+@media (max-width: 450px) {
+    
+.container {width: 100%;}    
+ .mobile h1{font-size:14pt;}
+    
+    
+}
+
 /********PRINT STYLES **********/
 
 @media print {
@@ -1077,18 +1092,19 @@ margin: 0.5cm;
 
 
 /********SMALL SCREEN STYLES **********/
-.small_screen [id$=_bar-chart] .x.axis .tick text{
+.small_screen .x.axis .tick text{
   display: none;
 }
+
+
+
 
 /********MOBILE STYLES **********/
-
-.mobile [id$=_bar-chart], .mobile [id$=_mobile-bar], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text{
+.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
   display: none;
 }
 
-
-.mobile .scatter .value-text{
+.scatter .value-text{
   display: block !important;
 }
 
@@ -1097,10 +1113,6 @@ margin: 0.5cm;
 }
 */
 
-.mobile h1{
-  font-size: 20pt;
-  padding-top: 6px;
-}
 
 
 .mobile-state, .mobile-usa{
