@@ -1054,8 +1054,6 @@ margin: 0.5cm;
     }
 }
 
-
-
 /********SMALL SCREEN STYLES **********/
 .small_screen [id$=_bar-chart] .x.axis .tick text{
   display: none;

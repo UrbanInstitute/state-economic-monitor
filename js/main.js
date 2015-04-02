@@ -280,6 +280,7 @@ function drawMapFigure(dataID, config){
 
   }
   function drawMap(){
+    d3.select("[id$=mobile-bar]").style("display","none")
     d3.select("#instructions")
     .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
 
