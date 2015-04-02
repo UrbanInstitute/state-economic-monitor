@@ -942,11 +942,23 @@ width:20%;
 }
     
     
+    /*this is the explaination below the page title and before the figures. This reduced the white space above and below the text*/
+.introSectionText {
+    margin-bottom: 25px;
+    margin-top: 0;
+
+}
+    
+    
 /*did this b/c i was seeing scroll bars around the figures */
 .figure-container{
   overflow: hidden;    
 }
   
+    
+    
+    
+    
 .explainerText {
     margin-top: 30px;
     width: 100%;
@@ -960,15 +972,16 @@ right:0%;
 }
 
 
-   
-    
-    
  /*in mobile the extra padding above the page title is not needed */   
-.section170{
-padding-top:180px;   
-    
+.section170 {
+    padding-top: 120px;
 }
 
+    
+.section100 {
+    margin-top: 20px;
+}
+    
 .map-container{
 	width: 100%;
     margin-bottom: 0;
@@ -996,7 +1009,10 @@ padding-top:180px;
      animation-fill-mode: both;
 }
 
+footer{
     
+ margin-top:15px;   
+}
 
 }
 
@@ -1100,7 +1116,7 @@ select{
    height: 34px; 
    margin-top: 5px;
    margin-bottom: 5px;
-   width: 270px;
+   width: 290px;
    height: 34px;
    border-radius: none !important;
    margin-right: auto;
