@@ -267,21 +267,13 @@ function drawMapFigure(dataID, config){
         .transition()
         .attr("width", getWidth(Math.abs(value)))
         .attr("x",getWidth(widthVal)/2 + getWidth(value))
-
-        // d3.select("#" + containerID + "_mobile-bar .mobile-state svg")
-        // .attr("transform","translate("+getWidth(value) + ",0)")
-
-
       }
-
-
-
     });
 
   }
   function drawMap(){
-    d3.select("[id$=mobile-bar]").style("display","none")
-    d3.select("#instructions")
+    d3.selectAll("[id$=mobile-bar]").style("display","none")
+    d3.selectAll("#instructions")
     .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
@@ -976,7 +968,7 @@ function drawScatterPlot(config){
     var totalWidth = 30*2 + 2
     $(".tooltip-container." + dataID + " .tooltip-data")
     .each(function(index,value) {
-      if($(value).text() == "United States of America"){
+      if($(value).text() == "UNITED STATES OF AMERICA"){
 //man this is some janky nonsense, wasn't pulling in the correct width for USA text...ugh
         totalWidth += 290
       }
@@ -1136,12 +1128,15 @@ function drawScatterPlot(config){
         .attr("cx", function(d) { return x(d.x.value); })
         .attr("cy", function(d) { return y(d.y.value); })
         .on("mouseover", function(d){
+          d3.select(this).classed("hover",true)
           if(d.x.geography.fips == -99){
-            d3.select(".usa-text_" + config.x.id).classed("text-highlight", true)
-            d3.select(".usa-text_" + config.y.id).classed("text-highlight", true)
+            d3.selectAll(".usa-text_" + config.x.id).classed("text-highlight", true)
+            d3.selectAll(".usa-text_" + config.y.id).classed("text-highlight", true)
+            d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",true)
+            console.log(d3.select("#"+containerID + "_tooltip " + ".tooltip-usa-average"))
           }
           else{
-            d3.select(this).classed("hover",true)
+            d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",false)
           }
           d3.select(".tooltip-container." + config.x.id + "v" + config.y.id + " .region-text .tooltip-data").text(d.x.geography.name)
           d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text").classed("hidden",false)
@@ -1169,6 +1164,7 @@ function drawScatterPlot(config){
         .on("mouseout", function(){
           d3.selectAll(".dot").classed("hover",false)
           d3.selectAll(".text-highlight").classed("text-highlight",false)
+          resizeTooltip(config.x.id + "v" + config.y.id);
         })
         .on("click",function(d){
           if(d.x.geography.fips != -99){
