@@ -106,22 +106,24 @@ function drawMapFigure(dataID, config){
     var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value;
     
     var getWidth = function(val){
-      return 240 * parseFloat(val)/parseFloat(widthVal);
+      // console.log(  parseFloat($("#" + containerID + "_mobile-bar").width())   )
+      return parseFloat($("#" + containerID + "_mobile-bar").width()) * parseFloat(val)/parseFloat(widthVal);
     }
 
     state.append('div')
       .text(maxCode)
       .attr("class", "label")
+      .style("left",0.75*getWidth(widthVal)/2+ "px")
    var sSvg = state
       .append("svg")
+      .attr("width", function(){ return getWidth(widthVal) + "px"})
     sSvg.append("g")
       .append("rect")
-      .attr("width", function(){ return getWidth(maxVal)})
+      .attr("width", function(){ return 0.7*getWidth(maxVal) + "px"})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
       .attr("y","4")
       .attr("class","bar")
-
     sSvg.append('line')
       .attr("x1",getWidth(widthVal)/2)
       .attr("x2",getWidth(widthVal)/2)
@@ -136,16 +138,17 @@ function drawMapFigure(dataID, config){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return  123 + getWidth(maxVal) + "px" });
+      .style("left",function(){ return 1.72*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
       .attr("class", "label")
+      .style("left",0.75*getWidth(widthVal)/2+ "px")
     var uSvg = usa
       .append("svg")
     uSvg.append("g")
       .append("rect")
-      .attr("width", function(){ return getWidth(usVal)})
+      .attr("width", function(){ return 0.7*getWidth(usVal)})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
       .attr("y","4")
@@ -156,7 +159,7 @@ function drawMapFigure(dataID, config){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return  123 + getWidth(usVal) + "px" });
+      .style("left",function(){ return getWidth(maxVal) + 0.72*getWidth(usVal) + "px" });
 
 
     uSvg.append('line')
@@ -167,11 +170,11 @@ function drawMapFigure(dataID, config){
       .attr("class","mobile-axis")
 
     state.select("svg")
-      .attr("width","300")
+      .attr("width",getWidth(widthVal))
       .attr("height","40")
 
     usa.select("svg")
-      .attr("width","300")
+      .attr("width",getWidth(widthVal))
       .attr("height","40")
 
 
@@ -217,7 +220,8 @@ function drawMapFigure(dataID, config){
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","80px");
+        .style("left",0.75*getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
@@ -235,68 +239,61 @@ function drawMapFigure(dataID, config){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  123 + getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(maxVal) + 0.72*getWidth(value) + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","80px");
+        .style("left",0.75*getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
         .attr("width",function(){
-          return getWidth(value)
+          return 0.7*getWidth(value)
         })
         .attr("x",getWidth(widthVal)/2)
       }
       else{
-
-
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
         .text(function(){
           if (config["unit-type"] == "percent") { return formatter(value) + "%" }
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  70 + getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(maxVal) - getWidth(Math.abs(value)) - 40 + "px"  });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","125px");
+        .style("left",getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
-        .attr("width", getWidth(Math.abs(value)))
-        .attr("x",getWidth(widthVal)/2 + getWidth(value))
-
-        // d3.select("#" + containerID + "_mobile-bar .mobile-state svg")
-        // .attr("transform","translate("+getWidth(value) + ",0)")
-
-
+        .attr("width", 0.7*getWidth(Math.abs(value)))
+        .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
-
-
-
     });
 
   }
   function drawMap(){
-    d3.select("#instructions")
+    d3.selectAll("[id$=mobile-bar]").style("display","none")
+    d3.selectAll("#instructions")
     .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     
     var aspect_width = 10;
     var aspect_height = 3.3;
-    var margin = { top: 10, right: 10, bottom: 10, left: 20 };
+    var margin = { top: 0, right: 10, bottom: 40, left: 20 };
     var width = ($graphic.width() - margin.left - margin.right);
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
     var svg = d3.select("#"+containerID + "_map")
-      .attr("height", height)
+      .style("height", (height + margin.top + margin.bottom) + "px")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + "px")
+      .attr("height", (height + margin.top + margin.bottom) + "px")
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
 
       var projection = d3.geo.albersUsa()
@@ -390,7 +387,7 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 0, left: 30 };
+    var margin = { top: 20, right: 0, bottom: 10, left: 30 };
     var width = $graphic.width() - margin.left - margin.right;
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -401,10 +398,10 @@ var barSvg, barXAxis, barBase;
 
 
     var svg = d3.select("#"+containerID + "_bar-chart")
-      .attr("height", height)
+      .attr("height", height + "px")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + "px")
+      .attr("height", height + margin.top + margin.bottom + "px")
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
 
     var lowerBound;
@@ -857,6 +854,7 @@ function drawScatterPlot(config){
 
 
   function drawMobile(){
+    d3.selectAll("[id$=mobile-bar]").style("display","block")
     var names = xSlice.map(function(obj){return obj.geography.name})
     var index = names.indexOf("United States of America");
     names.splice(index, 1)
@@ -975,7 +973,7 @@ function drawScatterPlot(config){
     var totalWidth = 30*2 + 2
     $(".tooltip-container." + dataID + " .tooltip-data")
     .each(function(index,value) {
-      if($(value).text() == "United States of America"){
+      if($(value).text() == "UNITED STATES OF AMERICA"){
 //man this is some janky nonsense, wasn't pulling in the correct width for USA text...ugh
         totalWidth += 290
       }
@@ -996,7 +994,7 @@ function drawScatterPlot(config){
       aspect_height = 1.2;
     }else{ aspect_height = .8; }
     
-    var margin = { top: 30, right: 40, bottom: 30, left: 80 };
+    var margin = { top: 30, right: 40, bottom: 40, left: 80 };
     var width = $graphic.width() - margin.left - margin.right;
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
@@ -1083,8 +1081,8 @@ function drawScatterPlot(config){
         .call(xAxis)
       .append("text")
         .attr("class", "label")
-        .attr("x", width)
-        .attr("y", -6)
+        .attr("x", width/2)
+        .attr("y", 36)
         .style("text-anchor", "end")
         .text(config.x.label);
 
@@ -1135,12 +1133,15 @@ function drawScatterPlot(config){
         .attr("cx", function(d) { return x(d.x.value); })
         .attr("cy", function(d) { return y(d.y.value); })
         .on("mouseover", function(d){
+          d3.select(this).classed("hover",true)
           if(d.x.geography.fips == -99){
-            d3.select(".usa-text_" + config.x.id).classed("text-highlight", true)
-            d3.select(".usa-text_" + config.y.id).classed("text-highlight", true)
+            d3.selectAll(".usa-text_" + config.x.id).classed("text-highlight", true)
+            d3.selectAll(".usa-text_" + config.y.id).classed("text-highlight", true)
+            d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",true)
+            console.log(d3.select("#"+containerID + "_tooltip " + ".tooltip-usa-average"))
           }
           else{
-            d3.select(this).classed("hover",true)
+            d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",false)
           }
           d3.select(".tooltip-container." + config.x.id + "v" + config.y.id + " .region-text .tooltip-data").text(d.x.geography.name)
           d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text").classed("hidden",false)
@@ -1168,6 +1169,7 @@ function drawScatterPlot(config){
         .on("mouseout", function(){
           d3.selectAll(".dot").classed("hover",false)
           d3.selectAll(".text-highlight").classed("text-highlight",false)
+          resizeTooltip(config.x.id + "v" + config.y.id);
         })
         .on("click",function(d){
           if(d.x.geography.fips != -99){
