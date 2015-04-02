@@ -507,7 +507,7 @@ footer{
 footer img{
   
   float:left;
-    width:46%;
+    width:auto;
 }
 
 footer p{
@@ -515,7 +515,7 @@ footer p{
   color:#fff;
     margin-top:40px;
 font-weight:300;
-width: 45%;
+
     
 
 }
@@ -530,6 +530,8 @@ footer a:hover{
  text-decoration: none;
     
 }
+
+
 
 /********** CLOSE FOOTER ***********/
 
@@ -826,7 +828,13 @@ rect.states{
 }
 
 
+@media (max-width:900px) {
+    
+ footer img{ width:46%;}
 
+footer p{width:45%;}   
+    
+}
 @media (max-width: 768px) {
 
 #fullLogo {
@@ -885,7 +893,11 @@ width:24%;
  width:95%;     
 }
     
-    
+   #introText{
+    margin-bottom:0px;
+    margin-top:0px;
+       
+   }
     /*this is the explaination below the page title and before the figures. This reduced the white space above and below the text*/
 .introSectionText {
     margin-bottom: 25px;
@@ -976,12 +988,17 @@ right:0%;
 }
 
 footer{   
-height:90px;
+height:80px;
 margin-top:15px;   
 margin-bottom:50px;
 }
     
-footer p { margin-top:15px; margin-left:5px;}
+footer p { margin-top:15px; margin-left:5px; width:100%;}
+    footer img{ display:none;}
+    
+    .archiveMonth{ margin-bottom:20px;}
+            .sectionfooter { padding-bottom:50px;}
+    .shortpages {position: relative;}
 
 }
 
@@ -992,6 +1009,12 @@ footer p { margin-top:15px; margin-left:5px;}
  .mobile h1{font-size:14pt;}
    #menu ul li{font-size:14px;}
     
+   h3{font-size:17px;}  
+    
+    .section170{ padding-top:90px;   }
+    .sectionfooter { padding-bottom:30px;}
+    .shortpages {position: relative;}
+    footer{ height:95px;}
 
 }
 
