@@ -1065,11 +1065,12 @@ margin: 0.5cm;
 
 
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
+.mobile [id$=_bar-chart], .mobile [id$=_mobile-bar], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text{
   display: none;
 }
 
-.scatter .value-text{
+
+.mobile .scatter .value-text{
   display: block !important;
 }
 
