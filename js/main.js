@@ -280,16 +280,16 @@ function drawMapFigure(dataID, config){
     
     var aspect_width = 10;
     var aspect_height = 3.3;
-    var margin = { top: 10, right: 10, bottom: 10, left: 20 };
+    var margin = { top: 0, right: 10, bottom: 40, left: 20 };
     var width = ($graphic.width() - margin.left - margin.right);
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
     var svg = d3.select("#"+containerID + "_map")
-      .attr("height", height)
+      .style("height", (height + margin.top + margin.bottom) + "px")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + "px")
+      .attr("height", (height + margin.top + margin.bottom) + "px")
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
 
       var projection = d3.geo.albersUsa()
@@ -383,7 +383,7 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 0, left: 30 };
+    var margin = { top: 20, right: 0, bottom: 10, left: 30 };
     var width = $graphic.width() - margin.left - margin.right;
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -394,10 +394,10 @@ var barSvg, barXAxis, barBase;
 
 
     var svg = d3.select("#"+containerID + "_bar-chart")
-      .attr("height", height)
+      .attr("height", height + "px")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + "px")
+      .attr("height", height + margin.top + margin.bottom + "px")
       .attr("transform", "translate("   + margin.left + "," + margin.top + ")")
 
     var lowerBound;
@@ -850,6 +850,7 @@ function drawScatterPlot(config){
 
 
   function drawMobile(){
+    d3.selectAll("[id$=mobile-bar]").style("display","block")
     var names = xSlice.map(function(obj){return obj.geography.name})
     var index = names.indexOf("United States of America");
     names.splice(index, 1)
@@ -989,7 +990,7 @@ function drawScatterPlot(config){
       aspect_height = 1.2;
     }else{ aspect_height = .8; }
     
-    var margin = { top: 30, right: 40, bottom: 30, left: 80 };
+    var margin = { top: 30, right: 40, bottom: 40, left: 80 };
     var width = $graphic.width() - margin.left - margin.right;
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
@@ -1076,8 +1077,8 @@ function drawScatterPlot(config){
         .call(xAxis)
       .append("text")
         .attr("class", "label")
-        .attr("x", width)
-        .attr("y", -6)
+        .attr("x", width/2)
+        .attr("y", 36)
         .style("text-anchor", "end")
         .text(config.x.label);
 
