@@ -88,7 +88,7 @@ var semConfig = {
 					},
 					"y":{
 						"id":"HPChgPeak",
-						"label": "Change in housing prices since Q1 2007",
+						"label": "Change since Q1 2007",
 						"short-label": "&Delta; PEAK",
 						"date-format": "month",
 						"unit": "percent change year over year",
@@ -187,7 +187,7 @@ var semConfig = {
 					"title": "Corporate Income Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
-					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier",
+					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier.",
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
