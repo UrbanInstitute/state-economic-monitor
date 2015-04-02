@@ -1061,11 +1061,8 @@ margin: 0.5cm;
   display: none;
 }
 
-
-
-
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
+.mobile [id$=bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
   display: none;
 }
 
