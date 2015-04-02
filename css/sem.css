@@ -1,8 +1,8 @@
 html, body{
     
  font-family:lato;
-   
-    font-size: 16px;
+ font-size: 16px;
+
     
 }
 
@@ -363,7 +363,7 @@ border-top:2px solid #eee;
 .explainerText{
  font-size:16px;   
  font-weight:400;
-    line-height: 1.5;
+line-height: 1.5;
 margin:10px auto;
     width:75%;
 
@@ -371,7 +371,7 @@ margin:10px auto;
 
 .note{
     
- font-size:13px;
+ font-size:14px;
  
     
 }
@@ -961,12 +961,10 @@ width:20%;
   overflow: hidden;    
 }
   
-    
-    
-    
+
     
 .explainerText {
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
 }
 
@@ -977,6 +975,28 @@ right:0%;
     
 }
 
+.tooltip-container {
+    height: 70px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+    
+    #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_wages_tooltip, #figure_wages-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
+        
+       border-bottom-color: #e1e1e1;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-top-color: #e1e1e1;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-top: 10px;
+        margin-bottom: 10px;     
+        
+        
+    }
 
  /*in mobile the extra padding above the page title is not needed */   
 .section170 {
@@ -1083,9 +1103,6 @@ margin: 0.5cm;
   padding-top: 6px;
 }
 
-.mobile .map-source{
-  width: 74%;
-}
 
 .mobile-state, .mobile-usa{
   width: 300px;
@@ -1169,7 +1186,4 @@ padding-top:20px;
  height:115px;
     
 }
-
-
-
 
