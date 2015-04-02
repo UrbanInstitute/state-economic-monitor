@@ -369,6 +369,12 @@ margin:10px auto;
 
 }
 
+.note{
+    
+ font-size:13px;
+ 
+    
+}
 
 /********** secondary MENU ***********/
 
@@ -1144,8 +1150,8 @@ padding-top:20px;
 }
 
 
-#figure_unemployment_mobile-bar, #figure_nonfarm-employment_mobile-bar, #figure_wages_mobile-bar, #figure_wages-change_mobile-bar, #figure_house-prices_mobile-bar, ##figure_total-taxes_mobile-bar, #figure_sales-taxes_mobile-bar, #figure_income-taxes_mobile-bar, #figure_corporate-taxes_mobile-bar{
- height:130px;
+#figure_unemployment_mobile-bar, #figure_nonfarm-employment_mobile-bar, #figure_wages_mobile-bar, #figure_wages-change_mobile-bar, #figure_house-prices_mobile-bar, #figure_total-taxes_mobile-bar, #figure_sales-taxes_mobile-bar, #figure_income-taxes_mobile-bar, #figure_corporate-taxes_mobile-bar{
+ height:115px;
     
 }
 
