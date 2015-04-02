@@ -1,3 +1,11 @@
+/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-mq
+ */
+;window.Modernizr=function(a,b,c){function v(a){i.cssText=a}function w(a,b){return v(prefixes.join(a+";")+(b||""))}function x(a,b){return typeof a===b}function y(a,b){return!!~(""+a).indexOf(b)}function z(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:x(f,"function")?f.bind(d||b):f}return!1}var d="2.8.3",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l={},m={},n={},o=[],p=o.slice,q,r=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},s=function(b){var c=a.matchMedia||a.msMatchMedia;if(c)return c(b)&&c(b).matches||!1;var d;return r("@media "+b+" { #"+g+" { position: absolute; } }",function(b){d=(a.getComputedStyle?getComputedStyle(b,null):b.currentStyle)["position"]=="absolute"}),d},t={}.hasOwnProperty,u;!x(t,"undefined")&&!x(t.call,"undefined")?u=function(a,b){return t.call(a,b)}:u=function(a,b){return b in a&&x(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=p.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(p.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(p.call(arguments)))};return e});for(var A in l)u(l,A)&&(q=A.toLowerCase(),e[q]=l[A](),o.push((e[q]?"":"no-")+q));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)u(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},v(""),h=j=null,e._version=d,e.mq=s,e.testStyles=r,e}(this,this.document);
+
+
+var SMALL_SCREEN;
+var MOBILE;
 var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
@@ -17,7 +25,6 @@ function drawMapFigure(dataID, config){
       dateUpdated = EMP_DATE
     }
     var containerID = config.id
-
     var slice = figureData[dataID]["data"]
     var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
     var maxIn = Math.max.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
@@ -52,6 +59,10 @@ function drawMapFigure(dataID, config){
     parent.append("div")
       .attr("id",containerID + "_title")
     parent.append("div")
+      .attr("id",containerID + "_mobile-select")
+    parent.append("div")
+      .attr("id",containerID + "_mobile-bar")
+    parent.append("div")
       .attr("id",containerID + "_bar-chart")
     parent.append("div")
       .attr("id",containerID + "_tooltip")
@@ -62,11 +73,191 @@ function drawMapFigure(dataID, config){
       .attr("id", containerID + "_source")
       .attr("class", "map-source")
 
-    drawMap()
-    drawBars()
+    if (!MOBILE){ drawMap() }
+    if (!MOBILE){ drawBars() }
+    if(MOBILE){ drawMobile() }
     drawTooltip()
     drawTitle()
 
+  function drawMobile(){
+    var widthVal = Math.max(parseFloat(maxIn), Math.abs(parseFloat(minIn)))*2
+    var formatter = d3.format(".1f")
+    var dollarFormatter = d3.format("$0f")
+
+    var container = d3.select("#" + containerID + "_mobile-bar")
+    
+    var state = container.append("div")
+      .attr("class", containerID + " mobile-state")
+    
+    var usa = container.append("div")
+      .attr("class", containerID + " mobile-usa")
+
+    var noNaN = slice.filter(function(o){ return isNaN(o.value) == false})
+    var maxVal = Math.max.apply(Math,noNaN.map(function(o){
+      return o.value
+    }))
+    var maxObj = slice.filter(function(obj){return obj.value == maxVal})
+    var maxCode = maxObj[0].geography.code
+    var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
+    
+    var getWidth = function(val){
+      return 240 * parseFloat(val)/parseFloat(widthVal)
+    }
+
+    state.append('div')
+      .text(maxCode)
+      .attr("class", "label")
+    state
+      .append("svg")
+      .append("g")
+      .append("rect")
+      .attr("width", function(){ return getWidth(maxVal)})
+      .attr("height","30")
+      .attr("x",getWidth(widthVal)/2)
+      .attr("y","0")
+      .attr("class","bar")
+    state.append('div')
+      .text(function(){
+        if (config["unit-type"] == "percent") { return formatter(maxVal) + "%" }
+        else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
+      })
+      .attr("class","amount")
+      .style("left",function(){ return  123 + getWidth(maxVal) + "px" });
+
+
+    usa.append('div')
+      .text('US')
+      .attr("class", "label")
+    usa
+      .append("svg")
+      .append("g")
+      .append("rect")
+      .attr("width", function(){ return getWidth(usVal)})
+      .attr("height","30")
+      .attr("x",getWidth(widthVal)/2)
+      .attr("y","0")
+      .attr("class","bar")
+    usa.append('div')
+      .text(function(){
+        if (config["unit-type"] == "percent") { return formatter(usVal) + "%" }
+        else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
+      })
+      .attr("class","amount")
+      .style("left",function(){ return  123 + getWidth(usVal) + "px" });
+
+    state.select("svg")
+      .attr("width","300")
+      .attr("height","40")
+
+    usa.select("svg")
+      .attr("width","300")
+      .attr("height","40")
+
+
+    var names = slice.map(function(obj){return obj.geography.name})
+    var index = names.indexOf("United States of America");
+    names.splice(index, 1)
+    names.sort()
+    var container = d3.select("#" + containerID + "_mobile-select")
+    container.append("hr")
+    container.append("select")
+      .selectAll("option")
+      .data(names)
+      .enter()
+      .append("option")
+    .text(function(d) {return d;})
+    container.append("hr")
+
+   d3.selectAll("#" + containerID + "_mobile-select option")
+    .attr("selected", function(d){
+      if (d == "District of Columbia"){ return "selected"}
+    })
+
+
+
+
+    d3.select("#" + containerID + "_mobile-select select")
+      .on("change", function(){
+      
+      names.sort()
+      var name = names[this.selectedIndex];
+      var object = slice.filter(function(obj){ return obj.geography.name == name})[0]
+      var value = object.value
+      var code = object.geography.code
+
+      d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
+      .text(code)
+
+      if(value == "#NA"){
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
+        .text("No Data")
+        .transition()
+        .style("left",function(){ return "175px" });
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
+        .transition()
+        .style("left","80px");
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
+        .transition()
+        .attr("width",function(){
+          return 0
+        })
+        .attr("x",getWidth(widthVal)/2)
+      
+      }
+
+      else if(value >= 0){
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
+        .text(function(){
+          if (config["unit-type"] == "percent") { return formatter(value) + "%" }
+          else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
+        })
+        .transition()
+        .style("left",function(){ return  123 + getWidth(value) + "px" });
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
+        .transition()
+        .style("left","80px");
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
+        .transition()
+        .attr("width",function(){
+          return getWidth(value)
+        })
+        .attr("x",getWidth(widthVal)/2)
+      }
+      else{
+
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
+        .text(function(){
+          if (config["unit-type"] == "percent") { return formatter(value) + "%" }
+          else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
+        })
+        .transition()
+        .style("left",function(){ return  100 + getWidth(value) + "px" });
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
+        .transition()
+        .style("left","120px");
+
+        d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
+        .transition()
+        .attr("width", getWidth(Math.abs(value)))
+        .attr("x",getWidth(widthVal)/2 + getWidth(value))
+
+        // d3.select("#" + containerID + "_mobile-bar .mobile-state svg")
+        // .attr("transform","translate("+getWidth(value) + ",0)")
+
+
+      }
+
+
+
+    });
+
+  }
   function drawMap(){
 
     var $graphic = $("#"+containerID + "_map");
@@ -116,7 +307,9 @@ function drawMapFigure(dataID, config){
           .attr("x",5)
           .attr("class","legend-labels " + dataID)
           .attr("y",5+keyWidth*i)
-          .attr("transform", function(){return "rotate(-90)"})
+          .attr("transform", function(){
+              return "rotate(-90)"
+          })
           .text(function(){
             if (config["unit-type"] == "percent"){
               return tempBreaks[i] + "%"
@@ -131,7 +324,10 @@ function drawMapFigure(dataID, config){
           })
       }
 
-      legend.attr("transform","translate("+ (width*1.05 - keyWidth*5) +",20) rotate(90)")
+      legend.attr("transform",function(){
+        if(!SMALL_SCREEN){return "translate("+ (width*1.05 - keyWidth*5) +",20) rotate(90)"}
+        else{return "translate("+ (width*1.15 - keyWidth*5) +",20) rotate(90)"}
+      });
 
       d3.select(self.frameElement).style("height", height + "px");
 
@@ -171,7 +367,7 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 0, left: 20 };
+    var margin = { top: 20, right: 0, bottom: 0, left: 30 };
     var width = $graphic.width() - margin.left - margin.right;
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -201,19 +397,7 @@ var barSvg, barXAxis, barBase;
         .domain([lowerBound,min+step*7])
 
 
-    svg
-    .append("svg:line")
-            .attr("x1", 0+margin.left)
-            .attr("y1", y(min+step))
-            .attr("x2", width - margin.right)
-            .attr("y2", y(min+step))
-        .attr("class","grid-line");
-    svg.append("svg:line")
-            .attr("x1", 0+margin.left)
-            .attr("y1", y(min+6*step))
-            .attr("x2", width - margin.right)
-            .attr("y2", y(min+6*step))
-        .attr("class","grid-line");
+
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -223,7 +407,8 @@ var barSvg, barXAxis, barBase;
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .tickValues([min+step, min+step*6])
+        // .tickValues([min+step, min+step*6])
+        .ticks(3)
         .tickFormat(function(d){
           // Check tick val and format accordingly. N -> int, N.5 -> 1 decimal place, N.25 -> 2 decimal places
           var formatter;
@@ -245,6 +430,22 @@ var barSvg, barXAxis, barBase;
           }
         })
         .tickSize(0)
+
+      svg.selectAll(".grid-line")
+        .data(y.ticks(3))
+        .enter()
+        .append("svg:line")
+            .attr("x1", 0+margin.left)
+            .attr("y1", function(d){ return y(d) })
+            .attr("x2", width - margin.right)
+            .attr("y2", function(d){ return y(d) })
+        .attr("class","grid-line");
+      // svg.append("svg:line")
+      //       .attr("x1", 0+margin.left)
+      //       .attr("y1", y(min+6*step))
+      //       .attr("x2", width - margin.right)
+      //       .attr("y2", y(min+6*step))
+      //   .attr("class","grid-line");
 
       svg.append("g")
           .attr("class", "y axis")
@@ -283,14 +484,15 @@ var barSvg, barXAxis, barBase;
       barXAxis = xAxis
       barBase = y(0)
 
-      reapppendAxis()
+      reappendAxis()
 
 //Grab all the x axis ticks, if the state they label has a negative value bar, pop them up above the x axis
 
   }
 
-  function reapppendAxis(){
+  function reappendAxis(){
     d3.selectAll("#"+containerID + "_bar-chart .x.axis .tick text").remove()
+    d3.selectAll("#"+containerID + "_bar-chart .x.axis").remove()
     barSvg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + barBase+ ")")
@@ -516,7 +718,7 @@ var barSvg, barXAxis, barBase;
           bar.classed("hover",false)
         }
       }
-      reapppendAxis()
+      reappendAxis()
       valueDiv.text(function(){
         //handle here instead of in parseVal bc formatter returns strings
           if (value == "NaN"){
@@ -553,7 +755,7 @@ var barSvg, barXAxis, barBase;
       d3.selectAll(".hover").classed("hover",false)
       d3.selectAll(".demphasized").classed("demphasized",false)
       d3.selectAll(".text-highlight").classed("text-highlight",false)
-      reapppendAxis()
+      reappendAxis()
 
     }
   }
@@ -625,7 +827,7 @@ function drawScatterPlot(config){
 
   drawTooltip()
   drawTitle()
-  drawPlot()
+  if(!MOBILE){ drawPlot() }
 
 
   function drawTitle(){
@@ -761,7 +963,7 @@ function drawScatterPlot(config){
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var legend = svg.append("g")
-      .attr("transform", "translate(-19 ,-20)");
+      .attr("transform", "translate(-19,-20)");
     var regions = ["Northeast", "Midwest", "South", "West"]
     for(var i = 0; i< regions.length; i++){
       legend.append("rect")
@@ -831,7 +1033,7 @@ function drawScatterPlot(config){
         .attr("transform","rotate(-90)")
         .attr("class", "label")
         .attr("y", 6)
-        .attr("dx", function(){ console.log(this); return "-25em"})
+        .attr("dx", function(){ return "-25em"})
         .attr("dy", "-4em")
         .text(config.y.label)
 
@@ -1016,6 +1218,8 @@ function getNiceBreaks(min,max,bins){
 
 
 function drawGraphic(){
+  SMALL_SCREEN = Modernizr.mq('only all and (max-width: 990px)')
+  MOBILE = Modernizr.mq('only all and (max-width: 768px)')
 
   $(document).keyup(function(e) {
     if (e.keyCode == 27) { d3.selectAll(".click").classed("click",false) }// escape key deselects everything
@@ -1027,6 +1231,10 @@ function drawGraphic(){
   $.each(semConfig.ScatterPlots, function(figureName, config) {
       drawScatterPlot(config)
   });
+
+  d3.select("body")
+  .classed("small_screen",SMALL_SCREEN)
+  .classed("mobile",MOBILE)
 }
 
 drawGraphic();

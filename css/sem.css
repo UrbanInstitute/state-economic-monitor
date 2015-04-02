@@ -1004,4 +1004,92 @@ margin: 0.5cm;
     }
 }
 
+/********SMALL SCREEN STYLES **********/
+.small_screen .x.axis .tick text{
+  display: none;
+}
+
+/********MOBILE STYLES **********/
+.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile [id$=_tooltip]{
+  display: none;
+}
+
+.mobile h1{
+  font-size: 20pt;
+  padding-top: 6px;
+}
+
+.mobile-state, .mobile-usa{
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mobile-state{
+  margin-top: 20px;
+}
+.mobile-usa{
+  margin-top: -42px;
+}
+.mobile-state .label, .mobile-usa .label{
+  width: 10%;
+  margin-right: 12px;
+  font: 12pt Lato;
+  color: #000;
+  position: relative;
+  left: 80px;
+  top: 25px;
+}
+
+.mobile-state .amount, .mobile-usa .amount{
+  position: relative;
+  top: -42px;
+}
+
+.mobile-state .bar, .mobile-usa .bar{
+  fill: #29abe2;
+}
+
+.mobile-usa .bar{
+  fill: #fdbf11;
+}
+
+
+
+select{
+   display: block;
+   background: transparent;
+   width: 300px;
+   font-size: 16px;
+   border: none;
+   height: 34px; 
+   margin: 50px;
+   width: 270px;
+   height: 34px;
+   border-radius: none !important;
+   margin-right: auto;
+   margin-left: auto;
+   font: 20pt Lato;
+   font-weight: 400;
+   color: #29abe2;
+   /*overflow: hidden;*/
+   /*background: url(http://www.stackoverflow.com/favicon.ico) 96% / 20% no-repeat #ddd;*/
+}
+
+select:focus{
+  outline: none;
+}
+
+option{
+  font: 12pt Lato;
+}
+
+
+
+
+
+
+
+
+
 
