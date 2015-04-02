@@ -1077,19 +1077,18 @@ margin: 0.5cm;
 
 
 /********SMALL SCREEN STYLES **********/
-.small_screen .x.axis .tick text{
+.small_screen [id$=_bar-chart] .x.axis .tick text{
   display: none;
 }
-
-
-
 
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
+
+.mobile [id$=_bar-chart], .mobile [id$=_mobile-bar], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text{
   display: none;
 }
 
-.scatter .value-text{
+
+.mobile .scatter .value-text{
   display: block !important;
 }
 

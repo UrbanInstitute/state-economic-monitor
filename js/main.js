@@ -281,7 +281,7 @@ function drawMapFigure(dataID, config){
   }
   function drawMap(){
     d3.select("#instructions")
-    .text("Rollover the bar charts, scatter plots and maps to see additional data.")
+    .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     
@@ -991,7 +991,11 @@ function drawScatterPlot(config){
     var $graphic = $("#"+containerID + "_plot");
 
     var aspect_width = 2;
-    var aspect_height = .8;
+    var aspect_height;
+    if(SMALL_SCREEN){
+      aspect_height = 1.2;
+    }else{ aspect_height = .8; }
+    
     var margin = { top: 30, right: 40, bottom: 30, left: 80 };
     var width = $graphic.width() - margin.left - margin.right;
 
@@ -1091,7 +1095,14 @@ function drawScatterPlot(config){
         .attr("transform","rotate(-90)")
         .attr("class", "label")
         .attr("y", 6)
-        .attr("dx", function(){ return "-25em"})
+        .attr("dx", function(){ 
+          if(SMALL_SCREEN){
+            return "-12em"
+          }
+          else{
+            return "-25em"
+          }
+        })
         .attr("dy", "-4em")
         .text(config.y.label)
 
