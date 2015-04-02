@@ -281,7 +281,7 @@ function drawMapFigure(dataID, config){
   }
   function drawMap(){
     d3.select("#instructions")
-    .text("Rollover the bar charts, scatter plots and maps to see additional data.")
+    .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     
