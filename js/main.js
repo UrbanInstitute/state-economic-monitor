@@ -106,22 +106,24 @@ function drawMapFigure(dataID, config){
     var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value;
     
     var getWidth = function(val){
-      return 240 * parseFloat(val)/parseFloat(widthVal);
+      // console.log(  parseFloat($("#" + containerID + "_mobile-bar").width())   )
+      return parseFloat($("#" + containerID + "_mobile-bar").width()) * parseFloat(val)/parseFloat(widthVal);
     }
 
     state.append('div')
       .text(maxCode)
       .attr("class", "label")
+      .style("left",0.75*getWidth(widthVal)/2+ "px")
    var sSvg = state
       .append("svg")
+      .attr("width", function(){ return getWidth(widthVal) + "px"})
     sSvg.append("g")
       .append("rect")
-      .attr("width", function(){ return getWidth(maxVal)})
+      .attr("width", function(){ return 0.7*getWidth(maxVal) + "px"})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
       .attr("y","4")
       .attr("class","bar")
-
     sSvg.append('line')
       .attr("x1",getWidth(widthVal)/2)
       .attr("x2",getWidth(widthVal)/2)
@@ -136,16 +138,17 @@ function drawMapFigure(dataID, config){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return  123 + getWidth(maxVal) + "px" });
+      .style("left",function(){ return 1.72*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
       .attr("class", "label")
+      .style("left",0.75*getWidth(widthVal)/2+ "px")
     var uSvg = usa
       .append("svg")
     uSvg.append("g")
       .append("rect")
-      .attr("width", function(){ return getWidth(usVal)})
+      .attr("width", function(){ return 0.7*getWidth(usVal)})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
       .attr("y","4")
@@ -156,7 +159,7 @@ function drawMapFigure(dataID, config){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return  123 + getWidth(usVal) + "px" });
+      .style("left",function(){ return getWidth(maxVal) + 0.72*getWidth(usVal) + "px" });
 
 
     uSvg.append('line')
@@ -167,11 +170,11 @@ function drawMapFigure(dataID, config){
       .attr("class","mobile-axis")
 
     state.select("svg")
-      .attr("width","300")
+      .attr("width",getWidth(widthVal))
       .attr("height","40")
 
     usa.select("svg")
-      .attr("width","300")
+      .attr("width",getWidth(widthVal))
       .attr("height","40")
 
 
@@ -217,7 +220,8 @@ function drawMapFigure(dataID, config){
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","80px");
+        .style("left",0.75*getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
@@ -235,38 +239,38 @@ function drawMapFigure(dataID, config){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  123 + getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(maxVal) + 0.72*getWidth(value) + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","80px");
+        .style("left",0.75*getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
         .attr("width",function(){
-          return getWidth(value)
+          return 0.7*getWidth(value)
         })
         .attr("x",getWidth(widthVal)/2)
       }
       else{
-
-
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
         .text(function(){
           if (config["unit-type"] == "percent") { return formatter(value) + "%" }
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  70 + getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(maxVal) - getWidth(Math.abs(value)) - 40 + "px"  });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","125px");
+        .style("left",getWidth(widthVal)/2+ "px")
+
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
-        .attr("width", getWidth(Math.abs(value)))
-        .attr("x",getWidth(widthVal)/2 + getWidth(value))
+        .attr("width", 0.7*getWidth(Math.abs(value)))
+        .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
     });
 

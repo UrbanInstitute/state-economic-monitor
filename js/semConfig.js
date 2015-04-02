@@ -168,7 +168,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>United States Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
 					"id": "figure_income-taxes",
@@ -180,7 +180,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>United States Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
@@ -192,7 +192,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>United States Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
 					"id": "figure_sales-taxes",
@@ -204,7 +204,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>United States Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
 		
 	}

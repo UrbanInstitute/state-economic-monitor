@@ -1032,7 +1032,7 @@ margin: 0.5cm;
 
 
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
+.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text{
   display: none;
 }
 
@@ -1048,7 +1048,7 @@ margin: 0.5cm;
 
 
 .mobile-state, .mobile-usa{
-  width: 300px;
+  /*width: 300px;*/
   margin-right: auto;
   margin-left: auto;
 }
@@ -1072,7 +1072,7 @@ margin: 0.5cm;
 
 .mobile-state .amount, .mobile-usa .amount{
   position: relative;
-  top: -38px;
+  top: -34px;
 }
 
 .mobile-state .bar, .mobile-usa .bar{
