@@ -75,11 +75,15 @@ function drawMapFigure(dataID, config){
 
     if (!MOBILE){ drawMap() }
     if (!MOBILE){ drawBars() }
-    if(MOBILE){ drawMobile() }
+    if(MOBILE){ 
+      drawMobile() 
+    }
     drawTooltip()
     drawTitle()
 
   function drawMobile(){
+    d3.select(".instructions")
+      .text("Select a state from the dropdown menus. Largest values are selected by default.")
     var widthVal = Math.max(parseFloat(maxIn), Math.abs(parseFloat(minIn)))*2
     var formatter = d3.format(".1f")
     var dollarFormatter = d3.format("$0f")
@@ -96,26 +100,36 @@ function drawMapFigure(dataID, config){
     var maxVal = Math.max.apply(Math,noNaN.map(function(o){
       return o.value
     }))
-    var maxObj = slice.filter(function(obj){return obj.value == maxVal})
-    var maxCode = maxObj[0].geography.code
-    var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
+    var maxObj = slice.filter(function(obj){return obj.value == maxVal});
+    var maxCode = maxObj[0].geography.code;
+    var maxName = maxObj[0].geography.name;
+    var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value;
     
     var getWidth = function(val){
-      return 240 * parseFloat(val)/parseFloat(widthVal)
+      return 240 * parseFloat(val)/parseFloat(widthVal);
     }
 
     state.append('div')
       .text(maxCode)
       .attr("class", "label")
-    state
+   var sSvg = state
       .append("svg")
-      .append("g")
+    sSvg.append("g")
       .append("rect")
       .attr("width", function(){ return getWidth(maxVal)})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
-      .attr("y","0")
+      .attr("y","4")
       .attr("class","bar")
+
+    sSvg.append('line')
+      .attr("x1",getWidth(widthVal)/2)
+      .attr("x2",getWidth(widthVal)/2)
+      .attr("y1",-100)
+      .attr("y2",100)
+      .attr("class","mobile-axis")
+
+      // .attr("class", "mobile-axis")
     state.append('div')
       .text(function(){
         if (config["unit-type"] == "percent") { return formatter(maxVal) + "%" }
@@ -124,18 +138,17 @@ function drawMapFigure(dataID, config){
       .attr("class","amount")
       .style("left",function(){ return  123 + getWidth(maxVal) + "px" });
 
-
     usa.append('div')
       .text('US')
       .attr("class", "label")
-    usa
+    var uSvg = usa
       .append("svg")
-      .append("g")
+    uSvg.append("g")
       .append("rect")
       .attr("width", function(){ return getWidth(usVal)})
       .attr("height","30")
       .attr("x",getWidth(widthVal)/2)
-      .attr("y","0")
+      .attr("y","4")
       .attr("class","bar")
     usa.append('div')
       .text(function(){
@@ -144,6 +157,14 @@ function drawMapFigure(dataID, config){
       })
       .attr("class","amount")
       .style("left",function(){ return  123 + getWidth(usVal) + "px" });
+
+
+    uSvg.append('line')
+      .attr("x1",getWidth(widthVal)/2)
+      .attr("x2",getWidth(widthVal)/2)
+      .attr("y1",-100)
+      .attr("y2",100)
+      .attr("class","mobile-axis")
 
     state.select("svg")
       .attr("width","300")
@@ -170,7 +191,7 @@ function drawMapFigure(dataID, config){
 
    d3.selectAll("#" + containerID + "_mobile-select option")
     .attr("selected", function(d){
-      if (d == "District of Columbia"){ return "selected"}
+      if (d == maxName){ return "selected"}
     })
 
 
@@ -236,11 +257,11 @@ function drawMapFigure(dataID, config){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  100 + getWidth(value) + "px" });
+        .style("left",function(){ return  70 + getWidth(value) + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
-        .style("left","120px");
+        .style("left","125px");
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .bar")
         .transition()
@@ -259,6 +280,8 @@ function drawMapFigure(dataID, config){
 
   }
   function drawMap(){
+    d3.select("#instructions")
+    .text("Rollover the bar charts, scatter plots and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     

@@ -1010,13 +1010,17 @@ margin: 0.5cm;
 }
 
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile [id$=_tooltip]{
+.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .region-text, .value-text{
   display: none;
 }
 
 .mobile h1{
   font-size: 20pt;
   padding-top: 6px;
+}
+
+.mobile .map-source{
+  width: 74%;
 }
 
 .mobile-state, .mobile-usa{
@@ -1026,6 +1030,7 @@ margin: 0.5cm;
 }
 
 .mobile-state{
+  height: 82px;
   margin-top: 20px;
 }
 .mobile-usa{
@@ -1038,12 +1043,12 @@ margin: 0.5cm;
   color: #000;
   position: relative;
   left: 80px;
-  top: 25px;
+  top: 29px;
 }
 
 .mobile-state .amount, .mobile-usa .amount{
   position: relative;
-  top: -42px;
+  top: -38px;
 }
 
 .mobile-state .bar, .mobile-usa .bar{
@@ -1054,6 +1059,9 @@ margin: 0.5cm;
   fill: #fdbf11;
 }
 
+.mobile-axis{
+  stroke: #000;
+}
 
 
 select{
