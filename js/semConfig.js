@@ -28,7 +28,7 @@ var semConfig = {
 					"id": "figure_level_vs_change_unemployment",
 					"title": "Unemployment Rate: Level vs. One-Year-Change",
 					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
-					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics</a>",
+					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>",
 					"x":{
 						"id":"UNEMP",
 						"label": "Unemployment rate",
@@ -52,7 +52,7 @@ var semConfig = {
 					"id": "total_change_emp_vs_public_change_emp",
 					"title": "Total Employment vs. Public Employment",
 					"subtitle": "Total public-sector employment {{y-usa-changed}} from {{y-date-previous}} to {{y-date-updated}}, staying well below the {{x-usa-value}} increase in total employment.",
-					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics</a>",
+					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>",
 					"x":{
 						"id":"EMP",
 						"label": "Total employment",
@@ -76,7 +76,7 @@ var semConfig = {
 					"id": "housing_change_vs_2007_housing_change",
 					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
 					"subtitle": "National house prices in the third quarter of 2014 were still 6.2 percent below the peak in house prices during the first quarter of 2007.",
-					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes</a>",
+					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes.</a>",
 					"x":{
 						"id":"HPChgYr",
 						"label": "Percent change year over year",
@@ -108,7 +108,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
 					"breaks": ["{{min}}",4,5,6,7,"{{max}}"],
-					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics</a>"
+					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>"
 				},		
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
@@ -120,7 +120,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
 					"breaks": ["{{min}}",1,2,3,4,"{{max}}"],
-					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics</a>"
+					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWW":	{
 					"id": "figure_wages",
@@ -132,7 +132,7 @@ var semConfig = {
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
 					"breaks": ["{{min}}",700,800,900,999,"{{max}}"],
-					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics</a>"
+					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
 					"id": "figure_wages-change",
@@ -144,7 +144,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,-1,0,1,"{{max}}"],
-					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics</a>"
+					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
 					"id": "figure_house-prices",
@@ -156,7 +156,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",2,4,6,8,"{{max}}"],
-					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Agency</a>"
+					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Agency.</a>"
 				},
 		"TOTAL":	{
 					"id": "figure_total-taxes",
@@ -168,7 +168,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
 					"id": "figure_income-taxes",
@@ -180,7 +180,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
@@ -192,7 +192,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
 					"id": "figure_sales-taxes",
@@ -204,7 +204,7 @@ var semConfig = {
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
 		
 	}
