@@ -776,7 +776,7 @@ footer a:hover{
 }
 
 .demphasized{
-	fill: #dcdcdc !important;
+	fill: #cfcfcf !important;
 }
 
 .q0-4 { fill:#b0d5f1; }
@@ -785,11 +785,11 @@ footer a:hover{
 .q3-4 { fill:#00578b; }
 .q4-4 { fill:#061b5a; }
 
-.states.no-data{ fill: #e6e7e8;}
+rect.no-data, .states.no-data{ fill: #eeeeee;}
 
 /*Bar Chart*/
-.usa-bar{
-	fill: #c6c6c6;
+.usa-bar, .dot.USA{
+	fill: #000;
    /*fill: #fdbf11;*/
 }
 

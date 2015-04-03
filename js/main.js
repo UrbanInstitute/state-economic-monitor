@@ -340,6 +340,29 @@ function drawMapFigure(dataID, config, print){
 
         }
 
+          legend.append("rect")
+            .attr("width",keyWidth/2)
+            .attr("height",keyHeight)
+            .attr("class","no-data")
+            .attr("x",keyWidth * 5.5)
+            .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "no-data"}, "hover") })
+            .on("mouseout", function(){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+            })
+            .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "no-data"}, "click") })
+          legend.append("text")
+            .text("No Data")
+            .attr("class","legend-labels")
+            .style("font-weight","300")
+            .style("font-style","italic")
+            .attr("x",5)
+            .attr("y",keyWidth * 5.9)
+            .attr("transform","rotate(-90)")
+
+
+
         legend.append("text")
           .attr("x",5)
           .attr("class","legend-labels " + dataID)
