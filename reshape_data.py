@@ -5,6 +5,7 @@ from collections import OrderedDict
 import json
 import time
 import sys
+from math import ceil
 
 try:
     EMP_DATE = sys.argv[1]
@@ -191,11 +192,14 @@ def parseWage():
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
+        fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
+        fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
 
 def createXLS():
+    tabs = downloadTabNames()
     book = xlwt.Workbook()
 
-    employment = book.add_sheet("employment")
+    employment = book.add_sheet(tabs["employment"])
     employment.write(0,0,"state_name")
     employment.write(0,1,"state_postal_code")
     employment.write(0,2,"state_FIPS")
@@ -206,14 +210,14 @@ def createXLS():
     employment.write(0,6,"total_nonfarm_payroll_employment_(percent_change_year_over_year)")
     employment.write(0,7,"public_sector_employment_(percent_change_year_over_year)")
 
-    rucData = figureData['RUC']['data']
+    unempData = figureData['UNEMP']['data']
     unempChgData = figureData['UNEMPChg']['data']
     empChgData = figureData['EMP']['data']
     govtData = figureData['GOVT']['data']
 
-    for i in range (0, len(rucData)):
+    for i in range (0, len(unempData)):
         row = i+1
-        obj = rucData[i]
+        obj = unempData[i]
         employment.write(row, 0, obj["geography"]["name"])
         employment.write(row, 1, obj["geography"]["code"])
         if obj["geography"]["fips"] != "-99":
@@ -237,7 +241,7 @@ def createXLS():
 
 
 
-    wages = book.add_sheet("wages")
+    wages = book.add_sheet(tabs["wages"])
     wages.write(0,0,"state_name")
     wages.write(0,1,"state_postal_code")
     wages.write(0,2,"state_FIPS")
@@ -267,7 +271,7 @@ def createXLS():
 
 
 
-    housing = book.add_sheet("housing")
+    housing = book.add_sheet(tabs["housing"])
     housing.write(0,0,"state_name")
     housing.write(0,1,"state_postal_code")
     housing.write(0,2,"state_FIPS")
@@ -297,7 +301,7 @@ def createXLS():
 
 
 
-    taxes = book.add_sheet("taxes")
+    taxes = book.add_sheet(tabs["taxes"])
     taxes.write(0,0,"state_name")
     taxes.write(0,1,"state_postal_code")
     taxes.write(0,2,"state_FIPS")
@@ -337,8 +341,17 @@ def createXLS():
                  taxes.write(row, 7, secondObj["value"])
                  break
 
-    book.save('data/download/' + '' + '-SEM_data.xls')
+    book.save('data/download/' + downloadFileName())
 
+def downloadFileName():
+    return 'SEM_data_employment-'+EMP_DATE.replace("/","-")+"_tax-"+ quarter(TAX_DATE) + ".xls"
+def downloadTabNames():
+    return {"employment":"employment_" + EMP_DATE.replace("/","-"), "wages":"wages_" + EMP_DATE.replace("/","-"),"housing":"housing_" + quarter(TAX_DATE),"taxes":"taxes_" + quarter(TAX_DATE)}
+def quarter(d):
+    month = d.split("/")[0]
+    year = d.split("/")[1]
+    q = ceil(float(month)/3.0)
+    return 'Q' + str(int(q)) + "-" + year
 
 def parseData():
     parseXlSX("current_employment")
@@ -350,7 +363,7 @@ def parseData():
     parseEmployment()
     parseWage()
 
-    # createXLS()
+    createXLS()
 
 buildStateFIPS()
 parseData()

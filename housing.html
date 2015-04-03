@@ -120,7 +120,7 @@ Assessing quarterly state house prices data compared to one year earlier and the
                      
                           <div id = "housing_change_vs_2007_housing_change"></div>
       
-                            <div class="explainerText"><p>National house prices were 4.9 percent lower in the fourth quarter of 2014 than at their peak in the first quarter of 2007, and 32 states had fourth quarter prices still below 2007 levels. House prices remained well below first quarter 2007 levels in Nevada (-33.3 percent), Florida (-26.8 percent), and California (-19.5 percent) despite year-over-year price increases of 7 percent or more in all three states. Maryland and Vermont were the only states that saw both house prices below their first quarter 2007 levels and year-over-year declines. The largest increases in house prices relative to the first quarter of 2007 were in North Dakota (44.2 percent), DC (36.1 percent), Texas (23 percent), and Colorado (19.2 percent).</p>           <div class="download">   <a href="#">Download Data</a></div>
+                            <div class="explainerText"><p>National house prices were 4.9 percent lower in the fourth quarter of 2014 than at their peak in the first quarter of 2007, and 32 states had fourth quarter prices still below 2007 levels. House prices remained well below first quarter 2007 levels in Nevada (-33.3 percent), Florida (-26.8 percent), and California (-19.5 percent) despite year-over-year price increases of 7 percent or more in all three states. Maryland and Vermont were the only states that saw both house prices below their first quarter 2007 levels and year-over-year declines. The largest increases in house prices relative to the first quarter of 2007 were in North Dakota (44.2 percent), DC (36.1 percent), Texas (23 percent), and Colorado (19.2 percent).</p>           <div class="download"><a href="#">Download Data</a></div>
  </div><!--close expalinerText -->
                      
                  
@@ -168,6 +168,9 @@ new Headroom(header, {
 	<script src = "js/semConfig.js"></script>
 	<script src = "js/main.js"></script> 
     <script> $(document).ready(function() {
+    var test = d3.selectAll(".download a")
+    .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.housing + "!a1")
+    console.log(test)
     $('.hover').bind('touchstart touchend', function(e) {
         e.preventDefault();
         $(this).toggleClass('hover_effect');
