@@ -888,7 +888,6 @@ width:24%;
   }
     
     
-    
  .container{
  width:95%;     
 }
@@ -1006,8 +1005,8 @@ footer p { margin-top:15px; margin-left:5px; width:100%;}
 @media (max-width: 450px) {
     
 .container {width: 100%;}    
- .mobile h1{font-size:14pt;}
-   #menu ul li{font-size:14px;}
+ .mobile h1{font-size:17px; text-align: left; padding-top:25px;}
+   #menu ul li{font-size:13px;}
     
    h3{font-size:17px;}  
     
