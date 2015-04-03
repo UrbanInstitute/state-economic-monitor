@@ -136,7 +136,7 @@ width:22%;
     
 }
 
-#menu ul li:hover{
+#menu ul li:hover, #menu ul li.hover_effect {
     
     background-color: rgba(0, 166, 210, .8);
 }

@@ -177,6 +177,12 @@ new Headroom(header, {
 	<script src = "js/figureData.js"></script>
 	<script src = "js/semConfig.js"></script>
 	<script src = "js/main.js"></script> 
+          <script> $(document).ready(function() {
+    $('.hover').bind('touchstart touchend', function(e) {
+        e.preventDefault();
+        $(this).toggleClass('hover_effect');
+    });
+});</script> 
 
   </body>
 </html>
