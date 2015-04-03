@@ -826,7 +826,7 @@ rect.states{
 .grid-line{
 	stroke: #cccccc;
 }
-
+/*this is keeping the index page secondary menu labels in the center*/
 @media (min-width:768px) and (max-width:1000px){
  #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:100px;}   
     
@@ -856,12 +856,14 @@ footer p{width:45%;}
     #header{
  position:absolute;
     }
-      
+     .navbar-default{background-color: #222222;}
+ 
     #menu{
     position: fixed;
+    background-color: #222222;
      bottom:0px;
     height:55px;
-    background-color: #333333;
+  
     }
     
   #menu ul{
@@ -915,6 +917,9 @@ width:24%;
     margin-top: 0;
     width: 80%;
 }
+    
+    
+#imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:75px;}   
     
 /*did this b/c i was seeing scroll bars around the figures */
 .figure-container{
@@ -1001,9 +1006,10 @@ footer{
 height:80px;
 margin-top:15px;   
 margin-bottom:50px;
+    background-color: #ffffff;
 }
     
-footer p { margin-top:15px; margin-left:5px; width:100%;}
+footer p { color:#000000; margin-top:15px; margin-left:5px; width:100%;}
     footer img{ display:none;}
     
     .archiveMonth{ margin-bottom:20px;}
@@ -1018,13 +1024,12 @@ footer p { margin-top:15px; margin-left:5px; width:100%;}
 .container {width: 100%;}    
  .mobile h1{font-size:17px; text-align: left; padding-top:25px;}
    #menu ul li{font-size:13px;}
-    
-   h3{font-size:17px;}  
-    
+h3{font-size:17px;}  
     .section170{ padding-top:90px;   }
     .sectionfooter { padding-bottom:30px;}
     .shortpages {position: relative;}
-    footer{ height:95px;}
+    footer{ height:95px;margin-bottom:50px;}
+    footer p{margin-top:5px;}
 
 }
 
