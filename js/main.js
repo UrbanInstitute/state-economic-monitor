@@ -3,7 +3,7 @@
  */
 ;window.Modernizr=function(a,b,c){function v(a){i.cssText=a}function w(a,b){return v(prefixes.join(a+";")+(b||""))}function x(a,b){return typeof a===b}function y(a,b){return!!~(""+a).indexOf(b)}function z(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:x(f,"function")?f.bind(d||b):f}return!1}var d="2.8.3",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l={},m={},n={},o=[],p=o.slice,q,r=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},s=function(b){var c=a.matchMedia||a.msMatchMedia;if(c)return c(b)&&c(b).matches||!1;var d;return r("@media "+b+" { #"+g+" { position: absolute; } }",function(b){d=(a.getComputedStyle?getComputedStyle(b,null):b.currentStyle)["position"]=="absolute"}),d},t={}.hasOwnProperty,u;!x(t,"undefined")&&!x(t.call,"undefined")?u=function(a,b){return t.call(a,b)}:u=function(a,b){return b in a&&x(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=p.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(p.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(p.call(arguments)))};return e});for(var A in l)u(l,A)&&(q=A.toLowerCase(),e[q]=l[A](),o.push((e[q]?"":"no-")+q));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)u(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},v(""),h=j=null,e._version=d,e.mq=s,e.testStyles=r,e}(this,this.document);
 
-
+var IS_IE = false;
 var SMALL_SCREEN;
 var MOBILE;
 var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
@@ -715,7 +715,7 @@ var barSvg, barXAxis, barBase;
       d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
       d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
 
-      // barNode.parentNode.appendChild(barNode)
+      if(!IS_IE){ barNode.parentNode.appendChild(barNode) }
 
       var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
       var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
@@ -728,7 +728,7 @@ var barSvg, barXAxis, barBase;
         resizeTooltip(dataID);
       }
       else{
-        // stateNode.parentNode.appendChild(stateNode)
+        if(!IS_IE){ stateNode.parentNode.appendChild(stateNode) }
 
 
         var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
@@ -790,7 +790,7 @@ var barSvg, barXAxis, barBase;
 
       var states = d3.selectAll("." + dataID + "." + element.class)
       states.classed({"demphasized": false})
-      states[0].forEach(function(s){ s.parentNode.appendChild(s)})
+      if(!IS_IE){ states[0].forEach(function(s){ s.parentNode.appendChild(s)}) }
     }
 
     else if(element.type == "Background"){
@@ -1317,6 +1317,9 @@ function getNiceBreaks(min,max,bins){
 
 
 function drawGraphic(){
+  if(getInternetExplorerVersion() != -1){
+    IS_IE = true;
+  }
   SMALL_SCREEN = Modernizr.mq('only all and (max-width: 990px)')
   MOBILE = Modernizr.mq('only all and (max-width: 768px)')
 
@@ -1340,6 +1343,20 @@ drawGraphic();
 window.onresize = drawGraphic;
 
 
+function getInternetExplorerVersion()
+// Returns the version of Internet Explorer or a -1
+// (indicating the use of another browser).
+{
+  var rv = -1; // Return value assumes failure.
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
+}
 // (function() {
 //     var afterPrint = function() {
 //         $.each(semConfig.Maps, function(dataID, config) {
