@@ -144,7 +144,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return 1.72*getWidth(maxVal) + "px" });
+      .style("left",function(){ console.log(maxVal); return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
@@ -165,7 +165,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return getWidth(maxVal) + 0.72*getWidth(usVal) + "px" });
+      .style("left",function(){ return getWidth(widthVal/2) + 0.73*getWidth(usVal) + "px" });
 
 
     uSvg.append('line')
@@ -227,7 +227,7 @@ function drawMapFigure(dataID, config, print){
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
         .text("No data")
         .transition()
-        .style("left",function(){ return "175px" });
+        .style("left",function(){ return 5+getWidth(widthVal)/2 + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
@@ -250,7 +250,7 @@ function drawMapFigure(dataID, config, print){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  getWidth(maxVal) + 0.72*getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(widthVal)/2 + 0.72*getWidth(value) + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
@@ -271,7 +271,7 @@ function drawMapFigure(dataID, config, print){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  getWidth(maxVal) - getWidth(Math.abs(value)) - 40 + "px"  });
+        .style("left",function(){ return  getWidth(widthVal)/2 - getWidth(Math.abs(value)) - 40 + "px"  });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
