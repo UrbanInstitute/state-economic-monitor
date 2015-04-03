@@ -694,8 +694,8 @@ var barSvg, barXAxis, barBase;
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
 
       var states = d3.selectAll(".FIPS_" + element.id)
-      var stateNode = state[0][0]
-      var barNode = bar[0][0]
+      var stateNode = state.node()
+      var barNode = bar.node()
 
       var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
       var name = obj.geography.name
