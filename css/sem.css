@@ -1069,8 +1069,14 @@ margin-top: 1.5cm;
 
 
 /********MOBILE STYLES **********/
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text{
+.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text, .mobile .quarter-text, .mobile .year-text{
   display: none;
+}
+
+.mobile [id$=_tooltip]{
+  height: 25px;
+  text-align: center;
+  font-style: italic;
 }
 
 .scatter .value-text{

@@ -197,9 +197,19 @@ function drawMapFigure(dataID, config, print){
     .attr("selected", function(d){
       if (d == maxName){ return "selected"}
     })
-    console.log(".tooltip-container." + dataID, d3.selectAll(".tooltip-container." + dataID))
-    d3.select(".tooltip-container." + dataID).text("foo")
-
+    // console.log(".tooltip-container." + dataID, d3.selectAll(".tooltip-container." + dataID))
+    // console.log(dataID)
+    // d3.select(".tooltip-container." + dataID).text("foo")
+    var tooltip = d3.select("#" + containerID + "_tooltip")
+    console.log(containerID, tooltip)
+    tooltip.text(function(){
+      if(config["date-format"] == "month"){
+        return "As of " + MONTHNAMES[dateUpdated.split("/")[0]-1] + " " + dateUpdated.split("/")[1]
+      }
+      else{
+        return "As of the " + getQuarter(dateUpdated.split("/")[0]) + " quarter of " + dateUpdated.split("/")[1]
+      }
+    })
 
     d3.select("#" + containerID + "_mobile-select select")
       .on("change", function(){
