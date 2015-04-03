@@ -9,8 +9,11 @@ var MOBILE;
 var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
+var PRINT_WIDTH = 650;
+var PRINT_BAR_HEIGHT = 200;
 
-function drawMapFigure(dataID, config){
+function drawMapFigure(dataID, config, print){
+   // if(print){d3.select("body").style("width",PRINT_WIDTH + "px")}
  // data is an array of objects, each of form
 // {
 //   "geography":
@@ -51,25 +54,25 @@ function drawMapFigure(dataID, config){
       
     }
 
-    var parent = d3.select("#"+containerID)
-    parent.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
+    var parentElem = d3.select("#"+containerID)
+    parentElem.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
     $("#"+containerID).empty()
-    parent.attr("class", "figure-container")
+    parentElem.attr("class", "figure-container")
 
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_title")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_mobile-select")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_mobile-bar")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_bar-chart")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_tooltip")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_map")
       .attr("class", "map-container")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id", containerID + "_source")
       .attr("class", "map-source")
 
@@ -273,6 +276,9 @@ function drawMapFigure(dataID, config){
         .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
     });
+    // console.log(d3.select(".tooltip-container." + dataID), ".tooltip-container." + dataID)
+    // d3.selectAll(".tooltip-container").attr("style","width:150px !important")
+    resizeTooltip(dataID)
 
   }
   function drawMap(){
@@ -285,7 +291,10 @@ function drawMapFigure(dataID, config){
     var aspect_width = 10;
     var aspect_height = 3.3;
     var margin = { top: 0, right: 10, bottom: 40, left: 20 };
-    var width = ($graphic.width() - margin.left - margin.right);
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
+    
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -318,7 +327,11 @@ function drawMapFigure(dataID, config){
             .attr("class",dataID + " q" + i + "-4")
             .attr("x",keyWidth*i)
             .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "hover") })
-            .on("mouseout", function(){mouseEvent(dataID,this,"exit")})
+            .on("mouseout", function(){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+            })
             .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "click") })
 
         }
@@ -373,7 +386,11 @@ function drawMapFigure(dataID, config){
           .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
           .attr("d", path)
           .on("mouseover", function(d){mouseEvent(dataID,d,"hover")})
-          .on("mouseout", function(d){mouseEvent(dataID,d,"exit")})
+          .on("mouseout", function(d){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+          })
           .on("click", function(d){mouseEvent(dataID,d,"click")})
 
     }
@@ -387,9 +404,15 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 10, left: 30 };
-    var width = $graphic.width() - margin.left - margin.right;
-    var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
+    var margin = { top: 0, right: 0, bottom: 10, left: 30 };
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
+    // var width = 500;
+    // d3.select("body").style("width","500px")
+    var height;
+    if (!print){ height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom; }
+    else{ height = PRINT_BAR_HEIGHT }
 
     // Bar chart axes
     var x = d3.scale.ordinal()
@@ -520,10 +543,10 @@ var barSvg, barXAxis, barBase;
 
     var xTicks = $("#"+containerID + "_bar-chart .x.axis .tick text")
     xTicks.each(function(index,tick){
-      if(tick.innerHTML == "US"){
+      if(tick.textContent == "US"){
         $(tick).attr("class", "usa-tick")
       }
-      var value = parseVal(slice.filter(function(obj){return obj.geography.code == tick.innerHTML})[0].value,"color")
+      var value = parseVal(slice.filter(function(obj){return obj.geography.code == tick.textContent})[0].value,"color")
       if(typeof(value) == "undefined"){
         $(tick).attr("class","nullTick")
       }
@@ -608,6 +631,9 @@ var barSvg, barXAxis, barBase;
   function resizeTooltip(dataID){
   //Make width of tooltip text shrink-wrapped to width of elements. 3 margins, 3 px extra for rounding errors,
   //plus the widths of the elements
+    if(MOBILE){
+      console.log("mobile")
+    }
     var totalWidth = 30*3 + 1
     $(".tooltip-container." + dataID + " .tooltip-data")
     .each(function(index,value) {
@@ -676,8 +702,8 @@ var barSvg, barXAxis, barBase;
       var bar = d3.select("#bar-outline_" + dataID + "_" + element.id)
 
       var states = d3.selectAll(".FIPS_" + element.id)
-      var stateNode = state[0][0]
-      var barNode = bar[0][0]
+      var stateNode = state.node()
+      var barNode = bar.node()
 
       var obj = slice.filter(function(obj){return obj.geography.fips == element.id})[0]
       var name = obj.geography.name
@@ -689,7 +715,7 @@ var barSvg, barXAxis, barBase;
       d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
       d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
 
-      barNode.parentNode.appendChild(barNode)
+      // barNode.parentNode.appendChild(barNode)
 
       var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
       var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
@@ -702,7 +728,7 @@ var barSvg, barXAxis, barBase;
         resizeTooltip(dataID);
       }
       else{
-        stateNode.parentNode.appendChild(stateNode)
+        // stateNode.parentNode.appendChild(stateNode)
 
 
         var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
@@ -803,7 +829,7 @@ function parseVal(value, useCase){
 
 
 
-function drawScatterPlot(config){
+function drawScatterPlot(config, print){
   var dateUpdated;
   if(config.x["date-format"] == "quarter"){
     dateUpdated = TAX_DATE
@@ -826,23 +852,23 @@ function drawScatterPlot(config){
     data[i]["y"] = result[0]
   }
 
-  var parent = d3.select("#"+containerID)
+  var parentElem = d3.select("#"+containerID)
   $("#"+containerID).empty()
 
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_title")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_mobile-select")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_tooltip")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_plot")
     .attr("class", "plot-container")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_source")
     .attr("class", "plot-source")
 
-  parent.attr("class","figure-container")
+  parentElem.attr("class","figure-container")
 
   var usAvgX = xSlice.filter(function(obj){return obj.geography.code == "US"})[0].value
   var usAvgY = ySlice.filter(function(obj){return obj.geography.code == "US"})[0].value
@@ -995,8 +1021,10 @@ function drawScatterPlot(config){
     }else{ aspect_height = .8; }
     
     var margin = { top: 30, right: 40, bottom: 40, left: 80 };
-    var width = $graphic.width() - margin.left - margin.right;
-
+    // var width = $graphic.width() - margin.left - margin.right;
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
@@ -1297,10 +1325,10 @@ function drawGraphic(){
   });
 
   $.each(semConfig.Maps, function(dataID, config) {
-      drawMapFigure(dataID, config)
+      drawMapFigure(dataID, config, false)
   });
   $.each(semConfig.ScatterPlots, function(figureName, config) {
-      drawScatterPlot(config)
+      drawScatterPlot(config, false)
   });
 
   d3.select("body")
@@ -1310,3 +1338,44 @@ function drawGraphic(){
 
 drawGraphic();
 window.onresize = drawGraphic;
+
+
+// (function() {
+//     var afterPrint = function() {
+//         $.each(semConfig.Maps, function(dataID, config) {
+//             drawMapFigure(dataID, config, true)
+//         });
+//         $.each(semConfig.ScatterPlots, function(figureName, config) {
+//             drawScatterPlot(config, true)
+//         });
+//         console.log('Functionality to run before printing.');
+//     };
+//     var beforePrint = function() {
+//         console.log('Functionality to run after printing');
+//     };
+
+//     if (window.matchMedia) {
+//         var mediaQueryList = window.matchMedia('print');
+//         mediaQueryList.addListener(function(mql) {
+//             if (mql.matches) {
+//                 setTimeout(function(){beforePrint()}, 2000);
+//             } else {
+//                 afterPrint();
+//             }
+//         });
+//     }
+
+//     window.onbeforeprint = setTimeout(beforePrint, 2000);
+//     window.onafterprint = afterPrint;
+// }());
+
+
+
+
+
+
+
+
+
+
+
