@@ -225,7 +225,7 @@ function drawMapFigure(dataID, config, print){
 
       if(value == "#NA"){
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
-        .text("No Data")
+        .text("No data")
         .transition()
         .style("left",function(){ return "175px" });
 
@@ -339,6 +339,29 @@ function drawMapFigure(dataID, config, print){
             .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "click") })
 
         }
+
+          legend.append("rect")
+            .attr("width",keyWidth/2)
+            .attr("height",keyHeight)
+            .attr("class","no-data")
+            .attr("x",keyWidth * 5.5)
+            .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "no-data"}, "hover") })
+            .on("mouseout", function(){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+            })
+            .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "no-data"}, "click") })
+          legend.append("text")
+            .text("No data")
+            .attr("class","legend-labels")
+            .style("font-weight","300")
+            .style("font-style","italic")
+            .attr("x",5)
+            .attr("y",keyWidth * 5.9)
+            .attr("transform","rotate(-90)")
+
+
 
         legend.append("text")
           .attr("x",5)
@@ -745,7 +768,7 @@ var barSvg, barXAxis, barBase;
 
         nameDiv.append("div")
         .attr("class","tooltip-usa-average")
-        .html("US Average: " + "<span class = usa_text-" + dataID + ">" + usAvg + "</span>" )
+        .html("US average: " + "<span class = usa_text-" + dataID + ">" + usAvg + "</span>" )
 
         resizeTooltip(dataID);
 
@@ -772,7 +795,7 @@ var barSvg, barXAxis, barBase;
       valueDiv.text(function(){
         //handle here instead of in parseVal bc formatter returns strings
           if (value == "NaN"){
-            return "No Data"
+            return "No data"
           }
           else if(config["unit-type"] == "percent"){
             return formatter(value) + "%"
@@ -819,7 +842,7 @@ function parseVal(value, useCase){
   else{
     switch(useCase){
       case "text":
-        return "No Data"
+        return "No data"
       case "sort":
         return Number.NEGATIVE_INFINITY
       case "draw":
@@ -990,7 +1013,7 @@ function drawScatterPlot(config, print){
     
     region.append("div")
         .attr("class","tooltip-usa-average hidden")
-        .html("US Average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of " + usY + "</span>" )
+        .html("US average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of " + usY + "</span>" )
 
     resizeTooltip(config.x.id + "v" + config.y.id);
 
@@ -1073,7 +1096,7 @@ function drawScatterPlot(config, print){
 
         region.append("div")
           .attr("class","tooltip-usa-average")
-          .html("US Average: " + "<span class = usa_text-" + "dataID" + ">" + "usAvg" + "</span>" )
+          .html("US average: " + "<span class = usa_text-" + "dataID" + ">" + "usAvg" + "</span>" )
 
         })
         .on("mouseout",function(){ d3.selectAll(".dot").classed("demphasized",false) });   
