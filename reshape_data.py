@@ -193,11 +193,13 @@ def parseWage():
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
+        fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
 
 def createXLS():
+    tabs = downloadTabNames()
     book = xlwt.Workbook()
 
-    employment = book.add_sheet("employment_" + EMP_DATE.replace("/","-"))
+    employment = book.add_sheet(tabs["employment"])
     employment.write(0,0,"state_name")
     employment.write(0,1,"state_postal_code")
     employment.write(0,2,"state_FIPS")
@@ -239,7 +241,7 @@ def createXLS():
 
 
 
-    wages = book.add_sheet("wages_" + EMP_DATE.replace("/","-"))
+    wages = book.add_sheet(tabs["wages"])
     wages.write(0,0,"state_name")
     wages.write(0,1,"state_postal_code")
     wages.write(0,2,"state_FIPS")
@@ -269,7 +271,7 @@ def createXLS():
 
 
 
-    housing = book.add_sheet("housing_" + quarter(TAX_DATE))
+    housing = book.add_sheet(tabs["housing"])
     housing.write(0,0,"state_name")
     housing.write(0,1,"state_postal_code")
     housing.write(0,2,"state_FIPS")
@@ -299,7 +301,7 @@ def createXLS():
 
 
 
-    taxes = book.add_sheet("taxes_" + quarter(TAX_DATE))
+    taxes = book.add_sheet(tabs["taxes"])
     taxes.write(0,0,"state_name")
     taxes.write(0,1,"state_postal_code")
     taxes.write(0,2,"state_FIPS")
@@ -342,9 +344,9 @@ def createXLS():
     book.save('data/download/' + downloadFileName())
 
 def downloadFileName():
-    return 'SEM_data_employment-'+EMP_DATE.replace("/","-")+"_tax-"+ quarter(TAX_DATE)
+    return 'SEM_data_employment-'+EMP_DATE.replace("/","-")+"_tax-"+ quarter(TAX_DATE) + ".xls"
 def downloadTabNames():
-    return {"employment":"employment_" + EMP_DATE.replace("/","-"), "wages":"wages_" + EMP_DATE.replace("/","-"),"housing":"housing_" + quarter(TAX_DATE)}
+    return {"employment":"employment_" + EMP_DATE.replace("/","-"), "wages":"wages_" + EMP_DATE.replace("/","-"),"housing":"housing_" + quarter(TAX_DATE),"taxes":"taxes_" + quarter(TAX_DATE)}
 def quarter(d):
     month = d.split("/")[0]
     year = d.split("/")[1]

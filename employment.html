@@ -250,6 +250,8 @@ new Headroom(header, {
 	<script src = "js/main.js"></script> 
 
           <script> $(document).ready(function() {
+      d3.selectAll(".download a")
+      .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.employment + "!A1")
     $('.hover').bind('touchstart touchend', function(e) {
         e.preventDefault();
         $(this).toggleClass('hover_effect');
