@@ -136,7 +136,7 @@ width:22%;
     
 }
 
-#menu ul li:hover{
+#menu ul li:hover, #menu ul li.hover_effect {
     
     background-color: rgba(0, 166, 210, .8);
 }
@@ -251,7 +251,7 @@ margin-bottom: 1%;
     margin-top: 0;
     position: relative;
     text-align: center;
-    top: 150px;
+    top: 140px;
     width: 250px;
     
 }
@@ -827,7 +827,10 @@ rect.states{
 	stroke: #cccccc;
 }
 
-
+@media (min-width:768px) and (max-width:1000px){
+ #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:100px;}   
+    
+}
 @media (max-width:900px) {
     
  footer img{ width:46%;}
@@ -903,7 +906,15 @@ width:24%;
     margin-top: 0;
 
 }
-    
+
+#imageone, #imagethree, #imagetwo, #imagefour {
+    float: none;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    width: 80%;
+}
     
 /*did this b/c i was seeing scroll bars around the figures */
 .figure-container{
