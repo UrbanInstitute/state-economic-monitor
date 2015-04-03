@@ -1114,9 +1114,10 @@ margin-top: 1.5cm;
 }
 
 
+
+
 select{
    display: block;
-   background-color: white;
    border-radius: none !important;
    width: 290px;
    height: 34px;
