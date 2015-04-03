@@ -9,8 +9,11 @@ var MOBILE;
 var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
+var PRINT_WIDTH = 650;
+var PRINT_BAR_HEIGHT = 200;
 
-function drawMapFigure(dataID, config){
+function drawMapFigure(dataID, config, print){
+   // if(print){d3.select("body").style("width",PRINT_WIDTH + "px")}
  // data is an array of objects, each of form
 // {
 //   "geography":
@@ -273,6 +276,9 @@ function drawMapFigure(dataID, config){
         .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
     });
+    // console.log(d3.select(".tooltip-container." + dataID), ".tooltip-container." + dataID)
+    // d3.selectAll(".tooltip-container").attr("style","width:150px !important")
+    resizeTooltip(dataID)
 
   }
   function drawMap(){
@@ -285,7 +291,10 @@ function drawMapFigure(dataID, config){
     var aspect_width = 10;
     var aspect_height = 3.3;
     var margin = { top: 0, right: 10, bottom: 40, left: 20 };
-    var width = ($graphic.width() - margin.left - margin.right);
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
+    
 
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
@@ -387,9 +396,15 @@ var barSvg, barXAxis, barBase;
 
     var aspect_width = 41;
     var aspect_height = 6;
-    var margin = { top: 20, right: 0, bottom: 10, left: 30 };
-    var width = $graphic.width() - margin.left - margin.right;
-    var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
+    var margin = { top: 0, right: 0, bottom: 10, left: 30 };
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
+    // var width = 500;
+    // d3.select("body").style("width","500px")
+    var height;
+    if (!print){ height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom; }
+    else{ height = PRINT_BAR_HEIGHT }
 
     // Bar chart axes
     var x = d3.scale.ordinal()
@@ -520,10 +535,10 @@ var barSvg, barXAxis, barBase;
 
     var xTicks = $("#"+containerID + "_bar-chart .x.axis .tick text")
     xTicks.each(function(index,tick){
-      if(tick.innerHTML == "US"){
+      if(tick.textContent == "US"){
         $(tick).attr("class", "usa-tick")
       }
-      var value = parseVal(slice.filter(function(obj){return obj.geography.code == tick.innerHTML})[0].value,"color")
+      var value = parseVal(slice.filter(function(obj){return obj.geography.code == tick.textContent})[0].value,"color")
       if(typeof(value) == "undefined"){
         $(tick).attr("class","nullTick")
       }
@@ -608,6 +623,9 @@ var barSvg, barXAxis, barBase;
   function resizeTooltip(dataID){
   //Make width of tooltip text shrink-wrapped to width of elements. 3 margins, 3 px extra for rounding errors,
   //plus the widths of the elements
+    if(MOBILE){
+      console.log("mobile")
+    }
     var totalWidth = 30*3 + 1
     $(".tooltip-container." + dataID + " .tooltip-data")
     .each(function(index,value) {
@@ -803,7 +821,7 @@ function parseVal(value, useCase){
 
 
 
-function drawScatterPlot(config){
+function drawScatterPlot(config, print){
   var dateUpdated;
   if(config.x["date-format"] == "quarter"){
     dateUpdated = TAX_DATE
@@ -995,8 +1013,10 @@ function drawScatterPlot(config){
     }else{ aspect_height = .8; }
     
     var margin = { top: 30, right: 40, bottom: 40, left: 80 };
-    var width = $graphic.width() - margin.left - margin.right;
-
+    // var width = $graphic.width() - margin.left - margin.right;
+    var width;
+    if (!print) { width = ($graphic.width() - margin.left - margin.right); }
+    else{ width =  PRINT_WIDTH}
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
@@ -1297,10 +1317,10 @@ function drawGraphic(){
   });
 
   $.each(semConfig.Maps, function(dataID, config) {
-      drawMapFigure(dataID, config)
+      drawMapFigure(dataID, config, false)
   });
   $.each(semConfig.ScatterPlots, function(figureName, config) {
-      drawScatterPlot(config)
+      drawScatterPlot(config, false)
   });
 
   d3.select("body")
@@ -1310,3 +1330,44 @@ function drawGraphic(){
 
 drawGraphic();
 window.onresize = drawGraphic;
+
+
+// (function() {
+//     var afterPrint = function() {
+//         $.each(semConfig.Maps, function(dataID, config) {
+//             drawMapFigure(dataID, config, true)
+//         });
+//         $.each(semConfig.ScatterPlots, function(figureName, config) {
+//             drawScatterPlot(config, true)
+//         });
+//         console.log('Functionality to run before printing.');
+//     };
+//     var beforePrint = function() {
+//         console.log('Functionality to run after printing');
+//     };
+
+//     if (window.matchMedia) {
+//         var mediaQueryList = window.matchMedia('print');
+//         mediaQueryList.addListener(function(mql) {
+//             if (mql.matches) {
+//                 setTimeout(function(){beforePrint()}, 2000);
+//             } else {
+//                 afterPrint();
+//             }
+//         });
+//     }
+
+//     window.onbeforeprint = setTimeout(beforePrint, 2000);
+//     window.onafterprint = afterPrint;
+// }());
+
+
+
+
+
+
+
+
+
+
+
