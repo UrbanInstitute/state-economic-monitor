@@ -1,51 +1,3 @@
-(function() {
- 
-  // get a reference to the d3.selection prototype,
-  // and keep a reference to the old d3.selection.on
-  var d3_selectionPrototype = d3.selection.prototype,
-      d3_on = d3_selectionPrototype.on;
- 
-  // our shims are organized by event:
-  // "desired-event": ["shimmed-event", wrapperFunction]
-  var shims = {
-    "mouseenter": ["mouseover", relatedTarget],
-    "mouseleave": ["mouseout", relatedTarget]
-  };
- 
-  // rewrite the d3.selection.on function to shim the events with wrapped
-  // callbacks
-  d3_selectionPrototype.on = function(evt, callback, useCapture) {
-    var bits = evt.split("."),
-        type = bits.shift(),
-        shim = shims[type];
-    if (shim) {
-      evt = [shim[0], bits].join(".");
-      callback = shim[1].call(null, callback);
-      return d3_on.call(this, evt, callback, useCapture);
-    } else {
-      return d3_on.apply(this, arguments);
-    } 
-  };
- 
-  function relatedTarget(callback) {
-    return function() {
-      var related = d3.event.relatedTarget;
-      if (this === related || childOf(this, related)) {
-        return undefined;
-      }
-      return callback.apply(this, arguments);
-    };
-  }
- 
-  function childOf(p, c) {
-    if (p === c) return false;
-    while (c && c !== p) c = c.parentNode;
-    return c === p;
-  }
- 
-})();
-
-
 /* Modernizr 2.8.3 (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-mq
  */
@@ -102,25 +54,25 @@ function drawMapFigure(dataID, config, print){
       
     }
 
-    var parent = d3.select("#"+containerID)
-    parent.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
+    var parentElem = d3.select("#"+containerID)
+    parentElem.on("click",function(){mouseEvent(dataID,{"type":"Background"},"click")})
     $("#"+containerID).empty()
-    parent.attr("class", "figure-container")
+    parentElem.attr("class", "figure-container")
 
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_title")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_mobile-select")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_mobile-bar")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_bar-chart")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_tooltip")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id",containerID + "_map")
       .attr("class", "map-container")
-    parent.append("div")
+    parentElem.append("div")
       .attr("id", containerID + "_source")
       .attr("class", "map-source")
 
@@ -375,7 +327,7 @@ function drawMapFigure(dataID, config, print){
             .attr("class",dataID + " q" + i + "-4")
             .attr("x",keyWidth*i)
             .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "hover") })
-            .on("mouseleave", function(){
+            .on("mouseout", function(){
               d3.selectAll(".hover").classed("hover",false)
               d3.selectAll(".demphasized").classed("demphasized",false)
               d3.selectAll(".text-highlight").classed("text-highlight",false)
@@ -434,7 +386,7 @@ function drawMapFigure(dataID, config, print){
           .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
           .attr("d", path)
           .on("mouseover", function(d){mouseEvent(dataID,d,"hover")})
-          .on("mouseleave", function(d){
+          .on("mouseout", function(d){
               d3.selectAll(".hover").classed("hover",false)
               d3.selectAll(".demphasized").classed("demphasized",false)
               d3.selectAll(".text-highlight").classed("text-highlight",false)
@@ -763,7 +715,7 @@ var barSvg, barXAxis, barBase;
       d3.selectAll(".tooltip-container." + dataID + " .value-text").classed("hidden",false)
       d3.selectAll(".tooltip-container." + dataID + " .quarter-text").classed("hidden",false)
 
-      barNode.parentNode.appendChild(barNode)
+      // barNode.parentNode.appendChild(barNode)
 
       var nameDiv = d3.select("#"+containerID + "_tooltip .region-text .tooltip-data")
       var valueDiv = d3.select("#"+containerID + "_tooltip .value-text .tooltip-data")
@@ -776,7 +728,7 @@ var barSvg, barXAxis, barBase;
         resizeTooltip(dataID);
       }
       else{
-        stateNode.parentNode.appendChild(stateNode)
+        // stateNode.parentNode.appendChild(stateNode)
 
 
         var usAvg = slice.filter(function(obj){return obj.geography.code == "US"})[0].value
@@ -900,23 +852,23 @@ function drawScatterPlot(config, print){
     data[i]["y"] = result[0]
   }
 
-  var parent = d3.select("#"+containerID)
+  var parentElem = d3.select("#"+containerID)
   $("#"+containerID).empty()
 
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_title")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_mobile-select")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_tooltip")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_plot")
     .attr("class", "plot-container")
-  parent.append("div")
+  parentElem.append("div")
     .attr("id",containerID + "_source")
     .attr("class", "plot-source")
 
-  parent.attr("class","figure-container")
+  parentElem.attr("class","figure-container")
 
   var usAvgX = xSlice.filter(function(obj){return obj.geography.code == "US"})[0].value
   var usAvgY = ySlice.filter(function(obj){return obj.geography.code == "US"})[0].value
