@@ -186,22 +186,30 @@ function drawMapFigure(dataID, config, print){
     names.splice(index, 1)
     names.sort()
     var container = d3.select("#" + containerID + "_mobile-select")
-    container.append("hr")
     container.append("select")
       .selectAll("option")
       .data(names)
       .enter()
       .append("option")
     .text(function(d) {return d;})
-    container.append("hr")
 
    d3.selectAll("#" + containerID + "_mobile-select option")
     .attr("selected", function(d){
       if (d == maxName){ return "selected"}
     })
-
-
-
+    // console.log(".tooltip-container." + dataID, d3.selectAll(".tooltip-container." + dataID))
+    // console.log(dataID)
+    // d3.select(".tooltip-container." + dataID).text("foo")
+    var tooltip = d3.select("#" + containerID + "_tooltip")
+    console.log(containerID, tooltip)
+    tooltip.text(function(){
+      if(config["date-format"] == "month"){
+        return "As of " + MONTHNAMES[dateUpdated.split("/")[0]-1] + " " + dateUpdated.split("/")[1]
+      }
+      else{
+        return "As of the " + getQuarter(dateUpdated.split("/")[0]) + " quarter of " + dateUpdated.split("/")[1]
+      }
+    })
 
     d3.select("#" + containerID + "_mobile-select select")
       .on("change", function(){
@@ -276,10 +284,6 @@ function drawMapFigure(dataID, config, print){
         .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
     });
-    // console.log(d3.select(".tooltip-container." + dataID), ".tooltip-container." + dataID)
-    // d3.selectAll(".tooltip-container").attr("style","width:150px !important")
-    resizeTooltip(dataID)
-
   }
   function drawMap(){
     d3.selectAll("[id$=mobile-bar]").style("display","none")
