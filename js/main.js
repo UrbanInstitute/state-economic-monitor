@@ -12,6 +12,9 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 
+
+
+
 function drawMapFigure(dataID, config, print){
    // if(print){d3.select("body").style("width",PRINT_WIDTH + "px")}
  // data is an array of objects, each of form
@@ -986,7 +989,7 @@ function drawScatterPlot(config, print){
         })
     
     region.append("div")
-        .attr("class","tooltip-usa-average")
+        .attr("class","tooltip-usa-average hidden")
         .html("US Average: " + "<span class = usa_text-" + config.x.id + "v" + config.y.id + ">" + config.x["short-label"] + " of " + usX + " and " + config.y["short-label"] + " of " + usY + "</span>" )
 
     resizeTooltip(config.x.id + "v" + config.y.id);
@@ -1339,6 +1342,9 @@ function drawGraphic(){
   .classed("small_screen",SMALL_SCREEN)
   .classed("mobile",MOBILE)
 }
+
+
+
 
 drawGraphic();
 window.onresize = drawGraphic;
