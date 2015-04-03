@@ -252,7 +252,7 @@ margin-bottom: 1%;
     position: relative;
     text-align: center;
     top: 140px;
-    width: 250px;
+   /* width: 250px;*/
     
 }
 
@@ -838,6 +838,7 @@ rect.states{
 footer p{width:45%;}   
     
 }
+
 @media (max-width: 768px) {
 
 #fullLogo {
@@ -918,8 +919,8 @@ width:24%;
     width: 80%;
 }
     
-    
-#imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:75px;}   
+  #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:140px;}      
+
     
 /*did this b/c i was seeing scroll bars around the figures */
 .figure-container{
@@ -1019,12 +1020,14 @@ footer p { color:#000000; margin-top:15px; margin-left:5px; width:100%;}
 }
 
 
-@media (max-width: 450px) {
+@media (max-width: 475px) {
     
 .container {width: 100%;}    
  .mobile h1{font-size:17px; text-align: left; padding-top:25px;}
    #menu ul li{font-size:13px;}
 h3{font-size:17px;}  
+    #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:80px;}   
+    
     .section170{ padding-top:90px;   }
     .sectionfooter { padding-bottom:30px;}
     .shortpages {position: relative;}
