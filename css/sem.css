@@ -1117,6 +1117,7 @@ margin-top: 1.5cm;
 
 
 select{
+   background: none;
    display: block;
    border-radius: none !important;
    width: 290px;

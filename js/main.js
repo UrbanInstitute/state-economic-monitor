@@ -186,21 +186,19 @@ function drawMapFigure(dataID, config, print){
     names.splice(index, 1)
     names.sort()
     var container = d3.select("#" + containerID + "_mobile-select")
-    container.append("hr")
     container.append("select")
       .selectAll("option")
       .data(names)
       .enter()
       .append("option")
     .text(function(d) {return d;})
-    container.append("hr")
 
    d3.selectAll("#" + containerID + "_mobile-select option")
     .attr("selected", function(d){
       if (d == maxName){ return "selected"}
     })
-
-
+    console.log(".tooltip-container." + dataID, d3.selectAll(".tooltip-container." + dataID))
+    d3.select(".tooltip-container." + dataID).text("foo")
 
 
     d3.select("#" + containerID + "_mobile-select select")
@@ -276,10 +274,6 @@ function drawMapFigure(dataID, config, print){
         .attr("x",getWidth(widthVal)/2.0 + 0.7*getWidth(value))
       }
     });
-    // console.log(d3.select(".tooltip-container." + dataID), ".tooltip-container." + dataID)
-    // d3.selectAll(".tooltip-container").attr("style","width:150px !important")
-    resizeTooltip(dataID)
-
   }
   function drawMap(){
     d3.selectAll("[id$=mobile-bar]").style("display","none")
