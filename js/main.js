@@ -327,7 +327,11 @@ function drawMapFigure(dataID, config, print){
             .attr("class",dataID + " q" + i + "-4")
             .attr("x",keyWidth*i)
             .on("mouseover",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "hover") })
-            .on("mouseout", function(){mouseEvent(dataID,this,"exit")})
+            .on("mouseout", function(){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+            })
             .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "q" + (this.getAttribute("x")/keyWidth) + "-4"}, "click") })
 
         }
@@ -382,7 +386,11 @@ function drawMapFigure(dataID, config, print){
           .attr("id", function(d) { return "state-outline_" + dataID + "_" + d.id ;})
           .attr("d", path)
           .on("mouseover", function(d){mouseEvent(dataID,d,"hover")})
-          .on("mouseout", function(d){mouseEvent(dataID,d,"exit")})
+          .on("mouseout", function(d){
+              d3.selectAll(".hover").classed("hover",false)
+              d3.selectAll(".demphasized").classed("demphasized",false)
+              d3.selectAll(".text-highlight").classed("text-highlight",false)
+          })
           .on("click", function(d){mouseEvent(dataID,d,"click")})
 
     }
