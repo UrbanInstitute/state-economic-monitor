@@ -831,7 +831,7 @@ rect.states{
  #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:100px;}   
     
 }
-@media (max-width:900px) {
+@media (max-width:985px) {
     
  footer img{ width:46%;}
 
@@ -879,12 +879,19 @@ footer p{width:45%;}
     font-weight: 500;
     padding-top:20px;
      padding-bottom: 30px;
-width:24%;
+width:23%;
 }
     
     .active{
      border-bottom: none;
      border-top: solid #00a6d2 4px;
+        
+    }
+    
+    
+    .wide{
+      width:25%;
+      border-bottom: solid #00a6d2 4px;  
         
     }
     
@@ -960,11 +967,8 @@ right:0%;
     border-top-width: 1px;
     margin-top: 10px;
         margin-bottom: 10px;     
-        
-        
-    }
-    
-    
+}
+
 
  /*in mobile the extra padding above the page title is not needed */   
 .section170 {
@@ -1014,7 +1018,7 @@ footer p { color:#000000; margin-top:15px; margin-left:5px; width:100%;}
     footer img{ display:none;}
     
     .archiveMonth{ margin-bottom:20px;}
-            .sectionfooter { padding-bottom:50px;}
+    .sectionfooter { padding-bottom:50px;}
     .shortpages {position: relative;}
 
 }
