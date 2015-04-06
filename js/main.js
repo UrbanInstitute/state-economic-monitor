@@ -144,7 +144,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return 1.72*getWidth(maxVal) + "px" });
+      .style("left",function(){ console.log(maxVal); return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
@@ -165,7 +165,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
       })
       .attr("class","amount")
-      .style("left",function(){ return getWidth(maxVal) + 0.72*getWidth(usVal) + "px" });
+      .style("left",function(){ return getWidth(widthVal/2) + 0.73*getWidth(usVal) + "px" });
 
 
     uSvg.append('line')
@@ -201,7 +201,6 @@ function drawMapFigure(dataID, config, print){
       if (d == maxName){ return "selected"}
     })
     var tooltip = d3.select("#" + containerID + "_tooltip")
-    console.log(containerID, tooltip)
     tooltip.text(function(){
       if(config["date-format"] == "month"){
         return "As of " + MONTHNAMES[dateUpdated.split("/")[0]-1] + " " + dateUpdated.split("/")[1]
@@ -227,7 +226,7 @@ function drawMapFigure(dataID, config, print){
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
         .text("No data")
         .transition()
-        .style("left",function(){ return "175px" });
+        .style("left",function(){ return 5+getWidth(widthVal)/2 + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
@@ -250,7 +249,7 @@ function drawMapFigure(dataID, config, print){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  getWidth(maxVal) + 0.72*getWidth(value) + "px" });
+        .style("left",function(){ return  getWidth(widthVal)/2 + 0.72*getWidth(value) + "px" });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
@@ -271,7 +270,7 @@ function drawMapFigure(dataID, config, print){
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
         })
         .transition()
-        .style("left",function(){ return  getWidth(maxVal) - getWidth(Math.abs(value)) - 40 + "px"  });
+        .style("left",function(){ return  getWidth(widthVal)/2 - getWidth(Math.abs(value)) - 40 + "px"  });
 
         d3.select("#" + containerID + "_mobile-bar .mobile-state .label")
         .transition()
@@ -907,6 +906,8 @@ function drawScatterPlot(config, print){
 
 
   function drawMobile(){
+    var formatter = d3.format(".1f")
+    var dollarFormatter = d3.format("$0f")
     d3.selectAll("[id$=mobile-bar]").style("display","block")
     var names = xSlice.map(function(obj){return obj.geography.name})
     var index = names.indexOf("United States of America");
@@ -931,12 +932,27 @@ function drawScatterPlot(config, print){
       var name = names[this.selectedIndex];
       var xObject = xSlice.filter(function(obj){ return obj.geography.name == name})[0]
       var yObject = ySlice.filter(function(obj){ return obj.geography.name == name})[0]
-
-      console.log(xObject, yObject)
+      d3.select("#" + containerID + "_tooltip .value-text.x .tooltip-data").text(function(){
+        if(config.x["unit-type"] == "percent"){ return formatter(xObject.value) + "%"}
+        else if(config.x["unit-type"] == "dollar"){ return dollarFormatter(xObject.value)}
+      })
+      d3.select("#" + containerID + "_tooltip .value-text.y .tooltip-data").text(function(){
+        if(config.y["unit-type"] == "percent"){ return formatter(yObject.value) + "%"}
+        else if(config.y["unit-type"] == "dollar"){ return dollarFormatter(yObject.value)}
+      })
 
       });
 
-
+    var tooltip = d3.select("#" + containerID + "_plot")
+    .style("display", "block")
+    .text(function(){
+      if(config.x["date-format"] == "month"){
+        return "As of " + MONTHNAMES[dateUpdated.split("/")[0]-1] + " " + dateUpdated.split("/")[1]
+      }
+      else{
+        return "As of the " + getQuarter(dateUpdated.split("/")[0]).toLowerCase() + " quarter of " + dateUpdated.split("/")[1]
+      }
+    })
 
   }
   function drawTitle(){

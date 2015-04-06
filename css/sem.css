@@ -957,6 +957,7 @@ right:0%;
 }
 
     
+
     #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_wages_tooltip, #figure_wages-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
         
        border-bottom-color: #e1e1e1;
@@ -968,6 +969,30 @@ right:0%;
     margin-top: 10px;
         margin-bottom: 10px;     
 }
+
+.mobile [id$=_plot], #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_wages_tooltip, #figure_wages-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
+    
+  border-bottom-color: #e1e1e1;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: #e1e1e1;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;     
+
+    
+}
+
+.mobile [id$=_plot]{
+  margin-top: 51px;
+  height: 25px;
+  clear: both;
+  text-align: center;
+  font-style: italic;
+}
+
+    
 
 
  /*in mobile the extra padding above the page title is not needed */   
@@ -1081,6 +1106,11 @@ margin-top: 1.5cm;
 
 
 /********MOBILE STYLES **********/
+.mobile a:hover{
+  color: #23527c;
+}
+
+
 .mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text, .mobile .quarter-text, .mobile .year-text{
   display: none;
 }
@@ -1142,6 +1172,14 @@ margin-top: 1.5cm;
   stroke: #000;
 }
 
+.mobile .tooltip-container.scatter.UNEMPvUNEMPChg, .mobile .tooltip-container.scatter.EMPvGOVT{
+  width: 150px !important;
+
+}
+
+.mobile .tooltip-container.scatter.HPChgYrvHPChgPeak{
+  width: 180px !important;
+}
 
 
 
