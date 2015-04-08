@@ -44,7 +44,7 @@ var semConfig = {
 						"short-label": "CHANGE",
 						"date-format": "month",
 						"unit": "percent change year over year",
-						"unit-type": "percent",
+						"unit-type": "percentage points",
 						"date-updated": "11/2014",
 					},
 				},
