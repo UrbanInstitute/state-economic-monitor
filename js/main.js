@@ -142,6 +142,7 @@ function drawMapFigure(dataID, config, print){
       .text(function(){
         if (config["unit-type"] == "percent") { return formatter(maxVal) + "%" }
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(maxVal)}
+        else if (config["unit-type"] == "percentage points"){ return formatter(maxVal) + "percentage points"}
       })
       .attr("class","amount")
       .style("left",function(){ console.log(maxVal); return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
@@ -163,6 +164,7 @@ function drawMapFigure(dataID, config, print){
       .text(function(){
         if (config["unit-type"] == "percent") { return formatter(usVal) + "%" }
         else if (config["unit-type"] == "dollar"){ return dollarFormatter(usVal)}
+        else if (config["unit-type"] == "percentage points"){ return formatter(usVal) + "percentage points"}
       })
       .attr("class","amount")
       .style("left",function(){ return getWidth(widthVal/2) + 0.73*getWidth(usVal) + "px" });
@@ -247,6 +249,8 @@ function drawMapFigure(dataID, config, print){
         .text(function(){
           if (config["unit-type"] == "percent") { return formatter(value) + "%" }
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
+          else if (config["unit-type"] == "percentage points"){ return formatter(value) + "percentage points"}
+
         })
         .transition()
         .style("left",function(){ return  getWidth(widthVal)/2 + 0.72*getWidth(value) + "px" });
@@ -268,6 +272,8 @@ function drawMapFigure(dataID, config, print){
         .text(function(){
           if (config["unit-type"] == "percent") { return formatter(value) + "%" }
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(value)}
+          else if (config["unit-type"] == "percentage points"){ return formatter(value) + "percentage points"}
+
         })
         .transition()
         .style("left",function(){ return  getWidth(widthVal)/2 - getWidth(Math.abs(value)) - 40 + "px"  });
@@ -617,6 +623,8 @@ var barSvg, barXAxis, barBase;
           var dollarFormatter = d3.format("$0f")
           if (config["unit-type"] == "percent") { return formatter(usAvg) + "%" }
           else if (config["unit-type"] == "dollar"){ return dollarFormatter(usAvg)}
+          else if (config["unit-type"] == "percentage points"){ return formatter(usAvg) + "percentage points"}
+
         })
 
     var quarter = tooltip.append('div')
@@ -764,6 +772,8 @@ var barSvg, barXAxis, barBase;
         else if(config["unit-type"] == "dollar"){
           usAvg = dollarFormatter(usAvg)
         }
+        else if (config["unit-type"] == "percentage points"){ usAvg = formatter(usAvg) + "percentage points"}
+
 
         nameDiv.append("div")
         .attr("class","tooltip-usa-average")
@@ -802,6 +812,8 @@ var barSvg, barXAxis, barBase;
           else if(config["unit-type"] == "dollar"){
             return dollarFormatter(value)
           }
+          else if (config["unit-type"] == "percentage points"){ return formatter(value) + "percentage points"}
+
 
         })
       resizeTooltip(dataID);
@@ -935,10 +947,13 @@ function drawScatterPlot(config, print){
       d3.select("#" + containerID + "_tooltip .value-text.x .tooltip-data").text(function(){
         if(config.x["unit-type"] == "percent"){ return formatter(xObject.value) + "%"}
         else if(config.x["unit-type"] == "dollar"){ return dollarFormatter(xObject.value)}
+        else if (config.x["unit-type"] == "percentage points"){ return formatter(xObject.value) + "percentage points"}
+
       })
       d3.select("#" + containerID + "_tooltip .value-text.y .tooltip-data").text(function(){
         if(config.y["unit-type"] == "percent"){ return formatter(yObject.value) + "%"}
         else if(config.y["unit-type"] == "dollar"){ return dollarFormatter(yObject.value)}
+        else if (config.y["unit-type"] == "percentage points"){ return formatter(yObject.value) + "percentage points"}
       })
 
       });
@@ -1013,6 +1028,7 @@ function drawScatterPlot(config, print){
         .text(function(){
           if (config.x["unit-type"] == "percent") { usX = formatter(usAvgX) + "%"; return usX }
           else if (config.x["unit-type"] == "dollar"){ usX = dollarFormatter(usAvgX); return usX}
+          else if (config.x["unit-type"] == "percentage points"){ usX = formatter(usAvgX) + " percentage points"; return usX }
         })
 
     var yValue = tooltip.append('div')
@@ -1025,6 +1041,8 @@ function drawScatterPlot(config, print){
         .text(function(){
           if (config.y["unit-type"] == "percent") { usY = formatter(usAvgY) + "%"; return usY;}
           else if (config.y["unit-type"] == "dollar"){ usY = dollarFormatter(usAvgY); return usY;}
+          else if (config.y["unit-type"] == "percentage points"){ usY = formatter(usAvgY) + " percentage points"; return usY }
+
         })
     
     region.append("div")
@@ -1225,6 +1243,8 @@ function drawScatterPlot(config, print){
             else if(config.x["unit-type"] == "dollar"){
               return dollarFormatter(d.x.value)
             }
+            else if (config.x["unit-type"] == "percentage points"){  return formatter(d.x.value) + " percentage points"}
+
           })
           d3.selectAll(".tooltip-container." + config.x.id + "v" + config.y.id + " .value-text.y .tooltip-data").text(function(){
             if(config.y["unit-type"] == "percent"){
@@ -1233,6 +1253,8 @@ function drawScatterPlot(config, print){
             else if(config.y["unit-type"] == "dollar"){
               return dollarFormatter(d.y.value)
             }
+            else if (config.y["unit-type"] == "percentage points"){  return formatter(d.y.value) + " percentage points"}
+
           })
 
           resizeTooltip(config.x.id + "v" + config.y.id);
@@ -1294,6 +1316,9 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
     else if(unitType == "dollar"){
       var dollarFormatter = d3.format("$0f")
       usaValue = dollarFormatter(Math.abs(avg))
+    }
+    else if(unitType == "percentage points"){
+      usaValue = formatter(Math.abs(avg)) + " percentage points"
     }
 
     
