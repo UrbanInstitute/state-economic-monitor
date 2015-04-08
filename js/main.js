@@ -287,7 +287,7 @@ function drawMapFigure(dataID, config, print){
   function drawMap(){
     d3.selectAll("[id$=mobile-bar]").style("display","none")
     d3.selectAll("#instructions")
-    .text("Rollover the bar charts, scatter plots, and maps to see additional data.")
+    .text("Roll over the bar charts, scatter plots, and maps to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     
