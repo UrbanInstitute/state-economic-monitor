@@ -226,7 +226,7 @@ function drawMapFigure(dataID, config, print){
 
       if(value == "#NA"){
         d3.select("#" + containerID + "_mobile-bar .mobile-state .amount")
-        .text("No data")
+        .text("No tax")
         .transition()
         .style("left",function(){ return 5+getWidth(widthVal)/2 + "px" });
 
@@ -293,7 +293,7 @@ function drawMapFigure(dataID, config, print){
   function drawMap(){
     d3.selectAll("[id$=mobile-bar]").style("display","none")
     d3.selectAll("#instructions")
-    .text("Roll over the bar charts, scatter plots, and maps to see additional data.")
+    .text("Roll over the bar charts, scatter plots, maps, and legends to see additional data.")
 
     var $graphic = $("#"+containerID + "_map");
     
@@ -345,6 +345,7 @@ function drawMapFigure(dataID, config, print){
 
         }
 
+      if(dataID == "TOTAL" || dataID == "INC" || dataID == "CORPINC" || dataID == "SALES"){
           legend.append("rect")
             .attr("width",keyWidth/2)
             .attr("height",keyHeight)
@@ -357,14 +358,16 @@ function drawMapFigure(dataID, config, print){
               d3.selectAll(".text-highlight").classed("text-highlight",false)
             })
             .on("click",function(){ mouseEvent(dataID, {type: "Legend", "class": "no-data"}, "click") })
-          legend.append("text")
-            .text("No data")
-            .attr("class","legend-labels")
-            .style("font-weight","300")
-            .style("font-style","italic")
-            .attr("x",5)
-            .attr("y",keyWidth * 5.9)
-            .attr("transform","rotate(-90)")
+          
+            legend.append("text")
+              .text("No tax")
+              .attr("class","legend-labels")
+              .style("font-weight","300")
+              .style("font-style","italic")
+              .attr("x",5)
+              .attr("y",keyWidth * 5.9)
+              .attr("transform","rotate(-90)")
+          }
 
 
 
@@ -804,7 +807,7 @@ var barSvg, barXAxis, barBase;
       valueDiv.text(function(){
         //handle here instead of in parseVal bc formatter returns strings
           if (value == "NaN"){
-            return "No data"
+            return "No tax"
           }
           else if(config["unit-type"] == "percent"){
             return formatter(value) + "%"
@@ -853,7 +856,7 @@ function parseVal(value, useCase){
   else{
     switch(useCase){
       case "text":
-        return "No data"
+        return "No tax"
       case "sort":
         return Number.NEGATIVE_INFINITY
       case "draw":
