@@ -693,7 +693,7 @@ footer a:hover{
 }
 .scatter-baseline{
 	stroke: #000;
-  	shape-rendering: crispEdges;
+  /*shape-rendering: crispEdges;*/
 }
 
 .scatter-grid{

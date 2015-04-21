@@ -472,7 +472,7 @@ var barSvg, barXAxis, barBase;
 
     var y = d3.scale.linear()
         .range([height,0])
-        .domain([lowerBound,min+step*7])
+        .domain([lowerBound,max*1.1])
 
 
 
