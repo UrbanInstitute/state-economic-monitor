@@ -472,7 +472,7 @@ var barSvg, barXAxis, barBase;
 
     var y = d3.scale.linear()
         .range([height,0])
-        .domain([lowerBound,min+step*7])
+        .domain([lowerBound,max*1.1])
 
 
 
@@ -851,7 +851,7 @@ var barSvg, barXAxis, barBase;
 
 function parseVal(value, useCase){
   if(typeof(value) == "number"){
-      return value
+      return Math.round(value *10)/10.0
   }
   else{
     switch(useCase){
@@ -1160,9 +1160,9 @@ function drawScatterPlot(config, print){
         .data(data)
       .enter().append("line")
         .attr("class", "dot-line")
-        .attr("x1",function(d) { return x(d.x.value); })
-        .attr("x2",function(d) { return x(d.x.value); })
-        .attr("y1",function(d) { return y(d.y.value); })
+        .attr("x1",function(d) { return x(Math.round(d.x.value *10)/10.0); })
+        .attr("x2",function(d) { return x(Math.round(d.x.value *10)/10.0); })
+        .attr("y1",function(d) { return y(Math.round(d.y.value *10)/10.0); })
         .attr("y2", y(0))
 
 
@@ -1222,8 +1222,8 @@ function drawScatterPlot(config, print){
       .enter().append("circle")
         .attr("class", function(d) {return "dot " + d.x.geography.region + " FIPS_" + d.x.geography.fips;})
         .attr("r", 7)
-        .attr("cx", function(d) { return x(d.x.value); })
-        .attr("cy", function(d) { return y(d.y.value); })
+        .attr("cx", function(d) { return x( Math.round(d.x.value *10)/10.0 ); })
+        .attr("cy", function(d) { return y( Math.round(d.y.value *10)/10.0 ); })
         .on("mouseover", function(d){
           d3.select(this).classed("hover",true)
           if(d.x.geography.fips == -99){
@@ -1331,10 +1331,10 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
       usaChanged = " did not change"
     }
     else if(avg > 0){
-      usaChanged = "increased by " + usaValue 
+      usaChanged = "increased " + usaValue 
     }
     else if(avg < 0){
-      usaChanged = "decreased by " + usaValue
+      usaChanged = "decreased " + usaValue
     }
 
     return inStr

@@ -685,7 +685,7 @@ footer a:hover{
 
 .dot-line{
   stroke: #b3b3b3;
-  shape-rendering: crispEdges;
+  /*shape-rendering: crispEdges;*/
 }
 
 .x.axis.scatter path{
@@ -693,7 +693,7 @@ footer a:hover{
 }
 .scatter-baseline{
 	stroke: #000;
-  	shape-rendering: crispEdges;
+  /*shape-rendering: crispEdges;*/
 }
 
 .scatter-grid{
@@ -812,7 +812,7 @@ rect.states{
 .axis line {
   fill: none;
   stroke: #000;
-  shape-rendering: crispEdges;
+  /*shape-rendering: crispEdges;*/
 }
 
 .nullTick{
@@ -1091,6 +1091,9 @@ margin-top: 1.5cm;
     .plot-source , .map-source { font-size:11px; width:80%; margin-top:15px; margin-bottom: 10px;}
     
 
+}
+.custom-note{
+  bottom: 38px !important;
 }
 
 /********SMALL SCREEN STYLES **********/
