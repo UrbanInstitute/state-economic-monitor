@@ -1331,10 +1331,10 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
       usaChanged = " did not change"
     }
     else if(avg > 0){
-      usaChanged = "increased by " + usaValue 
+      usaChanged = "increased " + usaValue 
     }
     else if(avg < 0){
-      usaChanged = "decreased by " + usaValue
+      usaChanged = "decreased " + usaValue
     }
 
     return inStr
