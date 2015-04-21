@@ -1092,6 +1092,9 @@ margin-top: 1.5cm;
     
 
 }
+.custom-note{
+  bottom: 38px !important;
+}
 
 /********SMALL SCREEN STYLES **********/
 .small_screen .x.axis .tick text{

@@ -52,7 +52,7 @@ var semConfig = {
 					"id": "total_change_emp_vs_public_change_emp",
 					"title": "Total Employment vs. Public Employment",
 					"subtitle": "Total public-sector employment {{y-usa-changed}} from {{y-date-previous}} to {{y-date-updated}}, staying well below the {{x-usa-value}} increase in total employment.",
-					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a><br>Note: The unemployment rate is from a Bureau of Labor Statistics survey based on place of residence.<br>The employment data are from a Bureau of Labor Statistics survey based on place of work.",
+					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>",
 					"x":{
 						"id":"EMP",
 						"label": "Total employment",
