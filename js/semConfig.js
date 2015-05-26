@@ -75,7 +75,7 @@ var semConfig = {
 		"Figure3":{
 					"id": "housing_change_vs_2007_housing_change",
 					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
-					"subtitle": "National house prices in the third quarter of 2014 were still 6.2 percent below the peak in house prices during the first quarter of 2007.",
+					"subtitle": "National house prices in the first quarter of 2015 were still 6.2 percent below the peak in house prices during the first quarter of 2007.",
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes.</a>",
 					"x":{
 						"id":"HPChgYr",
