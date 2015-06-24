@@ -28,6 +28,25 @@ fieldset{
 	float: left;
 }
 
+.required{
+	color: red;
+	font-weight: 700;
+}
+.month{
+	width: 40px;
+}
+.year{
+	width: 80px;
+	margin-left: 5px;
+}
+textarea{
+	margin-top: 5px;
+}
+.break{
+	width: 40px;
+	margin-left: 5px;
+}
+
 
 
 /*----- Tabs -----*/

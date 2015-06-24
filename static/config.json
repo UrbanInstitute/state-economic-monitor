@@ -1,0 +1,27 @@
+{
+    "wages": {
+        "AWW": {
+            "breaks": [
+                600, 
+                700, 
+                800, 
+                900, 
+                999, 
+                1400
+            ], 
+            "text": "National weekly earnings for all US private employees averaged $858 in April 2015. Among the 50 states, average wages ranged from $669 in Arkansas to $1,003 in Massachusetts. The District of Columbia\u2019s average weekly earnings were $1,380. Thirty-six states had average weekly earnings below the national average, including four states with average wages below $700: Arkansas, Mississippi, ($677), New Mexico ($695), and Montana ($698). Ten states had average weekly earnings above $900: Massachusetts, Washington ($994), New York ($968), Alaska ($967), Connecticut ($962), California ($961), New Jersey ($932), Maryland ($929), Virginia ($914), and Colorado ($902)."
+        }, 
+        "AWWChg": {
+            "breaks": [
+                -4, 
+                -2, 
+                0, 
+                2, 
+                4, 
+                6
+            ], 
+            "text": "National real (inflation-adjusted) average weekly earnings in April 2015 were 2.4 percent higher than in April 2014. Eleven states saw real average weekly earnings fall over the year. Average wage declines were more than 1 percent in New Mexico (-2.3 percent), Wyoming (-1.8 percent), Mississippi (-1.7 percent), Arkansas (-1.6 percent), and Alabama (-1.2 percent). Average weekly earnings were unchanged in Louisiana and Maryland. Delaware\u2019s 5.5 percent growth was the largest increase among the states. Six other states had earnings growth in excess of 4 percent: Alaska (5.2 percent), Idaho (5.1 percent), Kentucky (4.9 percent), Nevada (4.9 percent), Virginia (4.5 percent), and Washington (4.1 percent)."
+        }, 
+        "date": "05/2015"
+    }
+}

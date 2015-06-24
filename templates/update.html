@@ -29,6 +29,42 @@
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
 <script type=text/javascript>
+  function writeText(sheet, fig, config){
+    d3.select('textarea[name="' + fig + '-text"')
+      .text(function(){
+        return config[sheet][fig]["text"];
+      })
+
+    for(var c = 0; c<6; c++){
+      d3.select('input[name="' + fig + '-b' + (c+1) + '"')
+      .attr("value", function(){
+        return config[sheet][fig]["breaks"][c]
+      })
+    }
+  }
+
+  function writeDate(sheet,config){
+    d3.select('input[name="' + sheet + '-month"')
+    .attr("value", function(){
+      return config[sheet]["date"].split("/")[0]
+    })
+
+    d3.select('input[name="' + sheet + '-year"')
+    .attr("value", function(){
+      return config[sheet]["date"].split("/")[1]
+    })
+
+  }
+
+  d3.json("{{ url_for('static', filename='config.json') }}", function(data) {
+    var figures = [["wages",["AWW","AWWChg"]]]
+    for(var i=0; i<figures.length; i++){
+      writeDate(figures[i][0], data);
+      for(var j=0; j<figures[i][1].length; j++){
+        writeText(figures[i][0], figures[i][1][j], data);
+      }
+    }
+  });
 
   $(function() {
     $('a#addIngredient').bind('click', function() {
@@ -38,11 +74,24 @@
       //   console.log(data)
       // });
       // return false;
-      var test = {"foo":"bar"}
+      function getDate(sheet){
+        return $('input[name="' + sheet + '-month"').val() + "/" + $('input[name="' + sheet + '-year"').val();
+      }
+      function getText(fig){
+        return $('textarea[name="' + fig + '-text"').val()
+      }
+      function getBreaks(fig){
+        var arr = [];
+        for(var c = 0; c<6; c++){
+          arr.push(parseInt($('input[name="' + fig + '-b' + (c+1) + '"').val()));
+        }
+        return arr;
+      }
+      var config = { "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } } }
       $.ajax({
         type: 'POST',
         url: '/add',
-        data: JSON.stringify(test),
+        data: JSON.stringify(config),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         cache: false,
@@ -142,10 +191,10 @@
     <ul class="tab-links">
         <li class="active"><a href="#tab1">Upload Data</a></li>
         <li><a href="#tab2">Employment</a></li>
-        <li><a href="#tab2">Wages</a></li>
-        <li><a href="#tab2">Housing</a></li>
-        <li><a href="#tab2">Taxes</a></li>
-        <li><a href="#tab4">Preview</a></li>
+        <li><a href="#tab3">Wages</a></li>
+        <li><a href="#tab4">Housing</a></li>
+        <li><a href="#tab5">Taxes</a></li>
+        <li><a href="#tab6">Preview</a></li>
     </ul>
 
 <div class="tab-content">
@@ -207,6 +256,24 @@
       <input type=text name="ingredient"></input>
     </div>
   </div>
+
+  <div id="tab3" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="wages-month" maxlength="2"></input><input class = "year" type=text name="wages-year" maxlength="4"></input>
+    <br>
+
+    <h3>Average Weekly Earnings, Private Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="AWW-b1"><input type=text class="break" name="AWW-b2"><input type=text class="break" name="AWW-b3"><input type=text class="break" name="AWW-b4"><input type=text class="break" name="AWW-b5"><input type=text class="break" name="AWW-b6">
+    <br>
+    <textarea name = "AWW-text" cols="44" rows="15"></textarea>
+
+    <h3>Changes in Real Average Weekly Earnings, Private Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="AWWChg-b1"><input type=text class="break" name="AWWChg-b2"><input type=text class="break" name="AWWChg-b3"><input type=text class="break" name="AWWChg-b4"><input type=text class="break" name="AWWChg-b5"><input type=text class="break" name="AWWChg-b6">
+    <br>
+    <textarea name = "AWWChg-text" cols="44" rows="15"></textarea>
+
+  </div>
+
 </div>
    <a href=# id="addIngredient">Add ingredient</a>
 

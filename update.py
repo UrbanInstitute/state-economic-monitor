@@ -11,6 +11,7 @@
 import csv
 import json
 from shutil import copy2
+import fileinput
 import os
 from flask import Flask, jsonify, render_template, request, session, redirect, current_app
 app = Flask(__name__)
@@ -26,16 +27,28 @@ def upload():
 @app.route('/add', methods=["POST", "GET"])
 def update_SEM():
   # new_config = {}
-  with open('config.json') as config_file:
+  figures = [["wages",["AWW","AWWChg"]]]
+  with open('static/config.json') as config_file:
     old_config = json.load(config_file)
-  print request.json["foo"] 
+  new_config = request.json
+  config_file.close()
   # amount = request.args.get('amount', '', type=str)
-  # f1 = open('employment.html', 'r')
-  # f2 = open('employment.html.tmp', 'w')
-  # for line in f1:
-  #   f2.write(line.replace(old_config["test"].encode("utf8"), amount.encode("utf8")))
-  # f1.close()
-  # f2.close()
+
+  def replaceText(old, new):
+    for line in fileinput.input("wages.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print(line)
+
+  for fig in figures:
+    sheet = fig[0]
+    for figure in fig[1]:
+      replaceText(old_config[sheet][figure]["text"], new_config[sheet][figure]["text"])
+
+  f=open("static/config.json",'w')
+  f.write(json.dumps(new_config, indent=4, sort_keys=True).encode("utf8"))
+  f.close();
+  
+
   return ""
 
 @app.route('/')
