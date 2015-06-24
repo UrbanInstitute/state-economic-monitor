@@ -1,0 +1,178 @@
+<html>
+<head>
+  <style>
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  </style>
+</head>
+<body>
+<script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='jquery.ui.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='units.js') }}"></script>
+<!-- <script type=text/javascript src="{{ url_for('static', filename='units.js') }}"></script> -->
+<script type=text/javascript src="{{ url_for('static', filename='d3.min.js') }}"></script>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script type=text/javascript>
+
+  $(function() {
+    // var unitNames = units.map(function(unit){return unit.name})
+    // $( 'input[name="unit"]' ).autocomplete({
+    //   source: unitNames
+    // });
+    $('a#addIngredient').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/add', {
+        amount: $('input[name="amount"]').val()
+        // unit: $('input[name="unit"]').val(),
+        // ingredient: $('input[name="ingredient"]').val()
+      }, function(data) {
+        console.log(data)
+        // var oldText = $("#ingredient-list").text();
+        // var tspEquiv = data.amount * units.filter(function(obj){return obj.name == data.unit})[0].tspEquiv
+        // console.log(niceUnits(tspEquiv))
+        // d3.select("#ingredient-list")
+        // .append('li')
+        // .text(data.result)
+      });
+      return false;
+    });
+
+    $('#upload-employment-btn').click(function() {
+        var form_data = new FormData($('#upload-employment')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=employment',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            // async: false,
+            success: function(data) {
+                console.log('Success!');
+            },
+        });
+    });
+
+    $('#upload-wages-btn').click(function() {
+        var form_data = new FormData($('#upload-wages')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=wages',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            // async: false,
+            success: function(data) {
+                console.log('Success!');
+            },
+        });
+    });
+
+    $('#upload-housing-btn').click(function() {
+        var form_data = new FormData($('#upload-housing')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=housing',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            // async: false,
+            success: function(data) {
+                console.log('Success!');
+            },
+        });
+    });
+
+    $('#upload-taxes-btn').click(function() {
+        var form_data = new FormData($('#upload-taxes')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=taxes',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            // async: false,
+            success: function(data) {
+                console.log('Success!');
+            },
+        });
+    });
+  });
+
+</script>
+<h1>Add a new recipe</h1>
+<h2>Add a new Employment data file</h2>
+<form id="upload-employment" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="file">Select a file</label>
+        <input name="file" type="file">
+    </fieldset>
+    <fieldset>
+        <button id="upload-employment-btn" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<h2>Add a new Wages data file</h2>
+<form id="upload-wages" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="file">Select a file</label>
+        <input name="file" type="file">
+    </fieldset>
+    <fieldset>
+        <button id="upload-wages-btn" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<h2>Add a new Housing data file</h2>
+<form id="upload-housing" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="file">Select a file</label>
+        <input name="file" type="file">
+    </fieldset>
+    <fieldset>
+        <button id="upload-housing-btn" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<h2>Add a new Taxes data file</h2>
+<form id="upload-taxes" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="file">Select a file</label>
+        <input name="file" type="file">
+    </fieldset>
+    <fieldset>
+        <button id="upload-taxes-btn" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<div id = "ingredients">
+   <input type=text name="amount"></input>
+   <input type=text name="unit"></input>
+   <input type=text name="ingredient"></input>
+
+<!--    <input type=text size=5 name=a> +
+   <input type=text size=5 name=b> = -->
+</div>
+   <a href=# id="addIngredient">Add ingredient</a>
+
+   <ul id="ingredient-list"></ul>
+
+
+</html>
+</body>
