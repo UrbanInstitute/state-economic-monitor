@@ -10,9 +10,11 @@ from math import ceil
 try:
     EMP_DATE = sys.argv[1]
     TAX_DATE = sys.argv[2]
-    print "Dates must be formatted as MM/YYYY"
-    print "Employment data date is " + EMP_DATE
-    print "Tax data date is " + TAX_DATE
+    WAGE_DATE = sys.argv[3]
+    HOUSE_DATE = sys.argv[4]
+    # print "Dates must be formatted as MM/YYYY"
+    # print "Employment data date is " + EMP_DATE
+    # print "Tax data date is " + TAX_DATE
 except IndexError:
     print "You must specify the date for the current data set"
     sys.exit()
@@ -192,6 +194,8 @@ def parseWage():
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
+        fp.write("\nvar WAGE_DATE=\""+WAGE_DATE + "\"")
+        fp.write("\nvar HOUSE_DATE=\""+HOUSE_DATE + "\"")
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
         fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
 

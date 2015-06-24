@@ -26,6 +26,7 @@ var semConfig = {
 	"ScatterPlots":{
 		"Figure1":{
 					"id": "figure_level_vs_change_unemployment",
+					"tab": "employment",
 					"title": "Unemployment Rate: Level vs. One-Year-Change",
 					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
 					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>",
@@ -50,6 +51,7 @@ var semConfig = {
 				},
 		"Figure2":{
 					"id": "total_change_emp_vs_public_change_emp",
+					"tab": "employment",
 					"title": "Total Employment vs. Public Employment",
 					"subtitle": "Total public-sector employment {{y-usa-changed}} from {{y-date-previous}} to {{y-date-updated}}, staying well below the {{x-usa-value}} increase in total employment.",
 					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>",
@@ -74,6 +76,7 @@ var semConfig = {
 				},
 		"Figure3":{
 					"id": "housing_change_vs_2007_housing_change",
+					"tab": "housing",
 					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
 					"subtitle": "National house prices in the first quarter of 2015 were still 6.2 percent below the peak in house prices during the first quarter of 2007.",
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes.</a>",
@@ -100,6 +103,7 @@ var semConfig = {
 	"Maps":{
 		"UNEMP":	{
 					"id": "figure_unemployment",
+					"tab": "employment",
 					"title": "Unemployment Rate",
 					"date-format": "month",
 					"subtitle": "The national unemployment rate was {{usa-value}} as of {{date-updated}}.",
@@ -112,6 +116,7 @@ var semConfig = {
 				},		
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
+					"tab": "employment",
 					"title": "Total Employment",
 					"short-label": "CHANGE",
 					"date-format": "month",
@@ -124,6 +129,7 @@ var semConfig = {
 				},
 		"AWW":	{
 					"id": "figure_wages",
+					"tab": "wages",
 					"title": "Average Weekly Earnings, Private Employment",
 					"short-label": "EARNINGS",
 					"date-format": "month",
@@ -136,6 +142,7 @@ var semConfig = {
 				},
 		"AWWChg":	{
 					"id": "figure_wages-change",
+					"tab": "wages",
 					"title": "Changes in Real Average Weekly Earnings, Private Employment",
 					"short-label": "CHANGE",
 					"date-format": "month",
@@ -148,6 +155,7 @@ var semConfig = {
 				},
 		"HPChgYr":	{
 					"id": "figure_house-prices",
+					"tab": "housing",
 					"title": "House Prices",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
@@ -160,6 +168,7 @@ var semConfig = {
 				},
 		"TOTAL":	{
 					"id": "figure_total-taxes",
+					"tab": "taxes",
 					"title": "Total Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
@@ -172,6 +181,7 @@ var semConfig = {
 				},
 		"INC":	{
 					"id": "figure_income-taxes",
+					"tab": "taxes",
 					"title": "Personal Income Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
@@ -184,6 +194,7 @@ var semConfig = {
 				},
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
+					"tab": "taxes",
 					"title": "Corporate Income Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
@@ -196,6 +207,7 @@ var semConfig = {
 				},
 		"SALES":	{
 					"id": "figure_sales-taxes",
+					"tab": "taxes",
 					"title": "Sales Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",

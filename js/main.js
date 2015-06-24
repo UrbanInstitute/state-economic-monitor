@@ -24,11 +24,17 @@ function drawMapFigure(dataID, config, print){
 //    "value": 6.3
 // }
     var dateUpdated;
-    if(config["date-format"] == "quarter"){
-      dateUpdated = TAX_DATE
+    if(config["tab"] == "taxes"){
+      dateUpdated = TAX_DATE;
     }
-    else if(config["date-format"] == "month"){
-      dateUpdated = EMP_DATE
+    else if(config["tab"] == "employment"){
+      dateUpdated = EMP_DATE;
+    }
+    else if(config["tab"] == "wages"){
+      dateUpdated = WAGE_DATE;
+    }
+    else if(config["tab"] == "housing"){
+      dateUpdated = HOUSE_DATE;
     }
     var containerID = config.id
     var slice = figureData[dataID]["data"]
