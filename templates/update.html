@@ -68,6 +68,8 @@
 
   $(function() {
     $('a#addIngredient').bind('click', function() {
+      d3.select("#loading").style("visibility", "visible")
+      d3.select("#loading-text").text("Updating...")
       // $.getJSON($SCRIPT_ROOT + '/add', {
       //   amount: $('input[name="amount"]').val()
       // }, function(data) {
@@ -94,12 +96,12 @@
         data: JSON.stringify(config),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        cache: false,
-        processData: false,
+        // cache: false,
+        // processData: true,
         success: function(data) {
-            $("#employment-status")
-              .text("Data file updated")
-        },
+            d3.select("#loading").style("visibility", "hidden")
+            d3.select("#loading-text").text("Updated!")
+        }
       }); 
 
     });
@@ -250,11 +252,20 @@
   </div>
 
   <div id="tab2" class="tab">
-    <div id = "ingredients">
-       <input type=text name="amount"></input>
-      <input type=text name="unit"></input>
-      <input type=text name="ingredient"></input>
-    </div>
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="employment-month" maxlength="2"></input><input class = "year" type=text name="employment-year" maxlength="4"></input>
+    <br>
+
+    <h3>A</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <br>
+    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+
+    <h3>B</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
+    <br>
+    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+
   </div>
 
   <div id="tab3" class="tab">
@@ -274,8 +285,48 @@
 
   </div>
 
+  <div id="tab4" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="housing-month" maxlength="2"></input><input class = "year" type=text name="housing-year" maxlength="4"></input>
+    <br>
+
+    <h3>A</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <br>
+    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+
+    <h3>B</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
+    <br>
+    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+
+  </div>
+
+  <div id="tab5" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="taxes-month" maxlength="2"></input><input class = "year" type=text name="taxes-year" maxlength="4"></input>
+    <br>
+
+    <h3>A</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <br>
+    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+
+    <h3>B</h3>
+    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
+    <br>
+    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+
+  </div>
+  <div id="tab6" class="tab">
+    <a href=# id="addIngredient">Add ingredient</a>
+    <div id = "loading-text"></div>
+    <img id = "loading" src = "{{ url_for('static', filename='loading.gif') }}"/>
+  </div>
+
+
 </div>
-   <a href=# id="addIngredient">Add ingredient</a>
+   
 
    <ul id="ingredient-list"></ul>
 

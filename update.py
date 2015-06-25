@@ -11,6 +11,8 @@
 import csv
 import json
 from shutil import copy2
+from subprocess import call
+import re
 import fileinput
 import os
 from flask import Flask, jsonify, render_template, request, session, redirect, current_app
@@ -39,17 +41,29 @@ def update_SEM():
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print(line)
 
+  def replaceBreaks(figure, new):
+    matched = False
+    for line in fileinput.input("js/semConfig.js", inplace=1):
+      # line = re.sub("(\"AWW\".*)\n.*\"id", "foo", line.rstrip(), flags=re.DOTALL)
+      if re.search('\"' + figure + '\".*\{', line):
+        matched = True
+      if re.search('\"breaks\"', line) and matched:
+        line = re.sub(r'(.*)(\[.*\])(.*)',r'\1[' + ','.join(map(str,new)) + r']\3',line)
+        matched = False
+      print(line.rstrip())
+
   for fig in figures:
     sheet = fig[0]
     for figure in fig[1]:
       replaceText(old_config[sheet][figure]["text"], new_config[sheet][figure]["text"])
+      replaceBreaks(figure, new_config[sheet][figure]["breaks"])
 
   f=open("static/config.json",'w')
   f.write(json.dumps(new_config, indent=4, sort_keys=True).encode("utf8"))
   f.close();
   
-
-  return ""
+  # os.system("python reshape_data.py 05/2015 02/2011 " + new_config["wages"]["date"] + " 01/2000")
+  return jsonify({})
 
 @app.route('/')
 def index():

@@ -7,7 +7,7 @@ Many of the fields in this configuration will not change, but they can be config
 
 * "date-format" must equal "month" or "quarter" (e.g November, 2014 vs fourth quarth of 2014)
 
-* Within the "subtitle" text, 
+* Within the "subtitle" text,
 	* "{{usa-value}}" refers to the US value for the variable in the data,
 	* "{{usa-changed}}" is text for dealing with positive, negative, or  zero values
 		* usa-value > 0, text -> "increased by usa-value"
@@ -113,7 +113,7 @@ var semConfig = {
 					"date-updated": "{{excel}}",
 					"breaks": ["{{min}}",4,5,6,7,"{{max}}"],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>"
-				},		
+				},
 		"EMP":	{
 					"id": "figure_nonfarm-employment",
 					"tab": "employment",
@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [600,700,800,900,999,1400],
+					"breaks": [600,700,800,900,999,1373],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
@@ -218,6 +218,6 @@ var semConfig = {
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
-		
+
 	}
 }

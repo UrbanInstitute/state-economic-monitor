@@ -7,9 +7,9 @@
                 800, 
                 900, 
                 999, 
-                1400
+                1373
             ], 
-            "text": "National weekly earnings for all US private employees averaged $858 in April 2015. Among the 50 states, average wages ranged from $669 in Arkansas to $1,003 in Massachusetts. The District of Columbia\u2019s average weekly earnings were $1,380. Thirty-six states had average weekly earnings below the national average, including four states with average wages below $700: Arkansas, Mississippi, ($677), New Mexico ($695), and Montana ($698). Ten states had average weekly earnings above $900: Massachusetts, Washington ($994), New York ($968), Alaska ($967), Connecticut ($962), California ($961), New Jersey ($932), Maryland ($929), Virginia ($914), and Colorado ($902)."
+            "text": "National weekly earnings for all US private employees averaged $861 in May 2015. Among the 50 states, average wages ranged from $666 in Arkansas to $1,010 in Massachusetts. The District of Columbia\u2019s average weekly earnings were $1,372. Thirty-six states had average weekly earnings below the national average, including three states with average wages below $700: Arkansas, Mississippi, ($677), and New Mexico ($694). Ten states had average weekly earnings above $900: Massachusetts, Washington ($998), New York ($961), California ($960), Connecticut ($956), Alaska ($951), New Jersey ($932), Maryland ($930), Virginia ($920), and Colorado ($908)."
         }, 
         "AWWChg": {
             "breaks": [
@@ -20,7 +20,7 @@
                 4, 
                 6
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in April 2015 were 2.4 percent higher than in April 2014. Eleven states saw real average weekly earnings fall over the year. Average wage declines were more than 1 percent in New Mexico (-2.3 percent), Wyoming (-1.8 percent), Mississippi (-1.7 percent), Arkansas (-1.6 percent), and Alabama (-1.2 percent). Average weekly earnings were unchanged in Louisiana and Maryland. Delaware\u2019s 5.5 percent growth was the largest increase among the states. Six other states had earnings growth in excess of 4 percent: Alaska (5.2 percent), Idaho (5.1 percent), Kentucky (4.9 percent), Nevada (4.9 percent), Virginia (4.5 percent), and Washington (4.1 percent)."
+            "text": "National real (inflation-adjusted) average weekly earnings in May 2015 were 2.3 percent higher than in May 2014. Forty states saw real average weekly earnings increase over the year. Three states saw increases of more than 5 percent: Virginia (5.6 percent), Kentucky (5.3 percent), and Vermont (5.2 percent). Eleven other states had real average earnings growth between 3 and 5 percent. Nine states and DC saw average wages decline (Minnesota\u2019s real average wages were unchanged). New Mexico\u2019s 3.0 percent decline was the largest. Four states and DC had declines greater than 1 percent: New Mexico, Arkansas (-1.8 percent), Tennessee and Wyoming (both -1.4 percent), and DC (-1.1 percent)."
         }, 
         "date": "05/2015"
     }

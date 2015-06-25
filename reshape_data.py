@@ -12,9 +12,9 @@ try:
     TAX_DATE = sys.argv[2]
     WAGE_DATE = sys.argv[3]
     HOUSE_DATE = sys.argv[4]
-    # print "Dates must be formatted as MM/YYYY"
-    # print "Employment data date is " + EMP_DATE
-    # print "Tax data date is " + TAX_DATE
+    print "Dates must be formatted as MM/YYYY"
+    print "Employment data date is " + EMP_DATE
+    print "Tax data date is " + TAX_DATE
 except IndexError:
     print "You must specify the date for the current data set"
     sys.exit()
