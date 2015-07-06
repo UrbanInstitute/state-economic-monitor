@@ -29,7 +29,7 @@ def upload():
 @app.route('/add', methods=["POST", "GET"])
 def update_SEM():
   # new_config = {}
-  figures = [["wages",["AWW","AWWChg"]]]
+  figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]]]
   with open('static/config.json') as config_file:
     old_config = json.load(config_file)
   new_config = request.json
@@ -40,6 +40,10 @@ def update_SEM():
     for line in fileinput.input("wages.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print(line)
+    for line in fileinput.input("employment.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print(line)
+
 
   def replaceBreaks(figure, new):
     matched = False
@@ -56,7 +60,12 @@ def update_SEM():
     sheet = fig[0]
     for figure in fig[1]:
       replaceText(old_config[sheet][figure]["text"], new_config[sheet][figure]["text"])
-      replaceBreaks(figure, new_config[sheet][figure]["breaks"])
+      print old_config[sheet][figure]["text"]
+      print ""
+      print new_config[sheet][figure]["text"]
+      print ""
+      if "breaks" in new_config[sheet][figure]:
+        replaceBreaks(figure, new_config[sheet][figure]["breaks"])
 
   f=open("static/config.json",'w')
   f.write(json.dumps(new_config, indent=4, sort_keys=True).encode("utf8"))

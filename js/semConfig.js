@@ -111,7 +111,7 @@ var semConfig = {
 					"unit": "percent, seasonally adjusted",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": ["{{min}}",4,5,6,7,"{{max}}"],
+					"breaks": [-2,4,5,6,7,8],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"EMP":	{
@@ -124,7 +124,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": ["{{min}}",0,1,2,3,"{{max}}"],
+					"breaks": [-3,0,1,2,3,4],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWW":	{

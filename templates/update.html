@@ -57,7 +57,7 @@
   }
 
   d3.json("{{ url_for('static', filename='config.json') }}", function(data) {
-    var figures = [["wages",["AWW","AWWChg"]]]
+    var figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]]]
     for(var i=0; i<figures.length; i++){
       writeDate(figures[i][0], data);
       for(var j=0; j<figures[i][1].length; j++){
@@ -70,12 +70,6 @@
     $('a#addIngredient').bind('click', function() {
       d3.select("#loading").style("visibility", "visible")
       d3.select("#loading-text").text("Updating...")
-      // $.getJSON($SCRIPT_ROOT + '/add', {
-      //   amount: $('input[name="amount"]').val()
-      // }, function(data) {
-      //   console.log(data)
-      // });
-      // return false;
       function getDate(sheet){
         return $('input[name="' + sheet + '-month"').val() + "/" + $('input[name="' + sheet + '-year"').val();
       }
@@ -89,7 +83,7 @@
         }
         return arr;
       }
-      var config = { "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } } }
+      var config = { "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } } }
       $.ajax({
         type: 'POST',
         url: '/add',
@@ -256,15 +250,21 @@
     <input type=text class = "month" name="employment-month" maxlength="2"></input><input class = "year" type=text name="employment-year" maxlength="4"></input>
     <br>
 
-    <h3>A</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <h3>Unemployment Rate</h3>
+    <label>Breaks :</label><input type=text class="break" name="UNEMP-b1"><input type=text class="break" name="UNEMP-b2"><input type=text class="break" name="UNEMP-b3"><input type=text class="break" name="UNEMP-b4"><input type=text class="break" name="UNEMP-b5"><input type=text class="break" name="UNEMP-b6">
     <br>
-    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+    <textarea name = "UNEMP-text" cols="44" rows="15"></textarea>
 
-    <h3>B</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
+    <h3>Unemployment Rate: Level vs. One-Year-Change</h3>
+    <textarea name = "Figure1-text" cols="44" rows="15"></textarea>
+
+    <h3>Total Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="EMP-b1"><input type=text class="break" name="EMP-b2"><input type=text class="break" name="EMP-b3"><input type=text class="break" name="EMP-b4"><input type=text class="break" name="EMP-b5"><input type=text class="break" name="EMP-b6">
     <br>
-    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+    <textarea name = "EMP-text" cols="44" rows="15"></textarea>
+
+    <h3>Total Employment vs. Public Employment</h3>
+    <textarea name = "Figure2-text" cols="44" rows="15"></textarea>
 
   </div>
 
