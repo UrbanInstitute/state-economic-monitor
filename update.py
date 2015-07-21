@@ -37,6 +37,7 @@ def update_SEM():
   # amount = request.args.get('amount', '', type=str)
 
   def replaceText(old, new):
+    files = ["wages.html", "employment.html", "templates/wages_preview.html"]
     for line in fileinput.input("wages.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print(line)
@@ -77,6 +78,10 @@ def update_SEM():
 @app.route('/')
 def index():
   return render_template('update.html')
+
+@app.route('/preview')
+def preview():
+  return render_template('employment_preview.html')
 
 if __name__ == '__main__':
   app.debug = True
