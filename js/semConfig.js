@@ -163,48 +163,48 @@ var semConfig = {
 					"title": "Total Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
-					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier.",
+					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in the first quarter of 2015 compared to one year earlier.",
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
 					"id": "figure_income-taxes",
 					"title": "Personal Income Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
-					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier.",
+					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in the first quarter of 2015 compared to one year earlier.",
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
 					"id": "figure_corporate-taxes",
 					"title": "Corporate Income Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
-					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier.",
+					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in the first quarter of 2015 compared to one year earlier.",
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
 					"id": "figure_sales-taxes",
 					"title": "Sales Tax Revenue",
 					"short-label": "CHANGE",
 					"date-format": "quarter",
-					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in {{date-updated}} compared to one year earlier.",
+					"subtitle": "Total state tax revenue {{usa-changed}} in the year ending in the first quarter of 2015 compared to one year earlier.",
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
 					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
-					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
+					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				}
 		
 	}
