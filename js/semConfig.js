@@ -179,7 +179,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
+					"breaks": ["{{min}}",0,5,10,15,"{{max}}"],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
@@ -191,7 +191,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": ["{{min}}",-2,0,3,6,"{{max}}"],
+					"breaks": [-90,-10,0,10,20,90],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in the first quarter of 2015 are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
