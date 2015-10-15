@@ -2,7 +2,9 @@ body{
 	font: 12pt Lato;
 	background: #c6c6c6;
 }
-
+*:focus{
+    outline: 0;
+}
 h2{
 	font-size: 14pt;
 	clear: both;

@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}">
 <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
-<script type=text/javascript src="{{ url_for('static', filename='units.js') }}"></script>
 <!-- <script type=text/javascript src="{{ url_for('static', filename='units.js') }}"></script> -->
 <script type=text/javascript src="{{ url_for('static', filename='d3.min.js') }}"></script>
 
@@ -57,7 +56,7 @@
   }
 
   d3.json("{{ url_for('static', filename='config.json') }}", function(data) {
-    var figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]]]
+    var   figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]];
     for(var i=0; i<figures.length; i++){
       writeDate(figures[i][0], data);
       for(var j=0; j<figures[i][1].length; j++){
@@ -83,7 +82,10 @@
         }
         return arr;
       }
-      var config = { "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } } }
+      var today = new Date();
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      var dateUpdated = "Last Updated " + months[today.getMonth()] + " " + today.getFullYear()
+      var config = {"dateUpdated": dateUpdated, "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } }, "housing":{ "date": getDate("housing"), "HPChgYr":{ "text" : getText("HPChgYr"), "breaks":getBreaks("HPChgYr")} , "Figure3":{ "text": getText("Figure3") } }, "taxes":{ "date": getDate("taxes"), "TOTAL": { "text": getText("TOTAL"), "breaks": getBreaks("TOTAL")}, "INC": { "text": getText("INC"), "breaks": getBreaks("INC")}, "CORPINC": { "text": getText("CORPINC"), "breaks": getBreaks("CORPINC")}, "SALES": { "text": getText("SALES"), "breaks": getBreaks("SALES") }}}
       $.ajax({
         type: 'POST',
         url: '/add',
@@ -95,12 +97,20 @@
         success: function(data) {
             d3.select("#loading").style("visibility", "hidden")
             d3.select("#loading-text").text("Updated!")
+            var win = window.open('/preview', '_blank');
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
         }
       }); 
 
     });
 
-    $('#upload-employment-btn').click(function() {
+    $('#file-employment-button').change(function() {
         var form_data = new FormData($('#upload-employment')[0]);
         $.ajax({
             type: 'POST',
@@ -111,16 +121,16 @@
             processData: false,
             success: function(data) {
                 $("#employment-status")
-                  .text(form_data + "Data file updated")
+                  .text("Employment data uploaded")
             },
         });
     });
 
-    $('#upload-wages-btn').click(function() {
+    $('#file-wages-button').change(function() {
         var form_data = new FormData($('#upload-wages')[0]);
         $.ajax({
             type: 'POST',
-            url: '/upload?sheet=wages',
+            url: '/upload?sheet=wage',
             data: form_data,
             contentType: false,
             cache: false,
@@ -128,13 +138,13 @@
             // async: false,
             success: function(data) {
                 $("#wages-status")
-                  .text(form_data + "Data file updated")
+                  .text("Wage data uploaded")
 
             },
         });
     });
 
-    $('#upload-housing-btn').click(function() {
+    $('#file-housing-button').change(function() {
         var form_data = new FormData($('#upload-housing')[0]);
         $.ajax({
             type: 'POST',
@@ -145,24 +155,24 @@
             processData: false,
             success: function(data) {
                 $("#housing-status")
-                  .text(form_data + "Data file updated")
+                  .text("Housing data uploaded")
 
             },
         });
     });
 
-    $('#upload-taxes-btn').click(function() {
+    $('#file-taxes-button').change(function() {
         var form_data = new FormData($('#upload-taxes')[0]);
         $.ajax({
             type: 'POST',
-            url: '/upload?sheet=taxes',
+            url: '/upload?sheet=tax',
             data: form_data,
             contentType: false,
             cache: false,
             processData: false,
             success: function(data) {
                 $("#taxes-status")
-                  .text(form_data + "Data file updated")
+                  .text("Tax data uploaded")
 
             },
         });
@@ -190,7 +200,7 @@
         <li><a href="#tab3">Wages</a></li>
         <li><a href="#tab4">Housing</a></li>
         <li><a href="#tab5">Taxes</a></li>
-        <li><a href="#tab6">Preview</a></li>
+        <li><a href="#tab6">Update</a></li>
     </ul>
 
 <div class="tab-content">
@@ -200,10 +210,7 @@
       <h2>Employment data file</h2>
       <form id="upload-employment" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input name="file" type="file">
-          </fieldset>
-          <fieldset>
-              <button id="upload-employment-btn" type="button">Upload</button>
+              <input id = "file-employment-button" name="file" type="file">
           </fieldset>
       </form>
       <div id ="employment-status"></div>
@@ -211,10 +218,7 @@
       <h2>Wages data file</h2>
       <form id="upload-wages" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input name="file" type="file">
-          </fieldset>
-          <fieldset>
-              <button id="upload-wages-btn" type="button">Upload</button>
+              <input id = "file-wages-button" name="file" type="file">
           </fieldset>
       </form>
       <div id ="wages-status"></div>
@@ -223,10 +227,7 @@
       <h2>Housing data file</h2>
       <form id="upload-housing" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input name="file" type="file">
-          </fieldset>
-          <fieldset>
-              <button id="upload-housing-btn" type="button">Upload</button>
+              <input id = "file-housing-button" name="file" type="file">
           </fieldset>
       </form>
       <div id ="housing-status"></div>
@@ -235,10 +236,7 @@
       <h2>Taxes data file</h2>
       <form id="upload-taxes" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input name="file" type="file">
-          </fieldset>
-          <fieldset>
-              <button id="upload-taxes-btn" type="button">Upload</button>
+              <input id = "file-taxes-button" name="file" type="file">
           </fieldset>
       </form>
       <div id ="taxes-status"></div>
@@ -290,15 +288,13 @@
     <input type=text class = "month" name="housing-month" maxlength="2"></input><input class = "year" type=text name="housing-year" maxlength="4"></input>
     <br>
 
-    <h3>A</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <h3>House Prices</h3>
+    <label>Breaks :</label><input type=text class="break" name="HPChgYr-b1"><input type=text class="break" name="HPChgYr-b2"><input type=text class="break" name="HPChgYr-b3"><input type=text class="break" name="HPChgYr-b4"><input type=text class="break" name="HPChgYr-b5"><input type=text class="break" name="HPChgYr-b6">
     <br>
-    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+    <textarea name = "HPChgYr-text" cols="44" rows="15"></textarea>
 
-    <h3>B</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
-    <br>
-    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+    <h3>One-Year-Change vs. Change Since Peak in Housing Prices</h3>
+    <textarea name = "Figure3-text" cols="44" rows="15"></textarea>
 
   </div>
 
@@ -307,19 +303,29 @@
     <input type=text class = "month" name="taxes-month" maxlength="2"></input><input class = "year" type=text name="taxes-year" maxlength="4"></input>
     <br>
 
-    <h3>A</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOO-b1"><input type=text class="break" name=" FOO-b2"><input type=text class="break" name=" FOO-b3"><input type=text class="break" name=" FOO-b4"><input type=text class="break" name=" FOO-b5"><input type=text class="break" name=" FOO-b6">
+    <h3>Total Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="TOTAL-b1"><input type=text class="break" name="TOTAL-b2"><input type=text class="break" name="TOTAL-b3"><input type=text class="break" name="TOTAL-b4"><input type=text class="break" name="TOTAL-b5"><input type=text class="break" name="TOTAL-b6">
     <br>
-    <textarea name = " FOO-text" cols="44" rows="15"></textarea>
+    <textarea name = "TOTAL-text" cols="44" rows="15"></textarea>
 
-    <h3>B</h3>
-    <label>Breaks :</label><input type=text class="break" name=" FOOChg-b1"><input type=text class="break" name=" FOOChg-b2"><input type=text class="break" name=" FOOChg-b3"><input type=text class="break" name=" FOOChg-b4"><input type=text class="break" name=" FOOChg-b5"><input type=text class="break" name=" FOOChg-b6">
+    <h3>Sales Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="SALES-b1"><input type=text class="break" name="SALES-b2"><input type=text class="break" name="SALES-b3"><input type=text class="break" name="SALES-b4"><input type=text class="break" name="SALES-b5"><input type=text class="break" name="SALES-b6">
     <br>
-    <textarea name = " FOOChg-text" cols="44" rows="15"></textarea>
+    <textarea name = "SALES-text" cols="44" rows="15"></textarea>
+
+    <h3>Personal Income Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="INC-b1"><input type=text class="break" name="INC-b2"><input type=text class="break" name="INC-b3"><input type=text class="break" name="INC-b4"><input type=text class="break" name="INC-b5"><input type=text class="break" name="INC-b6">
+    <br>
+    <textarea name = "INC-text" cols="44" rows="15"></textarea>
+
+    <h3>Corporate Income Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="CORPINC-b1"><input type=text class="break" name="CORPINC-b2"><input type=text class="break" name="CORPINC-b3"><input type=text class="break" name="CORPINC-b4"><input type=text class="break" name="CORPINC-b5"><input type=text class="break" name="CORPINC-b6">
+    <br>
+    <textarea name = "CORPINC-text" cols="44" rows="15"></textarea>
 
   </div>
   <div id="tab6" class="tab">
-    <a href=# id="addIngredient">Add ingredient</a>
+    <a href=# id="addIngredient">Update the SEM</a>
     <div id = "loading-text"></div>
     <img id = "loading" src = "{{ url_for('static', filename='loading.gif') }}"/>
   </div>

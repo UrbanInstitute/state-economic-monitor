@@ -16,6 +16,7 @@ try:
     print "Employment data date is " + EMP_DATE
     print "Tax data date is " + TAX_DATE
 except IndexError:
+    print sys.argv
     print "You must specify the date for the current data set"
     sys.exit()
 figureData = OrderedDict()
@@ -190,6 +191,16 @@ def parseWage():
         figureData["AWWChg"]["data"].append(awwChg)
 
     with open("js/figureData.js", "w") as fp:
+        fp.write("var figureData = ")
+        fp.write(json.dumps(figureData, sort_keys=False))
+        fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
+        fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
+        fp.write("\nvar WAGE_DATE=\""+WAGE_DATE + "\"")
+        fp.write("\nvar HOUSE_DATE=\""+HOUSE_DATE + "\"")
+        fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
+        fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
+
+    with open("static/js/figureData.js", "w") as fp:
         fp.write("var figureData = ")
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
