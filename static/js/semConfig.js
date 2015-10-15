@@ -111,7 +111,7 @@ var semConfig = {
 					"unit": "percent, seasonally adjusted",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [2,4,5,6,7,8],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"EMP":	{
@@ -124,7 +124,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-3,0,1,2,3,4],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWW":	{
@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [600,700,800,900,1000,1500],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-4,-2,0,2,4,8],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
@@ -163,7 +163,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [0,2,4,6,8,12],
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Agency.</a>"
 				},
 		"TOTAL":	{
@@ -176,7 +176,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-75,-3,0,3,6,15],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
@@ -189,7 +189,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-5,0,5,10,15,30],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
@@ -202,7 +202,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-90,-10,0,10,20,90],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
@@ -215,7 +215,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [None,None,None,None,None,None],
+					"breaks": [-6,-3,0,3,6,18],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
 
