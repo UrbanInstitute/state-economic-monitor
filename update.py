@@ -16,7 +16,7 @@ import re
 import fileinput
 import os
 from flask import Flask, jsonify, render_template, request, session, redirect, current_app
-from pdfkit import from_url
+from pdfkit import from_url, from_file
 app = Flask(__name__)
 
 @app.route("/upload", methods=["POST", "GET"])
@@ -84,6 +84,7 @@ def update_SEM():
         line = re.sub(r'(.*)(\[.*\])(.*)',r'\1[' + ','.join(map(str,new)) + r']\3',line)
         matched = False
       print(line.rstrip())
+
   def replaceDate(old, new):
     for line in fileinput.input("index.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
@@ -117,8 +118,14 @@ def update_SEM():
   f.close();
   
   os.system("python reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
-  # os.system("depict http://datatools.urban.org/features/state-economic-monitor/employment.html -s '#figure_unemployment' -d 500 test.png")
-  # from_url('http://datatools.urban.org/features/state-economic-monitor/employment.html', 'out.pdf')
+  os.system("depict http://localhost:8080/employment.html -s '#figure_unemployment' -d 500 pdf/images/figure_unemployment.png")
+  os.system("depict http://localhost:8080/employment.html -s '#figure_level_vs_change_unemployment' -d 500 pdf/images/figure_level_vs_change_unemployment.png")
+  os.system("depict http://localhost:8080/employment.html -s '#figure_nonfarm-employment' -d 500 pdf/images/figure_nonfarm-employment.png")
+  os.system("depict http://localhost:8080/employment.html -s '#total_change_emp_vs_public_change_emp' -d 500 pdf/images/total_change_emp_vs_public_change_emp.png")
+
+
+  # os.system("http-server")
+  from_file('pdf/templates/employment_pdf.html', 'employment.pdf', css = "./css/sem.css")
   return jsonify({})
 
 @app.route('/')
