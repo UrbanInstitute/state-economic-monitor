@@ -14,6 +14,9 @@ body.pdf_template .navbar-default{
 body.pdf_template h1 a{
   color: #333;
 }
+body.pdf_template section img{
+  width: 800px;
+}
 /************ open HEADER ***********/
 
 /*#header{

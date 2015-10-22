@@ -46,18 +46,30 @@ def update_SEM():
     for line in fileinput.input("templates/wages_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
+    for line in fileinput.input("pdf/templates/wages_pdf.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+
     for line in fileinput.input("employment.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
     for line in fileinput.input("templates/employment_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
+    for line in fileinput.input("pdf/templates/employment_pdf.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+
     for line in fileinput.input("housing.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
     for line in fileinput.input("templates/housing_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
+    for line in fileinput.input("pdf/templates/housing_pdf.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+
     for line in fileinput.input("taxes.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
@@ -118,14 +130,23 @@ def update_SEM():
   f.close();
   
   os.system("python reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
+
   os.system("depict http://localhost:8080/employment.html -s '#figure_unemployment' -d 500 pdf/images/figure_unemployment.png")
   os.system("depict http://localhost:8080/employment.html -s '#figure_level_vs_change_unemployment' -d 500 pdf/images/figure_level_vs_change_unemployment.png")
   os.system("depict http://localhost:8080/employment.html -s '#figure_nonfarm-employment' -d 500 pdf/images/figure_nonfarm-employment.png")
   os.system("depict http://localhost:8080/employment.html -s '#total_change_emp_vs_public_change_emp' -d 500 pdf/images/total_change_emp_vs_public_change_emp.png")
 
+  os.system("depict http://localhost:8080/wages.html -s '#figure_wages' -d 500 pdf/images/figure_wages.png")
+  os.system("depict http://localhost:8080/wages.html -s '#figure_wages-change' -d 500 pdf/images/figure_wages-change.png")
+
+  os.system("depict http://localhost:8080/housing.html -s '#figure_house-prices' -d 500 pdf/images/figure_house-prices.png")
+  os.system("depict http://localhost:8080/housing.html -s '#housing_change_vs_2007_housing_change' -d 500 pdf/images/housing_change_vs_2007_housing_change")
 
   # os.system("http-server")
-  from_file('pdf/templates/employment_pdf.html', 'employment.pdf', css = "./css/sem.css")
+  from_file('pdf/templates/employment_pdf.html', 'aaaemployment.pdf', css = "./css/sem.css")
+  from_file('pdf/templates/wages_pdf.html', 'aaawages.pdf', css = "./css/sem.css")
+  from_file('pdf/templates/housing_pdf.html', 'aaahousing.pdf', css = "./css/sem.css")
+
   return jsonify({})
 
 @app.route('/')
