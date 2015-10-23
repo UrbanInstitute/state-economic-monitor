@@ -147,6 +147,13 @@ def update_SEM():
     for line in fileinput.input("archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
+    newPreview = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"http://localhost:8080/archive/employment" + empName\
+    + ".pdf\" target=\"_blank\">" + fullempName\
+    +"</a></li>"
+    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
+      print line
 
 
   os.system("depict http://localhost:8080/wages.html -s '#figure_wages' -d 500 pdf/images/figure_wages.png")
@@ -163,6 +170,14 @@ def update_SEM():
     for line in fileinput.input("archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
+    newPreview = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"http://localhost:8080/archive/wages" + wageName\
+    + ".pdf\" target=\"_blank\">" + fullwageName\
+    +"</a></li>"
+    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
+      print line
+
 
 
   housingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
@@ -178,6 +193,13 @@ def update_SEM():
     +"</a></li>"
     for line in fileinput.input("archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
+      print line
+    newPreview = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"http://localhost:8080/archive/housing" + housingName\
+    + ".pdf\" target=\"_blank\">" + fullhousingName\
+    +"</a></li>"
+    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
       print line
 
 
@@ -197,6 +219,13 @@ def update_SEM():
     for line in fileinput.input("archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
+    newPreview = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"http://localhost:8080/archive/taxes" + taxesName\
+    + ".pdf\" target=\"_blank\">" + fulltaxesName\
+    +"</a></li>"
+    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
+      print line
 
 
   return jsonify({})
@@ -210,25 +239,6 @@ def preview():
   # os.system()
   # call(['./test.sh'])
   return render_template('index_preview.html')
-
-
-
-
-
-
-
-# @app.route('/employment_pdf.html')
-# def employment_pdf():
-#   return render_template('employment_pdf.html')
-# @app.route('/wages_pdf.html')
-# def wages_pdf():
-#   return render_template('wages_pdf.html')
-# @app.route('/taxes_pdf.html')
-# def taxes_pdf():
-#   return render_template('taxes_pdf.html')
-# @app.route('/housing_pdf.html')
-# def housing_pdf():
-#   return render_template('housing_pdf.html')  
 @app.route('/employment.html')
 def employment():
   return render_template('employment_preview.html')
