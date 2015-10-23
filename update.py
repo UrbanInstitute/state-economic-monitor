@@ -18,6 +18,8 @@ import os
 from flask import Flask, jsonify, render_template, request, session, redirect, current_app
 from pdfkit import from_url, from_file
 app = Flask(__name__)
+from math import ceil
+
 
 @app.route("/upload", methods=["POST", "GET"])
 def upload():
@@ -106,24 +108,15 @@ def update_SEM():
     for line in fileinput.input("templates/index_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line    
+  def quarter(month):
+      q = ceil(float(month)/3.0)
+      return 'Q' + str(int(q))
 
-    # matched = False
-    # for line in fileinput.input("js/semConfig.js", inplace=1):
-    #   # line = re.sub("(\"AWW\".*)\n.*\"id", "foo", line.rstrip(), flags=re.DOTALL)
-    #   if re.search('\"' + figure + '\".*\{', line):
-    #     matched = True
-    #   if re.search('\"breaks\"', line) and matched:
-    #     line = re.sub(r'(.*)(\[.*\])(.*)',r'\1[' + ','.join(map(str,new)) + r']\3',line)
-    #     matched = False
   replaceDate(old_config["dateUpdated"], new_config["dateUpdated"])
   for fig in figures:
     sheet = fig[0]
     for figure in fig[1]:
       replaceText(old_config[sheet][figure]["text"], new_config[sheet][figure]["text"])
-      # print old_config[sheet][figure]["text"]
-      # print ""
-      # print new_config[sheet][figure]["text"]
-      # print ""
       if "breaks" in new_config[sheet][figure]:
         replaceBreaks(figure, new_config[sheet][figure]["breaks"])
 
@@ -133,33 +126,77 @@ def update_SEM():
   
   os.system("python reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
 
+  # os.system("http-server")
+  dates = [("",""),("Jan", "January"), ("Feb", "February"), ("Mar","March"),("Apr","April"),("May","May"),("June","June"),("Jul","July"),("Aug","August"),("Sept","September"),("Oct","October"),("Nov","November"),("Dec","December")]
+
+
   os.system("depict http://localhost:8080/employment.html -s '#figure_unemployment' -d 500 pdf/images/figure_unemployment.png")
   os.system("depict http://localhost:8080/employment.html -s '#figure_level_vs_change_unemployment' -d 500 pdf/images/figure_level_vs_change_unemployment.png")
   os.system("depict http://localhost:8080/employment.html -s '#figure_nonfarm-employment' -d 500 pdf/images/figure_nonfarm-employment.png")
   os.system("depict http://localhost:8080/employment.html -s '#total_change_emp_vs_public_change_emp' -d 500 pdf/images/total_change_emp_vs_public_change_emp.png")
+  empName = dates[int(new_config["employment"]["date"].split("/")[0])][0] + new_config["employment"]["date"][-2:]
+  fullempName = dates[int(new_config["employment"]["date"].split("/")[0])][1] + " \'" + new_config["employment"]["date"][-2:]
+  from_file('pdf/templates/employment_pdf.html', 'archive/employment%s.pdf'%empName, css = "./css/sem.css")
+
+  if new_config["employment"]["date"] != old_config["employment"]["date"]:
+    oldArchive = "<!-- NEW EMPLOYMENT HERE -->"
+    newArchive = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"archive/employment" + empName\
+    + ".pdf\" target=\"_blank\">" + fullempName\
+    +"</a></li>"
+    for line in fileinput.input("archive.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
+      print line
+
 
   os.system("depict http://localhost:8080/wages.html -s '#figure_wages' -d 500 pdf/images/figure_wages.png")
   os.system("depict http://localhost:8080/wages.html -s '#figure_wages-change' -d 500 pdf/images/figure_wages-change.png")
+  wageName = dates[int(new_config["wages"]["date"].split("/")[0])][0] + new_config["wages"]["date"][-2:]
+  fullwageName = dates[int(new_config["wages"]["date"].split("/")[0])][1] + " \'" + new_config["wages"]["date"][-2:]
+  from_file('pdf/templates/wages_pdf.html', 'archive/wages%s.pdf'%wageName, css = "./css/sem.css")
+  if new_config["wages"]["date"] != old_config["wages"]["date"]:
+    oldArchive = "<!-- NEW WAGES HERE -->"
+    newArchive = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"archive/wages" + wageName\
+    + ".pdf\" target=\"_blank\">" + fullwageName\
+    +"</a></li>"
+    for line in fileinput.input("archive.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
+      print line
 
+
+  housingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
+  fullhousingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + " \'" + new_config["housing"]["date"][-2:]
   os.system("depict http://localhost:8080/housing.html -s '#figure_house-prices' -d 500 pdf/images/figure_house-prices.png")
-  os.system("depict http://localhost:8080/housing.html -s '#housing_change_vs_2007_housing_change' -d 500 pdf/images/housing_change_vs_2007_housing_change")
+  os.system("depict http://localhost:8080/housing.html -s '#housing_change_vs_2007_housing_change' -d 500 pdf/images/housing_change_vs_2007_housing_change.png")
+  from_file('pdf/templates/housing_pdf.html', 'archive/housing%s.pdf'%housingName, css = "./css/sem.css")
+  if new_config["housing"]["date"] != old_config["housing"]["date"]:
+    oldArchive = "<!-- NEW HOUSING HERE -->"
+    newArchive = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"archive/housing" + housingName\
+    + ".pdf\" target=\"_blank\">" + fullhousingName\
+    +"</a></li>"
+    for line in fileinput.input("archive.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
+      print line
+
 
   os.system("depict http://localhost:8080/taxes.html -s '#figure_total-taxes' -d 500 pdf/images/figure_total-taxes.png")
   os.system("depict http://localhost:8080/taxes.html -s '#figure_sales-taxes' -d 500 pdf/images/figure_sales-taxes.png")
   os.system("depict http://localhost:8080/taxes.html -s '#figure_income-taxes' -d 500 pdf/images/figure_income-taxes.png")
   os.system("depict http://localhost:8080/taxes.html -s '#figure_corporate-taxes' -d 500 pdf/images/figure_corporate-taxes.png")
-
-  # os.system("http-server")
-  from_file('pdf/templates/employment_pdf.html', 'aaaemployment.pdf', css = "./css/sem.css")
-  from_file('pdf/templates/wages_pdf.html', 'aaawages.pdf', css = "./css/sem.css")
-  from_file('pdf/templates/housing_pdf.html', 'aaahousing.pdf', css = "./css/sem.css")
-  from_file('pdf/templates/taxes_pdf.html', 'aaataxes.pdf', css = "./css/sem.css")
-
-  tmp = "<!-- NEW EMPLOYMENT HERE -->"
-  tmp2 = tmp + "\n" + "foo"
-  for line in fileinput.input("archive.html", inplace=1):
-    line = line.replace(tmp.encode("utf8"), tmp2.encode("utf8")).rstrip()
-    print line
+  taxesName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
+  fulltaxesName = quarter(int(new_config["taxes"]["date"].split("/")[0])) + " \'" + new_config["taxes"]["date"][-2:]
+  from_file('pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "./css/sem.css")
+  if new_config["taxes"]["date"] != old_config["taxes"]["date"]:
+    oldArchive = "<!-- NEW TAXES HERE -->"
+    newArchive = oldArchive + "\n" \
+    + "<li class=\"archiveMonth\"><a href=\"archive/taxes" + taxesName\
+    + ".pdf\" target=\"_blank\">" + fulltaxesName\
+    +"</a></li>"
+    for line in fileinput.input("archive.html", inplace=1):
+      line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
+      print line
 
 
   return jsonify({})
