@@ -76,7 +76,9 @@ def update_SEM():
     for line in fileinput.input("templates/taxes_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-
+    for line in fileinput.input("pdf/templates/taxes_pdf.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
 
   def replaceBreaks(figure, new):
     matched = False
@@ -142,10 +144,23 @@ def update_SEM():
   os.system("depict http://localhost:8080/housing.html -s '#figure_house-prices' -d 500 pdf/images/figure_house-prices.png")
   os.system("depict http://localhost:8080/housing.html -s '#housing_change_vs_2007_housing_change' -d 500 pdf/images/housing_change_vs_2007_housing_change")
 
+  os.system("depict http://localhost:8080/taxes.html -s '#figure_total-taxes' -d 500 pdf/images/figure_total-taxes.png")
+  os.system("depict http://localhost:8080/taxes.html -s '#figure_sales-taxes' -d 500 pdf/images/figure_sales-taxes.png")
+  os.system("depict http://localhost:8080/taxes.html -s '#figure_income-taxes' -d 500 pdf/images/figure_income-taxes.png")
+  os.system("depict http://localhost:8080/taxes.html -s '#figure_corporate-taxes' -d 500 pdf/images/figure_corporate-taxes.png")
+
   # os.system("http-server")
   from_file('pdf/templates/employment_pdf.html', 'aaaemployment.pdf', css = "./css/sem.css")
   from_file('pdf/templates/wages_pdf.html', 'aaawages.pdf', css = "./css/sem.css")
   from_file('pdf/templates/housing_pdf.html', 'aaahousing.pdf', css = "./css/sem.css")
+  from_file('pdf/templates/taxes_pdf.html', 'aaataxes.pdf', css = "./css/sem.css")
+
+  tmp = "<!-- NEW EMPLOYMENT HERE -->"
+  tmp2 = tmp + "\n" + "foo"
+  for line in fileinput.input("archive.html", inplace=1):
+    line = line.replace(tmp.encode("utf8"), tmp2.encode("utf8")).rstrip()
+    print line
+
 
   return jsonify({})
 
