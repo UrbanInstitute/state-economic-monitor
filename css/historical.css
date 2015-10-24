@@ -1,0 +1,52 @@
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
+
+.axis--y path {
+  display: none;
+}
+
+.states {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 1px;
+}
+
+.state--hover {
+  stroke: #fdbf11;
+  stroke-width: 2.5px;
+}
+.marker{
+  fill: #fdbf11;
+}
+
+#USA{
+  stroke: #333;
+  stroke-width: 2.5px;
+}
+
+.focus text {
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+.voronoi path {
+  fill: none;
+  pointer-events: all;
+}
+
+/*.voronoi--show path {
+  stroke: red;
+  stroke-opastate: .2;
+}
+*/
+#form {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
