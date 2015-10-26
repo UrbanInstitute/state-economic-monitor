@@ -59,39 +59,39 @@ def update_SEM():
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
-    for line in fileinput.input("employment.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/employment.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("templates/employment_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/employment_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("pdf/templates/employment_pdf.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
-
-    for line in fileinput.input("housing.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
-    for line in fileinput.input("templates/housing_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
-    for line in fileinput.input("pdf/templates/housing_pdf.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/employment_pdf.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
-    for line in fileinput.input("taxes.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/housing.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("templates/taxes_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/housing_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("pdf/templates/taxes_pdf.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/housing_pdf.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/taxes.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/taxes_preview.html", inplace=1):
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      print line
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
   def replaceBreaks(figure, new):
     matched = False
-    for line in fileinput.input("js/semConfig.js", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/js/semConfig.js", inplace=1):
       if re.search('\"' + figure + '\".*\{', line):
         matched = True
       if re.search('\"breaks\"', line) and matched:
@@ -100,7 +100,7 @@ def update_SEM():
       print(line.rstrip())
 
     matched = False
-    for line in fileinput.input("static/js/semConfig.js", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/static/js/semConfig.js", inplace=1):
       if re.search('\"' + figure + '\".*\{', line):
         matched = True
       if re.search('\"breaks\"', line) and matched:
@@ -109,10 +109,10 @@ def update_SEM():
       print(line.rstrip())
 
   def replaceDate(old, new):
-    for line in fileinput.input("index.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/index.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("templates/index_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/index_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line    
   def quarter(month):
@@ -127,11 +127,11 @@ def update_SEM():
       if "breaks" in new_config[sheet][figure]:
         replaceBreaks(figure, new_config[sheet][figure]["breaks"])
 
-  f=open("static/config.json",'w')
+  f=open("/var/www/apps.urban.org/semApp/static/config.json",'w')
   f.write(json.dumps(new_config, indent=4, sort_keys=True).encode("utf8"))
   f.close();
   
-  os.system("python reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
+  os.system("python /var/www/apps.urban.org/semApp/reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
 
   # os.system("http-server")
   dates = [("",""),("Jan", "January"), ("Feb", "February"), ("Mar","March"),("Apr","April"),("May","May"),("June","June"),("Jul","July"),("Aug","August"),("Sept","September"),("Oct","October"),("Nov","November"),("Dec","December")]
@@ -143,7 +143,7 @@ def update_SEM():
   os.system("depict http://sem.urban.org/employment.html -s '#total_change_emp_vs_public_change_emp' -d 500 pdf/images/total_change_emp_vs_public_change_emp.png")
   empName = dates[int(new_config["employment"]["date"].split("/")[0])][0] + new_config["employment"]["date"][-2:]
   fullempName = dates[int(new_config["employment"]["date"].split("/")[0])][1] + " \'" + new_config["employment"]["date"][-2:]
-  from_file('pdf/templates/employment_pdf.html', 'archive/employment%s.pdf'%empName, css = "./css/sem.css")
+  from_file('/var/www/apps.urban.org/semApp/pdf/templates/employment_pdf.html', '/var/www/apps.urban.org/semApp/archive/employment%s.pdf'%empName, css = "./css/sem.css")
 
   if new_config["employment"]["date"] != old_config["employment"]["date"]:
     oldArchive = "<!-- NEW EMPLOYMENT HERE -->"
@@ -151,14 +151,14 @@ def update_SEM():
     + "<li class=\"archiveMonth\"><a href=\"archive/employment" + empName\
     + ".pdf\" target=\"_blank\">" + fullempName\
     +"</a></li>"
-    for line in fileinput.input("archive.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
     newPreview = oldArchive + "\n" \
     + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/employment" + empName\
     + ".pdf\" target=\"_blank\">" + fullempName\
     +"</a></li>"
-    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/archive_preview.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
       print line
 
@@ -216,21 +216,21 @@ def update_SEM():
   os.system("depict http://sem.urban.org/taxes.html -s '#figure_corporate-taxes' -d 500 pdf/images/figure_corporate-taxes.png")
   taxesName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
   fulltaxesName = quarter(int(new_config["taxes"]["date"].split("/")[0])) + " \'" + new_config["taxes"]["date"][-2:]
-  from_file('pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "./css/sem.css")
+  from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "./css/sem.css")
   if new_config["taxes"]["date"] != old_config["taxes"]["date"]:
     oldArchive = "<!-- NEW TAXES HERE -->"
     newArchive = oldArchive + "\n" \
     + "<li class=\"archiveMonth\"><a href=\"archive/taxes" + taxesName\
     + ".pdf\" target=\"_blank\">" + fulltaxesName\
     +"</a></li>"
-    for line in fileinput.input("archive.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
     newPreview = oldArchive + "\n" \
     + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/taxes" + taxesName\
     + ".pdf\" target=\"_blank\">" + fulltaxesName\
     +"</a></li>"
-    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/archive_preview.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
       print line
 
