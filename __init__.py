@@ -143,7 +143,7 @@ def update_SEM():
   os.system("/usr/bin/depict http://sem.urban.org/employment.html -s '#total_change_emp_vs_public_change_emp' -d 500 /var/www/apps.urban.org/semApp/pdf/images/total_change_emp_vs_public_change_emp.png")
   empName = dates[int(new_config["employment"]["date"].split("/")[0])][0] + new_config["employment"]["date"][-2:]
   fullempName = dates[int(new_config["employment"]["date"].split("/")[0])][1] + " \'" + new_config["employment"]["date"][-2:]
-  from_file('/var/www/apps.urban.org/semApp/pdf/templates/employment_pdf.html', '/var/www/apps.urban.org/semApp/archive/employment%s.pdf'%empName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
+ # from_file('/var/www/apps.urban.org/semApp/pdf/templates/employment_pdf.html', '/var/www/apps.urban.org/semApp/archive/employment%s.pdf'%empName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
 
   if new_config["employment"]["date"] != old_config["employment"]["date"]:
     oldArchive = "<!-- NEW EMPLOYMENT HERE -->"
@@ -167,7 +167,7 @@ def update_SEM():
   os.system("/usr/bin/depict http://sem.urban.org/wages.html -s '#figure_wages-change' -d 500 /var/www/apps.urban.org/semApp/pdf/images/figure_wages-change.png")
   wageName = dates[int(new_config["wages"]["date"].split("/")[0])][0] + new_config["wages"]["date"][-2:]
   fullwageName = dates[int(new_config["wages"]["date"].split("/")[0])][1] + " \'" + new_config["wages"]["date"][-2:]
-  from_file('pdf/templates/wages_pdf.html', 'archive/wages%s.pdf'%wageName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
+ # from_file('pdf/templates/wages_pdf.html', 'archive/wages%s.pdf'%wageName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
   if new_config["wages"]["date"] != old_config["wages"]["date"]:
     oldArchive = "<!-- NEW WAGES HERE -->"
     newArchive = oldArchive + "\n" \
@@ -191,7 +191,7 @@ def update_SEM():
   fullhousingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + " \'" + new_config["housing"]["date"][-2:]
   os.system("/usr/bin/depict http://sem.urban.org/housing.html -s '#figure_house-prices' -d 500 /var/www/apps.urban.org/semApp/pdf/images/figure_house-prices.png")
   os.system("/usr/bin/depict http://sem.urban.org/housing.html -s '#housing_change_vs_2007_housing_change' -d 500 /var/www/apps.urban.org/semApp/pdf/images/housing_change_vs_2007_housing_change.png")
-  from_file('pdf/templates/housing_pdf.html', 'archive/housing%s.pdf'%housingName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
+ # from_file('pdf/templates/housing_pdf.html', 'archive/housing%s.pdf'%housingName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
   if new_config["housing"]["date"] != old_config["housing"]["date"]:
     oldArchive = "<!-- NEW HOUSING HERE -->"
     newArchive = oldArchive + "\n" \
@@ -216,7 +216,8 @@ def update_SEM():
   os.system("/usr/bin/depict http://sem.urban.org/taxes.html -s '#figure_corporate-taxes' -d 500 /var/www/apps.urban.org/semApp/pdf/images/figure_corporate-taxes.png")
   taxesName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
   fulltaxesName = quarter(int(new_config["taxes"]["date"].split("/")[0])) + " \'" + new_config["taxes"]["date"][-2:]
-  from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
+  from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes/TESTTESTES.pdf')  
+#from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
   if new_config["taxes"]["date"] != old_config["taxes"]["date"]:
     oldArchive = "<!-- NEW TAXES HERE -->"
     newArchive = oldArchive + "\n" \
