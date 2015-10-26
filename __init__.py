@@ -55,17 +55,11 @@ def update_SEM():
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/wages_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/wages_pdf.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
 
     for line in fileinput.input("/var/www/apps.urban.org/semApp/employment.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/employment_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/employment_pdf.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
@@ -75,17 +69,11 @@ def update_SEM():
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/housing_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/housing_pdf.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
 
     for line in fileinput.input("/var/www/apps.urban.org/semApp/taxes.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/taxes_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
-      print line
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
