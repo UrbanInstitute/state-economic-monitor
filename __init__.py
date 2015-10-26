@@ -26,9 +26,9 @@ def upload():
   if request.method == 'POST':
       file = request.files['file']
       sheet = request.args.get('sheet', '', type=str)
-      if file and allowed_file(file.filename):
-          filename = secure_filename(file.filename)
-          file.save(os.path.join("/data/source/", filename))
+      if file:
+          filename = file.filename
+          file.save(os.path.join("/var/www/apps.urban.org/semApp/data/source/", filename))
 
   # file = request.files['file']
   # sheet = request.args.get('sheet', '', type=str)
@@ -41,7 +41,7 @@ def upload():
 def update_SEM():
   # new_config = {}
   figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]]
-  with open('static/config.json') as config_file:
+  with open('/var/www/apps.urban.org/semApp/static/config.json') as config_file:
     old_config = json.load(config_file)
   new_config = request.json
   config_file.close()
@@ -49,13 +49,13 @@ def update_SEM():
   # amount = request.args.get('amount', '', type=str)
 
   def replaceText(old, new):
-    for line in fileinput.input("wages.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/wages.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("templates/wages_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/wages_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("pdf/templates/wages_pdf.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/pdf/templates/wages_pdf.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
