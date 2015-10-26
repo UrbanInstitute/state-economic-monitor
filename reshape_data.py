@@ -26,12 +26,12 @@ fullNames = {"AWW":"Average Weekly Earnings, Private Employment","AWWChg":"Chang
 stateFIPS = {}
 
 def buildStateFIPS():
-    cr = csv.reader(open("/var/www/apps.urban.org/semApp/shapefile/state-fips.csv","rU"))
-    header = cr.next()
-    for row in cr:
-        stateFIPS[row[1]]={"fips":row[0],"name":row[2],"region":row[3]}
-
-
+    # cr = csv.reader(open("/var/www/apps.urban.org/semApp/shapefile/state-fips.csv","rU"))
+    with open("/var/www/apps.urban.org/semApp/shapefile/state-fips.csv", "rU") as f:
+        cr = csv.reader(f)
+        header = cr.next()
+        for row in cr:
+            stateFIPS[row[1]]={"fips":row[0],"name":row[2],"region":row[3]}
 
 def parseXlSX(fileName):
     sourceBook = xlrd.open_workbook('/var/www/apps.urban.org/semApp/data/source/' + fileName + ".xlsx")

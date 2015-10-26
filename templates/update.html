@@ -105,6 +105,9 @@ if(win){
     //Broswer has blocked it
     alert('Please allow popups for this site');
 }
+        },
+        error: function(e){
+          console.log(e);
         }
       }); 
 
