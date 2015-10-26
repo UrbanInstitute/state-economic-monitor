@@ -27,9 +27,9 @@
                 7, 
                 8
             ], 
-            "text": "The national unemployment rate was 5.1 percent in August 2015. West Virginia\u2019s unemployment rate was 7.6 percent, a 0.1 percentage point increase from July and significantly above its 5.9 percent rate in January 2015. It remained the only state with an unemployment rate above 7.0 percent. The next-highest unemployment rates were in the District of Columbia and Nevada (both 6.8 percent), New Mexico (6.7 percent), and Alaska (6.6 percent). Conversely, two states had an unemployment rate below 3.0 percent in August: Nebraska (2.8 percent) and North Dakota (2.9 percent). Another six states had an unemployment rate below 4.0 percent: Hawaii (3.5 percent), New Hampshire and Vermont (both 3.6 percent), and Iowa, South Dakota, and Utah (all 3.7 percent)."
+            "text": "TEST TEST TEST The national unemployment rate was 5.1 percent in August 2015. West Virginia\u2019s unemployment rate was 7.6 percent, a 0.1 percentage point increase from July and significantly above its 5.9 percent rate in January 2015. It remained the only state with an unemployment rate above 7.0 percent. The next-highest unemployment rates were in the District of Columbia and Nevada (both 6.8 percent), New Mexico (6.7 percent), and Alaska (6.6 percent). Conversely, two states had an unemployment rate below 3.0 percent in August: Nebraska (2.8 percent) and North Dakota (2.9 percent). Another six states had an unemployment rate below 4.0 percent: Hawaii (3.5 percent), New Hampshire and Vermont (both 3.6 percent), and Iowa, South Dakota, and Utah (all 3.7 percent)."
         }, 
-        "date": "12/2015"
+        "date": "08/2015"
     }, 
     "housing": {
         "Figure3": {
@@ -44,9 +44,9 @@
                 8, 
                 12
             ], 
-            "text": "FOO National house prices increased 5.4 percent from the second quarter of 2014 to the second quarter of 2015. Prices rose in every state and the District of Columbia (DC). Only six states had increases less than 2 percent: New Jersey (0.1 percent), Maryland (0.3 percent), Vermont (0.5 percent), Connecticut (1.1 percent), Delaware (1.6 percent), and Virginia (1.8 percent). Half the states and DC had prices increase 4 percent or more, including four states that had increases greater than 9 percent: Colorado (10.6 percent), Nevada (10.5 percent), Florida (9.7 percent), and Hawaii (9.5 percent)."
+            "text": "TEST National house prices increased 5.4 percent from the second quarter of 2014 to the second quarter of 2015. Prices rose in every state and the District of Columbia (DC). Only six states had increases less than 2 percent: New Jersey (0.1 percent), Maryland (0.3 percent), Vermont (0.5 percent), Connecticut (1.1 percent), Delaware (1.6 percent), and Virginia (1.8 percent). Half the states and DC had prices increase 4 percent or more, including four states that had increases greater than 9 percent: Colorado (10.6 percent), Nevada (10.5 percent), Florida (9.7 percent), and Hawaii (9.5 percent)."
         }, 
-        "date": "12/2015"
+        "date": "05/2015"
     }, 
     "taxes": {
         "CORPINC": {
@@ -91,9 +91,9 @@
                 6, 
                 15
             ], 
-            "text": "FOOOO Total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 5.4 percent nationally in the year ending in the second quarter of 2015 compared with one year earlier. New Hampshire\u2019s 14.7 percent increase was the largest of any state. New Hampshire\u2019s corporate income tax revenue increased, but insurance premium tax revenue in the second quarter of 2015 also boosted its total. Typically, New Hampshire only reports insurance premium revenue in the first quarter of the year so this data should be used with caution. The next-highest total tax revenue increases were in California (11.7 percent), Iowa (9.7 percent), and Utah (9.3 percent). Alaska\u2019s 73.4 percent revenue decline was again a substantial outlier. Both Alaskan oil production and the price of oil have fallen and greatly affected the state\u2019s total tax revenue. Specifically, in the past four quarters Alaska\u2019s severance tax revenue was $150 million. In the four quarters before that period\u2014second quarter of 2013 to the second quarter of 2014\u2014Alaska\u2019s severance tax revenue was $2.5 billion. Only two other states saw total tax revenue decline over the past year: North Dakota (-4.1 percent) and Illinois (-1.6 percent). North Dakota\u2019s total revenue declined despite increased sales and individual income tax because, like Alaska, it suffered from decreased severance tax revenue. Lower individual income tax revenue in Illinois drove its overall decline (see income tax section below)."
+            "text": "TEST Total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 5.4 percent nationally in the year ending in the second quarter of 2015 compared with one year earlier. New Hampshire\u2019s 14.7 percent increase was the largest of any state. New Hampshire\u2019s corporate income tax revenue increased, but insurance premium tax revenue in the second quarter of 2015 also boosted its total. Typically, New Hampshire only reports insurance premium revenue in the first quarter of the year so this data should be used with caution. The next-highest total tax revenue increases were in California (11.7 percent), Iowa (9.7 percent), and Utah (9.3 percent). Alaska\u2019s 73.4 percent revenue decline was again a substantial outlier. Both Alaskan oil production and the price of oil have fallen and greatly affected the state\u2019s total tax revenue. Specifically, in the past four quarters Alaska\u2019s severance tax revenue was $150 million. In the four quarters before that period\u2014second quarter of 2013 to the second quarter of 2014\u2014Alaska\u2019s severance tax revenue was $2.5 billion. Only two other states saw total tax revenue decline over the past year: North Dakota (-4.1 percent) and Illinois (-1.6 percent). North Dakota\u2019s total revenue declined despite increased sales and individual income tax because, like Alaska, it suffered from decreased severance tax revenue. Lower individual income tax revenue in Illinois drove its overall decline (see income tax section below)."
         }, 
-        "date": "12/2015"
+        "date": "05/2015"
     }, 
     "wages": {
         "AWW": {
@@ -105,7 +105,7 @@
                 1000, 
                 1500
             ], 
-            "text": "National weekly earnings for all US private employees averaged $868 in August 2015. Among the 50 states, average wages ranged from $681 in Arkansas to $1,044 in Washington. The District of Columbia\u2019s average weekly earnings for private employees were $1,370. Thirty-six states had average weekly earnings below the national average. Average wages were lowest in Arkansas, Mississippi ($696), New Mexico ($710), South Dakota ($723), and West Virginia ($733). The state with average wages closest to the national average in August was Utah ($860). After DC and Washington, the highest average wages were in Massachusetts ($1,024), Alaska ($1,021), California ($996), and Connecticut ($991)."
+            "text": "TEST TESST National weekly earnings for all US private employees averaged $868 in August 2015. Among the 50 states, average wages ranged from $681 in Arkansas to $1,044 in Washington. The District of Columbia\u2019s average weekly earnings for private employees were $1,370. Thirty-six states had average weekly earnings below the national average. Average wages were lowest in Arkansas, Mississippi ($696), New Mexico ($710), South Dakota ($723), and West Virginia ($733). The state with average wages closest to the national average in August was Utah ($860). After DC and Washington, the highest average wages were in Massachusetts ($1,024), Alaska ($1,021), California ($996), and Connecticut ($991)."
         }, 
         "AWWChg": {
             "breaks": [
@@ -118,6 +118,6 @@
             ], 
             "text": "National real (inflation-adjusted) average weekly earnings in August 2015 were 2.3 percent higher than in August 2014. The largest year-over-year decrease was in DC (-0.9 percent). Three states also had average wages decrease: Wyoming (-0.4 percent) and Louisiana and Rhode Island (both -0.2 percent). Wages were flat over the year in Mississippi. The largest increases in real average wages were in Washington (7.8 percent), Virginia (7.4 percent), and Alaska and Montana (both 7.1 percent). Three additional states had increases greater than 6.0 percent: Delaware and Nevada (both 6.6 percent) and Nebraska (6.3 percent)."
         }, 
-        "date": "12/2015"
+        "date": "08/2015"
     }
 }
