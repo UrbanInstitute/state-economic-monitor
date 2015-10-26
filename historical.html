@@ -9,7 +9,6 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/sem.css">
     <link rel="stylesheet" href="css/historical.css">
 
     <!--fonts for the site -->
@@ -95,46 +94,191 @@ Assessing quarterly state house prices data compared with one year earlier and t
       </section><!--close section -->
 
 
+<h2>Employment</h2>
+
+<section class="section25">
+  <div class="container">
+    <div class="title-text">Unemployment Rate<span class="title-unit">(percent, seasonally adjusted)</span></div>
+    <div class="title-subtitle">Monthly unemployment rates from January 1976 to August 2015.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_menu">
+        <option selected = "selected">US Average</option>
+        <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
 
 
-      <section class="section25">
+        <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data">5.2%</div>
+              </div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <div class="tooltip-data">December</div>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <div class="tooltip-data">2015</div>
+              </div>
+            </div>
 
-              <div class="container">
-                 <div id = "gov_employment_historical"></div>
-
-                            <div class="explainerText"><p>FOO National house prices increased 5.4 percent from the second quarter of 2014 to the second quarter of 2015. Prices rose in every state and the District of Columbia (DC). Only six states had increases less than 2 percent: New Jersey (0.1 percent), Maryland (0.3 percent), Vermont (0.5 percent), Connecticut (1.1 percent), Delaware (1.6 percent), and Virginia (1.8 percent). Half the states and DC had prices increase 4 percent or more, including four states that had increases greater than 9 percent: Colorado (10.6 percent), Nevada (10.5 percent), Florida (9.7 percent), and Hawaii (9.5 percent).</p>
-                                  <div class="download">   <a href="#">Download Data</a></div>
-                            </div><!--close expalinerText -->
-
-         <hr>
-
-
-              </div><!--close container -->
-
-      </section><!--close section -->
-
-
-
-
-
-      <section class="section100">
-
-                 <div class="container">
-
-                          <div id = "housing_change_vs_2007_housing_change"></div>
-
-                            <div class="explainerText"><p>FOO The second quarter of 2015 marked the 16th consecutive quarter of year-over-year growth in national house prices. Even so, prices were 2.4 percent lower than their national peak in the first quarter of 2007, and prices in 26 states were below 2007 levels. Prices in the four states with the greatest year-over-year increases (Colorado, Nevada, Florida, and Hawaii) were in very different places relative to 2007. Colorado, the state with the highest growth from the second quarter of 2014 to the second quarter 2015, saw its housing prices rise 26.7 percent above their 2007 level. That was the fourth-largest gain over the period, behind only North Dakota (47.0 percent), DC (37.7 percent), and Texas (28.2 percent). In sharp contrast, Nevada (-29.6 percent) and Florida (-23.5 percent) had the largest price declines since 2007. Arizona (-21.2 percent) was the only other state where house prices remain more than 20 percent below 2007 levels. Finally, Hawaii’s year-over-year price gain moved its house prices 1.6 percent above where they were in 2007.</p>           <div class="download"><a href="#">Download Data</a></div>
- </div><!--close expalinerText -->
+            <div id = "unemployment_historical" class = "linePlot"></div>
+            <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
 
 
-                      <hr>
-                     <img src="images/pdficon.png"> <a href="archive/housingQ215.pdf" target="_blank">Click here for a printer-friendly PDF</a>
+<section class="section25">
+  <div class="container">
+    <div class="title-text">Total Employment<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in monthly total (public and private) nonfarm payroll employment from January 1991 to August 2015.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_menu">
+        <option selected = "selected">US Average</option>
+        <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
 
 
-   </div><!--close container -->
+        <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data">5.2%</div>
+              </div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <div class="tooltip-data">December</div>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <div class="tooltip-data">2015</div>
+              </div>
+            </div>
 
-      </section><!--close section -->
+            <div id = "total_employment_historical" class = "linePlot"></div>
+            <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
 
+<section class="section25">
+  <div class="container">
+    <div class="title-text">Public Employment<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in monthly public-sector employment from January 1991 to August 2015.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_menu">
+        <option selected = "selected">US Average</option>
+        <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+
+
+        <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data">5.2%</div>
+              </div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <div class="tooltip-data">December</div>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <div class="tooltip-data">2015</div>
+              </div>
+            </div>
+
+            <div id = "gov_employment_historical" class = "linePlot"></div>
+            <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
+
+
+<h2>Wages</h2>
+
+<section class="section25">
+  <div class="container">
+    <div class="title-text">Real Average Weekly Earnings<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in monthly real earnings (i.e., earnings adjusted for inflation) from January 2008 to August 2015.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_menu">
+        <option selected = "selected">US Average</option>
+        <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+
+
+        <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data">5.2%</div>
+              </div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <div class="tooltip-data">December</div>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <div class="tooltip-data">2015</div>
+              </div>
+            </div>
+            <div id = "wages_historical" class = "linePlot"></div>
+            <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/sae/home.htm">Bureau of Labor Statistics.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
+
+<h2>Housing</h2>
+<section class="section25">
+  <div class="container">
+    <div class="title-text">House Prices<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in quarterly house prices from first quarter 1992 to second quarter 2015.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_menu">
+        <option selected = "selected">US Average</option>
+        <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+
+
+        <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data">5.2%</div>
+              </div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <div class="tooltip-data">December</div>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <div class="tooltip-data">2015</div>
+              </div>
+            </div>
+
+            <div id = "housing_historical" class = "linePlot"></div>
+            <div id="figure_house-prices_source" class="map-source">Source: <a href="http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo">Federal Housing Finance Agency.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
 
 
       <footer>

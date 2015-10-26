@@ -530,7 +530,6 @@ var barSvg, barXAxis, barBase;
       //       .attr("x2", width - margin.right)
       //       .attr("y2", y(min+6*step))
       //   .attr("class","grid-line");
-
       svg.append("g")
           .attr("class", "y axis")
           .attr("transform","translate(" + margin.left + ",0)")
@@ -1437,34 +1436,6 @@ function getInternetExplorerVersion()
   }
   return rv;
 }
-// (function() {
-//     var afterPrint = function() {
-//         $.each(semConfig.Maps, function(dataID, config) {
-//             drawMapFigure(dataID, config, true)
-//         });
-//         $.each(semConfig.ScatterPlots, function(figureName, config) {
-//             drawScatterPlot(config, true)
-//         });
-//         console.log('Functionality to run before printing.');
-//     };
-//     var beforePrint = function() {
-//         console.log('Functionality to run after printing');
-//     };
-
-//     if (window.matchMedia) {
-//         var mediaQueryList = window.matchMedia('print');
-//         mediaQueryList.addListener(function(mql) {
-//             if (mql.matches) {
-//                 setTimeout(function(){beforePrint()}, 2000);
-//             } else {
-//                 afterPrint();
-//             }
-//         });
-//     }
-
-//     window.onbeforeprint = setTimeout(beforePrint, 2000);
-//     window.onafterprint = afterPrint;
-// }());
 
 
 
