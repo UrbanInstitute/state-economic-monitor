@@ -26,7 +26,7 @@ fullNames = {"AWW":"Average Weekly Earnings, Private Employment","AWWChg":"Chang
 stateFIPS = {}
 
 def buildStateFIPS():
-    cr = csv.reader(open("shapefile/state-fips.csv","rU"))
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/shapefile/state-fips.csv","rU"))
     header = cr.next()
     for row in cr:
         stateFIPS[row[1]]={"fips":row[0],"name":row[2],"region":row[3]}
@@ -34,9 +34,9 @@ def buildStateFIPS():
 
 
 def parseXlSX(fileName):
-    sourceBook = xlrd.open_workbook('data/source/' + fileName + ".xlsx")
+    sourceBook = xlrd.open_workbook('/var/www/apps.urban.org/semApp/data/source/' + fileName + ".xlsx")
     sheet = sourceBook.sheets()[0]
-    with open('data/source/sheets/{}.csv'.format(fileName), 'wb') as f:
+    with open('/var/www/apps.urban.org/semApp/data/source/sheets/{}.csv'.format(fileName), 'wb') as f:
         writer = csv.writer(f)
         for row in range(sheet.nrows):
             out = []
@@ -78,7 +78,7 @@ def geographyDict(abbrev):
 
 
 def parseEmployment():
-    cr = csv.reader(open("data/source/sheets/current_employment.csv","rU"))
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_employment.csv","rU"))
     title = cr.next()
     header = cr.next()
     newCode("EMP","Total Employment")
@@ -112,7 +112,7 @@ def parseEmployment():
         figureData["GOVT"]["data"].append(govt)
 
 def parseHousing():
-    cr = csv.reader(open("data/source/sheets/current_housing.csv","rU"))
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_housing.csv","rU"))
     title = cr.next()
     header = cr.next()
     newCode("HPChgYr","One-Year Change in Housing Prices (%)")
@@ -134,7 +134,7 @@ def parseHousing():
         figureData["HPChgPeak"]["data"].append(hpChgPeak)
 
 def parseTax():
-    cr = csv.reader(open("data/source/sheets/current_tax.csv","rU"))
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_tax.csv","rU"))
     title = cr.next()
     header = cr.next()
     newCode("INC","Personal income tax")
@@ -169,7 +169,7 @@ def parseTax():
 
 
 def parseWage():
-    cr = csv.reader(open("data/source/sheets/current_wage.csv","rU"))
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_wage.csv","rU"))
     title = cr.next()
     header = cr.next()
     newCode("AWW","Average weekly earnings")
@@ -190,7 +190,7 @@ def parseWage():
         figureData["AWW"]["data"].append(aww)
         figureData["AWWChg"]["data"].append(awwChg)
 
-    with open("js/figureData.js", "w") as fp:
+    with open("/var/www/apps.urban.org/semApp/js/figureData.js", "w") as fp:
         fp.write("var figureData = ")
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
@@ -200,7 +200,7 @@ def parseWage():
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
         fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
 
-    with open("static/js/figureData.js", "w") as fp:
+    with open("/var/www/apps.urban.org/semApp/static/js/figureData.js", "w") as fp:
         fp.write("var figureData = ")
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
@@ -356,7 +356,7 @@ def createXLS():
                  taxes.write(row, 7, secondObj["value"])
                  break
 
-    book.save('data/download/' + downloadFileName())
+    book.save('/var/www/apps.urban.org/semApp/data/download/' + downloadFileName())
 
 def downloadFileName():
     return 'SEM_data_employment-'+EMP_DATE.replace("/","-")+"_tax-"+ quarter(TAX_DATE) + "_housing-"+ quarter(HOUSE_DATE) +".xls"
