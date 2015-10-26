@@ -217,7 +217,7 @@ def update_SEM():
   # os.system("/usr/bin/depict http://sem.urban.org/taxes.html -s '#figure_corporate-taxes' -d 500 /var/www/apps.urban.org/semApp/pdf/images/figure_corporate-taxes.png")
   taxesName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
   fulltaxesName = quarter(int(new_config["taxes"]["date"].split("/")[0])) + " \'" + new_config["taxes"]["date"][-2:]
-  from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes/TESTTESTES.pdf')  
+  # from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes/TESTTESTES.pdf')  
 #from_file('/var/www/apps.urban.org/semApp/pdf/templates/taxes_pdf.html', 'archive/taxes%s.pdf'%taxesName, css = "/var/www/apps.urban.org/semApp/css/sem.css")
   if new_config["taxes"]["date"] != old_config["taxes"]["date"]:
     oldArchive = "<!-- NEW TAXES HERE -->"
