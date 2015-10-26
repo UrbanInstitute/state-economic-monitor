@@ -162,7 +162,7 @@ def update_SEM():
     + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/wages" + wageName\
     + ".pdf\" target=\"_blank\">" + fullwageName\
     +"</a></li>"
-    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/archive_preview.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
       print line
 
@@ -185,7 +185,7 @@ def update_SEM():
     + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/housing" + housingName\
     + ".pdf\" target=\"_blank\">" + fullhousingName\
     +"</a></li>"
-    for line in fileinput.input("templates/archive_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/archive_preview.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
       print line
 
