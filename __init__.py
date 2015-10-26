@@ -26,8 +26,8 @@ def upload():
   file = request.files['file']
   sheet = request.args.get('sheet', '', type=str)
   # print sheet
-  file.save("data/source/" + "current_" + sheet + ".xlsx")
-  copy2("data/source/" + "current_" + sheet + ".xlsx", "data/source/previous_releases/" + file.filename)
+  file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
+  copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "data/source/previous_releases/" + file.filename)
   return ""
 
 @app.route('/add', methods=["POST", "GET"])
