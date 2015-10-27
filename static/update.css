@@ -62,13 +62,21 @@ textarea{
 
 
 #loading{
-  width: 40px;
-  height: 40px;
-  position: relative;
-  top: 13px;
-  visibility: hidden;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 27px;
+    margin-left: calc(50% - 146px);
+    visibility: hidden;
 }
-
+#loading-text{
+    clear: both;
+    display: run-in;
+    top: 66px;
+    position: relative;
+    width: 320px;
+    margin-left: calc(50% - 100px);
+}
 .note{
     margin-top: 4px;
     font-size: 12px;
