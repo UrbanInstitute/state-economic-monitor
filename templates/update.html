@@ -68,7 +68,7 @@
   $(function() {
     $('a#addIngredient').bind('click', function() {
       d3.select("#loading").style("visibility", "visible")
-      d3.select("#loading-text").text("Updating...")
+      d3.select("#loading-text").text("Updating (this takes about two minutes)...")
       function getDate(sheet){
         return $('input[name="' + sheet + '-month"').val() + "/" + $('input[name="' + sheet + '-year"').val();
       }
@@ -96,7 +96,7 @@
         // processData: true,
         success: function(data) {
             d3.select("#loading").style("visibility", "hidden")
-            d3.select("#loading-text").text("Updated!")
+            d3.select("#loading-text").text("Updated! Preview opening in new tab (make sure you may need to enable popups.)")
             var win = window.open('/preview', '_blank');
 if(win){
     //Browser has allowed it to be opened
@@ -293,6 +293,7 @@ if(win){
   <div id="tab4" class="tab">
     <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
     <input type=text class = "month" name="housing-month" maxlength="2"></input><input class = "year" type=text name="housing-year" maxlength="4"></input>
+    <div class = "note">For quarterly data, enter any month in the quarter (e.g 01, 02, 03, 04 &rarr; Q1)</div>
     <br>
 
     <h3>House Prices</h3>
@@ -308,6 +309,7 @@ if(win){
   <div id="tab5" class="tab">
     <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
     <input type=text class = "month" name="taxes-month" maxlength="2"></input><input class = "year" type=text name="taxes-year" maxlength="4"></input>
+    <div class = "note">For quarterly data, enter any month in the quarter (e.g 01, 02, 03, 04 &rarr; Q1)</div>
     <br>
 
     <h3>Total Tax Revenue</h3>
@@ -332,7 +334,8 @@ if(win){
 
   </div>
   <div id="tab6" class="tab">
-    <a href=# id="addIngredient">Update the SEM</a>
+    <div class = "explainer">Clicking the button below will update the preview version of the SEM. It will update all text that includes dates automatically (the "updated" date on the main page as well as text such as "...from September 2014 to September 2015..." in figure descriptions and footnotes). It also creates pdfs of each section and adds them to the archive. When you click the button below, the changes <span>will not be displayed on the live site</span>. Please contact a member of digital communications, such as <a href = "mailto:bchartoff@urban.org">Ben Chartoff (bchartoff@urban.org)</a>, who can approve the changes and publish them to the live site.</div>
+    <a href=# id="addIngredient">Update the SEM!</a>
     <div id = "loading-text"></div>
     <img id = "loading" src = "{{ url_for('static', filename='loading.gif') }}"/>
   </div>
