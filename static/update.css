@@ -1,33 +1,43 @@
 body{
-	font: 12pt Lato;
+	font-family:"Lato", arial, sans-serif;
+    font-size:16px;
 	background: #c6c6c6;
+    color:#333;
 }
+
 *:focus{
     outline: 0;
 }
 h2{
-	    margin-top: 15px;
-    font: 22px Lato;
-    font-weight: 700;
-	clear: both;
+  clear: both;
+    font: 20px lato;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 h1{
+   color: #1696d2;
     font-size: 28px;
-    padding: 0px;
-    margin: 0px;
-    font-weight: 300;
+    font-weight: 400;
+    margin: 40px 0 10px 30px;
+    padding: 0;
     text-align: left;
     text-transform: uppercase;
-    color: #1696d2;
+}
+
+h3{
+   margin-bottom: 10px;
+    margin-top: 30px;  
+    
 }
 
 fieldset{
-  min-width: 250px;
-  width: 250px;
-  border: none;
-  /*float: left;*/
-  padding: 0;
-  padding-left: 15px;
+    border: medium none;
+    margin-bottom: -5px;
+    margin-top: 15px;
+    min-width: 250px;
+    padding: 0;
+    width: 250px;
+  
 }
 .ellipses{
 	float: left;
@@ -35,10 +45,12 @@ fieldset{
 	top: -2px;
 }
 #upload_left{
-	float: left
+	float: left;
+        margin-left: 30px;
 }
 #upload_right{
 	float: left;
+     margin-left: 30px;
 }
 
 .required{
@@ -53,13 +65,24 @@ fieldset{
 	margin-left: 5px;
 }
 textarea{
-	margin-top: 5px;
+  margin-bottom: 55px;
+    margin-top: 10px;
 }
 .break{
 	width: 40px;
 	margin-left: 5px;
 }
 
+
+#housing-status, #employment-status, #wages-status, taxes-status{
+    color: #0096d2;
+    font-size: 14px;
+    font-style: italic;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-top: 0;
+
+}
 
 #loading{
     width: 40px;
