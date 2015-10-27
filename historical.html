@@ -96,20 +96,18 @@ Assessing quarterly state house prices data compared with one year earlier and t
 
 <h2>Employment</h2>
 
-<section class="section25">
+<section class="section25 unemployment_historical">
   <div class="container">
     <div class="title-text">Unemployment Rate<span class="title-unit">(percent, seasonally adjusted)</span></div>
-    <div class="title-subtitle">Monthly unemployment rates from January 1976 to August 2015.</div>
+    <div class="title-subtitle">Monthly unemployment rates from <span class = "startDate"></span> to <span class = "endDate"></span>.</div>
     <div class="tooltip-container">
       <div class="region-text">
         <div class="tooltip-title">REGION/STATE</div>
         <div class="tooltip-data">
 
-        <select class = "historical_menu">
+        <select class = "historical_state">
         <option selected = "selected">US Average</option>
         <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-
-
         <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
               <div class="value-text">
                 <div class="tooltip-title">RATE</div>
@@ -117,15 +115,22 @@ Assessing quarterly state house prices data compared with one year earlier and t
               </div>
               <div class="quarter-text">
                 <div class="tooltip-title">MONTH</div>
-                <div class="tooltip-data">December</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_month"><option value ="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
               </div>
               <div class="year-text">
                 <div class="tooltip-title">YEAR</div>
-                <div class="tooltip-data">2015</div>
+                <select class = "historical_year"></select>
               </div>
+              <div class = "refresh"></div>
+
             </div>
 
-            <div id = "unemployment_historical" class = "linePlot"></div>
+            <div id = "unemployment_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
             <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
             <div class="download">   <a href="#">Download Data</a></div>
      <hr>
@@ -133,20 +138,18 @@ Assessing quarterly state house prices data compared with one year earlier and t
 </section><!--close section -->
 
 
-<section class="section25">
+<section class="section25 total_employment_historical">
   <div class="container">
     <div class="title-text">Total Employment<span class="title-unit">(percent change year over year)</span></div>
-    <div class="title-subtitle">Year-over-year change in monthly total (public and private) nonfarm payroll employment from January 1991 to August 2015.</div>
+    <div class="title-subtitle">Year-over-year change in monthly total (public and private) nonfarm payroll employment from <span class = "startDate"></span> to <span class = "endDate"></span>.</div>
     <div class="tooltip-container">
       <div class="region-text">
         <div class="tooltip-title">REGION/STATE</div>
         <div class="tooltip-data">
 
-        <select class = "historical_menu">
+        <select class = "historical_state">
         <option selected = "selected">US Average</option>
         <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-
-
         <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
               <div class="value-text">
                 <div class="tooltip-title">RATE</div>
@@ -154,35 +157,40 @@ Assessing quarterly state house prices data compared with one year earlier and t
               </div>
               <div class="quarter-text">
                 <div class="tooltip-title">MONTH</div>
-                <div class="tooltip-data">December</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_month"><option value ="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
               </div>
               <div class="year-text">
                 <div class="tooltip-title">YEAR</div>
-                <div class="tooltip-data">2015</div>
+                <select class = "historical_year"></select>
               </div>
+              <div class = "refresh"></div>
+
             </div>
 
-            <div id = "total_employment_historical" class = "linePlot"></div>
+            <div id = "total_employment_historical" class = "linePlot">
+                  <div class = "loading">
+                    <img src = "images/loading-gif-u.gif"/>
+                  </div>
+            </div>
             <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
             <div class="download">   <a href="#">Download Data</a></div>
      <hr>
     </div><!--close container -->
 </section><!--close section -->
 
-<section class="section25">
+<section class="section25 gov_employment_historical">
   <div class="container">
     <div class="title-text">Public Employment<span class="title-unit">(percent change year over year)</span></div>
-    <div class="title-subtitle">Year-over-year change in monthly public-sector employment from January 1991 to August 2015.</div>
+    <div class="title-subtitle">Year-over-year change in monthly public-sector employment from <span class = "startDate"></span> to <span class = "endDate"></span>.</div>
     <div class="tooltip-container">
       <div class="region-text">
         <div class="tooltip-title">REGION/STATE</div>
         <div class="tooltip-data">
 
-        <select class = "historical_menu">
+        <select class = "historical_state">
         <option selected = "selected">US Average</option>
         <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-
-
         <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
               <div class="value-text">
                 <div class="tooltip-title">RATE</div>
@@ -190,15 +198,22 @@ Assessing quarterly state house prices data compared with one year earlier and t
               </div>
               <div class="quarter-text">
                 <div class="tooltip-title">MONTH</div>
-                <div class="tooltip-data">December</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_month"><option value ="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
               </div>
               <div class="year-text">
                 <div class="tooltip-title">YEAR</div>
-                <div class="tooltip-data">2015</div>
+                <select class = "historical_year"></select>
               </div>
+              <div class = "refresh"></div>
+
             </div>
 
-            <div id = "gov_employment_historical" class = "linePlot"></div>
+            <div id = "gov_employment_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
             <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/news.release/laus.t03.htm">Bureau of Labor Statistics.</a></div>
             <div class="download">   <a href="#">Download Data</a></div>
      <hr>
@@ -208,20 +223,18 @@ Assessing quarterly state house prices data compared with one year earlier and t
 
 <h2>Wages</h2>
 
-<section class="section25">
+<section class="section25 wages_historical">
   <div class="container">
     <div class="title-text">Real Average Weekly Earnings<span class="title-unit">(percent change year over year)</span></div>
-    <div class="title-subtitle">Year-over-year change in monthly real earnings (i.e., earnings adjusted for inflation) from January 2008 to August 2015.</div>
+    <div class="title-subtitle">Year-over-year change in monthly real earnings (i.e., earnings adjusted for inflation) from <span class = "startDate"></span> to <span class = "endDate"></span>.</div>
     <div class="tooltip-container">
       <div class="region-text">
         <div class="tooltip-title">REGION/STATE</div>
         <div class="tooltip-data">
 
-        <select class = "historical_menu">
+        <select class = "historical_state">
         <option selected = "selected">US Average</option>
         <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-
-
         <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
               <div class="value-text">
                 <div class="tooltip-title">RATE</div>
@@ -229,14 +242,21 @@ Assessing quarterly state house prices data compared with one year earlier and t
               </div>
               <div class="quarter-text">
                 <div class="tooltip-title">MONTH</div>
-                <div class="tooltip-data">December</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_month"><option value ="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
               </div>
               <div class="year-text">
                 <div class="tooltip-title">YEAR</div>
-                <div class="tooltip-data">2015</div>
+                <select class = "historical_year"></select>
+              </div>
+              <div class = "refresh"></div>
+            </div>
+
+            <div id = "wages_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
               </div>
             </div>
-            <div id = "wages_historical" class = "linePlot"></div>
             <div id="figure_unemployment_source" class="plot-source">Source: <a href="http://www.bls.gov/sae/home.htm">Bureau of Labor Statistics.</a></div>
             <div class="download">   <a href="#">Download Data</a></div>
      <hr>
@@ -244,20 +264,18 @@ Assessing quarterly state house prices data compared with one year earlier and t
 </section><!--close section -->
 
 <h2>Housing</h2>
-<section class="section25">
+<section class="section25 housing_historical">
   <div class="container">
     <div class="title-text">House Prices<span class="title-unit">(percent change year over year)</span></div>
-    <div class="title-subtitle">Year-over-year change in quarterly house prices from first quarter 1992 to second quarter 2015.</div>
+    <div class="title-subtitle">Year-over-year change in quarterly house prices from <span class = "startDate"></span> to <span class = "endDate"></span>.</div>
     <div class="tooltip-container">
       <div class="region-text">
         <div class="tooltip-title">REGION/STATE</div>
         <div class="tooltip-data">
 
-        <select class = "historical_menu">
+        <select class = "historical_state">
         <option selected = "selected">US Average</option>
         <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-
-
         <div class="tooltip-usa-average">US average: <span class="usa_text-UNEMP">5.1%</span></div></div></div>
               <div class="value-text">
                 <div class="tooltip-title">RATE</div>
@@ -265,15 +283,21 @@ Assessing quarterly state house prices data compared with one year earlier and t
               </div>
               <div class="quarter-text">
                 <div class="tooltip-title">MONTH</div>
-                <div class="tooltip-data">December</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_quarter"><option value ="1">1st quarter</option><option value="2">2nd quarter</option><option value="3">3rd quarter</option><option value="4">4th quarter</option></select>
               </div>
               <div class="year-text">
                 <div class="tooltip-title">YEAR</div>
-                <div class="tooltip-data">2015</div>
+                <select class = "historical_year"></select>
               </div>
+              <div class = "refresh"></div>
             </div>
 
-            <div id = "housing_historical" class = "linePlot"></div>
+            <div id = "housing_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
             <div id="figure_house-prices_source" class="map-source">Source: <a href="http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo">Federal Housing Finance Agency.</a></div>
             <div class="download">   <a href="#">Download Data</a></div>
      <hr>

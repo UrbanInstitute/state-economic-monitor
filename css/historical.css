@@ -647,6 +647,7 @@ footer a:hover{
   font-size: 20px;
   color: #29abe2;
   font-weight: 400;
+  margin-top: 5px;
 }
 
 .tooltip-usa-average{
@@ -1262,6 +1263,10 @@ padding-top:20px;
   stroke: #fdbf11;
   stroke-width: 2.5px;
 }
+.lineBG{
+  stroke: #fff2cf;
+  stroke-width: 5px;
+}
 .marker{
   fill: #fdbf11;
 }
@@ -1293,26 +1298,58 @@ padding-top:20px;
 }
 
 
-.historical_menu{
+.historical_state, .historical_month, .historical_year, .historical_quarter{
   font-size: 20px;
-  width: 220px;
   display: block;
   border-radius: none !important;
-  width: 290px;
   height: 26px;
   border: none;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: -8px;
   font-weight: 400;
   color: #29abe2;
 }
+.historical_state{
+  width: 211px;
+}
+.historical_month, .historical_quarter{
+  width: 142px;
+}
+.historical_year{
+  width: 92px;
+}
+.refresh{
+  background-repeat: no-repeat;
+  background-image: url(http://www.urban.org/sites/all/themes/urban/images/generated/icons-s8fe141aaaa.png);
+  background-position: 0 -1519px;
+  height: 35px;
+  width: 45px;
+  float: right;
+  margin-top: 14px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.refresh:hover{
+  background-position: 0 -1751px;
+}
 .tooltip-container{
-  width: 570px;
+  width: 609px;
 }
 
-
+.loading{
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+  margin-top: -120px;
+  pointer-events: none;
+}
+.loading img{
+  margin: 0 auto;
+  display: block;
+  width: 50px;
+}
 
 .linePlot{
   width: 100%;
