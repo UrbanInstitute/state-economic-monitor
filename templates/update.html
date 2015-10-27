@@ -96,7 +96,7 @@
         // processData: true,
         success: function(data) {
             d3.select("#loading").style("visibility", "hidden")
-            d3.select("#loading-text").text("Updated! Preview opening in new tab (make sure you may need to enable popups.)")
+            d3.select("#loading-text").text("Updated! Preview opening in new tab (you may need to enable popups).")
             var win = window.open('/preview', '_blank');
 if(win){
     //Browser has allowed it to be opened
