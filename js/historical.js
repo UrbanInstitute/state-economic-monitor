@@ -9,11 +9,13 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 
+var dispatch = d3.dispatch("clickState", "hoverState");
 
 function drawGraphic(dataID){
     print = false;
 
     var $graphic = $("#"+dataID);
+    $graphic.find("svg").remove()
 
     var aspect_width = 2;
     var aspect_height;
@@ -27,7 +29,6 @@ function drawGraphic(dataID){
     if (!print) { width = ($graphic.width() - margin.left - margin.right); }
     else{ width =  PRINT_WIDTH}
     var height = Math.ceil((width * aspect_height) / aspect_width) - margin.top - margin.bottom;
-  console.log(width, $graphic.width(), $graphic)
 
 
   var states = {"Alabama": "AL","Alaska": "AK","American Samoa": "AS","Arizona": "AZ","Arkansas": "AR","California": "CA","Colorado": "CO","Connecticut": "CT","Delaware": "DE","District Of Columbia": "DC","Federated States Of Micronesia": "FM","Florida": "FL","Georgia": "GA","Guam": "GU","Hawaii": "HI","Idaho": "ID","Illinois": "IL","Indiana": "IN","Iowa": "IA","Kansas": "KS","Kentucky": "KY","Louisiana": "LA","Maine": "ME","Marshall Islands": "MH","Maryland": "MD","Massachusetts": "MA","Michigan": "MI","Minnesota": "MN","Mississippi": "MS","Missouri": "MO","Montana": "MT","Nebraska": "NE","Nevada": "NV","New Hampshire": "NH","New Jersey": "NJ","New Mexico": "NM","New York": "NY","North Carolina": "NC","North Dakota": "ND","Northern Mariana Islands": "MP","Ohio": "OH","Oklahoma": "OK","Oregon": "OR","Palau": "PW","Pennsylvania": "PA","Puerto Rico": "PR","Rhode Island": "RI","South Carolina": "SC","South Dakota": "SD","Tennessee": "TN","Texas": "TX","Utah": "UT","Vermont": "VT","Virgin Islands": "VI","Virginia": "VA","Washington": "WA","West Virginia": "WV","Wisconsin": "WI","WY": "Wyoming", "US Average": "USA", "United States": "USA"}
@@ -62,7 +63,6 @@ function drawGraphic(dataID){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   d3.csv("data/historical/" + dataID + ".csv", type, function(error, states) {
-    // console.log(error, states)
     x.domain(d3.extent(months));
     y.domain([d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
 
@@ -105,6 +105,23 @@ function drawGraphic(dataID){
           // .attr("transform","translate(" 0 + ",0)")
           .call(yAxis)
 
+      svg.selectAll(".grid-line")
+        .data(y.ticks(5))
+        .enter()
+        .append("svg:line")
+            .attr("x1", 0)
+            .attr("y1", function(d){ return y(d) })
+            .attr("x2", width)
+            .attr("y2", function(d){ return y(d) })
+        .attr("class",function(d){
+          if(d == 0){
+            return "grid-line zero"
+          } else{
+            return "grid-line";
+          }
+        });
+
+
     svg.append("g")
         .attr("class", "states")
       .selectAll("path")
@@ -138,39 +155,59 @@ function drawGraphic(dataID){
         .datum(function(d) { if(typeof(d) != "undefined"){return d.point; }})
         .on("mouseover", mouseover)
         .on("mouseout", mouseout);
-   d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
+  // console.log(d3.selectAll("#USA"))
+   // d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
+      d3.selectAll("#USA").each(function(p){
+        p.line.parentNode.appendChild(p.line)
+      })
    // mouseout()
 
     // d3.select("#show-voronoi")
     //     .property("disabled", false)
     //     .on("change", function() { voronoiGroup.classed("voronoi--show", this.checked); });
-      svg.selectAll(".grid-line")
-        .data(y.ticks(5))
-        .enter()
-        .append("svg:line")
-            .attr("x1", 0)
-            .attr("y1", function(d){ return y(d) })
-            .attr("x2", width)
-            .attr("y2", function(d){ return y(d) })
-        .attr("class","grid-line")
-        .attr("stroke-dasharray","3,3");
+
+        // .attr("stroke-dasharray",function(d){
+        //   if(d==0){
+        //     return "none"
+        //   }else{
+        //     return "3,3" 
+        //   }
+        // });
+        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+          d3.select(d.parentNode.parentNode)
+          .select("g.states")
+          .node()
+          .appendChild(d)
+        })
 
     function mouseover(d) {
       d3.select(d.state.line).classed("state--hover", true);
+        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+          d3.select(d.parentNode.parentNode)
+          .select("g.states")
+          .node()
+          .appendChild(d)
+        })
       d.state.line.parentNode.appendChild(d.state.line);
       focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
-      d3.selectAll(".grid-line").node().parentNode.appendChild( d3.selectAll(".grid-line").node())
-      // focus.select("text").text(d.state.name);
-      console.log(d.state.name)
-      console.log(d.value)
-      console.log(d.date)
     }
 
     function mouseout(d) {
       d3.select(d.state.line).classed("state--hover", false);
       focus.attr("transform", "translate(-100,-100)");
-      d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
-      d3.selectAll(".grid-line").node().parentNode.appendChild( d3.selectAll(".grid-line").node())
+              d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+          d3.select(d.parentNode.parentNode)
+          .select("g.states")
+          .node()
+          .appendChild(d)
+        })
+      d3.selectAll("#USA").each(function(p){
+        p.line.parentNode.appendChild(p.line)
+      })
+      // d3.selectAll(".grid-line").each(function(p){
+      //   c
+      //   p.line.parentNode.appendChild(p.line)
+      // })
     }
   });
 
@@ -182,7 +219,6 @@ function drawGraphic(dataID){
       values: null
     };
     state.values = months.map(function(m) {
-      // console.log(d)
       return {
         state: state,
         date: m,
@@ -193,8 +229,12 @@ function drawGraphic(dataID){
   }
 }
 
-drawGraphic("gov_employment_historical")
-drawGraphic("housing_historical")
-drawGraphic("total_employment_historical")
-drawGraphic("unemployment_historical")
-drawGraphic("wages_historical")
+function drawHistorical(){
+  drawGraphic("gov_employment_historical")
+  drawGraphic("housing_historical")
+  drawGraphic("total_employment_historical")
+  drawGraphic("unemployment_historical")
+  drawGraphic("wages_historical")
+}
+drawHistorical();
+window.onresize = drawHistorical;

@@ -12,17 +12,7 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 
-
-
-
 function drawMapFigure(dataID, config, print){
-   // if(print){d3.select("body").style("width",PRINT_WIDTH + "px")}
- // data is an array of objects, each of form
-// {
-//   "geography":
-//      {"code": "AK", "fips": "2", "name": "Alaska"},
-//    "value": 6.3
-// }
     var dateUpdated;
     if(config["tab"] == "taxes"){
       dateUpdated = TAX_DATE;

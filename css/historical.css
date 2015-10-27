@@ -834,8 +834,11 @@ rect.states{
 }
 
 .grid-line{
-  stroke: #fff;
-  stroke-width: 3px;
+  stroke: #efefef;
+  stroke-width: 1px;
+}
+.grid-line.zero{
+  stroke: #333;
 }
 /*this is keeping the index page secondary menu labels in the center*/
 @media (min-width:768px) and (max-width:1000px){
@@ -1249,7 +1252,7 @@ padding-top:20px;
 
 .states {
   fill: none;
-  stroke: #e0e0e0;
+  stroke: #ccc;
   stroke-linejoin: round;
   stroke-linecap: round;
   stroke-width: 1px;
