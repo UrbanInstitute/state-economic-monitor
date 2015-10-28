@@ -238,7 +238,7 @@ def archive():
 def index_preview():
   return render_template('index_preview.html')
 @app.route('/historical.html')
-def index_preview():
+def historical():
   return render_template('historical_preview.html')
 
 if __name__ == '__main__':
