@@ -35,12 +35,115 @@ var QUARTERNAMES = ["first quarter", "first quarter", "first quarter", "second q
 var QUARTERLY = ["housing_historical"]
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
+var PERCENT = d3.format(".1f")
 
-var dispatch = d3.dispatch("clickState", "hoverState", "deHover", "refresh", "menuDate");
+var dispatch = d3.dispatch("clickState", "hoverState", "focus", "deHover", "refresh");
 
-dispatch.on("hoverState", function(state, dataID){
-  // console.log(state, dataID)
+dispatch.on("deHover", function(){
+  d3.selectAll(".state--hover").classed("state--hover", false);
+      d3.selectAll(".focus").attr("transform", "translate(-100,-100)");
+      d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+      d3.select(d.parentNode.parentNode)
+        .select("g.states")
+        .node()
+        .appendChild(d)
+    })
+  d3.selectAll("path#USA").each(function(p){
+    // console.log(p, this)
+    this.parentNode.appendChild(this)
+  })
 })
+dispatch.on("refresh", function(){
+  dispatch.deHover();
+  d3.selectAll(".lineBG").remove();
+  d3.selectAll("option[selected=selected]").attr("selected",null)
+  d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
+  d3.selectAll(".historical_year :first-child").attr("selected","selected")
+  d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
+  d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
+})
+dispatch.on("hoverState", function(state, month, year){
+    var obj = d3.selectAll("path#" + state + ":not(.lineBG)")
+    obj.each(function(o){
+      var dataID = $(o.line).closest(".linePlot").attr("id")
+      d3.select(o.line).classed("state--hover", true);
+      d3.selectAll("section." + dataID + " .grid-line.zero")[0].forEach(function(o){
+        d3.select(o.parentNode.parentNode)
+        .select("g.states")
+        .node()
+        .appendChild(o)
+      })
+      o.line.parentNode.appendChild(o.line);
+      dispatch.focus(dataID, state, month, year)
+      // var date = new Date(year)
+      // focus.attr("transform", "translate(" + x(date) + "," + y(getVal("housing_historical", state, month, year)) + ")");
+      // console.log(test["housing_historical"](new Date(2014, 1)))
+    });
+})
+
+dispatch.on("clickState", function(state, month, year){
+  // console.log(state, month, year)
+    d3.selectAll(".lineBG").remove();
+    d3.selectAll(".state--hover").classed("state--hover", false)
+    // mouseover(d);
+    var obj = d3.selectAll("path#" + state+ ":not(.lineBG)")
+    obj.each(function(o){
+      // console.log(o)
+      var node = o.line;
+      var clone = d3.select(node.cloneNode(true));
+      o.line.parentNode.appendChild(o.line);
+      clone.classed("lineBG", true);
+      node.parentNode.insertBefore(clone.node(), node.nextSibling);
+    });
+    dispatch.hoverState(state, month, year)
+})
+
+dispatch.on("focus", function(dataID, state, month, year){
+  d3.selectAll("option[selected=selected]").attr("selected",null)
+  d3.selectAll(".historical_state")
+    .select("[value=" + state + "]")
+    .attr("selected","selected")
+  d3.selectAll(".historical_year")
+    .select("[value=y" + year + "]")
+    .attr("selected", "selected")
+  d3.selectAll(".historical_month")
+    .select("[value=m" + (month+1) + "]")
+    .attr("selected", "selected")
+  d3.selectAll(".historical_quarter")
+    .select("[value=q" + (Math.floor(month/3)+1) + "]")
+    .attr("selected", "selected")
+  var x = scales[dataID]["x"];
+  var y = scales[dataID]["y"];
+  var focus = scales[dataID]["focus"];
+  if(QUARTERLY.indexOf(dataID) != -1){
+    var m = Math.floor(month/3)
+    month = 3*m + 2
+  }
+  var date = new Date(year, month)
+  var val = getVal(dataID, state, month, year)
+  var usa = getVal(dataID, "USA", month, year)
+  // console.log(x(date), scales[dataID]["width"])
+
+  if(x(date) >= 0 && x(date) <= scales[dataID]["width"]){
+    focus.attr("transform", "translate(" + x(date) + "," + y(val) + ")");
+  }
+  d3.select("section." + dataID + " .value-text .tooltip-data").text(PERCENT(val) + "%")
+  d3.select("section." + dataID + " .usa-text").text(PERCENT(usa) + "%")
+})
+
+d3.selectAll("select")
+  .on("change", function(){
+    var dataID = $(this).closest("section").find(".linePlot").attr("id")
+    var state = d3.select("section." + dataID + " .historical_state").node().value
+    var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
+    var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
+
+    // // var year = parseInt()
+    dispatch.clickState(state, month, year)
+  })
+d3.selectAll(".refresh")
+  .on("click", dispatch.refresh)
+var scales = {}
 
 function drawGraphic(dataID){
     print = false;
@@ -121,7 +224,7 @@ function drawGraphic(dataID){
     var yearMenu = d3.select("section." + dataID + " select.historical_year");
     for(var i = 0; i < years.length; i++){
       yearMenu.append("option")
-        .attr("value", years[i])
+        .attr("value", "y" + years[i])
         .text(years[i]);
     }
     x.domain(d3.extent(months));
@@ -197,7 +300,10 @@ function drawGraphic(dataID){
         .data(states)
       .enter().append("path")
         .attr("d", function(d) { d.line = this; return line(d.values); })
-        .attr("id", function(d){  return d.abbrev});
+        .attr("id", function(d){  return d.abbrev})
+        // .on("mouseover", mouseoverNoV)
+        // .on("mouseout", mouseoutNoV)
+        // .on("mousedown", clickNoV)
 
 
 
@@ -208,6 +314,8 @@ function drawGraphic(dataID){
     focus.append("circle")
         .attr("r", 5)
         .attr("class","marker");
+
+    scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width}
 
     // focus.append("text")
     //     .attr("y", -10);
@@ -224,58 +332,110 @@ function drawGraphic(dataID){
       .enter().append("path")
         .attr("d", function(d) { if(typeof(d) != "undefined"){return "M" + d.join("L") + "Z"; }})
         .datum(function(d) { if(typeof(d) != "undefined"){return d.point; }})
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
+        .on("mouseover", function(d){
+          var clicked = d3.select(".lineBG")
+          if(clicked.node() == null || (clicked.node() != null && clicked.attr("id") == d.state.abbrev)){
+            mouseover(d);
+          }
+        })
+        .on("mouseout", function(d){
+          var clicked = d3.select(".lineBG")  
+          if(clicked.node() == null){
+            mouseout(d)
+          }
+        })
         .on("mousedown", click)
-   // d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
+   d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
       d3.selectAll("#USA").each(function(p){
         p.line.parentNode.appendChild(p.line)
       })
         d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+          // console.log(d3.select(d.parentNode.parentNode).select("g.states").node(), d)
           d3.select(d.parentNode.parentNode)
           .select("g.states")
           .node()
           .appendChild(d)
         })
 
+
+
+                         // function clickNoV(d){
+                         //  // d3.selectAll(".lineBG").style("display", "none");
+                         //  // d3.select("section." + dataID + " .lineBG#"  +d.state.abbrev + "BG").style("display","block")
+                         //  d3.selectAll(".lineBG").remove();
+                         //  var node = d3.select(d.line).node();
+                         //  var clone = d3.select(node.cloneNode(true));
+                         //  clone.classed("lineBG", true);
+                         //  node.parentNode.insertBefore(clone.node(), node.nextSibling);
+                         //  d.line.parentNode.appendChild(d.line);
+
+                         // }
+
+                         //  function mouseoverNoV(d) {
+                         //    console.log(d)
+                         //    d3.select(d.line).classed("state--hover", true);
+                         //      d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+                         //        d3.select(d.parentNode.parentNode)
+                         //        .select("g.states")
+                         //        .node()
+                         //        .appendChild(d)
+                         //      })
+                         //      dispatch.hoverState(d, dataID)
+                         //      d.line.parentNode.appendChild(d.line);
+                         //      focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
+                         //  }
+
+                         //  function mouseoutNoV(d) {
+                         //    d3.select(d.line).classed("state--hover", false);
+                         //    focus.attr("transform", "translate(-100,-100)");
+                         //        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+                         //        d3.select(d.parentNode.parentNode)
+                         //          .select("g.states")
+                         //          .node()
+                         //          .appendChild(d)
+                         //      })
+                         //    d3.selectAll("#USA").each(function(p){
+                         //      p.line.parentNode.appendChild(p.line)
+                         //    })
+                         //  }
+
    function click(d){
+    // console.log(d)
+    dispatch.clickState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
     // d3.selectAll(".lineBG").style("display", "none");
-    // console.log(".lineBG#"  +d.state.abbrev + "BG")
-    // d3.select(".lineBG#"  +d.state.abbrev + "BG").style("display","block")
-    d3.selectAll(".lineBG").remove();
-    var node = d3.select(d.state.line).node();
-    var clone = d3.select(node.cloneNode(true));
-    clone.classed("lineBG", true);
-    node.parentNode.insertBefore(clone.node(), node.nextSibling);
-    d.state.line.parentNode.appendChild(d.state.line);
+    // d3.select("section." + dataID + " .lineBG#"  +d.state.abbrev + "BG").style("display","block")
+    // d3.selectAll(".lineBG").remove();
+    // d3.selectAll(".state--hover").classed("state--hover", false)
+    // mouseover(d);
+    // var node = d3.select(d.state.line).node();
+    // var clone = d3.select(node.cloneNode(true));
+    // clone.classed("lineBG", true);
+    // node.parentNode.insertBefore(clone.node(), node.nextSibling);
+    // d.state.line.parentNode.appendChild(d.state.line);
 
    }
 
     function mouseover(d) {
-      d3.select(d.state.line).classed("state--hover", true);
-        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-          d3.select(d.parentNode.parentNode)
-          .select("g.states")
-          .node()
-          .appendChild(d)
-        })
-        dispatch.hoverState(d, dataID)
-        d.state.line.parentNode.appendChild(d.state.line);
-        focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
+      dispatch.hoverState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
+
+      // console.log(d3.select(".lineBG"))
+        // d3.select(d.state.line).classed("state--hover", true);
+        //   d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+        //     d3.select(d.parentNode.parentNode)
+        //     .select("g.states")
+        //     .node()
+        //     .appendChild(d)
+        //   })
+        //   // dispatch.hoverState(d, dataID)
+        //   d.state.line.parentNode.appendChild(d.state.line);
+          // focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
+      
     }
 
     function mouseout(d) {
-      d3.select(d.state.line).classed("state--hover", false);
-      focus.attr("transform", "translate(-100,-100)");
-          d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-          d3.select(d.parentNode.parentNode)
-            .select("g.states")
-            .node()
-            .appendChild(d)
-        })
-      d3.selectAll("#USA").each(function(p){
-        p.line.parentNode.appendChild(p.line)
-      })
+      dispatch.deHover();
+
+      
       // d3.selectAll(".grid-line").each(function(p){
       //   c
       //   p.line.parentNode.appendChild(p.line)
@@ -301,6 +461,19 @@ function drawGraphic(dataID){
   }
 }
 
+
+function getVal(dataID, state, month, year){
+  var path = d3.select("section." + dataID + " #" + state + ":not(.lineBG)");
+  var obj = path.datum().values.filter(function(d){
+    return (d.date.getFullYear() == year && d.date.getMonth() == month)
+  })
+  // console.log(obj)
+  if(typeof(obj[0]) != "undefined"){
+    return obj[0].value
+  }else{ return null}
+}
+// console.log()
+
 function drawHistorical(){
   drawGraphic("gov_employment_historical")
   drawGraphic("housing_historical")
@@ -314,7 +487,7 @@ window.onresize = drawHistorical;
 function checkReady(readyID) {
     var drawn = d3.select("#" + readyID + " svg .states").node();
     var loading = d3.select("#" + readyID + " .loading")
-    console.log(drawn, loading)
+    // console.log(drawn, loading)
     if (drawn == null) {
         setTimeout(function(){ checkReady(readyID)}, 300);
     } else {

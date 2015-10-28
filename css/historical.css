@@ -1264,6 +1264,8 @@ padding-top:20px;
   stroke-width: 2.5px;
 }
 .lineBG{
+  /*display: none;*/
+  /*fill: none;*/
   stroke: #fff2cf;
   stroke-width: 5px;
 }
@@ -1312,7 +1314,7 @@ padding-top:20px;
   color: #29abe2;
 }
 .historical_state{
-  width: 211px;
+  width: 216px;
 }
 .historical_month, .historical_quarter{
   width: 142px;
@@ -1335,7 +1337,7 @@ padding-top:20px;
   background-position: 0 -1751px;
 }
 .tooltip-container{
-  width: 609px;
+  width: 635px;
 }
 
 .loading{
