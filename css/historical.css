@@ -212,7 +212,14 @@ text-transform: none;
     line-height: 1.4;
 }
 
-
+h4{
+  font-size:24px;
+  color:#29abe2;
+  margin-top: 20px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
 .updated{
  text-align: center;
 font-size:14px;
@@ -409,8 +416,9 @@ margin:10px auto;
 
 .note{
     
- font-size:14px;
- 
+  font: 9pt Lato;
+  font-weight: 400;
+  color:#555; 
     
 }
 
@@ -555,24 +563,13 @@ footer a:hover{
 }
 
 /*Styles for source annotations*/
-.map-source, .plot-source{
+.historical-source{
   font: 9pt Lato;
   position: relative;
+  margin-top: 10px;
   float: right;
   font-weight: 400;
   color:#555;
-}
-
-.map-source{
-  bottom: 0px;
-  right: 10%;
-  width: 34%;
-}
-
-.plot-source{
-  bottom: 0;
-  right: 0;
-  margin-bottom: 10px;
 }
 
 .label{
@@ -1272,6 +1269,9 @@ padding-top:20px;
 .marker{
   fill: #fdbf11;
 }
+.usaMarker{
+  fill: #333;
+}
 
 #USA{
   stroke: #333;
@@ -1337,7 +1337,7 @@ padding-top:20px;
   background-position: 0 -1751px;
 }
 .tooltip-container{
-  width: 635px;
+  width: 645px;
 }
 
 .loading{

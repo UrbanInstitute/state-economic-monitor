@@ -1,4 +1,7 @@
 ;window.Modernizr=function(a,b,c){function v(a){i.cssText=a}function w(a,b){return v(prefixes.join(a+";")+(b||""))}function x(a,b){return typeof a===b}function y(a,b){return!!~(""+a).indexOf(b)}function z(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:x(f,"function")?f.bind(d||b):f}return!1}var d="2.8.3",e={},f=b.documentElement,g="modernizr",h=b.createElement(g),i=h.style,j,k={}.toString,l={},m={},n={},o=[],p=o.slice,q,r=function(a,c,d,e){var h,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:g+(d+1),l.appendChild(j);return h=["&#173;",'<style id="s',g,'">',a,"</style>"].join(""),l.id=g,(m?l:n).innerHTML+=h,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=f.style.overflow,f.style.overflow="hidden",f.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),f.style.overflow=k),!!i},s=function(b){var c=a.matchMedia||a.msMatchMedia;if(c)return c(b)&&c(b).matches||!1;var d;return r("@media "+b+" { #"+g+" { position: absolute; } }",function(b){d=(a.getComputedStyle?getComputedStyle(b,null):b.currentStyle)["position"]=="absolute"}),d},t={}.hasOwnProperty,u;!x(t,"undefined")&&!x(t.call,"undefined")?u=function(a,b){return t.call(a,b)}:u=function(a,b){return b in a&&x(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=p.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(p.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(p.call(arguments)))};return e});for(var A in l)u(l,A)&&(q=A.toLowerCase(),e[q]=l[A](),o.push((e[q]?"":"no-")+q));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)u(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof enableClasses!="undefined"&&enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},v(""),h=j=null,e._version=d,e.mq=s,e.testStyles=r,e}(this,this.document);
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 function detectIE() {
     var ua = window.navigator.userAgent;
 
@@ -32,7 +35,7 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
 var QUARTERNAMES = ["first quarter", "first quarter", "first quarter", "second quarter", "second quarter", "second quarter", "third quarter", "third quarter", "third quarter", "fourth quarter", "fourth quarter", "fourth quarter"]
-var QUARTERLY = ["housing_historical"]
+var QUARTERLY = ["housing_historical","state_total_tax_values_historical"]
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 var PERCENT = d3.format(".1f")
@@ -53,14 +56,17 @@ dispatch.on("deHover", function(){
     this.parentNode.appendChild(this)
   })
 })
-dispatch.on("refresh", function(){
+dispatch.on("refresh", function(trigger){
+  d3.event.stopPropagation();
   dispatch.deHover();
   d3.selectAll(".lineBG").remove();
-  d3.selectAll("option[selected=selected]").attr("selected",null)
-  d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
-  d3.selectAll(".historical_year :first-child").attr("selected","selected")
-  d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
-  d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
+  if(trigger == "button"){
+    d3.selectAll("option[selected=selected]").attr("selected",null)
+    d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
+    d3.selectAll(".historical_year :first-child").attr("selected","selected")
+    d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
+    d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
+  }
 })
 dispatch.on("hoverState", function(state, month, year){
     var obj = d3.selectAll("path#" + state + ":not(.lineBG)")
@@ -83,6 +89,7 @@ dispatch.on("hoverState", function(state, month, year){
 
 dispatch.on("clickState", function(state, month, year){
   // console.log(state, month, year)
+    d3.event.stopPropagation();
     d3.selectAll(".lineBG").remove();
     d3.selectAll(".state--hover").classed("state--hover", false)
     // mouseover(d);
@@ -115,6 +122,7 @@ dispatch.on("focus", function(dataID, state, month, year){
   var x = scales[dataID]["x"];
   var y = scales[dataID]["y"];
   var focus = scales[dataID]["focus"];
+  focus.select("circle").classed("usaMarker", state=="USA")
   if(QUARTERLY.indexOf(dataID) != -1){
     var m = Math.floor(month/3)
     month = 3*m + 2
@@ -132,6 +140,8 @@ dispatch.on("focus", function(dataID, state, month, year){
 })
 
 d3.selectAll("select")
+  .on("click", function(){ d3.event.stopPropagation()})
+d3.selectAll("select")
   .on("change", function(){
     var dataID = $(this).closest("section").find(".linePlot").attr("id")
     var state = d3.select("section." + dataID + " .historical_state").node().value
@@ -142,7 +152,9 @@ d3.selectAll("select")
     dispatch.clickState(state, month, year)
   })
 d3.selectAll(".refresh")
-  .on("click", dispatch.refresh)
+  .on("click", function(){ dispatch.refresh("button") })
+d3.select("body")
+  .on("click", function(){ dispatch.refresh("body") })
 var scales = {}
 
 function drawGraphic(dataID){
@@ -157,7 +169,7 @@ function drawGraphic(dataID){
       aspect_height = 1.2;
     }else{ aspect_height = 1; }
     
-    var margin = { top: 30, right: 40, bottom: 40, left: 40 };
+    var margin = { top: 30, right: 2, bottom: 40, left: 50 };
     // var width = $graphic.width() - margin.left - margin.right;
     var width;
     if (!print) { width = ($graphic.width() - margin.left - margin.right); }
@@ -172,7 +184,7 @@ function drawGraphic(dataID){
       // .style("top", (0-height-margin.top-margin.bottom - 390) + "px")
 
 
-  var states = {"Alabama": "AL","Alaska": "AK","American Samoa": "AS","Arizona": "AZ","Arkansas": "AR","California": "CA","Colorado": "CO","Connecticut": "CT","Delaware": "DE","District Of Columbia": "DC","District of Columbia": "DC","Federated States Of Micronesia": "FM","Florida": "FL","Georgia": "GA","Guam": "GU","Hawaii": "HI","Idaho": "ID","Illinois": "IL","Indiana": "IN","Iowa": "IA","Kansas": "KS","Kentucky": "KY","Louisiana": "LA","Maine": "ME","Marshall Islands": "MH","Maryland": "MD","Massachusetts": "MA","Michigan": "MI","Minnesota": "MN","Mississippi": "MS","Missouri": "MO","Montana": "MT","Nebraska": "NE","Nevada": "NV","New Hampshire": "NH","New Jersey": "NJ","New Mexico": "NM","New York": "NY","North Carolina": "NC","North Dakota": "ND","Northern Mariana Islands": "MP","Ohio": "OH","Oklahoma": "OK","Oregon": "OR","Palau": "PW","Pennsylvania": "PA","Puerto Rico": "PR","Rhode Island": "RI","South Carolina": "SC","South Dakota": "SD","Tennessee": "TN","Texas": "TX","Utah": "UT","Vermont": "VT","Virgin Islands": "VI","Virginia": "VA","Washington": "WA","West Virginia": "WV","Wisconsin": "WI","WY": "Wyoming", "US Average": "USA", "United States": "USA"}
+  var states = {"Alabama": "AL","Alaska": "AK","American Samoa": "AS","Arizona": "AZ","Arkansas": "AR","California": "CA","Colorado": "CO","Connecticut": "CT","Delaware": "DE","District Of Columbia": "DC","District of Columbia": "DC","Federated States Of Micronesia": "FM","Florida": "FL","Georgia": "GA","Guam": "GU","Hawaii": "HI","Idaho": "ID","Illinois": "IL","Indiana": "IN","Iowa": "IA","Kansas": "KS","Kentucky": "KY","Louisiana": "LA","Maine": "ME","Marshall Islands": "MH","Maryland": "MD","Massachusetts": "MA","Michigan": "MI","Minnesota": "MN","Mississippi": "MS","Missouri": "MO","Montana": "MT","Nebraska": "NE","Nevada": "NV","New Hampshire": "NH","New Jersey": "NJ","New Mexico": "NM","New York": "NY","North Carolina": "NC","North Dakota": "ND","Northern Mariana Islands": "MP","Ohio": "OH","Oklahoma": "OK","Oregon": "OR","Palau": "PW","Pennsylvania": "PA","Puerto Rico": "PR","Rhode Island": "RI","South Carolina": "SC","South Dakota": "SD","Tennessee": "TN","Texas": "TX","Utah": "UT","Vermont": "VT","Virgin Islands": "VI","Virginia": "VA","Washington": "WA","West Virginia": "WV","Wisconsin": "WI","Wyoming": "WY", "US Average": "USA", "United States": "USA"}
 
   var months,
       monthFormat = d3.time.format("%Y-%m");
@@ -209,16 +221,18 @@ function drawGraphic(dataID){
     var start = monthCopy[0];
     var end = monthCopy[monthCopy.length-1];
     if (QUARTERLY.indexOf(dataID) == -1){
-      d3.select("section." + dataID + " .startDate")
+      d3.selectAll("section." + dataID + " .startDate")
         .text(MONTHNAMES[start.getMonth()] + " " + start.getFullYear())
-      d3.select("section." + dataID + " .endDate")
+      d3.selectAll("section." + dataID + " .endDate")
         .text(MONTHNAMES[end.getMonth()] + " " + end.getFullYear())
     }
     else{
-      d3.select("section." + dataID + " .startDate")
+      d3.selectAll("section." + dataID + " .startDate")
         .text("the " + QUARTERNAMES[start.getMonth()] + " of " + start.getFullYear())
-      d3.select("section." + dataID + " .endDate")
-        .text("the " + QUARTERNAMES[end.getMonth()] + " of " + end.getFullYear())    
+      d3.selectAll("section." + dataID + " .endDate")
+        .text("the " + QUARTERNAMES[end.getMonth()] + " of " + end.getFullYear())  
+      d3.selectAll("section." + dataID + " .prevDate")
+        .text("the " + QUARTERNAMES[end.getMonth()] + " of " + String(parseInt(end.getFullYear())-1))    
     }
     years = d3.set(years).values()
     var yearMenu = d3.select("section." + dataID + " select.historical_year");
@@ -264,10 +278,25 @@ function drawGraphic(dataID){
         })
         .tickSize(0)
 
-      svg.append("g")
+    var label = svg.append("g")
           .attr("class", "y axis")
           // .attr("transform","translate(" 0 + ",0)")
           .call(yAxis)
+    .append("text")
+      // .attr("transform","rotate(-90)")
+      .attr("class", "label")
+      .text(d3.select("section." + dataID).select(".title-unit").text().replace("(","").replace(")","").capitalizeFirstLetter())
+    console.log(label.node().getBBox())
+    var offset = label.node().getComputedTextLength()/2.0
+    var middle = (y.domain()[0] + y.domain()[1])/2.0
+    label
+        .attr("transform","rotate(-90,-41," + (y(middle)+offset) + ")")
+        .attr("x",-41)
+        .attr("y",y(middle)+offset)
+        .style("border",'1px solid black')
+
+        // 
+
 
       svg.selectAll(".grid-line")
         .data(y.ticks(5))
@@ -314,6 +343,7 @@ function drawGraphic(dataID){
     focus.append("circle")
         .attr("r", 5)
         .attr("class","marker");
+    // console.log(d)
 
     scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width}
 
@@ -344,7 +374,7 @@ function drawGraphic(dataID){
             mouseout(d)
           }
         })
-        .on("mousedown", click)
+        .on("click", click)
    d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
       d3.selectAll("#USA").each(function(p){
         p.line.parentNode.appendChild(p.line)
@@ -475,11 +505,12 @@ function getVal(dataID, state, month, year){
 // console.log()
 
 function drawHistorical(){
-  drawGraphic("gov_employment_historical")
-  drawGraphic("housing_historical")
-  drawGraphic("total_employment_historical")
-  drawGraphic("unemployment_historical")
+  // drawGraphic("gov_employment_historical")
+  // drawGraphic("housing_historical")
+  // drawGraphic("total_employment_historical")
+  // drawGraphic("unemployment_historical")
   drawGraphic("wages_historical")
+  drawGraphic("state_total_tax_values_historical")
 }
 drawHistorical();
 window.onresize = drawHistorical;
@@ -509,9 +540,11 @@ function checkReady(readyID) {
     }
 }
 
-checkReady("gov_employment_historical")
-checkReady("housing_historical")
-checkReady("total_employment_historical")
-checkReady("unemployment_historical")
+// checkReady("gov_employment_historical")
+// checkReady("housing_historical")
+// checkReady("total_employment_historical")
+// checkReady("unemployment_historical")
 checkReady("wages_historical")
+checkReady("state_total_tax_values_historical")
+
 
