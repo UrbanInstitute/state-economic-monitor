@@ -87,7 +87,7 @@ def reshapeMonthly(fileName):
 
 # quarterly = ["housing_historical","state_total_tax_historical"]
 
-quarterly = ["housing_historical"]
+quarterly = ["housing_historical","state_total_tax_values_historical"]
 monthly = ["total_employment_historical","gov_employment_historical","unemployment_historical","wages_historical"]
 
 for qFile in quarterly:
