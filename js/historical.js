@@ -113,14 +113,14 @@ dispatch.on("focus", function(dataID, state, month, year){
   d3.selectAll(".historical_state")
     .select("[value=" + state + "]")
     .attr("selected","selected")
-  d3.selectAll(".historical_year")
-    .select("[value=y" + year + "]")
-    .attr("selected", "selected")
   d3.selectAll(".historical_month")
-    .select("[value=m" + (month+1) + "]")
+    .select("[value=m" + (parseInt(month)+1) + "]")
     .attr("selected", "selected")
   d3.selectAll(".historical_quarter")
-    .select("[value=q" + (Math.floor(month/3)+1) + "]")
+    .select("[value=q" + (Math.floor(parseInt(month)/3)+1) + "]")
+    .attr("selected", "selected")
+  d3.selectAll(".historical_year")
+    .select("[value=y" + year + "]")
     .attr("selected", "selected")
   var x = scales[dataID]["x"];
   var y = scales[dataID]["y"];
@@ -143,6 +143,8 @@ dispatch.on("focus", function(dataID, state, month, year){
 })
 
 d3.selectAll("select")
+  .on("click", function(){ d3.event.stopPropagation()})
+d3.selectAll(".value-text")
   .on("click", function(){ d3.event.stopPropagation()})
 d3.selectAll("select")
   .on("change", function(){
@@ -368,6 +370,7 @@ function drawGraphic(dataID){
           .enter().append("path")
             .attr("d", function(d) { if(typeof(d) != "undefined"){return "M" + d.join("L") + "Z"; }})
             .datum(function(d) { if(typeof(d) != "undefined"){return d.point; }})
+            .style("cursor","pointer")
             .on("mouseover", function(d){
               var clicked = d3.select(".lineBG")
               if(clicked.node() == null || (clicked.node() != null && clicked.attr("id") == d.state.abbrev)){
