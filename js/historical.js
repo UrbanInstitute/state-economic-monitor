@@ -52,20 +52,22 @@ dispatch.on("deHover", function(){
         .appendChild(d)
     })
   d3.selectAll("path#USA").each(function(p){
-    // console.log(p, this)
     this.parentNode.appendChild(this)
   })
 })
 dispatch.on("refresh", function(trigger){
-  d3.event.stopPropagation();
+  // d3.event.stopPropagation();
+  // dispatch.hoverState("USA",1,2015)
   dispatch.deHover();
   d3.selectAll(".lineBG").remove();
-  if(trigger == "button"){
-    d3.selectAll("option[selected=selected]").attr("selected",null)
-    d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
-    d3.selectAll(".historical_year :first-child").attr("selected","selected")
-    d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
-    d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
+  if(trigger == "button" || trigger == "load"){
+      var year = d3.select(".historical_year :last-child").attr("value").replace("y","")
+      dispatch.hoverState("USA","0",year)
+    // d3.selectAll("option[selected=selected]").attr("selected",null)
+    // d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
+    // d3.selectAll(".historical_year :first-child").attr("selected","selected")
+    // d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
+    // d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
   }
 })
 dispatch.on("hoverState", function(state, month, year){
@@ -88,11 +90,12 @@ dispatch.on("hoverState", function(state, month, year){
 })
 
 dispatch.on("clickState", function(state, month, year){
-  // console.log(state, month, year)
     d3.event.stopPropagation();
     d3.selectAll(".lineBG").remove();
     d3.selectAll(".state--hover").classed("state--hover", false)
-    // mouseover(d);
+    d3.selectAll("path#USA").each(function(p){
+      this.parentNode.appendChild(this)
+    })
     var obj = d3.selectAll("path#" + state+ ":not(.lineBG)")
     obj.each(function(o){
       // console.log(o)
@@ -155,6 +158,9 @@ d3.selectAll(".refresh")
   .on("click", function(){ dispatch.refresh("button") })
 d3.select("body")
   .on("click", function(){ dispatch.refresh("body") })
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) { dispatch.refresh("key") }// escape key
+});
 var scales = {}
 
 function drawGraphic(dataID){
@@ -169,7 +175,7 @@ function drawGraphic(dataID){
       aspect_height = 1.2;
     }else{ aspect_height = 1; }
     
-    var margin = { top: 30, right: 2, bottom: 40, left: 50 };
+    var margin = (MOBILE) ? { top: 30, right: 2, bottom: 40, left: 0 } : { top: 30, right: 2, bottom: 40, left: 50 };
     // var width = $graphic.width() - margin.left - margin.right;
     var width;
     if (!print) { width = ($graphic.width() - margin.left - margin.right); }
@@ -199,10 +205,12 @@ function drawGraphic(dataID){
   var y = d3.scale.linear()
       .range([height, 0]);
 
-  var voronoi = d3.geom.voronoi()
-      .x(function(d) { return x(d.date); })
-      .y(function(d) { return y(d.value); })
-      .clipExtent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
+  if(!MOBILE){
+    var voronoi = d3.geom.voronoi()
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.value); })
+        .clipExtent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
+  }
 
   var line = d3.svg.line()
       // .interpolate("basis")
@@ -241,193 +249,149 @@ function drawGraphic(dataID){
         .attr("value", "y" + years[i])
         .text(years[i]);
     }
-    x.domain(d3.extent(months));
-    y.domain([d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
+      x.domain(d3.extent(months));
+      y.domain([d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
+      svg.append("g")
+          .attr("class", "axis x")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.svg.axis()
+            .scale(x)
+            .orient("bottom"));
 
-    svg.append("g")
-        .attr("class", "axis x")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.svg.axis()
-          .scale(x)
-          .orient("bottom"));
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          // .tickValues([min+step, min+step*6])
+          .ticks(5)
+          .tickFormat(function(d){
+            // Check tick val and format accordingly. N -> int, N.5 -> 1 decimal place, N.25 -> 2 decimal places
+            var formatter;
+            if(parseInt(d) === d){
+              formatter = d3.format(".0f")
+              return formatter(d)
+            }
+            else if(parseInt(d*2) === d*2){
+              formatter = d3.format(".1f")
+              return formatter(d)
+            }
+            else if(parseInt(d*4) === d*4){
+              formatter = d3.format(".2f")
+              return formatter(d)
+            }
+            else{
+              formatter = d3.format(".0f")
+              return formatter(d)
+            }
+          })
+          .tickSize(0)
 
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left")
-        // .tickValues([min+step, min+step*6])
-        .ticks(5)
-        .tickFormat(function(d){
-          // Check tick val and format accordingly. N -> int, N.5 -> 1 decimal place, N.25 -> 2 decimal places
-          var formatter;
-          if(parseInt(d) === d){
-            formatter = d3.format(".0f")
-            return formatter(d)
-          }
-          else if(parseInt(d*2) === d*2){
-            formatter = d3.format(".1f")
-            return formatter(d)
-          }
-          else if(parseInt(d*4) === d*4){
-            formatter = d3.format(".2f")
-            return formatter(d)
-          }
-          else{
-            formatter = d3.format(".0f")
-            return formatter(d)
-          }
-        })
-        .tickSize(0)
+      var label = svg.append("g")
+            .attr("class", "y axis")
+            // .attr("transform","translate(" 0 + ",0)")
+            .call(yAxis)
+      .append("text")
+        // .attr("transform","rotate(-90)")
+        .attr("class", "label")
+        .text(d3.select("section." + dataID).select(".title-unit").text().replace("(","").replace(")","").capitalizeFirstLetter())
+      var offset = label.node().getComputedTextLength()/2.0
+      var middle = (y.domain()[0] + y.domain()[1])/2.0
+      label
+          .attr("transform","rotate(-90,-41," + (y(middle)+offset) + ")")
+          .attr("x",-41)
+          .attr("y",y(middle)+offset)
+          .style("border",'1px solid black')
 
-    var label = svg.append("g")
-          .attr("class", "y axis")
-          // .attr("transform","translate(" 0 + ",0)")
-          .call(yAxis)
-    .append("text")
-      // .attr("transform","rotate(-90)")
-      .attr("class", "label")
-      .text(d3.select("section." + dataID).select(".title-unit").text().replace("(","").replace(")","").capitalizeFirstLetter())
-    console.log(label.node().getBBox())
-    var offset = label.node().getComputedTextLength()/2.0
-    var middle = (y.domain()[0] + y.domain()[1])/2.0
-    label
-        .attr("transform","rotate(-90,-41," + (y(middle)+offset) + ")")
-        .attr("x",-41)
-        .attr("y",y(middle)+offset)
-        .style("border",'1px solid black')
-
-        // 
+          // 
 
 
-      svg.selectAll(".grid-line")
-        .data(y.ticks(5))
-        .enter()
-        .append("svg:line")
-            .attr("x1", 0)
-            .attr("y1", function(d){ return y(d) })
-            .attr("x2", width)
-            .attr("y2", function(d){ return y(d) })
-        .attr("class",function(d){
-          if(d == 0){
-            return "grid-line zero"
-          } else{
-            return "grid-line";
-          }
-        });
+        svg.selectAll(".grid-line")
+          .data(y.ticks(5))
+          .enter()
+          .append("svg:line")
+              .attr("x1", 0)
+              .attr("y1", function(d){ return y(d) })
+              .attr("x2", width)
+              .attr("y2", function(d){ return y(d) })
+          .attr("class",function(d){
+            if(d == 0){
+              return "grid-line zero"
+            } else{
+              return "grid-line";
+            }
+          });
 
-    // svg.append("g")
-    //     .attr("class", "statesBG")
-    //   .selectAll("path")
-    //     .data(states)
-    //   .enter().append("path")
-    //     .attr("d", function(d) { d.line = this; return line(d.values); })
-    //     .attr("class", "lineBG")
-    //     .attr("id", function(d){  return d.abbrev + "BG"});
+      // svg.append("g")
+      //     .attr("class", "statesBG")
+      //   .selectAll("path")
+      //     .data(states)
+      //   .enter().append("path")
+      //     .attr("d", function(d) { d.line = this; return line(d.values); })
+      //     .attr("class", "lineBG")
+      //     .attr("id", function(d){  return d.abbrev + "BG"});
 
-    svg.append("g")
-        .attr("class", "states")
-      .selectAll("path")
-        .data(states)
-      .enter().append("path")
-        .attr("d", function(d) { d.line = this; return line(d.values); })
-        .attr("id", function(d){  return d.abbrev})
-        // .on("mouseover", mouseoverNoV)
-        // .on("mouseout", mouseoutNoV)
-        // .on("mousedown", clickNoV)
+      svg.append("g")
+          .attr("class", "states")
+        .selectAll("path")
+          .data(states)
+        .enter().append("path")
+          .attr("d", function(d) { d.line = this; return line(d.values); })
+          .attr("id", function(d){  return d.abbrev})
+          // .on("mouseover", mouseoverNoV)
+          // .on("mouseout", mouseoutNoV)
+          // .on("mousedown", clickNoV)
 
 
 
-    var focus = svg.append("g")
-        .attr("transform", "translate(-100,-100)")
-        .attr("class", "focus");
+      var focus = svg.append("g")
+          .attr("transform", "translate(-100,-100)")
+          .attr("class", "focus");
 
-    focus.append("circle")
-        .attr("r", 5)
-        .attr("class","marker");
-    // console.log(d)
+      focus.append("circle")
+          .attr("r", 5)
+          .attr("class","marker");
 
-    scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width}
+      scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width}
 
-    // focus.append("text")
-    //     .attr("y", -10);
+      // focus.append("text")
+      //     .attr("y", -10);
 
-    var voronoiGroup = svg.append("g")
-        .attr("class", "voronoi");
+      if(!MOBILE){
+        var voronoiGroup = svg.append("g")
+            .attr("class", "voronoi");
 
-    voronoiGroup.selectAll("path")
-        .data(voronoi(d3.nest()
-            .key(function(d) { return x(d.date) + "," + y(d.value); })
-            .rollup(function(v) { return v[0]; })
-            .entries(d3.merge(states.map(function(d) { return d.values; })))
-            .map(function(d) { return d.values; })))
-      .enter().append("path")
-        .attr("d", function(d) { if(typeof(d) != "undefined"){return "M" + d.join("L") + "Z"; }})
-        .datum(function(d) { if(typeof(d) != "undefined"){return d.point; }})
-        .on("mouseover", function(d){
-          var clicked = d3.select(".lineBG")
-          if(clicked.node() == null || (clicked.node() != null && clicked.attr("id") == d.state.abbrev)){
-            mouseover(d);
-          }
-        })
-        .on("mouseout", function(d){
-          var clicked = d3.select(".lineBG")  
-          if(clicked.node() == null){
-            mouseout(d)
-          }
-        })
-        .on("click", click)
-   d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
-      d3.selectAll("#USA").each(function(p){
-        p.line.parentNode.appendChild(p.line)
-      })
-        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-          // console.log(d3.select(d.parentNode.parentNode).select("g.states").node(), d)
-          d3.select(d.parentNode.parentNode)
-          .select("g.states")
-          .node()
-          .appendChild(d)
-        })
-
-
-
-                         // function clickNoV(d){
-                         //  // d3.selectAll(".lineBG").style("display", "none");
-                         //  // d3.select("section." + dataID + " .lineBG#"  +d.state.abbrev + "BG").style("display","block")
-                         //  d3.selectAll(".lineBG").remove();
-                         //  var node = d3.select(d.line).node();
-                         //  var clone = d3.select(node.cloneNode(true));
-                         //  clone.classed("lineBG", true);
-                         //  node.parentNode.insertBefore(clone.node(), node.nextSibling);
-                         //  d.line.parentNode.appendChild(d.line);
-
-                         // }
-
-                         //  function mouseoverNoV(d) {
-                         //    console.log(d)
-                         //    d3.select(d.line).classed("state--hover", true);
-                         //      d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-                         //        d3.select(d.parentNode.parentNode)
-                         //        .select("g.states")
-                         //        .node()
-                         //        .appendChild(d)
-                         //      })
-                         //      dispatch.hoverState(d, dataID)
-                         //      d.line.parentNode.appendChild(d.line);
-                         //      focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
-                         //  }
-
-                         //  function mouseoutNoV(d) {
-                         //    d3.select(d.line).classed("state--hover", false);
-                         //    focus.attr("transform", "translate(-100,-100)");
-                         //        d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-                         //        d3.select(d.parentNode.parentNode)
-                         //          .select("g.states")
-                         //          .node()
-                         //          .appendChild(d)
-                         //      })
-                         //    d3.selectAll("#USA").each(function(p){
-                         //      p.line.parentNode.appendChild(p.line)
-                         //    })
-                         //  }
+        voronoiGroup.selectAll("path")
+            .data(voronoi(d3.nest()
+                .key(function(d) { return x(d.date) + "," + y(d.value); })
+                .rollup(function(v) { return v[0]; })
+                .entries(d3.merge(states.map(function(d) { return d.values; })))
+                .map(function(d) { return d.values; })))
+          .enter().append("path")
+            .attr("d", function(d) { if(typeof(d) != "undefined"){return "M" + d.join("L") + "Z"; }})
+            .datum(function(d) { if(typeof(d) != "undefined"){return d.point; }})
+            .on("mouseover", function(d){
+              var clicked = d3.select(".lineBG")
+              if(clicked.node() == null || (clicked.node() != null && clicked.attr("id") == d.state.abbrev)){
+                mouseover(d);
+              }
+            })
+            .on("mouseout", function(d){
+              var clicked = d3.select(".lineBG")  
+              if(clicked.node() == null){
+                mouseout(d)
+              }
+            })
+            .on("click", click)
+       d3.selectAll("#USA").node().parentNode.appendChild(d3.selectAll("#USA").node());
+          d3.selectAll("#USA").each(function(p){
+            p.line.parentNode.appendChild(p.line)
+          })
+            d3.selectAll(".grid-line.zero")[0].forEach(function(d){
+              d3.select(d.parentNode.parentNode)
+              .select("g.states")
+              .node()
+              .appendChild(d)
+            })
+      }
 
    function click(d){
     // console.log(d)
@@ -505,12 +469,19 @@ function getVal(dataID, state, month, year){
 // console.log()
 
 function drawHistorical(){
-  // drawGraphic("gov_employment_historical")
-  // drawGraphic("housing_historical")
-  // drawGraphic("total_employment_historical")
-  // drawGraphic("unemployment_historical")
-  drawGraphic("wages_historical")
-  drawGraphic("state_total_tax_values_historical")
+  SMALL_SCREEN = Modernizr.mq('only all and (max-width: 990px)')
+  MOBILE = Modernizr.mq('only all and (max-width: 768px)')
+
+  d3.select("body")
+    .classed("small_screen",SMALL_SCREEN)
+    .classed("mobile",MOBILE)
+
+    drawGraphic("gov_employment_historical")
+    drawGraphic("housing_historical")
+    drawGraphic("total_employment_historical")
+    drawGraphic("unemployment_historical")
+    drawGraphic("wages_historical")
+    drawGraphic("state_total_tax_values_historical")
 }
 drawHistorical();
 window.onresize = drawHistorical;
@@ -527,23 +498,26 @@ function checkReady(readyID) {
             loading
               .transition()
               .style("opacity", 0);
+            dispatch.refresh("load");
           }
           else if(isIE <= 10){
             // d3.select("#stateImg").classed("ie", true);
             // d3.select(".state.styled-select:not(.mobile)").classed("ie",true);
             loading.remove();
+            dispatch.refresh("load");
           }
           else{
             loading.remove();
+            dispatch.refresh("load");
           }
         },500);
     }
 }
 
-// checkReady("gov_employment_historical")
-// checkReady("housing_historical")
-// checkReady("total_employment_historical")
-// checkReady("unemployment_historical")
+checkReady("gov_employment_historical")
+checkReady("housing_historical")
+checkReady("total_employment_historical")
+checkReady("unemployment_historical")
 checkReady("wages_historical")
 checkReady("state_total_tax_values_historical")
 

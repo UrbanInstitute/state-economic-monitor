@@ -2,6 +2,7 @@ html, body{
     
  font-family:lato;
  font-size: 16px;
+    
 }
 
 body.pdf_template .explainerText{
@@ -29,7 +30,7 @@ body.pdf_template section img{
 
 
 #header{
-   margin-top: 70px;
+    top: 70px;
     position: fixed;
     width: 100%;
     z-index:20;   
@@ -116,7 +117,7 @@ border:none;
  
 }
 
-#menu ul{
+nav #menu{
      height: 40px;   
     list-style: none;
     text-align: center;
@@ -126,8 +127,7 @@ border:none;
 }
 
 
-#menu ul li{
-    
+nav ul li{
     display: inline-block;
     font-size: 15px;
     font-weight: 500;
@@ -137,7 +137,7 @@ border:none;
     padding-bottom:0px;
     padding-left:0px;
     padding-right:0px;
-width:22%;
+width:18%;
 }
 
 
@@ -146,9 +146,14 @@ width:22%;
     
 }
 
-#menu ul li:hover, #menu ul li.hover_effect {
+nav #menu li:hover, nav #menu li.hover_effect {
     
     background-color: rgba(0, 166, 210, .8);
+   
+}
+
+nav #menu a:hover, nav #menu a.hover_effect {
+     text-decoration: none;  
 }
 
 .active{
@@ -156,6 +161,19 @@ width:22%;
     border-bottom-style: solid;
     border-bottom-width: 4px;
     
+}
+
+.mobile-menu{
+ display: none;   
+    
+}
+.show-menu {
+    color: #fff;
+    display: none;
+
+}
+input[type="checkbox"] {
+    display: none;
 }
 /************ end HEADER ***********/
 
@@ -194,36 +212,36 @@ width:22%;
 }
 
 #introText{
-  margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
+  color: #00a6d2;
+    margin: 20px auto 30px;
     text-align: center;
     width: 80%;
+
 }
 
 h3{
- font-style: italic;
-font-size:20px;
- color:#00a6d2;
-text-transform: none;
-    text-align: center;
-    padding-right:3%;
-    line-height: 1.4;
+  font-style: italic;
+  font-size:18px;
+  color:#555;
+  text-transform: none;
+  text-align: center;
+  padding-right:3%;
+  line-height: 1.4;
 }
 
 h4{
-  font-size:24px;
+  font-size:20px;
   color:#29abe2;
-  margin-top: 20px;
-  font-weight: 500;
-  text-align: center;
   text-transform: uppercase;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 20px;
 }
+
 .updated{
  text-align: center;
 font-size:14px;
-    color:#555;
+color:#00a6d2;
 }
 
 
@@ -280,7 +298,34 @@ margin-bottom: 1%;
     opacity: .6;
 }
 
+.frontpage{
 
+       background-image: url("../images/blur.jpg");
+    background-repeat: repeat;
+ height:100%;
+     width:100%;
+    margin-top: 110px;
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    
+}
+
+.frontpage .container{
+ background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 5px 2px 15px #888;
+    height: auto;
+    left: 50%;
+    margin-left: -220px;
+    margin-top: 90px;
+    padding: 50px 15px 30px;
+    position: absolute;
+    text-align: left;
+    top: 10%;
+    width: 450px;
+    
+}
 
 /********** INTRO ***********/
 
@@ -414,14 +459,6 @@ margin:10px auto;
 
 }
 
-.note{
-    
-  font: 9pt Lato;
-  font-weight: 400;
-  color:#555; 
-    
-}
-
 /********** secondary MENU ***********/
 
 
@@ -512,13 +549,14 @@ padding-top:25px;
     
 }
 footer{
- margin-top: 75px;
- margin-bottom: 0px;
-    padding-bottom:10px;
-       padding-top:10px;
-    background-color:#000;
- 
-    
+   background-color: #000;
+    bottom: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+margin-top:75px;
+    width: 100%;
+    position: relative;
+   
 }
 
 
@@ -549,6 +587,11 @@ footer a:hover{
     
 }
 
+.nomargin{
+ margin-top: 0px;   
+    
+}
+
 
 
 /********** CLOSE FOOTER ***********/
@@ -563,10 +606,9 @@ footer a:hover{
 }
 
 /*Styles for source annotations*/
-.historical-source{
+.historical-source, .note{
   font: 9pt Lato;
   position: relative;
-  margin-top: 10px;
   float: right;
   font-weight: 400;
   color:#555;
@@ -644,7 +686,6 @@ footer a:hover{
   font-size: 20px;
   color: #29abe2;
   font-weight: 400;
-  margin-top: 5px;
 }
 
 .tooltip-usa-average{
@@ -659,9 +700,13 @@ footer a:hover{
     font-size: 16px;
     margin-top: 9px;*/
 
-.region-text, .value-text, .quarter-text{
+.region-text, .quarter-text{
   float: left;
   margin-right: 30px;
+}
+.value-text{
+  margin-left: 30px;
+  float: left;
 }
 
 
@@ -832,11 +877,7 @@ rect.states{
 }
 
 .grid-line{
-  stroke: #efefef;
-  stroke-width: 1px;
-}
-.grid-line.zero{
-  stroke: #333;
+  stroke: #cccccc;
 }
 /*this is keeping the index page secondary menu labels in the center*/
 @media (min-width:768px) and (max-width:1000px){
@@ -852,6 +893,8 @@ footer p{width:45%;}
 }
 
 @media (max-width: 768px) {
+
+
 
 #fullLogo {
     display: none;
@@ -869,30 +912,104 @@ footer p{width:45%;}
     #header{
  position:absolute;
     }
-     .navbar-default{background-color: #222222;}
+  /* .navbar-default{background-color: #222222;}*/
  
-    #menu{
-    position: fixed;
-    background-color: #222222;
+    nav{
+
      bottom:0px;
     height:55px;
   
     }
     
-  #menu ul{
-   height: 55px;   
+    /*  
+    
+ nav ul{
+   height: 55px; 
+   margin-left: -15px;
+    margin-right: -15px;
       
   }
     
-#menu ul li{
+nav ul li{
     
     display: inline-block;
     font-size: 15px;
     font-weight: 500;
     padding-top:20px;
      padding-bottom: 30px;
-width:24%;
+width:18%;
+}*/
+    .show-menu {
+    bottom: 0;
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    background: #0096d2 none repeat scroll 0 0;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
 }
+    
+  
+    
+    ul#menu {
+    display: none;
+
+}
+    
+
+    
+input[type="checkbox"]:checked ~ #menu {
+   bottom: 60px;
+    display: block;
+    height: 350px;
+    position: fixed;
+    overflow: auto;
+    text-decoration: none;
+  
+}
+
+    
+   label:hover, label:active, input:hover+label, input:active+label, .show-menu p:hover, .show-menu p:active {   
+    cursor: pointer;
+    background-color:#333;
+
+        
+    }
+    
+ 
+    
+ .show-menu p{
+    
+      border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin:0 auto;
+    padding: 8px;
+    width: 95px;
+     border: 1px solid #fff;
+}
+
+    
+    nav #menu{
+     height: 280px;   
+        
+    }
+    nav #menu li {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    height: 50px;
+    margin: 0;
+    padding: 15px 0 15px 0px;
+    width: 100%;
+       text-decoration: none;
+    border-top:solid 1px #333;
+}
+    
+
     
     .active{
      border-bottom: none;
@@ -1000,10 +1117,35 @@ right:0%;
   font-style: italic;
 }
 
-    
-
-
- /*in mobile the extra padding above the page title is not needed */   
+.mobile .loading, .mobile .download, .mobile .refresh, .tooltip-title{
+  display: none;
+}
+.mobile .container{
+  position: relative;
+}
+.mobile .value-text .tooltip-data{
+  position: absolute;
+  right: 15px;
+  top: 133px;
+  font-size: 50px;
+  color: #333;
+  text-decoration: underline;
+}
+.mobile .region-text, .mobile .value-text{
+  width: 100%;
+  float: left;
+}
+.mobile .year-text, .mobile .quarter-text{
+  width: 20%;
+  float: left;
+  display: inline-block;
+}
+.mobile .historical-source{
+  bottom: 10px;
+}
+.mobile hr{
+  width: 80%
+}
 .section170 {
     padding-top: 120px;
 }
@@ -1124,9 +1266,9 @@ margin-top: 1.5cm;
 }
 
 
-.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text, .mobile .quarter-text, .mobile .year-text{
-  display: none;
-}
+/*.mobile [id$=_bar-chart], .mobile [id$=_map], .mobile [id$=_plot], .mobile .region-text, .mobile .value-text, .mobile .quarter-text, .mobile .year-text{*/
+  /*display: none;*/
+/*}*/
 
 .mobile [id$=_tooltip]{
   height: 25px;
@@ -1235,6 +1377,8 @@ padding-top:20px;
 
 
 
+
+
 /** NEW HISTORICAL CSSSSSSS **/
 
 /*.axis path,
@@ -1329,8 +1473,8 @@ padding-top:20px;
   height: 35px;
   width: 45px;
   float: right;
-  margin-top: 14px;
-  margin-left: 8px;
+  margin-top: 1px;
+  margin-left: 14px;
   cursor: pointer;
 }
 .refresh:hover{
