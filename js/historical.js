@@ -157,12 +157,15 @@ d3.selectAll("select")
     dispatch.clickState(state, month, year)
   })
 d3.selectAll(".refresh")
-  .on("click", function(){ dispatch.refresh("button") })
+  .on("click", function(){
+   dispatch.refresh("button") 
+ })
 d3.select("body")
   .on("click", function(){ dispatch.refresh("body") })
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { dispatch.refresh("key") }// escape key
 });
+
 var scales = {}
 
 function drawGraphic(dataID){
@@ -219,11 +222,17 @@ function drawGraphic(dataID){
       .x(function(d) { return x(d.date); })
       .y(function(d) { return y(d.value); });
 
+
   var svg = d3.select("#" + dataID).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      // .call(zoom);
+
+
+
+
 
   d3.csv("data/historical/" + dataID + ".csv", type, function(error, states) {
     var monthCopy = months.slice();
@@ -265,34 +274,53 @@ function drawGraphic(dataID){
           .orient("left")
           // .tickValues([min+step, min+step*6])
           .ticks(5)
-          .tickFormat(function(d){
-            // Check tick val and format accordingly. N -> int, N.5 -> 1 decimal place, N.25 -> 2 decimal places
-            var formatter;
-            if(parseInt(d) === d){
-              formatter = d3.format(".0f")
-              return formatter(d)
-            }
-            else if(parseInt(d*2) === d*2){
-              formatter = d3.format(".1f")
-              return formatter(d)
-            }
-            else if(parseInt(d*4) === d*4){
-              formatter = d3.format(".2f")
-              return formatter(d)
-            }
-            else{
-              formatter = d3.format(".0f")
-              return formatter(d)
-            }
-          })
           .tickSize(0)
+var zoom = d3.behavior.zoom()
+    // .x(x)
+    .y(y)
+    .scaleExtent([1, 10])
+    .on("zoom", zoomed);
 
+function zoomed(o) {
+  // svg.select(".x.axis").call(xAxis);
+ svg.select(".y.axis").call(yAxis);
+ svg.select(".focus").attr("transform", function(){
+      return "translate(" + x(o.date) + "," + y(o.value) + ")"
+ })
+ svg.selectAll(".states path").attr("d", function(d) {
+    if(typeof(d) != "undefined"){
+      d.line = this;
+      return line(d.values); 
+    }
+    else{
+      return null;
+    }
+ })
+}
+
+function zoomOut(o) {
+  d3.transition().duration(750).tween("zoom", function() {
+    var iy = d3.interpolate(y.domain(), [d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
+    return function(t) {
+      zoom.y(y.domain(iy(t)));
+      zoomed(o);
+    };
+  });
+}
+
+function zoomIn(o) {
+  d3.transition().duration(750).tween("zoom", function() {
+    var iy = d3.interpolate(y.domain(), [-50, 50]);
+    return function(t) {
+      zoom.y(y.domain(iy(t)));
+      zoomed(o);
+    };
+  });
+}
       var label = svg.append("g")
             .attr("class", "y axis")
-            // .attr("transform","translate(" 0 + ",0)")
             .call(yAxis)
       .append("text")
-        // .attr("transform","rotate(-90)")
         .attr("class", "label")
         .text(d3.select("section." + dataID).select(".title-unit").text().replace("(","").replace(")","").capitalizeFirstLetter())
       var offset = label.node().getComputedTextLength()/2.0
@@ -322,15 +350,6 @@ function drawGraphic(dataID){
             }
           });
 
-      // svg.append("g")
-      //     .attr("class", "statesBG")
-      //   .selectAll("path")
-      //     .data(states)
-      //   .enter().append("path")
-      //     .attr("d", function(d) { d.line = this; return line(d.values); })
-      //     .attr("class", "lineBG")
-      //     .attr("id", function(d){  return d.abbrev + "BG"});
-
       svg.append("g")
           .attr("class", "states")
         .selectAll("path")
@@ -338,10 +357,6 @@ function drawGraphic(dataID){
         .enter().append("path")
           .attr("d", function(d) { d.line = this; return line(d.values); })
           .attr("id", function(d){  return d.abbrev})
-          // .on("mouseover", mouseoverNoV)
-          // .on("mouseout", mouseoutNoV)
-          // .on("mousedown", clickNoV)
-
 
 
       var focus = svg.append("g")
@@ -352,7 +367,7 @@ function drawGraphic(dataID){
           .attr("r", 5)
           .attr("class","marker");
 
-      scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width}
+      scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width, "height": height}
 
       // focus.append("text")
       //     .attr("y", -10);
@@ -395,10 +410,44 @@ function drawGraphic(dataID){
               .appendChild(d)
             })
       }
+    // svg.call(zoom)
+   d3.select("section.state_total_tax_values_historical .refresh")
+   .on("click.second", function(){
+     return zoomOut(d3.select(".state_total_tax_values_historical .states #USA").datum().values[0])
+    });
+   d3.select("section.state_total_tax_values_historical .historical_state")
+     .on("change.second", function(){
+          var state = d3.select("section." + dataID + " .historical_state").node().value
+          var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
+          var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
+          console.log(state, year, month)
+          
+          var o = d3.selectAll("section.state_total_tax_values_historical .states #" + state)
+            .filter(function(d){ return typeof(d) != "undefined"})
+            .datum()
+            .values
+            .filter(function(q){
+              return (q.date).valueOf() == (new Date(year, month)).valueOf();
+            })[0];
+          if(state == "AK" || state == "NH"){
+            return zoomOut(o);
+          }
+          else{
+            console.log("xoom", o)
+            return zoomIn(o);
+          }
+   })
 
    function click(d){
     // console.log(d)
+      if(dataID == "state_total_tax_values_historical" && (d.state.abbrev == "AK" || d.state.abbrev == "NH")){
+        zoomOut(d);
+      }
+      else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
+        zoomIn(d);
+      }
     dispatch.clickState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
+
     // d3.selectAll(".lineBG").style("display", "none");
     // d3.select("section." + dataID + " .lineBG#"  +d.state.abbrev + "BG").style("display","block")
     // d3.selectAll(".lineBG").remove();
@@ -485,6 +534,19 @@ function drawHistorical(){
     drawGraphic("unemployment_historical")
     drawGraphic("wages_historical")
     drawGraphic("state_total_tax_values_historical")
+
+
+
+}
+
+function mobileTweak(){
+      if(MOBILE){
+        console.log(d3.selectAll(".value-text .tooltip-data"))
+      d3.selectAll(".value-text .tooltip-data")
+        .forEach(function(t){
+          console.log(t)
+        })
+    }
 }
 drawHistorical();
 window.onresize = drawHistorical;
@@ -502,6 +564,7 @@ function checkReady(readyID) {
               .transition()
               .style("opacity", 0);
             dispatch.refresh("load");
+            mobileTweak();
           }
           else if(isIE <= 10){
             // d3.select("#stateImg").classed("ie", true);
