@@ -56,18 +56,11 @@ dispatch.on("deHover", function(){
   })
 })
 dispatch.on("refresh", function(trigger){
-  // d3.event.stopPropagation();
-  // dispatch.hoverState("USA",1,2015)
   dispatch.deHover();
   d3.selectAll(".lineBG").remove();
   if(trigger == "button" || trigger == "load"){
       var year = d3.select(".historical_year :last-child").attr("value").replace("y","")
       dispatch.hoverState("USA","0",year)
-    // d3.selectAll("option[selected=selected]").attr("selected",null)
-    // d3.selectAll(".historical_state").select("[value=USA]").attr("selected","selected")
-    // d3.selectAll(".historical_year :first-child").attr("selected","selected")
-    // d3.selectAll(".historical_month :first-child:not([disabled=disabled])").attr("selected","selected")
-    // d3.selectAll(".historical_quarter :first-child").attr("selected","selected")
   }
 })
 dispatch.on("hoverState", function(state, month, year){
@@ -83,9 +76,6 @@ dispatch.on("hoverState", function(state, month, year){
       })
       o.line.parentNode.appendChild(o.line);
       dispatch.focus(dataID, state, month, year)
-      // var date = new Date(year)
-      // focus.attr("transform", "translate(" + x(date) + "," + y(getVal("housing_historical", state, month, year)) + ")");
-      // console.log(test["housing_historical"](new Date(2014, 1)))
     });
 })
 
@@ -98,7 +88,6 @@ dispatch.on("clickState", function(state, month, year){
     })
     var obj = d3.selectAll("path#" + state+ ":not(.lineBG)")
     obj.each(function(o){
-      // console.log(o)
       var node = o.line;
       var clone = d3.select(node.cloneNode(true));
       o.line.parentNode.appendChild(o.line);
@@ -133,8 +122,6 @@ dispatch.on("focus", function(dataID, state, month, year){
   var date = new Date(year, month)
   var val = getVal(dataID, state, month, year)
   var usa = getVal(dataID, "USA", month, year)
-  // console.log(x(date), scales[dataID]["width"])
-
   if(x(date) >= 0 && x(date) <= scales[dataID]["width"]){
     focus.attr("transform", "translate(" + x(date) + "," + y(val) + ")");
   }
@@ -152,8 +139,6 @@ d3.selectAll("select")
     var state = d3.select("section." + dataID + " .historical_state").node().value
     var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
     var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
-
-    // // var year = parseInt()
     dispatch.clickState(state, month, year)
   })
 d3.selectAll(".refresh")
@@ -181,7 +166,6 @@ function drawGraphic(dataID){
     }else{ aspect_height = 1; }
     
     var margin = (MOBILE) ? { top: 30, right: 2, bottom: 40, left: 0 } : { top: 30, right: 2, bottom: 40, left: 50 };
-    // var width = $graphic.width() - margin.left - margin.right;
     var width;
     if (!print) { width = ($graphic.width() - margin.left - margin.right); }
     else{ width =  PRINT_WIDTH}
@@ -192,17 +176,10 @@ function drawGraphic(dataID){
     d3.select("#" + dataID + " .loading img")
         .style("margin-top", (-25 + (height + margin.top + margin.bottom + 70)/2) + "px")
     
-      // .style("top", (0-height-margin.top-margin.bottom - 390) + "px")
-
-
   var states = {"Alabama": "AL","Alaska": "AK","American Samoa": "AS","Arizona": "AZ","Arkansas": "AR","California": "CA","Colorado": "CO","Connecticut": "CT","Delaware": "DE","District Of Columbia": "DC","District of Columbia": "DC","Federated States Of Micronesia": "FM","Florida": "FL","Georgia": "GA","Guam": "GU","Hawaii": "HI","Idaho": "ID","Illinois": "IL","Indiana": "IN","Iowa": "IA","Kansas": "KS","Kentucky": "KY","Louisiana": "LA","Maine": "ME","Marshall Islands": "MH","Maryland": "MD","Massachusetts": "MA","Michigan": "MI","Minnesota": "MN","Mississippi": "MS","Missouri": "MO","Montana": "MT","Nebraska": "NE","Nevada": "NV","New Hampshire": "NH","New Jersey": "NJ","New Mexico": "NM","New York": "NY","North Carolina": "NC","North Dakota": "ND","Northern Mariana Islands": "MP","Ohio": "OH","Oklahoma": "OK","Oregon": "OR","Palau": "PW","Pennsylvania": "PA","Puerto Rico": "PR","Rhode Island": "RI","South Carolina": "SC","South Dakota": "SD","Tennessee": "TN","Texas": "TX","Utah": "UT","Vermont": "VT","Virgin Islands": "VI","Virginia": "VA","Washington": "WA","West Virginia": "WV","Wisconsin": "WI","Wyoming": "WY", "US Average": "USA", "United States": "USA"}
 
   var months,
       monthFormat = d3.time.format("%Y-%m");
-
-  // var margin = {top: 20, right: 30, bottom: 30, left: 40},
-      // width = 960 - margin.left - margin.right,
-      // height = 500 - margin.top - margin.bottom;
 
   var x = d3.time.scale()
       .range([0, width]);
@@ -218,7 +195,6 @@ function drawGraphic(dataID){
   }
 
   var line = d3.svg.line()
-      // .interpolate("basis")
       .x(function(d) { return x(d.date); })
       .y(function(d) { return y(d.value); });
 
@@ -228,11 +204,6 @@ function drawGraphic(dataID){
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      // .call(zoom);
-
-
-
-
 
   d3.csv("data/historical/" + dataID + ".csv", type, function(error, states) {
     var monthCopy = months.slice();
@@ -272,51 +243,48 @@ function drawGraphic(dataID){
       var yAxis = d3.svg.axis()
           .scale(y)
           .orient("left")
-          // .tickValues([min+step, min+step*6])
           .ticks(5)
           .tickSize(0)
-var zoom = d3.behavior.zoom()
-    // .x(x)
-    .y(y)
-    .scaleExtent([1, 10])
-    .on("zoom", zoomed);
+      var zoom = d3.behavior.zoom()
+          .y(y)
+          .scaleExtent([1, 10])
+          .on("zoom", zoomed);
 
-function zoomed(o) {
-  // svg.select(".x.axis").call(xAxis);
- svg.select(".y.axis").call(yAxis);
- svg.select(".focus").attr("transform", function(){
-      return "translate(" + x(o.date) + "," + y(o.value) + ")"
- })
- svg.selectAll(".states path").attr("d", function(d) {
-    if(typeof(d) != "undefined"){
-      d.line = this;
-      return line(d.values); 
-    }
-    else{
-      return null;
-    }
- })
-}
+      function zoomed(o) {
+       svg.select(".y.axis").call(yAxis);
+       svg.select(".focus").attr("transform", function(){
+            return "translate(" + x(o.date) + "," + y(o.value) + ")"
+       })
+       svg.selectAll(".states path").attr("d", function(d) {
+          if(typeof(d) != "undefined"){
+            d.line = this;
+            return line(d.values); 
+          }
+          else{
+            return null;
+          }
+       })
+      }
 
-function zoomOut(o) {
-  d3.transition().duration(750).tween("zoom", function() {
-    var iy = d3.interpolate(y.domain(), [d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
-    return function(t) {
-      zoom.y(y.domain(iy(t)));
-      zoomed(o);
-    };
-  });
-}
+      function zoomOut(o) {
+        d3.transition().duration(750).tween("zoom", function() {
+          var iy = d3.interpolate(y.domain(), [d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
+          return function(t) {
+            zoom.y(y.domain(iy(t)));
+            zoomed(o);
+          };
+        });
+      }
 
-function zoomIn(o) {
-  d3.transition().duration(750).tween("zoom", function() {
-    var iy = d3.interpolate(y.domain(), [-50, 50]);
-    return function(t) {
-      zoom.y(y.domain(iy(t)));
-      zoomed(o);
-    };
-  });
-}
+      function zoomIn(o) {
+        d3.transition().duration(750).tween("zoom", function() {
+          var iy = d3.interpolate(y.domain(), [-50, 50]);
+          return function(t) {
+            zoom.y(y.domain(iy(t)));
+            zoomed(o);
+          };
+        });
+      }
       var label = svg.append("g")
             .attr("class", "y axis")
             .call(yAxis)
@@ -329,10 +297,7 @@ function zoomIn(o) {
           .attr("transform","rotate(-90,-41," + (y(middle)+offset) + ")")
           .attr("x",-41)
           .attr("y",y(middle)+offset)
-          .style("border",'1px solid black')
-
-          // 
-
+          .style("border",'1px solid black');
 
         svg.selectAll(".grid-line")
           .data(y.ticks(5))
@@ -368,9 +333,6 @@ function zoomIn(o) {
           .attr("class","marker");
 
       scales[dataID] = {"x": x, "y":y, "focus": focus, "width": width, "height": height}
-
-      // focus.append("text")
-      //     .attr("y", -10);
 
       if(!MOBILE){
         var voronoiGroup = svg.append("g")
@@ -410,7 +372,6 @@ function zoomIn(o) {
               .appendChild(d)
             })
       }
-    // svg.call(zoom)
 if(!isIE || isIE > 10){
    d3.select("section.state_total_tax_values_historical .refresh")
    .on("click.second", function(){
@@ -483,12 +444,10 @@ function getVal(dataID, state, month, year){
   var obj = path.datum().values.filter(function(d){
     return (d.date.getFullYear() == year && d.date.getMonth() == month)
   })
-  // console.log(obj)
   if(typeof(obj[0]) != "undefined"){
     return obj[0].value
   }else{ return null}
 }
-// console.log()
 
 function drawHistorical(){
   SMALL_SCREEN = Modernizr.mq('only all and (max-width: 990px)')
@@ -511,10 +470,8 @@ function drawHistorical(){
 
 function mobileTweak(){
       if(MOBILE){
-        console.log(d3.selectAll(".value-text .tooltip-data"))
       d3.selectAll(".value-text .tooltip-data")
         .forEach(function(t){
-          console.log(t)
         })
     }
 }
@@ -524,7 +481,6 @@ window.onresize = drawHistorical;
 function checkReady(readyID) {
     var drawn = d3.select("#" + readyID + " svg .states").node();
     var loading = d3.select("#" + readyID + " .loading")
-    // console.log(drawn, loading)
     if (drawn == null) {
         setTimeout(function(){ checkReady(readyID)}, 300);
     } else {
@@ -537,8 +493,6 @@ function checkReady(readyID) {
             mobileTweak();
           }
           else if(isIE <= 10){
-            // d3.select("#stateImg").classed("ie", true);
-            // d3.select(".state.styled-select:not(.mobile)").classed("ie",true);
             loading.remove();
             dispatch.refresh("load");
           }
