@@ -411,6 +411,7 @@ function zoomIn(o) {
             })
       }
     // svg.call(zoom)
+if(!isIE || isIE > 10){
    d3.select("section.state_total_tax_values_historical .refresh")
    .on("click.second", function(){
      return zoomOut(d3.select(".state_total_tax_values_historical .states #USA").datum().values[0])
@@ -420,7 +421,6 @@ function zoomIn(o) {
           var state = d3.select("section." + dataID + " .historical_state").node().value
           var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
           var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
-          console.log(state, year, month)
           
           var o = d3.selectAll("section.state_total_tax_values_historical .states #" + state)
             .filter(function(d){ return typeof(d) != "undefined"})
@@ -433,59 +433,29 @@ function zoomIn(o) {
             return zoomOut(o);
           }
           else{
-            console.log("xoom", o)
             return zoomIn(o);
           }
    })
+}
 
    function click(d){
-    // console.log(d)
+if(!isIE || isIE > 10){
       if(dataID == "state_total_tax_values_historical" && (d.state.abbrev == "AK" || d.state.abbrev == "NH")){
         zoomOut(d);
       }
       else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
         zoomIn(d);
       }
+}
     dispatch.clickState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
-
-    // d3.selectAll(".lineBG").style("display", "none");
-    // d3.select("section." + dataID + " .lineBG#"  +d.state.abbrev + "BG").style("display","block")
-    // d3.selectAll(".lineBG").remove();
-    // d3.selectAll(".state--hover").classed("state--hover", false)
-    // mouseover(d);
-    // var node = d3.select(d.state.line).node();
-    // var clone = d3.select(node.cloneNode(true));
-    // clone.classed("lineBG", true);
-    // node.parentNode.insertBefore(clone.node(), node.nextSibling);
-    // d.state.line.parentNode.appendChild(d.state.line);
-
    }
 
     function mouseover(d) {
       dispatch.hoverState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
-
-      // console.log(d3.select(".lineBG"))
-        // d3.select(d.state.line).classed("state--hover", true);
-        //   d3.selectAll(".grid-line.zero")[0].forEach(function(d){
-        //     d3.select(d.parentNode.parentNode)
-        //     .select("g.states")
-        //     .node()
-        //     .appendChild(d)
-        //   })
-        //   // dispatch.hoverState(d, dataID)
-        //   d.state.line.parentNode.appendChild(d.state.line);
-          // focus.attr("transform", "translate(" + x(d.date) + "," + y(d.value) + ")");
-      
     }
 
     function mouseout(d) {
       dispatch.deHover();
-
-      
-      // d3.selectAll(".grid-line").each(function(p){
-      //   c
-      //   p.line.parentNode.appendChild(p.line)
-      // })
     }
   });
 
