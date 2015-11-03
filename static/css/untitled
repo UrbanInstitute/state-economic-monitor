@@ -1,0 +1,408 @@
+<html>
+<head>
+  <style>
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  </style>
+</head>
+<body>
+<script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='jquery.ui.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}">
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+<!-- <script type=text/javascript src="{{ url_for('static', filename='units.js') }}"></script> -->
+<script type=text/javascript src="{{ url_for('static', filename='d3.min.js') }}"></script>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script type=text/javascript>
+  function writeText(sheet, fig, config){
+    d3.select('textarea[name="' + fig + '-text"')
+      .text(function(){
+        return config[sheet][fig]["text"];
+      })
+
+    for(var c = 0; c<6; c++){
+      d3.select('input[name="' + fig + '-b' + (c+1) + '"')
+      .attr("value", function(){
+        return config[sheet][fig]["breaks"][c]
+      })
+    }
+  }
+
+  function writeDate(sheet,config){
+    d3.select('input[name="' + sheet + '-month"')
+    .attr("value", function(){
+      return config[sheet]["date"].split("/")[0]
+    })
+
+    d3.select('input[name="' + sheet + '-year"')
+    .attr("value", function(){
+      return config[sheet]["date"].split("/")[1]
+    })
+
+  }
+
+  d3.json("{{ url_for('static', filename='config.json') }}", function(data) {
+    var   figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]];
+    for(var i=0; i<figures.length; i++){
+      writeDate(figures[i][0], data);
+      for(var j=0; j<figures[i][1].length; j++){
+        writeText(figures[i][0], figures[i][1][j], data);
+      }
+    }
+  });
+
+  $(function() {
+    $('a#addIngredient').bind('click', function() {
+      d3.select("#loading").style("visibility", "visible")
+      d3.select("#loading-text").text("Updating (this takes about two minutes)...")
+      function getDate(sheet){
+        return $('input[name="' + sheet + '-month"').val() + "/" + $('input[name="' + sheet + '-year"').val();
+      }
+      function getText(fig){
+        return $('textarea[name="' + fig + '-text"').val()
+      }
+      function getBreaks(fig){
+        var arr = [];
+        for(var c = 0; c<6; c++){
+          arr.push(parseInt($('input[name="' + fig + '-b' + (c+1) + '"').val()));
+        }
+        return arr;
+      }
+      var today = new Date();
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      var dateUpdated = "Last Updated " + months[today.getMonth()] + " " + today.getFullYear()
+      var config = {"dateUpdated": dateUpdated, "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } }, "housing":{ "date": getDate("housing"), "HPChgYr":{ "text" : getText("HPChgYr"), "breaks":getBreaks("HPChgYr")} , "Figure3":{ "text": getText("Figure3") } }, "taxes":{ "date": getDate("taxes"), "TOTAL": { "text": getText("TOTAL"), "breaks": getBreaks("TOTAL")}, "INC": { "text": getText("INC"), "breaks": getBreaks("INC")}, "CORPINC": { "text": getText("CORPINC"), "breaks": getBreaks("CORPINC")}, "SALES": { "text": getText("SALES"), "breaks": getBreaks("SALES") }}}
+      $.ajax({
+        type: 'POST',
+        url: '/add',
+        data: JSON.stringify(config),
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        // cache: false,
+        // processData: true,
+        success: function(data) {
+            d3.select("#loading").style("visibility", "hidden")
+            d3.select("#loading-text").text("Updated! Preview opening in new tab (you may need to enable popups).")
+            var win = window.open('/preview', '_blank');
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
+        },
+        error: function(e){
+          console.log(e);
+        }
+      }); 
+
+    });
+
+    $('#file-employment-button').change(function() {
+        var form_data = new FormData($('#upload-employment')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=employment',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#employment-status")
+                  .text("Employment data uploaded")
+            },
+            fail: function(e){
+              console.log("fasdfj", e)
+            }
+            ,
+        });
+    });
+
+    $('#file-wages-button').change(function() {
+        var form_data = new FormData($('#upload-wages')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=wage',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            // async: false,
+            success: function(data) {
+                $("#wages-status")
+                  .text("Wage data uploaded")
+
+            },
+        });
+    });
+
+    $('#file-housing-button').change(function() {
+        var form_data = new FormData($('#upload-housing')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=housing',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#housing-status")
+                  .text("Housing data uploaded")
+
+            },
+        });
+    });
+
+    $('#file-taxes-button').change(function() {
+        var form_data = new FormData($('#upload-taxes')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=tax',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#taxes-status")
+                  .text("Tax data uploaded")
+
+            },
+        });
+    });
+
+    $('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = $(this).attr('href');
+ 
+        // Show/Hide Tabs
+        jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+ 
+        // Change/remove current tab to active
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+ 
+        e.preventDefault();
+    });
+
+  });
+
+</script>
+<div class="tabs">
+    <ul class="tab-links">
+        <li class="active"><a href="#tab1">Upload Data</a></li>
+        <li><a href="#tab2">Employment</a></li>
+        <li><a href="#tab3">Wages</a></li>
+        <li><a href="#tab4">Housing</a></li>
+        <li><a href="#tab5">Taxes</a></li>
+        <li><a href="#tab6">Update</a></li>
+    </ul>
+
+<div class="tab-content">
+  <div id="tab1" class="tab active">
+    <h1>Upload data files:</h1>
+    <div id = "upload_left">
+      <h2>Employment: data file</h2>
+      <form id="upload-employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="employment-status"></div>
+
+      <h2>Wages: data file</h2>
+      <form id="upload-wages" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-wages-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="wages-status"></div>
+    </div>
+    <div id = "upload_right">
+      <h2>Housing: data file</h2>
+      <form id="upload-housing" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-housing-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="housing-status"></div>
+
+
+      <h2>Taxes: data file</h2>
+      <form id="upload-taxes" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-taxes-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="taxes-status"></div>
+    </div>
+    <hr>
+    <h1>Upload historical data files:</h1>
+    <div id = "upload_left_historical">
+      <h2>Unemployment Rate: historical data file</h2>
+      <form id="upload-unemployment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-unemployment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="unemployment_historical-status"></div>
+
+      <h2>Total Employment: historical data file</h2>
+      <form id="upload-total_employment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-total_employment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="total_employment_historical-status"></div>
+
+      <h2>Public Employment: historical data file</h2>
+      <form id="upload-gov_employment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-gov_employment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="gov_employment_historical-status"></div>
+    </div>
+
+
+    <div id = "upload_right_historical">
+      <h2>Real Average Weekly Earnings: historical data file</h2>
+      <form id="upload-wages_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-wages_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="wages_historical-status"></div>
+
+
+      <h2>House Prices: historical data file</h2>
+      <form id="upload-housing_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-housing_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="housing_historical-status"></div>
+
+      <h2>Total Tax Revenue: historical data file</h2>
+      <div class = "note historical">Please create a new xlsx file which only contains the values needed for the figure.</div>
+      <div class = "note historical">The entire historical document (of around 25MB) is too large</div>
+      <form id="upload-state_total_tax_values_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-state_total_tax_values_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="state_total_tax_values_historical-status"></div>
+    </div>
+  </div>
+
+  <div id="tab2" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="employment-month" maxlength="2"></input><input class = "year" type=text name="employment-year" maxlength="4"></input>
+    <br>
+
+    <h3>Unemployment Rate</h3>
+    <label>Breaks :</label><input type=text class="break" name="UNEMP-b1"><input type=text class="break" name="UNEMP-b2"><input type=text class="break" name="UNEMP-b3"><input type=text class="break" name="UNEMP-b4"><input type=text class="break" name="UNEMP-b5"><input type=text class="break" name="UNEMP-b6">
+    <br>
+    <textarea name = "UNEMP-text" cols="44" rows="15"></textarea>
+
+    <h3>Unemployment Rate: Level vs. One-Year-Change</h3>
+    <textarea name = "Figure1-text" cols="44" rows="15"></textarea>
+
+    <h3>Total Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="EMP-b1"><input type=text class="break" name="EMP-b2"><input type=text class="break" name="EMP-b3"><input type=text class="break" name="EMP-b4"><input type=text class="break" name="EMP-b5"><input type=text class="break" name="EMP-b6">
+    <br>
+    <textarea name = "EMP-text" cols="44" rows="15"></textarea>
+
+    <h3>Total Employment vs. Public Employment</h3>
+    <textarea name = "Figure2-text" cols="44" rows="15"></textarea>
+
+  </div>
+
+  <div id="tab3" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="wages-month" maxlength="2"></input><input class = "year" type=text name="wages-year" maxlength="4"></input>
+    <br>
+
+    <h3>Average Weekly Earnings, Private Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="AWW-b1"><input type=text class="break" name="AWW-b2"><input type=text class="break" name="AWW-b3"><input type=text class="break" name="AWW-b4"><input type=text class="break" name="AWW-b5"><input type=text class="break" name="AWW-b6">
+    <br>
+    <textarea name = "AWW-text" cols="44" rows="15"></textarea>
+
+    <h3>Changes in Real Average Weekly Earnings, Private Employment</h3>
+    <label>Breaks :</label><input type=text class="break" name="AWWChg-b1"><input type=text class="break" name="AWWChg-b2"><input type=text class="break" name="AWWChg-b3"><input type=text class="break" name="AWWChg-b4"><input type=text class="break" name="AWWChg-b5"><input type=text class="break" name="AWWChg-b6">
+    <br>
+    <textarea name = "AWWChg-text" cols="44" rows="15"></textarea>
+
+  </div>
+
+  <div id="tab4" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="housing-month" maxlength="2"></input><input class = "year" type=text name="housing-year" maxlength="4"></input>
+    <div class = "note">For quarterly data, enter any month in the quarter (e.g 01, 02, 03, 04 &rarr; Q1)</div>
+    <br>
+
+    <h3>House Prices</h3>
+    <label>Breaks :</label><input type=text class="break" name="HPChgYr-b1"><input type=text class="break" name="HPChgYr-b2"><input type=text class="break" name="HPChgYr-b3"><input type=text class="break" name="HPChgYr-b4"><input type=text class="break" name="HPChgYr-b5"><input type=text class="break" name="HPChgYr-b6">
+    <br>
+    <textarea name = "HPChgYr-text" cols="44" rows="15"></textarea>
+
+    <h3>One-Year-Change vs. Change Since Peak in Housing Prices</h3>
+    <textarea name = "Figure3-text" cols="44" rows="15"></textarea>
+
+  </div>
+
+  <div id="tab5" class="tab">
+    <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
+    <input type=text class = "month" name="taxes-month" maxlength="2"></input><input class = "year" type=text name="taxes-year" maxlength="4"></input>
+    <div class = "note">For quarterly data, enter any month in the quarter (e.g 01, 02, 03, 04 &rarr; Q1)</div>
+    <br>
+
+    <h3>Total Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="TOTAL-b1"><input type=text class="break" name="TOTAL-b2"><input type=text class="break" name="TOTAL-b3"><input type=text class="break" name="TOTAL-b4"><input type=text class="break" name="TOTAL-b5"><input type=text class="break" name="TOTAL-b6">
+    <br>
+    <textarea name = "TOTAL-text" cols="44" rows="15"></textarea>
+
+    <h3>Sales Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="SALES-b1"><input type=text class="break" name="SALES-b2"><input type=text class="break" name="SALES-b3"><input type=text class="break" name="SALES-b4"><input type=text class="break" name="SALES-b5"><input type=text class="break" name="SALES-b6">
+    <br>
+    <textarea name = "SALES-text" cols="44" rows="15"></textarea>
+
+    <h3>Personal Income Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="INC-b1"><input type=text class="break" name="INC-b2"><input type=text class="break" name="INC-b3"><input type=text class="break" name="INC-b4"><input type=text class="break" name="INC-b5"><input type=text class="break" name="INC-b6">
+    <br>
+    <textarea name = "INC-text" cols="44" rows="15"></textarea>
+
+    <h3>Corporate Income Tax Revenue</h3>
+    <label>Breaks :</label><input type=text class="break" name="CORPINC-b1"><input type=text class="break" name="CORPINC-b2"><input type=text class="break" name="CORPINC-b3"><input type=text class="break" name="CORPINC-b4"><input type=text class="break" name="CORPINC-b5"><input type=text class="break" name="CORPINC-b6">
+    <br>
+    <textarea name = "CORPINC-text" cols="44" rows="15"></textarea>
+
+  </div>
+  <div id="tab6" class="tab">
+    <div class = "explainer">Clicking the button below will update the preview version of the SEM. It will update all text that includes dates automatically (the "updated" date on the main page as well as text such as "...from September 2014 to September 2015..." in figure descriptions and footnotes). It also creates pdfs of each section and adds them to the archive. When you click the button below, the changes <span>will not be displayed on the live site</span>. Please contact a member of digital communications, such as <a href = "mailto:bchartoff@urban.org">Ben Chartoff (bchartoff@urban.org)</a>, who can approve the changes and publish them to the live site.</div>
+    <a href=# id="addIngredient">Update the SEM!</a>
+    <div id = "loading-text"></div>
+    <img id = "loading" src = "{{ url_for('static', filename='loading.gif') }}"/>
+  </div>
+
+
+</div>
+   
+
+   <ul id="ingredient-list"></ul>
+
+
+</html>
+</body>
