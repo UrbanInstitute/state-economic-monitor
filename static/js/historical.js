@@ -205,7 +205,7 @@ function drawGraphic(dataID){
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-  d3.csv("data/historical/" + dataID + ".csv", type, function(error, states) {
+  d3.csv("static/data/historical/" + dataID + ".csv", type, function(error, states) {
     var monthCopy = months.slice();
     var years = monthCopy.map(function(d){ return String(d.getFullYear())})
     var start = monthCopy[0];
