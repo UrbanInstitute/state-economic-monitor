@@ -24,17 +24,17 @@ from math import ceil
 @app.route("/upload", methods=["POST", "GET"])
 def upload():
   if request.method == 'POST':
-      # file = request.files['file']
-      # sheet = request.args.get('sheet', '', type=str)
-      # if file:
-      #     filename = file.filename
-      #     file.save(os.path.join("/var/www/apps.urban.org/semApp/data/source/", filename))
-
     file = request.files['file']
     sheet = request.args.get('sheet', '', type=str)
     # print sheet
-    file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
-    copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/data/source/previous_releases/" + file.filename)
+    if(sheet=="employment" or sheet=="wage" or sheet=="housing" or sheet=="tax"):
+      file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
+      copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/data/source/previous_releases/" + file.filename)
+      copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/static/data/source/"+ "current_" + sheet + ".xlsx")
+    else:
+      file.save("/var/www/apps.urban.org/semApp/data/historical/source/" + sheet + ".xlsx")
+      copy2("/var/www/apps.urban.org/semApp/data/historical/source/" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/static/data/historical/source/" + sheet + ".xlsx")
+
   return ""
 
 @app.route('/add', methods=["POST", "GET"])
@@ -120,7 +120,8 @@ def update_SEM():
   f.close();
   
   os.system("/usr/bin/python /var/www/apps.urban.org/semApp/reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
-
+  os.system("/usr/bin/python /var/www/apps.urban.org/semApp/reshape_historical.py")
+  
   dates = [("",""),("Jan", "January"), ("Feb", "February"), ("Mar","March"),("Apr","April"),("May","May"),("June","June"),("Jul","July"),("Aug","August"),("Sept","September"),("Oct","October"),("Nov","November"),("Dec","December")]
 
 

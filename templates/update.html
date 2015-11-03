@@ -184,6 +184,102 @@ if(win){
             },
         });
     });
+    $('#file-unemployment_historical-button').change(function() {
+        var form_data = new FormData($('#upload-unemployment_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=unemployment_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#unemployment_historical-status")
+                  .text("Historical unemployment data uploaded")
+
+            },
+        });
+    });
+    $('#file-total_employment_historical-button').change(function() {
+        var form_data = new FormData($('#upload-total_employment_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=total_employment_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#total_employment_historical-status")
+                  .text("Historical employment data uploaded")
+
+            },
+        });
+    });
+    $('#file-gov_employment_historical-button').change(function() {
+        var form_data = new FormData($('#upload-gov_employment_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=gov_employment_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#gov_employment_historical-status")
+                  .text("Historical public secton employment data uploaded")
+
+            },
+        });
+    });
+    $('#file-wages_historical-button').change(function() {
+        var form_data = new FormData($('#upload-wages_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=wages_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#wages_historical-status")
+                  .text("Historical wage data uploaded")
+
+            },
+        });
+    });
+    $('#file-housing_historical-button').change(function() {
+        var form_data = new FormData($('#upload-housing_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=housing_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#housing_historical-status")
+                  .text("Historical housing data uploaded")
+
+            },
+        });
+    });
+    $('#file-state_total_tax_values_historical-button').change(function() {
+        var form_data = new FormData($('#upload-state_total_tax_values_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=state_total_tax_values_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#state_total_tax_values_historical-status")
+                  .text("Historical tax data uploaded")
+
+            },
+        });
+    });
 
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
