@@ -212,41 +212,98 @@ if(win){
 
 <div class="tab-content">
   <div id="tab1" class="tab active">
-    <h1>Upload new data files:</h1>
+    <h1>Upload data files:</h1>
     <div id = "upload_left">
-      <h2>Employment data file</h2>
+      <h2>Employment: data file</h2>
       <form id="upload-employment" method="post" enctype="multipart/form-data">
           <fieldset>
               <input id = "file-employment-button" name="file" type="file">
           </fieldset>
       </form>
-      <div id ="employment-status"></div>
+      <div class = "status" id ="employment-status"></div>
 
-      <h2>Wages data file</h2>
+      <h2>Wages: data file</h2>
       <form id="upload-wages" method="post" enctype="multipart/form-data">
           <fieldset>
               <input id = "file-wages-button" name="file" type="file">
           </fieldset>
       </form>
-      <div id ="wages-status"></div>
+      <div class = "status" id ="wages-status"></div>
     </div>
     <div id = "upload_right">
-      <h2>Housing data file</h2>
+      <h2>Housing: data file</h2>
       <form id="upload-housing" method="post" enctype="multipart/form-data">
           <fieldset>
               <input id = "file-housing-button" name="file" type="file">
           </fieldset>
       </form>
-      <div id ="housing-status"></div>
+      <div class = "status" id ="housing-status"></div>
 
 
-      <h2>Taxes data file</h2>
+      <h2>Taxes: data file</h2>
       <form id="upload-taxes" method="post" enctype="multipart/form-data">
           <fieldset>
               <input id = "file-taxes-button" name="file" type="file">
           </fieldset>
       </form>
-      <div id ="taxes-status"></div>
+      <div class = "status" id ="taxes-status"></div>
+    </div>
+    <hr>
+    <h1>Upload historical data files:</h1>
+    <div id = "upload_left_historical">
+      <h2>Unemployment Rate: historical data file</h2>
+      <form id="upload-unemployment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-unemployment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="unemployment_historical-status"></div>
+
+      <h2>Total Employment: historical data file</h2>
+      <form id="upload-total_employment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-total_employment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="total_employment_historical-status"></div>
+
+      <h2>Public Employment: historical data file</h2>
+      <form id="upload-gov_employment_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-gov_employment_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="gov_employment_historical-status"></div>
+    </div>
+
+
+    <div id = "upload_right_historical">
+      <h2>Real Average Weekly Earnings: historical data file</h2>
+      <form id="upload-wages_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-wages_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="wages_historical-status"></div>
+
+
+      <h2>House Prices: historical data file</h2>
+      <form id="upload-housing_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-housing_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="housing_historical-status"></div>
+
+      <h2>Total Tax Revenue: historical data file</h2>
+      <div class = "note historical">Please create a new xlsx file which only contains the values needed for the figure.</div>
+      <div class = "note historical">The entire historical document (of around 25MB) is too large</div>
+      <form id="upload-state_total_tax_values_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-state_total_tax_values_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="state_total_tax_values_historical-status"></div>
     </div>
   </div>
 

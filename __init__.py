@@ -24,17 +24,17 @@ from math import ceil
 @app.route("/upload", methods=["POST", "GET"])
 def upload():
   if request.method == 'POST':
-      file = request.files['file']
-      sheet = request.args.get('sheet', '', type=str)
-      if file:
-          filename = file.filename
-          file.save(os.path.join("/var/www/apps.urban.org/semApp/data/source/", filename))
+      # file = request.files['file']
+      # sheet = request.args.get('sheet', '', type=str)
+      # if file:
+      #     filename = file.filename
+      #     file.save(os.path.join("/var/www/apps.urban.org/semApp/data/source/", filename))
 
-  # file = request.files['file']
-  # sheet = request.args.get('sheet', '', type=str)
-  # # print sheet
-  # file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
-  # copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "data/source/previous_releases/" + file.filename)
+    file = request.files['file']
+    sheet = request.args.get('sheet', '', type=str)
+    # print sheet
+    file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
+    copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/data/source/previous_releases/" + file.filename)
   return ""
 
 @app.route('/add', methods=["POST", "GET"])
