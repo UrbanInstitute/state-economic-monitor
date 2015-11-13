@@ -463,6 +463,9 @@ function drawHistorical(){
     drawGraphic("unemployment_historical")
     drawGraphic("wages_historical")
     drawGraphic("state_total_tax_values_historical")
+    drawGraphic("corp_historical")
+    drawGraphic("income_historical")
+    drawGraphic("sales_historical")
 
 
 
@@ -510,5 +513,8 @@ checkReady("total_employment_historical")
 checkReady("unemployment_historical")
 checkReady("wages_historical")
 checkReady("state_total_tax_values_historical")
+checkReady("corp_historical")
+checkReady("income_historical")
+checkReady("sales_historical")
 
 
