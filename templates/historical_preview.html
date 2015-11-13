@@ -325,7 +325,7 @@
 
             <div id = "state_total_tax_values_historical" class = "linePlot">
               <div class = "loading">
-                <img src = "../static/images/loading-gif-u.gif"/>
+                <img src = "images/loading-gif-u.gif"/>
               </div>
             </div>
             <div id="figure_house-prices_source" class="historical-source">Source: <a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a></div>
@@ -335,6 +335,122 @@
     </div><!--close container -->
 </section><!--close section -->
 
+<section class="section25 corp_historical">
+  <div class="container">
+    <div class="title-text">Corporate Income Tax Revenue<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in corporate income tax revenue (i.e., revenue adjusted for inflation) from <span class = "startDate"></span> to <span class = "endDate"></span><sup>*</sup>.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_state"><option value = "USA">US Average</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+        <div class="tooltip-usa-average">US average: <span class="usa-text"></span></div></div></div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_quarter"><option value ="q1">1st quarter</option><option value="q2">2nd quarter</option><option value="q3">3rd quarter</option><option value="q4">4th quarter</option></select>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <select class = "historical_year"></select>
+              </div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data"></div>
+              </div>
+              <div class = "refresh"></div>
+            </div>
+
+            <div id = "corp_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
+            <div id="figure_house-prices_source" class="historical-source">Source: <a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+            <div class ="note"><sup>*</sup>Each quarter’s percentage change is the sum of the four quarters ending in that period compared with the sum of the previous four quarters.  For example, four quarters ending in <span class ="endDate"></span> are compared with four quarters ending in <span class = "prevDate">. See the <a href = "taxes.html">Taxes page</a> for more details.</div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
+
+<section class="section25 income_historical">
+  <div class="container">
+    <div class="title-text">Personal Income Tax Revenue<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in income tax revenue (i.e., revenue adjusted for inflation) from <span class = "startDate"></span> to <span class = "endDate"></span><sup>*</sup>.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_state"><option value = "USA">US Average</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+        <div class="tooltip-usa-average">US average: <span class="usa-text"></span></div></div></div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_quarter"><option value ="q1">1st quarter</option><option value="q2">2nd quarter</option><option value="q3">3rd quarter</option><option value="q4">4th quarter</option></select>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <select class = "historical_year"></select>
+              </div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data"></div>
+              </div>
+              <div class = "refresh"></div>
+            </div>
+
+            <div id = "income_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
+            <div id="figure_house-prices_source" class="historical-source">Source: <a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+            <div class ="note"><sup>*</sup>Each quarter’s percentage change is the sum of the four quarters ending in that period compared with the sum of the previous four quarters.  For example, four quarters ending in <span class ="endDate"></span> are compared with four quarters ending in <span class = "prevDate">. See the <a href = "taxes.html">Taxes page</a> for more details.</div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
+
+<section class="section25 sales_historical">
+  <div class="container">
+    <div class="title-text">Sales Tax Revenue<span class="title-unit">(percent change year over year)</span></div>
+    <div class="title-subtitle">Year-over-year change in sales tax revenue (i.e., revenue adjusted for inflation) from <span class = "startDate"></span> to <span class = "endDate"></span><sup>*</sup>.</div>
+    <div class="tooltip-container">
+      <div class="region-text">
+        <div class="tooltip-title">REGION/STATE</div>
+        <div class="tooltip-data">
+
+        <select class = "historical_state"><option value = "USA">US Average</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+        <div class="tooltip-usa-average">US average: <span class="usa-text"></span></div></div></div>
+              <div class="quarter-text">
+                <div class="tooltip-title">MONTH</div>
+                <!-- <div class="tooltip-data">December</div> -->
+                <select class = "historical_quarter"><option value ="q1">1st quarter</option><option value="q2">2nd quarter</option><option value="q3">3rd quarter</option><option value="q4">4th quarter</option></select>
+              </div>
+              <div class="year-text">
+                <div class="tooltip-title">YEAR</div>
+                <select class = "historical_year"></select>
+              </div>
+              <div class="value-text">
+                <div class="tooltip-title">RATE</div>
+                <div class="tooltip-data"></div>
+              </div>
+              <div class = "refresh"></div>
+            </div>
+
+            <div id = "sales_historical" class = "linePlot">
+              <div class = "loading">
+                <img src = "images/loading-gif-u.gif"/>
+              </div>
+            </div>
+            <div id="figure_house-prices_source" class="historical-source">Source: <a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a></div>
+            <div class="download">   <a href="#">Download Data</a></div>
+            <div class ="note"><sup>*</sup>Each quarter’s percentage change is the sum of the four quarters ending in that period compared with the sum of the previous four quarters.  For example, four quarters ending in <span class ="endDate"></span> are compared with four quarters ending in <span class = "prevDate">. See the <a href = "taxes.html">Taxes page</a> for more details.</div>
+     <hr>
+    </div><!--close container -->
+</section><!--close section -->
 
       <footer>
             <div class="container"><a href="http://www.urban.org" target="_blank"><img src="../static/images/urban.jpg"></a><p>© 2015 Urban Institute :: <a target="_blank" href="https://github.com/UrbanInstitute/state-economic-monitor">View on Github</a> :: <a target="_blank" href="http://www.urban.org/about/contact.cfm">Contact Us</a>  ::  <a href="archive.html">Archive</a></p>  </div>

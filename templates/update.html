@@ -280,6 +280,54 @@ if(win){
             },
         });
     });
+    $('#file-corp_historical-button').change(function() {
+        var form_data = new FormData($('#upload-corp_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=corp_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#corp_historical-status")
+                  .text("Historical corporate income tax data uploaded")
+
+            },
+        });
+    });
+    $('#file-income_historical-button').change(function() {
+        var form_data = new FormData($('#upload-income_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=income_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#income_historical-status")
+                  .text("Historical income tax data uploaded")
+
+            },
+        });
+    });
+    $('#file-sales_historical-button').change(function() {
+        var form_data = new FormData($('#upload-sales_historical')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/upload?sheet=sales_historical',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                $("#sales_historical-status")
+                  .text("Sales tax data uploaded")
+
+            },
+        });
+    });
 
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
@@ -370,10 +418,7 @@ if(win){
           </fieldset>
       </form>
       <div class = "status" id ="gov_employment_historical-status"></div>
-    </div>
 
-
-    <div id = "upload_right_historical">
       <h2>Real Average Weekly Earnings: historical data file</h2>
       <form id="upload-wages_historical" method="post" enctype="multipart/form-data">
           <fieldset>
@@ -391,6 +436,10 @@ if(win){
       </form>
       <div class = "status" id ="housing_historical-status"></div>
 
+    </div>
+
+    <div id = "upload_right_historical">
+
       <h2>Total Tax Revenue: historical data file</h2>
       <div class = "note historical">Please create a new xlsx file which only contains the values needed for the figure.</div>
       <div class = "note historical">The entire historical document (of around 25MB) is too large</div>
@@ -400,6 +449,30 @@ if(win){
           </fieldset>
       </form>
       <div class = "status" id ="state_total_tax_values_historical-status"></div>
+
+      <h2>Corporate Income Tax Revenue: historical data file</h2>
+      <form id="upload-corp_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-corp_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="corp_historical-status"></div>
+
+      <h2>Personal Income Tax Revenue: historical data file</h2>
+      <form id="upload-income_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-income_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="income_historical-status"></div>
+
+      <h2>Sales Tax Revenue: historical data file</h2>
+      <form id="upload-sales_historical" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-sales_historical-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="sales_historical-status"></div>
     </div>
   </div>
 
