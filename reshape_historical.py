@@ -59,12 +59,13 @@ def reshapeQuarterly(fileName):
   with open(BASE + 'data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
-      if row[1] != "N/A":
-        # print row
+      if row[2] != "N/A":
         writer.writerow(row)
   with open(BASE + 'static/data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
+      if row[2] != "N/A":
+        writer.writerow(row)
       writer.writerow(row)
 
 def reshapeMonthly(fileName):
