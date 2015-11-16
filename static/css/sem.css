@@ -19,6 +19,148 @@ body.pdf_template h1 a{
 body.pdf_template section img{
   width: 800px;
 }
+
+
+/*****INDEX INTRO AND IMAGE STYLES*******/
+#container{
+    margin-left: auto;
+    margin-right: auto;
+    min-height:100%;
+    position: relative;
+
+}
+
+#introText{
+   background-color: #fff;
+    color: #333;
+    height: 100%;
+    margin: 5% auto 30px;
+    padding: 30px;
+    text-align: center;
+    width: 400px;
+
+}
+
+h3{
+ font-style: italic;
+font-size:17px;
+    color:#555;
+text-transform: none;
+    text-align: center;
+    padding-right:3%;
+    line-height: 1.4;
+}
+
+
+h5{
+ text-align: center;
+
+    
+}
+
+
+.updated{
+ text-align: center;
+font-size:14px;
+color:#00a6d2;
+}
+
+
+
+
+.frontpage_sectionone{
+   background-image: url("../images/scatterplot.png");
+    background-repeat: repeat;
+    height: 35%;
+    margin-top: 110px;
+    min-height: 320px;
+    width: 100%;
+ 
+}
+
+.frontpage .container{
+ background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 5px 2px 15px #888;
+    height: auto;
+    left: 50%;
+    margin-left: -220px;
+    margin-top: 90px;
+    padding: 50px 15px 30px;
+    position: absolute;
+    text-align: left;
+    top: 10%;
+    width: 450px;
+    
+}
+
+.frontpage_sectiontwo{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/blur.jpg");
+    width:100%;
+      height: 50%;
+    min-height: 475px;
+    margin-bottom: 0px;
+    background-color:rgba(255,255,255.8);
+    color:#fff;
+    
+}
+
+
+.frontpage_sectionthree{
+   background-image: url("../images/lines.png");
+background-repeat: repeat;
+ height:10%;
+width:100%; 
+    
+}
+
+.frontpage_sectiontext {
+    margin-bottom: 110px;
+    margin-top: 10%;
+}
+
+.frontpage_sectiontwo ul{
+   text-align: left;
+    margin:40px auto 0px auto;
+    width:60%;
+    
+}
+
+.frontpage_sectiontwo ul li{
+border: 1px solid #fff;
+    display: inline-block;
+    float: left;
+    margin: 0 16px 16px 0;
+    min-width: 140px;
+    text-align: center;
+}
+
+.frontpage_sectiontwo p {
+    font-size: 13px;
+    font-style: italic;
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 60%;
+
+}
+
+.frontpage_sectiontwo ul li a{
+    
+    display: inline-block;
+    padding:25px;
+    color:#fff;
+}
+
+
+.frontpage_sectiontwo ul li a:hover, .frontpage_sectiontwo ul li a:focus{
+ text-decoration: none;
+ background-color:#0096d2;
+}
+
+.frontpage_sectiontwo ul li:hover, .frontpage_sectiontwo ul li:focus{
+     background-color:#0096d2;
+}
+
+
 /************ open HEADER ***********/
 
 /*#header{

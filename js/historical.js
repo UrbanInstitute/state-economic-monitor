@@ -28,6 +28,12 @@ function detectIE() {
     return false;
 }
 var isIE = detectIE();
+var ys = {}
+var xs = {}
+var yaxes = {}
+var zooms = {}
+var ss = {}
+var lines = {}
 
 var SMALL_SCREEN;
 var MOBILE;
@@ -187,6 +193,8 @@ function drawGraphic(dataID){
   var y = d3.scale.linear()
       .range([height, 0]);
 
+
+
   if(!MOBILE){
     var voronoi = d3.geom.voronoi()
         .x(function(d) { return x(d.date); })
@@ -249,16 +257,22 @@ function drawGraphic(dataID){
           .y(y)
           .scaleExtent([1, 10])
           .on("zoom", zoomed);
+      ys[dataID] = y;
+      xs[dataID] = x;
+      yaxes[dataID] = yAxis;
+      zooms[dataID] = zoom
+      ss[dataID] = states
+      lines[dataID] = line
 
-      function zoomed(o) {
-       svg.select(".y.axis").call(yAxis);
-       svg.select(".focus").attr("transform", function(){
-            return "translate(" + x(o.date) + "," + y(o.value) + ")"
+      function zoomed(o, svg2, y2, x2, ya2, l2) {
+       svg2.select(".y.axis").call(ya2);
+       svg2.select(".focus").attr("transform", function(){
+            return "translate(" + x2(o.date) + "," + y2(o.value) + ")"
        })
-       svg.selectAll(".states path").attr("d", function(d) {
+       svg2.selectAll(".states path").attr("d", function(d) {
           if(typeof(d) != "undefined"){
             d.line = this;
-            return line(d.values); 
+            return l2(d.values); 
           }
           else{
             return null;
@@ -267,21 +281,44 @@ function drawGraphic(dataID){
       }
 
       function zoomOut(o) {
+       var svg2 = d3.select(d3.select(o.state.line).node().parentNode.parentNode.parentNode)
+       var zID = d3.select(svg2.node().parentNode).attr("id")
+       var y2 = ys[zID]
+       var x2 = xs[zID]
+       var ya2 = yaxes[zID]
+       var z2 = zooms[zID]
+       var s2 = ss[zID]
+       var l2 = lines[zID]
+
+
         d3.transition().duration(750).tween("zoom", function() {
-          var iy = d3.interpolate(y.domain(), [d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
+          var iy = d3.interpolate(y2.domain(), [d3.min(s2, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(s2, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
           return function(t) {
-            zoom.y(y.domain(iy(t)));
-            zoomed(o);
+            z2.y(y2.domain(iy(t)));
+            zoomed(o, svg2, y2, x2, ya2, l2);
           };
         });
       }
 
       function zoomIn(o) {
+       var svg2 = d3.select(d3.select(o.state.line).node().parentNode.parentNode.parentNode)
+       var zID = d3.select(svg2.node().parentNode).attr("id")
+
+       var y2 = ys[zID]
+       var x2 = xs[zID]
+       var ya2 = yaxes[zID]
+       var z2 = zooms[zID]
+       var s2 = ss[zID]
+       var l2 = lines[zID]
+
+       var bound = (zID == "corp_historical") ? 300: 50;
+
+
         d3.transition().duration(750).tween("zoom", function() {
-          var iy = d3.interpolate(y.domain(), [-50, 50]);
+          var iy = d3.interpolate(y2.domain(), [-1*bound, bound]);
           return function(t) {
-            zoom.y(y.domain(iy(t)));
-            zoomed(o);
+            z2.y(y2.domain(iy(t)));
+            zoomed(o, svg2, y2, x2, ya2, l2);
           };
         });
       }
@@ -399,11 +436,12 @@ if(!isIE || isIE > 10){
    })
 
    d3.select("section.corp_historical .refresh")
-   .on("click.second", function(){
-     return zoomOut(d3.select(".corp_historical .states #USA").datum().values[0])
+   .on("click.third", function(){
+    var test = d3.select(".corp_historical .states #USA").datum().values[0]
+     return zoomOut(test)
     });
    d3.select("section.corp_historical .historical_state")
-     .on("change.second", function(){
+     .on("change.third", function(){
           var state = d3.select("section." + dataID + " .historical_state").node().value
           var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
           var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
@@ -415,7 +453,7 @@ if(!isIE || isIE > 10){
             .filter(function(q){
               return (q.date).valueOf() == (new Date(year, month)).valueOf();
             })[0];
-          if(state == "AK" || state == "NH"){
+          if(state == "HI" || state == "OH"){
             return zoomOut(o);
           }
           else{
@@ -433,10 +471,10 @@ if(!isIE || isIE > 10){
       else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
         zoomIn(d);
       }
-      else if(dataID == "corp_historical" && (d.state.abbrev == "AK" || d.state.abbrev == "NH")){
+      else if(dataID == "corp_historical" && (d.state.abbrev == "OH" || d.state.abbrev == "HI")){
         zoomOut(d);
       }
-      else if(dataID == "corp_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
+      else if(dataID == "corp_historical" && d.state.abbrev != "OH" && d.state.abbrev != "HI"){
         zoomIn(d);
       }
 }
