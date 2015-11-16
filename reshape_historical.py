@@ -8,6 +8,8 @@ import sys
 from math import ceil
 from datetime import datetime, timedelta
 
+# BASE = '/var/www/apps.urban.org/semApp/'
+BASE = ""
 def convertDate(xldate):
   temp = datetime(1899, 12, 30)
   delta = timedelta(days=xldate)
@@ -15,9 +17,9 @@ def convertDate(xldate):
 print convertDate(39479)
 
 def parseXlSX(fileName):
-  sourceBook = xlrd.open_workbook('/var/www/apps.urban.org/semApp/data/historical/source/' + fileName + ".xlsx")
+  sourceBook = xlrd.open_workbook(BASE + 'data/historical/source/' + fileName + ".xlsx")
   sheet = sourceBook.sheets()[0]
-  with open('/var/www/apps.urban.org/semApp/data/historical/source/sheets/{}_source.csv'.format(fileName), 'wb') as f:
+  with open(BASE + 'data/historical/source/sheets/{}_source.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in range(sheet.nrows):
       out = []
@@ -39,7 +41,7 @@ def parseXlSX(fileName):
 
 def reshapeQuarterly(fileName):
   data = []    
-  reader = csv.reader(open("/var/www/apps.urban.org/semApp/data/historical/source/sheets/%s_source.csv"%fileName, "rU"))
+  reader = csv.reader(open(BASE + "data/historical/source/sheets/%s_source.csv"%fileName, "rU"))
   head = reader.next()
   head = reader.next()
   for row in reader:
@@ -54,18 +56,20 @@ def reshapeQuarterly(fileName):
   for r in range(1, len(data)):
     for i in range(2, len(states)):
       outData[i-1].append(data[r][i])
-  with open('/var/www/apps.urban.org/semApp/data/historical/{}.csv'.format(fileName), 'wb') as f:
+  with open(BASE + 'data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
-      writer.writerow(row)
-  with open('/var/www/apps.urban.org/semApp/static/data/historical/{}.csv'.format(fileName), 'wb') as f:
+      if row[1] != "N/A":
+        # print row
+        writer.writerow(row)
+  with open(BASE + 'static/data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
       writer.writerow(row)
 
 def reshapeMonthly(fileName):
   data = []    
-  reader = csv.reader(open("/var/www/apps.urban.org/semApp/data/historical/source/sheets/%s_source.csv"%fileName, "rU"))
+  reader = csv.reader(open(BASE + "data/historical/source/sheets/%s_source.csv"%fileName, "rU"))
   head = reader.next()
   head = reader.next()
   for row in reader:
@@ -81,11 +85,11 @@ def reshapeMonthly(fileName):
     for i in range(1, len(states)):
       outData[i].append(data[r][i])
 
-  with open('/var/www/apps.urban.org/semApp/data/historical/{}.csv'.format(fileName), 'wb') as f:
+  with open(BASE + 'data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
       writer.writerow(row)
-  with open('/var/www/apps.urban.org/semApp/static/data/historical/{}.csv'.format(fileName), 'wb') as f:
+  with open(BASE + 'static/data/historical/{}.csv'.format(fileName), 'wb') as f:
     writer = csv.writer(f)
     for row in outData:
       writer.writerow(row)

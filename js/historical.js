@@ -397,6 +397,32 @@ if(!isIE || isIE > 10){
             return zoomIn(o);
           }
    })
+
+   d3.select("section.corp_historical .refresh")
+   .on("click.second", function(){
+     return zoomOut(d3.select(".corp_historical .states #USA").datum().values[0])
+    });
+   d3.select("section.corp_historical .historical_state")
+     .on("change.second", function(){
+          var state = d3.select("section." + dataID + " .historical_state").node().value
+          var year = parseInt(d3.select("section." + dataID + " .historical_year").node().value.replace("y",""))
+          var month = (d3.select("section." + dataID + " .historical_quarter").node() == null) ? parseInt(d3.select("section." + dataID + " .historical_month").node().value.replace("m",""))-1 : (parseInt(d3.select("section." + dataID + " .historical_quarter").node().value.replace("q",""))*3)-1
+          
+          var o = d3.selectAll("section.corp_historical .states #" + state)
+            .filter(function(d){ return typeof(d) != "undefined"})
+            .datum()
+            .values
+            .filter(function(q){
+              return (q.date).valueOf() == (new Date(year, month)).valueOf();
+            })[0];
+          if(state == "AK" || state == "NH"){
+            return zoomOut(o);
+          }
+          else{
+            return zoomIn(o);
+          }
+   })
+
 }
 
    function click(d){
@@ -405,6 +431,12 @@ if(!isIE || isIE > 10){
         zoomOut(d);
       }
       else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
+        zoomIn(d);
+      }
+      else if(dataID == "corp_historical" && (d.state.abbrev == "AK" || d.state.abbrev == "NH")){
+        zoomOut(d);
+      }
+      else if(dataID == "corp_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
         zoomIn(d);
       }
 }
