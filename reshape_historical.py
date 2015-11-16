@@ -66,7 +66,6 @@ def reshapeQuarterly(fileName):
     for row in outData:
       if row[2] != "N/A":
         writer.writerow(row)
-      writer.writerow(row)
 
 def reshapeMonthly(fileName):
   data = []    
