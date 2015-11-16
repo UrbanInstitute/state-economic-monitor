@@ -6,20 +6,190 @@ height: 100%;
     
 }
 
-body.pdf_template .explainerText{
-  width: 800px;
-}
-body.pdf_template .navbar-default{
-  background: none !important;
-  border-bottom: 1px solid #666;
-}
-body.pdf_template h1 a{
-  color: #333;
-}
-body.pdf_template section img{
-  width: 800px;
+
+/************ open HEADER ***********/
+
+/*#header{
+    
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+    z-index:20;
+}*/
+
+
+#header{
+    top: 70px;
+    position: fixed;
+    width: 100%;
+    z-index:20;   
+    
 }
 
+
+
+
+/*h1 for the website */
+#sem{
+    
+    height:65px;
+    float:none;
+
+}
+
+/*#sem{
+    
+    height:75px;
+    width:100%;
+    background-color:#333;   
+}*/
+
+
+h1{
+    
+    color: #ffffff;
+    font-family: Lato;
+    font-size: 36px;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;   
+    margin:0px;
+    padding-top:15px;
+ 
+}
+
+h1 a{
+ color:#fff;   
+    
+}
+
+
+h1 a:hover{
+ color:#00a6d2;   
+    text-decoration: none;
+    
+}
+
+
+
+#logo {
+   display: inline-block;
+    float: left;
+    height: 55px;
+    margin-top: 11px;
+}
+
+#smallLogo{
+    
+ display:none;   
+}
+
+.navbar-default {
+    
+ background-color:#333;   
+border:none;
+}
+
+.navbar{
+    
+    min-height: 70px;   
+}
+
+
+
+
+#menu{
+ 
+    height: 40px;
+    background-color: #222222;
+    width:100%;
+ 
+}
+
+nav #menu{
+     height: 40px;   
+    list-style: none;
+    text-align: center;
+    margin:0px;
+    padding: 0px;
+    
+}
+
+
+nav ul li{
+    
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    height:40px;
+    margin:0px;
+    padding-top:10px;
+    padding-bottom:0px;
+    padding-left:0px;
+    padding-right:0px;
+width:18%;
+}
+
+
+#menu a{
+ color:#fff;   
+    
+}
+
+nav #menu li:hover, nav #menu li.hover_effect {
+    
+    background-color: rgba(0, 166, 210, .8);
+   
+}
+
+nav #menu a:hover, nav #menu a.hover_effect {
+     text-decoration: none;  
+}
+
+.active{
+  border-bottom-color: #00a6d2;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    
+}
+
+.mobile-menu{
+ display: none;   
+    
+}
+.show-menu {
+    color: #fff;
+    display: none;
+
+}
+input[type="checkbox"] {
+    display: none;
+}
+/************ end HEADER ***********/
+
+
+
+/**** headroom.js that allows the header to appear on scroll up **/
+
+ .slide {
+     transition: all 0.25s ease-in-out 0s;
+}
+
+.slide--reset {
+     transform: translateY(0px);
+}
+
+.slide--up {
+     transform: translateY(-230%);
+}
+
+.animated {
+     animation-duration: 0.5s;
+     animation-fill-mode: both;
+}
+
+
+/**********/
 
 
 /*****INDEX INTRO AND IMAGE STYLES*******/
@@ -160,310 +330,7 @@ border: 1px solid #fff;
 .frontpage_sectiontwo ul li:hover, .frontpage_sectiontwo ul li:focus{
      background-color:#0096d2;
 }
-
-
-
-/************ open HEADER ***********/
-
-/*#header{
     
-    margin-top: 50px;
-    position: fixed;
-    width: 100%;
-    z-index:20;
-}*/
-
-
-#header{
-    top: 70px;
-    position: fixed;
-    width: 100%;
-    z-index:20;   
-    
-}
-
-
-
-
-/*h1 for the website */
-#sem{
-    
-    height:65px;
-    float:none;
-
-}
-
-/*#sem{
-    
-    height:75px;
-    width:100%;
-    background-color:#333;   
-}*/
-
-
-h1{
-    
-    color: #ffffff;
-    font-family: Lato;
-    font-size: 36px;
-    font-weight: 200;
-    text-align: center;
-    text-transform: uppercase;   
-    margin:0px;
-    padding-top:15px;
- 
-}
-
-h1 a{
- color:#fff;   
-    
-}
-
-
-h1 a:hover{
- color:#00a6d2;   
-    text-decoration: none;
-    
-}
-
-
-
-#logo {
-   display: inline-block;
-    float: left;
-    height: 55px;
-    margin-top: 11px;
-}
-
-#smallLogo{
-    
- display:none;   
-}
-
-.navbar-default {
-    
- background-color:#333;   
-border:none;
-}
-
-.navbar{
-    
-    min-height: 70px;   
-}
-
-
-
-
-#menu{
- 
-    height: 40px;
-    background-color: #222222;
-    width:100%;
- 
-}
-
-nav #menu{
-     height: 40px;   
-    list-style: none;
-    text-align: center;
-    margin:0px;
-    padding: 0px;
-    
-}
-
-
-nav ul li{
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 500;
-    height:40px;
-    margin:0px;
-    padding-top:10px;
-    padding-bottom:0px;
-    padding-left:0px;
-    padding-right:0px;
-width:18%;
-}
-
-
-#menu a{
- color:#fff;   
-    
-}
-
-nav #menu li:hover, nav #menu li.hover_effect {
-    
-    background-color: rgba(0, 166, 210, .8);
-   
-}
-
-nav #menu a:hover, nav #menu a.hover_effect {
-     text-decoration: none;  
-}
-
-.active{
-  border-bottom-color: #00a6d2;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    
-}
-
-.mobile-menu{
- display: none;   
-    
-}
-.show-menu {
-    color: #fff;
-    display: none;
-
-}
-input[type="checkbox"] {
-    display: none;
-}
-/************ end HEADER ***********/
-
-
-
-/**** headroom.js that allows the header to appear on scroll up **/
-
- .slide {
-     transition: all 0.25s ease-in-out 0s;
-}
-
-.slide--reset {
-     transform: translateY(0px);
-}
-
-.slide--up {
-     transform: translateY(-230%);
-}
-
-.animated {
-     animation-duration: 0.5s;
-     animation-fill-mode: both;
-}
-
-
-/**********/
-
-
-/*****INDEX INTRO AND IMAGE STYLES*******/
-#container{
-    margin-left: auto;
-    margin-right: auto;
-    min-height:100%;
-    position: relative;
-
-}
-
-#introText{
-  color: #00a6d2;
-    margin: 20px auto 30px;
-    text-align: center;
-    width: 80%;
-
-}
-
-h3{
- font-style: italic;
-font-size:18px;
-    color:#555;
-text-transform: none;
-    text-align: center;
-    padding-right:3%;
-    line-height: 1.4;
-}
-
-
-.updated{
- text-align: center;
-font-size:14px;
-color:#00a6d2;
-}
-
-
-
-#imageone, #imagethree{
-    
-    clear: both;
-    float: left;
-    margin-bottom: 1%;
- 
-}
-
-
-#imagetwo, #imagefour{
-    
- float:right;
-margin-bottom: 1%;
-    
-}
-
-#imageone, #imagethree, #imagetwo, #imagefour{
-  width:48%;  
-   
-}
-
-#homeImages img{
- width:100%;   
-    
-}
-
-
-
-/* style/placement of the image labels */
-#imageone p, #imagethree p, #imagetwo p, #imagefour p{
-    
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    position: relative;
-    text-align: center;
-    top: 140px;
-   /* width: 250px;*/
-    
-}
-
-/*image hover styling */
-
-#imageone:hover, #imagethree:hover, #imagetwo:hover, #imagefour:hover{
-
-    opacity: .6;
-}
-
-.frontpage{
-
-       background-image: url("../images/blur.jpg");
-    background-repeat: repeat;
- height:100%;
-     width:100%;
-    margin-top: 110px;
-     -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-    
-}
-
-.frontpage .container{
- background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 5px 2px 15px #888;
-    height: auto;
-    left: 50%;
-    margin-left: -220px;
-    margin-top: 90px;
-    padding: 50px 15px 30px;
-    position: absolute;
-    text-align: left;
-    top: 10%;
-    width: 450px;
-    
-}
-
 /********** INTRO ***********/
 
     .section100 {
@@ -693,13 +560,12 @@ padding-top:25px;
     
 }
 footer{
-   background-color: #000;
+  background-color: #000;
     bottom: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-margin-top:75px;
-    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
     position: relative;
+    width: 100%;
    
 }
 
@@ -1031,17 +897,21 @@ rect.states{
 .grid-line{
   stroke: #cccccc;
 }
-/*this is keeping the index page secondary menu labels in the center*/
-@media (min-width:768px) and (max-width:1000px){
- #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:100px;}   
+
+
+@media (max-width:1200px){
+     .frontpage_sectiontwo ul{ width:80%;}   
     
 }
 @media (max-width:985px) {
     
  footer img{ width:46%;}
 
-footer p{width:45%;}   
+footer p{width:45%;} 
+  .frontpage_sectiontwo ul{ width:80%; } 
+  .frontpage_sectiontwo p {clear: both;width: 70%; text-align: center;}  
     
+
 }
 
 @media (max-width: 768px) {
@@ -1073,24 +943,7 @@ footer p{width:45%;}
   
     }
     
-    /*  
-    
- nav ul{
-   height: 55px; 
-   margin-left: -15px;
-    margin-right: -15px;
-      
-  }
-    
-nav ul li{
-    
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 500;
-    padding-top:20px;
-     padding-bottom: 30px;
-width:18%;
-}*/
+
     .show-menu {
     bottom: 0;
     display: block;
@@ -1181,12 +1034,31 @@ input[type="checkbox"]:checked ~ #menu {
  .container{
  width:95%;     
 }
+  
+.frontpage_sectionone{
+margin-top: 70px;
+min-height: 295px;
+    height:25%;
+   
+}
+    
+    
+.frontpage_sectiontwo{
+ min-height: 775px;
+
+
+
+}
+  .frontpage_sectiontwo ul{ width:80%;  text-align: center; padding-left: 0;}      
+     .frontpage_sectiontwo ul li{ float:none;}  
     
    #introText{
     margin-bottom:0px;
     margin-top:0px;
        
    }
+    
+    
     /*this is the explaination below the page title and before the figures. This reduced the white space above and below the text*/
 .introSectionText {
     margin-bottom: 25px;
@@ -1194,16 +1066,6 @@ input[type="checkbox"]:checked ~ #menu {
 
 }
 
-#imageone, #imagethree, #imagetwo, #imagefour {
-    float: none;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    width: 80%;
-}
-    
-  #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:140px;}      
 
     
 /*did this b/c i was seeing scroll bars around the figures */
@@ -1331,7 +1193,7 @@ footer p { color:#000000; margin-top:15px; margin-left:5px; width:100%;}
 .container {width: 100%;}    
  .mobile h1{font-size:17px; text-align: left; padding-top:25px;}
    #menu ul li{font-size:13px;}
-h3{font-size:17px;}  
+h3{font-size:16px;}  
     #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:80px;}   
     
     .section170{ padding-top:90px;   }
@@ -1339,6 +1201,16 @@ h3{font-size:17px;}
     .shortpages {position: relative;}
     footer{ height:95px;margin-bottom:50px;}
     footer p{margin-top:5px;}
+    
+    #introText {
+    background-color: #fff;
+    color: #333;
+    height: 260px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    text-align: center;
+    width: 220px;
+}
 
 }
 

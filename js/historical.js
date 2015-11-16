@@ -41,7 +41,7 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
     ]
 var QUARTERNAMES = ["first quarter", "first quarter", "first quarter", "second quarter", "second quarter", "second quarter", "third quarter", "third quarter", "third quarter", "fourth quarter", "fourth quarter", "fourth quarter"]
-var QUARTERLY = ["housing_historical","state_total_tax_values_historical"]
+var QUARTERLY = ["housing_historical","state_total_tax_values_historical","corp_historical","income_historical","sales_historical"]
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 var PERCENT = d3.format(".1f")
