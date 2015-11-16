@@ -8,8 +8,8 @@ import sys
 from math import ceil
 from datetime import datetime, timedelta
 
-# BASE = '/var/www/apps.urban.org/semApp/'
-BASE = ""
+BASE = '/var/www/apps.urban.org/semApp/'
+
 def convertDate(xldate):
   temp = datetime(1899, 12, 30)
   delta = timedelta(days=xldate)
