@@ -699,7 +699,11 @@ footer a:hover{
 /*    color: #777777;
     font-size: 16px;
     margin-top: 9px;*/
-
+.zoomText{
+  font-style: italic;
+  margin-bottom: 4px;
+  color: #666;
+}
 .region-text, .quarter-text{
   float: left;
   margin-right: 30px;
