@@ -176,9 +176,6 @@ new Headroom(header, {
 	<script src = "../static/js/semConfig.js"></script>
 	<script src = "../static/js/main.js"></script>
     <script> $(document).ready(function() {
-    var test = d3.selectAll(".download a")
-    .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.housing + "!a1")
-    console.log(test)
     $('.hover').bind('touchstart touchend', function(e) {
         e.preventDefault();
         $(this).toggleClass('hover_effect');
