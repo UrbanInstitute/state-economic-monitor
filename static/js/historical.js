@@ -203,6 +203,7 @@ function drawGraphic(dataID){
   }
 
   var line = d3.svg.line()
+      .defined(function(d){return d.value != null && d.value != undefined && d.value != ""})
       .x(function(d) { return x(d.date); })
       .y(function(d) { return y(d.value); });
 
