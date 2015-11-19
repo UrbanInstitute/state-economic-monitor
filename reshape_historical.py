@@ -44,6 +44,9 @@ def reshapeQuarterly(fileName):
   reader = csv.reader(open(BASE + "data/historical/source/sheets/%s_source.csv"%fileName, "rU"))
   head = reader.next()
   head = reader.next()
+  head = reader.next()
+  head = reader.next()
+  
   for row in reader:
     data.append(row)
   outData = [["state"]]
