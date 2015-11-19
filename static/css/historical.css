@@ -230,12 +230,13 @@ h3{
 }
 
 h4{
-  font-size:20px;
-  color:#29abe2;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.4;
-  margin-top: 20px;
+    font-size: 22px;
+    color: #29abe2;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 60px;
+    margin-bottom: 41px;
 }
 
 .updated{
@@ -712,8 +713,9 @@ footer a:hover{
   margin-left: 30px;
   float: left;
 }
-
-
+.value-text .tooltip-data{
+  margin-top: 5px;
+}
 .value-text.y{
   margin-right: 0px !important;
 }

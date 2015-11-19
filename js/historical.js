@@ -454,7 +454,7 @@ if(!isIE || isIE > 10){
             .filter(function(q){
               return (q.date).valueOf() == (new Date(year, month)).valueOf();
             })[0];
-          if(state == "HI" || state == "OH"){
+          if(state == "999"){
             return zoomOut(o);
           }
           else{
@@ -472,12 +472,7 @@ if(!isIE || isIE > 10){
       else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
         zoomIn(d);
       }
-      else if(dataID == "corp_historical" && (d.state.abbrev == "OH" || d.state.abbrev == "HI")){
-        zoomOut(d);
-      }
-      else if(dataID == "corp_historical" && d.state.abbrev != "OH" && d.state.abbrev != "HI"){
-        zoomIn(d);
-      }
+
 }
     dispatch.clickState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
    }
