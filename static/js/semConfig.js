@@ -189,7 +189,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-5,0,5,10,15,30],
+					"breaks": [-10,0,5,10,15,30],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
