@@ -54,7 +54,7 @@ function drawMapFigure(dataID, config, print){
       }
       else{
         for(var i = 0; i < tempBreaks.length-1; i++){
-          if(d > tempBreaks[i] && d <= tempBreaks[i+1]){
+          if(d >= tempBreaks[i] && d < tempBreaks[i+1]){
             return "q" + i + "-4"
             break
           }
