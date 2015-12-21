@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated November 2015", 
+    "dateUpdated": "Last Updated December 2015", 
     "employment": {
         "EMP": {
             "breaks": [
@@ -8,15 +8,15 @@
                 1, 
                 2, 
                 3, 
-                4
+                5
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 2.0 percent from October 2014 to October 2015. Total employment increased in all but three states: North Dakota (-2.1 percent), West Virginia (-1.8 percent), and Louisiana (-0.5 percent). North Dakota's biggest job losses were in the trade, transportation, and utilities sector, West Virginia's biggest decline was in construction, and Louisiana lost jobs in the trade, transportation, and utilities sector and government sector. The largest increase in total employment was in Idaho (3.8 percent), which had job growth in all sectors. Total employment grew 3.0 percent or more over the past 12 months in four additional states: Utah (3.5 percent), Nevada (3.4 percent), and Florida and Washington (both 3.0 percent)."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.9 percent from November 2014 to November 2015. Total employment increased in all but five states: North Dakota (-2.9 percent), West Virginia (-1.4 percent), Wyoming (-0.7 percent), Louisiana (-0.6 percent), and Oklahoma (-0.1 percent). North Dakota\u2019s biggest job losses were in the trade, transportation, and utilities sector and West Virginia\u2019s biggest decline was in construction. The largest increase in total employment was in Idaho (4.2 percent), which had job growth in all sectors except government. Total employment also grew 3.0 percent or more over the past 12 months in Utah (3.6 percent) and Florida (3.0 percent). Another 13 states had 2.0 percent or more total employment growth."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.7 percentage points between October 2014 and October 2015. West Virginia's 0.8 percentage point increase was the greatest of any state. Two other states had unemployment rate increases over the year\u2014New Mexico (0.6 points) and Oklahoma (0.2 points)\u2014and four states had no change: Minnesota, North Carolina, North Dakota, and Utah. However, among these seven states, four (Minnesota, North Dakota, Oklahoma, and Utah) had October unemployment rates below 5.0 percent. The unemployment rate decreased the most over the year in Rhode Island (-1.7 points). In total, 14 states and DC had unemployment rates fall 1.0 points or more over the year. This included nine states and DC that had October unemployment rates above 5.0 percent: DC (6.6 percent), Mississippi (5.9 percent), California (5.8 percent), Georgia (5.7 percent), South Carolina and Tennessee (both 5.6 percent), New Jersey (5.4 percent), Rhode Island (5.3 percent), Washington (5.2 percent), and Connecticut (5.1 percent). "
+            "text": "The national unemployment rate fell 0.8 percentage points between November 2014 and November 2015. New Mexico, the state with the highest November unemployment rate, had the greatest increase of any state (0.7 percentage points). Three other states had unemployment rate increases over the year: West Virginia (0.5 percentage points) and North Carolina and Oklahoma both (0.2 percentage points). Among these four states, Oklahoma\u2019s 4.2 percent unemployment rate was the only November rate below 5 percent. The unemployment rate decreased the most over the year in Rhode Island (-1.7 percentage points). In total, 15 states and DC had unemployment rates fall 1.0 percentage point or more over the year. Four of these states had November unemployment rates below 5.0 percent: Maine (4.1 percent), Wisconsin (4.2 percent), Indiana (4.4 percent), and New York (4.8 percent). None of these states had unemployment rates above 6.0 percent, but DC\u2019s rate was 6.6 percent. "
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.5 percent from October 2014 to October 2015.  The largest decrease in government employment over the year was in New Hampshire (-2.5 percent). This is the <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">fifth consecutive month</a> New Hampshire has had a year-over-year decline in public jobs, primarily local government jobs. In total, 17 states and DC saw public employment drop over the year. The decline was 1.0 percent or more in six states: New Hampshire, Louisiana (-1.9 percent), Alaska (-1.6 percent), Michigan (-1.5 percent), West Virginia (-1.1 percent), and Kansas (-1.0 percent). Public employment increased the most in Oregon and Vermont (both 2.1 percent). Fourteen additional states had public employment increase more than 1.0 percent. Among these 14 states, three also had total employment increase 3.0 percent or more: Nevada, Utah, and Washington. "
+            "text": "Total public-sector employment increased 0.4 percent from November 2014 to November 2015. The largest decrease in government employment over the year was in New Hampshire (-2.7 percent). This is the  <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">sixth consecutive month</a> New Hampshire has had a year-over-year decline in public jobs, primarily local government jobs. In total, 16 states and DC saw public employment drop over the year. The decline was greater than 1.0 percent in five states: New Hampshire, Alaska (-2.3 percent), Louisiana (-1.8 percent), Michigan (-1.3 percent), and Kansas (-1.2 percent). Public employment increased the most in Oregon (2.5 percent). Public employment also increased 2.0 percent or more in Vermont (2.2 percent) and Utah (2.0 percent). "
         }, 
         "UNEMP": {
             "breaks": [
@@ -27,9 +27,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 5.0 percent in October 2015. For a <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">sixth consecutive month</a>, West Virginia's unemployment rate (6.9 percent) was the highest of any state. However, the state's rate was down 0.7 points from its 2015 peak in August. October unemployment rates were also above 6.0 percent in New Mexico (6.8 percent), District of Columbia (DC) and Nevada (both 6.6 percent), Alaska (6.4 percent), Louisiana (6.2 percent), and Arizona (6.1 percent). The lowest unemployment rates were in North Dakota (2.8 percent) and Nebraska (2.9 percent). North Dakota\u2019s rate has been below 3.0 percent since August but Nebraska;s rate has been below 3.0 for <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">all of 2015</a>. Another eight states had unemployment rates below 4.0 percent: South Dakota (3.2 percent), Hawaii and New Hampshire (both 3.3 percent), Iowa (3.5 percent), Utah (3.6 percent), Minnesota and Vermont (both 3.7 percent), and Colorado (3.8 percent). "
+            "text": "The national unemployment rate was 5.0 percent in November 2015. New Mexico\u2019s unemployment rate (6.8 percent) was the highest of any state. November was the <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\"> first month since April</a>that West Virginia did not have the highest state unemployment rate.  West Virginia\u2019s 6.5 percent unemployment rate was down from 6.9 percent last month and 7.6 percent in August. Six additional states\u2014Alabama, Alaska, Arizona, Louisiana, Mississippi, and Nevada\u2014and the District of Columbia (DC) also had unemployment rates of 6 percent or higher. The lowest unemployment rates were in North Dakota (2.7 percent) and Nebraska (2.9 percent). North Dakota\u2019s rate has been below 3.0 percent since August but Nebraska;s rate has been below 3.0 for <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">all of 2015</a>.The next-lowest November unemployment rates were in South Dakota (3.0 percent), Hawaii and New Hampshire (both 3.2 percent), and Iowa (3.4 percent). "
         }, 
-        "date": "10/2015"
+        "date": "11/2015"
     }, 
     "housing": {
         "Figure3": {
@@ -98,14 +98,14 @@
     "wages": {
         "AWW": {
             "breaks": [
-                600, 
-                700, 
+                650, 
+                725, 
                 800, 
-                900, 
-                1000, 
-                1300
+                875, 
+                950, 
+                1350
             ], 
-            "text": "National weekly earnings for all US private employees averaged $869 in October 2015. Among the 50 states, average wages ranged from $679 in Arkansas to $1,029 in Massachusetts. The District of Columbia's (DC) average weekly earnings for private employees were $1,268. Thirty-six states had average weekly earnings below the national average. Average wages were lowest in Arkansas, Mississippi ($683), New Mexico ($697), and Montana and West Virginia (both $725). Texas's average wages ($878) were closest to the national average. After DC and Massachusetts, the highest average wages were in Washington ($1,028), Connecticut ($993), Alaska ($972), and New York ($970)."
+            "text": "National weekly earnings for all US private employees averaged $871 in November 2015. Among the 50 states, average wages ranged from $689 in Arkansas to $1,073 in Washington. As is typically the case, the District of Columbia\u2019s (DC) average weekly earnings ($1,342) for private employees were higher than all the states. Thirty-five states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, Mississippi ($699), New Mexico ($709), West Virginia ($733), and South Dakota ($734). Utah\u2019s average weekly earnings ($874) were the closest to the national average. After DC and Washington, the highest average wages were in Massachusetts ($1,056), Connecticut ($1,011), California ($996), and New York ($993)."
         }, 
         "AWWChg": {
             "breaks": [
@@ -114,10 +114,10 @@
                 0, 
                 2, 
                 4, 
-                8
+                10
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in October 2015 were 2.0 percent higher than in October 2014. This was the <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">fourth consecutive month</a> year-over-year real national wages increased 2.0 percent or more. Nine states and DC had real average weekly earnings fall over the past year. The largest year-over-year decrease was in DC (-8.3 percent). That's the largest year-over-year real wage decline in DC since <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">October 2008</a>. Four states also had average wages decrease 1.0 percent or more: Wyoming (-2.8 percent), New Mexico (-1.9 percent), Hawaii (-1.4 percent), and Mississippi (-1.0 percent). The largest increase in real average wages was in Delaware (6.4 percent). That's Delaware's highest year-over-year monthly increase <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">since the recession</a>. The next real highest wage increases were in Nebraska (6.0 percent), Nevada (5.8 percent), and Washington (5.6 percent)."
+            "text": "National real (inflation-adjusted) average weekly earnings in November 2015 were 1.5 percent higher than in November 2014. This was the first month  <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">since June</a> that year-over-year real national wages did not increase 2.0 percent or more. Eleven states and DC had real average weekly earnings fall over the past year. The largest year-over-year decrease was in DC (-8.5 percent): both hours and hourly wages were down in November compounding the effect on weekly earnings. Seven states also had average wages decrease 1.0 percent or more: Wyoming (-2.3 percent), Missouri (-1.8 percent), Hawaii and Oklahoma (both -1.4 percent), Kansas and New Mexico (both -1.2 percent), and Indiana (-1.0 percent). The largest increase in real average wages was in Nevada (6.1 percent). The next real highest wage increases were in Nebraska (5.5 percent), Washington (5.1 percent), New Hampshire (4.5. percent), Montana (4.2 percent), and Iowa (4.1 percent). "
         }, 
-        "date": "10/2015"
+        "date": "11/2015"
     }
 }
