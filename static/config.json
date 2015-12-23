@@ -56,44 +56,44 @@
                 0, 
                 10, 
                 20, 
-                90
+                60
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">Corporate income tax</a> corporate income tax revenue increased nationally 5.8 percent over the four quarters that concluded in June 2015 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Texas, Washington, and Wyoming do not tax corporate income; South Dakota only taxes financial institutions; Ohio\u2019s corporate income tax was repealed, but prior year liabilities are still being processed), revenue changes ranged from a 48.9 percent decline in Hawaii, <a href = \"http://files.hawaii.gov/tax/useful/cor/2015gf09-03_attach_1.pdf\" target=\"_blank\">largely anticipated by the state\u2019s revenue estimators</a>, to a 82.6 percent increase in Utah. Thirty states and DC saw real revenue increases over the past year. These data show that, even when using four quarters of data, state corporate income tax revenue is highly variable\u2014profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">corporate income tax</a> revenue increased nationally 4.2 percent over the four quarters that concluded in September 2015 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Ohio, Texas, Washington, and Wyoming do not tax corporate income; South Dakota only taxes financial institutions), real revenue changes ranged from a 65.2 percent decline in Alaska\u2014most of the <a href = \"http://www.tax.alaska.gov/programs/documentviewer/viewer.aspx?1226r\" target=\"_blank\">state\u2019s corporate tax revenue</a> is tied to petroleum companies\u2014to a 52.6 percent increase in Delaware. Thirty-three states and DC saw real revenue increases over the past year. These data highlight that state corporate income tax revenue is highly volatile\u2014profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
         }, 
         "INC": {
             "breaks": [
                 -10, 
                 0, 
-                5, 
-                10, 
-                15, 
-                30
+                4, 
+                8, 
+                12, 
+                20
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 8.2 percent in the year ending in the second quarter of 2015 compared with one year earlier. Thirty-nine of the 41 states with a broad-based income tax (New Hampshire and Tennessee have narrow tax bases) had real revenue increase over the year. This includes states like Kansas, Ohio, and Wisconsin that passed tax cuts that were in effect two years ago (and thus are starting from a new baseline). Five states and DC had real revenue increase 10.0 percent or more: Mississippi (20.6 percent), California (14.5 percent), Hawaii (14.0 percent), Colorado (11.2 percent), DC (10.7 percent), and Indiana (10.6 percent). Real individual income tax revenue declined over the past year in Illinois (-5.0 percent) and Idaho (-4.4 percent). Illinois's drop was because of the state's flat income tax rate falling from 5.00 percent to 3.75 percent on January 1, 2015, when a <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\" target=\"_blank\">temporary tax increase expired</a>."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 9.1 percent in the year ending in the third quarter of 2015 compared with one year earlier. Forty of the 41 states with a broad-based income tax (New Hampshire and Tennessee have narrow tax bases) had real revenue increase over the year. Eleven states and DC had real revenue increase 10.0 percent or more. The largest real revenue increases were in Hawaii (18.4 percent), Iowa (15.6 percent), California (14.4 percent), and North Carolina (14.3 percent). None of these states have increased tax rates over the past year; in fact, <a href = \"http://www.dor.state.nc.us/taxes/individual/ind_whatsnew.html\" target=\"_blank\">North Carolina cut its flat income tax rate</a> from 5.80 percent to 5.75 percent at the beginning of 2015.The only state that saw real individual income tax revenue decline was Illinois (-8.7 percent). The drop was largely because the state\u2019s flat income tax rate fell from 5.00 percent to 3.75 percent on January 1, 2015, when a <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\" target=\"_blank\">temporary tax increase expired</a>."
         }, 
         "SALES": {
             "breaks": [
-                -6, 
-                -3, 
+                -5, 
                 0, 
                 3, 
-                6, 
-                18
+                5, 
+                10, 
+                25
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue increased nationally 4.6 percent in the year ending in the second quarter of 2015 compared with one year earlier. Real sales tax revenue increased more than 10.0 percent in five states: North Carolina (16.6 percent), Ohio (15.7 percent), North Dakota (14.4 percent), Iowa (12.1 percent), and Arizona (10.2 percent). Among these five states, only Ohio raised its state sales tax rate in the past two years, but <a href = \"http://www.dor.state.nc.us/taxes/taxlawupdate_2013.pdf\" target=\"_blank\">North Carolina expanded its tax base</a> to some new services and utilities. In total, the District of Columbia (DC) and 19 of the 45 states with a general sales tax saw real revenue increase 5.0 percent or more. Only South Carolina (-5.9 percent) had real sales tax revenue decline over the year. We do not know what caused this decline, but it could be related to data reporting and not solely economic factors. "
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue increased nationally 4.6 percent in the year ending in the third quarter of 2015 compared with one year earlier. Real sales tax revenue increased more than 10.0 percent in five states: Iowa (22.5.1 percent), North Dakota (15.0 percent), Maine (14.9 percent), North Carolina (14.2 percent), and South Dakota (11.8 percent). None of these states raised their state sales tax rate in the past two years, but  <a href = \"http://www.dor.state.nc.us/taxes/taxlawupdate_2013.pdf\" target=\"_blank\">North Carolina expanded its tax base</a> to some new services and utilities. In total, DC and 19 of the 45 states with a general sales tax saw real revenue increase 5.0 percent or more. Mississippi had the largest decline in real sales tax revenue (-4.4 percent). We do not know specifically what caused this decline\u2014there was not a rate decrease, for example\u2014but the <a href = \"http://www.lbo.ms.gov/pdfs/fy16_revrpt_nov_2015.pdf\" target=\"_blank\">state\u2019s legislative budget office</a> also shows declines in sales tax revenue. There were smaller real sales tax revenue declines in Nebraska (-1.6 percent) and Oklahoma (-0.5 percent)."
         }, 
         "TOTAL": {
             "breaks": [
-                -75, 
-                -3, 
+                -70, 
+                -5, 
                 0, 
-                3, 
-                6, 
-                15
+                5, 
+                10, 
+                20
             ], 
-            "text": "Real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 4.7 percent, nationally, in the year ending in the second quarter of 2015 compared with one year earlier. New Hampshire's 14.0 percent increase was the largest of any state. A corporate income tax revenue increase and insurance premium tax revenue in the second quarter of 2015 boosted its total. Typically, New Hampshire only reports insurance premium revenue in the first quarter of the year so these data should be used with caution. The next-highest real total tax revenue increases were in California (11.0 percent), Iowa (9.0 percent), and Utah (8.6 percent). Alaska's 73.6 percent decline was a substantial outlier. Both Alaskan oil production and the price of oil have fallen and greatly affected the state's total tax revenue. Specifically, in the past four quarters Alaska's real severance tax revenue was $151 million. In the four quarters before that period\u2014second quarter of 2013 to the second quarter of 2014\u2014Alaska's real severance tax revenue was $2.5 <em>billion</em>. Only two other states saw real total tax revenue decline over the past year: North Dakota (-4.8 percent) and Illinois (-2.3 percent). North Dakota's real total revenue declined despite increased sales and individual income tax revenue because, like Alaska, it suffered from decreased severance tax revenue. Lower individual income tax revenue in Illinois drove its overall decline (see income tax section below). "
+            "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 5.1 percent in the year ending in the third quarter of 2015 compared with one year earlier. Iowa\u2019s 17.6 percent total tax revenue increase over the year was the largest of any state. The state saw substantial revenue growth from both its general sales tax and individual income tax\u2014neither tax was substantially changed by law in the past two years. Iowa did <a href = \"https://tax.iowa.gov/iowa-fuel-tax-rate-changes-effective-july-1-2015\" target=\"_blank\">raise its motor fuel taxes</a> this summer and collected more revenue as a result (but not as much new revenue as from the sales and income tax over the year). The next-highest real total tax revenue increases were in Delaware (16.1 percent), the District of Columbia (14.3 percent), California (10.6 percent), and New Hampshire (10.0 percent). DC\u2019s revenue jumped in the third quarter in part because of <a href = \"http://cfo.dc.gov/sites/default/files/dc/sites/ocfo/publication/attachments/September 2015 Revenue Estimates_09302015.pdf\">settlements</a> with online travel companies (that owed DC taxes). Two states had huge declines in total tax revenue because of the collapse in oil prices. Alaska\u2019s total tax revenue fell 67.3 percent and North Dakota\u2019s fell 16.0 percent. Both states collected $1 billion less in severance tax revenue in the past four quarters than they did the four quarters before that period\u2014from the fourth quarter of 2013 to the third quarter of 2014. Falling severance tax revenue were also (mostly) responsible for total tax revenue declines in Louisiana (-3.5 percent), New Mexico (-0.7 percent), Oklahoma (-0.6 percent), and Texas (-0.4 percent). Illinois\u2019 total tax revenue declined 4.3 percent because of a reduced individual income tax rate and Mississippi\u2019s fell 0.3 percent because of sales tax revenue (see sections below)."
         }, 
-        "date": "05/2015"
+        "date": "09/2015"
     }, 
     "wages": {
         "AWW": {
