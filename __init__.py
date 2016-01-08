@@ -127,7 +127,7 @@ def update_SEM():
 
   empName = dates[int(new_config["employment"]["date"].split("/")[0])][0] + new_config["employment"]["date"][-2:]
   fullempName = dates[int(new_config["employment"]["date"].split("/")[0])][1] + " \'" + new_config["employment"]["date"][-2:]
-  os.system("/usr/bin/depict http://sem.urban.org/employment.html -H .pdfhide /var/www/apps.urban.org/semApp/archive/employment" +empName+ ".pdf")
+  os.system("/usr/bin/depict http://sem.urban.org/employment.html --delay 4000  -H .pdfhide /var/www/apps.urban.org/semApp/archive/employment" +empName+ ".pdf")
 
   if new_config["employment"]["date"] != old_config["employment"]["date"]:
     oldArchive = "<!-- NEW EMPLOYMENT HERE -->"
@@ -149,7 +149,7 @@ def update_SEM():
 
   wageName = dates[int(new_config["wages"]["date"].split("/")[0])][0] + new_config["wages"]["date"][-2:]
   fullwageName = dates[int(new_config["wages"]["date"].split("/")[0])][1] + " \'" + new_config["wages"]["date"][-2:]
-  os.system("/usr/bin/depict http://sem.urban.org/wages.html -H .pdfhide /var/www/apps.urban.org/semApp/archive/wages" +wageName+ ".pdf")
+  os.system("/usr/bin/depict http://sem.urban.org/wages.html --delay 4000 -H .pdfhide /var/www/apps.urban.org/semApp/archive/wages" +wageName+ ".pdf")
   if new_config["wages"]["date"] != old_config["wages"]["date"]:
     oldArchive = "<!-- NEW WAGES HERE -->"
     newArchive = oldArchive + "\n" \
@@ -171,7 +171,7 @@ def update_SEM():
 
   housingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
   fullhousingName = quarter(int(new_config["housing"]["date"].split("/")[0])) + " \'" + new_config["housing"]["date"][-2:]
-  os.system("/usr/bin/depict http://sem.urban.org/housing.html -H .pdfhide /var/www/apps.urban.org/semApp/archive/housing" +housingName+ ".pdf")
+  os.system("/usr/bin/depict http://sem.urban.org/housing.html --delay 4000 -H .pdfhide /var/www/apps.urban.org/semApp/archive/housing" +housingName+ ".pdf")
 
   if new_config["housing"]["date"] != old_config["housing"]["date"]:
     oldArchive = "<!-- NEW HOUSING HERE -->"
@@ -192,7 +192,7 @@ def update_SEM():
 
   taxesName = quarter(int(new_config["housing"]["date"].split("/")[0])) + new_config["housing"]["date"][-2:]
   fulltaxesName = quarter(int(new_config["taxes"]["date"].split("/")[0])) + " \'" + new_config["taxes"]["date"][-2:]
-  os.system("/usr/bin/depict http://sem.urban.org/taxes.html -H .pdfhide /var/www/apps.urban.org/semApp/archive/taxes" +taxesName+ ".pdf")
+  os.system("/usr/bin/depict http://sem.urban.org/taxes.html --delay 4000 -H .pdfhide /var/www/apps.urban.org/semApp/archive/taxes" +taxesName+ ".pdf")
 
   if new_config["taxes"]["date"] != old_config["taxes"]["date"]:
     oldArchive = "<!-- NEW TAXES HERE -->"
