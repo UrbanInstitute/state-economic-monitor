@@ -216,7 +216,7 @@ Breaking down state data on unemployment rates, total (nonfarm) payroll employme
                       <hr>
                       <div class = "plot-source custom-note">Note: The unemployment rate is from a US Bureau of Labor Statistics survey based on place of residence. The employment data are from a US Bureau of Labor Statistics survey based on place of work. All data are seasonally adjusted.</div>
 
-                     <img src="images/pdficon.png"> <a href="archive/employmentAug15.pdf" target="_blank">Click here for a printer-friendly PDF</a>
+                     <img src="images/pdficon.png"> <a class = "pdfDownload" href="#" target="_blank">Click here for a printer-friendly PDF</a>
 
 
 
@@ -265,6 +265,16 @@ new Headroom(header, {
 	<script src = "js/main.js"></script>
 
           <script> $(document).ready(function() {
+      var dates =   dates = [["",""],["Jan", "January"], ["Feb", "February"], ["Mar","March"],["Apr","April"],["May","May"],["June","June"],["Jul","July"],["Aug","August"],["Sept","September"],["Oct","October"],["Nov","November"],["Dec","December"]]
+
+      var month = dates[parseInt(DOWNLOAD_TAB_NAME.employment.split("_")[1].split("-")[0])][0]
+
+      var pdfName = DOWNLOAD_TAB_NAME.employment.replace(/\_\d+\-/g,month).replace("20","")
+      console.log(pdfName)
+      d3.selectAll(".pdfDownload")
+        .attr("href", "archive/" + pdfName + ".pdf")
+
+
       d3.selectAll(".download a")
       .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.employment + "!A1")
     $('.hover').bind('touchstart touchend', function(e) {
