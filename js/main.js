@@ -867,12 +867,15 @@ function parseVal(value, useCase){
 
 function drawScatterPlot(config, print){
   var dateUpdated;
-  if(config.x["date-format"] == "quarter"){
-    dateUpdated = TAX_DATE
+  if(config.tab == "housing"){
+    dateUpdated = HOUSE_DATE
   }
-  else if(config.x["date-format"] == "month"){
+  else if(config.tab == "employment"){
     dateUpdated = EMP_DATE
   }
+  else if(config.tab == "taxes"){
+    dateUpdated = TAX_DATE
+  }else{ dateUpdated = WAGE_DATE}
   var containerID = config.id
 
   var xSlice = figureData[config.x.id]["data"]
@@ -1303,6 +1306,7 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
       datePrevious = MONTHNAMES[month - 1] + " " + prevYear
     }
     else if (configFormat == "quarter"){
+      console.log(month, dateUpdated, conf, dID)
       dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
       datePrevious = "the " + getQuarter(month).toLowerCase() + " quarter of " + prevYear
     }
