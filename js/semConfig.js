@@ -78,7 +78,7 @@ var semConfig = {
 					"id": "housing_change_vs_2007_housing_change",
 					"tab": "housing",
 					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
-					"subtitle": "National house prices in {{y-date-updated}} were still {{y-usa-value}} percent below the peak in house prices during the first quarter of 2007.",
+					"subtitle": "National house prices in {{y-date-updated}} were {{y-usa-value}} above the peak in house prices during the first quarter of 2007.",
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes.</a>",
 					"x":{
 						"id":"HPChgYr",
