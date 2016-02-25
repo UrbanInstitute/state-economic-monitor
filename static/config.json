@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated January 2016", 
+    "dateUpdated": "Last Updated February 2016", 
     "employment": {
         "EMP": {
             "breaks": [
@@ -33,20 +33,20 @@
     }, 
     "housing": {
         "Figure3": {
-            "text": "Despite continuous growth since the <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">first quarter of 2012</a>, national house prices have not recovered from their pre\u2013Great Recession peak: in the third quarter of 2015, national prices were 1.1 percent lower than in the first quarter of 2007. Furthermore, third quarter house prices in 25 states were below 2007 levels.  The largest price disparities were in Nevada (-26.8 percent), Florida (-21.8 percent), and Arizona (-19.5 percent), despite these states' strong price growth over the past year. In contrast, house prices in North Dakota have increased 48.8 percent since 2007. DC, where house prices increased the most over the past year, also had 48.0 percent growth since 2007. House prices were up 10.0 percent or more <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">since 2007</a> in seven additional states: Colorado (30.9 percent), Texas (30.1 percent), South Dakota (18.8 percent), Oklahoma (15.9 percent), Nebraska (13.9 percent), Montana (11.7 percent), and Louisiana (11.0 percent). Among these states, Colorado had the highest year-over-year growth (12.7 percent). "
+            "text": "For the first time since the <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">housing market crash</a>, national house prices were above their pre\u2013Great Recession peak. In the fourth quarter of 2015, national house prices were 0.3 percent higher than in the first quarter of 2007. However, fourth quarter prices in 19 states were still below 2007 levels. Nevada had the largest price disparity (-24.8 percent) despite having the largest year-over-year price increase. The next largest 2007-to-2015 disparities were in Florida (-20.3 percent), Arizona (-18.0 percent), Connecticut (-16.0 percent), and Maryland (-15.2 percent). In contrast, fourth quarter house prices are well above their 2007 levels in North Dakota (49.5 percent), DC (42.5 percent), Colorado (32.4 percent), Texas (32.1 percent), and South Dakota (20.3 percent). Overall, 14 states and DC had fourth quarter house prices 10.0 percent or more above their 2007 prices. "
         }, 
         "HPChgYr": {
             "breaks": [
-                -3, 
                 0, 
-                3, 
-                5, 
+                2, 
+                4, 
+                6, 
                 10, 
-                20
+                14
             ], 
-            "text": "National house prices increased 5.7 percent from the third quarter of 2014 to the third quarter of 2015. Prices fell 0.1 percent in West Virginia, the only state where prices did not increase over the past year. The states with the lowest house price increases were Connecticut (1.1 percent), Maine (1.8 percent), New Jersey (2.2 percent), Hawaii (2.4 percent), Alaska (2.5 percent), and Pennsylvania (2.6 percent). The largest price increase over the year was in the District of Columbia (DC), where prices were up 15.4 percent. Four other states saw prices increase 10.0 percent or more: Colorado (12.7 percent), Nevada (12.4 percent), Oregon (10.1 percent), and Florida (10.0 percent). Overall, house prices increased 5.0 percent or more in 20 states and DC. "
+            "text": "National house prices increased 5.8 percent from the fourth quarter of 2014 to the fourth quarter of 2015, finally surpassing their pre-crash peak (see next section). House prices rose in every state and the District of Columbia (DC) over the year. The price increase was less than 2.0 percent in only Connecticut (0.1 percent), Alabama (0.9 percent), New Mexico (1.1 percent), and Arkansas (1.7 percent).In 25 states, price increases were 5.0 percent or more. Five states, notably all in the West, saw house prices increase 10.0 percent or more over the past year: Nevada (12.7 percent), Colorado (10.9 percent), Idaho and Washington (both 10.7 percent), and Oregon (10.6 percent)."
         }, 
-        "date": "09/2015"
+        "date": "12/2015"
     }, 
     "taxes": {
         "CORPINC": {
