@@ -27,7 +27,7 @@ var semConfig = {
 		"Figure1":{
 					"id": "figure_level_vs_change_unemployment",
 					"tab": "employment",
-					"title": "Unemployment Rate: Level vs. One-Year-Change",
+					"title": "Unemployment Rate: Level vs. One-Year Change",
 					"subtitle": "The national unemployment rate {{y-usa-changed}} to a value of {{x-usa-value}} between {{y-date-previous}} and {{y-date-updated}}.",
 					"source": "Both datasets from the <a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>",
 					"x":{
@@ -77,7 +77,7 @@ var semConfig = {
 		"Figure3":{
 					"id": "housing_change_vs_2007_housing_change",
 					"tab": "housing",
-					"title": "One-Year-Change vs. Change Since Peak in Housing Prices",
+					"title": "One-Year Change vs. Change Since Peak in Housing Prices",
 					"subtitle": "National house prices in {{y-date-updated}} were {{y-usa-value}} above the peak in house prices during the first quarter of 2007.",
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Administration, State House Price Indexes.</a>",
 					"x":{
