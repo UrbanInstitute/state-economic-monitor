@@ -27,7 +27,7 @@ def upload():
     file = request.files['file']
     sheet = request.args.get('sheet', '', type=str)
     # print sheet
-    if(sheet=="employment" or sheet=="earning" or sheet=="housing" or sheet=="tax"):
+    if(sheet=="employment" or sheet=="earnings" or sheet=="housing" or sheet=="tax"):
       file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
       copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/data/source/previous_releases/" + file.filename)
       copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/static/data/source/"+ "current_" + sheet + ".xlsx")

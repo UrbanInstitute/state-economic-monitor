@@ -10,7 +10,7 @@ from math import ceil
 try:
     EMP_DATE = sys.argv[1]
     TAX_DATE = sys.argv[2]
-    EARNING_DATE = sys.argv[3]
+    EARNINGS_DATE = sys.argv[3]
     HOUSE_DATE = sys.argv[4]
     print "Dates must be formatted as MM/YYYY"
     print "Employment data date is " + EMP_DATE
@@ -168,8 +168,8 @@ def parseTax():
         figureData["TOTAL"]["data"].append(total)
 
 
-def parseEarning():
-    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_earning.csv","rU"))
+def parseEarnings():
+    cr = csv.reader(open("/var/www/apps.urban.org/semApp/data/source/sheets/current_earnings.csv","rU"))
     title = cr.next()
     header = cr.next()
     newCode("AWW","Average weekly earnings")
@@ -195,7 +195,7 @@ def parseEarning():
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
-        fp.write("\nvar EARNING_DATE=\""+EARNING_DATE + "\"")
+        fp.write("\nvar EARNINGS_DATE=\""+EARNING_DATE + "\"")
         fp.write("\nvar HOUSE_DATE=\""+HOUSE_DATE + "\"")
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
         fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
@@ -205,7 +205,7 @@ def parseEarning():
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
-        fp.write("\nvar EARNING_DATE=\""+EARNING_DATE + "\"")
+        fp.write("\nvar EARNINGS_DATE=\""+EARNINGS_DATE + "\"")
         fp.write("\nvar HOUSE_DATE=\""+HOUSE_DATE + "\"")
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
         fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
@@ -361,7 +361,7 @@ def createXLS():
 def downloadFileName():
     return 'SEM_data_employment-'+EMP_DATE.replace("/","-")+"_tax-"+ quarter(TAX_DATE) + "_housing-"+ quarter(HOUSE_DATE) +".xls"
 def downloadTabNames():
-    return {"employment":"employment_" + EMP_DATE.replace("/","-"), "earnings":"earnings_" + EARNING_DATE.replace("/","-"),"housing":"housing_" + quarter(HOUSE_DATE),"taxes":"taxes_" + quarter(TAX_DATE)}
+    return {"employment":"employment_" + EMP_DATE.replace("/","-"), "earnings":"earnings_" + EARNINGS_DATE.replace("/","-"),"housing":"housing_" + quarter(HOUSE_DATE),"taxes":"taxes_" + quarter(TAX_DATE)}
 def quarter(d):
     month = d.split("/")[0]
     year = d.split("/")[1]
@@ -370,13 +370,13 @@ def quarter(d):
 
 def parseData():
     parseXlSX("current_employment")
-    parseXlSX("current_earning")
+    parseXlSX("current_earnings")
     parseXlSX("current_tax")
     parseXlSX("current_housing")
     parseTax()
     parseHousing()
     parseEmployment()
-    parseEarning()
+    parseEarnings()
 
     createXLS()
 
