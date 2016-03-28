@@ -1089,7 +1089,7 @@ right:0%;
 
     
 
-    #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_wages_tooltip, #figure_wages-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
+    #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_earnings_tooltip, #figure_earnings-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
         
        border-bottom-color: #e1e1e1;
     border-bottom-style: solid;
@@ -1101,7 +1101,7 @@ right:0%;
         margin-bottom: 10px;     
 }
 
-.mobile [id$=_plot], #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_wages_tooltip, #figure_wages-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
+.mobile [id$=_plot], #figure_unemployment_tooltip, #figure_nonfarm-employment_tooltip, #figure_earnings_tooltip, #figure_earnings-change_tooltip, #figure_house-prices_tooltip, #figure_total-taxes_tooltip,  #figure_sales-taxes_tooltip, #figure_income-taxes_tooltip, #figure_corporate-taxes_tooltip{
     
   border-bottom-color: #e1e1e1;
   border-bottom-style: solid;
@@ -1370,13 +1370,13 @@ option{
 
 
 
-#figure_unemployment_mobile-select, #figure_nonfarm-employment_mobile-select, #figure_wages_mobile-select, #figure_wages-change_mobile-select, #figure_house-prices_mobile-select, #figure_total-taxes_mobile-select,  #figure_sales-taxes_mobile-select, #figure_income-taxes_mobile-select, #figure_corporate-taxes_mobile-select {
+#figure_unemployment_mobile-select, #figure_nonfarm-employment_mobile-select, #figure_earnings_mobile-select, #figure_earnings-change_mobile-select, #figure_house-prices_mobile-select, #figure_total-taxes_mobile-select,  #figure_sales-taxes_mobile-select, #figure_income-taxes_mobile-select, #figure_corporate-taxes_mobile-select {
 padding-top:20px;
     
 }
 
 
-#figure_unemployment_mobile-bar, #figure_nonfarm-employment_mobile-bar, #figure_wages_mobile-bar, #figure_wages-change_mobile-bar, #figure_house-prices_mobile-bar, #figure_total-taxes_mobile-bar, #figure_sales-taxes_mobile-bar, #figure_income-taxes_mobile-bar, #figure_corporate-taxes_mobile-bar{
+#figure_unemployment_mobile-bar, #figure_nonfarm-employment_mobile-bar, #figure_earnings_mobile-bar, #figure_earnings-change_mobile-bar, #figure_house-prices_mobile-bar, #figure_total-taxes_mobile-bar, #figure_sales-taxes_mobile-bar, #figure_income-taxes_mobile-bar, #figure_corporate-taxes_mobile-bar{
  height:115px;
     
 }

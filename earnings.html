@@ -70,7 +70,7 @@
                                         <ul id="menu">
                                             <a href="index.html"><li class="mobile-menu">Home</li></a>
                                        <a href="employment.html"> <li>Employment</li></a>
-                                         <a href="wages.html"> <li class="active">Wages</li></a>
+                                         <a href="earnings.html"> <li class="active">Earnings</li></a>
                                           <a href="housing.html"> <li>Housing</li></a>
                                            <a href="taxes.html"> <li>Taxes</li></a>
                                             <a href="historical.html"> <li>Historical</li></a>
@@ -89,7 +89,7 @@
                  <div class="container">
 
 
-                      <h2>Wages</h2>
+                      <h2>Earnings</h2>
                      <hr>
 
                 <div class="introSectionText">
@@ -103,7 +103,7 @@ Tracking monthly state data on average weekly earnings for all US private employ
       <section class="section25">
 
               <div class="container">
-                 <div id = "figure_wages"></div>
+                 <div id = "figure_earnings"></div>
 
                             <div class="explainerText"><p>National weekly earnings for all US private employees averaged $878 in January 2016. Among the 50 states, average earnings ranged from $675 in Arkansas to $1,048 in Massachusetts. As is typical, the District of Columbia's (DC) average weekly earnings ($1,287) were higher than all the states. Thirty-six states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, Mississippi ($685), New Mexico ($689), Montana ($711), and West Virginia ($715). Texas's average weekly earnings ($878) were the same as the national average; earnings in North Dakota ($888), Minnesota ($890), and New Hampshire ($860) were the next closest to the national average. After DC and Massachusetts, the highest average earnings were in Washington ($1,032), Connecticut ($1,006), New York ($976), and California ($971).</p>                                   <div class="download">   <a href="#">Download Data</a></div>
                             </div><!--close expalinerText -->
@@ -122,7 +122,7 @@ Tracking monthly state data on average weekly earnings for all US private employ
 
                  <div class="container">
 
-                          <div id = "figure_wages-change"></div>
+                          <div id = "figure_earnings-change"></div>
 
                             <div class="explainerText"><p>National real (inflation-adjusted) average weekly earnings in February 2016 were 0.6 percent higher than in February 2015. It was the first month that year-over-year earnings growth was less than 1.0 percent <a href = "http://apps.urban.org/features/state-economic-monitor/historical.html" target="_blank">since October 2014</a>. Thirty-five states and DC had real average weekly earnings fall over the past year. The largest year-over-year decreases were in DC (-13.1 percent),  Wyoming (-7.5 percent), and Texas (-5.0 percent). Six other states also had average earnings decline 3.0 percent or more. The largest increase in real average earnings were in Delaware (6.5 percent), New Hampshire (3.4 percent), and Connecticut (2.2 percent).  Only three other states also had earnings growth greater than 1.0 percent: Massachusetts, Tennessee, and West Virginia. </p>
 
@@ -179,16 +179,16 @@ new Headroom(header, {
     <script> $(document).ready(function() {
       var dates =   dates = [["",""],["Jan", "January"], ["Feb", "February"], ["Mar","March"],["Apr","April"],["May","May"],["June","June"],["Jul","July"],["Aug","August"],["Sept","September"],["Oct","October"],["Nov","November"],["Dec","December"]]
 
-      var month = dates[parseInt(DOWNLOAD_TAB_NAME.wages.split("_")[1].split("-")[0])][0]
+      var month = dates[parseInt(DOWNLOAD_TAB_NAME.earnings.split("_")[1].split("-")[0])][0]
 
-      var pdfName = DOWNLOAD_TAB_NAME.wages.replace(/\_\d+\-/g,month).replace("20","")
+      var pdfName = DOWNLOAD_TAB_NAME.earnings.replace(/\_\d+\-/g,month).replace("20","")
       console.log(pdfName)
       d3.selectAll(".pdfDownload")
         .attr("href", "archive/" + pdfName + ".pdf")
 
 
       d3.selectAll(".download a")
-      .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.wages + "!A1")
+      .attr("href","data/download/" + DOWNLOAD_FILE_NAME + "#" + DOWNLOAD_TAB_NAME.earnings + "!A1")
     $('.hover').bind('touchstart touchend', function(e) {
         e.preventDefault();
         $(this).toggleClass('hover_effect');

@@ -27,7 +27,7 @@ def upload():
     file = request.files['file']
     sheet = request.args.get('sheet', '', type=str)
     # print sheet
-    if(sheet=="employment" or sheet=="wage" or sheet=="housing" or sheet=="tax"):
+    if(sheet=="employment" or sheet=="earning" or sheet=="housing" or sheet=="tax"):
       file.save("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx")
       copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/data/source/previous_releases/" + file.filename)
       copy2("/var/www/apps.urban.org/semApp/data/source/" + "current_" + sheet + ".xlsx", "/var/www/apps.urban.org/semApp/static/data/source/"+ "current_" + sheet + ".xlsx")
@@ -40,7 +40,7 @@ def upload():
 @app.route('/add', methods=["POST", "GET"])
 def update_SEM():
   # new_config = {}
-  figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]]
+  figures = [["earnings",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]]
   with open('/var/www/apps.urban.org/semApp/static/config.json') as config_file:
     old_config = json.load(config_file)
   new_config = request.json
@@ -49,10 +49,10 @@ def update_SEM():
   # amount = request.args.get('amount', '', type=str)
 
   def replaceText(old, new):
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/wages.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/earnings.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
-    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/wages_preview.html", inplace=1):
+    for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/earnings_preview.html", inplace=1):
       line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
       print line
 
@@ -119,7 +119,7 @@ def update_SEM():
   f.write(json.dumps(new_config, indent=4, sort_keys=True).encode("utf8"))
   f.close();
   
-  os.system("/usr/bin/python /var/www/apps.urban.org/semApp/reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["wages"]["date"] + " " + new_config["housing"]["date"])
+  os.system("/usr/bin/python /var/www/apps.urban.org/semApp/reshape_data.py " + new_config["employment"]["date"] + " " + new_config["taxes"]["date"] + " " + new_config["earnings"]["date"] + " " + new_config["housing"]["date"])
   os.system("/usr/bin/python /var/www/apps.urban.org/semApp/reshape_historical.py")
   
   dates = [("",""),("Jan", "January"), ("Feb", "February"), ("Mar","March"),("Apr","April"),("May","May"),("June","June"),("Jul","July"),("Aug","August"),("Sept","September"),("Oct","October"),("Nov","November"),("Dec","December")]
@@ -147,21 +147,21 @@ def update_SEM():
       print line
 
 
-  wageName = dates[int(new_config["wages"]["date"].split("/")[0])][0] + new_config["wages"]["date"][-2:]
-  fullwageName = dates[int(new_config["wages"]["date"].split("/")[0])][1] + " \'" + new_config["wages"]["date"][-2:]
-  os.system("/usr/bin/depict http://sem.urban.org/wages.html --delay 5000 -H .pdfhide /var/www/apps.urban.org/semApp/archive/wages" +wageName+ ".pdf")
-  if new_config["wages"]["date"] != old_config["wages"]["date"]:
-    oldArchive = "<!-- NEW WAGES HERE -->"
+  earningName = dates[int(new_config["earnings"]["date"].split("/")[0])][0] + new_config["earnings"]["date"][-2:]
+  fullearningName = dates[int(new_config["earnings"]["date"].split("/")[0])][1] + " \'" + new_config["earnings"]["date"][-2:]
+  os.system("/usr/bin/depict http://sem.urban.org/earnings.html --delay 5000 -H .pdfhide /var/www/apps.urban.org/semApp/archive/earnings" +earningName+ ".pdf")
+  if new_config["earnings"]["date"] != old_config["earnings"]["date"]:
+    oldArchive = "<!-- NEW EARNINGS HERE -->"
     newArchive = oldArchive + "\n" \
-    + "<li class=\"archiveMonth\"><a href=\"archive/wages" + wageName\
-    + ".pdf\" target=\"_blank\">" + fullwageName\
+    + "<li class=\"archiveMonth\"><a href=\"archive/earnings" + earningName\
+    + ".pdf\" target=\"_blank\">" + fullearningName\
     +"</a></li>"
     for line in fileinput.input("/var/www/apps.urban.org/semApp/archive.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newArchive.encode("utf8")).rstrip()
       print line
     newPreview = oldArchive + "\n" \
-    + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/wages" + wageName\
-    + ".pdf\" target=\"_blank\">" + fullwageName\
+    + "<li class=\"archiveMonth\"><a href=\"http://sem.urban.org/archive/earnings" + earningName\
+    + ".pdf\" target=\"_blank\">" + fullearningName\
     +"</a></li>"
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/archive_preview.html", inplace=1):
       line = line.replace(oldArchive.encode("utf8"), newPreview.encode("utf8")).rstrip()
@@ -223,9 +223,9 @@ def preview():
 @app.route('/employment.html')
 def employment():
   return render_template('employment_preview.html')
-@app.route('/wages.html')
-def wages():
-  return render_template('wages_preview.html')
+@app.route('/earnings.html')
+def earnings():
+  return render_template('earnings_preview.html')
 @app.route('/taxes.html')
 def taxes():
   return render_template('taxes_preview.html')

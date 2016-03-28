@@ -56,7 +56,7 @@
   }
 
   d3.json("{{ url_for('static', filename='config.json') }}", function(data) {
-    var   figures = [["wages",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]];
+    var   figures = [["earnings",["AWW","AWWChg"]], ["employment",["UNEMP", "Figure1", "EMP", "Figure2"]], ["housing",["HPChgYr","Figure3"]], ["taxes",["TOTAL","INC","CORPINC","SALES"]]];
     for(var i=0; i<figures.length; i++){
       writeDate(figures[i][0], data);
       for(var j=0; j<figures[i][1].length; j++){
@@ -85,7 +85,7 @@
       var today = new Date();
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       var dateUpdated = "Last Updated " + months[today.getMonth()] + " " + today.getFullYear()
-      var config = {"dateUpdated": dateUpdated, "wages":{  "date": getDate("wages"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } }, "housing":{ "date": getDate("housing"), "HPChgYr":{ "text" : getText("HPChgYr"), "breaks":getBreaks("HPChgYr")} , "Figure3":{ "text": getText("Figure3") } }, "taxes":{ "date": getDate("taxes"), "TOTAL": { "text": getText("TOTAL"), "breaks": getBreaks("TOTAL")}, "INC": { "text": getText("INC"), "breaks": getBreaks("INC")}, "CORPINC": { "text": getText("CORPINC"), "breaks": getBreaks("CORPINC")}, "SALES": { "text": getText("SALES"), "breaks": getBreaks("SALES") }}}
+      var config = {"dateUpdated": dateUpdated, "earnings":{  "date": getDate("earnings"), "AWW":{ "text": getText("AWW"), "breaks":getBreaks("AWW")  } , "AWWChg":{ "text": getText("AWWChg"), "breaks":getBreaks("AWWChg")  } }, "employment":{  "date": getDate("employment"), "UNEMP":{ "text": getText("UNEMP"), "breaks":getBreaks("UNEMP")  } , "EMP":{ "text": getText("EMP"), "breaks":getBreaks("EMP")  }, "Figure1":{ "text": getText("Figure1")  }, "Figure2":{ "text": getText("Figure2") } }, "housing":{ "date": getDate("housing"), "HPChgYr":{ "text" : getText("HPChgYr"), "breaks":getBreaks("HPChgYr")} , "Figure3":{ "text": getText("Figure3") } }, "taxes":{ "date": getDate("taxes"), "TOTAL": { "text": getText("TOTAL"), "breaks": getBreaks("TOTAL")}, "INC": { "text": getText("INC"), "breaks": getBreaks("INC")}, "CORPINC": { "text": getText("CORPINC"), "breaks": getBreaks("CORPINC")}, "SALES": { "text": getText("SALES"), "breaks": getBreaks("SALES") }}}
       $.ajax({
         type: 'POST',
         url: '/add',
@@ -133,19 +133,19 @@ if(win){
         });
     });
 
-    $('#file-wages-button').change(function() {
-        var form_data = new FormData($('#upload-wages')[0]);
+    $('#file-earnings-button').change(function() {
+        var form_data = new FormData($('#upload-earnings')[0]);
         $.ajax({
             type: 'POST',
-            url: '/upload?sheet=wage',
+            url: '/upload?sheet=earning',
             data: form_data,
             contentType: false,
             cache: false,
             processData: false,
             // async: false,
             success: function(data) {
-                $("#wages-status")
-                  .text("Wage data uploaded")
+                $("#earnings-status")
+                  .text("Earnings data uploaded")
 
             },
         });
@@ -232,18 +232,18 @@ if(win){
             },
         });
     });
-    $('#file-wages_historical-button').change(function() {
-        var form_data = new FormData($('#upload-wages_historical')[0]);
+    $('#file-earnings_historical-button').change(function() {
+        var form_data = new FormData($('#upload-earnings_historical')[0]);
         $.ajax({
             type: 'POST',
-            url: '/upload?sheet=wages_historical',
+            url: '/upload?sheet=earnings_historical',
             data: form_data,
             contentType: false,
             cache: false,
             processData: false,
             success: function(data) {
-                $("#wages_historical-status")
-                  .text("Historical wage data uploaded")
+                $("#earnings_historical-status")
+                  .text("Historical earnings data uploaded")
 
             },
         });
@@ -348,7 +348,7 @@ if(win){
     <ul class="tab-links">
         <li class="active"><a href="#tab1">Upload Data</a></li>
         <li><a href="#tab2">Employment</a></li>
-        <li><a href="#tab3">Wages</a></li>
+        <li><a href="#tab3">Earnings</a></li>
         <li><a href="#tab4">Housing</a></li>
         <li><a href="#tab5">Taxes</a></li>
         <li><a href="#tab6">Update</a></li>
@@ -366,13 +366,13 @@ if(win){
       </form>
       <div class = "status" id ="employment-status"></div>
 
-      <h2>Wages: data file</h2>
-      <form id="upload-wages" method="post" enctype="multipart/form-data">
+      <h2>Earnings: data file</h2>
+      <form id="upload-earnings" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input id = "file-wages-button" name="file" type="file">
+              <input id = "file-earnings-button" name="file" type="file">
           </fieldset>
       </form>
-      <div class = "status" id ="wages-status"></div>
+      <div class = "status" id ="earnings-status"></div>
     </div>
     <div id = "upload_right">
       <h2>Housing: data file</h2>
@@ -420,12 +420,12 @@ if(win){
       <div class = "status" id ="gov_employment_historical-status"></div>
 
       <h2>Real Average Weekly Earnings: historical data file</h2>
-      <form id="upload-wages_historical" method="post" enctype="multipart/form-data">
+      <form id="upload-earnings_historical" method="post" enctype="multipart/form-data">
           <fieldset>
-              <input id = "file-wages_historical-button" name="file" type="file">
+              <input id = "file-earnings_historical-button" name="file" type="file">
           </fieldset>
       </form>
-      <div class = "status" id ="wages_historical-status"></div>
+      <div class = "status" id ="earnings_historical-status"></div>
 
 
       <h2>House Prices: historical data file</h2>
@@ -501,7 +501,7 @@ if(win){
 
   <div id="tab3" class="tab">
     <label><span class = "required">REQUIRED</span> Month <em>(MM YYYY) </em>:</label>
-    <input type=text class = "month" name="wages-month" maxlength="2"></input><input class = "year" type=text name="wages-year" maxlength="4"></input>
+    <input type=text class = "month" name="earnings-month" maxlength="2"></input><input class = "year" type=text name="earnings-year" maxlength="4"></input>
     <br>
 
     <h3>Average Weekly Earnings, Private Employment</h3>

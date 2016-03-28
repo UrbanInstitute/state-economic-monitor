@@ -30,8 +30,8 @@ function drawMapFigure(dataID, config, print){
     else if(config["tab"] == "employment"){
       dateUpdated = EMP_DATE;
     }
-    else if(config["tab"] == "wages"){
-      dateUpdated = WAGE_DATE;
+    else if(config["tab"] == "earnings"){
+      dateUpdated = EARNINGS_DATE;
     }
     else if(config["tab"] == "housing"){
       dateUpdated = HOUSE_DATE;

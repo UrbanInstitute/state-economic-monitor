@@ -128,8 +128,8 @@ var semConfig = {
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWW":	{
-					"id": "figure_wages",
-					"tab": "wages",
+					"id": "figure_earnings",
+					"tab": "earnings",
 					"title": "Average Weekly Earnings, Private Employment",
 					"short-label": "EARNINGS",
 					"date-format": "month",
@@ -141,8 +141,8 @@ var semConfig = {
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
-					"id": "figure_wages-change",
-					"tab": "wages",
+					"id": "figure_earnings-change",
+					"tab": "earnings",
 					"title": "Changes in Real Average Weekly Earnings, Private Employment",
 					"short-label": "CHANGE",
 					"date-format": "month",
