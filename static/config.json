@@ -1,5 +1,30 @@
 {
     "dateUpdated": "Last Updated March 2016", 
+    "earnings": {
+        "AWW": {
+            "breaks": [
+                650, 
+                725, 
+                800, 
+                875, 
+                950, 
+                1310
+            ], 
+            "text": "National weekly earnings for all US private employees averaged $878 in January 2016. Among the 50 states, average earnings ranged from $675 in Arkansas to $1,048 in Massachusetts. As is typical, the District of Columbia's (DC) average weekly earnings ($1,287) were higher than all the states. Thirty-six states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, Mississippi ($685), New Mexico ($689), Montana ($711), and West Virginia ($715). Texas's average weekly earnings ($878) were the same as the national average; earnings in North Dakota ($888), Minnesota ($890), and New Hampshire ($860) were the next closest to the national average. After DC and Massachusetts, the highest average earnings were in Washington ($1,032), Connecticut ($1,006), New York ($976), and California ($971)."
+        }, 
+        "AWWChg": {
+            "breaks": [
+                -15, 
+                -3, 
+                -1, 
+                0, 
+                1, 
+                10
+            ], 
+            "text": "National real (inflation-adjusted) average weekly earnings in February 2016 were 0.6 percent higher than in February 2015. It was the first month that year-over-year earnings growth was less than 1.0 percent <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">since October 2014</a>. Thirty-five states and DC had real average weekly earnings fall over the past year. The largest year-over-year decreases were in DC (-13.1 percent),  Wyoming (-7.5 percent), and Texas (-5.0 percent). Six other states also had average earnings decline 3.0 percent or more. The largest increase in real average earnings were in Delaware (6.5 percent), New Hampshire (3.4 percent), and Connecticut (2.2 percent).  Only three other states also had earnings growth greater than 1.0 percent: Massachusetts, Tennessee, and West Virginia. "
+        }, 
+        "date": "2/2016"
+    }, 
     "employment": {
         "EMP": {
             "breaks": [
@@ -94,30 +119,5 @@
             "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 4.5 percent in the year ending in the fourth quarter of 2015 compared with one year earlier. Total tax revenue increased over the past year in 41 states and the District of Columbia (DC). Of the nine states with revenue losses, eight (Alaska, Louisiana, New Mexico, North Dakota, Oklahoma, Texas, West Virginia, and Wyoming) rely on natural resource extraction. The average price of oil in 2015 was half the price it was in 2014, severely affecting energy states. Related, Alaska, Louisiana, North Dakota, Oklahoma, West Virginia, and Wyoming were the only six states with <a href = \"http://apps.urban.org/features/state-economic-monitor/employment.html\">total unemployment declines</a> over the past year. The largest revenue decline was in Alaska (-64.9 percent). Illinois, which <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\">reduced its income tax rate</a> in January 2015, was the only non-resource-dependent state with a revenue decline. Meanwhile, Iowa\u2019s 15.8 percent total tax revenue increase over the year was the largest of any state. The state saw substantial revenue growth from both its general sales tax and individual income tax\u2014neither tax was substantially changed by law in the past two years. Iowa did <a href = \"https://tax.iowa.gov/iowa-fuel-tax-rate-changes-effective-july-1-2015\">raise its motor fuel taxes</a> in summer 2015 and consequently collected more revenue (but not as much new revenue as from the sales and income tax over the year). The next highest growth was in 11.9 percent in both Delaware and North Carolina. Overall, total tax revenue grew more than 5 percent in 24 states and DC."
         }, 
         "date": "12/2015"
-    }, 
-    "earnings": {
-        "AWW": {
-            "breaks": [
-                650, 
-                725, 
-                800, 
-                875, 
-                950, 
-                1310
-            ], 
-            "text": "National weekly earnings for all US private employees averaged $878 in January 2016. Among the 50 states, average earnings ranged from $675 in Arkansas to $1,048 in Massachusetts. As is typical, the District of Columbia's (DC) average weekly earnings ($1,287) were higher than all the states. Thirty-six states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, Mississippi ($685), New Mexico ($689), Montana ($711), and West Virginia ($715). Texas's average weekly earnings ($878) were the same as the national average; earnings in North Dakota ($888), Minnesota ($890), and New Hampshire ($860) were the next closest to the national average. After DC and Massachusetts, the highest average earnings were in Washington ($1,032), Connecticut ($1,006), New York ($976), and California ($971)."
-        }, 
-        "AWWChg": {
-            "breaks": [
-                -15, 
-                -3, 
-                -1, 
-                0, 
-                1, 
-                10
-            ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in February 2016 were 0.6 percent higher than in February 2015. It was the first month that year-over-year earnings growth was less than 1.0 percent <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">since October 2014</a>. Thirty-five states and DC had real average weekly earnings fall over the past year. The largest year-over-year decreases were in DC (-13.1 percent),  Wyoming (-7.5 percent), and Texas (-5.0 percent). Six other states also had average earnings decline 3.0 percent or more. The largest increase in real average earnings were in Delaware (6.5 percent), New Hampshire (3.4 percent), and Connecticut (2.2 percent).  Only three other states also had earnings growth greater than 1.0 percent: Massachusetts, Tennessee, and West Virginia. "
-        }, 
-        "date": "2/2016"
     }
 }
