@@ -306,7 +306,7 @@ function drawHistorical(){
   drawGraphic("housing_historical")
   drawGraphic("total_employment_historical")
   drawGraphic("unemployment_historical")
-  drawGraphic("wages_historical")
+  drawGraphic("earnings_historical")
 }
 drawHistorical();
 window.onresize = drawHistorical;
@@ -340,5 +340,5 @@ checkReady("gov_employment_historical")
 checkReady("housing_historical")
 checkReady("total_employment_historical")
 checkReady("unemployment_historical")
-checkReady("wages_historical")
+checkReady("earnings_historical")
 
