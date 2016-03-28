@@ -195,7 +195,7 @@ def parseEarnings():
         fp.write(json.dumps(figureData, sort_keys=False))
         fp.write("\nvar EMP_DATE=\""+EMP_DATE + "\"")
         fp.write("\nvar TAX_DATE=\""+TAX_DATE + "\"")
-        fp.write("\nvar EARNINGS_DATE=\""+EARNING_DATE + "\"")
+        fp.write("\nvar EARNINGS_DATE=\""+EARNINGS_DATE + "\"")
         fp.write("\nvar HOUSE_DATE=\""+HOUSE_DATE + "\"")
         fp.write("\nvar DOWNLOAD_FILE_NAME=\""+downloadFileName() + "\"")
         fp.write("\nvar DOWNLOAD_TAB_NAME="+json.dumps(downloadTabNames()))
