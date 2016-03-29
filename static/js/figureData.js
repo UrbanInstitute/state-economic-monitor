@@ -4,4 +4,4 @@ var TAX_DATE="12/2015"
 var EARNINGS_DATE="2/2016"
 var HOUSE_DATE="12/2015"
 var DOWNLOAD_FILE_NAME="SEM_data_employment-2-2016_tax-Q4-2015_housing-Q4-2015.xls"
-var DOWNLOAD_TAB_NAME={"earnings": "earnings_2-2016", "employment": "employment_2-2016", "housing": "housing_Q4-2015", "taxes": "taxes_Q4-2015"}
+var DOWNLOAD_TAB_NAME={"housing": "housing_Q4-2015", "employment": "employment_2-2016", "earnings": "earnings_2-2016", "taxes": "taxes_Q4-2015"}
