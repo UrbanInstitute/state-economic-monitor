@@ -885,6 +885,9 @@ rect.states{
 .grid-line{
   stroke: #cccccc;
 }
+.grid-line.zero{
+  stroke: #333333;
+}
 /*this is keeping the index page secondary menu labels in the center*/
 @media (min-width:768px) and (max-width:1000px){
  #imageone p, #imagethree p, #imagetwo p, #imagefour p{ top:100px;}   
