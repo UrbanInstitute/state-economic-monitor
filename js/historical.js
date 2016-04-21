@@ -135,11 +135,11 @@ dispatch.on("focus", function(dataID, state, month, year){
   d3.select("section." + dataID + " .usa-text").text(PERCENT(usa) + "%")
 })
 
-d3.selectAll("select")
+d3.selectAll("body.historical select")
   .on("click", function(){ d3.event.stopPropagation()})
 d3.selectAll(".value-text")
   .on("click", function(){ d3.event.stopPropagation()})
-d3.selectAll("select")
+d3.selectAll("body.historical select")
   .on("change", function(){
     var dataID = $(this).closest("section").find(".linePlot").attr("id")
     var state = d3.select("section." + dataID + " .historical_state").node().value

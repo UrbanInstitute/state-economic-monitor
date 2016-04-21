@@ -431,6 +431,7 @@ function drawMapFigure(dataID, config, print){
 var barSvg, barXAxis, barBase;
 
   function drawBars(){
+    console.log(slice)
     var $graphic = $("#"+containerID + "_bar-chart");
 
     var aspect_width = 41;
