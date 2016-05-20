@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated April 2016", 
+    "dateUpdated": "Last Updated May 2016", 
     "earnings": {
         "AWW": {
             "breaks": [
@@ -23,7 +23,7 @@
             ], 
             "text": "National real (inflation-adjusted) average weekly earnings in February 2016 were 1.1 percent higher than in March 2015. Thirty-five states and DC had real average weekly earnings fall over the past year. The largest year-over-year decreases were in DC (-12.3 percent) and Wyoming (-7.2 percent). Sixteen other states also had average earnings declines of 2.0 percent or more. The largest increase in real average earnings was in Delaware (6.6 percent). The next largest increase was in Tennessee (2.1 percent). Six other states had year-over-year increases of 1.0 percent or more: Connecticut, Massachusetts, New Hampshire, North Carolina, Oregon, and West Virginia.  "
         }, 
-        "date": "3/2016"
+        "date": "04/2016"
     }, 
     "employment": {
         "EMP": {
@@ -54,7 +54,7 @@
             ], 
             "text": "The national unemployment rate was 5.0 percent in March 2016. Alaska\u2019s unemployment rate (6.6 percent) was the highest of any state. Six additional states (Alabama, Illinois, Louisiana, Mississippi, New Mexico, and West Virginia) and the District of Columbia (DC) had March unemployment rates above 6.0 percent. South Dakota had the lowest unemployment rate (2.5 percent). The rate was also below 3.0 percent in New Hampshire (2.6 percent) and Colorado (2.9 percent). Ten other states had rates under 4.0 percent: Hawaii, Idaho, Iowa, Kansas, Maine, Minnesota, Nebraska, North Dakota, Utah, and Vermont."
         }, 
-        "date": "3/2016"
+        "date": "4/2016"
     }, 
     "housing": {
         "Figure3": {
