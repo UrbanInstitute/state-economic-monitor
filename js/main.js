@@ -26,6 +26,10 @@ function drawMapFigure(dataID, config, print){
     else if(config["tab"] == "housing"){
       dateUpdated = HOUSE_DATE;
     }
+    if(d3.select("#emp_note_date").node() != null){
+      d3.select("#emp_note_date")
+        .text(function(){ return MONTHNAMES[parseInt(EMP_DATE.split("/")[0])-1] + " " + EMP_DATE.split("/")[1] })
+    }
     var containerID = config.id
     var slice = figureData[dataID]["data"]
     var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
@@ -108,7 +112,6 @@ function drawMapFigure(dataID, config, print){
     var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value;
     
     var getWidth = function(val){
-      // console.log(  parseFloat($("#" + containerID + "_mobile-bar").width())   )
       return parseFloat($("#" + containerID + "_mobile-bar").width()) * parseFloat(val)/parseFloat(widthVal);
     }
 
@@ -141,7 +144,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "percentage points"){ return formatter(maxVal) + "percentage points"}
       })
       .attr("class","amount")
-      .style("left",function(){ console.log(maxVal); return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
+      .style("left",function(){ return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
@@ -431,7 +434,6 @@ function drawMapFigure(dataID, config, print){
 var barSvg, barXAxis, barBase;
 
   function drawBars(){
-    console.log(slice)
     var $graphic = $("#"+containerID + "_bar-chart");
 
     var aspect_width = 41;
@@ -1229,7 +1231,6 @@ function drawScatterPlot(config, print){
             d3.selectAll(".usa-text_" + config.x.id).classed("text-highlight", true)
             d3.selectAll(".usa-text_" + config.y.id).classed("text-highlight", true)
             d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",true)
-            console.log(d3.select("#"+containerID + "_tooltip " + ".tooltip-usa-average"))
           }
           else{
             d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",false)
@@ -1307,7 +1308,6 @@ function parseConfigText(config, dataID, text, dateUpdated, usAvg){
       datePrevious = MONTHNAMES[month - 1] + " " + prevYear
     }
     else if (configFormat == "quarter"){
-      console.log(month, dateUpdated, conf, dID)
       dateUpdated = "the " + getQuarter(month).toLowerCase() + " quarter of " + year
       datePrevious = "the " + getQuarter(month).toLowerCase() + " quarter of " + prevYear
     }
@@ -1404,7 +1404,6 @@ function drawGraphic(){
   $.each(semConfig.ScatterPlots, function(figureName, config) {
       drawScatterPlot(config, false)
   });
-
   d3.select("body")
   .classed("small_screen",SMALL_SCREEN)
   .classed("mobile",MOBILE)

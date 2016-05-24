@@ -36,6 +36,10 @@ function drawMapFigure(dataID, config, print){
     else if(config["tab"] == "housing"){
       dateUpdated = HOUSE_DATE;
     }
+    if(d3.select("#emp_note_date").node() != null){
+      d3.select("#emp_note_date")
+        .text(function(){ return MONTHNAMES[parseInt(EMP_DATE.split("/")[0])-1] + " " + EMP_DATE.split("/")[1] })
+    }
     var containerID = config.id
     var slice = figureData[dataID]["data"]
     var minIn = Math.min.apply(Math,slice.map(function(o){return parseVal(o.value,"draw");}))
