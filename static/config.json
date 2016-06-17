@@ -8,40 +8,40 @@
                 800, 
                 875, 
                 950, 
-                1450
+                1350
             ], 
-            "text": "National weekly earnings for all US private employees averaged $880 in May 2016. Among the 50 states, average earnings ranged from $687 in both Arkansas and New Mexico to $1,072 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states ($1,412). Thirty-six states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, New Mexico, Mississippi ($707), West Virginia ($726), and South Dakota ($737). Average weekly earnings in Georgia ($878) and New Hampshire ($871) were closest to the national average. After DC and Washington, the highest average earnings were in Massachusetts ($1,047), Connecticut ($1,042), California ($1,010), and New York ($983)."
+            "text": "National weekly earnings for all US private employees averaged $881 in April 2016. Among the 50 states, average earnings ranged from $678 in Arkansas to $1,042 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than all states ($1,337). Thirty-seven states had average weekly earnings below the national average. Average earnings were lowest in Arkansas, Mississippi ($686), New Mexico ($689), South Dakota ($724), and Montana ($726). Average weekly earnings in North Dakota ($884), Texas ($868), New Hampshire ($861), and Illinois ($901) were closest to the national average. After DC and Washington, the highest average earnings were in Massachusetts ($1,040), Connecticut ($1,021), and California ($980)."
         }, 
         "AWWChg": {
             "breaks": [
-                -6, 
+                -8, 
+                -1, 
                 0, 
                 2, 
                 4, 
-                6, 
-                9
+                8
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in May 2016 were 1.2 percent higher than in May 2015. The largest decline in real earnings was in Wyoming (-5.9 percent). The next-largest decline was in New Mexico (-2.0 percent). Only four other states had real average weekly earnings fall over the past year: Alaska, Kansas, Kentucky, and Michigan. The largest increases in real average earnings were in Delaware (8.4 percent), Connecticut (8.0 percent), and Oregon (7.9 percent). Seven other states had increases in real earnings greater than 5.0 percent: Alabama, Georgia, Minnesota, Nebraska, North Carolina, Tennessee, and Washington. "
+            "text": "National real (inflation-adjusted) average weekly earnings in April 2016 were 1.3 percent higher than in April 2015. Sixteen states and DC had real average weekly earnings fall over the past year. The largest year-over-year decreases were in Wyoming (-8.0 percent) and DC (-4.3 percent). Five other states also had average earnings declines of over 1.0 percent. The largest increase in real average earnings was in Delaware (7.8 percent). The next largest increase was in Alabama (5.0 percent). Eight other states had year-over-year increases of 3.0 percent or more: Montana, Iowa, Tennessee, Washington, North Carolina, Nebraska, Oregon, and Connecticut.  "
         }, 
-        "date": "04/2016"
+        "date": "05/2016"
     }, 
     "employment": {
         "EMP": {
             "breaks": [
-                -4, 
+                -5, 
                 0, 
                 1, 
                 2, 
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from May 2015 to May 2016. The largest employment drops were in North Dakota (-3.4 percent) and Wyoming (-3.0 percent). Total employment  <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">decreased over the past year</a> in both states as the price of natural resources plummeted. Three other energy states saw employment decline over the past year: Alaska, Louisiana, and Oklahoma. Kansas was the only non-resource-dependent state to lose jobs. The largest increase in total employment was in Oregon (3.4 percent). Total employment also grew 3.0 percent or more over the past 12 months in four other states: Florida, Idaho, Utah, and Washington."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.9 percent from April 2015 to April 2016. Despite having one of the lowest unemployment rates, total employment decreased the most in North Dakota (-3.8 percent). Total employment decreased in five other states: Wyoming (-3.7 percent), Alaska (-1.0 percent), West Virginia and Louisiana (both -0.6 percent), and Oklahoma (-0.1 percent). Notably, all of these states rely on natural resource extraction, and all of them have <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">seen employment decreases over the past few months</a>. The largest increase in total employment was in Idaho (3.8 percent). Total employment also grew 3.0 percent or more over the past 12 months in seven other states: Delaware, Oregon, Utah, Washington, Georgia, Florida, and Arizona."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.8 percentage points between May 2015 and May 2016. The rate increased 1.4 percentage points in Wyoming, the greatest increase of any state over the year. The next largest rate increase was in Illinois (0.5 percentage points). The unemployment rate increased over the year in 13 other states:  Alaska, Connecticut, Indiana, Iowa, Minnesota, Montana, Nebraska, North Dakota, Ohio, Oklahoma, Pennsylvania, Utah, and Washington. Among states with an increase, two had a May 2016 unemployment rate above 6.0 percent (Alaska and Illinois), but five had a rate below 4.0 percent (Iowa, Minnesota, Nebraska, North Dakota, and Utah). The largest drops in year-over-year unemployment rate were in Tennessee (-1.7 percentage points) and Arkansas (-1.6 percentage points). Three other states (California, Maine, and Oregon) saw their unemployment rate drop 1.0 percentage point or more over the year. Among those states, only California still had a May 2016 unemployment rate above 5.0 percent."
+            "text": "The national unemployment rate fell 0.4 percentage points between April 2015 and April 2016. The rate increased 1.4 percentage points in Wyoming, the greatest increase of any state over the year, reflecting continued weakness in energy markets. The next largest rate increase was in Illinois (0.7 percentage points). Among the states with an increased unemployment rate over the year, only two had an April rate above 6.0 percent (Illinois and Alaska) but five had a rate below 4.0 percent (North Dakota, Utah, Iowa, Minnesota, and Nebraska). The largest drop in year-over-year unemployment rate was in Arkansas and Tennessee (-1.6 percentage points). Seven other states saw their unemployment rate drop 1.0 percentage points or more over the year: Rhode Island, New Hampshire, Maine, Nevada, California, Oregon, and New Jersey."
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.5 percent from May 2015 to May 2016. Public employment decreased over the year in 11 states, led by New Hampshire (-2.8 percent), Missouri (-1.3 percent), Kentucky (-1.2 percent), and Louisiana (-1.0 percent). Of these four states, only Louisiana also had a decline in total employment (-0.9 percent). The largest increase in public employment was in West Virginia (7.0 percent). Looking at <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">historical data</a>, it\u2019s clear West Virginia\u2019s public employment spikes and drops in May of each year depending on whether or not a primary election is held (the state\u2019s primary this year was May 10). Seven other states and DC saw public employment increase 2.0 percent or more over the year: California, Colorado, DC, North Dakota, Oregon, Texas, Utah, and Washington. All of states with a public-sector employment increase of 2 percent or more, also had total employment increase 2.0 percent or more except for North Dakota (-3.4 percent), Texas (1.5 percent), and West Virginia (0.2 percent). "
+            "text": "Total public-sector employment increased 0.5 percent from April 2015 to April 2016. Public employment decreased over the year in 16 states, led by New Hampshire (-2.3 percent). Other states with public employment decreases over 1.0 percent were: Hawaii (-1.7 percent), Kentucky (-1.2 percent), and Missouri and Maine (both -1.1 percent). Louisiana and Alaska were the only states that lost both total and government jobs over the year. The largest increase in public employment was in Oregon and North Dakota (2.9 percent) which had an overall decline in total employment. Four other states saw public employment increase more than 2.0 percent over the year: Colorado (2.4 percent), and Washington, Idaho, and Utah (all 2.1 percent). All four states also had relatively large increases in total employment."
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 4.7 percent in May 2016. Alaska\u2019s unemployment rate (6.7 percent) was the highest of any state. Six additional states (Alabama, Illinois, Louisiana, Nevada, New Mexico, and West Virginia) and the District of Columbia (DC) had May unemployment rates above 6.0 percent. South Dakota had the lowest unemployment rate (2.5 percent). The rate was also 3.0 percent or lower in New Hampshire (2.7 percent) and Nebraska (3.0 percent). Twelve other states had rates under 4.0 percent: Arkansas, Colorado, Hawaii, Idaho, Iowa, Kansas, Maine, Minnesota, North Dakota, Utah, Vermont, and Virginia."
+            "text": "The national unemployment rate was 5.0 percent in April 2016. Alaska and Illinois had the highest unemployment rate of any state (6.6 percent). Five additional states (West Virginia, Louisiana, New Mexico, Alabama, and Mississippi) and the District of Columbia (DC) had April unemployment rates at or above 6.0 percent. South Dakota had the lowest unemployment rate (2.5 percent). The rate was also below 3.0 percent in New Hampshire (2.6 percent) and at 3.0 percent in Nebraska."
         }, 
-        "date": "05/2016"
+        "date": "04/2016"
     }, 
     "housing": {
         "Figure3": {
