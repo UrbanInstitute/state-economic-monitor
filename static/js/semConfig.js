@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [650,725,800,875,950,1450],
+					"breaks": [650,725,800,875,950,1350],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-6,0,2,4,6,9],
+					"breaks": [-10,-2,0,2,4,10],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
