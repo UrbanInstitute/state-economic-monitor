@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated August 2016", 
+    "dateUpdated": "Last Updated September 2016", 
     "earnings": {
         "AWW": {
             "breaks": [
@@ -10,20 +10,20 @@
                 950, 
                 1400
             ], 
-            "text": "National weekly earnings for all US private employees averaged $886 in July 2016. Among the 50 states, average earnings ranged from $682 in New Mexico to $1,039 in Massachusetts. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states ($1,357). Thirty-seven states had average weekly earnings below the national average. Average earnings were lowest in New Mexico, Arkansas ($697), Mississippi ($702), South Dakota ($724), and West Virginia ($732). Average weekly earnings in Illinois ($898), North Dakota ($887) and Texas ($871) were closest to the national average. After DC and Massachusetts, the highest average earnings were in Washington ($1,037), Connecticut ($1,013), California ($987), and Alaska ($984)."
+            "text": "National weekly earnings for all US private employees averaged $883 in August 2016. Among the 50 states, average earnings ranged from $687 in New Mexico to $1,042 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states ($1,387). Thirty-seven states had average weekly earnings below the national average. Beyond New Mexico, average earnings were lowest in Arkansas ($688), Mississippi ($689), South Dakota ($721), and West Virginia ($730). Average weekly earnings in North Dakota ($894) and Texas ($872) were closest to the national average. After DC and Washington, the highest average earnings were in Massachusetts ($1,033), Connecticut ($1,018), Alaska ($997), and California ($993)."
         }, 
         "AWWChg": {
             "breaks": [
                 -10, 
+                -4, 
                 -2, 
                 0, 
                 2, 
-                4, 
                 10
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in July 2016 were 1.5 percent higher than in July 2015. Despite the national increase, however, real earnings fell in 14 states. The largest decline in real earnings was in natural resource\u2013dependent Wyoming (-6.9 percent). Real average weekly earnings also fell more than 2.0 percent in New Mexico (-2.5 percent) and Alaska (-2.1 percent). In Wyoming and New Mexico, <a href = \"http://www.bls.gov/web/laus/tabled6.pdf\" target=\"_blank\">average hourly earnings</a> increased, but hours worked per week fell, causing the decline from last year and reflecting the effect of lower energy prices on activity. The largest increases in real average earnings were in Delaware (7.7 percent) and Oregon (5.3 percent). Four other states had real earnings growth of 4.0 percent or more: Alabama, Connecticut, North Carolina, and Tennessee. North Carolina\u2019s 4.5 percent increase may reflect the fact that <a href = \"https://www.nccommerce.com/lead/research-publications/the-lead-feed/artmid/11056/articleid/70/what-walmart%E2%80%99s-pay-raises-may-mean-to-north-carolina\" target=\"_blank\">Walmart</a> (a major employer) raised associates\u2019 wages. Real wages for trade, transportation, and utilities, a category that includes general merchandise stores such as Walmart, increased 6.0 percent."
+            "text": "National real (inflation-adjusted) average weekly earnings in August 2016 were 0.5 percent higher than in August 2015. Despite the national increase, however, real earnings fell in 38 states. The largest decline in real earnings was in natural resource\u2013dependent Wyoming (-8.0 percent). Real average weekly earnings also fell more than 4.0 percent in Colorado (-4.7 percent), Louisiana (-4.5 percent), Idaho (-4.4 percent), Texas (-4.2 percent), and New Mexico (-4.1 percent). The largest increases in real average earnings were in Rhode Island (4.4 percent), Delaware (4.2 percent), Oregon (2.4 percent), and New Hampshire (2.0 percent). In total, 12 states and DC saw real earnings growth from August 2015 to August 2016."
         }, 
-        "date": "07/2016"
+        "date": "08/2016"
     }, 
     "employment": {
         "EMP": {
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from July 2015 to July 2016. The largest employment drops were in Wyoming (-3.4 percent) and North Dakota (-2.2 percent). Employment <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">decreased over the past year</a> in both states as the price of natural resources plummeted. Three other energy states also saw employment decline over the past year: Louisiana, Oklahoma, and West Virginia. Kansas was the only non-resource-dependent state to lose jobs, but the state is a major provider of energy services and suffered from low agricultural prices. The largest increase in total employment was in Idaho (3.4 percent). Total employment also grew 3.0 percent or more over the past 12 months in Florida, Oregon, Utah, and Washington."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from August 2015 to August 2016. The largest employment drops were in Wyoming (-3.3 percent) and North Dakota (-1.7 percent). Employment <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">decreased over the past year</a> in both states as the price of natural resources plummeted. Three other energy states also saw employment declines over the past year: Louisiana, Montana, and Oklahoma. Kansas was the only non-resource-dependent state to lose jobs, but the state is a major provider of energy services and suffered from low agricultural prices. The largest increase in total employment was in Oregon (3.3 percent). Total employment also grew 3.0 percent or more over the past 12 months in Idaho, Florida, and Utah."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.4 percentage points between July 2015 and July 2016. The rate increased 1.4 percentage points in Wyoming, the greatest increase of any state over the year, because of continuing weak natural resource prices. The next largest rate increase was in Oklahoma (0.7 percentage points). The unemployment rate increased over the year in 13 other states:  Alaska, Connecticut, Iowa, Louisiana, Minnesota, Montana, Nebraska, North Dakota, Ohio, Pennsylvania, Texas, Utah, and Washington. Among states with an increase, two had a July 2016 unemployment rate above 6.0 percent (Alaska and Louisiana), and four had a rate below 4.0 percent (Minnesota, Nebraska, North Dakota, and Utah). The largest drops in year-over-year unemployment rates were all in the South:  Arkansas (and Tennessee (both -1.3 percentage points), West Virginia (-1.2 percentage points), and North Carolina (-1.0 percentage points)."
+            "text": "The national unemployment rate fell 0.2 percentage points between August 2015 and August 2016. The rate increased 1.2 percentage points in Wyoming, the greatest increase of any state over the year, because of continuing low natural resource prices. The next largest rate increases were in Oklahoma and Pennsylvania (both 0.8 percentage points). The unemployment rate increased over the year in 16 other states:  Alaska, Colorado, Connecticut, Iowa, Kansas, Louisiana, Missouri, Minnesota, Montana, Nebraska, New Mexico, North Dakota, Ohio, Texas, Utah, and Washington. Among states with an increase, three had an August 2016 unemployment rate above 6.0 percent (Alaska, Louisiana, and New Mexico), and four had a rate below 4.0 percent (Colorado, Nebraska, North Dakota, and Utah). The largest drops in year-over-year unemployment rates were all in the South:  Arkansas and Tennessee (both -1.2 percentage points), North Carolina (-1.1 percent points), and West Virginia (-1.0 percentage point)."
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.7 percent from July 2015 to July 2016. Public employment decreased over the year in 17 states, with the largest decreases in New Hampshire (-3.2 percent), Delaware (-2.1 percent), Maine (-1.6 percent), Kentucky (-1.2 percent), and Alabama and Louisiana (both -1.1 percent). Despite declines in public employment, all of those named states saw an increase in total employment except Louisiana (-0.7 percent). The largest increase in public employment was in North Dakota (4.7 percent). Ten other states saw public employment increase 2.0 percent or more over the year: Colorado, Idaho, New Mexico, North Carolina, Oregon, South Carolina, Texas, Utah, Washington, and Vermont. All of these states except for North Dakota (-2.2 percent), New Mexico (0.9 percent), and Texas (1.5 percent) also saw total employment increase 2.0 percent or more."
+            "text": "Total public-sector employment increased 0.7 percent from August 2015 to August 2016. Public employment decreased over the year in 17 states, with the largest decreases in Hawaii (-2.5 percent), New Hampshire (-2.1 percent), Kansas (-1.6 percent), Maine (-1.5 percent), and Arizona and Indiana (both -1.1 percent). Despite declines in public employment, all of those states named saw an increase in total employment except Kansas (-0.6 percent). The largest increase in public employment was in North Dakota (6.0 percent). Ten other states and DC saw public employment increase 2.0 percent or more over the year: Colorado, Idaho, Nevada, Ohio, Oregon, South Carolina, South Dakota, Texas, Washington, and Vermont. All of those states and DC also saw total employment increase over the year, except North Dakota, where total employment declined -1.7 percent."
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 4.9 percent in July 2016. Alaska\u2019s unemployment rate (6.7 percent) was the highest of any state. Five additional states had July unemployment rates of 6.0 percent or higher: Nevada (6.5 percent), New Mexico (6.4 percent), Louisiana (6.3 percent), and Mississippi and Arizona (both 6.0 percent). The lowest unemployment rates were in South Dakota (2.8 percent) and New Hampshire (2.9 percent). Both states have <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">historically</a> had lower rates than the national average. Eleven other states had July unemployment rates under 4.0 percent: Arkansas, Colorado, Hawaii, Idaho, Maine, Minnesota, Nebraska, North Dakota, Utah, Vermont, and Virginia."
+            "text": "The national unemployment rate was 4.9 percent in August 2016. Alaska\u2019s unemployment rate (6.8 percent) was the highest of any state. Four additional states had August unemployment rates of 6.0 percent or higher: New Mexico (6.6 percent), Louisiana and Nevada (both 6.3 percent), and Mississippi (6.0 percent). The District of Columbia (DC) also had an unemployment rate of 6.0 percent. The lowest unemployment rates were in South Dakota (2.9 percent) and New Hampshire (3.0 percent). Both states have <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">historically</a> had lower unemployment rates than the national average.Ten other states had August unemployment rates under 4.0 percent: Arkansas, Colorado, Hawaii, Idaho, Massachusetts, Nebraska, North Dakota, Utah, Vermont, and Virginia. "
         }, 
-        "date": "07/2016"
+        "date": "08/2016"
     }, 
     "housing": {
         "Figure3": {
@@ -76,48 +76,48 @@
     "taxes": {
         "CORPINC": {
             "breaks": [
-                -80, 
+                -75, 
+                -20, 
                 -10, 
                 0, 
                 10, 
-                20, 
-                70
+                50
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">corporate income tax</a> declined nationally 0.7 percent over the four quarters that concluded in March 2016 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Ohio, Texas, Washington, and Wyoming do not tax corporate income; South Dakota only taxes financial institutions), real revenue changes ranged from a 75.6 percent decline in Alaska to a 68.4 percent increase in Delaware. Twenty-one states and DC saw real revenue increases over the past year. These data highlight that state corporate income tax revenue is highly volatile\u2014profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">corporate income tax</a> declined nationally 7.2 percent over the four quarters that concluded in June 2016 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Ohio, Texas, Washington, and Wyoming do not tax corporate income; South Dakota only taxes financial institutions), real revenue changes ranged from a 72.5 percent decline in Alaska to a 49.8 percent increase in Hawaii. Thirty-three states saw real revenue decreases over the past year. These data highlight that state corporate income tax revenue is highly volatile: profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
         }, 
         "INC": {
             "breaks": [
-                -20, 
+                -40, 
+                -5, 
                 0, 
-                4, 
-                8, 
-                12, 
-                24
+                2, 
+                5, 
+                20
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 7.2 percent in the year ending in the first quarter of 2016 compared with one year earlier. Thirty-eight of the 41 states with a broad-based income tax (New Hampshire taxes only interest and dividends, and Tennessee taxes only bond interest and stock dividends) had real revenue increase over the year. The three states with decreased revenue were North Dakota (-15.7 percent), Illinois (-12.4 percent), and Oklahoma (-1.4 percent). North Dakota\u2019s economy is suffering from falling natural resource prices. Illinois cut income taxes in <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\">January 2015</a>, when a temporary tax hike expired and its single rate fell from 5 percent to 3.75 percent. Oklahoma\u2019s revenue was affected by both natural resource price declines and <a href = \"http://www.taxpolicycenter.org/taxvox/oklahoma-pulls-trigger-unaffordable-tax-cut\" target=\"_blank\">recent tax cuts</a>. The largest increases in individual income tax revenue were in Indiana (20.6 percent), North Carolina (16.8 percent), and Kansas (14.8 percent). Both <a href = \"http://www.in.gov/dor/tax-dispatch/jan2015/tax-dispatch-jan-2015.pdf\" target=\"_blank\">Indiana</a> and <a href = \"http://www.dor.state.nc.us/taxes/individual/ind_whatsnew.html\" target=\"_blank\">North Carolina</a> cut income tax rates at the beginning of 2015. Kansas <a href = \"http://www.ksrevenue.org/taxrates.html\" target=\"_blank\">tax rates</a> also fell in 2015 as part of <a href = \"http://taxvox.taxpolicycenter.org/2015/06/12/how-would-the-kansas-senate-close-the-states-budget-gap-mostly-by-taxing-poor-people/\" target=\"_blank\">previously passed tax cut legislation</a>. However, unlike Indiana and North Carolina, the reason Kansas had an increase this past year is its revenue fell so significantly the year before. Comparing Kansas\u2019s most recent four quarters (the second quarter of 2015 through the first quarter of 2016) with data from two years ago (the second quarter of 2014 through the first quarter of 2015), the state\u2019s income tax revenue is down more than 20 percent."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 1.5 percent in the year ending in the second quarter of 2016 compared with one year earlier. DC and 13 of the 41 states with a broad-based income tax (New Hampshire taxes only interest and dividends, and Tennessee taxes only bond interest and stock dividends) had real income tax revenue decreases over the year. The largest decline was in North Dakota (-34.9 percent), a state that <a href = \"https://www.nd.gov/tax/data/upfiles/media/Income Tax Newsletter (January 2016).pdf?20160920131512\" target=\"_blank\">recently cut tax rates</a> and is struggling economically as oil and natural gas production falls, taking  wages and income down with it. Individual income tax revenue also fell 5 percent or more in Illinois, Iowa, Ohio, Oklahoma, and West Virginia. Three of these states, Illinois, \n<a href = \"http://www.tax.ohio.gov/Portals/0/communications/news_releases/FilingseasonopensNR.pdf\" target=\"_blank\">Ohio</a>, and <a href = \"http://www.taxpolicycenter.org/taxvox/oklahoma-pulls-trigger-unaffordable-tax-cut\" target=\"_blank\">Oklahoma</a>, all recently reduced income tax rates. The largest increases in individual income tax revenue were in Indiana (17.1 percent), Michigan (9.8 percent), and South Carolina (9.8 percent). None of those states significantly changed its income tax over the past two years."
         }, 
         "SALES": {
             "breaks": [
-                -8, 
+                -20, 
                 0, 
-                3, 
-                5, 
-                10, 
-                20
+                2, 
+                4, 
+                6, 
+                10
             ], 
-            "text": "Real general sales tax revenue increased nationally 2.6 percent in the year ending in the first quarter of 2016 compared with one year earlier. Among the 45 states with a <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue grew in all but eight states: Indiana, Louisiana, Michigan, Mississippi, Nebraska, North Dakota, Oklahoma, and Texas. The largest revenue declines were in North Dakota (-8.0 percent) and Oklahoma (-7.3 percent), two states with economies dependent on natural resources. The largest revenue increases were in <a href = \"https://dom.iowa.gov/sites/default/files/documents/2016/04/march_2016_general_fund_receipts_memo.pdf\">Iowa</a> (16.8 percent) and Maine (15.0 percent). These two states did not change their sales tax over the past two years. Overall, 10 states and DC saw sales tax revenue increase 5 percent or more. "
+            "text": "Real general sales tax revenue increased nationally 1.3 percent in the year ending in the second quarter of 2016 compared with one year earlier. Among the 45 states with a <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue grew in all but eight states: Indiana, Iowa, Nebraska, North Dakota, Oklahoma, South Carolina, Texas, and West Virginia. The largest revenue declines were in North Dakota (-16.5 percent), Oklahoma (-8.5 percent), and Texas (-4.3 percent), three states with economies dependent on natural resources. The largest sales tax revenue increase, however, was in Wyoming (7.9 percent), which is also resource dependent and had an overall tax revenue decline. In addition to Wyoming, sales tax revenue increased more than 6.0 percent in DC, Hawaii, and Tennessee. "
         }, 
         "TOTAL": {
             "breaks": [
-                -60, 
-                -5, 
+                -40, 
+                -4, 
                 0, 
-                5, 
-                10, 
-                20
+                2, 
+                4, 
+                10
             ], 
-            "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 3.4 percent in the year ending in the first quarter of 2016 compared with one year earlier. Despite the national increase, 11 states had total tax revenue losses over the year, ranging from -58.1 percent in Alaska to -0.5 percent in Montana. Eight of these 11 states rely heavily on tax revenue from natural resource extraction: Alaska, Louisiana, New Mexico, North Dakota, Oklahoma, Texas, West Virginia, and Wyoming. Falling oil and natural gas prices led to a combined $6.7 billion less in <a href = \"http://www.governing.com/topics/finance/gov-oil-tax-revenue-states-finances.html\">severance tax revenue</a> in these states over the past year.  North Dakota (-$1.5 billion) and Texas (-$2.7 billion) accounted for most of the decline. And because the industry is so pervasive in these states, many also saw declines in sales, individual income, and corporate income taxes. Illinois, which <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\" target=\"_blank\">reduced its income tax rate</a> in January 2015, was the only non-resource-dependent state with a large total tax revenue decline. The largest increases in total tax revenues were in Iowa (15.4 percent) and Delaware (11.9 percent). Iowa saw large revenue growth from both its general sales tax and individual income tax; neither tax was substantially changed by law in the past two years. Iowa did <a href = \"https://tax.iowa.gov/iowa-fuel-tax-rate-changes-effective-july-1-2015\" target=\"_blank\">raise its motor fuel tax</a> in summer 2015 and consequently collected more revenue, but not as much new revenue was collected over the year from that tax than from the sales and income taxes. Delaware, which does not have a general sales tax, saw large growth in corporate income tax revenue because of strong returns filed in the second quarter of last year. Twenty-one other states and the District of Columbia (DC) also saw total tax revenue grow more than 5 percent. "
+            "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 0.5 percent in the year ending in the second quarter of 2016\u2014the end of the fiscal year for most states\u2014compared with one year earlier. This was the first quarter since the fourth quarter of 2014 that national state tax revenue did not increase more than 1.0 percent compared with the previous year. The slow growth was anticipated: state forecasts for fiscal year 2016 estimated about <a href = \"http://www.urban.org/research/publication/prepping-new-session-end-summer-reading-state-budget-analysts-0\">1.5 percent growth</a>. Among the states, changes in total tax revenue ranged from North Dakota\u2019s 32.8 percent decrease to Georgia\u2019s 7.9 percent increase. In total, 15 states had total tax revenue losses over the year. As we\u2019ve <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">seen over the past year</a>, states that rely heavily on taxes on natural resource extraction (i.e., severance taxes) in particular continue to experience losses as oil and natural gas prices fall. Alaska, Louisiana, Montana, New Mexico, North Dakota, Oklahoma, Texas, West Virginia, and Wyoming all saw total state revenue drop over the past year. And because the natural resource industry is so pervasive in those states, many also saw declines in sales, individual income, and corporate income taxes. The declines were especially large in North Dakota in part because <a href = \"https://www.nd.gov/tax/data/upfiles/media/Income%20Tax%20Newsletter%20(January%202016).pdf?20160920131512\">lawmakers cut the state's individual income tax and corporate income tax</a>. Illinois, which <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\">reduced its income tax rate</a>, in January 2015, was the only non-resource-dependent state with a large total tax revenue decline. After Georgia, four states all had tax revenue increases of 6.0 percent: Hawaii, Indiana, Tennessee, and Washington. Increased sales tax revenue mostly drove gains in Hawaii, Tennessee, and Washington; increased income tax revenue was the main driver in Georgia and Indiana. None of those states significantly changed their tax laws over the past year."
         }, 
-        "date": "1/2016"
+        "date": "6/2016"
     }
 }
