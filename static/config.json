@@ -3,27 +3,27 @@
     "earnings": {
         "AWW": {
             "breaks": [
-                650, 
-                725, 
-                800, 
-                875, 
-                950, 
-                1400
+                700, 
+                775, 
+                850, 
+                925, 
+                1000, 
+                1500
             ], 
-            "text": "National weekly earnings for all US private employees averaged $887 in September 2016. Among the 50 states, average earnings ranged from $682 in Arkansas to $1,053 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states ($1,386). Thirty-seven states had average weekly earnings below the national average. Beyond Arkansas, average earnings were lowest in New Mexico ($690), Mississippi ($702), Montana ($727), and Idaho ($734). Average weekly earnings in New Hampshire ($884) and North Dakota ($891) were closest to the national average. After DC and Washington, the highest average earnings were in Massachusetts ($1,047), Connecticut ($1,026), California ($997), and Alaska ($985).\n\nIn the final state earnings data before the 2016 presidential election,  weekly earnings in <a href = \"http://projects.fivethirtyeight.com/2016-election-forecast/?ex_cid=rrpromo\" target=\"_blank\">swing states</a> ranged from $750 in Nevada, which is still recovering from the housing collapse, to  $950 in Virginia. Among swing states, only Virginia and Colorado ($900) had weekly earnings above the national average."
+            "text": "National weekly earnings for all US private employees averaged $892 in October 2016. Among the 50 states, average weekly earnings ranged from $706 in Arkansas to $1,088 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,464. Thirty-five states had average weekly earnings below the national average. Beyond Arkansas, average earnings were lowest in New Mexico ($707), Montana ($709), Mississippi ($720), and West Virginia ($749). Average weekly earnings were closest to the national average in Oregon ($888) and Texas ($900). After DC and Washington, the highest average weekly earnings were in Massachusetts ($1,076), Connecticut ($1,055), California ($1,036), and Alaska ($1,008)."
         }, 
         "AWWChg": {
             "breaks": [
-                -6, 
-                -1, 
+                -5, 
                 0, 
-                1, 
-                3, 
-                6
+                2, 
+                4, 
+                6, 
+                15
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in September 2016 were 0.8 percent higher than in September 2015. Despite the national increase, real earnings fell in 12 states. The largest decline in real earnings was in natural resource\u2013dependent Wyoming (-4.9 percent). Real average weekly earnings also fell more than 2.0 percent in New Mexico (-2.9 percent) and Colorado (-2.4 percent). The largest increases in real average earnings were in Oregon (5.7 percent), Tennessee (4.5 percent), Minnesota (4.4 percent), Delaware, and North Carolina (both 4.3 percent). DC saw real earnings growth of 4.4 percent. In total, 38 states and DC saw real earnings growth from September 2015 to September 2016.\n\nIn Nevada, which had the lowest weekly earnings of any swing states in the 2016 election, weekly earnings have declined 1.1 percent since 2015. Colorado also saw weekly earnings decline -2.4 percent. In contrast, North Carolina and New Hampshire saw earnings grow 4.3 percent and 4.0 percent, respectively. For more context on state earnings growth, see our <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">historical page</a>."
+            "text": "National real (inflation-adjusted) average weekly earnings in October 2016 were 0.9 percent higher than in October 2015. The largest decline from a year ago was in Montana (-3.5 percent). The only other states that saw declines in real average earnings also have natural resource\u2013 dependent economies: Wyoming (-1.8 percent), North Dakota (-1.0 percent), and New Mexico (-0.6 percent). However, another resource-dependent state, Alaska, saw a 1.9 percent increase in real average weekly earnings (<a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">after a year of declines</a>). The largest increase in real average earnings was in DC (13.1 percent) in part because DC\u2019s real earnings were well below average <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">last year</a>. The states with the largest increases were Oregon (9.0 percent), Delaware (7.9 percent), and Tennessee (6.1 percent). In total, 46 states and DC saw real earnings growth from October 2015 to October 2016."
         }, 
-        "date": "09/2016"
+        "date": "10/2016"
     }, 
     "employment": {
         "EMP": {
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from September 2015 to September 2016. The largest employment drop was in Wyoming (-3.2 percent), followed by other energy states: North Dakota (-1.3 percent), Louisiana (-1.0 percent), Oklahoma (-0.7 percent), and Alaska (-0.6 percent). The precipitous decline of natural resource prices has negatively affected employment in all of these states <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. The largest increase in total employment was in Oregon (3.5 percent) where employment grew across all sectors except manufacturing. Total employment also grew 3.0 percent or more over the past 12 months in Florida (3.4 percent) and Idaho and Washington (both 3.2 percent)."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from October 2015 to October 2016. The largest employment drop was in Wyoming (-3.5 percent), followed by other energy-dependent states: North Dakota (-1.8 percent), Oklahoma (-0.7 percent), and New Mexico (-0.4 percent). The precipitous decline of natural resource prices has negatively affected employment in many of these states  <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. Kansas employment declined 0.4 percent as well. The largest increase in total employment was in Washington (3.5 percent), where employment grew across all sectors except manufacturing. Total employment also grew 3.0 percent or more over the past 12 months in Oregon (3.3 percent), Florida (3.1 percent), and Utah (3.0 percent). "
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.1 percentage points between September 2015 and September 2016. The rate increased 1.0 percentage point in Oklahoma and Wyoming, the greatest annual increases. Low natural resource prices are negatively affecting employment in both states. The next largest rate increases were in Pennsylvania (0.8 percentage points) and Iowa and Missouri (both 0.6 percentage points). Overall, the unemployment rate increased over the year in 16 states, including states with both low current unemployment rates (Nebraska, 3.2 percent) and high rates (New Mexico, 6.7 percent). The largest drops in year-over-year unemployment rates were in Massachusetts (-1.2 percentage points) and Arkansas, North Carolina, and Tennessee (all -1.0 percentage point). All of these states had a September unemployment rate below 5.0 percent."
+            "text": "The national unemployment rate fell 0.1 percentage points between October 2015 and October 2016. The rate increased 1.0 percentage point in Oklahoma and Pennsylvania, more than in any other state. The next largest rate increases were in Wyoming (0.8 percentage points), Iowa, and Missouri (both 0.6 percentage points). Overall, the unemployment rate increased over the year in 17 states, including states with low current unemployment rates (North Dakota, 3.0 percent) and high rates (Louisiana, 6.3 percent). The largest drops in year-over-year unemployment rates were in Massachusetts (-1.5 percentage points) and Nevada (-1.0 percentage point)."
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.7 percent from September 2015 to September 2016. Public employment decreased over the year in 11 states, with the largest decrease in New Mexico (-1.2 percent). Among these 11 states, four (Louisiana, New Mexico, Oklahoma, and Wyoming) also saw a decline in total employment. In contrast, New Hampshire\u2019s public employment fell 0.8 percent over the year, but its total employment increased 2.1 percent. The largest increases in public employment were in North Dakota and Oregon (both 3.3 percent). Over the same period, however, North Dakota saw one of largest declines in total employment (-1.3 percent), while Oregon saw the largest increase (3.5 percent). Nine other states saw public employment increase 2.0 percent or more over the year: California, Colorado, Florida, Idaho, Nevada, South Dakota, Texas, Vermont, and Washington. All states with a public employment increase of 2.0 percent or more (except North Dakota) saw total employment increase over the year."
+            "text": "Total public-sector employment increased 0.9 percent from October 2015 to October 2016. Public employment decreased over the year in 10 states, with the largest decrease in New Hampshire (-2.8 percent). Among the 10 states with falling public employment, three (Louisiana, New Mexico, and Wyoming) also saw a declines in total employment. In contrast, although New Hampshire\u2019s public employment fell, its total employment increased 2.1 percent. The largest increases in public employment were in Oregon (3.5 percent), Washington (3.4 percent), and Alaska (3.1 percent). Over the same period, Alaska saw a small decline in total employment (-0.1 percent); Washington and Oregon saw the largest increases in total employment of any state (3.5 and 3.3 percent, respectively). Two other states saw public employment increase 2.0 percent or more over the year: California (2.2 percent) and Texas (2.4 percent). DC public employment increased 2.2 percent as well. California, Texas, and DC all saw total employment increase over the year as well."
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 5.0 percent in September 2016. Alaska\u2019s 6.9 percent unemployment rate was the highest of any state. Three additional states had September unemployment rates of 6.0 percent or higher: New Mexico (6.7 percent), Louisiana (6.4 percent), and Mississippi (6.0 percent).  The District of Columbia\u2019s (DC\u2019s) unemployment rate was 6.1 percent. Two states had September unemployment rates below 3.0 percent: the rate in both New Hampshire and South Dakota was 2.9 percent. Eight other states had unemployment rates below 4.0 percent: Colorado, Hawaii, Idaho, Massachusetts, Nebraska, North Dakota, Utah, and Vermont. In the final state employment data before the 2016 presidential election, unemployment rates in <a href = \"http://projects.fivethirtyeight.com/2016-election-forecast/?ex_cid=rrpromo\" target=\"_blank\">swing states</a> ranged from 2.9 percent in New Hampshire and 3.6 percent in Colorado to 5.7 percent in Pennsylvania, where the difference between the state and national unemployment rates is the greatest it has been since the 1980s, and 5.8 percent in Nevada, which is still recovering from the housing collapse. For more context on state unemployment rates, see our <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">historical page</a>."
+            "text": "The national unemployment rate was 4.9 percent in October 2016. Alaska\u2019s 6.8 percent unemployment rate was the highest of any state. Three additional states had October unemployment rates of 6.0 percent or higher: New Mexico (6.7 percent), Louisiana (6.3 percent), and West Virginia (6.0 percent).  The District of Columbia\u2019s (DC\u2019s) unemployment rate was 6.1 percent. Two states had October unemployment rates below 3.0 percent: the rate in New Hampshire and South Dakota was 2.8 percent. Eight other states had unemployment rates below 4.0 percent: Colorado, Hawaii, Idaho, Massachusetts, Nebraska, North Dakota, Utah, and Vermont. "
         }, 
-        "date": "09/2016"
+        "date": "10/2016"
     }, 
     "housing": {
         "Figure3": {
