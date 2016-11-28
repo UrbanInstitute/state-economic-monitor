@@ -163,7 +163,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-2,0,2,5,10,15],
+					"breaks": [-5,0,1,5,10,15],
 					"source": "<a href = 'http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx#qpo'>Federal Housing Finance Agency.</a>"
 				},
 		"TOTAL":	{
