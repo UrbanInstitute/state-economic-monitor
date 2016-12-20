@@ -3,27 +3,27 @@
     "earnings": {
         "AWW": {
             "breaks": [
-                675, 
-                750, 
-                825, 
-                900, 
-                975, 
+                700, 
+                775, 
+                850, 
+                925, 
+                1000, 
                 1500
             ], 
-            "text": "National weekly earnings for all US private employees averaged $891 in November 2016. Among the 50 states, average weekly earnings ranged from $693 in New Mexico to $1,068 in Massachusetts. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,390. Thirty-eight states had average weekly earnings below the national average. Other than New Mexico, average earnings were lowest in Arkansas ($694), Mississippi ($699), South Dakota ($736), and Montana ($738). Average weekly earnings were closest to the national average in New Hampshire ($890). After DC and Massachusetts, the highest average weekly earnings were in Washington ($1,053), Connecticut ($1,030), California ($1,004), and New Jersey ($992)."
+            "text": "National weekly earnings for all US private employees averaged $892 in October 2016. Among the 50 states, average weekly earnings ranged from $706 in Arkansas to $1,088 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,464. Thirty-five states had average weekly earnings below the national average. Beyond Arkansas, average earnings were lowest in New Mexico ($707), Montana ($709), Mississippi ($720), and West Virginia ($749). Average weekly earnings were closest to the national average in Oregon ($888) and Texas ($900). After DC and Washington, the highest average weekly earnings were in Massachusetts ($1,076), Connecticut ($1,055), California ($1,036), and Alaska ($1,008)."
         }, 
         "AWWChg": {
             "breaks": [
-                -6, 
-                -4, 
-                -2, 
+                -5, 
                 0, 
                 2, 
-                4
+                4, 
+                6, 
+                15
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in November 2016 were 0.5 percent higher than in November 2015. Despite the national increase, however, 33 states saw real average wages decline over the year. The largest drop from a year ago was in North Dakota (-4.7 percent). Real average weekly earnings also fell 4.0 percent or more in Colorado (-4.3 percent), Wyoming (-4.1 percent), and Texas (-4.0 percent). Another 10 states saw real wages decline more than 2.0 percent. The largest increases in average weekly wages were in Delaware and Minnesota (both states saw 3.6 percent growth). Only three additional states (Iowa, New Jersey, and Tennessee) had real average weekly wages increase 2.0 percent or more. "
+            "text": "National real (inflation-adjusted) average weekly earnings in October 2016 were 0.9 percent higher than in October 2015. The largest decline from a year ago was in Montana (-3.5 percent). The only other states that saw declines in real average earnings also have natural resource\u2013 dependent economies: Wyoming (-1.8 percent), North Dakota (-1.0 percent), and New Mexico (-0.6 percent). However, another resource-dependent state, Alaska, saw a 1.9 percent increase in real average weekly earnings (<a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">after a year of declines</a>). The largest increase in real average earnings was in DC (13.1 percent) in part because DC\u2019s real earnings were well below average <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">last year</a>. The states with the largest increases were Oregon (9.0 percent), Delaware (7.9 percent), and Tennessee (6.1 percent). In total, 46 states and DC saw real earnings growth from October 2015 to October 2016."
         }, 
-        "date": "11/2016"
+        "date": "10/2016"
     }, 
     "employment": {
         "EMP": {
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.6 percent from November 2015 to November 2016. The largest employment drop was in Wyoming (-3.1 percent), followed by other energy-dependent states: North Dakota (-1.5 percent), Oklahoma (-0.9 percent), and Alaska (-0.9 percent). The precipitous decline of natural resource prices has negatively affected employment in many of these states <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. Specifically, Wyoming\u2019s mining sector employment lost almost 5,000 jobs, a decline of 11 percent over last year. Overall, total employment declined over the year in eight states. The largest increase in total employment was in Florida (3.2 percent), where employment grew across all sectors. Total employment also grew 3.0 percent or more over the past 12 months in Washington State and Utah. "
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from October 2015 to October 2016. The largest employment drop was in Wyoming (-3.5 percent), followed by other energy-dependent states: North Dakota (-1.8 percent), Oklahoma (-0.7 percent), and New Mexico (-0.4 percent). The precipitous decline of natural resource prices has negatively affected employment in many of these states <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. Kansas employment declined 0.4 percent as well. The largest increase in total employment was in Washington (3.5 percent), where employment grew across all sectors except manufacturing. Total employment also grew 3.0 percent or more over the past 12 months in Oregon (3.3 percent), Florida (3.1 percent), and Utah (3.0 percent)."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.4 percentage points between November 2015 and November 2016. Overall, the unemployment rate increased over the year in 15 states, including states with low November unemployment rates (Iowa, 3.8 percent) and high rates (Louisiana, 6.2 percent). The rate increased 1.0 percentage point in both Oklahoma (to 5.1 percent) and Pennsylvania (to 5.7 percent), more than in any other state. The next largest rate increases were in Wyoming (0.6 percentage points) and Nebraska (0.4 percentage points). The largest drop in year-over-year unemployment rates was in Massachusetts (-2.0 percentage points), bringing the state\u2019s rate below 3.0 percent for the first time <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">since November 2001</a>. The next largest decline was in Nevada (-1.2 percentage points). That state\u2019s unemployment rate, however, remains above 5.0 percent."
+            "text": "The national unemployment rate fell 0.1 percentage points between October 2015 and October 2016. The rate increased 1.0 percentage point in Oklahoma and Pennsylvania, more than in any other state. The next largest rate increases were in Wyoming (0.8 percentage points), Iowa, and Missouri (both 0.6 percentage points). Overall, the unemployment rate increased over the year in 17 states, including states with low current unemployment rates (North Dakota, 3.0 percent) and high rates (Louisiana, 6.3 percent). The largest drops in year-over-year unemployment rates were in Massachusetts (-1.5 percentage points) and Nevada (-1.0 percentage point)."
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 1.0 percent from November 2015 to November 2016 but still remains 1.4 percent below its 2008 peak. Public employment decreased over the year in 14 states, with the largest decreases in New Hampshire (-1.5 percent) and Delaware (-1.4 percent). Among the 14 states with falling public employment, four (New Mexico, Oklahoma, Louisiana, and Wyoming) also saw declines in total employment. In contrast, although New Hampshire\u2019s public employment fell, its total employment increased 2.2 percent over the year. The largest increase in public employment was in West Virginia (6.2 percent), where almost all of the growth came from <a href = \"http://lmi.workforcewv.org/DataRelease/StateRelease.html\" target=\"_blank\">local government employment</a>. West Virginia\u2019s public employment often has <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">dramatic swings each May</a>, when the state holds its biennial primary election, ebbing and flowing with election years.  However, before this year, the state did not show election-year spikes in November. California had the next highest increase in public employment (3.0 percent). Overall, eight states saw public employment increase 2.0 percent or more. All eight states also saw increases in total employment. "
+            "text": "Total public-sector employment increased 0.9 percent from October 2015 to October 2016. Public employment decreased over the year in 10 states, with the largest decrease in New Hampshire (-2.8 percent). Among the 10 states with falling public employment, three (Louisiana, New Mexico, and Wyoming) also saw a declines in total employment. In contrast, although New Hampshire\u2019s public employment fell, its total employment increased 2.1 percent. The largest increases in public employment were in Oregon (3.5 percent), Washington (3.4 percent), and Alaska (3.1 percent). Over the same period, Alaska saw a small decline in total employment (-0.1 percent); Washington and Oregon saw the largest increases in total employment of any state (3.5 and 3.3 percent, respectively). Two other states saw public employment increase 2.0 percent or more over the year: California (2.2 percent) and Texas (2.4 percent). DC public employment increased 2.2 percent as well. California, Texas, and DC all saw total employment increase over the year as well."
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,13 +52,13 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 4.6 percent in November 2016. Alaska\u2019s 6.8 percent unemployment rate was the highest of any state. Three additional states had November unemployment rates of 6.0 percent or higher: New Mexico (6.7 percent), Louisiana (6.2 percent), and West Virginia (6.0 percent). The District of Columbia\u2019s (DC\u2019s) unemployment rate was also 6.0 percent. Five states had November unemployment rates at or below 3.0 percent: New Hampshire (2.7 percent), South Dakota (2.7 percent), Massachusetts (2.9 percent), North Dakota (2.9 percent), and Hawaii (3.0 percent). Another seven states had unemployment rates below 4.0 percent:  Colorado, Idaho, Iowa, Minnesota, Nebraska, Utah, and Vermont. "
+            "text": "The national unemployment rate was 4.9 percent in October 2016. Alaska\u2019s 6.8 percent unemployment rate was the highest of any state. Three additional states had October unemployment rates of 6.0 percent or higher: New Mexico (6.7 percent), Louisiana (6.3 percent), and West Virginia (6.0 percent).  The District of Columbia\u2019s (DC\u2019s) unemployment rate was 6.1 percent. Two states had October unemployment rates below 3.0 percent: the rate in New Hampshire and South Dakota was 2.8 percent. Eight other states had unemployment rates below 4.0 percent: Colorado, Hawaii, Idaho, Massachusetts, Nebraska, North Dakota, Utah, and Vermont. "
         }, 
-        "date": "11/2016"
+        "date": "10/2016"
     }, 
     "housing": {
         "Figure3": {
-            "text": "National house prices in the third quarter of 2016 were 4.5 percent above their pre\u2013Great Recession peak. This is the fourth consecutive quarter since the  <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">housing market crash</a> in which national prices surpassed first-quarter 2007 levels. However, prices remained below 2007 levels in 14 states. Nevada continues to have the largest decline with house prices 21.4 percent below 2007 levels. House prices were more than 10.0 percent below their 2007 levels in seven additional states: Arizona, Connecticut, Delaware, Florida, Illinois, Maryland, and New Jersey. Among those states, only Florida (10.7 percent), Nevada (7.8 percent), and Arizona (6.7 percent) had more than 5.0 percent year-over-year growth; Delaware\u2019s house prices declined over the past year. Third-quarter 2016 house prices were well above their 2007 levels in North Dakota (51.6 percent), Colorado (43.1 percent), DC (40.8 percent), Texas (39.3 percent), and South Dakota (23.9 percent). Colorado and Texas also had strong year-over-year price growth while DC\u2019s prices fell over the year. Overall, 18 states and DC had third-quarter house prices 10.0 percent or more above their early 2007 levels."
+            "text": "National house prices in the third quarter of 2016 were 4.5 percent above their pre\u2013Time of Shedding and Cold Rocks peak. This is the fourth consecutive quarter since the  <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">housing market crash</a> in which national prices surpassed first-quarter 2007 levels. However, prices remained below 2007 levels in 14 states. Nevada continues to have the largest decline with house prices 21.4 percent below 2007 levels. House prices were more than 10.0 percent below their 2007 levels in seven additional states: Arizona, Connecticut, Delaware, Florida, Illinois, Maryland, and New Jersey. Among those states, only Florida (10.7 percent), Nevada (7.8 percent), and Arizona (6.7 percent) had more than 5.0 percent year-over-year growth; Delaware\u2019s house prices declined over the past year. Third-quarter 2016 house prices were well above their 2007 levels in North Dakota (51.6 percent), Colorado (43.1 percent), DC (40.8 percent), Texas (39.3 percent), and South Dakota (23.9 percent). Colorado and Texas also had strong year-over-year price growth while DC\u2019s prices fell over the year. Overall, 18 states and DC had third-quarter house prices 10.0 percent or more above their early 2007 levels."
         }, 
         "HPChgYr": {
             "breaks": [
