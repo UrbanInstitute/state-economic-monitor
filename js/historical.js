@@ -266,7 +266,23 @@ function drawGraphic(dataID){
       lines[dataID] = line
 
       function zoomed(o, svg2, y2, x2, ya2, l2) {
-       svg2.select(".y.axis").call(ya2);
+       svg2.select(".y.axis")
+       .call(ya2)
+
+       svg2.selectAll(".grid-line")
+          .data(y2.ticks(5))
+          .attr("y1", function(d){ return y(d) })
+          .attr("y2", function(d){ return y(d) })
+
+          .attr("class",function(d){
+            if(d == 0){
+              return "grid-line zero"
+            } else{
+              return "grid-line";
+            }
+          });        
+
+
        svg2.select(".focus").attr("transform", function(){
             return "translate(" + x2(o.date) + "," + y2(o.value) + ")"
        })
@@ -290,7 +306,6 @@ function drawGraphic(dataID){
        var z2 = zooms[zID]
        var s2 = ss[zID]
        var l2 = lines[zID]
-
 
         d3.transition().duration(750).tween("zoom", function() {
           var iy = d3.interpolate(y2.domain(), [d3.min(s2, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(s2, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]);
