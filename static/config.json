@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated November 2016", 
+    "dateUpdated": "Last Updated December 2016", 
     "earnings": {
         "AWW": {
             "breaks": [
@@ -58,32 +58,32 @@
     }, 
     "housing": {
         "Figure3": {
-            "text": "National house prices in the second quarter of 2016 were 2.8 percent above their pre\u2013Great Recession peak. This is the third consecutive quarter since the <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">housing market crash</a> in which national prices surpassed first-quarter 2007 levels. However, prices remained below 2007 levels in 15 states. The largest decline continues to be in Nevada, where house prices are still 22.3 percent below 2007 levels. Housing prices were more than 10.0 percent below their 2007 levels in nine additional states: Arizona, California, Connecticut, Delaware, Florida, Illinois, Maryland, New Jersey, and Rhode Island. In contrast, second-quarter 2016 house prices were well above their 2007 levels in North Dakota (51.9 percent), DC (48.5 percent), Colorado (39.3 percent), and Texas (36.2 percent). Overall, 15 states and DC had second-quarter house prices 10.0 percent or more above their early 2007 levels."
+            "text": "National house prices in the third quarter of 2016 were 4.5 percent above their pre\u2013Time of Shedding and Cold Rocks peak. This is the fourth consecutive quarter since the  <a href = http://apps.urban.org/features/state-economic-monitor/historical.html target=\"_blank\">housing market crash</a> in which national prices surpassed first-quarter 2007 levels. However, prices remained below 2007 levels in 14 states. Nevada continues to have the largest decline with house prices 21.4 percent below 2007 levels. House prices were more than 10.0 percent below their 2007 levels in seven additional states: Arizona, Connecticut, Delaware, Florida, Illinois, Maryland, and New Jersey. Among those states, only Florida (10.7 percent), Nevada (7.8 percent), and Arizona (6.7 percent) had more than 5.0 percent year-over-year growth; Delaware\u2019s house prices declined over the past year. Third-quarter 2016 house prices were well above their 2007 levels in North Dakota (51.6 percent), Colorado (43.1 percent), DC (40.8 percent), Texas (39.3 percent), and South Dakota (23.9 percent). Colorado and Texas also had strong year-over-year price growth while DC\u2019s prices fell over the year. Overall, 18 states and DC had third-quarter house prices 10.0 percent or more above their early 2007 levels."
         }, 
         "HPChgYr": {
             "breaks": [
-                -2, 
+                -5, 
                 0, 
-                2, 
+                1, 
                 5, 
                 10, 
                 15
             ], 
-            "text": "National house prices in the second quarter of 2016 were 5.6 percent higher than in the second quarter of 2015. House prices increased over the year in 49 states and the District of Columbia (DC). The lone exception was Vermont, where prices fell 0.4 percent. Among the states with increases, only three saw increases less than 2.0 percent: Mississippi (1.7 percent), Maine (0.7 percent) and Connecticut (0.1 percent). House prices increased the most in Oregon (11.7 percent). Washington, Colorado, and Florida also saw double-digit increases in house prices over the year. Overall, 21 states and DC saw prices increase more than 5.0 percent."
+            "text": "National house prices in the third quarter of 2016 were 6.1 percent higher than in the third quarter of 2015, with house prices increasing over the year in 49 states. The largest annual price increases were in Florida (10.7 percent), Oregon (10.4 percent), Washington (10.4 percent), and Colorado (10.0 percent). In total, 27 states saw house prices increase 5.0 percent or more over the past year. In contrast, five states had price increases of less than 1.0 percent: Connecticut, Hawaii, New Mexico, Vermont, and Wyoming. House prices declined from a year ago only in Delaware (-0.5 percent) and the District of Columbia, or DC (-2.7 percent). "
         }, 
-        "date": "5/2016"
+        "date": "9/2016"
     }, 
     "taxes": {
         "CORPINC": {
             "breaks": [
-                -75, 
+                -100, 
                 -20, 
                 -10, 
                 0, 
                 10, 
-                50
+                25
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">corporate income tax</a> declined nationally 7.2 percent over the four quarters that concluded in June 2016 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Ohio, Texas, Washington, and Wyoming do not tax corporate income; South Dakota only taxes financial institutions), real revenue changes ranged from a 72.5 percent decline in Alaska to a 49.8 percent increase in Hawaii. Thirty-three states saw real revenue decreases over the past year. These data highlight that state corporate income tax revenue is highly volatile: profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\" target=\"_blank\">corporate income tax</a> declined nationally 10.1 percent over the four quarters that concluded in September 2016 compared with the previous year. In the 44 states with a broad corporate income tax (Nevada, Ohio, Texas, Washington, and Wyoming do not tax corporate income; South Dakota taxes only financial institutions), real revenue changes ranged from a 99.7 percent decline in Alaska to a 24.1 percent increase in New Hampshire. Thirty-five states saw real revenue decreases over the past year. These data highlight the high volatility of state corporate income tax revenue: profits fluctuate, the timing of tax payments change, and states offer amnesty programs."
         }, 
         "INC": {
             "breaks": [
@@ -94,30 +94,30 @@
                 5, 
                 20
             ], 
-            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 1.5 percent in the year ending in the second quarter of 2016 compared with one year earlier. DC and 13 of the 41 states with a broad-based income tax (New Hampshire taxes only interest and dividends, and Tennessee taxes only bond interest and stock dividends) had real income tax revenue decreases over the year. The largest decline was in North Dakota (-34.9 percent), a state that <a href = \"https://www.nd.gov/tax/data/upfiles/media/Income Tax Newsletter (January 2016).pdf?20160920131512\" target=\"_blank\">recently cut tax rates</a> and is struggling economically as oil and natural gas production falls, taking  wages and income down with it. Individual income tax revenue also fell 5 percent or more in Illinois, Iowa, Ohio, Oklahoma, and West Virginia. Three of these states, Illinois, \n<a href = \"http://www.tax.ohio.gov/Portals/0/communications/news_releases/FilingseasonopensNR.pdf\" target=\"_blank\">Ohio</a>, and <a href = \"http://www.taxpolicycenter.org/taxvox/oklahoma-pulls-trigger-unaffordable-tax-cut\" target=\"_blank\">Oklahoma</a>, all recently reduced income tax rates. The largest increases in individual income tax revenue were in Indiana (17.1 percent), Michigan (9.8 percent), and South Carolina (9.8 percent). None of those states significantly changed its income tax over the past two years."
+            "text": "Real <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\" target=\"_blank\">individual income tax</a> revenue increased nationally 0.8 percent in the year ending in the second quarter of 2016 compared with one year earlier. Despite the national increase, the District of Columbia (DC) and 15 of the 41 states with a broad-based income tax (New Hampshire taxes only interest and dividends, and Tennessee taxes only bond interest and stock dividends) had real income tax revenue decreases over the year. The largest decline was in North Dakota (-37.2 percent), a state that recently <a href = \"https://www.nd.gov/tax/data/upfiles/media/Income Tax Newsletter (January 2016).pdf?20160920131512\" target=\"_blank\">cut tax rates</a> and is struggling economically as oil and natural gas production falls, lowering wages and income as well. Individual income tax revenue also fell 5 percent or more in Illinois, Maine, Ohio, Oklahoma, and West Virginia. Three of these states (<a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\" target=\"_blank\">Illinois</a>, <a href = \"http://www.tax.ohio.gov/Portals/0/communications/news_releases/FilingseasonopensNR.pdf\" target=\"_blank\">Ohio</a>, and <a href = \"http://www.taxpolicycenter.org/taxvox/oklahoma-pulls-trigger-unaffordable-tax-cut\" target=\"_blank\">Oklahoma</a>) recently reduced income tax rates. Maine voters approved an income tax hike via <a href = \"https://ballotpedia.org/Maine_Tax_on_Incomes_Exceeding_$200,000_for_Public_Education,_Question_2_(2016)\" target=\"_blank\">ballot question</a> in November, but it won\u2019t go into effect until January 2017. The largest increases in income tax revenue were in South Carolina (13.0 percent) and Indiana (10.2 percent). Neither state significantly changed its income tax system over the past two years. "
         }, 
         "SALES": {
             "breaks": [
-                -20, 
+                -25, 
+                -5, 
                 0, 
-                2, 
-                4, 
-                6, 
-                10
+                3, 
+                7, 
+                15
             ], 
-            "text": "Real general sales tax revenue increased nationally 1.3 percent in the year ending in the second quarter of 2016 compared with one year earlier. Among the 45 states with a <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue grew in all but eight states: Indiana, Iowa, Nebraska, North Dakota, Oklahoma, South Carolina, Texas, and West Virginia. The largest revenue declines were in North Dakota (-16.5 percent), Oklahoma (-8.5 percent), and Texas (-4.3 percent), three states with economies dependent on natural resources. The largest sales tax revenue increase, however, was in Wyoming (7.9 percent), which is also resource dependent and had an overall tax revenue decline. In addition to Wyoming, sales tax revenue increased more than 6.0 percent in DC, Hawaii, and Tennessee. "
+            "text": "Real general sales tax revenue increased nationally 0.9 percent in the year ending in the third quarter of 2016 compared with one year earlier. Among the 45 states with  a <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\" target=\"_blank\">general sales tax</a> revenue declined in 13 states. The largest decline was in North Dakota (-21.6 percent); other resource-dependent states (Oklahoma, Texas, and New Mexico) also saw large revenue drops. The largest sales tax revenue increase\u201413.5 percent\u2014was in Nevada. The state enacted a <a href = \"https://tax.nv.gov/WelcometoCOM/\" target=\"_blank\">gross receipts tax</a> (as part of a larger <a href = \"http://gov.nv.gov/uploadedFiles/govnvgov/Content/News_and_Media/Press/2015_Images_and_Files/NevadaRevenuePlan.pdf\" target=\"_blank\">education spending bill</a>) last year, and the Census Bureau counts these tax receipts as sales tax revenue. Louisiana\u2019s sales tax revenue increased 11.9 percent over the year, in part because it increased its sales tax rate <a href = \"http://revenue.louisiana.gov/LawsPolicies/RIB16-013.pdf\" target=\"_blank\">1.0 percentage point</a> in April. No other states saw sales tax revenue increase more than 7.0 percent. "
         }, 
         "TOTAL": {
             "breaks": [
                 -40, 
-                -4, 
+                -6, 
                 0, 
                 2, 
-                4, 
-                10
+                6, 
+                20
             ], 
-            "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> increased 0.5 percent in the year ending in the second quarter of 2016\u2014the end of the fiscal year for most states\u2014compared with one year earlier. This was the first quarter since the fourth quarter of 2014 that national state tax revenue did not increase more than 1.0 percent compared with the previous year. The slow growth was anticipated: state forecasts for fiscal year 2016 estimated about <a href = \"http://www.urban.org/research/publication/prepping-new-session-end-summer-reading-state-budget-analysts-0\">1.5 percent growth</a>. Among the states, changes in total tax revenue ranged from North Dakota\u2019s 32.8 percent decrease to Georgia\u2019s 7.9 percent increase. In total, 15 states had total tax revenue losses over the year. As we\u2019ve <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">seen over the past year</a>, states that rely heavily on taxes on natural resource extraction (i.e., severance taxes) in particular continue to experience losses as oil and natural gas prices fall. Alaska, Louisiana, Montana, New Mexico, North Dakota, Oklahoma, Texas, West Virginia, and Wyoming all saw total state revenue drop over the past year. And because the natural resource industry is so pervasive in those states, many also saw declines in sales, individual income, and corporate income taxes. The declines were especially large in North Dakota in part because <a href = \"https://www.nd.gov/tax/data/upfiles/media/Income%20Tax%20Newsletter%20(January%202016).pdf?20160920131512\">lawmakers cut the state's individual income tax and corporate income tax</a>. Illinois, which <a href = \"http://www.revenue.state.il.us/Publications/Bulletins/2015/FY-2015-09.pdf\">reduced its income tax rate</a>, in January 2015, was the only non-resource-dependent state with a large total tax revenue decline. After Georgia, four states all had tax revenue increases of 6.0 percent: Hawaii, Indiana, Tennessee, and Washington. Increased sales tax revenue mostly drove gains in Hawaii, Tennessee, and Washington; increased income tax revenue was the main driver in Georgia and Indiana. None of those states significantly changed their tax laws over the past year."
+            "text": "National real total <a href = \"http://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\" target=\"_blank\">state tax revenue</a> decreased 0.1 percent in the year ending in the third quarter of 2016 compared with one year earlier. This was the first quarter that real national state tax revenue declined since the <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">second quarter of 2010</a>, though, revenue still increased nominally over the year. This drop follows <a href = \"http://www.nasbo.org/mainsite/reports-data/fiscal-survey-of-states\" target=\"_blank\">many states reporting</a> fiscal year 2017 revenue coming in below estimates. Overall, 14 states had lower real total tax revenues compared with the prior year. As we\u2019ve <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\"> seen over the past year</a>, states that rely heavily on taxes on natural resource extraction (i.e., severance taxes) in particular continue to experience losses as oil and natural gas prices fall. New Mexico, North Dakota, Oklahoma, Texas, West Virginia, and Wyoming all saw total state revenues drop over the past year. And because the natural resource industry is so pervasive in these states, many also saw declines in sales, individual income, and corporate income taxes. The state with the largest real tax revenue growth was also resource dependent: Alaska (19.4 percent). This reflects changes to <a href = \"http://gov.alaska.gov/newsroom/2016/06/governor-walker-vetoes-1-29-billion-to-preserve-state-savings/\" target=\"_blank\">tax credit rules</a> that helped raise revenue, but also that Alaska\u2019s revenues finally bottomed out after a few years of precipitous decline: the state\u2019s total tax revenue over the past four quarters is only a fifth of what is was in 2013. After Alaska, four additional states had tax revenue increases of more than 6.0 percent: Georgia, Nevada, South Carolina, and Washington. Increased sales tax revenue mostly drove gains in Nevada and Washington, while increased income tax revenue was the main driver in Georgia and South Carolina. All those states, except Nevada (see next section), did not significantly change their tax laws over the past year. "
         }, 
-        "date": "6/2016"
+        "date": "9/2016"
     }
 }
