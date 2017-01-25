@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [700,775,850,925,1000,1500],
+					"breaks": [600,775,850,925,1000,1500],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{

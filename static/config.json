@@ -1,16 +1,16 @@
 {
-    "dateUpdated": "Last Updated December 2016", 
+    "dateUpdated": "Last Updated January 2017", 
     "earnings": {
         "AWW": {
             "breaks": [
-                700, 
+                600, 
                 775, 
                 850, 
                 925, 
                 1000, 
                 1500
             ], 
-            "text": "National weekly earnings for all US private employees averaged $892 in October 2016. Among the 50 states, average weekly earnings ranged from $706 in Arkansas to $1,088 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,464. Thirty-five states had average weekly earnings below the national average. Beyond Arkansas, average earnings were lowest in New Mexico ($707), Montana ($709), Mississippi ($720), and West Virginia ($749). Average weekly earnings were closest to the national average in Oregon ($888) and Texas ($900). After DC and Washington, the highest average weekly earnings were in Massachusetts ($1,076), Connecticut ($1,055), California ($1,036), and Alaska ($1,008)."
+            "text": "National weekly earnings for all US private employees averaged $892 in December 2016. Among the 50 states, average weekly earnings ranged from $689 in New Mexico to $1,070 in Massachusetts. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,415. Thirty-eight states had average weekly earnings below the national average. Other than New Mexico, average earnings were lowest in Arkansas ($697), Mississippi ($706), South Dakota, Idaho (both $726), and Montana ($736). Average weekly earnings were closest to the national average in New Hampshire ($890). After DC and Massachusetts, the highest average weekly earnings were in Washington ($1,055), Connecticut ($1,031), California ($1,006), and New Jersey ($986)."
         }, 
         "AWWChg": {
             "breaks": [
@@ -21,9 +21,9 @@
                 6, 
                 15
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in October 2016 were 0.9 percent higher than in October 2015. The largest decline from a year ago was in Montana (-3.5 percent). The only other states that saw declines in real average earnings also have natural resource\u2013 dependent economies: Wyoming (-1.8 percent), North Dakota (-1.0 percent), and New Mexico (-0.6 percent). However, another resource-dependent state, Alaska, saw a 1.9 percent increase in real average weekly earnings (<a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">after a year of declines</a>). The largest increase in real average earnings was in DC (13.1 percent) in part because DC\u2019s real earnings were well below average <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">last year</a>. The states with the largest increases were Oregon (9.0 percent), Delaware (7.9 percent), and Tennessee (6.1 percent). In total, 46 states and DC saw real earnings growth from October 2015 to October 2016."
+            "text": "National real (inflation-adjusted) average weekly earnings in December 2016 were 0.3 percent higher than in December 2015. Despite the national increase, however, 23 states saw real average wages decline over the year, and Montana, New Mexico, North Dakota, and Wyoming have reported annual declines two months in a row. The largest declines from a year ago were in North Dakota and Vermont (both -3.7 percent). Real average weekly earnings also fell 2.0 percent or more in Idaho (-2.9 percent), New Mexico (-2.7 percent), Illinois, Kansas, Wyoming (all -2.5 percent), Colorado (-2.1 percent), and New York (-2.0 percent). The largest increases in average weekly wages among states were in Missouri (6.2 percent), Tennessee, and Minnesota (both 4.2 percent). DC saw average weekly earnings rise 6.7 percent, more than any state. Five additional states (Delaware, New Hampshire, New Jersey, North Carolina, and Oregon) had real average weekly wages increase 2.0 percent or more. "
         }, 
-        "date": "10/2016"
+        "date": "12/2016"
     }, 
     "employment": {
         "EMP": {
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from October 2015 to October 2016. The largest employment drop was in Wyoming (-3.5 percent), followed by other energy-dependent states: North Dakota (-1.8 percent), Oklahoma (-0.7 percent), and New Mexico (-0.4 percent). The precipitous decline of natural resource prices has negatively affected employment in many of these states <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. Kansas employment declined 0.4 percent as well. The largest increase in total employment was in Washington (3.5 percent), where employment grew across all sectors except manufacturing. Total employment also grew 3.0 percent or more over the past 12 months in Oregon (3.3 percent), Florida (3.1 percent), and Utah (3.0 percent)."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.5 percent from December 2015 to December 2016. The largest increase in total employment was in Oregon (3.3 percent), where employment grew across all sectors except manufacturing, which experienced a 1 percent decline. Total employment also grew 3.0 percent or more in Florida (3.1 percent), Washington, and Nevada (both 3.0 percent).  Employment declined in eight states. The largest employment drop was in Wyoming (-2.8 percent), followed by other energy-dependent states: North Dakota (-1.8 percent), Alaska (-1.4 percent), and Mississippi (-1.0 percent). The precipitous decline of natural resource prices has negatively affected employment in many of these states <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">over the past year</a>. Specifically, Wyoming\u2019s mining and logging sector lost over 2,000 jobs over the past year, a decline of 13 percent. "
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.1 percentage points between October 2015 and October 2016. The rate increased 1.0 percentage point in Oklahoma and Pennsylvania, more than in any other state. The next largest rate increases were in Wyoming (0.8 percentage points), Iowa, and Missouri (both 0.6 percentage points). Overall, the unemployment rate increased over the year in 17 states, including states with low current unemployment rates (North Dakota, 3.0 percent) and high rates (Louisiana, 6.3 percent). The largest drops in year-over-year unemployment rates were in Massachusetts (-1.5 percentage points) and Nevada (-1.0 percentage point)."
+            "text": "The national unemployment rate fell 0.3 percentage points between December 2015 and December 2016. The largest drop in year-over-year unemployment rates was in Massachusetts (-2.1 percentage points). The next largest declines were in South Carolina, Nevada, and Mississippi (all -1.2 percentage points). Both Nevada\u2019s and Mississippi\u2019s unemployment rates, however, remain above 5.0 percent. Overall, the unemployment rate increased over the year in 11 states, including several states with low December unemployment rates (such as North Dakota, at 3.0 percent) and high rates (such as Alaska, at 6.7 percent). The rate increased by nearly a full percentage point (0.9 percent) in both Oklahoma and Pennsylvania, more than in any other state. The next largest rate increases were in Nebraska and Wyoming (both 0.4 percentage points). "
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.9 percent from October 2015 to October 2016. Public employment decreased over the year in 10 states, with the largest decrease in New Hampshire (-2.8 percent). Among the 10 states with falling public employment, three (Louisiana, New Mexico, and Wyoming) also saw a declines in total employment. In contrast, although New Hampshire\u2019s public employment fell, its total employment increased 2.1 percent. The largest increases in public employment were in Oregon (3.5 percent), Washington (3.4 percent), and Alaska (3.1 percent). Over the same period, Alaska saw a small decline in total employment (-0.1 percent); Washington and Oregon saw the largest increases in total employment of any state (3.5 and 3.3 percent, respectively). Two other states saw public employment increase 2.0 percent or more over the year: California (2.2 percent) and Texas (2.4 percent). DC public employment increased 2.2 percent as well. California, Texas, and DC all saw total employment increase over the year as well."
+            "text": "Total public-sector employment increased 0.8 percent from December 2015 to December 2016 but still remains 1.5 percent below its 2008 peak. Overall, 13 states and the District of Columbia (DC) saw public employment increase 1.0 percent or more. All 13 of these states and DC also saw increases in total employment. The largest increases in public employment among states were in Vermont (2.9 percent), Oregon (2.6 percent), California (2.5 percent), Washington (2.2 percent), and Nevada (2.1 percent). The District of Columbia saw an increase in public employment of 2.6 percent. Public employment decreased over the year in 12 states, with the largest decreases in New Hampshire (-3.1 percent), Wyoming, and Delaware (both -1.1 percent). Among the 12 states with falling public employment, five (Alaska, Connecticut, Louisiana, Mississippi, and Wyoming) also saw declines in total employment. In contrast, although New Hampshire\u2019s public employment fell, its total employment increased 1.7 percent over the year. "
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 4.9 percent in October 2016. Alaska\u2019s 6.8 percent unemployment rate was the highest of any state. Three additional states had October unemployment rates of 6.0 percent or higher: New Mexico (6.7 percent), Louisiana (6.3 percent), and West Virginia (6.0 percent).  The District of Columbia\u2019s (DC\u2019s) unemployment rate was 6.1 percent. Two states had October unemployment rates below 3.0 percent: the rate in New Hampshire and South Dakota was 2.8 percent. Eight other states had unemployment rates below 4.0 percent: Colorado, Hawaii, Idaho, Massachusetts, Nebraska, North Dakota, Utah, and Vermont. "
+            "text": "The national unemployment rate was 4.7 percent in December 2016. Alaska\u2019s 6.7 percent unemployment rate was the highest of any state. Three additional states had December unemployment rates higher than 6.0 percent: New Mexico (6.6 percent), Alabama (6.2 percent), and Louisiana (6.1 percent). Four states had December unemployment rates below 3.0 percent: New Hampshire (2.6 percent), South Dakota, Massachusetts (both 2.8 percent), and Hawaii (2.9 percent). Another 10 states had unemployment rates below 4.0 percent:  Arkansas, Colorado, Idaho, Iowa, Maine, Minnesota, Nebraska, North Dakota, Utah, and Vermont. "
         }, 
-        "date": "10/2016"
+        "date": "12/2016"
     }, 
     "housing": {
         "Figure3": {
