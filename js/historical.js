@@ -241,7 +241,12 @@ function drawGraphic(dataID){
         .text(years[i]);
     }
       x.domain(d3.extent(months));
-      y.domain([d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
+      if(dataID == "corp_historical"){
+        var filteredStates = states.filter(function(o){ return o.abbrev != "LA" })
+        y.domain([d3.min(filteredStates, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(filteredStates, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
+      }else{
+        y.domain([d3.min(states, function(c) { return d3.min(c.values, function(d) { return d.value; }); }), d3.max(states, function(c) { return d3.max(c.values, function(d) { return d.value; }); })]).nice();
+      }
       svg.append("g")
           .attr("class", "axis x")
           .attr("transform", "translate(0," + height + ")")
@@ -452,9 +457,8 @@ if(!isIE || isIE > 10){
    })
 
    d3.select("section.corp_historical .refresh")
-   .on("click.third", function(){
-    var test = d3.select(".corp_historical .states #USA").datum().values[0]
-     return zoomOut(test)
+   .on("click.second", function(){
+     return zoomIn(d3.select(".corp_historical .states #USA").datum().values[0])
     });
    d3.select("section.corp_historical .historical_state")
      .on("change.third", function(){
@@ -469,7 +473,7 @@ if(!isIE || isIE > 10){
             .filter(function(q){
               return (q.date).valueOf() == (new Date(year, month)).valueOf();
             })[0];
-          if(state == "999"){
+          if(state == "LA"){
             return zoomOut(o);
           }
           else{
@@ -487,7 +491,12 @@ if(!isIE || isIE > 10){
       else if(dataID == "state_total_tax_values_historical" && d.state.abbrev != "AK" && d.state.abbrev != "NH"){
         zoomIn(d);
       }
-
+      else if(dataID == "corp_historical" && (d.state.abbrev == "LA")){
+        zoomOut(d);
+      }
+      else if(dataID == "corp_historical" && d.state.abbrev != "LA"){
+        zoomIn(d);
+      }
 }
     dispatch.clickState(d.state.abbrev, d.date.getMonth(), d.date.getFullYear())
    }
