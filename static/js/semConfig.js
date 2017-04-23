@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-6,-2,0,2,4,6],
+					"breaks": [-4,-1,0,1,3,6],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
