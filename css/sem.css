@@ -613,6 +613,7 @@ footer a:hover{
 .figure-container{
   display: block;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 /*Styles for source annotations*/
