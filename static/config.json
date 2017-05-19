@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated April 2017", 
+    "dateUpdated": "Last Updated May 2017", 
     "earnings": {
         "AWW": {
             "breaks": [
@@ -10,7 +10,7 @@
                 975, 
                 1500
             ], 
-            "text": "Weekly earnings for all employees of private firms in the United States averaged $897 in March 2017. Among the 50 states, average weekly earnings ranged from $693 in New Mexico to $1,063 in Massachusetts and Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,410. After DC, Massachusetts, and Washington, the highest average weekly earnings were in Connecticut ($1,031), California ($1,009), New York ($985), and Alaska ($981).<br/><br/>Thirty-eight states had average weekly earnings below the national average. Other than New Mexico, average earnings were lowest in Mississippi ($702), Arkansas ($706), South Dakota ($731), Montana ($732), and Idaho ($739). Average weekly earnings were equal to the national average in Colorado and Illinois. "
+            "text": "Weekly earnings for all employees of private firms in the United States averaged $901 in April 2017. Among the 50 states, average weekly earnings ranged from $704 in Mississippi to $1,114 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,460. After DC and Washington, the highest average weekly earnings were in Massachusetts ($1094), Connecticut ($1,073), California ($1,047), and New York ($1,016).<br/><br/>Thirty-five states had average weekly earnings below the national average. Other than Mississippi, average earnings were lowest in New Mexico ($715), Arkansas ($718), South Dakota ($749), Idaho, and Montana (both $758). Average weekly earnings were closest to the national average in North Dakota ($910) and Oregon ($893). "
         }, 
         "AWWChg": {
             "breaks": [
@@ -19,9 +19,9 @@
                 0, 
                 1, 
                 3, 
-                6
+                8
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in March 2017 were the same as March 2016. This was <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">third consecutive month</a> that real year-over-year weekly earnings growth was not positive. Average earnings still increased nominally over the year (2.4 percent).<br/><br/>Overall, 17 states saw real average earnings decline. The drops were largest in Colorado (-3.7 percent), Vermont (-3.5 percent), Wyoming (-2.5 percent), and Illinois (-2.4 percent). The largest increase in real average weekly wages was in DC (5.5 percent). Real earnings also increased 3.0 percent or more in five states: Arkansas, Missouri, Nebraska, Oklahoma, and Oregon. "
+            "text": "National real (inflation-adjusted) average weekly earnings in April 2017 were 0.3 percent higher than in April 2016. This follows <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">three previous consecutive months</a> of no, or negative, real year-over-year weekly earnings growth.<br/><br/>Overall, four states saw real average earnings decline, although none saw a decline in nominal earnings. The drops were largest in Iowa and Vermont (both -1.7 percent) followed by Michigan (-1.5 percent) and Idaho (-0.4 percent). The largest increase in real average weekly wages was in DC (7.2 percent). Real earnings also increased 5 percent or more in five states: Arizona, Minnesota, Missouri, Oklahoma, and Wyoming. "
         }, 
         "date": "03/2017"
     }, 
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.5 percent from March 2016 to March 2017. Total employment declined 2.1 percent in both Alaska and Wyoming. No other state saw employment decline more than 1.0 percent, but Louisiana, North Dakota, Oklahoma, and West Virginia also lost jobs over the year. <br/><br/>The largest increase in total employment was in Utah (3.2 percent), where employment grew across all sectors of the economy. After Utah, three states saw total employment increase 3.0 percent: Florida, Georgia, and Nevada."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.6 percent from April 2016 to April 2017. Total employment declined 2.1 percent in Alaska and 1.4 percent in Wyoming. No other state saw employment decline more than 1.0 percent, but Kansas, Louisiana, Oklahoma, and West Virginia also lost jobs over the year.  <br/><br/>The largest increase in total employment was in Nevada (3.6 percent), where employment grew across all sectors of the economy. Utah had the next-largest increase in total employment at 3.3 percent. No other state saw total employment increase more than 3 percent. "
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.5 percentage points between March 2016 and March 2017. Tennessee\u2019s 0.5 percentage-point increase in unemployment was the largest of any state. The unemployment rate also increased over the year in Delaware, Michigan, New Mexico, Ohio, South Dakota, and Texas.<br/><br/>West Virginia had the largest unemployment rate decline over the past year (-1.3 percentage points). Six additional states saw their rates fall 1.0 percentage point or more: Illinois, Nevada, Mississippi, Oregon, Rhode Island, and Wyoming. All seven of these states had March 2017 unemployment rates of 5.0 percent or lower."
+            "text": "The national unemployment rate fell 0.6 percentage points between April 2016 and April 2017. Texas\u2019 0.4 percentage-point increase in unemployment was the largest of any state. The unemployment rate also increased over the year in Delaware, Kentucky, New Mexico, South Dakota, and Tennessee. <br/><br/>Oregon, Illinois, West Virginia, and Wyoming had the largest unemployment rate declines over the past year (all -1.3 percentage points).  Seven additional states saw their rates fall 1.0 percentage point or more: Colorado, Indiana, Mississippi, Nevada, New Jersey, Rhode Island, and Washington. All 11 of these states had April 2017 unemployment rates at or below 5.0 percent. "
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.7 percent from March 2016 to March 2017. Despite the national increase, 15 states saw public employment fall over the past year. The largest declines in government jobs were in Connecticut (-1.8 percent) Wyoming (-1.4 percent), and Ohio (-1.0 percent). <br/><br/>Public employment increased the most in Nevada (2.6 percent). Seven additional states saw government employment increase 2.0 percent or more: California, Georgia, Idaho, South Dakota, Texas, Utah, and Washington."
+            "text": "Total public-sector employment increased 0.8 percent from April 2016 to April 2017. Despite the national increase, 16 states and DC saw public employment fall over the past year. The largest declines in government jobs were in Connecticut (-1.9 percent) Wyoming (-1.8 percent), and Ohio (-1.2 percent).  <br/><br/>Public employment increased the most in Idaho (2.6 percent). Four additional states saw government employment increase 2.0 percent or more: South Dakota, Utah, Washington, and Wisconsin. "
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 4.5 percent in March 2017. New Mexico had the highest unemployment rate (6.7 percent) of any state. Alaska was the only other state with an unemployment rate above 6.0 percent (6.4 percent). The District of Columbia (DC) and six states (Alabama, Georgia, Louisiana, Michigan, Ohio, and Tennessee) also had March unemployment rates above 5.0 percent.  <br/><br/>Colorado had the lowest unemployment rate in March (2.6 percent). In addition to Colorado, four states had March unemployment rates below 3.0 percent: Hawaii (2.7 percent), New Hampshire, North Dakota, and South Dakota (all 2.8 percent). In total, 21 states had March rates below 4.0 percent."
+            "text": "The national unemployment rate was 4.4 percent in April 2017. New Mexico had the highest unemployment rate (6.7 percent) of any state. Alaska was the only other state with an unemployment rate above 6.0 percent (6.6 percent). The District of Columbia (DC) and three states\u2014Alabama, Louisiana, and Kentucky\u2014also had April unemployment rates above 5.0 percent.  <br/><br/>Colorado had the lowest unemployment rate in April (2.3 percent). In addition to Colorado, four states had April unemployment rates below 3.0 percent: Hawaii, North Dakota (both 2.7 percent), New Hampshire, and South Dakota (both 2.8 percent). In total, 21 states had April rates below 4.0 percent. "
         }, 
-        "date": "03/2017"
+        "date": "04/2017"
     }, 
     "housing": {
         "Figure3": {
