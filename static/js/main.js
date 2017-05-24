@@ -12,17 +12,7 @@ var MONTHNAMES = ["January", "February", "March", "April", "May", "June",
 var PRINT_WIDTH = 650;
 var PRINT_BAR_HEIGHT = 200;
 
-
-
-
 function drawMapFigure(dataID, config, print){
-   // if(print){d3.select("body").style("width",PRINT_WIDTH + "px")}
- // data is an array of objects, each of form
-// {
-//   "geography":
-//      {"code": "AK", "fips": "2", "name": "Alaska"},
-//    "value": 6.3
-// }
     var dateUpdated;
     if(config["tab"] == "taxes"){
       dateUpdated = TAX_DATE;
@@ -122,7 +112,6 @@ function drawMapFigure(dataID, config, print){
     var usVal = slice.filter(function(obj){return obj.geography.code == "US"})[0].value;
     
     var getWidth = function(val){
-      // console.log(  parseFloat($("#" + containerID + "_mobile-bar").width())   )
       return parseFloat($("#" + containerID + "_mobile-bar").width()) * parseFloat(val)/parseFloat(widthVal);
     }
 
@@ -155,7 +144,7 @@ function drawMapFigure(dataID, config, print){
         else if (config["unit-type"] == "percentage points"){ return formatter(maxVal) + "percentage points"}
       })
       .attr("class","amount")
-      .style("left",function(){ console.log(maxVal); return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
+      .style("left",function(){ return getWidth(widthVal/2) + .73*getWidth(maxVal) + "px" });
 
     usa.append('div')
       .text('US')
@@ -332,8 +321,8 @@ function drawMapFigure(dataID, config, print){
           .projection(projection);
 
       var legend = svg.append("g")
-      			   .attr("width",width+margin.left+margin.right)
-      			   .attr("height",50)
+               .attr("width",width+margin.left+margin.right)
+               .attr("height",50)
 
       var keyWidth = 30
       var keyHeight = 15
@@ -534,7 +523,6 @@ var barSvg, barXAxis, barBase;
       //       .attr("x2", width - margin.right)
       //       .attr("y2", y(min+6*step))
       //   .attr("class","grid-line");
-
       svg.append("g")
           .attr("class", "y axis")
           .attr("transform","translate(" + margin.left + ",0)")
@@ -882,12 +870,15 @@ function parseVal(value, useCase){
 
 function drawScatterPlot(config, print){
   var dateUpdated;
-  if(config.x["date-format"] == "quarter"){
-    dateUpdated = TAX_DATE
+  if(config.tab == "housing"){
+    dateUpdated = HOUSE_DATE
   }
-  else if(config.x["date-format"] == "month"){
+  else if(config.tab == "employment"){
     dateUpdated = EMP_DATE
   }
+  else if(config.tab == "taxes"){
+    dateUpdated = TAX_DATE
+  }else{ dateUpdated = EARNINGS_DATE}
   var containerID = config.id
 
   var xSlice = figureData[config.x.id]["data"]
@@ -1240,7 +1231,6 @@ function drawScatterPlot(config, print){
             d3.selectAll(".usa-text_" + config.x.id).classed("text-highlight", true)
             d3.selectAll(".usa-text_" + config.y.id).classed("text-highlight", true)
             d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",true)
-            console.log(d3.select("#"+containerID + "_tooltip " + ".tooltip-usa-average"))
           }
           else{
             d3.selectAll("#"+containerID + "_tooltip " + ".tooltip-usa-average").classed("hidden",false)
@@ -1363,37 +1353,37 @@ function getQuarter(q){
 }
 
 function getNiceBreaks(min,max,bins){
-	function isNice(val){
-		if (val%bins == 0){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	breaks = {"min":null,"max":null}
-	if (isNice(Math.ceil(max)-Math.floor(min))){
-		breaks.min = Math.floor(min)
-		breaks.max = Math.ceil(max)
-	}
-	else if (isNice(Math.ceil(max*2)/2 - Math.floor(min*2)/2)){
-		breaks.min = Math.floor(min*2)/2
-		breaks.max = Math.ceil(max*2)/2
-	}
-	else if (isNice(Math.ceil(max*4)/4 - Math.floor(min*4)/4)){
-		breaks.min = Math.floor(min*4)/4
-		breaks.max = Math.ceil(max*4)/4
-	}
-	else if (isNice(Math.ceil(max)+1 - Math.floor(min))){
-		breaks.min = Math.floor(min)
-		breaks.max = Math.ceil(max)+1
-	}
-	else{
-		breaks.min = Math.floor(min)
-		breaks.max = Math.floor(max)
-	}
+  function isNice(val){
+    if (val%bins == 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  breaks = {"min":null,"max":null}
+  if (isNice(Math.ceil(max)-Math.floor(min))){
+    breaks.min = Math.floor(min)
+    breaks.max = Math.ceil(max)
+  }
+  else if (isNice(Math.ceil(max*2)/2 - Math.floor(min*2)/2)){
+    breaks.min = Math.floor(min*2)/2
+    breaks.max = Math.ceil(max*2)/2
+  }
+  else if (isNice(Math.ceil(max*4)/4 - Math.floor(min*4)/4)){
+    breaks.min = Math.floor(min*4)/4
+    breaks.max = Math.ceil(max*4)/4
+  }
+  else if (isNice(Math.ceil(max)+1 - Math.floor(min))){
+    breaks.min = Math.floor(min)
+    breaks.max = Math.ceil(max)+1
+  }
+  else{
+    breaks.min = Math.floor(min)
+    breaks.max = Math.floor(max)
+  }
 
-	return breaks
+  return breaks
 }
 
 
@@ -1414,7 +1404,6 @@ function drawGraphic(){
   $.each(semConfig.ScatterPlots, function(figureName, config) {
       drawScatterPlot(config, false)
   });
-
   d3.select("body")
   .classed("small_screen",SMALL_SCREEN)
   .classed("mobile",MOBILE)
@@ -1441,34 +1430,6 @@ function getInternetExplorerVersion()
   }
   return rv;
 }
-// (function() {
-//     var afterPrint = function() {
-//         $.each(semConfig.Maps, function(dataID, config) {
-//             drawMapFigure(dataID, config, true)
-//         });
-//         $.each(semConfig.ScatterPlots, function(figureName, config) {
-//             drawScatterPlot(config, true)
-//         });
-//         console.log('Functionality to run before printing.');
-//     };
-//     var beforePrint = function() {
-//         console.log('Functionality to run after printing');
-//     };
-
-//     if (window.matchMedia) {
-//         var mediaQueryList = window.matchMedia('print');
-//         mediaQueryList.addListener(function(mql) {
-//             if (mql.matches) {
-//                 setTimeout(function(){beforePrint()}, 2000);
-//             } else {
-//                 afterPrint();
-//             }
-//         });
-//     }
-
-//     window.onbeforeprint = setTimeout(beforePrint, 2000);
-//     window.onafterprint = afterPrint;
-// }());
 
 
 
