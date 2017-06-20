@@ -137,8 +137,8 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [700,775,850,925,1000,1400],
-					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
+					"breaks": [675,750,825,900,975,1500],
+					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a><br/>Note: New Jersey’s May 2017 earnings data are incorrect due to a <a href = 'https://www.bls.gov/bls/errata/sae_errata.htm'>data processing error</a>. BLS will fix the problem in next month’s report."
 				},
 		"AWWChg":	{
 					"id": "figure_earnings-change",
@@ -150,8 +150,8 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-20,-3,-1,0,1,4],
-					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
+					"breaks": [-4,-1,0,1,3,8],
+					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a><br/>Note: New Jersey’s May 2017 earnings data are incorrect due to a <a href = 'https://www.bls.gov/bls/errata/sae_errata.htm'>data processing error</a>. BLS will fix the problem in next month’s report."
 				},
 		"HPChgYr":	{
 					"id": "figure_house-prices",
