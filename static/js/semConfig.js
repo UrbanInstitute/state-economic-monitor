@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [675,750,825,900,975,1500],
+					"breaks": [700,775,850,925,1000,1400],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a><br/>Note: New Jersey’s May 2017 earnings data are incorrect due to a <a href = 'https://www.bls.gov/bls/errata/sae_errata.htm'>data processing error</a>. BLS will fix the problem in next month’s report."
 				},
 		"AWWChg":	{
@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-4,-1,0,1,3,8],
+					"breaks": [-20,-3,-1,0,1,4],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a><br/>Note: New Jersey’s May 2017 earnings data are incorrect due to a <a href = 'https://www.bls.gov/bls/errata/sae_errata.htm'>data processing error</a>. BLS will fix the problem in next month’s report."
 				},
 		"HPChgYr":	{
@@ -176,7 +176,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-50,-10,-3,0,3,50],
+					"breaks": [-50,-10,-3,0,3,60],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
@@ -202,7 +202,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-50,-20,-10,0,40,1212],
+					"breaks": [-55,-20,-10,0,40,170],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
@@ -215,7 +215,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-25,-3,0,3,6,25],
+					"breaks": [-25,-3,0,3,6,35],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
 
