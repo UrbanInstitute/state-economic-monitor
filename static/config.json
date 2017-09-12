@@ -8,22 +8,22 @@
                 850, 
                 925, 
                 1000, 
-                1400
+                1500
             ], 
             "text": "Weekly earnings for all employees of private firms in the United States averaged $906 in June 2017. Among the 50 states, average weekly earnings ranged from $704 in Mississippi to $1,071 in Washington. As is typical, average weekly earnings in the District of Columbia (DC) were higher than in all states, at $1,389. After DC and Washington, the highest average weekly earnings were in Massachusetts ($1,055), Connecticut ($1,031), California ($1,021), and New Jersey ($999).<br/><br/>Thirty-seven states had average weekly earnings below the national average. Other than Mississippi, average earnings were lowest in New Mexico ($707), Arkansas ($714), South Dakota ($731), Idaho ($749), and Kentucky ($760). Average weekly earnings were closest to the national average in Illinois ($909), Colorado ($915), and Texas ($894)."
         }, 
         "AWWChg": {
             "breaks": [
-                -5, 
-                -1, 
+                -3, 
                 0, 
                 3, 
-                5, 
-                8
+                6, 
+                9, 
+                12
             ], 
             "text": "National real (inflation-adjusted) average weekly earnings in June 2017 were 1.1 percent higher than in June 2016. Average weekly earnings were 2.8 percent higher in nominal dollars.<br/><br/>Real average earnings declined in 10 states. The largest drop was in Iowa (-4.3 percent). Michigan, Vermont, and Virginia also saw real earnings decline more than 1.0 percent over the year.<br/><br/>The largest increases in real average weekly earnings were in Wyoming (7.8 percent) and Missouri (5.5 percent). Real earnings also increased more than 3.0 percent in Arizona, Indiana, Maine, Nebraska, New Jersey, North Dakota, Oklahoma, and West Virginia. "
         }, 
-        "date": "06/2017"
+        "date": "07/2017"
     }, 
     "employment": {
         "EMP": {
@@ -50,15 +50,15 @@
                 4, 
                 5, 
                 6, 
-                7
+                8
             ], 
             "text": "The national unemployment rate was 4.4 percent in June 2017. Alaska had the highest unemployment rate (6.8 percent) of any state. The unemployment rate was also greater than 6.0 percent in New Mexico (6.4 percent) and the District of Columbia, or DC (6.2 percent).<br/><br/>Colorado and North Dakota had the lowest unemployment rate in June (both 2.3 percent). Hawaii, Nebraska, and New Hampshire also had unemployment rates below 3.0 percent. In total, 23 states had June unemployment rates below 4.0 percent."
         }, 
-        "date": "06/2017"
+        "date": "07/2017"
     }, 
     "housing": {
         "Figure3": {
-            "text": "National house prices in the second quarter of 2017 were 9.3 percent above their pre\u2013Great Recession peak (the first quarter of 2007). Although national prices recovered to their prerecession level in the first quarter of 2016, prices in 12 states still have not surpassed their 2007 peak. Nevada\u2019s prices continue to be furthest from their peak at 16.3 percent below their 2007 levels. House prices were also 10.0 percent or more below 2007 levels in Connecticut (-14.3 percent), Maryland, and New Jersey (both -10.8 percent). On the opposite end of the spectrum, second-quarter 2017 house prices were well above their early 2007 levels in North Dakota (53.7 percent), Colorado (53.3 percent), DC (51.9 percent) and Texas (46.9 percent). Overall, 25 states and DC had second-quarter house prices 10.0 percent or more above their early 2007 levels. \n\nBut recent price changes have not necessarily been enough to offset long-term trends. Since its 2011 housing price trough, Nevada has experienced continued strong annual price growth (7.8 percent in the second quarter of 2017), but that has not been nearly enough to recover from its overall drop in prices since the 2007 prerecession peak. Meanwhile, Alaska\u2019s housing prices fell 0.3 percent from the second quarter of 2016, despite growing over ten percent since 2007. Resource-dependent states such as Alaska and North Dakota experienced housing price appreciation during the oil boom when prices were high, but they have since leveled off as oil prices and production have dropped. "
+            "text": "National house prices in the second quarter of 2017 were 9.3 percent above their pre\u2013Time of Shedding and Cold Rocks peak (the first quarter of 2007). Although national prices recovered to their prerecession level in the first quarter of 2016, prices in 12 states still have not surpassed their 2007 peak. Nevada\u2019s prices continue to be furthest from their peak at 16.3 percent below their 2007 levels. House prices were also 10.0 percent or more below 2007 levels in Connecticut (-14.3 percent), Maryland, and New Jersey (both -10.8 percent). On the opposite end of the spectrum, second-quarter 2017 house prices were well above their early 2007 levels in North Dakota (53.7 percent), Colorado (53.3 percent), DC (51.9 percent) and Texas (46.9 percent). Overall, 25 states and DC had second-quarter house prices 10.0 percent or more above their early 2007 levels. \n\nBut recent price changes have not necessarily been enough to offset long-term trends. Since its 2011 housing price trough, Nevada has experienced continued strong annual price growth (7.8 percent in the second quarter of 2017), but that has not been nearly enough to recover from its overall drop in prices since the 2007 prerecession peak. Meanwhile, Alaska\u2019s housing prices fell 0.3 percent from the second quarter of 2016, despite growing over ten percent since 2007. Resource-dependent states such as Alaska and North Dakota experienced housing price appreciation during the oil boom when prices were high, but they have since leveled off as oil prices and production have dropped. "
         }, 
         "HPChgYr": {
             "breaks": [
