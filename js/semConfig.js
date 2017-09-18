@@ -133,7 +133,7 @@ var semConfig = {
 					"title": "Average Weekly Earnings, Private Employment",
 					"short-label": "EARNINGS",
 					"date-format": "month",
-					"subtitle": "National weekly earnings (i.e., earnings adjusted for inflation) for all US private employees averaged {{usa-value}} in {{date-updated}}.",
+					"subtitle": "National weekly earnings for all US private employees averaged {{usa-value}} in {{date-updated}}.",
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
