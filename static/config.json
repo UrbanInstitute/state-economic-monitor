@@ -58,20 +58,20 @@
     }, 
     "housing": {
         "Figure3": {
-            "text": "National house prices in the second quarter of 2017 were 9.3 percent above their pre\u2013Time of Shedding and Cold Rocks peak (the first quarter of 2007). Although national prices recovered to their prerecession level in the first quarter of 2016, prices in 12 states still have not surpassed their 2007 peak. Nevada\u2019s prices continue to be furthest from their peak at 16.3 percent below their 2007 levels. House prices were also 10.0 percent or more below 2007 levels in Connecticut (-14.3 percent), Maryland, and New Jersey (both -10.8 percent). On the opposite end of the spectrum, second-quarter 2017 house prices were well above their early 2007 levels in North Dakota (53.7 percent), Colorado (53.3 percent), DC (51.9 percent) and Texas (46.9 percent). Overall, 25 states and DC had second-quarter house prices 10.0 percent or more above their early 2007 levels. \n\nBut recent price changes have not necessarily been enough to offset long-term trends. Since its 2011 housing price trough, Nevada has experienced continued strong annual price growth (7.8 percent in the second quarter of 2017), but that has not been nearly enough to recover from its overall drop in prices since the 2007 prerecession peak. Meanwhile, Alaska\u2019s housing prices fell 0.3 percent from the second quarter of 2016, despite growing over ten percent since 2007. Resource-dependent states such as Alaska and North Dakota experienced housing price appreciation during the oil boom when prices were high, but they have since leveled off as oil prices and production have dropped. "
+            "text": "National house prices in the third quarter of 2017 were 10.8 percent above their pre\u2013Great Recession peak (the first quarter of 2007). Although national prices regained their pre-recession level in the first quarter of 2016, prices in 11 states remain below the 2007 peak. House prices are furthest from 2007 levels in Nevada (-13.9 percent) and Connecticut (-13.4 percent). Prices are also more than 5.0 percent below 2007 levels in Arizona, Delaware, Florida, Illinois, Maryland, and New Jersey.<br/><br/>On the opposite end of the spectrum, third-quarter 2017 house prices were well above their early 2007 levels in the District of Columbia (57.7 percent), Colorado (54.6 percent), North Dakota (53.6 percent), and Texas (48.4 percent). Overall, 28 states and the District of Columbia had third-quarter house prices 10.0 percent or more above early 2007 levels. For more on housing price changes since the recession, <a href = \"http://apps.urban.org/features/state-economic-monitor/historical.html\" target=\"_blank\">see our Historical page</a>. "
         }, 
         "HPChgYr": {
             "breaks": [
-                -5, 
                 0, 
-                4, 
+                3, 
+                5, 
                 7, 
-                10, 
-                15
+                9, 
+                12
             ], 
-            "text": "National house prices in the second quarter of 2017 were 6.6 percent higher than in the second quarter of 2016, with house prices increasing over the year in 48 states and the District of Columbia (DC). Three states had price increases greater than 10 percent: Washington (12.4 percent), Colorado (10.4 percent), and Idaho (10.3 percent). In total, 30 states saw house prices increase 5.0 percent or more over the past year. Prices decreased in West Virginia (-1.2 percent) and Alaska (-0.3 percent)."
+            "text": "National house prices in the third quarter of 2017 were 6.5 percent higher than in the third quarter of 2016, with house prices increasing over the year in all 50 states and the District of Columbia. Prices increased the most in the District of Columbia (11.6 percent), Washington (11.5 percent), and Arizona and Hawaii (both 10.0 percent). In total, 32 states and the District of Columbia saw house prices increase 5.0 percent or more over the past year. West Virginia\u2019s 1.1 percent increase in house prices was the lowest of any state. Delaware, North Dakota, Mississippi, Vermont, and Wyoming were the only other states with less than 3.0 percent growth. "
         }, 
-        "date": "05/2017"
+        "date": "09/2017"
     }, 
     "taxes": {
         "CORPINC": {
