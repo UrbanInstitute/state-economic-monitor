@@ -1,47 +1,47 @@
 {
-    "dateUpdated": "Last Updated February 2018", 
+    "dateUpdated": "Last Updated March 2018", 
     "earnings": {
         "AWW": {
             "breaks": [
-                700, 
+                675, 
                 775, 
                 850, 
                 925, 
                 1000, 
                 1500
             ], 
-            "text": "Weekly earnings for all United States private-sector employees averaged $919 in December 2017. Among the 50 states, average weekly earnings ranged from $707 in Mississippi to $1,107 in Washington. <br/><br/>As is typical, average weekly earnings in the District of Columbia (DC) were higher than in any state, at $1,464. After DC and Washington, the highest average weekly earnings were in Massachusetts ($1,095), California ($1,051), Connecticut ($1,051), and New York ($1,017).<br/><br/>Thirty-seven states had weekly earnings below the national average. After Mississippi, average earnings were lowest in New Mexico ($723), South Dakota ($734), Arkansas ($736), Idaho ($759), and Nevada ($764). Average weekly earnings in Georgia ($917) and Texas ($918) were closest to the national average. "
+            "text": "Weekly earnings for all United States private-sector employees averaged $919 in January 2018. Among the 50 states, average weekly earnings ranged from $690 in Mississippi to $1,098 in Washington.<br/><br/>As is typical, average weekly earnings in the District of Columbia were higher than in any state, at $1,444. After the District of Columbia and Washington, the highest average weekly earnings were in Massachusetts ($1,079), Connecticut ($1,060), California ($1,029), New York ($1,016), and Alaska ($1,011).<br/><br/>Thirty-eight states had weekly earnings below the national average. After Mississippi, average earnings were lowest in New Mexico ($719), Arkansas ($729), South Dakota ($733), Idaho ($750), and Kentucky ($750). Average weekly earnings in Rhode Island ($918) were closest to the national average. "
         }, 
         "AWWChg": {
             "breaks": [
-                -4, 
+                -6, 
+                -3, 
                 -1, 
                 0, 
                 2, 
-                4, 
-                8
+                4
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings in December 2017 were 0.7 percent higher than in December 2016. Average weekly earnings were 2.8 percent higher compared with one year earlier in nominal dollars.<br/><br/>Real average earnings declined in 11 states. The largest drops were in New Hampshire (-3.2 percent), Tennessee (-1.6 percent), and Kentucky (-1.3 percent). Mississippi, Nevada, and South Dakota also saw real earnings fall more than 1.0 percent. <br/><br/>The largest increases in real average weekly earnings were in Wyoming (7.6 percent) and Nebraska (7.4 percent). Arizona, Maryland, and Rhode Island also saw real earnings increase 5.0 percent or more."
+            "text": "National real (inflation-adjusted) average weekly earnings in January 2018 were 0.7 percent higher than in January 2017. Average weekly earnings were 2.8 percent higher compared with one year earlier in nominal dollars.<br/><br/>Real average earnings declined in 30 states and the District of Columbia. The largest drops were in New Hampshire (-5.4 percent), Mississippi (-5.1 percent), and Kentucky (-5.0 percent). Five other states and the District of Columbia saw real earnings fall more than 3.0 percent. Average earnings declined in 15 states and the District of Columbia in nominal dollars.<br/><br/>The largest increases in real average weekly earnings were in Wyoming (3.1 percent), Rhode Island (2.6 percent), Maine (1.8 percent), and West Virginia (1.7 percent). Six other states saw real earnings rise 1.0 percent or more."
         }, 
-        "date": "12/2017"
+        "date": "01/2018"
     }, 
     "employment": {
         "EMP": {
             "breaks": [
                 -2, 
-                -1, 
                 0, 
                 1, 
                 2, 
+                3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.4 percent from December 2016 to December 2017. Total employment declined over the year in only two states: Alaska (-0.7 percent) and Delaware (-0.1 percent). <br/><br/>Nevada\u2019s 3.3 percent increase in total employment was the largest in the country. The next largest increases were in Oregon (2.7 percent), Utah (2.6 percent), and Florida and Texas (both 2.5 percent).  In total, 10 states saw total employment increase 2.0 percent or more, and another 21 states and DC saw it increase at least 1.0 percent. "
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.5 percent from January 2017 to January 2018. Total employment declined over the year in only two states: North Dakota (-1.8 percent) and Alaska (-0.6 percent).<br/><br/>Utah\u2019s 3.1 percent increase in total employment was the largest in the country. The next biggest increases were in Idaho, Nevada, and Washington (all 2.8 percent), Oregon (2.7 percent), and Colorado (2.6 percent). In total, nine states saw total employment increase 2.0 percent or more.  "
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.6 percentage points between December 2016 and December 2017. Alaska saw unemployment increase the most (0.7 percentage points). The next largest increases were in South Dakota (0.6 percentage points) and Massachusetts (0.4 percentage points). Colorado, Connecticut, DC, Delaware, Montana, and New Jersey also saw unemployment rise over the year. <br/><br/>The unemployment rate fell the most in Alabama (-2.8 percentage points) and Tennessee (-1.9 percentage points). The unemployment rate also fell 1.0 percentage point or more in Florida, Georgia, Louisiana, and Wisconsin. "
+            "text": "The national unemployment rate fell 0.7 percentage points between January 2017 and January 2018. Alaska saw unemployment increase the most (0.3 percentage points). Five other states saw unemployment rise over the year, including Colorado and South Dakota (both 0.2 percentage points), and Montana, New Jersey, and West Virginia (all 0.1 percentage points).<br/><br/>The unemployment rate fell the most in Alabama (-1.8 percentage points). Louisiana and Tennessee saw the second-largest decreases (both -1.2 percentage points). In total, the unemployment rate fell 0.5 percentage points or more in 18 states. "
         }, 
         "Figure2": {
-            "text": "Total public-sector employment increased 0.2 percent from December 2016 to December 2017. Public employment declined over the past year in 21 states and DC. The largest decline was in Wyoming (-2.4 percent). The next largest declines in public employment were in Louisiana (-1.5 percent), Connecticut (-1.3 percent), and DC (-1.0 percent). All other states that saw public employment fall had reductions of less than 1.0 percent. <br/><br/>Public employment increased the most in Nevada (4.2 percent), Idaho, (2.8 percent), South Dakota (2.2 percent), and Utah (2.1 percent). Nine additional states saw public employment increase 1.0 percent or more."
+            "text": "Total public-sector employment increased 0.1 percent from January 2017 to January 2018. Public employment declined over the past year in 22 states and the District of Columbia. The largest decline was in Oregon (-4.2 percent). The next largest declines in public employment were in North Dakota (-2.5 percent), and Connecticut, Hawaii, and the District of Columbia (all -1.6 percent). Four additional states saw public employment decline at least 1.0 percent.<br/><br/>Public employment increased the most in Nevada (3.2 percent), Colorado (2.4 percent), and Utah (2.0 percent). In total, 12 states saw public employment increase 1.0 percent or more. "
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 8
             ], 
-            "text": "As of December 2017, the national unemployment rate has remained unchanged at 4.1 percent for three consecutive months. Alaska\u2019s 7.3 percent December unemployment rate was the highest of any state. New Mexico and the District of Columbia (DC) were tied for the second highest, both with unemployment rates of 6.0 percent. In total, five states and DC had December unemployment rates of 5.0 percent or more. <br/><br/>Hawaii\u2019s 2.0 percent unemployment rate was the lowest in the country. Idaho, Iowa, Nebraska, New Hampshire, North Dakota, and Vermont also had unemployment rates below 3.0 percent. In total, 24 states had December unemployment rates at or below 4.0 percent."
+            "text": "The national unemployment rate was 4.1 percent in January 2018. Alaska\u2019s 7.3 percent rate was the highest of any state. The January unemployment rate was also greater than 5.0 percent in New Mexico (5.9 percent), the District of Columbia (5.8 percent), and West Virginia (5.4 percent).<br/><br/>Hawaii\u2019s 2.1 percent unemployment rate was the lowest in the country. Five other states also had unemployment rates below 3.0 percent: North Dakota and New Hampshire (both 2.6 percent), and Iowa, Nebraska, and Vermont (all 2.9 percent). In total, 23 states had January unemployment rates at or below 4.0 percent. "
         }, 
-        "date": "12/2017"
+        "date": "01/2018"
     }, 
     "housing": {
         "Figure3": {
