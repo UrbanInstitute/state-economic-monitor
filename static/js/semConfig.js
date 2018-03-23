@@ -176,7 +176,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-10,-3,-1,0,3,10],
+					"breaks": [-20,-4,0,2,4,20],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"INC":	{
@@ -189,7 +189,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-10,-4,0,2,4,10],
+					"breaks": [-10,0,1,3,5,15],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"CORPINC":	{
@@ -202,7 +202,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-50,-10,0,10,100,20000],
+					"breaks": [-50,-10,-5,0,10,400],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				},
 		"SALES":	{
@@ -215,7 +215,7 @@ var semConfig = {
 					"unit": "inflation-adjusted, percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-25,-3,0,3,20,25],
+					"breaks": [-10,-3,0,3,5,15],
 					"source": "<a href = 'http://www.census.gov/govs/qtax/'>US Census Bureau.</a><br>Note: Four quarters ending in {{date-updated}} are compared with four quarters ending in the {{date-previous}}."
 				}
 
