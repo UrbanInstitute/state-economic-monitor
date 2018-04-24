@@ -66,7 +66,8 @@ dispatch.on("refresh", function(trigger){
   d3.selectAll(".lineBG").remove();
   if(trigger == "button" || trigger == "load"){
       var year = d3.select(".historical_year :last-child").attr("value").replace("y","")
-      dispatch.hoverState("USA","0",year)
+      var month = "" + d3.select(".endDate").datum()
+      dispatch.hoverState("USA",month,year)
   }
 })
 dispatch.on("hoverState", function(state, month, year){
@@ -223,6 +224,7 @@ function drawGraphic(dataID){
       d3.selectAll("section." + dataID + " .startDate")
         .text(MONTHNAMES[start.getMonth()] + " " + start.getFullYear())
       d3.selectAll("section." + dataID + " .endDate")
+        .datum(end.getMonth())
         .text(MONTHNAMES[end.getMonth()] + " " + end.getFullYear())
     }
     else{

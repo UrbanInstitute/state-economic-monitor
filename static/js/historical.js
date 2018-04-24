@@ -66,7 +66,8 @@ dispatch.on("refresh", function(trigger){
   d3.selectAll(".lineBG").remove();
   if(trigger == "button" || trigger == "load"){
       var year = d3.select(".historical_year :last-child").attr("value").replace("y","")
-      dispatch.hoverState("USA","0",year)
+      var month = "" + d3.select(".endDate").datum()
+      dispatch.hoverState("USA",month,year)
   }
 })
 dispatch.on("hoverState", function(state, month, year){
@@ -104,6 +105,7 @@ dispatch.on("clickState", function(state, month, year){
 })
 
 dispatch.on("focus", function(dataID, state, month, year){
+  console.log(month, dataID)
   d3.selectAll("option[selected=selected]").attr("selected",null)
   d3.selectAll(".historical_state")
     .select("[value=" + state + "]")
