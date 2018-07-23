@@ -111,7 +111,7 @@ var semConfig = {
 					"unit": "percent, seasonally adjusted",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": [1,2,3,4,5,8],
+					"breaks": [2,3,4,5,6,8],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t03.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"EMP":	{
@@ -137,7 +137,7 @@ var semConfig = {
 					"unit": "dollars",
 					"unit-type": "dollar",
 					"date-updated": "{{excel}}",
-					"breaks": [600,700,800,900,1000,1500],
+					"breaks": [700,800,900,1000,1100,1500],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWWChg":	{
@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-5,-2,0,1,3,7],
+					"breaks": [-9,-2,0,1,3,5],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
