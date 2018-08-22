@@ -1,5 +1,5 @@
 {
-    "dateUpdated": "Last Updated July 2018", 
+    "dateUpdated": "Last Updated August 2018", 
     "earnings": {
         "AWW": {
             "breaks": [
@@ -8,22 +8,22 @@
                 900, 
                 1000, 
                 1100, 
-                1500
+                1600
             ], 
-            "text": "Weekly earnings for all private-sector employees in the United States averaged $931 in June 2018. Among the 50 states, average weekly earnings ranged from $704 in Mississippi to $1,127 in Washington. Average weekly earnings were closest to the national average in Illinois ($933).<br/><br/>As is typical, average weekly earnings were higher in the District of Columbia than in any state, at $1,476. After the District of Columbia and Washington, the highest average weekly earnings were in Massachusetts ($1,098), Connecticut ($1,058), California ($1,053), New York ($1,019), and Maryland ($1,005).<br/><br/>Weekly earnings were below the national average in 37 states. After Mississippi, average weekly earnings were lowest in Arkansas ($730), New Mexico ($730), South Dakota ($759), Kentucky ($768), and Idaho ($775)."
+            "text": "Weekly earnings for all private-sector employees in the United States averaged $933 in July 2018. Among the 50 states, average weekly earnings ranged from $718 in Mississippi to $1,153 in Washington. Average weekly earnings were closest to the national average in Georgia ($937).<br/><br/>As is typical, average weekly earnings were higher in the District of Columbia than in any state, at $1,566. After the District of Columbia and Washington, the highest average weekly earnings were in Massachusetts ($1,111), Connecticut ($1,090), California ($1,085), New York ($1,045), and Alaska ($1,029).<br/><br/>Weekly earnings were below the national average in 34 states. After Mississippi, average weekly earnings were lowest in Arkansas ($744), New Mexico ($750), Kentucky ($781), South Dakota ($784), and Idaho ($798)."
         }, 
         "AWWChg": {
             "breaks": [
-                -9, 
+                -7, 
                 -2, 
                 0, 
                 1, 
-                3, 
-                5
+                2, 
+                4
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings were 0.2 percent higher in June 2018 than one year earlier. In nominal dollars, average weekly earnings were 3.0 percent higher in June 2018 than in June 2017.<br/><br/>The largest increases in real average weekly earnings were in Wyoming (4.0 percent), Florida (3.9 percent), the District of Columbia (3.6 percent), and Maryland (3.1 percent). Real average weekly earnings also increased 2.0 percent or more in Colorado, Hawaii, Louisiana, Washington, and Wisconsin.<br/><br/>Real average weekly earnings declined in 15 states. The largest drops were in Delaware (-8.3 percent), New Hampshire (-3.9 percent), Mississippi (-2.7 percent), New Jersey (-2.6 percent), and Alaska (-2.0 percent). Delaware and New Hampshire also saw nominal earnings decline over the year. Real average weekly earnings fell 1.0 percent or more in Indiana, Kentucky, and Utah."
+            "text": "National real (inflation-adjusted) average weekly earnings were unchanged between July 2017 and July 2018. In nominal dollars, average weekly earnings for the US were 3.0 percent higher than in July 2017.<br/><br/>The largest increases in real average weekly earnings were in Wyoming (3.4 percent), the District of Columbia (3.2 percent), Hawaii (2.7 percent), and Michigan (2.6 percent). Real average weekly earnings also increased more than 2.0 percent in Kansas, Maryland, and South Dakota.<br/><br/>Real average weekly earnings declined in 19 states. The largest declines were in Delaware (-6.5 percent) and Mississippi (-3.4 percent). The next largest were in Indiana (-2.7 percent), New Jersey (-2.5 percent), New Hampshire (-2.1 percent), and Kentucky (-2.0 percent). Real average weekly earnings also fell 1.0 percent or more in Alaska, Arizona, Georgia, and Utah."
         }, 
-        "date": "6/2018"
+        "date": "7/2018"
     }, 
     "employment": {
         "EMP": {
@@ -35,13 +35,13 @@
                 3, 
                 4
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.6 percent from June 2017 to June 2018. Among the states, the largest year-over-year increases in total employment were in Idaho and Utah (both 3.0 percent). Total employment increased 2.0 percent or more in 11 states overall.<br/><br/>Total employment declined over the year in only two states: Alaska (-1.0 percent) and North Dakota (-0.1 percent)."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.6 percent from July 2017 to July 2018. Among the states, the largest year-over-year increases in total employment were in Utah (3.5 percent), Idaho and Nevada (both 3.4 percent), and Texas and Washington (both 3.1 percent). Total employment increased 2.0 percent or more in 12 states.<br/><br/>Total employment declined over the year in only Alaska (-0.6 percent) and Vermont (-0.3 percent)."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.3 percentage points between June 2017 and June 2018. The unemployment rate fell the most over the year in New Mexico (-1.2 percentage points) and Kentucky (-0.9 percentage points). The unemployment rate fell 0.5 percentage points or more in a total of 13 states and the District of Columbia.<br/><br/>The unemployment rate increased over the year in five states. The largest increase was in West Virginia, where the unemployment rate increased 0.3 percentage points. Arkansas, Maryland, Michigan, and North Dakota also saw their unemployment rates increase over the year."
+            "text": "The national unemployment rate fell 0.4 percentage points between July 2017 and July 2018. The unemployment rate fell the most over the year in New Mexico (-1.4 percentage points) and Illinois (-0.8 percentage points). The unemployment rate fell 0.5 percentage points or more in 12 states and the District of Columbia.<br/><br/>The unemployment rate increased over the year in just three states: West Virginia (0.3 percentage points), Maryland (0.2 percentage points), and North Dakota (0.1 percentage points)."
         }, 
         "Figure2": {
-            "text": "Nationally, total public-sector employment increased 0.1 percent from June 2017 to June 2018. Public employment increased the most in Nevada (4.2 percent) and Colorado (2.6 percent). Eleven other states saw public employment increase 1.0 percent or more over the year.<br/><br/>Public employment declined over the past year in 18 states and the District of Columbia. The largest declines were in Oregon (-5.2 percent), North Dakota (-2.7 percent), and Wyoming (-2.1 percent). Public employment also declined more than 1.0 percent in Connecticut, the District of Columbia, and Maryland."
+            "text": "Nationally, total public-sector employment did not change from July 2017 to July 2018. Among the states, public employment increased the most in Nevada (3.5 percent) and Idaho (3.1 percent). In total, 10 states saw public employment increase 1.0 percent or more over the year.<br/><br/>Public employment declined over the year in 19 states and the District of Columbia, with Oregon seeing the largest decline (-5.7 percent). Public employment also fell 1.0 percent or more in Connecticut, Indiana, North Dakota, and Wyoming."
         }, 
         "UNEMP": {
             "breaks": [
@@ -50,11 +50,11 @@
                 4, 
                 5, 
                 6, 
-                8
+                7
             ], 
-            "text": "The national unemployment rate was 4.0 percent in June 2018. Hawaii's 2.1 percent unemployment rate was the lowest of any state. The June unemployment rate was below 3.0 percent in nine other states: Colorado, Idaho, Iowa, Maine, Nebraska, New Hampshire, North Dakota, Vermont, and Wisconsin. The June unemployment rate was at or below 4.0 percent in 28 states.<br/<br/> Alaska's 7.1 percent unemployment rate was the highest of any state. The June unemployment rate was also greater than 5.0 percent in the District of Columbia (5.6 percent) and West Virginia (5.3 percent)."
+            "text": "The national unemployment rate was 3.9 percent in July 2018. Hawaii\u2019s 2.1 percent unemployment rate was the lowest of any state. The July unemployment rate was also below 3.0 percent in eight other states: Colorado, Idaho, Iowa, Nebraska, New Hampshire, North Dakota, Vermont, and Wisconsin. The July unemployment rate was at or below 4.0 percent in 29 states.<br/<br/> Alaska\u2019s 6.9 percent unemployment rate was the highest of any state. The July unemployment rate was also greater than 5.0 percent in the District of Columbia (5.6 percent) and West Virginia (5.4 percent)."
         }, 
-        "date": "6/2018"
+        "date": "7/2018"
     }, 
     "housing": {
         "Figure3": {
