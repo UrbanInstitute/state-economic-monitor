@@ -50,31 +50,31 @@ def update_SEM():
 
   def replaceText(old, new):
     for line in fileinput.input("/var/www/apps.urban.org/semApp/earnings.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/earnings_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
 
     for line in fileinput.input("/var/www/apps.urban.org/semApp/employment.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/employment_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
 
     for line in fileinput.input("/var/www/apps.urban.org/semApp/housing.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/housing_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
 
     for line in fileinput.input("/var/www/apps.urban.org/semApp/taxes.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
     for line in fileinput.input("/var/www/apps.urban.org/semApp/templates/taxes_preview.html", inplace=1):
-      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip()
+      line = line.replace(old.encode("utf8"), new.encode("utf8")).rstrip().encode("utf8")
       print line
 
   def replaceBreaks(figure, new):
