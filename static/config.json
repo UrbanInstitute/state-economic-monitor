@@ -1,29 +1,29 @@
 {
-    "dateUpdated": "Last Updated September 2018", 
+    "dateUpdated": "Last Updated October 2018", 
     "earnings": {
         "AWW": {
             "breaks": [
-                650, 
+                700, 
                 800, 
                 900, 
                 1000, 
                 1100, 
                 1500
             ], 
-            "text": "Weekly earnings for all private-sector employees in the United States averaged $937 in August 2018. Among the 50 states, average weekly earnings ranged from $697 in Mississippi to $1,124 in Washington. Average weekly earnings were closest to the national average in Texas ($931).<br/><br/>As is typical, average weekly earnings were higher in the District of Columbia than in any state, at $1,485. After the District of Columbia and Washington, the highest average weekly earnings were in Massachusetts ($1,100), Connecticut ($1,075), California ($1,060), New York ($1,031), and Alaska ($1,026).<br/><br/>Weekly earnings were below the national average in 37 states. After Mississippi, average weekly earnings were lowest in Arkansas ($734), New Mexico ($745), South Dakota ($763), Kentucky ($768), and Idaho ($779)."
+            "text": "Weekly earnings for all private-sector employees in the United States averaged $940 in September 2018. Among the 50 states, average weekly earnings ranged from $713 in Mississippi to $1,180 in Washington. Average weekly earnings were equal to the national average in Hawaii and Texas.<br/><br/>As is typical, average weekly earnings were higher in the District of Columbia than in any state, at $1,591. After the District of Columbia and Washington, the highest average weekly earnings were in Massachusetts ($1,124), Connecticut ($1,110), California ($1,099), New York ($1,051), and New Jersey ($1,037).<br/><br/>Weekly earnings were below the national average in 34 states. After Mississippi, average weekly earnings were lowest in Arkansas and New Mexico (both $757), Kentucky ($786), South Dakota ($793), and Idaho ($800)."
         }, 
         "AWWChg": {
             "breaks": [
-                -5, 
-                -2, 
+                -4, 
                 0, 
-                1, 
                 2, 
-                7
+                4, 
+                6, 
+                9
             ], 
-            "text": "National real (inflation-adjusted) average weekly earnings increased 0.5 percent between August 2017 and August 2018. In nominal dollars, average weekly earnings for the US were 3.2 percent higher than in August 2017.<br/><br/>The largest increases in real average weekly earnings were in Wyoming (6.3 percent), Colorado (2.7 percent), Montana (2.7 percent), North Carolina (2.5 percent), and Hawaii (2.4 percent). Real average weekly earnings also increased more than 2.0 percent in Maryland, Michigan, Nevada, Virginia, and Wisconsin.<br/><br/>Real average weekly earnings declined in 15 states. The largest declines were in Mississippi (-4.7 percent), Delaware (-4.1 percent), New Hampshire (-3.8 percent), Kentucky (-2.5 percent), and Nebraska (-2.1 percent). Real average weekly earnings also decreased more than 1.0 percent in Alaska, Arizona, Georgia, Indiana, and New Jersey."
+            "text": "National real (inflation-adjusted) average weekly earnings increased 1.1 percent between September 2017 and September 2018. In nominal dollars, average weekly earnings for the US were 3.4 percent higher than in September 2017.<br/><br/>The largest increases in real average weekly earnings were in the District of Columbia and Wyoming (both 8.4 percent) and Colorado and Hawaii (both 6.0 percent). Real average weekly earnings also increased more than 5.0 percent in Florida, Montana, and Washington.<br/><br/>Real average weekly earnings declined in only five states; Mississippi (-3.6 percent), Delaware (-2.3 percent), Indiana (-1.5 percent), New Hampshire (-1.2 percent), and Arizona (-0.4 percent)."
         }, 
-        "date": "8/2018"
+        "date": "9/2018"
     }, 
     "employment": {
         "EMP": {
@@ -33,15 +33,15 @@
                 1, 
                 2, 
                 3, 
-                4
+                5
             ], 
-            "text": "Total national (public and private) nonfarm payroll employment increased 1.6 percent from August 2017 to August 2018. Among the states, the largest year-over-year increases in total employment were in Utah (3.5 percent), Nevada and Washington (both 3.3 percent), Texas (3.2 percent), and Idaho (3.1 percent). Total employment increased more than 2.0 percent in 13 states.<br/><br/>Total employment declined over the year in only Alaska (-0.9 percent) and Vermont (-0.6 percent)."
+            "text": "Total national (public and private) nonfarm payroll employment increased 1.7 percent from September 2017 to September 2018. Among the states, the largest year-over-year increases were in Florida (4.8 percent), Utah (3.6 percent), Texas (3.3 percent), and Nevada and Washington (both 3.2 percent). Total employment increased 2.0 percent or more in 11 additional states.<br/><br/>Total employment declined over the year in only two states: Georgia (-0.7 percent) and Vermont (-0.6 percent)."
         }, 
         "Figure1": {
-            "text": "The national unemployment rate fell 0.5 percentage points between August 2017 and August 2018. The unemployment rate fell the most over the year in New Mexico (-1.4 percentage points) and Illinois (-0.9 percentage points). The unemployment rate also fell more than 0.5 percentage points in Delaware, Georgia, Pennsylvania, South Carolina, and Virginia.<br/><br/>The unemployment rate increased over the year in five states: Maryland and Tennessee (both 0.2 percentage points); and Alabama, Louisiana, and West Virginia (each 0.1 percentage points)."
+            "text": "The national unemployment rate fell 0.5 percentage points between September 2017 and September 2018. The unemployment rate fell the most over the year in New Mexico (-1.4 percentage points) and Illinois and South Carolina (both -0.9 percentage points). The unemployment rate also fell more than 0.5 percentage points in nine other states:  Alaska, Georgia, Michigan, New York, North Carolina, Oklahoma, Pennsylvania, Rhode Island, and Virginia.<br/><br/>The unemployment rate increased over the year in seven states: Tennessee (0.3 percentage points); Alabama, Louisiana, and Maryland (each 0.2 percentage points); and Colorado, Iowa, and Minnesota (each 0.1 percentage point). "
         }, 
         "Figure2": {
-            "text": "Nationally, total public-sector employment did not change from August 2017 to August 2018. Among the states, employment increased the most in Hawaii (5.2 percent), Idaho (3.8 percent), and Nevada (3.6 percent). In total, 12 states saw public employment increase more than 1.0 percent over the year.<br/><br/>Public employment declined over the year in 18 states and the District of Columbia, with the largest declines in Oregon (-5.4 percent) and Connecticut and New Hampshire (both -2.2 percent). Public employment also fell more than 1.0 percent in the District of Columbia, Maryland, Nebraska, North Dakota, Vermont, and Virginia."
+            "text": "Nationally, total public-sector employment increased 0.3 percent from September 2017 to September 2018. Among the states, public employment increased the most in Nebraska (3.1 percent) and Nevada (3.0 percent). The September public employment rate also rose 2.0 percent or more in Utah (2.5 percent) and Colorado and Kansas (both 2.0 percent). In total, 13 states saw public employment increase 1.0 percent or more over the year.<br/><br/>Public employment declined over the year in 16 states and the District of Columbia. The largest declines were in Oregon (-5.4 percent), Minnesota (-2.8 percent), and North Carolina (-2.4 percent). Public employment also fell more than 1.0 percent in Connecticut, the District of Columbia, and Wyoming."
         }, 
         "UNEMP": {
             "breaks": [
@@ -52,9 +52,9 @@
                 6, 
                 7
             ], 
-            "text": "The national unemployment rate was 3.9 percent in August 2018. Hawaii\u2019s 2.1 percent rate was the lowest of any state. The August unemployment rate was also below 3.0 percent in eight other states: Colorado, Idaho, Iowa, Minnesota, Nebraska, New Hampshire, North Dakota, and Vermont. In total, the August unemployment rate was at or below 4.0 percent in 31 states.<br/<br/>Alaska\u2019s 6.7 percent unemployment rate was the highest of any state. The next highest rates were in the District of Columbia (5.6 percent), West Virginia (5.3 percent), and Louisiana (5.0 percent)."
+            "text": "The national unemployment rate was 3.7 percent in September 2018. Hawaii\u2019s 2.2 percent rate was the lowest of any state. September unemployment rates were also at or below 3.0 percent in 10 other states: Idaho, Iowa, Minnesota, Nebraska, New Hampshire, North Dakota, South Dakota, Vermont, Virginia, and Wisconsin. In total, the September unemployment rate was at or below 4.0 percent in 31 states.<br/<br/>Alaska\u2019s 6.5 percent unemployment rate was the highest of any state. The next highest rates were in the District of Columbia (5.7 percent), West Virginia (5.2 percent), and Louisiana (5.0 percent)."
         }, 
-        "date": "8/2018"
+        "date": "9/2018"
     }, 
     "housing": {
         "Figure3": {
