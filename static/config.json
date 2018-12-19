@@ -76,25 +76,25 @@
     "taxes": {
         "CORPINC": {
             "breaks": [
-                -40, 
+                -30, 
                 -10, 
                 0, 
                 10, 
                 20, 
                 120
             ], 
-            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\">corporate income tax</a> revenue increased 7.5 percent in real terms over the year ending in second quarter of 2018 compared with the previous year.<br/><br/>State corporate income tax revenue is always volatile: profits fluctuate; the timing of tax payments changes as states offer amnesty programs; and corporate tax filers can offset current profits with previous losses, which can create fluctuations in state tax revenue from year to year. The new federal tax law also affected corporate investments and other business decisions that affect state taxes. Moreover, corporate income taxes raise relatively little revenue, so small changes in absolute dollars can create dramatic percentage changes.<br/><br/>This is evident in Alaska, which saw a 116.7 percent real increase in corporate tax revenue over the past year (from $90 million to $142 million). The next largest increases were in North Dakota (74.3 percent), Louisiana (62.6 percent), and Hawaii (58.4 percent). In total, real revenue increased in 29 of the 44 states with a broad-based corporate income tax.<br/><br/>Real corporate income tax revenue declined the most in Indiana (-33.5 percent). Real corporate income tax revenue also declined more than 10.0 percent in Connecticut and Rhode Island. "
+            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/corporate-income-taxes\">corporate income tax</a> revenue increased 10.1 percent in real terms over the year ending in third quarter of 2018 compared with the previous four quarters. <br/><br/>State corporate income tax revenue is always volatile: profits fluctuate, the timing of tax payments changes as states offer amnesty programs, and corporate tax filers can offset current profits with previous losses; these all can create fluctuations in state tax revenue from year to year. The new federal tax law also affected corporate investments and other business decisions that affect state taxes. Moreover, corporate income taxes raise relatively little revenue, so small changes in absolute dollars can create dramatic percentage changes. <br/><br/>This is evident in North Dakota, which saw a 119.6 percent real increase in corporate tax revenue over the past year (from $66 million to $145 million). The next largest increases were in Colorado (73.3 percent), Louisiana (69.6 percent), Alaska (59.5 percent), and Oklahoma (58.7 percent). In total, real revenue increased in 31 of the 44 states with a broad-based corporate income tax.<br/><br/>Real corporate income tax revenue declined the most in Indiana (-22.3 percent). The next largest decreases were in Michigan (-10.8 percent), Tennessee (-7.8 percent), and the District of Columbia (-7.8 percent). "
         }, 
         "INC": {
             "breaks": [
-                -1, 
+                -5, 
                 0, 
-                3, 
-                6, 
-                9, 
-                50
+                5, 
+                10, 
+                15, 
+                45
             ], 
-            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\">individual income tax</a> revenue increased 8.0 percent in real terms during the year ending in the second quarter of 2018 compared with the previous four quarters.<br/><br/>Forty of the 41 states with broad-based individual income taxes and the District of Columbia saw real income tax revenue increase over the year. The largest revenue growth was in Kansas (43.3 percent), a state that <a href = \"https://www.taxpolicycenter.org/taxvox/what-kansas-tax-cut-about-face-means\">increased its tax rate</a> in July 2017. The next highest revenue gains were in Connecticut (20.3 percent) and Illinois (18.7 percent). California, New York, and North Dakota also saw real income tax revenue increase more than 10.0 percent.<br/><br/>Michigan was the only state that saw real individual income tax revenue fall over the year. \n"
+            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/individual-income-taxes\">individual income tax</a> revenue increased 8.5 percent in real terms over the year ending in the third quarter of 2018 compared with the previous four quarters.<br/><br/>Forty of the 41 states with broad-based individual income taxes and the District of Columbia saw real income tax revenue increase over the year. The largest revenue growth was in Kansas (41.7 percent), a state that <a href = \"https://www.taxpolicycenter.org/taxvox/what-kansas-tax-cut-about-face-means\">increased its tax rate</a> in 2017 and 2018. The next highest revenue gain was in Connecticut (21.4 percent).  California, Illinois, New York, North Dakota, and South Carolina also saw real income tax revenue increase more than 10.0 percent.<br/><br/>New Mexico was the only state that saw real individual income tax revenue fall over the year (-4.8 percent). \n"
         }, 
         "SALES": {
             "breaks": [
@@ -103,21 +103,21 @@
                 2, 
                 4, 
                 6, 
-                30
+                25
             ], 
-            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\">general sales tax</a> revenue increased 2.4 percent in real terms over the year ending in the second quarter of 2018 compared with the previous four quarters.<br/><br/>Sales tax revenue increased the most in New Mexico (25.1 percent), Wyoming (14.4 percent), and Oklahoma (13.7 percent). None of these states changed its sales tax rate in the past two years. Real sales tax revenue also increased more than 5.0 percent in Colorado, Florida, Hawaii, Idaho, Michigan, Texas, and Utah.<br/><br/>Sales tax revenue declined in seven of the 45 states that levy a general sales tax. The largest declines were in Ohio (-5.1 percent), Washington (-3.9 percent), and Illinois (-3.1 percent)."
+            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/projects/state-and-local-backgrounders/sales-taxes\">general sales tax</a> increased 2.9 percent in real terms over the year ending in the third quarter of 2018 compared with the previous four quarters.<br/><br/>Sales tax revenue increased the most in New Mexico (23.4 percent), Wyoming (13.5 percent), and Oklahoma (12.5 percent). None of these states changed its sales tax rate in the past two years. Real sales tax revenue also increased 5.0 percent or more in Colorado, Florida, Idaho, Nevada, Texas, and Utah.<br/><br/>Sales tax revenue declined in 4 of the 45 states that levy a general sales tax: Louisiana (-6.9 percent), Washington (-5.0 percent), Ohio (-4.1 percent), and Illinois (-2.4 percent)."
         }, 
         "TOTAL": {
             "breaks": [
                 -5, 
                 0, 
-                2, 
-                5, 
+                3, 
+                6, 
                 10, 
-                20
+                60
             ], 
-            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\">state tax revenue</a> increased 5.0 percent in real terms during the year ending in the second quarter of 2018 compared with the previous yearlong period, according to <a href = \"https://www.census.gov/programs-surveys/qtax.html\">US Census Bureau data</a>. This uptick tracks <a href = \"https://www.urban.org/research/publication/state-tax-revenues-soar-first-quarter-2018\">other reports</a> of increasing state tax revenue, but because some of this is related to how the <a href = \"https://www.taxpolicycenter.org/feature/states-and-tax-cuts-and-jobs-act\">Tax Cuts and Jobs Act</a> there is still a large degree of uncertainty going forward. These interactions include both changes to federal and state tax law, which are more permanent, as well as one-time income shifts in response to the law.<br/><br/>Total real tax revenue increased in 46 states and the District of Columbia. North Dakota\u2019s 17.3 percent increase in total tax revenue was the largest of any state. Although the state saw large percentage increases in individual income tax and corporate income tax revenue, the total tax revenue increase was mostly because of increased <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/severance-taxes\">severance tax revenue</a>. Real total tax revenue increases were also greater than 10 percent in Alaska, Kansas, New Mexico, and Oklahoma. Severance tax revenue rebounding from previously weak levels was also mostly responsible for revenue gains in Alaska, New Mexico, and Oklahoma.<br/><br/>Real total tax revenue declined in four states. The largest declines were in Ohio (-3.0 percent) and Washington (-2.1 percent); the drop was less than 1.0 percent in Mississippi and Tennessee."
+            "text": "Total <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/state-and-local-revenues\">state tax revenue</a> increased 5.8 percent in real terms during the year ending in the third quarter of 2018 compared with the previous yearlong period, according to <a href = \"https://www.census.gov/programs-surveys/qtax.html\">US Census Bureau data</a>. This uptick tracks <a href = \"https://www.taxpolicycenter.org/publications/another-stellar-quarter-state-revenue-growth-pace-slowing-down\">other reports</a> of increasing state tax revenue, but because some of this is related to how the <a href = \"https://www.taxpolicycenter.org/feature/states-and-tax-cuts-and-jobs-act\">Tax Cuts and Jobs Act</a> interacts with state taxpayers and state tax systems, there is still a large degree of uncertainty about tax revenue growth going forward. These interactions include changes to federal and state tax law, which are more permanent, as well as one-time income shifts in response to the law.<br/><br/>Total real tax revenue increased in 48 states. Alaska\u2019s 55.6 percent increase in total tax revenue was the largest of any state. Although the state saw a large percentage increase in corporate income tax revenue, the total tax revenue increase was mostly attributable to increased <a href = \"https://www.urban.org/policy-centers/cross-center-initiatives/state-local-finance-initiative/state-and-local-backgrounders/severance-taxes\">severance tax revenue</a>. Real total tax revenue increases were also high in other states with large amounts of severance tax revenue, such as North Dakota (25.5 percent), New Mexico (13.6 percent), Oklahoma (12.2 percent) and Texas (9.9 percent). Much of the recent growth in severance tax revenue, however, is a recovery from previously depressed levels.<br/><br/>Real total tax revenue declined in Ohio (-2.5 percent), the District of Columbia (-2.1 percent), and Mississippi (-0.4 percent)."
         }, 
-        "date": "6/2018"
+        "date": "9/2018"
     }
 }
