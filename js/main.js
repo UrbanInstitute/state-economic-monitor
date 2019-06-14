@@ -653,10 +653,6 @@ function getLineData(chartData, indicator, unit, states, startDate, endDate){
 var indicatorData = chartData,
 key = getKey(indicator, unit)
 
-// var dateFilteredData = indicatorData.filter(function(d){
-// 	//3rd param of isBetween is units of granularity (ms default), 4th param indicates both upper and lower bounds are inclusive 
-// return moment(d.date, defaultDateFormat, true).isBetween(startDate, endDate, null, '[]')
-// })
 var dateFilteredData = indicatorData
 var extent = d3.extent(dateFilteredData, function(d){ if (states.indexOf(d.abbr) != -1) return d[key]}),
 zeroedExtent = [ Math.min(extent[0], 0), extent[1] ]
