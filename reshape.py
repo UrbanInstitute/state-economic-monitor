@@ -84,7 +84,6 @@ for tk in tempDict:
 
 dataOut["data"] = sorted(tempList, key=lambda k: datetime.datetime.strptime(k['date'], "%Y-%m-%d"))
 
-# unemploymentData = mergeData(unemploymentRawData, unemploymentChangeData)
 
 
 
@@ -92,7 +91,7 @@ dataOut["data"] = sorted(tempList, key=lambda k: datetime.datetime.strptime(k['d
 
 # dataOut = {}
 dataOut["cards"] = []
-dataOut["dates"] = {"employment": {"year": 2015, "month": 2}}
+dataOut["dates"] = {"employment": {"year": 2019, "month": 3}}
 # dataOut["data"] = { "unemployment": unemploymentData, "a": unemploymentData, "b": unemploymentData, "c": unemploymentData, "d": unemploymentData, "e": unemploymentData,"f": unemploymentData,"g": unemploymentData}
 
 

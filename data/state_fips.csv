@@ -1,4 +1,4 @@
-﻿fips,code,name
+﻿fips,abbr,name
 01,AL,Alabama
 02,AK,Alaska
 04,AZ,Arizona
@@ -50,13 +50,4 @@
 54,WV,West Virginia
 55,WI,Wisconsin
 56,WY,Wyoming
-60,AS,America Samoa
-64,FM,Federated States of Micronesia
-66,GU,Guam
-68,MH,Marshall Islands
-69,MP,Northern Mariana Islands
-70,PW,Palau
-72,PR,Puerto Rico
-74,UM,U.S. Minor Outlying Islands
-78,VI,Virgin Islands of the United States
 99,US,United States

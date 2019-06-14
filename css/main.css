@@ -1,4 +1,15 @@
-svg text{
+#chartsTemp, #controlsTemp{
+	display: inline-block;
+	float: left;
+	width: calc(50% - 50px);
+}
+#controlsTemp{
+	margin-left: 100px;
+}
+
+
+
+svg text, body{
 	font-family: Lato;
 }
 /**********************************************************************/
@@ -21,6 +32,11 @@ rect.bar{
 	fill: #1696d2;
 	stroke: none;
 }
+.usLine{
+	stroke: #0A4C6A;
+	stroke-width: 3px;
+	stroke-dasharray: 8px 6px;
+}
 
 /**********************************************************************/
 /************************* LINE CHART *********************************/
@@ -37,4 +53,53 @@ rect.bar{
   fill: none;
   stroke: none;
   pointer-events: all;
+}
+
+/**********************************************************************/
+/************************* STATE MENU *********************************/
+/**********************************************************************/
+
+.stateNameCol{
+	float: left;
+	display: inline-block;
+	width: 200px;
+}
+.stateName.active{
+	color: #1696d2;
+}
+
+
+/**********************************************************************/
+/********************* CALENDAR PICKERS *******************************/
+/**********************************************************************/
+.calendarContainer{
+	overflow-x: hidden;
+    width: 460px;
+    white-space: nowrap;
+    height: 240px;
+}
+.calendarYearContainer{
+	width: 206px;
+	white-space: normal;
+}
+
+.calMonth{
+    width: 34px;
+    height: 23px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    background: #D2D2D2;
+    color: #000;
+    display: inline-block;
+    padding: 7px 4px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+}
+.calMonth.active{
+	background: #1696d2;
+	color: #fff;
+}
+.calMonth.disabled{
+	color: #696969;
 }
