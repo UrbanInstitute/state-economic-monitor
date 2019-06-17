@@ -1,5 +1,6 @@
 const 	defaultDateFormat = "YYYY-MM-DD",
 		d3DateFormat = "%Y-%m-%d",
+		monthAbbrs = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 		defaultIndicator = "unemployment",
 		defaultLinechartMonthRange = 60,
 		lineTickCount = 7,

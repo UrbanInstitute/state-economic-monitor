@@ -23,30 +23,21 @@ function setParams(params){
 		d3.select("#paramData").data([d])
 	}
 }
-
 function getSection(indicator){
-if(indicator == "unemployment") return "employment"
-
+	if(indicator == "unemployment") return "employment"
 }
 function getFirstYear(indicator){
-var section = getSection(indicator)
-// var startYear;
-
-console.log(section)
-switch(section){
-case 'employment':
-return 1976;
-case 'earnings':
-return 2007;
-case 'housing':
-return 1991;
-case 'gdp':
-return 2005;
-}
+	var section = getSection(indicator)
+	switch(section){
+		case 'employment': return 1976;
+		case 'earnings': return 2007;
+		case 'housing': return 1991;
+		case 'gdp': return 2005;
+	}
 }
 function getKey(indicator, unit){
-var indicators = ["unemployment"]
-return indicators.indexOf(indicator) + unit[0]
+	var indicators = ["unemployment"]
+	return indicators.indexOf(indicator) + unit[0]
 }
 function getActiveIndicator(){
 
@@ -101,110 +92,123 @@ function sanitizeDates(startDate, endDate){
 	}
 
 }
-
-
 function disableBarMenuMonths(year, lastDate){
+	if(year == moment(lastDate).year()){
+		var lastMonth = moment(lastDate).month() +1;
 
+		for(var i = lastMonth; i <= 12; i++){
+			$(".barMonth.m" + i).prop("disabled", true)
+		}
 
-      	if(year == moment(lastDate).year()){
-      		
-  			var lastMonth = moment(lastDate).month() +1;
-  			for(var i = lastMonth; i <= 12; i++){
-  				$(".barMonth.m_" + i).prop("disabled", true)
-  			}
-			$(".dateMenu.barChart.month" ).selectmenu("refresh")  			
-
-      	}else{
-      		$(".barMonth").prop("disabled", false)
-      		$(".dateMenu.barChart.month" ).selectmenu("refresh")  
-      	}
-
+		$(".dateMenu.barChart.month" ).selectmenu("refresh")  			
+	}else{
+		$(".barMonth").prop("disabled", false)
+		$(".dateMenu.barChart.month" ).selectmenu("refresh")  
+	}
 }
 function buildBarDateMenus(endDate){
-// d3.selectAll(".dateMenu").remove()
-// var firstYear = getFirstYear(indicator)
-var params = getParams()
-var firstYear = params.firstDate.split("-")[0]
+	var params = getParams(),
+		firstYear = params.firstDate.split("-")[0],
+		endYear = moment(endDate).year(),
+		endMonth = moment(endDate).month(),
+		barYearMenu = d3.select(".dateMenu.barChart.year");
 
-var endYear = moment(endDate).year(),
-	endMonth = moment(endDate).month()
+	barYearMenu.selectAll("option").remove()
 
-// console.log(endYear)
-var barYearMenu = d3.select(".dateMenu.barChart.year")
-
-barYearMenu.selectAll("option").remove()
-for(var yr = firstYear; yr <= endYear; yr++){
-	barYearMenu.append("option")
-		.attr("value", yr)
-		.property("selected", function(){ return (yr == endYear)})
-		.text(yr)
-}
+	for(var yr = firstYear; yr <= endYear; yr++){
+		barYearMenu.append("option")
+			.attr("value", yr)
+			.attr("class", "barYear y" + yr)
+			.property("selected", function(){ return (yr == endYear)})
+			.text(yr)
+	}
 
 
-	     $(".dateMenu.barChart.year" ).selectmenu({
-      change: function(event, d){
-      	var params = getParams()
-      	var endMonth = +params.endDate.split("-")[1]
-      	var endString = getDateString(endMonth, +d.item.value)
-      	var cleanDates = sanitizeDates(params.startDate, endString)
+	$(".dateMenu.barChart.year" ).selectmenu({
+		change: function(event, d){
+			var params = getParams(),
+				endMonth = +params.endDate.split("-")[1],
+				endString = getDateString(endMonth, +d.item.value),
+				cleanDates = sanitizeDates(params.startDate, endString);
 
-      	disableBarMenuMonths(d.item.value, params.lastDate)
+			disableBarMenuMonths(d.item.value, params.lastDate)
+			updateBarChart(params.indicator, params.unit, cleanDates[1])
+			setParams({"endDate": cleanDates[1], "startDate": cleanDates[0] })
+			updateMenus({"startDate": cleanDates[0], "endDate": cleanDates[1]})
+		}
+	})
 
+	$(".dateMenu.barChart.year" ).selectmenu("refresh")
 
+	$(".dateMenu.barChart.month" ).selectmenu({
+		change: function(event, d){
+			var params = getParams(),
+				endYear = +params.endDate.split("-")[0],
+				endString = getDateString(+d.item.value, endYear),
+				cleanDates = sanitizeDates(params.startDate, endString);
 
-
-      	updateBarChart(params.indicator, params.unit, cleanDates[1])
-      	setParams({"endDate": cleanDates[1], "startDate": cleanDates[0] })
-
-      	// console.log(endDate)
-      }
-    })
-	     $(".dateMenu.barChart.year" ).selectmenu("refresh")
-
-
-	     $(".dateMenu.barChart.month" ).selectmenu({
-      change: function(event, d){
-      	var params = getParams()
-      	var endYear = +params.endDate.split("-")[0]
-      	var endString = getDateString(+d.item.value, endYear)
-      	var cleanDates = sanitizeDates(params.startDate, endString)
-
-      	console.log(endString)
-
-      	updateBarChart(params.indicator, params.unit, cleanDates[1])
-      	setParams({"endDate": cleanDates[1], "startDate": cleanDates[0] })
-      }
-    })
+			updateBarChart(params.indicator, params.unit, cleanDates[1])
+			setParams({"endDate": cleanDates[1], "startDate": cleanDates[0] })
+			updateMenus({"startDate": cleanDates[0], "endDate": cleanDates[1]})
+		}
+	})
 
 	disableBarMenuMonths(endYear, params.lastDate)
-
 }
-function buildLineDateMenus(startDate, endDate){
-	var monthAbbrs = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-		params = getParams(),
+function buildLineDateMenu(startDate, endDate, menu){
+	var params = getParams(),
 		lastDate = params.lastDate,
 		firstDate = params.firstDate,
 		firstYear = +firstDate.split("-")[0],
 		lastYear = +lastDate.split("-")[0],
+		lastMonth = +lastDate.split("-")[1],
 		startYear = +startDate.split("-")[0],
 		endYear = +endDate.split("-")[0],
+		startMonth = +startDate.split("-")[1],
+		endMonth = +endDate.split("-")[1],
 		yearRange = moment(lastDate).diff(firstDate, "years"),
-		data = Array(yearRange).fill(monthAbbrs)
+		data = Array(yearRange + 1).fill(monthAbbrs),
+		menuSelector = (menu == "start") ? ".calendarContainer.startDate" : ".calendarContainer.endDate";
 
-		var yearContainer = d3.select(".calendarContainer.startDate")
-			.selectAll("calendarYearContainer")
-			.data(data)
-			.enter().append("div")
-			.attr("class", function(d, i){
-				return "calendarYearContainer"
-			})
-			.style("display", function(d, i){
-				return ( (i + firstYear) < startYear || (i + firstYear) > startYear + 2) ? "none" : "inline-block"
-			})
+		var leftArrow = d3.select(menuSelector)
+			.append("div")
+			.attr("class", "left calendarArrow")
+		leftArrow.append("img")
+			.attr("src", "img/calendarArrow.png")
+		leftArrow.on("click", function(){
+			var rightMostYear = (+d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year") + 3),
+				firstYear = +getParams().firstDate.split("-")[0]
+			if(firstYear + 3 == rightMostYear) return false
+
+			d3.select(this.parentNode).select(".calendarYearContainer.y" + (+rightMostYear - 4)).classed("active", true)
+			d3.select(this.parentNode).select(".calendarSubcontainer")
+				.style("left", "-206px")
+				.transition()
+				.style("left", "0px")
+				.on("end", function(){
+					d3.select(this.parentNode).select(".calendarYearContainer.y" + (+rightMostYear)).classed("active", false)
+					d3.select(this.parentNode).select(".calendarYearContainer.y" + (+rightMostYear + 1)).classed("active", false)
+				})
+		})
+
+		var yearContainer = d3.select(menuSelector)
+			.append("div")
+				.attr("class", "calendarFrame")
+				.append("div")
+					.attr("class", "calendarSubcontainer")
+					.selectAll("calendarYearContainer")
+					.data(data)
+					.enter().append("div")
+						.attr("class", function(d, i){
+							var active = ( (i + firstYear) < startYear || (i + firstYear) > startYear + 3) ? "" : " active"
+							return "calendarYearContainer y" + (i + firstYear) +  active
+						})
+						.attr("data-year", function(d, i){ return i + firstYear})
+
 
 		yearContainer.append("div")
 			.attr("class", function(d, i){
-				var active = ""
+				var active = (startYear <= (i + firstYear) && endYear >= (i + firstYear)) ? " active" : ""
 				return "calYearLabel" + active
 			})
 			.text(function(d,i){ return i + firstYear })
@@ -212,460 +216,556 @@ function buildLineDateMenus(startDate, endDate){
 		yearContainer.selectAll("calMonth")
 			.data(function(d){ return d})
 			.enter().append("div")
-			.attr("class", "calMonth")
-			.text(function(d){ return d})
+				.attr("class", function(d, i){
+					var year = +d3.select(this.parentNode).attr("data-year"),
+						month = (i + 1)
+
+					if(year > startYear && year < endYear){
+						return "active calMonth " + menu
+					}
+					else if(year == lastYear && month > lastMonth && menu == "end"  ){
+						return "calMonth disabled " + menu
+					}
+					else if(year == startYear && year == endYear && menu == "start"){
+						if(month >= startMonth && month <= endMonth) return "active calMonth " + menu
+						else if(month < startMonth) return "calMonth " + menu
+						else return "calMonth disabled " + menu
+					}
+					else if(year == startYear && year == endYear && menu == "end"){
+						if(month >= startMonth && month <= endMonth) return "active calMonth " + menu
+						else if(month < startMonth) return "calMonth disabled " + menu
+						else return "calMonth" + menu
+					}
+					else if(year == startYear && month >= startMonth){
+						return "active calMonth " + menu
+					}
+					else if(year == endYear && month <= endMonth){
+						return "active calMonth " + menu		
+					}
+					else if((year > endYear || (year == endYear && month > endMonth)) && menu == "start"  ){
+						return "calMonth disabled " + menu
+					}
+					else if((year < startYear || (year == startYear && month < startMonth)) && menu == "end"  ){
+						return "calMonth disabled " + menu
+					}
+					else{
+						return "calMonth " + menu
+					}
+				})
+				.text(function(d){ return d})
+				.on("click", function(d, i){
+					// console.log(this, menu)
+					if(d3.select(this).classed("start")){
+						var year = +d3.select(this.parentNode).attr("data-year"),
+							params = getParams(),
+							endDate = params.endDate,
+							startString = getDateString(i+1, year)
+
+						setParams({"startDate": startString})
+						updateMenus({"startDate": startString, "endDate": endDate})
+						updateLineChart(params.indicator, params.unit, params.states, startString, params.endDate)
+					}else{
+						var year = +d3.select(this.parentNode).attr("data-year"),
+							params = getParams(),
+							startDate = params.startDate,
+							endString = getDateString(i+1, year)
+
+						setParams({"endDate": endString})
+						updateMenus({"startDate": startDate, "endDate": endString})
+						updateLineChart(params.indicator, params.unit, params.states, startDate, endString)
+
+					}
+
+				})
+
+		var rightArrow = d3.select(menuSelector)
+			.append("div")
+			.attr("class", "right calendarArrow")
+		rightArrow.append("img")
+			.attr("src", "img/calendarArrow.png")
+		rightArrow.on("click", function(){
+			var leftMostYear = d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year"),
+				lastYear = +getParams().lastDate.split("-")[0]
+			if(+leftMostYear == lastYear){ return false}
+			d3.select(this.parentNode).select(".calendarSubcontainer")
+				.transition()
+				.style("left", "-206px")
+				.on("end", function(){
+					d3.select(this).style("left", "0px")
+					d3.select(this.parentNode).select(".calendarYearContainer.y" + leftMostYear).classed("active", false)
+					d3.select(this.parentNode).select(".calendarYearContainer.y" + (+leftMostYear + 4)).classed("active", true)
+				})
+		})
 
 }
 function buildStateMenu(stateNamesData, states){
-	var leftData = stateNamesData.slice(0, 26)
-	var rightData = stateNamesData.slice(26,51)
-	var left = d3.select(".stateNameCol.left")
-		.selectAll(".stateName")
-		.data(leftData)
-		.enter().append("div")
-		.attr("class", "stateName")
+	var leftData = stateNamesData.slice(0, 26),
+		rightData = stateNamesData.slice(26,51),
+		left = d3.select(".stateNameCol.left")
+			.selectAll(".stateName")
+			.data(leftData)
+			.enter().append("div")
+				.attr("class", "stateName")
 
 	d3.select(".stateNameCol.right")
 		.selectAll(".stateName")
 		.data(rightData)
-		
 		.enter().append("div")
-		.attr("class", "stateName")
-		// .merge(left)
-		// .text("foo")
+			.attr("class", "stateName")
 
-d3.selectAll(".stateName")
-	.text(function(d){ return d.name })
-	.classed("active", function(d){ return states.indexOf(d.abbr) != -1 })
-	.on("click", function(d){
-		var params = getParams()
-		console.log(params)
-		if(d3.select(this).classed("active")){
-			d3.select(this).classed("active", false)
-			params.states.splice(params.states.indexOf(d.abbr), 1)
-		}else{
-			d3.select(this).classed("active", true)
-			params.states.push(d.abbr);
-		}
-		
-		setParams({"states": params.states.sort()})
-		updateLineChart(params.indicator, params.unit, params.states, params.startDate, params.endDate)
+	d3.selectAll(".stateName")
+		.text(function(d){ return d.name })
+		.classed("active", function(d){ return states.indexOf(d.abbr) != -1 })
+		.on("click", function(d){
+			var params = getParams()
 
-	})
-
-
-	// var states = left.merge(right)
-
-
-	// left.text("foo")
-		
-
-	// 	.selectAll("")
-	// 	.data(stateNamesData)
-
-	// updateLineChart(defaultIndicator, "raw", ["US", "CA", "NJ"], getDateString(1, randStart), getDateString(1, randEnd))
-
+			if(d3.select(this).classed("active")){
+				d3.select(this).classed("active", false)
+				params.states.splice(params.states.indexOf(d.abbr), 1)
+			}else{
+				d3.select(this).classed("active", true)
+				params.states.push(d.abbr);
+			}
+			setParams({"states": params.states.sort()})
+			updateLineChart(params.indicator, params.unit, params.states, params.startDate, params.endDate)
+		})
 }
+function updateMenus(opts){
+	
+	if(opts.hasOwnProperty("startDate")){
+		var startDate = opts.startDate,
+			endDate = opts.endDate,
+			startYear = +startDate.split("-")[0],
+			endYear = +endDate.split("-")[0],
+			startMonth = +startDate.split("-")[1],
+			endMonth = +endDate.split("-")[1],
+			firstYear = +getParams().firstDate.split("-")[0];
 
+		d3.select(".calendarContainer.startDate")
+			.selectAll(".calYearLabel")
+			.classed("active", function(d, i){
+				return (startYear <= (i + firstYear) && endYear >= (i + firstYear))
+			})
+		d3.select(".calendarContainer.endDate")
+			.selectAll(".calYearLabel")
+			.classed("active", function(d, i){
+				return (startYear <= (i + firstYear) && endYear >= (i + firstYear))
+			})
+
+		d3.select(".calendarContainer.startDate")
+			.selectAll(".calMonth")
+			.attr("class", function(d, i){
+				var year = +d3.select(this.parentNode).attr("data-year"),
+					month = monthAbbrs.indexOf(d) + 1
+				
+				if(year > startYear && year < endYear){
+					return "active calMonth start"
+				}
+				else if(year == startYear && year == endYear){
+					if(month >= startMonth && month <= endMonth) return "active calMonth start"
+					else if(month < startMonth) return "calMonth start"
+					else return "calMonth disabled start"
+				}
+				else if(year == startYear && month >= startMonth){
+					return "active calMonth start"
+				}
+				else if(year == endYear && month <= endMonth){
+					return "active calMonth start"		
+				}
+				else if(year > endYear || (year == endYear && month > endMonth) ){
+					return "calMonth disabled start"
+				}else{
+					return "calMonth start"
+				}
+			})
+	}
+	if(opts.hasOwnProperty("endDate")){
+		var startDate = opts.startDate,
+			endDate = opts.endDate,
+			startYear = +startDate.split("-")[0],
+			endYear = +endDate.split("-")[0],
+			startMonth = +startDate.split("-")[1],
+			endMonth = +endDate.split("-")[1],
+			firstYear = +getParams().firstDate.split("-")[0],
+			lastDate = getParams().lastDate,
+			lastYear = lastDate.split("-")[0],
+			lastMonth = lastDate.split("-")[1];
+
+
+		disableBarMenuMonths(endYear, lastDate)
+
+		d3.select(".dateMenu.barChart.year")
+			.selectAll(".barYear")
+			.property("selected", false)
+
+		d3.select(".dateMenu.barChart.year")
+			.select(".barYear.y" + endYear)
+			.property("selected", "selected")
+
+		$(".dateMenu.barChart.year")
+			.selectmenu("refresh")
+
+		d3.select(".dateMenu.barChart.month")
+			.selectAll(".barMonth")
+			.property("selected", false)
+
+		d3.select(".dateMenu.barChart.month")
+			.select(".barMonth.m" + endMonth)
+			.property("selected", "selected")
+
+		$(".dateMenu.barChart.month")
+			.selectmenu("refresh")
+
+		d3.select(".calendarContainer.startDate")
+			.selectAll(".calYearLabel")
+			.classed("active", function(d, i){
+				return (startYear <= (i + firstYear) && endYear >= (i + firstYear))
+			})
+		d3.select(".calendarContainer.endDate")
+			.selectAll(".calYearLabel")
+			.classed("active", function(d, i){
+				return (startYear <= (i + firstYear) && endYear >= (i + firstYear))
+			})
+
+		d3.select(".calendarContainer.endDate")
+			.selectAll(".calMonth")
+			.attr("class", function(d, i){
+				var year = +d3.select(this.parentNode).attr("data-year"),
+					month = monthAbbrs.indexOf(d) + 1
+				
+				if(year > startYear && year < endYear){
+					return "active calMonth end"
+				}
+				else if(year == lastYear && month > lastMonth){
+					return "calMonth disabled end"
+				}
+				else if(year == startYear && year == endYear){
+					if(month >= startMonth && month <= endMonth) return "active calMonth end"
+					else if(month < startMonth) return "calMonth disabled end"
+					else return "calMonth end"
+				}
+				else if(year == startYear && month >= startMonth){
+					return "active calMonth end"
+				}
+				else if(year == endYear && month <= endMonth){
+					return "active calMonth end"		
+				}
+				else if(year < startYear || (year == startYear && month < startMonth) ){
+					return "calMonth disabled end"
+				}else{
+					return "calMonth end"
+				}
+			})
+	}
+}
 function buildCards(cardData){
 
 }
 function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate, active){
+	var allGeographies = getBarData(chartData, indicator, unit, endDate),
+		data = allGeographies.states,
+		usData = allGeographies.US,
+		key = getKey(indicator, unit);
 
+//TO UPDATE abstract out to new function
+	var margin = {top: 20, right: 20, bottom: 70, left: 40},
+	w = 600,
+	h = 300,
+	width = w - margin.left - margin.right,
+	height = h - margin.top - margin.bottom;
+//end update
 
-//if active, show barcontainer by default and hide linecontainer
-var allGeographies = getBarData(chartData, indicator, unit, endDate),
-data = allGeographies.states,
-usData = allGeographies.US
+	var svg = d3.select("#barChartContainer").append("svg").attr("width", w).attr("height", h)
 
+	var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+	var x = d3.scaleBand()
+		.rangeRound([0, width])
+		.padding(0.1)
+		.domain(data.map(function (d) {
+			return d.abbr;
+		}));
 
-var key = getKey(indicator, unit);
+	var y = d3.scaleLinear()
+		.rangeRound([height, 0])
+		.domain(
+			[
+				Math.min(
+					0,
+					d3.min(data,function (d) {
+						return d[key];
+					})
+				),
+				d3.max(data, function (d) {
+					return d[key];
+				}),
+			]
+		).nice();
 
+	g.append("g")
+		.attr("class", "bar x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x))
+			.selectAll("text")
+				.style("text-anchor", "end")
+				.attr("dx", "-.8em")
+				.attr("dy", "-.55em")
+				.attr("transform", "rotate(-90)" );
 
+	g.append("g")
+		.attr("class", "bar y axis")
+		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount))
 
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
-w = 600,
-h = 300,
-width = w - margin.left - margin.right,
-height = h - margin.top - margin.bottom;
+	var colorScale = getColorScale(y, data, key)
 
-var svg = d3.select("#barChartContainer").append("svg").attr("width", w).attr("height", h)
+	g.selectAll(".usLine")
+		.data(usData)
+		.enter().append("line")
+			.attr("class", "usLine")
+			.attr("x1", 0)
+			.attr("x2", width)
+			.attr("y1", function (d) {
+				return y(d[key]);
+			})
+			.attr("y2", function (d) {
+				return y(d[key]);
+			})
 
-var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	g.selectAll("rect.bar")
+		.data(data)
+		.enter().append("rect")
+			.attr("class", "bar")
+			.attr("x", function (d, i) {
+				return x(d.abbr);
+			})
+			.attr("y", function (d) {
+				return y( Math.max(0, +d[key]) );
+			})
+			.style("fill", function(d){ return colorScale(d[key])})
+			.attr("width", x.bandwidth())
+			.attr("height", function (d) {
+				return Math.abs(y(+d[key]) - y(0));
+			});
 
-
-var x = d3.scaleBand()
-.rangeRound([0, width])
-.padding(0.1);
-
-var y = d3.scaleLinear()
-.rangeRound([height, 0]);
-
-x.domain(data.map(function (d) {
-return d.abbr;
-}));
-y.domain(
-[
-Math.min(
-
-0,
-d3.min(data, function (d) {
-return Number(d[key]);
-}
-)
-),
-d3.max(data, function (d) {
-return Number(d[key]);
-}),
-]
-).nice();
-
-g.append("g")
-.attr("class", "bar x axis")
-.attr("transform", "translate(0," + height + ")")
-.call(d3.axisBottom(x))
-.selectAll("text")
-.style("text-anchor", "end")
-.attr("dx", "-.8em")
-.attr("dy", "-.55em")
-.attr("transform", "rotate(-90)" );
-
-g.append("g")
-.attr("class", "bar y axis")
-.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount))
-
-
-var colorScale = getColorScale(y, data, key)
-
-
-g.selectAll(".usLine")
-.data(usData)
-.enter().append("line")
-.attr("class", "usLine")
-.attr("x1", 0)
-.attr("x2", width)
-.attr("y1", function (d) {
-return y(Number(d[key]));
-})
-.attr("y2", function (d) {
-return y(Number(d[key]));
-})
-// .attr("stroke", "red")
-
-g.selectAll("rect.bar")
-.data(data)
-.enter().append("rect")
-.attr("class", "bar")
-.attr("x", function (d, i) {
-return x(d.abbr);
-})
-.attr("y", function (d) {
-
-return y( Math.max(0, +d[key]) );
-})
-.style("fill", function(d){ return colorScale(d[key])})
-.attr("width", x.bandwidth())
-.attr("height", function (d) {
-return Math.abs(y(+d[key]) - y(0));
-});
-
-buildMap(data, topojsonData, key, colorScale)
-
-
+	buildMap(data, topojsonData, key, colorScale)
 }
 function buildMap(data, topojsonData, key, colorScale){
-var width = 621,
-height = .6 * width
-var svg = d3.select("#mapContainer").append("svg")
-.attr("width", width)
-.attr("height", height)
-.append("g");
+//TO BE UPDATED, abstract out to new function
+	var width = 621,
+	height = .6 * width
+//end update
 
-var projection = d3.geoAlbersUsa()
-.scale(1.2 * width)
-.translate([width/2, height/2]);
+	var svg = d3.select("#mapContainer").append("svg")
+		.attr("width", width)
+		.attr("height", height)
+		.append("g");
 
-var path = d3.geoPath()
-.projection(projection);
+	var projection = d3.geoAlbersUsa()
+		.scale(1.2 * width)
+		.translate([width/2, height/2]);
 
+	var path = d3.geoPath()
+		.projection(projection);
 
+	topojsonData.objects.states.geometries.forEach(function(u){
+		u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
+	})
 
+	svg.selectAll("path.stateShape")
+		.data(topojson.feature(topojsonData, topojsonData.objects.states).features)
+		.enter().append("path")
+			.attr("class", "stateShape")
+			.style("stroke", "white")
+			.style("fill", function(d){
+				return colorScale(d["properties"]["values"][key])
+			})
+			.attr("d", path);
 
-
-topojsonData.objects.states.geometries.forEach(function(u){
-u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
-})
-
-svg
-.selectAll("path.stateShape")
-
-.data(topojson.feature(topojsonData, topojsonData.objects.states).features)
-.enter().append("path")
-.attr("class", "stateShape")
-.style("stroke", "white")
-.style("fill", function(d){
-return colorScale(d["properties"]["values"][key])
-})
-.attr("d", path);
-
-svg.append("path")
-.attr("class", "state-borders")
-.style("stroke", "white")
-.style("fill", "none")
-.attr("d", path(topojson.mesh(topojsonData, topojsonData.objects.states, function(a, b) { return a !== b; })));
-
-
-
+	svg.append("path")
+		.attr("class", "state-borders")
+		.style("stroke", "white")
+		.style("fill", "none")
+		.attr("d", path(topojson.mesh(topojsonData, topojsonData.objects.states, function(a, b) { return a !== b; })));
 }
-
 function getColorScale(y, data, key){
+	var tickBreaks = y.ticks(barTickCount),
+		colorBreaks = [],
+		vals = data.map(function(o){ return o[key]}).reverse(),
+		step = (tickBreaks.length > 10) ? 2 : 1
 
-var tickBreaks = y.ticks(barTickCount),
-colorBreaks = []
+	for(var i = 1; i < tickBreaks.length; i += step){
+		if(vals[0] > tickBreaks[i]){
+			continue;
+		}else{
+			if(colorBreaks.length < 7){
+				colorBreaks.push(tickBreaks[i])
+			}else{
+				colorBreaks.push(tickBreaks[tickBreaks.length - 1])
+				break;
+			}
+		}
+	}
 
-vals = data.map(function(o){ return o[key]}).reverse()
+	var colorRange;
+	switch (colorBreaks.length){
+		case 4: colorRange = fourBlues;
+		case 5: colorRange = fiveBlues;
+		case 6: colorRange = sixBlues;
+		case 7: colorRange = sevenBlues;
+		case 8: colorRange = eightBlues;
+	}
 
-var step = (tickBreaks.length > 10) ? 2 : 1
+	var colorScale = d3.scaleThreshold()
+		.range(colorRange)
+		.domain(colorBreaks)
 
-for(var i = 1; i < tickBreaks.length; i += step){
-if(vals[0] > tickBreaks[i]){
-continue;
-}else{
-if(colorBreaks.length < 7){
-colorBreaks.push(tickBreaks[i])
-}else{
-colorBreaks.push(tickBreaks[tickBreaks.length - 1])
-break;
-}
-}
-}
-
-
-var colorRange;
-switch (colorBreaks.length){
-case 4: colorRange = fourBlues;
-case 5: colorRange = fiveBlues;
-case 6: colorRange = sixBlues;
-case 7: colorRange = sevenBlues;
-case 8: colorRange = eightBlues;
-}
-
-var colorScale = d3.scaleThreshold()
-.range(colorRange)
-.domain(colorBreaks)
-
-return colorScale
+	return colorScale
 }
 function buildLineChart(chartData, indicator, unit, states, startDate, endDate, active){
-//if active, show linecontainer by default and hide barcontainer
-var dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
-data = dataObj.data,
-extent = dataObj.extent;
+//ADD FUNCTIONALITY
+	//if active, show linecontainer by default and hide barcontainer
 
-var key = getKey(indicator, unit)
+	var dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
+		data = dataObj.data,
+		extent = dataObj.extent,
+		key = getKey(indicator, unit)
 
-var parseTime = d3.timeParse("%Y-%m-%d");
+//TO BE UPDATED, abstract out to new function
+	var margin = {top: 10, right: 30, bottom: 30, left: 60},
+	width = 460 - margin.left - margin.right,
+	height = 400 - margin.top - margin.bottom;
+//end update
 
+	var svg = d3.select("#lineChartContainer")
+		.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
 
-// data.forEach(function(a) {
-// 	a.values.forEach(function(d){
-//     d.date = parseTime(d.date);
-//     // d.raw = +d.raw;
-//     // d.change = +d.change;
-//   })
-// });
+	var g = svg.append("g")
+		.attr("id", "linesContainer")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+		.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
+	var defs = svg.append("defs"),
+		lineClippingPath = defs.append("clipPath").attr("id", "lineClippingPath"),
+		dotClippingPath = defs.append("clipPath").attr("id", "dotClippingPath");
 
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-width = 460 - margin.left - margin.right,
-height = 400 - margin.top - margin.bottom;
+	lineClippingPath.append("rect")
+		.attr("x", 0)
+		.attr("y",0)
+		.attr("width", width)
+		.attr("height", height)
 
-// append the svg object to the body of the page
-var svg = d3.select("#lineChartContainer")
-.append("svg")
-.attr("width", width + margin.left + margin.right)
-.attr("height", height + margin.top + margin.bottom)
-var g = svg.append("g")
-.attr("id", "linesContainer")
-.attr("width", width + margin.left + margin.right)
-.attr("height", height + margin.top + margin.bottom)
+	dotClippingPath.append("rect")
+		.attr("x", -10)
+		.attr("y",-10)
+		.attr("width", width+20)
+		.attr("height", height+20)
 
-.attr("transform",
-"translate(" + margin.left + "," + margin.top + ")");
+	var x = getLineX(startDate, endDate, width)
+	var y = getLineY(extent, height)
 
-//Read the data
+	g.append("g")
+		.attr("class", "line axis x")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x).ticks(5));
 
+	g.append("g")
+		.attr("class", "line axis y")
+		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount));
 
-var defs = svg.append("defs"),
-lineClippingPath = defs.append("clipPath").attr("id", "lineClippingPath")
-dotClippingPath = defs.append("clipPath").attr("id", "dotClippingPath")
+	g.selectAll(".state.line")
+		.data(data, function(d) { return d.key; })
+		.enter()
+		.append("path")
+			.attr("class",function(d){ return d.key + " state line" })
+			.attr("clip-path", "url(#lineClippingPath)")
+			.attr("d", function(d){
+				return d3.line()
+					.x(function(d) { return x(parseTime()(d.date)); })
+					.y(function(d) { return y(+d[key]); })
+					(d.values)
+			})
 
-lineClippingPath.append("rect")
-.attr("x", 0)
-.attr("y",0)
-.attr("width", width)
-.attr("height", height)
+	g.append("circle")
+		.attr("class", "linechartDot")
+		.attr("clip-path", "url(#dotClippingPath)")
+		.attr("r", 5)
+		.attr("cx",0)
+		.attr("cy",0)
 
-dotClippingPath.append("rect")
-.attr("x", -10)
-.attr("y",-10)
-.attr("width", width+20)
-.attr("height", height+20)
+	var voronoi = d3.voronoi()
+		.x(function(d) { return x(parseTime()(d.date)); })
+		.y(function(d) { return y(d[key]); })
+		.extent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
 
+	var voronoiGroup = g.append("g")
+		.attr("class", "voronoi");
 
-
-// Add X axis --> it is a date format
-
-var x = getLineX(startDate, endDate, width)
-var y = getLineY(extent, height)
-
-
-// color palette
-
-g.append("g")
-.attr("class", "line axis x")
-.attr("transform", "translate(0," + height + ")")
-.call(d3.axisBottom(x).ticks(5));
-
-g.append("g")
-.attr("class", "line axis y")
-.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount));
-
-
-
-g.selectAll(".state.line")
-.data(data, function(d) { return d.key; })
-.enter()
-.append("path")
-.attr("class",function(d){ return d.key + " state line" })
-.attr("clip-path", "url(#lineClippingPath)")
-.attr("d", function(d){
-return d3.line()
-.x(function(d) { return x(parseTime(d.date)); })
-.y(function(d) { return y(+d[key]); })
-(d.values)
-})
-
-
-g.append("circle")
-.attr("class", "linechartDot")
-.attr("clip-path", "url(#dotClippingPath)")
-.attr("r", 5)
-.attr("cx",0)
-.attr("cy",0)
-
-var voronoi = d3.voronoi()
-.x(function(d) { return x(parseTime(d.date)); })
-.y(function(d) { return y(d[key]); })
-.extent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
-
-var voronoiGroup = g.append("g")
-.attr("class", "voronoi");
-
-voronoiGroup.selectAll("path")
-.data(voronoi.polygons(d3.merge(data.map(function(d) { return d.values; }))))
-.enter().append("path")
-.attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; })
-.on("mouseover", function(d){ mouseoverLineChart(d, key, startDate, endDate, extent, width, height) })
-.on("mouseout", mouseoutLineChart);
-
-
-
-
-
-
-
-// g.append("rect")
-// 	.attr("id", "lineAxisBlocker")
-// 	.style("fill", "#fff")
-// 	.attr("x", -margin.left)
-// 	.attr("width", margin.left)
-// 	.attr("y", 0)
-// 	.attr("height", height)
-
-
-
-
-
+	voronoiGroup.selectAll("path")
+		.data(voronoi.polygons(d3.merge(data.map(function(d) { return d.values; }))))
+		.enter().append("path")
+			.attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; })
+			.on("mouseover", function(d){ mouseoverLineChart(d, key, startDate, endDate, extent, width, height) })
+			.on("mouseout", mouseoutLineChart);
 }
-
 function getLineX(startDate, endDate, width){
-// var parseTime = d3.timeParse("%Y-%m-%d");
-var x = d3.scaleTime()
-// .domain(d3.extent(data[0].values, function(d) { return d.date; }))
-.domain([parseTime()(startDate), parseTime()(endDate)])
-.range([ 0, width ]);
+	var x = d3.scaleTime()
+		.domain([parseTime()(startDate), parseTime()(endDate)])
+		.range([ 0, width ]);
 
-return x
+	return x
 }
 function getLineY(extent, height){
-var y = d3.scaleLinear()
-.domain(extent)
-.range([ height, 0 ]);
+	var y = d3.scaleLinear()
+		.domain(extent)
+		.range([ height, 0 ]);
 
-return y
+	return y
 }
-
-
 function mouseoverLineChart(d, key, startDate, endDate, extent, width, height) {
-var parseTime = d3.timeParse("%Y-%m-%d");
-if (parseTime(startDate).getTime() > parseTime(d.data.date).getTime() || parseTime(endDate).getTime() < parseTime(d.data.date)){
-return false;
+	if (parseTime()(startDate).getTime() > parseTime()(d.data.date).getTime() || parseTime()(endDate).getTime() < parseTime()(d.data.date)){
+		return false;
+	}
+
+	var x = getLineX(startDate, endDate, width)
+	var y = getLineY(extent, height)
+
+	d3.select(".linechartDot")
+		.style("opacity",1)
+		.attr("cx", x(parseTime()(d.data.date)))
+		.attr("cy",y(d["data"][key]))
 }
-
-
-var x = getLineX(startDate, endDate, width)
-var y = getLineY(extent, height)
-
-d3.select(".linechartDot")
-.style("opacity",1)
-.attr("cx", x(parseTime(d.data.date)))
-.attr("cy",y(d["data"][key]))
-
-
-}
-
 function mouseoutLineChart(d) {
-d3.select(".linechartDot").style("opacity",0)
-// d3.select(d.data.city.line).classed("city--hover", false);
-// focus.attr("transform", "translate(-100,-100)");
+	d3.select(".linechartDot").style("opacity",0)
 }
-
-
 function getBarData(chartData, indicator, unit, date){
-var indicatorData = chartData,
-key = getKey(indicator, unit)
-var dataByDate = d3.nest()
-.key(function(d){ return d.date })
-.entries(indicatorData)
+	var indicatorData = chartData,
+		key = getKey(indicator, unit),
+		dataByDate = d3.nest()
+			.key(function(d){ return d.date })
+			.entries(indicatorData)
 
-var allGeographies = dataByDate.filter(function(d){ return d.key == date })[0].values,
-usData = allGeographies.filter(function(d){ return d.abbr == "US" }),
-stateData = allGeographies.filter(function(d){ return d.abbr != "US" }).sort(function(a, b){ return b[key] - a[key] })
+	var allGeographies = dataByDate.filter(function(d){ return d.key == date })[0].values,
+		usData = allGeographies.filter(function(d){ return d.abbr == "US" }),
+		stateData = allGeographies.filter(function(d){ return d.abbr != "US" }).sort(function(a, b){ return b[key] - a[key] })
 
-
-
-return {"US": usData, "states": stateData}
-
+	return {"US": usData, "states": stateData}
 }
 function getLineData(chartData, indicator, unit, states, startDate, endDate){
-var indicatorData = chartData,
-key = getKey(indicator, unit)
+	var indicatorData = chartData,
+		key = getKey(indicator, unit),
+		dateFilteredData = indicatorData,
+		extent = d3.extent(dateFilteredData, function(d){ if (states.indexOf(d.abbr) != -1) return d[key]}),
+		zeroedExtent = [ Math.min(extent[0], 0), extent[1] ],
+		dataByState = d3.nest()
+			.key(function(d){ return d.abbr })
+			.entries(dateFilteredData)
 
-var dateFilteredData = indicatorData
-var extent = d3.extent(dateFilteredData, function(d){ if (states.indexOf(d.abbr) != -1) return d[key]}),
-zeroedExtent = [ Math.min(extent[0], 0), extent[1] ]
-var dataByState = d3.nest()
-.key(function(d){ return d.abbr })
-.entries(dateFilteredData)
-
-
-return {"data": dataByState.filter(function(d){ return states.indexOf(d.key) != -1 })
-, "extent": zeroedExtent }
+	return {"data": dataByState.filter(function(d){ return states.indexOf(d.key) != -1 })
+	, "extent": zeroedExtent }
 }
-
-
 function updateBarChart(indicator, unit, date){
 	var chartData = getChartData()
 	var allGeographies = getBarData(chartData, indicator, unit, date),
@@ -905,8 +1005,6 @@ function deselectLineStates(states) {
 function init(allData, topojsonData, stateNamesData){
 	buildCards(allData.cards)
 
-	console.log(allData)
-
 	var qStates = getQueryString("states"),
 		qIndicator = getQueryString("indicator"),
 		qStartDate = getQueryString("start"),
@@ -957,7 +1055,8 @@ function init(allData, topojsonData, stateNamesData){
 		buildLineChart(allData.data, indicator, unit, states, startDate, endDate, !activeBars)
 		setParams({"indicator": indicator, "unit": unit, "states": states, "startDate": startDate, "endDate": endDate, "init": true, "firstDate": firstDate, "lastDate": lastDate})
 		buildBarDateMenus(endDate)
-		buildLineDateMenus(startDate, endDate)
+		buildLineDateMenu(startDate, endDate, "start")
+		buildLineDateMenu(startDate, endDate, "end")
 		buildStateMenu(stateNamesData, states)
 }
 

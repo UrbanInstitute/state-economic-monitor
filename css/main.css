@@ -72,17 +72,34 @@ rect.bar{
 /**********************************************************************/
 /********************* CALENDAR PICKERS *******************************/
 /**********************************************************************/
-.calendarContainer{
+/*.calendarContainer{
 	overflow-x: hidden;
     width: 460px;
     white-space: nowrap;
-    height: 240px;
+}*/
+
+.calendarFrame{
+	display: inline-block;
+	overflow-x: hidden;
+    width: 460px;
+    white-space: nowrap;
+}
+.calendarSubcontainer{
+	position: relative;
+}
+.calYearLabel.active{
+	color: #1696d2;
+	font-weight: bold;
+	font-size: 16px;
 }
 .calendarYearContainer{
 	width: 206px;
 	white-space: normal;
+	display: none;
 }
-
+.calendarYearContainer.active{
+	display: inline-block;
+}
 .calMonth{
     width: 34px;
     height: 23px;
@@ -91,10 +108,12 @@ rect.bar{
     font-weight: bold;
     background: #D2D2D2;
     color: #000;
+    font-size: 14px;
     display: inline-block;
     padding: 7px 4px;
     margin-right: 7px;
     margin-bottom: 7px;
+    cursor: pointer;
 }
 .calMonth.active{
 	background: #1696d2;
@@ -102,4 +121,24 @@ rect.bar{
 }
 .calMonth.disabled{
 	color: #696969;
+	opacity: .6;
+	pointer-events: none;
+}
+.calendarArrow{
+	display: inline-block;
+	cursor: pointer;
+}
+.calendarArrow img{
+    width: 41px;
+    position: relative;
+    top: -48px;
+}
+.calendarArrow.left{
+	margin-right: 15px;
+}
+.calendarArrow.right{
+	margin-left: 10px;
+}
+.calendarArrow.right img{
+	transform: rotate(180deg);
 }
