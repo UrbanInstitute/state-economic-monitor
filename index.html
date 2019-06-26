@@ -7,58 +7,265 @@
 <div id = "chartData"></div>
 <div id = "topojsonData"></div>
 <div id = "paramData"></div>
+<div id = "terminalDatesData"></div>
+<div id = "stateNamesData"></div>
 
-<div id = "chartsTemp">
-	<div id = "singleYearContainer">
-		<div id = "barChartContainer"></div>
-		<div id = "mapContainer"></div>
-	</div>
 
-	<div id = "multiYearContainer">
-		<div id = "lineChartContainer"></div>
+
+<!-- START HEADER -->
+<div id = "headerContainer">
+	<div id = "headerLogo">
+		<img src = "img/logo.png"/>
 	</div>
+	<div id = "headerTitle">State Economic Monitor</div>
+	<div id = "lastUpdatedContainer">Last updated <span id = "last-updated">MM, DD, YYYY</span></div>
 </div>
+<!-- END HEADER -->
 
-<div id = "controlsTemp">
-	<div>Bar chart year</div>
-	<select class = "dateMenu barChart year">
-<!-- 		<option value = "1976">1976</option>
-		<option value = "1976">1976</option>
-		<option value = "1976">1976</option>
-		<option value = "1976">1976</option>
-		<option value = "1976">1976</option>
-		<option value = "1976">1976</option>
-		<option value = "1976">1976</option> -->
-	</select>
-	<div>Bar chart month</div>
-	<select class = "dateMenu barChart month">
-		<option class = "barMonth m1" value = "01">January</option>
-		<option class = "barMonth m2" value = "02">February</option>
-		<option class = "barMonth m3" value = "03">March</option>
-		<option class = "barMonth m4" value = "04">April</option>
-		<option class = "barMonth m5" value = "05">May</option>
-		<option class = "barMonth m6" value = "06">June</option>
-		<option class = "barMonth m7" value = "07">July</option>
-		<option class = "barMonth m8" value = "08">August</option>
-		<option class = "barMonth m9" value = "09">September</option>
-		<option class = "barMonth m10" value = "10">October</option>
-		<option class = "barMonth m11" value = "11">November</option>
-		<option class = "barMonth m12" value = "12">December</option>
-	</select>
 
-	<div>Line chart start date</div>
+<!-- START CARDS -->
+<div id = "cardContainer">
+	<div id = "cardCurrentContainer">
+		<div id = "cardCurrentText">Highlights</div>
+	</div>
+
+	<div id = "cardSubcontainer">
+		<div class = "cardArrow left">
+			<img src = "img/calendarArrow.png"/>
+		</div>
+
+		<div id = "cardContentContainer"></div>
+
+		<div class = "cardArrow right">
+			<img src = "img/calendarArrow.png"/>
+		</div>
+	</div>
+
+</div>
+<!-- END CARDS -->
+
+
+
+
+<!-- START MAIN CONTENT -->
+<div id = "contentContainer">
+<!-- START INPUT CONTROLS -->
+	<div id = "sectionNames">
+		<div class = "sectionName" id = "sn-employment">Employment</div>
+		<div class = "sectionName" id = "sn-earnings">Earnings</div>
+		<div class = "sectionName" id = "sn-housing">Housing</div>
+		<div class = "sectionName" id = "sn-gdp"">State gdp</div>
+	</div>
+
+	<div id = "menuRow">
+<!-- START EMPLOYMENT MENU -->
+		<div class = "categoryMenu active employment menuBlock">
+			<div class = "menuTop" id = "mt-employment">
+				<div class = "menuTitle">Category</div>
+				<div class = "menuActive">&hellip;</div>
+				<img src = "img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+
+			<div class = "employmentOption" id = "eo-unemployment_rate">Unemployment rate</div>
+			<div class = "employmentOption" id = "eo-total_employment">Total employment</div>
+			<div class = "employmentOption" id = "eo-private_employment">Private employment</div>
+			<div class = "employmentOption" id = "eo-public_employment">Public employment</div>
+			<div class = "employmentOption" id = "eo-federal_public_employment">Federal public employment</div>
+			<div class = "employmentOption" id = "eo-state_and_local_public_employment">State and local public employment</div>
+			<div class = "employmentOption" id = "eo-state_and_local_public_education_employment">State and local public education employment</div>
+
+		</div>
+<!-- END EMPLOYMENT MENU -->
+		<div class = "categoryMenu other menuBlock">
+			<div class = "menuTitle">Category</div>
+			<div class = "menuActive">&hellip;</div>
+		</div>
+<!-- START STATE MENU -->
+		<div class = "stateMenu menuBlock">
+			<div class = "menuTop" id = "mt-state">
+				<div class = "menuTitle">State</div>
+				<div class = "menuActive stateDisplayName">&hellip;</div>
+				<img src = "img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+			<div id = "stateNameContainer">
+				<div class = "stateNameCol left"></div>
+				<div class = "stateNameCol right"></div>
+			</div>
+		</div>
+<!-- END STATE MENU -->
+<!-- START TIME MENU -->
+		<div class = "timeMenu menuBlock">
+			<div class = "menuTop" id = "mt-time">
+				<div class = "menuTitle">Time frame</div>
+				<div class = "menuActive timeRange">&hellip;</div>
+				<div class = "menuActive timeSingle">&hellip;</div>
+				<img src = "img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+
+			<div class = "timeTypeContainer bar">
+				<img src = "img/barIcon.png"/>
+				<span>Single date</span>
+			</div>
+
+			<div class = "timeTypeContainer line">
+				<img src = "img/lineIcon.png"/>
+				<span>Date range</span>
+			</div>
+
+			<div id = "barControlContainer">
+				<div id = "barControlLabels">
+					<div class = "timeMenuLabel month">Month</div>
+					<div class = "timeMenuLabel quarter">Quarter</div>
+					
+				</div>
+				
+				<div id = "barControlMenus">
+					<select class = "dateMenu barChart month" id = "bcm">
+						<option class = "barMonth m1" value = "01">January</option>
+						<option class = "barMonth m2" value = "02">February</option>
+						<option class = "barMonth m3" value = "03">March</option>
+						<option class = "barMonth m4" value = "04">April</option>
+						<option class = "barMonth m5" value = "05">May</option>
+						<option class = "barMonth m6" value = "06">June</option>
+						<option class = "barMonth m7" value = "07">July</option>
+						<option class = "barMonth m8" value = "08">August</option>
+						<option class = "barMonth m9" value = "09">September</option>
+						<option class = "barMonth m10" value = "10">October</option>
+						<option class = "barMonth m11" value = "11">November</option>
+						<option class = "barMonth m12" value = "12">December</option>
+					</select>
+					
+					<select class = "dateMenu barChart quarter" id = "bcq">
+						<option class = "barMonth q1" value = "01">1st Quarter</option>
+						<option class = "barMonth q2" value = "04">2nd Quarter</option>
+						<option class = "barMonth q3" value = "07">3rd Quarer</option>
+						<option class = "barMonth q4" value = "10">4th Quarter</option>
+					</select>
+					
+					<div class = "timeMenuLabel year">Year</div>
+					<select class = "dateMenu barChart year">
+					</select>
+				</div>
+			</div>
+
+			<div id = "lineControlContainer">
+				<div class = "lineMenuContainer">
+					<div class = "lineMenuLabel start">Start date</div>
+					<div class = "lineMenuDisplay start">
+						<div class = "lineMenuDate start"></div>
+						<img class = "lineMenuCalIcon start" src = "img/calIcon.png"/>
+					</div>
+					
+				</div>
+
+				<div class = "lineMenuContainer">
+					<div class = "lineMenuLabel end">End date</div>
+					<div class = "lineMenuDisplay end">
+						<div class = "lineMenuDate end"></div>
+						<img class = "lineMenuCalIcon end" src = "img/calIcon.png"/>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+<!-- END TIME MENU -->
+<div class = "calendarParent startDate">
 	<div class = "calendarContainer startDate"></div>
-
-	<div>Line chart end date</div>
-	<div class = "calendarContainer endDate"></div>
-
-	<div id = "stateNameContainer">
-		<div class = "stateNameCol left"></div>
-		<div class = "stateNameCol right"></div>
-	</div>
 </div>
+<div class = "calendarParent endDate">
+	<div class = "calendarContainer endDate"></div>
+</div>
+<!-- START UNIT CHECKBOXES -->
+		<div id = "unitCheckboxes">
+			<div class = "unitCheckBox change active">
+				<img src = "img/checked.png"/>
+				<span class = "disabledBox change"></span>
+				<div class = "unitText change">Percent change year over year</div>
+			</div>
+			<div class = "unitCheckBox raw">
+				<img src = "img/checked.png"/>
+				<span class = "disabledBox raw"></span>
+				<div class = "unitText raw">&hellip;</div>
+			</div>
+		</div>
+<!-- END UNIT CHECKBOXES -->
+	</div>
+<!-- END INPUT CONTROLS -->
+<!-- START CHART AREA -->
+	<div id = "chartAreaContainer">
+		<div id = "chartTitleContainer">
+			<span id = "chartTitle"></span>
+			<span id = "chartUnits"></span>
+		</div>
 
+		<div id = "chartFrame">
+			<div id = "singleYearContainer">
+				<div id = "barChartContainer">
+					<div class = "singleYear tooltip">
+						<div class = "singleYear tt-top-row">
+							<div class = "singleYear tt-value"></div>
+							<div class = "singleYear tt-states"></div>
+							<div class = "singleYear tt-date"></div>
+						</div>
+						<div class = "singleYear tt-indicator"></div>
+						<div class = "singleYear tt-us"></div>
+					</div>
+				</div>
 
+				<div id = "mapContainer">
+<!-- START CHART BUTTONS -->
+					<div id = "chartButtonContainer">
+						<div class = "chartButton saveImage">Save chart</div>
+						<div class = "chartButton downloadData">Download data</div>
+						<div class = "chartButton shareURL">Share this view</div>
+					</div>
+<!-- END CHART BUTTONS -->
+				</div>
+			</div>
+			<div id = "multiYearContainer">
+				<div id = "lineChartContainer">
+					<div class = "multiYear tooltip">
+						<div class = "multiYear tt-top-row">
+							<div class = "multiYear tt-value"></div>
+							<div class = "multiYear tt-states"></div>
+							<div class = "multiYear tt-date"></div>
+						</div>
+						<div class = "multiYear tt-indicator"></div>
+						<div class = "multiYear tt-us"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- END CHART AREA -->
+</div>
+<!-- END MAIN CONTENT -->
+<!-- START FOOTER -->
+<div id = "footerContainer">
+	<div id = "footerContentContainer">
+		<div id = "footerTopRow">
+			<div id = "bigLogoContainer">
+				<img src = "img/bigLogo.png"/>
+			</div>
+			<div id = "footerBigLinks">
+				<div class = footerBigLink><a href = "">About</a></div>
+				<div class = footerBigLink><a href = "">Contact us</a></div>
+			</div>
+		</div>
+		<div id = "footerBottomRow">
+			<div class = footerSmallLink><a href = "">Privacy</a></div>
+			<div class = footerSmallLink><a href = "">Terms &amp; Service</a></div>
+		</div>
+	</div>
+
+</div>
+<!-- END FOOTER -->
+
+<!-- START POP UPS -->
+<div class = "popupMenu saveImage"></div>
+<div class = "popupMenu downloadData"></div>
+<div class = "popupMenu shareURL"></div>
+<!-- END POP UPS -->
 
 
 
@@ -69,6 +276,7 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 
+<script src = "js/vendor/d3-interpolate-path.min.js"></script>
 <script src = "js/constants.js"></script>
 <script src = "js/utils.js"></script>
 <script src = "js/main.js"></script>

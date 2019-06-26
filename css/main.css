@@ -8,76 +8,317 @@
 }
 
 
+#contentContainer{
+	max-width: 1100px;
+	margin: 0 auto;
+	margin-top: 95px;
 
+}
 svg text, body{
 	font-family: Lato;
 }
-/**********************************************************************/
-/************************* BOTH CHARTS ********************************/
-/**********************************************************************/
-.line.axis text{
 
+body{
+	margin: 0px;
+    padding: 0px;
 }
-.axis path{
+select{
 	display: none;
 }
-.axis line{
-	stroke: #dedddd;
+
+/**********************************************************************/
+/*************************** HEADER ***********************************/
+/**********************************************************************/
+
+#headerContainer{
+	width: 100%;
+    height: 274px;
+}
+
+#headerLogo{
+    height: 50px;
+    margin: 0 auto;
+    top: 66px;
+    display: table;
+    position: relative;
+}
+#headerTitle{
+    color: #0A4C6A;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 0 auto;
+    display: table;
+    position: relative;
+    top: 79px;
+}
+#lastUpdatedContainer{
+    font-size: 14px;
+    color: #696969;
+    position: relative;
+    top: 132px;
+    display: table;
+    margin: 0 auto;
 }
 
 /**********************************************************************/
-/************************** BAR CHART *********************************/
+/*************************** CARDS ************************************/
 /**********************************************************************/
-rect.bar{
-	fill: #1696d2;
-	stroke: none;
+#cardContainer{
+	height: 275px;
+	width: 100%;
+    background: #0A4C6A;
 }
-.usLine{
-	stroke: #0A4C6A;
-	stroke-width: 3px;
-	stroke-dasharray: 8px 6px;
+#cardCurrentContainer{
+	width: 270px;
+    height: 100%;
+    display: inline-block;
+    float: left;
+}
+#cardCurrentText{
+	color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    top: 117px;
+    position: relative;
+    border-top: 1px solid #1696d2;
+    border-bottom: 1px solid #1696d2;
+    width: 95px;
+    margin: 0 auto;
+    padding: 7px 0px;
+}
+#cardSubcontainer{
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: calc(100% - 270px);
+}
+.cardArrow{
+	position: absolute;
+    width: 89px;
+    height: 275px;
+    cursor: pointer;
+}
+.cardArrow.left{
+	left: 0px;
+}
+.cardArrow.right{
+	right: 0px;
+}
+.cardArrow img{
+    width: 66px;
+    top: 102px;
+    left: 10px;
+    position: relative;
+}
+.cardArrow.right img{
+    transform: rotate(180deg);
+}
+#cardContentContainer{
+	display: inline-block;
+	float: left;
 }
 
 /**********************************************************************/
-/************************* LINE CHART *********************************/
+/*********************** MENUS GENERAL ********************************/
 /**********************************************************************/
-.state.line{
-	stroke: #1696d2;
-	stroke-width: 2px;
-	fill: none;
+#sectionNames{
+	width: 100%;
 }
-.US.state.line{
-	stroke: #9D9D9D;
+.sectionName{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 27px;
+	text-transform: uppercase;
+	margin-right: 35px;
+	cursor: pointer;
 }
-.voronoi path {
-  fill: none;
-  stroke: none;
-  pointer-events: all;
+.sectionName.active{
+	color: #1696d2;
+}
+#menuRow{
+	width: 100%;
+	height: 156px;
+	margin-top: 35px;
+	position: relative;
+}
+.menuBlock{
+	position: absolute;
+	width: 270px;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 58px;
+	overflow: hidden;
+	background: #fff;
+	border-top: 1px solid #d2d2d2;
+	border-bottom: 1px solid #d2d2d2;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+
+	z-index: 2;
+}
+.stateMenu.menuBlock{
+	left: 327px;
+}
+.timeMenu.menuBlock{
+	left: 654px;
+}
+.menuTop{
+    padding-top: 14px;
+    top: -14px;
+    position: relative;
+    margin-bottom: -14px;
+    padding-left: 15px;
+    left: -15px;
+    width: 286px;
+    cursor: pointer;
+}
+.menuTitle{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 13px;
+}
+.menuActive{
+	font-size: 16px;
+	font-weight: bold;
+	color: #1696d2;
+	margin-bottom: 20px;
+}
+.menuArrow{
+	position: absolute;
+	width: 16px;
+    top: 35px;
+    right: 24px;
+}
+
+/**********************************************************************/
+/*********************** CATEGORY MENU  *******************************/
+/**********************************************************************/
+.employmentOption{
+    width: 214px;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.employmentOption.active{
+	color: #1696d2;
 }
 
 /**********************************************************************/
 /************************* STATE MENU *********************************/
 /**********************************************************************/
-
 .stateNameCol{
 	float: left;
 	display: inline-block;
-	width: 200px;
+    width: 135px;
+    font-size: 14px;
+}
+.stateName{
+    width: 114px;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    cursor: pointer;
 }
 .stateName.active{
 	color: #1696d2;
 }
+#stateName_ND{
+	padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+/**********************************************************************/
+/************************** TIME MENU  ********************************/
+/**********************************************************************/
+.timeTypeContainer{
+	width: 113px;
+    display: inline-block;
+    padding: 21px 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #D2D2D2;
+    color: #696969;
+    cursor: pointer;
+}
+.timeTypeContainer img{
+	width: 20px;
+    margin-right: 3px;
+    top: 3px;
+    position: relative;
+    display: inline-block
+}
+#barControlLabels, #lineControlContainer{
+	margin-top: 30px;
+}
+.timeTypeContainer.line{
+	float: right;
+	padding-bottom: 19px;
+}
+.timeTypeContainer.line span{
+	top: -2px;
+    position: relative;
+}
+.timeTypeContainer.active{
+    color: #f5f5f5;
+    background-color: #1696d2;
+}
+.timeMenuLabel, .lineMenuLabel{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.lineMenuLabel.end{
+	margin-top: 30px;
+}
+.lineMenuDisplay{
+    width: 100%;
+    height: 54px;
+    background: #F5F5F5;
+    border: 1px solid #d2d2d2;
+    color: #1696d2;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+.lineMenuDate{
+	width: 140px;
+    float: left;
+    margin-top: 12px;
+    margin-left: 15px;
+}
+.lineMenuCalIcon{
+	float: right;
+    top: 11px;
+    width: 28px;
+    right: 10px;
+    position: relative;
+}
+
 
 
 /**********************************************************************/
 /********************* CALENDAR PICKERS *******************************/
 /**********************************************************************/
-/*.calendarContainer{
-	overflow-x: hidden;
-    width: 460px;
-    white-space: nowrap;
-}*/
-
+.calendarParent{
+	display: none;
+    z-index: 3;
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    right: 0px;
+}
+.calendarParent.startDate{
+    top: 260px;	
+}
+.calendarParent.endDate{
+	top: 380px;
+}
+.calendarParent.visible{
+	display: block;
+}
 .calendarFrame{
 	display: inline-block;
 	overflow-x: hidden;
@@ -93,7 +334,7 @@ rect.bar{
 	font-size: 16px;
 }
 .calendarYearContainer{
-	width: 206px;
+	width: 157px;
 	white-space: normal;
 	display: none;
 }
@@ -141,4 +382,203 @@ rect.bar{
 }
 .calendarArrow.right img{
 	transform: rotate(180deg);
+}
+
+
+/**********************************************************************/
+/************************ UNIT CHECKBOXES  ****************************/
+/**********************************************************************/
+#unitCheckboxes{
+	top: 70px;
+	position: absolute;
+}
+.unitCheckBox.active img{
+	/*color: #fff;*/
+	display: inline-block;
+	/*background: #1696d2;*/
+}
+.unitCheckbox img{
+	display: none;
+}
+.unitCheckbox span{
+	display: inline-block;
+}
+.unitCheckbox.active span{
+	display: none;
+}
+.unitCheckBox.disabled{
+	color: #696969;
+	opacity: .6;
+	pointer-events: none;
+}
+.unitCheckBox{
+	display: inline-block;
+	background: #ffffff;
+	cursor: pointer;
+	margin-right: 24px;
+}
+.unitText{
+	display: inline-block;
+    font-size: 14px;
+    color: #353535;
+}
+
+.disabledBox{
+	width: 11px;
+	height: 11px;
+	background: #D2D2D2;
+}
+
+/**********************************************************************/
+/*************************** TOOLTIP  *********************************/
+/**********************************************************************/
+
+
+/**********************************************************************/
+/************************* BOTH CHARTS ********************************/
+/**********************************************************************/
+#chartAreaContainer{
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	width: 100%;
+}
+#chartFrame{
+    white-space: nowrap;
+    display: inline-block;
+    width: 2200px;
+}
+#singleYearContainer, #multiYearContainer{
+	float: left;
+	width: 1100px;
+	display: inline-block;
+}
+.line.axis text{
+
+}
+.axis path{
+	display: none;
+}
+.axis line{
+	stroke: #dedddd;
+}
+
+/**********************************************************************/
+/************************** BAR CHART *********************************/
+/**********************************************************************/
+rect.bar{
+	fill: #1696d2;
+	stroke: none;
+}
+.usLine{
+	stroke: #0A4C6A;
+	stroke-width: 3px;
+	stroke-dasharray: 8px 6px;
+}
+
+/**********************************************************************/
+/********************** I'M A MAP I'M A MAP ***************************/
+/**********************************************************************/
+#mapContainer{
+	margin: 0 auto;
+}
+
+/**********************************************************************/
+/************************* LINE CHART *********************************/
+/**********************************************************************/
+.state.line{
+	stroke: #1696d2;
+	stroke-width: 2px;
+	fill: none;
+}
+.US.state.line{
+	stroke: #9D9D9D;
+}
+.voronoi path {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+}
+
+
+/**********************************************************************/
+/*************************** BUTTONS **********************************/
+/**********************************************************************/
+.chartButton{
+	padding: 20px;
+	background: #000;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #fff;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+/**********************************************************************/
+/**************************** ALL POP UPS *****************************/
+/**********************************************************************/
+
+
+/**********************************************************************/
+/********************* DOWNLOAD DATA POP UP ***************************/
+/**********************************************************************/
+
+/**********************************************************************/
+/************************ SAVE IMG POP UP *****************************/
+/**********************************************************************/
+
+
+/**********************************************************************/
+/*********************** SHARE URL POP UP *****************************/
+/**********************************************************************/
+
+/**********************************************************************/
+/*************************** FOOTER ***********************************/
+/**********************************************************************/
+#footerContainer{
+    width: 100%;
+    margin-top: 95px;
+    background: #0A4C6A;
+    display: table;
+}
+#footerContentContainer{
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 70px;
+    display: block;
+    position: relative;
+}
+#footerTopRow{
+	border-bottom: 1px solid #062635;
+}
+#bigLogoContainer{
+	display: inline-block;
+	margin-bottom: 42px;
+}
+#bigLogoContainer img{
+	width: 429px;
+}
+#footerBigLinks{
+    display: inline-block;
+    float: right;
+    top: 54px;
+    position: relative;
+}
+#footerContainer a{
+	text-decoration: none;
+	color: #fff;
+}
+.footerBigLink{
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: 700;
+	display: inline-block;
+	margin-left: 20px;
+}
+.footerSmallLink{
+	margin-top: 30px;
+	font-size: 13px;
+	margin-right: 10px;
+	margin-bottom: 75px;
+	display: inline-block;
 }
