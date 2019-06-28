@@ -6,6 +6,8 @@ const 	defaultDateFormat = "YYYY-MM-DD",
 		indicatorNames = {"federal_public_employment": "Federal public employment", "house_price_index": "House prices", "private_employment": "Private employment", "public_employment": "Public employment", "state_and_local_public_employment": "State and local public employment", "state_gdp":"State GDP", "total_employment":"Total employment", "unemployment_rate":"Unemployment rate", "weekly_earnings":"Average weekly earnings", "state_and_local_public_education_employment": "State and local public education employment"},
 		indicatorRawLabel = {"federal_public_employment": "Totals", "house_price_index": "NA", "private_employment": "Totals", "public_employment": "Totals", "state_and_local_public_employment": "Totals", "state_gdp":"Millions of Dollars", "total_employment":"Total", "unemployment_rate":"Rate", "weekly_earnings":"Dollars", "state_and_local_public_education_employment": "Totals"},
 		indicatorUnits = {"federal_public_employment": {"raw":"thousands", "change":"percent change year over year, seasonally adjusted"}, "house_price_index": {"raw":"", "change": "percent change year over year, seasonally adjusted"}, "private_employment": {"raw":"thousands", "change":"percent change year over year, seasonally adjusted"}, "public_employment": {"raw":"thousands", "change":"percent change year over year, seasonally adjusted"}, "state_and_local_public_employment": {"raw":"thousands", "change":"percent change year over year, seasonally adjusted"}, "state_gdp":{"raw":"millions of real dollars", "change":"percent change year over year, seasonally adjusted"}, "total_employment":{"raw":"thousands", "change":"percent change year over year, seasonally adjusted"}, "unemployment_rate":{"raw":"percent, seasonally adjusted", "change":""}, "weekly_earnings":{"raw": "real dollars", "change":"percent change year over year, <em>not</em> seasonally adjusted"}, "state_and_local_public_education_employment": {"raw":"thousands", "change":"percent change year over year, <em>not</em> seasonally adjusted"}},
+		indicatorFormatStrings = {"federal_public_employment": {"raw":".2s", "change":".2f"}, "house_price_index": {"raw":"", "change": ".2f"}, "private_employment": {"raw":".2s", "change":".2f"}, "public_employment": {"raw":".2s", "change":".2f"}, "state_and_local_public_employment": {"raw":".2s", "change":".2f"}, "state_gdp":{"raw":".2s", "change":".2f"}, "total_employment":{"raw":".2s", "change":".2f"}, "unemployment_rate":{"raw":".2f", "change":""}, "weekly_earnings":{"raw": ".2s", "change":".2f"}, "state_and_local_public_education_employment": {"raw":".2s", "change":".2f"}}
+		sectionNames = {"employment": "Employment", "earnings": "Earnings", "housing": "Housing", "gdp": "State GDP"},
 		multipleStatesText = "Multiple States",
 		noStatesText = "None Selected",
 		menuHeights = {"time": 407, "state": 984, "employment": 400, "closed": 58},
@@ -27,4 +29,10 @@ const 	defaultDateFormat = "YYYY-MM-DD",
 		fiveBlues = [blue2, blue3, blue4, blue5, blue6],
 		sixBlues = [blue2, blue3, blue4, blue5, blue6, blue7],
 		sevenBlues = [blue1, blue2, blue3, blue4, blue5, blue6, blue7],
-		eightBlues = [blue1, blue2, blue3, blue4, blue5, blue6, blue7, blue8]
+		eightBlues = [blue1, blue2, blue3, blue4, blue5, blue6, blue7, blue8],
+		BAR_IMG_WIDTH = 1000,
+		BAR_IMG_HEIGHT = 300,
+		MAP_IMG_WIDTH = 621
+
+
+

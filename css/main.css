@@ -99,6 +99,8 @@ select{
     width: 89px;
     height: 275px;
     cursor: pointer;
+    z-index: 2;
+    display: none;
 }
 .cardArrow.left{
 	left: 0px;
@@ -118,7 +120,84 @@ select{
 #cardContentContainer{
 	display: inline-block;
 	float: left;
+	overflow: hidden;
+    white-space: nowrap;
+    z-index: 1;
+    width: 100%;
 }
+.card{
+	width: 264px;
+    width: 264px;
+    margin-right: 14px;
+    height: 100%;
+    display: inline-block;
+    color: #fff;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 45px;
+    display: inline-table;
+    white-space: normal;
+    position: relative;
+    left: 0px;
+}
+.cardSectionTitle{
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.cardMainText{
+	font-size: 22.8px;
+    margin-top: 4px;
+}
+.cardButton:hover{
+	background: #000;
+}
+.cardButton{
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #0A4C6A;
+    display: inline-block;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+.cardTwitterButton{
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 26px;
+    right: 14px;
+}
+.cardTwitterImg{
+	background: url(../img/twitter.png) no-repeat center transparent;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+.cardTwitterImg:hover{
+	background: url(../img/twitterHover.png) no-repeat center transparent;	
+}
+.cardFacebookButton{
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 33px;
+    right: 0px;
+}
+.cardFacebookImg{
+	background: url(../img/facebook.png) no-repeat center transparent;
+    background-size: 23px 23px;
+    width: 23px;
+    height: 23px;
+    display: block;
+}
+.cardFacebookImg:hover{
+	background: url(../img/facebookHover.png) no-repeat center transparent;	
+}
+
+
 
 /**********************************************************************/
 /*********************** MENUS GENERAL ********************************/
@@ -469,18 +548,46 @@ select{
 rect.bar{
 	fill: #1696d2;
 	stroke: none;
+	cursor: pointer;
+}
+rect.bar.clicked{
+  outline-color: #696969;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-offset: -3px;
+}
+rect.bar.hovered{
+  outline-color: #000;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-offset: -3px;
 }
 .usLine{
 	stroke: #0A4C6A;
 	stroke-width: 3px;
 	stroke-dasharray: 8px 6px;
 }
-
+.barTooltip{
+    font-size: 12px;
+    text-anchor: middle;
+}
 /**********************************************************************/
 /********************** I'M A MAP I'M A MAP ***************************/
 /**********************************************************************/
 #mapContainer{
 	margin: 0 auto;
+}
+.stateShape{
+	stroke: #fff;
+	cursor: pointer;
+}
+.stateShape.clicked{
+	stroke: #696969;
+	stroke-width: 3px;
+}
+.stateShape.hovered{
+	stroke: #000;
+	stroke-width: 3px;
 }
 
 /**********************************************************************/
@@ -526,6 +633,21 @@ rect.bar{
 /**********************************************************************/
 /************************ SAVE IMG POP UP *****************************/
 /**********************************************************************/
+
+
+/**********************************************************************/
+/************************** HIDDEN CHARTS *****************************/
+/**********************************************************************/
+#hiddenBarChartContainer{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: white;
+	width: 2000px;
+	height: 2000px;
+	z-index: 5;
+	display: none;
+}
 
 
 /**********************************************************************/

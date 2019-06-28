@@ -11,7 +11,6 @@ function getTerminalDates(key){
 	return d3.select("#terminalDatesData").data()[0][key]
 }
 function getStateName(abbr){
-	console.log(abbr, d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr == abbr }))
 	return d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr == abbr })[0].name
 }
 
@@ -25,7 +24,7 @@ function setParams(params){
 		var d = d3.select("#paramData").data()[0]
 		const keys = Object.keys(params)
 		for (const key of keys) {
-			d[key] = params[key]
+			if (key != "text") d[key] = params[key]
 		}
 		d3.select("#paramData").data([d])
 	}
@@ -377,21 +376,6 @@ function buildLineDateMenu(startDate, endDate, menu){
 		})
 
 }
-function buildIndicatorSelectors(indicator, unit){
-	// d3.selectAll(".indicatorMenu option")
-	// 	.property("selected", function(){ return (this.value == indicator) })
-
-	// $(".indicatorMenu" ).selectmenu({
-	// 	change: function(event, d){
-	// 		updateIndicator(d.item.value, false);
-	// 	}
-	// })
-
-	// d3.selectAll(".unitCheckBox").on("click", function(){
-	// 	var unit = (d3.select(this).classed("raw")) ? "raw" : "change";
-	// 	updateIndicator(false, unit);
-	// })
-}
 function buildStateMenu(stateNamesData, states){
 	var leftData = stateNamesData.slice(0, 26),
 		rightData = stateNamesData.slice(26,51),
@@ -423,12 +407,17 @@ function buildStateMenu(stateNamesData, states){
 			}
 
 			setParams({"states": params.states.sort()})
-			updateStateNames(params.states)
-			updateLineChart(params.indicator, params.unit, params.states, params.startDate, params.endDate)
+			updateSelectedStates(params.states)
 		})
 }
-function updateStateNames(states){
+function updateSelectedStates(states, hoverState){
 	var nonUS = states.filter(function(o){ return o != "US" })
+	var params = getParams();
+	d3.selectAll(".stateName").classed("active", false)
+	for(var i = 0; i < nonUS.length; i++){
+		s = nonUS[i]
+		d3.select("#stateName_" + s).classed("active", true)
+	}
 	if(nonUS.length > 1){
 		d3.selectAll(".stateDisplayName").text(multipleStatesText)
 	}
@@ -438,6 +427,8 @@ function updateStateNames(states){
 	else{
 		d3.selectAll(".stateDisplayName").text(getStateName(nonUS[0]))
 	}
+	highlightStates(states, hoverState)
+	updateLineChart(params.indicator, params.unit, states, params.startDate, params.endDate)
 }
 function updateDateMenus(opts){
 	
@@ -598,10 +589,101 @@ function updateDateMenus(opts){
 	}
 }
 
-function buildCards(cardData){
+function buildShareURL(params){
+	// states, indicator, unit, startDate, endDate
+	return ""
 
 }
-function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate){
+function buildTwitterURL(url, text){
+	return ""
+}
+function buildFacebookURL(url, text){
+	return ""
+
+}
+function buildCards(cardData){
+	var card = d3.select("#cardContentContainer")
+		.selectAll(".card")
+		.data(cardData)
+		.enter().append("div")
+		.attr("class", "card")
+		.style("background-color", function(d,i){
+			var bgColors = ["#1696d2", "#46ABDB"]
+			return bgColors[i%2]
+		})
+
+	card.append("div")
+		.attr("class","cardSectionTitle")
+		.text(function(d){
+			return sectionNames[getSection(d.indicator)]
+		})
+	card.append("div")
+		.attr("class", "cardMainText")
+		.html(function(d){
+			return d.text
+		})
+
+
+	var bottomRow = card.append("div")
+		.attr("class", "cardBottomRow")
+
+	bottomRow.append("div")
+		.attr("class", "cardButton")
+		.text("See the chart")
+		.on("click", function(d){
+			$("html, body").animate({ scrollTop: $('#sectionNames').offset().top - 20 }, 1000);
+
+			var copy = JSON.parse(JSON.stringify(d))
+			var params = ["indicator", "startDate", "endDate", "unit", "states"]
+			if(copy.hasOwnProperty("startDate")) showChart("line")
+			else showChart("bar")
+
+			setParams(copy)
+			updateSelectedStates(copy.states)
+			updateIndicator(d.indicator)
+		})
+
+	bottomRow.append("div")
+		.attr("class", "cardFacebookButton")
+		.append("a")
+			.attr("href", function(d){
+				return buildFacebookURL( buildShareURL(d), d.text )
+			})
+			.attr("target", "_blank")
+			.attr("title", "Facebook")
+			.append("span")
+				.attr("class", "cardFacebookImg")
+
+	bottomRow.append("div")
+		.attr("class", "cardTwitterButton")
+		.append("a")
+			.attr("href", function(d){
+				return buildTwitterURL( buildShareURL(d), d.text )
+			})
+			.attr("target", "_blank")
+			.attr("title", "Tweet")
+			.append("span")
+				.attr("class", "cardTwitterImg")
+
+	var wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
+		cardCount = cardData.length,
+		cardWidth = 342;
+	
+	if(cardCount * cardWidth > wellWidth) d3.select(".cardArrow.right").style("display", "block")
+
+	d3.select(".cardArrow.left")
+
+	d3.select(".cardArrow.right")
+		.on("click", function(){
+			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
+			d3.selectAll(".card")
+				.transition()
+				.style("left", ((progress + 1) * -1 * cardWidth) + "px")
+		})
+
+
+}
+function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate, containerType){
 	var allGeographies = getBarData(chartData, indicator, unit, endDate),
 		data = allGeographies.states,
 		usData = allGeographies.US,
@@ -613,7 +695,21 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		width = w - margin.left - margin.right,
 		height = h - margin.top - margin.bottom;
 
-	var svg = d3.select("#barChartContainer").append("svg").attr("width", w).attr("height", h)
+	if(containerType == "screen"){
+		var margin = getBarMargins(),
+			w = getBarW(),
+			h = getBarH(),
+			width = w - margin.left - margin.right,
+			height = h - margin.top - margin.bottom;
+		var svg = d3.select("#barChartContainer").append("svg").attr("id", "barChartScreen").attr("width", w).attr("height", h)
+	}else{
+		var margin = getBarMargins(),
+			w = BAR_IMG_WIDTH,
+			h = BAR_IMG_HEIGHT,
+			width = w - margin.left - margin.right,
+			height = h - margin.top - margin.bottom;
+		var svg = d3.select("#hiddenBarChartContainer").append("svg").attr("id", "barChartHide").attr("width", w).attr("height", h + MAP_IMG_WIDTH *.6)
+	}
 
 	var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -672,7 +768,9 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 	g.selectAll("rect.bar")
 		.data(data)
 		.enter().append("rect")
-			.attr("class", "bar")
+			.attr("class", function(d){
+				return "bar b-" + d.abbr
+			})
 			.attr("x", function (d, i) {
 				return x(d.abbr);
 			})
@@ -683,26 +781,64 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 			.attr("width", x.bandwidth())
 			.attr("height", function (d) {
 				return Math.abs(y(+d[key]) - y(0));
+			})
+			.on("mouseover", function(d){
+				params = getParams()
+				states = JSON.parse(JSON.stringify(params.states))
+				states.push(d.abbr)
+				updateSelectedStates(states, d.abbr)
+			})
+			.on("mouseout", function(d){
+				params = getParams()
+				updateSelectedStates(params.states)		
+			})
+			.on("click", function(d){
+				params = getParams()
+				states = JSON.parse(JSON.stringify(params.states))
+				if(states.indexOf(d.abbr) == -1){
+					states.push(d.abbr)
+					setParams({"states": states})
+					updateSelectedStates(states)
+				}else{
+					states.splice(states.indexOf(d.abbr), 1)
+					setParams({"states": states})
+					updateSelectedStates(states)
+				}
 			});
 
-	buildMap(data, topojsonData, key, colorScale)
+
+
+	if(containerType == "screen") buildMap(data, topojsonData, key, colorScale, false)
+	else buildMap(data, topojsonData, key, colorScale, svg)
 }
-function buildMap(data, topojsonData, key, colorScale){
-//TO BE UPDATED, abstract out to new function
-	var width = 621,
-	height = .6 * width
-//end update
+function buildMap(data, topojsonData, key, colorScale, svgInput){
+	if(!svgInput){
+	//TO BE UPDATED, abstract out to new function
+		var width = 621,
+			height = .6 * width
+	//end update
 
-	var svg = d3.select("#mapContainer")
-		.style("width", width + "px")
-		.insert("svg", "#chartButtonContainer")
-			.attr("width", width)
-			.attr("height", height)
-			.append("g");
+		var svg = d3.select("#mapContainer")
+			.style("width", width + "px")
+			.insert("svg", "#chartButtonContainer")
+				.attr("width", width)
+				.attr("height", height)
+				.append("g");
 
-	var projection = d3.geoAlbersUsa()
-		.scale(1.2 * width)
-		.translate([width/2, height/2]);
+		var projection = d3.geoAlbersUsa()
+			.scale(1.2 * width)
+			.translate([width/2, height/2]);
+	}else{
+		var width = MAP_IMG_WIDTH,
+			height = .6 * width
+
+		svg = svgInput.append("g")
+
+		var projection = d3.geoAlbersUsa()
+			.scale(1.2 * width)
+			.translate([BAR_IMG_WIDTH/2, BAR_IMG_HEIGHT + 200]);
+	}
+
 
 	var path = d3.geoPath()
 		.projection(projection);
@@ -714,12 +850,34 @@ function buildMap(data, topojsonData, key, colorScale){
 	svg.selectAll("path.stateShape")
 		.data(topojson.feature(topojsonData, topojsonData.objects.states).features)
 		.enter().append("path")
-			.attr("class", "stateShape")
-			.style("stroke", "white")
+			.attr("class", function(d){ return "stateShape ss-" + d.properties.postal })
 			.style("fill", function(d){
 				return colorScale(d["properties"]["values"][key])
 			})
-			.attr("d", path);
+			.attr("d", path)
+			.on("mouseover", function(d){
+				params = getParams()
+				states = JSON.parse(JSON.stringify(params.states))
+				states.push(d.properties.postal)
+				updateSelectedStates(states, d.properties.postal)
+			})
+			.on("mouseout", function(d){
+				params = getParams()
+				updateSelectedStates(params.states)		
+			})
+			.on("click", function(d){
+				params = getParams()
+				states = JSON.parse(JSON.stringify(params.states))
+				if(states.indexOf(d.properties.postal) == -1){
+					states.push(d.properties.postal)
+					setParams({"states": states})
+					updateSelectedStates(states)
+				}else{
+					states.splice(states.indexOf(d.properties.postal), 1)
+					setParams({"states": states})
+					updateSelectedStates(states)
+				}
+			});
 
 	svg.append("path")
 		.attr("class", "state-borders")
@@ -985,6 +1143,21 @@ function updateBarChart(indicator, unit, date){
 				return y(d[key]);
 			})
 
+	d3.selectAll(".barTooltip").transition().style("opacity",0)
+
+
+
+
+		// d3.select(barState.node().parentNode).append("text")
+		// 	.attr("class","barTooltip")
+		// 	.attr("x", bx)
+		// 	.attr("y", by)
+		// 	.attr("transform", "rotate(-90," + bx + "," + by + ")")
+		// 	.text(function(){
+		// 		// console.log(indicatorFormatStrings[params.indicator])
+		// 		return d3.format(indicatorFormatStrings[params.indicator][params.unit])(barState.datum()[getKey(params.indicator, params.unit)])
+		// 	})
+
 	d3.selectAll("rect.bar")
 		.transition()
 		.duration(200)
@@ -994,12 +1167,12 @@ function updateBarChart(indicator, unit, date){
 			})
 			.on("interrupt", function(d, i){
 				// d3.selectAll("rect.bar").transition()
-				d3.select(this)
-								.attr("x", function (d) {
-						return x(d.abbr);
-					})
+				// d3.select(this)
+				// 				.attr("x", function (d) {
+				// 		return x(d.abbr);
+				// 	})
 					
-					.datum(data.filter(function(o){ return o.abbr == d.abbr })[0])
+				// 	.datum(data.filter(function(o){ return o.abbr == d.abbr })[0])
 	
 				// 	.attr("y", function (d) {
 				// 		return y( Math.max(0, +d[key]) );
@@ -1021,9 +1194,13 @@ function updateBarChart(indicator, unit, date){
 							return Math.abs(y(d[key]) - y(0));
 						})
 						.style("fill", function(d){ return colorScale(d[key])})
+						.on("end", function(d,i){
+							// console.log(i)
+							highlightStates(getParams().states)
+							d3.selectAll(".barTooltip").transition().style("opacity",1)
+						})
 						.on("interrupt", function(d, i){
 							// d3.selectAll("rect.bar").transition()
-							console.log("b")
 							// d3.select(this)
 							// 	// .datum(data.filter(function(o){ return o.abbr == d.abbr })[0])
 							// 	.attr("x", function (d) {
@@ -1057,19 +1234,26 @@ function updateBarChart(indicator, unit, date){
 
 }
 function updateMap(data, key, colorScale){
-	var us = getTopojsonData()
+	// var us = getTopojsonData()
 
-	us.objects.states.geometries.forEach(function(u){
-		u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
-	})
+	// us.objects.states.geometries.forEach(function(u){
+	// 	u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
+	// })
 
-	d3.selectAll("path.stateShape")
-		.data(topojson.feature(us, us.objects.states).features)
-		.transition()
+	// d3.selectAll("path.stateShape")
+	// 	.data(topojson.feature(us, us.objects.states).features)
+	// 	.transition()
+	// 		.duration(800)
+	// 		.style("fill", function(d){
+	// 			return colorScale(d["properties"]["values"][key])
+	// 		})
+	console.log(data)
+	data.forEach(function(d){
+		d3.select(".ss-" + d.abbr)
+			.transition()
 			.duration(800)
-			.style("fill", function(d){
-				return colorScale(d["properties"]["values"][key])
-			})
+			.style("fill", colorScale(d[key]))
+	})
 
 }
 
@@ -1167,13 +1351,6 @@ return d3.interpolatePath(previous, current);
 			.on("mouseout", mouseoutLineChart);
 }
 function updateIndicator(indicator, unit){
-	//setparams update:
-		//indicator
-		//unit (if unit not avail)
-		//states (add or remove US as needed)
-		//firstDate
-		//lastDate
-
 	var params = getParams(),
 		states = params.states,
 		indicator = (indicator) ? indicator : params.indicator,
@@ -1182,8 +1359,8 @@ function updateIndicator(indicator, unit){
 		startDate = params.startDate,
 		endDate = params.endDate,
 		section = getSection(indicator);
-
-
+	
+	d3.selectAll(".sectionName").classed("active", false)
 	d3.select("#sn-" + section).classed("active", true)
 	if(section == "employment"){
 		d3.select(".employment.menuBlock").style("display", "block")
@@ -1199,7 +1376,6 @@ function updateIndicator(indicator, unit){
 
 		d3.select(".other.menuBlock .menuActive").text(indicatorNames[indicator])
 	}
-
 
 	d3.select(".unitText.raw").text(indicatorRawLabel[indicator])
 	d3.selectAll(".unitCheckBox.disabled").classed("disabled", false)
@@ -1221,7 +1397,8 @@ function updateIndicator(indicator, unit){
 	d3.selectAll(".unitCheckBox").classed("active", false)
 	d3.select(".unitCheckBox." + unit).classed("active", true)
 
-
+	d3.select("#chartTitle").text(indicatorNames[indicator])
+	d3.select("#chartUnits").html("(" + indicatorUnits[indicator][unit] + ")")
 
 	if(unit == "raw" && indicator != "weekly_earnings" && indicator != "unemployment_rate"){
 		states.splice(states.indexOf("US"), 1)
@@ -1292,25 +1469,51 @@ function showChart(chartType){
 
 
 }
-function selectStates(states){
-	selectBarStates(states)
-	selectLineStates(states)
-}
-function deselectStates(states){
-	deselectBarStates(states)
-	deselectLineStates(states)
-}
-function selectBarStates(states){
+function highlightStates(states, hoverState){
+	setParams(states)
+
+	d3.selectAll(".stateShape").classed("clicked", false).classed("hovered", false)
+	d3.selectAll(".bar").classed("clicked", false).classed("hovered", false)
+	d3.selectAll(".barTooltip").remove()
+	params = getParams();
+
+	for(var i = 0; i < states.length; i++){
+		var state = states[i],
+			newClass = (state == hoverState) ? "hovered" : "clicked"
+
+		if(state == "US") continue
+		var mapState = d3.select(".ss-" + state)
+		mapState.classed(newClass, true)
+		mapState.node().parentNode.appendChild(mapState.node())
+
+
+		var barState = d3.select(".b-" + state)
+		barState.classed(newClass, true)
+
+		var bval = barState.datum()[getKey(params.indicator, params.unit)],
+			bx = +barState.attr("x") + .5*(+barState.attr("width")) + 3,
+			by = (bval < 0) ?  +barState.attr("y") + +barState.attr("height") + 20  : +barState.attr("y") - 15;
+
+		d3.select(barState.node().parentNode).append("text")
+			.attr("class","barTooltip bt-" + state)
+			.attr("x", bx)
+			.attr("y", by)
+			.attr("transform", "rotate(-90," + bx + "," + by + ")")
+			.text(function(){
+				// console.log(indicatorFormatStrings[params.indicator])
+				return d3.format(indicatorFormatStrings[params.indicator][params.unit])(bval)
+			})
+	}
+
+
 
 }
-function selectLineStates(states) {
-
-}
-function deselectBarStates(states){
-
-}
-function deselectLineStates(states) {
-
+function popUp(selector){
+	var chartData = getChartData(),
+		topojsonData = getTopojsonData(),
+		params = getParams();
+	d3.select("#hiddenBarChartContainer").style("display", "block")
+	buildBarChart(chartData, topojsonData, params.indicator, params.unit, params.states, params.endDate, "hide")
 }
 
 function initControls(){
@@ -1376,17 +1579,17 @@ function initControls(){
 		})
 
 //Initialize date range inputs
-d3.selectAll(".lineMenuDisplay")
-	.on("click", function(){
-		var cal = (d3.select(this).classed("start")) ? d3.select(".calendarParent.startDate") : d3.select(".calendarParent.endDate")
-		if(cal.classed("visible")) cal.classed("visible", false)
-		else cal.classed("visible", true)
-	})
+	d3.selectAll(".lineMenuDisplay")
+		.on("click", function(){
+			var cal = (d3.select(this).classed("start")) ? d3.select(".calendarParent.startDate") : d3.select(".calendarParent.endDate")
+			if(cal.classed("visible")) cal.classed("visible", false)
+			else cal.classed("visible", true)
+		})
+	d3.select(".chartButton.saveImage").on("click", function(){ popUp("saveImage")})
 
 }
 
 function init(allData, topojsonData, stateNamesData){
-	buildCards(allData.cards)
 
 	var qStates = getQueryString("states"),
 		qIndicator = getQueryString("indicator"),
@@ -1438,18 +1641,21 @@ function init(allData, topojsonData, stateNamesData){
 		d3.select("#terminalDatesData").data([allData.terminalDates])
 		d3.select("#stateNamesData").data([stateNamesData])
 
+		d3.select("#lastUpdated").text(allData["lastUpdated"])
+
 		showChart(activeChart)
 		initControls()
 
-		buildBarChart(allData.data, topojsonData, indicator, unit, states, endDate)
+		buildCards(allData.cards)
+		buildBarChart(allData.data, topojsonData, indicator, unit, states, endDate, "screen")
 		buildLineChart(allData.data, indicator, unit, states, startDate, endDate)
 		setParams({"indicator": indicator, "unit": unit, "states": states, "startDate": startDate, "endDate": endDate, "init": true, "firstDate": firstDate, "lastDate": lastDate})
 		buildBarDateMenus(endDate, lastDate)
-		buildIndicatorSelectors(indicator, unit)
 		buildLineDateMenu(startDate, endDate, "start")
 		buildLineDateMenu(startDate, endDate, "end")
 		buildStateMenu(stateNamesData, states)
-		updateStateNames(states)
+		updateSelectedStates(states)
+		highlightStates(states)
 
 		updateIndicator(indicator, unit)
 }

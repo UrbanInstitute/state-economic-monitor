@@ -68,10 +68,7 @@ for row in fipsReader:
 	nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
 
 
-indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings"]
-
-# indicators = ["federal_public_employment"]
-
+indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings","state_and_local_public_education_employment"]
 
 tempDict = {}
 terminalDates = {}
@@ -83,6 +80,7 @@ for indicator in indicators:
 for index, indicator in enumerate(indicators):
 	if(indicator != "house_price_index"):
 		key = str(index) + "r"
+		print key
 		rawReader = csv.reader(open("data/csv/%s_raw.csv"%indicator, 'rU'))
 		rawCountReader = csv.reader(open("data/csv/%s_raw.csv"%indicator, 'rU'))
 		states = rawReader.next()
@@ -152,10 +150,13 @@ dataOut["data"] = sorted(tempList, key=lambda k: datetime.datetime.strptime(k['d
 
 
 
-dataOut["cards"] = [{"states": ["US", "PA", "AK"], "indicator": "private_employment", "unit": "change", "endDate": "2018-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."}, {"states": ["US", "PA", "CA"], "indicator": "state_gdp", "unit": "raw", "endDate": "2018-04-01", "startDate": "2006-01-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}]
+dataOut["cards"] = [{"states": ["US", "PA", "AK"], "indicator": "private_employment", "unit": "change", "endDate": "2018-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}, {"states": ["US", "PA", "CA"], "indicator": "state_gdp", "unit": "raw", "endDate": "2018-04-01", "startDate": "2006-01-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}, {"states": ["US", "CA", "AK"], "indicator": "house_price_index", "unit": "change", "endDate": "2015-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}, {"states": ["US", "NH", "VT"], "indicator": "total_employment", "unit": "change","startDate": "2012-03-01", "endDate": "2015-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}]
+
 dataOut["terminalDates"] = terminalDates
 
+now = datetime.datetime.now()
 
+dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 
 
 #write a pretty printed json for human readability

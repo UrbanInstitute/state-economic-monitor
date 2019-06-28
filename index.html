@@ -18,7 +18,7 @@
 		<img src = "img/logo.png"/>
 	</div>
 	<div id = "headerTitle">State Economic Monitor</div>
-	<div id = "lastUpdatedContainer">Last updated <span id = "last-updated">MM, DD, YYYY</span></div>
+	<div id = "lastUpdatedContainer">Last updated <span id = "lastUpdated">&hellip;</span></div>
 </div>
 <!-- END HEADER -->
 
@@ -267,9 +267,12 @@
 <div class = "popupMenu shareURL"></div>
 <!-- END POP UPS -->
 
+<div id = "hiddenBarChartContainer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
 
-
+<script src="js/vendor/saveSvgAsPng.js"></script>
 <script src="js/vendor/moment.min.js"></script>
 <script src="js/vendor/jquery.1.8.min.js"></script>
 <script src="js/vendor/jquery-ui.min.js"></script>
