@@ -61,7 +61,7 @@
 <!-- START EMPLOYMENT MENU -->
 		<div class = "categoryMenu active employment menuBlock">
 			<div class = "menuTop" id = "mt-employment">
-				<div class = "menuTitle">Category</div>
+				<div class = "menuTitle">Indicator</div>
 				<div class = "menuActive">&hellip;</div>
 				<img src = "img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
@@ -77,7 +77,7 @@
 		</div>
 <!-- END EMPLOYMENT MENU -->
 		<div class = "categoryMenu other menuBlock">
-			<div class = "menuTitle">Category</div>
+			<div class = "menuTitle">Indicator</div>
 			<div class = "menuActive">&hellip;</div>
 		</div>
 <!-- START STATE MENU -->
@@ -179,16 +179,33 @@
 		<div id = "unitCheckboxes">
 			<div class = "unitCheckBox change active">
 				<img src = "img/checked.png"/>
-				<span class = "disabledBox change"></span>
+				<span class = "disabledBox change hide"></span>
 				<div class = "unitText change">Percent change year over year</div>
+				<div class = "tooltipIcon change"></div>
 			</div>
 			<div class = "unitCheckBox raw">
 				<img src = "img/checked.png"/>
-				<span class = "disabledBox raw"></span>
+				<span class = "disabledBox raw hide"></span>
 				<div class = "unitText raw">&hellip;</div>
+				<div class = "tooltipIcon raw"></div>
 			</div>
 		</div>
 <!-- END UNIT CHECKBOXES -->
+		<div id = "clearSelections">Clear selections</div>
+		<div class = "multiYear tooltip">
+			<div class = "multiYear tt-top-row mouseover">
+				<div class = "multiYear tt-value">&hellip;</div>
+				<div class = "multiYear tt-states"></div>
+				<div class = "multiYear tt-date point"></div>
+			</div>
+			<div class = "multiYear tt-top-row mouseout">
+				<div class = "multiYear tt-value hide">&hellip;</div>
+				<div class = "multiYear tt-states"></div>
+				<div class = "multiYear tt-date range"></div>
+			</div>
+			<div class = "multiYear tt-indicator"></div>
+			<div class = "multiYear tt-us"></div>
+		</div>
 	</div>
 <!-- END INPUT CONTROLS -->
 <!-- START CHART AREA -->
@@ -203,7 +220,7 @@
 				<div id = "barChartContainer">
 					<div class = "singleYear tooltip">
 						<div class = "singleYear tt-top-row">
-							<div class = "singleYear tt-value"></div>
+							<div class = "singleYear tt-value">&hellip;</div>
 							<div class = "singleYear tt-states"></div>
 							<div class = "singleYear tt-date"></div>
 						</div>
@@ -216,24 +233,23 @@
 <!-- START CHART BUTTONS -->
 					<div id = "chartButtonContainer">
 						<div class = "chartButton saveImage">Save chart</div>
+						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
-						<div class = "chartButton shareURL">Share this view</div>
 					</div>
 <!-- END CHART BUTTONS -->
 				</div>
 			</div>
 			<div id = "multiYearContainer">
 				<div id = "lineChartContainer">
-					<div class = "multiYear tooltip">
-						<div class = "multiYear tt-top-row">
-							<div class = "multiYear tt-value"></div>
-							<div class = "multiYear tt-states"></div>
-							<div class = "multiYear tt-date"></div>
-						</div>
-						<div class = "multiYear tt-indicator"></div>
-						<div class = "multiYear tt-us"></div>
-					</div>
+					<div id = "noStatesText">Select a state</div>
 				</div>
+<!-- START CHART BUTTONS -->
+					<div id = "chartButtonContainer">
+						<div class = "chartButton saveImage">Save chart</div>
+						<div class = "chartButton shareURL">Share chart</div>
+						<div class = "chartButton downloadData">Download data</div>
+					</div>
+<!-- END CHART BUTTONS -->
 			</div>
 		</div>
 	</div>
@@ -269,15 +285,15 @@
 
 <div id = "hiddenBarChartContainer"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+<script src="js/vendor/es6-promise.min.js"></script>
+<script src="js/vendor/es6-promise.auto.min.js"></script> 
 
 <script src="js/vendor/saveSvgAsPng.js"></script>
 <script src="js/vendor/moment.min.js"></script>
 <script src="js/vendor/jquery.1.8.min.js"></script>
 <script src="js/vendor/jquery-ui.min.js"></script>
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script src="js/vendor/d3.v5.min.js"></script>
+<script src="js/vendor/topojson.v2.min.js"></script>
 
 <script src = "js/vendor/d3-interpolate-path.min.js"></script>
 <script src = "js/constants.js"></script>

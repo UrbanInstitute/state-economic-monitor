@@ -308,7 +308,16 @@ select{
 	padding-top: 17px;
     padding-bottom: 17px;
 }
-
+#clearSelections{
+    top: 72px;
+    position: absolute;
+    left: 344px;
+    font-size: 14px;
+    color: #1696d2;
+    font-style: italic;
+    cursor: pointer;
+    display: none;
+}
 /**********************************************************************/
 /************************** TIME MENU  ********************************/
 /**********************************************************************/
@@ -383,17 +392,44 @@ select{
 /**********************************************************************/
 .calendarParent{
 	display: none;
-    z-index: 3;
+	z-index: 3;
     position: absolute;
     background: white;
-    border: 1px solid black;
+    border: 1px solid #d2d2d2;
     right: 0px;
+    padding: 45 10 30 10px;
+	-webkit-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+	-moz-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+	box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+}
+.calendarParent:after, .calendarParent:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.calendarParent:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #fff;
+	border-width: 23px;
+	margin-left: -23px;
+}
+.calendarParent:before {
+	border-color: rgba(210, 210, 210, 0);
+	border-bottom-color: #d2d2d2;
+	border-width: 24px;
+	margin-left: -24px;
 }
 .calendarParent.startDate{
-    top: 260px;	
+    top: 277px;	
 }
 .calendarParent.endDate{
-	top: 380px;
+	top: 397px;
 }
 .calendarParent.visible{
 	display: block;
@@ -451,7 +487,7 @@ select{
 .calendarArrow img{
     width: 41px;
     position: relative;
-    top: -48px;
+    top: -72px;
 }
 .calendarArrow.left{
 	margin-right: 15px;
@@ -462,7 +498,26 @@ select{
 .calendarArrow.right img{
 	transform: rotate(180deg);
 }
-
+.calMenuTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 29px;
+    margin-left: 55px;
+}
+.calDoneButton{
+    background: #353535;
+    width: 86px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 424px;
+    margin-top: 24px;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
 
 /**********************************************************************/
 /************************ UNIT CHECKBOXES  ****************************/
@@ -491,10 +546,12 @@ select{
 	pointer-events: none;
 }
 .unitCheckBox{
-	display: inline-block;
+	display: block;
 	background: #ffffff;
 	cursor: pointer;
-	margin-right: 24px;
+}
+.unitCheckBox.raw{
+	margin-top: 4px;
 }
 .unitText{
 	display: inline-block;
@@ -507,18 +564,89 @@ select{
 	height: 11px;
 	background: #D2D2D2;
 }
+.tooltipIcon{
+	width: 18px;
+    height: 18px;
+    margin-left: 7px;
+    background-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    top: 5px;
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+    background-image: url(../img/tooltipIcon.png);
+}
+.tooltipIcon.hide{
+	display: none;
+	pointer-events: none;
+}
 
 /**********************************************************************/
 /*************************** TOOLTIP  *********************************/
 /**********************************************************************/
-
-
+.singleYear.tooltip{
+	position: absolute;
+    top: 268px;
+    right: 30px;
+    text-align: right;
+}
+.multiYear.tooltip{
+    position: absolute;
+    right: 30px;
+    top: 155px;
+    text-align: right;
+    opacity: 0;
+}
+.multiYear.tt-value.hide{
+	opacity: 0;
+}
+.multiYear.tt-top-row.mouseover{
+	display: none;
+}
+.tt-top-row div{
+	display: inline-block;
+}
+.tt-value{
+    font-size: 23px;
+    font-weight: bold;
+    color: #1696d2;
+    margin-right: 5px;
+}
+.tt-states{
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 4px;
+}
+.tt-date{
+	font-style: italic;
+}
+.tt-indicator{
+	margin-top: 3px;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+.tt-us{
+	font-size: 13px;
+	color: #696969;
+	margin-top: 3px;
+}
 /**********************************************************************/
 /************************* BOTH CHARTS ********************************/
 /**********************************************************************/
+#chartTitle{
+	font-size: 22.8px;
+    font-weight: bold;
+}
+#chartUnits{
+	font-size: 14px;
+    font-style: italic;
+    margin-left: 4px;
+}
 #chartAreaContainer{
 	white-space: nowrap;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: visible;
 	display: inline-block;
 	width: 100%;
 }
@@ -538,13 +666,13 @@ select{
 .axis path{
 	display: none;
 }
-.axis line{
-	stroke: #dedddd;
-}
 
 /**********************************************************************/
 /************************** BAR CHART *********************************/
 /**********************************************************************/
+#barChartContainer{
+	position: relative;
+}
 rect.bar{
 	fill: #1696d2;
 	stroke: none;
@@ -567,9 +695,36 @@ rect.bar.hovered{
 	stroke-width: 3px;
 	stroke-dasharray: 8px 6px;
 }
+.usText{
+	font-size: 12px;
+	font-weight: bold;
+	fill: #0A4C6A;
+}
 .barTooltip{
     font-size: 12px;
     text-anchor: middle;
+    opacity: 0;
+    pointer-events: none;
+}
+.barTooltip.active{
+	opacity: 1;
+}
+.barTooltip.download{
+	opacity: 1 !important;
+}
+.barTooltipBg{
+	opacity: 0;
+    pointer-events: none;
+    fill: rgba(255,255,255,.8);
+}
+.barTooltipBg.active{
+	opacity: 1;
+}
+.barTooltipBg.download{
+	opacity: 1 !important;
+}
+.bar.x.axis line{
+	display: none;
 }
 /**********************************************************************/
 /********************** I'M A MAP I'M A MAP ***************************/
@@ -590,13 +745,36 @@ rect.bar.hovered{
 	stroke-width: 3px;
 }
 
+
+.mapLabel{
+	font-size: 8px;
+}
+.mapName{
+	font-weight: bold;
+}
+.keyLabel{
+	font-size: 12px;
+}
+.mapImgLine{
+	stroke: #000;
+	fill: none;
+	stroke-width: 1px;
+}
 /**********************************************************************/
 /************************* LINE CHART *********************************/
 /**********************************************************************/
+#lineChartContainer{
+	position: relative;
+	margin-top: 39px
+}
 .state.line{
 	stroke: #1696d2;
 	stroke-width: 2px;
 	fill: none;
+	pointer-events: none;
+}
+.state.line.active, .US.state.line.active{
+	stroke: #fdbf11;
 }
 .US.state.line{
 	stroke: #9D9D9D;
@@ -606,11 +784,49 @@ rect.bar.hovered{
   stroke: none;
   pointer-events: all;
 }
-
+.stateLabel text{
+	font-size: 12px;
+	font-weight: bold;
+}
+.stateLabel rect{
+	fill: rgba(255,255,255,.2);
+	stroke: none;
+}
+.stateLabel.active text{
+	fill: #fdbf11;
+}
+.stateLabel.active rect{
+	fill: rgba(255,255,255,1);
+}
+#noStatesText{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: calc(50% - 30px);
+    left: calc(50% - 70px);
+    background: white;
+    padding: 30px;
+    border: 1px solid #d2d2d2;
+    -webkit-box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    -moz-box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    display: none;
+    opacity: 0;
+}
+.linechartDot{
+	fill: #fdbf11;
+	stroke: #000;
+	stroke-width: 3px;
+	pointer-events: none;
+}
 
 /**********************************************************************/
 /*************************** BUTTONS **********************************/
 /**********************************************************************/
+#chartButtonContainer{
+	margin-top: 40px;
+}
 .chartButton{
 	padding: 20px;
 	background: #000;

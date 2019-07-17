@@ -1,22 +1,21 @@
-- Map legend
-- Map and bar highlight states
-- Map and line tooltip
-- Cards
+	- Map and line tooltip
+	- line hover style
 - Mobile
 - Img download
 - Data download
 - share url
+- fb and twitter links
 - about page
 - updater
-- line chart raw y scale
-- line chart quarter x axis
-- 0 lines on both charts
 - queryparams
-- show/hide the 2 charts
-- menu drawers
 - if direct link from card, make sure that card is shown on load (new param)
 - bug (?) a bunch of empty voronoi paths
+- bug if end date set to first availabel date
+- deal w barchart interruption transition
+- select a state error/msg on line chart w/ no values
 
+
+Mobile default, pick a card that has a state selected (ask richard)
 
 
 Mobile notes:

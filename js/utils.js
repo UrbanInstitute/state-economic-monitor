@@ -11,7 +11,10 @@ function getDateString(month, year){
 function parseTime(){
 	return d3.timeParse(d3DateFormat);
 }
-
+function abbrevFormat(d){
+  if(d >= 1000) return d3.format(".2s")(d).replace("G","B")
+  else return d 
+}
 
 
 if (!Array.prototype.fill) {
