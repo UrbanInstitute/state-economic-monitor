@@ -104,6 +104,10 @@ for index, indicator in enumerate(indicators):
 					tempDict[tempKey] = {}
 
 				cleanVal = "" if (value == "") else float(value)
+				if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+					cleanVal *= 1000
+				elif(indicator == "state_gdp"):
+					cleanVal *= 1000000
 				tempDict[tempKey][key] = cleanVal
 
 for index, indicator in enumerate(indicators):

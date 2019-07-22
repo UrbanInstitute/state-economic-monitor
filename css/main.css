@@ -175,6 +175,7 @@ select{
     width: 40px;
     height: 40px;
     display: block;
+    cursor: pointer;
 }
 .cardTwitterImg:hover{
 	background: url(../img/twitterHover.png) no-repeat center transparent;	
@@ -192,6 +193,7 @@ select{
     width: 23px;
     height: 23px;
     display: block;
+    cursor: pointer;
 }
 .cardFacebookImg:hover{
 	background: url(../img/facebookHover.png) no-repeat center transparent;	
@@ -224,7 +226,7 @@ select{
 }
 .menuBlock{
 	position: absolute;
-	width: 270px;
+	width: 282px;
 	padding-left: 15px;
 	padding-right: 15px;
 	height: 58px;
@@ -237,11 +239,14 @@ select{
 
 	z-index: 2;
 }
+.categoryMenu.menuBlock{
+	width: 360px;
+}
 .stateMenu.menuBlock{
-	left: 327px;
+	left: 417px;
 }
 .timeMenu.menuBlock{
-	left: 654px;
+	left: 756px;
 }
 .menuTop{
     padding-top: 14px;
@@ -252,6 +257,9 @@ select{
     left: -15px;
     width: 286px;
     cursor: pointer;
+}
+#mt-employment{
+	width: 374px;
 }
 .menuTitle{
     text-transform: uppercase;
@@ -275,7 +283,7 @@ select{
 /*********************** CATEGORY MENU  *******************************/
 /**********************************************************************/
 .employmentOption{
-    width: 214px;
+    width: 355px;
     border-bottom: 1px solid #D2D2D2;
     padding-bottom: 5px;
     padding-top: 10px;
@@ -311,7 +319,7 @@ select{
 #clearSelections{
     top: 72px;
     position: absolute;
-    left: 344px;
+    left: 433px;
     font-size: 14px;
     color: #1696d2;
     font-style: italic;
@@ -765,7 +773,7 @@ rect.bar.hovered{
 /**********************************************************************/
 #lineChartContainer{
 	position: relative;
-	margin-top: 39px
+	margin-top: 19px
 }
 .state.line{
 	stroke: #1696d2;

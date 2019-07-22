@@ -61,3 +61,24 @@ if (!Array.prototype.fill) {
     }
   });
 }
+
+//social share 
+function betterEncodeURIComponent(str) {
+    str = encodeURIComponent(str);
+    return str.replace(/'/gi, "%27");
+}
+
+function amperoctoplus(s) {
+    s = s.replace(/&/g, '%26');
+    s = s.replace(/#/g, '%23');
+    s = s.replace(/\+/g, '%2B');
+    s = s.replace(/@/g, '%40');
+    s = s.replace(/:/g, '%3A');
+    return s;
+}
+function getTwitterShare(url, blurb) {
+    return "https://twitter.com/intent/tweet?text=" + betterEncodeURIComponent(blurb + " " + url);
+}
+function getFacebookShare(url) {
+    return "https://www.facebook.com/sharer/sharer.php?u=" + amperoctoplus(encodeURI(url));
+}

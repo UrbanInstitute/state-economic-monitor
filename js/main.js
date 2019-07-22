@@ -18,6 +18,7 @@ function isQuarterly(indicator){
 	return (indicator == "house_price_index" || indicator == "state_gdp")
 }
 function setParams(params){
+	console.log(params)
 	if(typeof(params.init) != "undefined"){
 		d3.select("#paramData").data([ params ])
 	}else{
@@ -38,9 +39,7 @@ function getSection(indicator){
 	}
 }
 function getKey(indicator, unit){
-	indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings","state_and_local_public_education_employment"]
-
-	return indicators.indexOf(indicator) + unit[0]
+	return orderedIndicators.indexOf(indicator) + unit[0]
 }
 
 function getActiveIndicator(){
@@ -62,7 +61,7 @@ function getEndDate(){
 
 }
 function setToQuarterly(moment){
-	var q = (Math.floor(moment.month()/4)),
+	var q = (Math.floor(moment.month()/3)),
 		m = q*3
 	moment.month(m)
 }
@@ -72,6 +71,8 @@ function sanitizeDates(startDate, endDate, opts){
 		endMoment = moment(endDate),
 		firstMoment = (opts.hasOwnProperty("firstDate")) ? moment(opts.firstDate) : moment(params.firstDate),
 		lastMoment = (opts.hasOwnProperty("lastDate")) ? moment(opts.lastDate) : moment(params.lastDate);
+	if(! startMoment.isValid()) startMoment = firstMoment
+	if(! endMoment.isValid()) endMoment = lastMoment
 
 	if(opts.hasOwnProperty("indicator")){
 		if(isQuarterly(opts.indicator)){
@@ -640,6 +641,18 @@ function updateDateMenus(opts){
 		$(".dateMenu.barChart.month")
 			.selectmenu("refresh")
 
+		d3.select(".dateMenu.barChart.quarter")
+			.selectAll(".barMonth")
+			.property("selected", false)
+
+		d3.select(".dateMenu.barChart.quarter")
+			.select(".barMonth.q" + Math.ceil(endMonth/3))
+			.property("selected", "selected")
+
+		$(".dateMenu.barChart.quarter")
+			.selectmenu("refresh")
+
+
 		d3.select(".calendarContainer.startDate")
 			.selectAll(".calYearLabel")
 			.classed("active", function(d, i){
@@ -694,16 +707,23 @@ function updateDateMenus(opts){
 	}
 }
 
-function buildShareURL(params){
+function buildShareURL(){
 	// states, indicator, unit, startDate, endDate
-	return ""
+	var params = getParams()
+	var shareURL = window.location.origin + window.location.pathname + "?"
 
-}
-function buildTwitterURL(url, text){
-	return ""
-}
-function buildFacebookURL(url, text){
-	return ""
+	var startString = parseInt(params.startDate.split("-")[1]) + "-" + params.startDate.split("-")[0],
+		endString = parseInt(params.endDate.split("-")[1]) + "-" + params.endDate.split("-")[0],
+		stateString = params.states.join("-"),
+		indicatorString = params.indicator,
+		unitString = params.unit;
+
+	if(d3.select(".timeTypeContainer.active").classed("line")){
+		shareURL += "start=" + startString + "&"
+	}
+	shareURL += "end=" + endString + "&states=" + stateString + "&indicator=" + indicatorString + "&unit=" + unitString
+
+	return shareURL;
 
 }
 function buildCards(cardData){
@@ -742,7 +762,6 @@ function buildCards(cardData){
 			var params = ["indicator", "startDate", "endDate", "unit", "states"]
 			if(copy.hasOwnProperty("startDate")) showChart("line")
 			else showChart("bar")
-
 			setParams(copy)
 			updateSelectedStates(copy.states)
 			updateIndicator(d.indicator)
@@ -750,25 +769,19 @@ function buildCards(cardData){
 
 	bottomRow.append("div")
 		.attr("class", "cardFacebookButton")
-		.append("a")
-			.attr("href", function(d){
-				return buildFacebookURL( buildShareURL(d), d.text )
-			})
-			.attr("target", "_blank")
-			.attr("title", "Facebook")
 			.append("span")
 				.attr("class", "cardFacebookImg")
+				.on("click", function(d){
+					window.open(getFacebookShare(buildShareURL()), "_blank")
+				})
 
 	bottomRow.append("div")
 		.attr("class", "cardTwitterButton")
-		.append("a")
-			.attr("href", function(d){
-				return buildTwitterURL( buildShareURL(d), d.text )
-			})
-			.attr("target", "_blank")
-			.attr("title", "Tweet")
 			.append("span")
 				.attr("class", "cardTwitterImg")
+				.on("click", function(d){
+					window.open(getTwitterShare(buildShareURL(), d.text), "_blank")
+				})
 
 	var wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
 		cardCount = cardData.length,
@@ -1506,7 +1519,7 @@ function getLineY(extent, height){
 	return y
 }
 function getLineMargins(){
-	return margin = {top: 0, right: 30, bottom: 30, left: 30}
+	return margin = {top: 20, right: 30, bottom: 30, left: 30}
 }
 function getLineW(){
 	return 1100;
@@ -1523,15 +1536,17 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 		return false;
 	}
 
+	var chartData = getChartData(),
+		usData = chartData.filter(function(o){ return (o.date == d.data.date && o.abbr == "US")})[0]
+
 	d3.select(".multiYear.tt-top-row.mouseover").style("display","block")
 	d3.select(".multiYear.tt-top-row.mouseout").style("display","none")
 	d3.select(".multiYear.tt-us")
 		.style("display", "block")
 		.text(function(){
-			// var prefix = ((indicator == "state_gdp" || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
-			// 	suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
-			// return "US Average " + prefix + d3.format(indicatorFormatStrings[indicator][unit])(d["data"][key]) + suffix
-			return "US Average XX"
+			var prefix = ((indicator == "state_gdp" || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
+				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
+			return "United States " + prefix + d3.format(indicatorFormatStrings[indicator][unit])(usData[key]) + suffix
 		})
 
 	var x = getLineX(startDate, endDate, width)
@@ -1561,7 +1576,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	d3.selectAll(".multiYear.tt-value").text(function(){
 		var prefix = ((indicator == "state_gdp" || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 			suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
-		return prefix + d3.format(indicatorFormatStrings[indicator][unit])(d["data"][key]) + suffix
+		return prefix + d3.format(indicatorFormatStrings[indicator][unit])(d["data"][key]).replace("G","B") + suffix
 	})
 	d3.select(".multiYear.tt-date.point").text(function(){
 		var md = moment(d.data.date)
@@ -1680,7 +1695,7 @@ function updateBarChart(indicator, unit, date){
 		.text(function(){
 			var prefix = ((indicator == "state_gdp" || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
-			return "US Average " + prefix + d3.format(indicatorFormatStrings[indicator][unit])(usData[0][key]) + suffix
+			return "United States " + prefix + d3.format(indicatorFormatStrings[indicator][unit])(usData[0][key]) + suffix
 		})
 	d3.selectAll(".usLine")
 		.data(usData)
@@ -2077,8 +2092,6 @@ function showChart(chartType){
 
 }
 function highlightStates(states, hoverState){
-	setParams(states)
-
 	d3.selectAll(".stateShape").classed("clicked", false).classed("hovered", false)
 	d3.selectAll(".bar").classed("clicked", false).classed("hovered", false)
 	d3.selectAll(".barTooltip").classed("active", false).style("opacity", 0)
@@ -2126,7 +2139,7 @@ function highlightStates(states, hoverState){
 			.attr("y", by)
 			.attr("transform", "rotate(-90," + bx + "," + by + ")")
 			.text(function(){
-				return d3.format(indicatorFormatStrings[params.indicator][params.unit])(bval)
+				return d3.format(indicatorFormatStrings[params.indicator][params.unit])(bval).replace("G","B")
 			})
 		d3.select(".br-" + state)
 			.attr("x", brx)
@@ -2147,7 +2160,7 @@ function highlightStates(states, hoverState){
 				.text(function(){
 					var prefix = ((params.indicator == "state_gdp" || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
 						suffix = (params.unit == "change" || params.indicator == "unemployment_rate") ? "%" : ""
-					return prefix + d3.format(indicatorFormatStrings[params.indicator][params.unit])(bval) + suffix
+					return prefix + d3.format(indicatorFormatStrings[params.indicator][params.unit])(bval).replace("G","B") + suffix
 				})
 		}
 
@@ -2284,23 +2297,16 @@ function init(allData, topojsonData, stateNamesData){
 		qIndicator = getQueryString("indicator"),
 		qStartDate = getQueryString("start"),
 		qEndDate = getQueryString("end"),
-		qBarDate = getQueryString("date"),
 		qUnit = getQueryString("unit");
 
 
 	var states = (qStates == "") ? ["US"] : qStates.split("-"),
-		indicator = (qIndicator == "") ? defaultIndicator : qIndicator;
+		indicator = (orderedIndicators.indexOf(qIndicator) == -1) ? defaultIndicator : qIndicator;
 
-//ADD FUNCTIONALITY
-	//this isn't true for every indicator.
 	if(states.indexOf("US") == -1) states.push("US")
 
-	// var defaultEndYear = allData["dates"][getSection(indicator)]["year"],
-		// defaultEndMonth = allData["dates"][getSection(indicator)]["month"]
-
-
 	var activeChart = (qStartDate == "") ? "bar" : "line";
-	var unit = (qUnit == "") ? "change" : "raw"
+	var unit = (qUnit != "change" && qUnit != "raw") ? "change" : qUnit
 
 	var key = getKey(indicator, unit)
 
@@ -2312,41 +2318,38 @@ function init(allData, topojsonData, stateNamesData){
 	var startDate = (qStartDate == "") ? endMoment.subtract(defaultLinechartMonthRange, "months").format(defaultDateFormat) : getDateString(qStartDate.split("-")[0], qStartDate.split("-")[1])
 
 
+	var abbrs = stateNamesData.map(function(o){ return o.abbr}),
+		states = states.filter(function(o){
+			return abbrs.indexOf(o) != -1
+		})
 
-//ADD FUNCTIONALITY
-	//if change is the default, then logic to say if Indicator is something that doesn't show change (unemployment and housing), switch to raw
+	cleanDates = sanitizeDates(startDate, endDate, {"indicator": indicator, "firstDate": firstDate, "lastDate": lastDate })
 
+	startDate = cleanDates[0]
+	endDate = cleanDates[1]
 
-//ADD FUNCTIONALITY
-	//sanitize inputs, including:
-		//remove invalid states
-		//if qEndDate is later than default (from allData), set it to default
-		//if qStartDate is earlier than earliest (from consts), set it to default
-		//remove invalid chart types, units, and indicators
+	d3.select("#chartData").data([allData.data])
+	d3.select("#topojsonData").data([topojsonData])
+	d3.select("#terminalDatesData").data([allData.terminalDates])
+	d3.select("#stateNamesData").data([stateNamesData])
 
+	d3.select("#lastUpdated").text(allData["lastUpdated"])
 
-		d3.select("#chartData").data([allData.data])
-		d3.select("#topojsonData").data([topojsonData])
-		d3.select("#terminalDatesData").data([allData.terminalDates])
-		d3.select("#stateNamesData").data([stateNamesData])
+	showChart(activeChart)
+	initControls()
 
-		d3.select("#lastUpdated").text(allData["lastUpdated"])
+	buildCards(allData.cards)
+	buildBarChart(allData.data, topojsonData, indicator, unit, states, endDate, "screen")
+	buildLineChart(allData.data, indicator, unit, states, startDate, endDate)
+	setParams({"indicator": indicator, "unit": unit, "states": states, "startDate": startDate, "endDate": endDate, "init": true, "firstDate": firstDate, "lastDate": lastDate})
+	buildBarDateMenus(endDate, lastDate)
+	buildLineDateMenu(startDate, endDate, "start")
+	buildLineDateMenu(startDate, endDate, "end")
+	buildStateMenu(stateNamesData, states)
+	updateSelectedStates(states)
+	highlightStates(states)
 
-		showChart(activeChart)
-		initControls()
-
-		buildCards(allData.cards)
-		buildBarChart(allData.data, topojsonData, indicator, unit, states, endDate, "screen")
-		buildLineChart(allData.data, indicator, unit, states, startDate, endDate)
-		setParams({"indicator": indicator, "unit": unit, "states": states, "startDate": startDate, "endDate": endDate, "init": true, "firstDate": firstDate, "lastDate": lastDate})
-		buildBarDateMenus(endDate, lastDate)
-		buildLineDateMenu(startDate, endDate, "start")
-		buildLineDateMenu(startDate, endDate, "end")
-		buildStateMenu(stateNamesData, states)
-		updateSelectedStates(states)
-		highlightStates(states)
-
-		updateIndicator(indicator, unit)
+	updateIndicator(indicator, unit)
 }
 
 d3.json("data/figures/data.json").then(function(allData){
