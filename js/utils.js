@@ -89,7 +89,7 @@ function getFacebookShare(url) {
 
 // The download function takes a CSV string, the filename and mimeType as parameters
 // Scroll/look down at the bottom of this snippet to see how download is called
-var download = function(content, fileName, mimeType) {
+function downloadDataFile(content, fileName, mimeType) {
   var a = document.createElement('a');
   mimeType = mimeType || 'application/octet-stream';
 
@@ -109,42 +109,6 @@ var download = function(content, fileName, mimeType) {
     location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
   }
 }
-
-
-
-function makeCSV(data, indicator, unit) {
-  var key = getKey(indicator, unit)
-  ////////// Make the results a CSV ////////////
-
-  // Building the CSV from the Data two-dimensional array
-  // Each column is separated by ";" and new line "\n" for next row
-  var csvContent = '';
-  
-  var headers = "\"" + Object.keys(masterData[0]).join('","') + "\"" + '\n';
-  csvContent += headers;
-
-  masterData.forEach(function(infoObject, index) {
-    infoArray = Object.values(infoObject);
-
-    // put a quote mark on the first item in each line            
-    // put a trailing quote mark on the last item in each line    
-    // add quotes around everything else as well
-    dataString = "\"" + infoArray.join('","') + "\"";
-
-    // Add the whole line to the content
-    csvContent += index < masterData.length ? dataString + '\n' : dataString;
-  });
-  
-  var args = {
-    data: csvContent,
-    filename: "testfile",      
-  };
-
-  return args
-}
-
-
-
 
 
 //clipboard functions from https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript

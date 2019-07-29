@@ -93,7 +93,7 @@ function makeCSV(data, indicator, unit, filename) {
 
   return args
 }
-function getFilename(chartType, indicator, unit, startDate, endDate, filetype){
+function getFilename(chartType, indicator, unit, filetype){
 	var newUnit;
 	if(filetype == "csv"){
 		if(unit == "change"){
@@ -108,12 +108,18 @@ function getFilename(chartType, indicator, unit, startDate, endDate, filetype){
 				newUnit = unit;
 			}
 		}
+	}else{
+		if(unit == "change"){
+			newUnit = "yoy_percent_change"
+		}else{
+			newUnit = "raw"
+		}
 	}
 
 	if(chartType == "bar"){
-		return indicator + "_" + newUnit + "_" + d3.select(".menuActive.timeSingle").text().toLowerCase().replace(" ", "-")
+		return indicator + "_" + newUnit + "_" + d3.select(".menuActive.timeSingle").text().toLowerCase().replace(" ", "-") + "." + filetype
 	}else{
-		return indicator + "_" + newUnit + "_" + d3.select(".menuActive.timeRange").text().toLowerCase().replace("–", "-to-").replace(/\s/g, "-")
+		return indicator + "_" + newUnit + "_" + d3.select(".menuActive.timeRange").text().toLowerCase().replace("–", "-to-").replace(/\s/g, "-") + "." + filetype
 	}
 }
 function setToQuarterly(moment){
@@ -2585,7 +2591,8 @@ function initControls(){
 
 		d3.select("#hiddenLineChartContainer").style("display", "block")
 		buildLineChart(chartData, params.indicator, params.unit, params.states, params.startDate, params.endDate, "hide", function(){
-				saveSvgAsPng(document.getElementById("lineChartHide"), "diagram.png", {backgroundColor: "#fff", encoderOptions: 1});
+				var fileName = getFilename("line", params.indicator, params.unit, "png")
+				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff"});
 				d3.select("#lineChartHide").remove()	
 		})
 		
@@ -2665,7 +2672,9 @@ function initControls(){
 
 	d3.select(".pu-bigButton.imgDownload").on("click", function(d){
 		d3.event.stopPropagation();
-		saveSvgAsPng(document.getElementById("barChartHide"), "diagram.png", d);
+		var params = getParams();
+		var fileName = getFilename("bar", params.indicator, params.unit, "png")
+		saveSvgAsPng(document.getElementById("barChartHide"), fileName, d);
 
 	})
 	d3.selectAll(".pu-checkRow").on("click", function(){
@@ -2739,10 +2748,10 @@ function initControls(){
 				a.classed("hidden", false)
 
 				if(cb.classed("all")){
-					a.attr("href","data/download/all_indicators-all-data.zip")
+					a.attr("href","data/download/all_indicators-all_data.zip")
 				}
 				else if(cb.classed("housing")){
-					a.attr("href", "data/download/house_price_index_yoy.csv")
+					a.attr("href", "data/download/house_price_index_yoy_percent_change.csv")
 				}
 				else if(cb.classed("gdp")){
 					a.attr("href", "data/download/state_gdp-all_data.zip")
@@ -2765,7 +2774,7 @@ function initControls(){
 		console.log("bearclaw")
 		// var args = $(this).data();
 		// Convert CSV and place as link
-		download(args.data, args.filename + ".csv", 'text/csv;encoding:utf-8');
+		downloadDataFile(args.data, args.filename + ".csv", 'text/csv;encoding:utf-8');
 	})
 
 // 	$(".result-file .download.link").click(function(e){
