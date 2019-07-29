@@ -82,3 +82,97 @@ function getTwitterShare(url, blurb) {
 function getFacebookShare(url) {
     return "https://www.facebook.com/sharer/sharer.php?u=" + amperoctoplus(encodeURI(url));
 }
+
+
+
+
+
+// The download function takes a CSV string, the filename and mimeType as parameters
+// Scroll/look down at the bottom of this snippet to see how download is called
+var download = function(content, fileName, mimeType) {
+  var a = document.createElement('a');
+  mimeType = mimeType || 'application/octet-stream';
+
+  if (navigator.msSaveBlob) { // IE10
+    navigator.msSaveBlob(new Blob([content], {
+      type: mimeType
+    }), fileName);
+  } else if (URL && 'download' in a) { //html5 A[download]
+    a.href = URL.createObjectURL(new Blob([content], {
+      type: mimeType
+    }));
+    a.setAttribute('download', fileName);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } else {
+    location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
+  }
+}
+
+
+
+function makeCSV(data, indicator, unit) {
+  var key = getKey(indicator, unit)
+  ////////// Make the results a CSV ////////////
+
+  // Building the CSV from the Data two-dimensional array
+  // Each column is separated by ";" and new line "\n" for next row
+  var csvContent = '';
+  
+  var headers = "\"" + Object.keys(masterData[0]).join('","') + "\"" + '\n';
+  csvContent += headers;
+
+  masterData.forEach(function(infoObject, index) {
+    infoArray = Object.values(infoObject);
+
+    // put a quote mark on the first item in each line            
+    // put a trailing quote mark on the last item in each line    
+    // add quotes around everything else as well
+    dataString = "\"" + infoArray.join('","') + "\"";
+
+    // Add the whole line to the content
+    csvContent += index < masterData.length ? dataString + '\n' : dataString;
+  });
+  
+  var args = {
+    data: csvContent,
+    filename: "testfile",      
+  };
+
+  return args
+}
+
+
+
+
+
+//clipboard functions from https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Fallback: Copying text command was ' + msg);
+  } catch (err) {
+    console.error('Fallback: Oops, unable to copy', err);
+  }
+
+  document.body.removeChild(textArea);
+}
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}

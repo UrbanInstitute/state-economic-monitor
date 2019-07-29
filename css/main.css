@@ -139,6 +139,7 @@ select{
     white-space: normal;
     position: relative;
     left: 0px;
+    cursor: pointer;
 }
 .cardSectionTitle{
 	font-size: 13px;
@@ -149,7 +150,7 @@ select{
 	font-size: 22.8px;
     margin-top: 4px;
 }
-.cardButton:hover{
+.cardButton.active, .cardButton.selected{
 	background: #000;
 }
 .cardButton{
@@ -450,6 +451,9 @@ select{
 }
 .calendarSubcontainer{
 	position: relative;
+}
+.calYearLabel{
+	margin-bottom: 5px;
 }
 .calYearLabel.active{
 	color: #1696d2;
@@ -829,11 +833,14 @@ rect.bar.hovered{
 	pointer-events: none;
 }
 
+
+
 /**********************************************************************/
 /*************************** BUTTONS **********************************/
 /**********************************************************************/
 #chartButtonContainer{
 	margin-top: 40px;
+	position: relative;
 }
 .chartButton{
 	padding: 20px;
@@ -845,38 +852,313 @@ rect.bar.hovered{
     margin-right: 10px;
     cursor: pointer;
 }
+.chartButton:hover, .chartButton.active{
+	background: #0A4C6A;
+}
 /**********************************************************************/
 /**************************** ALL POP UPS *****************************/
 /**********************************************************************/
+.popupScreen{
+	position: fixed;
+    background: rgba(105,105,105,.25);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    opacity: 0;
+    display: none;
+}
+.pu-title{
+    margin-top: 78px;
+    margin-bottom: 35px;
+    padding-bottom: 13px;
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 1px solid #d2d2d2;
+    width: 100%;
+}
+.pu-subtitle{
+	text-transform: uppercase;
+    font-size: 19px;
+    font-weight: bold;
+}
+.pu-smallButton{
+    background: #d2d2d2;
+    color: #353535;
+    padding: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
 
-
+}
+.pu-smallButton:hover, .pu-smallButton.active{
+	background: #1696d2;
+	color: #fff;
+}
+.pu-checkBox{
+    width: 14px;
+    height: 14px;
+    background: white;
+    display: inline-block;
+    border: 2px solid #9d9d9d;
+    margin-right: 11px;
+    cursor: pointer;
+}
+.pu-checkBox.active{
+    width: 18px;
+    height: 18px;
+    background: url(../img/checked.png);
+    background-size: 19px 16px;
+    border: none;
+    margin-right: 11px;
+}
+.pu-bigButton{
+	background: #1696d2;
+    display: inline-block;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+.pu-bigButton:hover{
+	background: #000;
+}
+.pu-bigButton.disabled{
+	pointer-events: none;
+	background: #d2d2d2;
+	color: #9d9d9d;
+}
+.pu-close{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
 /**********************************************************************/
 /********************* DOWNLOAD DATA POP UP ***************************/
 /**********************************************************************/
+.popupMenu.downloadData{
+    position: fixed;
+    background: white;
+    top: calc(50% - 255px);
+    width: 636px;
+    z-index: 3;
+    left: calc(50% - 378px);
+    padding-bottom: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    opacity: 0;
+    display: none;
+}
+.pu-section{
+	margin-bottom: 35px;
+	display: block;
+}
+.pu-section.hide{
+	display: none;
+}
+.pu-section .pu-subtitle{
+	color: #353535;
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.pu-dlRow{
+	cursor: pointer;
+}
+#pu-dlIndicator, #pu-dlDate, #pu-dlStates{
+    font-size: 16px;
+    color: #1696d2;
+    margin-left: 34px;
+}
+#pu-dlIndicator{
+	font-weight: bold;
+	margin-top: 7px;
+}
+#pu-dlStates{
+	font-style: italic;
+	margin-top: 6px;
+}
+.pu-allStates{
+	font-size: 14px;
+	color: #353535;
+	font-style: italic;
+	margin-left: 34px;
+}
+.pu-allSections{
+	margin-top: 13px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 34px;
+}
+#pu-downloadLink.hidden{
+	visibility: hidden;
+}
 
 /**********************************************************************/
 /************************ SAVE IMG POP UP *****************************/
 /**********************************************************************/
+.popupMenu.saveImage{
+    position: fixed;
+    background: white;
+    top: calc(50% - 255px);
+    width: 636px;
+    z-index: 3;
+    left: calc(50% - 378px);
+    height: 510px;
+    padding-left: 60px;
+    padding-right: 60px;
+    opacity: 0;
+    display: none;
+}
+.pu-buttonRow .pu-smallButton{
+	display: inline-block;
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.pu-checkRow{
+	position: relative;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+.pu-checkText{
+	font-size: 16px;
+	color: #353535;
+	display: inline-block;
+	position: absolute;
+}
+.pu-bigButton.imgDownload, .pu-bigButton.dataDownload, .pu-bigButton.dataDownloadCurrent{
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+}
+/**********************************************************************/
+/********************* SHARE URL POP UP ***************************/
+/**********************************************************************/
+.shareTooltip{
+	display: block;
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #d2d2d2;
+    top: -119px;
+    left: 39px;
+    width: 320px;
+    height: 90px;
+}
+.shareTooltip.hidden{
+	display: none;
+}
+.shareTooltip:after, .shareTooltip:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
 
+.shareTooltip:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 20px;
+	margin-left: -20px;
+}
+.shareTooltip:before {
+	border-color: rgba(210, 210, 210, 0);
+	border-top-color: #d2d2d2;
+	border-width: 21px;
+	margin-left: -21px;
+}
+.shareTooltip .shareText{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    top: 20px;
+    left: 20px;
+    position: relative;
+	padding-left: 10px;
+    font-size: 14px;
+    font-family: Lato;
+    text-overflow: ellipsis;
+}
+.shareTooltip .copyButton{
+    position: relative;
+    left: 37px;
+    top: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 11px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.shareTooltip .copyButton:hover{
+	background: #0A4C6A;
+}
+.shareTooltip .copiedText{
+	top: 64px;
+	left: 20px;
+	font-size: 14px;
+	font-style: italic;
+	color: #1696d2;
+	position: absolute;
+	display: inline-block;
+	opacity: 0;
+}
 
 /**********************************************************************/
 /************************** HIDDEN CHARTS *****************************/
 /**********************************************************************/
 #hiddenBarChartContainer{
 	position: fixed;
-	top: 0px;
+	top: -5000px;
 	left: 0px;
 	background: white;
 	width: 2000px;
 	height: 2000px;
-	z-index: 5;
+	z-index: 2;
 	display: none;
 }
-
-
-/**********************************************************************/
-/*********************** SHARE URL POP UP *****************************/
-/**********************************************************************/
+#hiddenLineChartContainer{
+	position: fixed;
+	top: -5000px;
+	left: 0px;
+	background: white;
+	width: 2000px;
+	height: 2000px;
+	z-index: 2;
+	display: none;
+}
+.imgTitle{
+	font-size: 23px;
+    font-weight: bold;
+}
+.imgSubtitle{
+	font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    margin-left: 10px;
+}
+.imgLogo{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    fill: #1696d2;
+}
+.imgLogo tspan{
+	fill: #000;
+}
+.imgHidden{
+	display: none !important;
+}
 
 /**********************************************************************/
 /*************************** FOOTER ***********************************/
@@ -927,4 +1209,80 @@ rect.bar.hovered{
 	margin-right: 10px;
 	margin-bottom: 75px;
 	display: inline-block;
+}
+
+
+/**********************************************************************/
+/************************** ABOUT PAGE ********************************/
+/**********************************************************************/
+.aboutHeader{
+	border-bottom: 1px solid #d2d2d2;
+}
+.aboutContainer{
+	max-width: 728px !important;
+}
+.aboutContainer div{
+	display: block;
+	width: 100%;
+}
+.aboutLargeHead{
+	font-size: 27px;
+	font-weight: bold;
+	color: #000;
+}
+.aboutTopText{
+	font-size: 19px;
+	color: #353535;
+	margin-top: 17px;
+    margin-bottom: 61px;
+    line-height: 1.5;
+}
+.aboutSmallHead{
+	margin-bottom: 17px;
+	font-size: 23px;
+	font-weight: bold;
+	color: #000;
+}
+.aboutSmallHead.bottom{
+	margin-top: 70px;
+}
+.aboutCategoryHead{
+	font-size: 19px;
+	color: #000;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #d2d2d2;
+}
+.aboutCategoryHead:not(.top){
+	margin-top: 34px;
+}
+.aboutCategoryHead span{
+	font-size: 14px;
+	color: #353535;
+}
+.aboutCategoryName{
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+	margin-top: 17px;
+}
+.aboutCategoryRow{
+	font-size: 14px;
+	color: #353535;
+}
+.aboutCreditsText{
+	font-size: 16px;
+	font-style: italic;
+	color: #696969;
+	line-height: 1.5;
+	margin-bottom: 40px;
+}
+.aboutCreditsRow{
+	font-size: 14px;
+	color: #353535;
+	margin-bottom: 14px;
+}
+.aboutCreditsRow span{
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-right: 3px;
 }

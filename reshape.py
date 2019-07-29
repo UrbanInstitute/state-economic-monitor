@@ -33,7 +33,16 @@ def buildCSVs(indicator):
 
 	if(indicator != "house_price_index"):
 		raw = wb.sheet_by_index(0)
-		rawFile = open('data/csv/%s_raw.csv'%indicator, 'wb')
+		
+		fileName = indicator
+		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+			fileName += "_raw_in_thousands"
+		elif(indicator == "state_gdp"):
+			fileName += "_raw_in_millions"
+		else:
+			fileName += "_raw"
+
+		rawFile = open('%s.csv'%fileName, 'wb')
 		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 		
 		for rownum in range(4, raw.nrows):
@@ -45,18 +54,18 @@ def buildCSVs(indicator):
 		rawFile.close()
 
 	if(indicator != "unemployment_rate"):
-		yoy = wb.sheet_by_index(1)
-		yoyFile = open('data/csv/%s_yoy.csv'%indicator, 'wb')
-		yoyWriter = csv.writer(yoyFile, quoting=csv.QUOTE_ALL)
+		change = wb.sheet_by_index(1)
+		changeFile = open('%s_yoy_percent_change.csv'%indicator, 'wb')
+		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 		
 
-		for rownum in range(4, yoy.nrows):
+		for rownum in range(4, change.nrows):
 			if(row[0] == "" and row[1] != "United States"):
 				break
 			else:
-				yoyWriter.writerow( cleanExcelRow(yoy.row_values(rownum), dateMode) )
+				changeWriter.writerow( cleanExcelRow(change.row_values(rownum), dateMode) )
 
-		yoyFile.close()
+		changeFile.close()
 
 
 
@@ -80,9 +89,16 @@ for indicator in indicators:
 for index, indicator in enumerate(indicators):
 	if(indicator != "house_price_index"):
 		key = str(index) + "r"
-		print key
-		rawReader = csv.reader(open("data/csv/%s_raw.csv"%indicator, 'rU'))
-		rawCountReader = csv.reader(open("data/csv/%s_raw.csv"%indicator, 'rU'))
+		fileName = indicator
+		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+			fileName += "_raw_in_thousands"
+		elif(indicator == "state_gdp"):
+			fileName += "_raw_in_millions"
+		else:
+			fileName += "_raw"
+
+		rawReader = csv.reader(open("%s.csv"%fileName, 'rU'))
+		rawCountReader = csv.reader(open("%s.csv"%fileName, 'rU'))
 		states = rawReader.next()
 
 		rowCount = sum(1 for row in rawCountReader) - 2
@@ -113,13 +129,13 @@ for index, indicator in enumerate(indicators):
 for index, indicator in enumerate(indicators):
 	if(indicator != "unemployment_rate"):
 		key = str(index) + "c"
-		yoyReader = csv.reader(open("data/csv/%s_yoy.csv"%indicator, 'rU'))
-		yoyCountReader = csv.reader(open("data/csv/%s_yoy.csv"%indicator, 'rU'))
-		states = yoyReader.next()
+		changeReader = csv.reader(open("%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeCountReader = csv.reader(open("%s_yoy_percent_change.csv"%indicator, 'rU'))
+		states = changeReader.next()
 
-		rowCount = sum(1 for row in yoyCountReader) - 2
+		rowCount = sum(1 for row in changeCountReader) - 2
 
-		for rowIndex, row in enumerate(yoyReader):
+		for rowIndex, row in enumerate(changeReader):
 			date = row[0]
 			if(rowIndex == 0):
 				terminalDates[key] = {}
