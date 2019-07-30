@@ -374,7 +374,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 			.append("div")
 			.attr("class", "left calendarArrow")
 		leftArrow.append("img")
-			.attr("src", "img/calendarArrow.png")
+			.attr("src", pathPrefix + "static/img/calendarArrow.png")
 		leftArrow.on("click", function(){
 			d3.event.stopPropagation();
 			var rightMostYear = (+d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year") + 3),
@@ -515,7 +515,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 			.append("div")
 			.attr("class", "right calendarArrow")
 		rightArrow.append("img")
-			.attr("src", "img/calendarArrow.png")
+			.attr("src", pathPrefix + "static/img/calendarArrow.png")
 		rightArrow.on("click", function(){
 			d3.event.stopPropagation();
 			var leftMostYear = d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year"),
@@ -2370,8 +2370,8 @@ function showChart(chartType){
 		d3.select(".menuActive.timeSingle").style("display", "none")
 		d3.select(".menuActive.timeRange").style("display", "block")
 
-		d3.select(".timeTypeContainer.bar img").attr("src", "img/barIcon.png")
-		d3.select(".timeTypeContainer.line img").attr("src", "img/lineIconActive.png")
+		d3.select(".timeTypeContainer.bar img").attr("src", pathPrefix + "static/img/barIcon.png")
+		d3.select(".timeTypeContainer.line img").attr("src", pathPrefix + "static/img/lineIconActive.png")
 
 		d3.select("#pu-dlDateSingle").style("display", "none")
 		d3.select("#pu-dlDateRange").style("display", "block")
@@ -2391,8 +2391,8 @@ function showChart(chartType){
 		d3.select("#barControlContainer").style("display", "block")
 		d3.select("#lineControlContainer").style("display", "none")
 
-		d3.select(".timeTypeContainer.bar img").attr("src", "img/barIconActive.png")
-		d3.select(".timeTypeContainer.line img").attr("src", "img/lineIcon.png")
+		d3.select(".timeTypeContainer.bar img").attr("src", pathPrefix + "static/img/barIconActive.png")
+		d3.select(".timeTypeContainer.line img").attr("src", pathPrefix + "static/img/lineIcon.png")
 
 		d3.select("#pu-dlDateSingle").style("display", "block")
 		d3.select("#pu-dlDateRange").style("display", "none")
@@ -3002,9 +3002,9 @@ function init(allData, topojsonData, stateNamesData){
 	updateIndicator(indicator, unit)
 }
 
-d3.json("data/figures/data.json").then(function(allData){
-	d3.json("data/mapping/states.json").then(function(topojsonData){
-		d3.csv("data/mapping/state_fips.csv").then(function(stateNamesData){
+d3.json(pathPrefix + "data/figures/data.json").then(function(allData){
+	d3.json(pathPrefix + "data/mapping/states.json").then(function(topojsonData){
+		d3.csv(pathPrefix + "data/mapping/state_fips.csv").then(function(stateNamesData){
 			init(allData, topojsonData, stateNamesData)
 		})
 	})

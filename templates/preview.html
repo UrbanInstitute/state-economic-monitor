@@ -1,7 +1,7 @@
 <html>
 <head>
-<link rel="stylesheet" href="static/css/main.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="static/css/vendor/jquery-ui.css">
+<link rel="stylesheet" href="../static/css/main.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../static/css/vendor/jquery-ui.css">
 </head>
 <body>
 <div id = "chartData"></div>
@@ -14,11 +14,11 @@
 
 
 <!-- START HEADER -->
-<div id = "headerContainer">
+<div id = "headerContainer" class = "headerPreview">
 	<div id = "headerLogo">
-		<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/logo.png"/></a>
+		<a href = "https://www.urban.org/" target = "_blank"><img src = "../static/img/logo.png"/></a>
 	</div>
-	<div id = "headerTitle">State Economic Monitor</div>
+	<div id = "headerTitle">State Economic Monitor: preview</div>
 	<div id = "lastUpdatedContainer">Last updated <span id = "lastUpdated">&hellip;</span></div>
 </div>
 <!-- END HEADER -->
@@ -32,13 +32,13 @@
 
 	<div id = "cardSubcontainer">
 		<div class = "cardArrow left">
-			<img src = "static/img/calendarArrow.png"/>
+			<img src = "../static/img/calendarArrow.png"/>
 		</div>
 
 		<div id = "cardContentContainer"></div>
 
 		<div class = "cardArrow right">
-			<img src = "static/img/calendarArrow.png"/>
+			<img src = "../static/img/calendarArrow.png"/>
 		</div>
 	</div>
 
@@ -64,7 +64,7 @@
 			<div class = "menuTop" id = "mt-employment">
 				<div class = "menuTitle">Indicator</div>
 				<div class = "menuActive">&hellip;</div>
-				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+				<img src = "../static/img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
 
 			<div class = "employmentOption" id = "eo-unemployment_rate">Unemployment rate</div>
@@ -86,7 +86,7 @@
 			<div class = "menuTop" id = "mt-state">
 				<div class = "menuTitle">State</div>
 				<div class = "menuActive stateDisplayName">&hellip;</div>
-				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+				<img src = "../static/img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
 			<div id = "stateNameContainer">
 				<div class = "stateNameCol left"></div>
@@ -100,16 +100,16 @@
 				<div class = "menuTitle">Time frame</div>
 				<div class = "menuActive timeRange">&hellip;</div>
 				<div class = "menuActive timeSingle">&hellip;</div>
-				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+				<img src = "../static/img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
 
 			<div class = "timeTypeContainer bar">
-				<img src = "static/img/barIcon.png"/>
+				<img src = "../static/img/barIcon.png"/>
 				<span>Single date</span>
 			</div>
 
 			<div class = "timeTypeContainer line">
-				<img src = "static/img/lineIcon.png"/>
+				<img src = "../static/img/lineIcon.png"/>
 				<span>Date range</span>
 			</div>
 
@@ -154,7 +154,7 @@
 					<div class = "lineMenuLabel start">Start date</div>
 					<div class = "lineMenuDisplay start">
 						<div class = "lineMenuDate start"></div>
-						<img class = "lineMenuCalIcon start" src = "static/img/calIcon.png"/>
+						<img class = "lineMenuCalIcon start" src = "../static/img/calIcon.png"/>
 					</div>
 					
 				</div>
@@ -163,7 +163,7 @@
 					<div class = "lineMenuLabel end">End date</div>
 					<div class = "lineMenuDisplay end">
 						<div class = "lineMenuDate end"></div>
-						<img class = "lineMenuCalIcon end" src = "static/img/calIcon.png"/>
+						<img class = "lineMenuCalIcon end" src = "../static/img/calIcon.png"/>
 					</div>
 					
 				</div>
@@ -179,13 +179,13 @@
 <!-- START UNIT CHECKBOXES -->
 		<div id = "unitCheckboxes">
 			<div class = "unitCheckBox change active">
-				<img src = "static/img/checked.png"/>
+				<img src = "../static/img/checked.png"/>
 				<span class = "disabledBox change hide"></span>
 				<div class = "unitText change">Percent change year over year</div>
 				<div class = "tooltipIcon change"></div>
 			</div>
 			<div class = "unitCheckBox raw">
-				<img src = "static/img/checked.png"/>
+				<img src = "../static/img/checked.png"/>
 				<span class = "disabledBox raw hide"></span>
 				<div class = "unitText raw">&hellip;</div>
 				<div class = "tooltipIcon raw"></div>
@@ -272,7 +272,7 @@
 	<div id = "footerContentContainer">
 		<div id = "footerTopRow">
 			<div id = "bigLogoContainer">
-				<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/bigLogo.png"/></a>
+				<a href = "https://www.urban.org/" target = "_blank"><img src = "../static/img/bigLogo.png"/></a>
 			</div>
 			<div id = "footerBigLinks">
 				<div class = footerBigLink><a href = "about.html">About</a></div>
@@ -291,7 +291,7 @@
 <!-- START POP UPS -->
 <div class = "popupScreen"></div>
 <div class = "popupMenu saveImage bar">
-	<img class = "pu-close saveImage" src = "static/img/closeIcon.png">
+	<img class = "pu-close saveImage" src = "../static/img/closeIcon.png">
 	<div class = "pu-title">Save chart options</div>
 	<div class = "pu-subtitle">Chart elements</div>
 	<div class = "pu-buttonRow">
@@ -309,7 +309,7 @@
 </div>
 
 <div class = "popupMenu downloadData">
-	<img class = "pu-close downloadData" src = "static/img/closeIcon.png">
+	<img class = "pu-close downloadData" src = "../static/img/closeIcon.png">
 	<div class = "pu-title">Download data options</div>
 	<div class = "pu-section current">
 		<div class = "pu-dlRow">
@@ -379,27 +379,26 @@
 
 <!-- END POP UPS -->
 
-<script>var pathPrefix = "../"</script>
 <div id = "hiddenBarChartContainer"></div>
 <div id = "hiddenLineChartContainer"></div>
 
+<script>var pathPrefix = "../"</script>
+<script src="../static/js/vendor/es6-promise.min.js"></script>
+<script src="../static/js/vendor/es6-promise.auto.min.js"></script> 
 
-<script src="static/js/vendor/es6-promise.min.js"></script>
-<script src="static/js/vendor/es6-promise.auto.min.js"></script> 
+<script src = "../static/js/vendor/filesaver.min.js"></script>
+<script src = "../static/js/vendor/jszip.min.js"></script>
+<script src = "../static/js/vendor/saveSvgAsPng.js"></script>
+<script src = "../static/js/vendor/moment.min.js"></script>
+<script src = "../static/js/vendor/jquery.1.8.min.js"></script>
+<script src = "../static/js/vendor/jquery-ui.min.js"></script>
+<script src = "../static/js/vendor/d3.v5.min.js"></script>
+<script src = "../static/js/vendor/topojson.v2.min.js"></script>
+<script src = "../static/js/vendor/d3-interpolate-path.min.js"></script>
 
-<script src = "static/js/vendor/filesaver.min.js"></script>
-<script src = "static/js/vendor/jszip.min.js"></script>
-<script src = "static/js/vendor/saveSvgAsPng.js"></script>
-<script src = "static/js/vendor/moment.min.js"></script>
-<script src = "static/js/vendor/jquery.1.8.min.js"></script>
-<script src = "static/js/vendor/jquery-ui.min.js"></script>
-<script src = "static/js/vendor/d3.v5.min.js"></script>
-<script src = "static/js/vendor/topojson.v2.min.js"></script>
-<script src = "static/js/vendor/d3-interpolate-path.min.js"></script>
-
-<script src = "static/js/constants.js"></script>
-<script src = "static/js/utils.js"></script>
-<script src = "static/js/main.js"></script>
+<script src = "../static/js/constants.js"></script>
+<script src = "../static/js/utils.js"></script>
+<script src = "../static/js/main.js"></script>
 
 </body>
 </html>
