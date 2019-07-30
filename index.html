@@ -316,9 +316,10 @@
 			<div class = "pu-checkBox current"></div>
 			<div class = "pu-subtitle">Current selections</div>
 		</div>
-		<div id = "pu-dlIndicator">Unemployment rate</div>
-		<div id = "pu-dlDate">April 2019</div>
-		<div id = "pu-dlStates">Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,  Florida, Georgia, Hawaii, Idaho, Illinois Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, and Wyoming</div>
+		<div id = "pu-dlIndicator">&hellip;</div>
+		<div id = "pu-dlDateSingle">&hellip;</div>
+		<div id = "pu-dlDateRange">&hellip;</div>
+		<div id = "pu-dlStates">&hellip;</div>
 	</div>
 
 	<div class = "pu-section employment hideable hide">
@@ -327,6 +328,15 @@
 			<div class = "pu-subtitle">Employment data</div>
 		</div>
 		<div class = "pu-allStates">all states and all years</div>
+
+		<div class = "pu-smallButton employmentButton" id = "eb-unemployment_rate">Unemployment rate</div>
+		<div class = "pu-smallButton employmentButton" id = "eb-total_employment">Total employment</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-private_employment">Private employment</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-public_employment">Public employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton  indent2" id = "eb-federal_public_employment">Federal public employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-state_and_local_public_employment">State and local public employment</div>
+		<span class = "iconIndent ii-3"></span><div class = "pu-smallButton employmentButton indent3" id = "eb-state_and_local_public_education_employment">State and local public education employment</div>
+
 	</div>
 
 	<div class = "pu-section earnings hideable hide">
@@ -376,52 +386,19 @@
 <script src="js/vendor/es6-promise.min.js"></script>
 <script src="js/vendor/es6-promise.auto.min.js"></script> 
 
+<script src = "js/vendor/filesaver.min.js"></script>
 <script src = "js/vendor/jszip.min.js"></script>
-<script src="js/vendor/saveSvgAsPng.js"></script>
-<script src="js/vendor/moment.min.js"></script>
-<script src="js/vendor/jquery.1.8.min.js"></script>
-<script src="js/vendor/jquery-ui.min.js"></script>
-<script src="js/vendor/d3.v5.min.js"></script>
-<script src="js/vendor/topojson.v2.min.js"></script>
-
+<script src = "js/vendor/saveSvgAsPng.js"></script>
+<script src = "js/vendor/moment.min.js"></script>
+<script src = "js/vendor/jquery.1.8.min.js"></script>
+<script src = "js/vendor/jquery-ui.min.js"></script>
+<script src = "js/vendor/d3.v5.min.js"></script>
+<script src = "js/vendor/topojson.v2.min.js"></script>
 <script src = "js/vendor/d3-interpolate-path.min.js"></script>
+
 <script src = "js/constants.js"></script>
 <script src = "js/utils.js"></script>
 <script src = "js/main.js"></script>
-<script>
-    // window.onload = function() {
-    //   var zip = new JSZip();
-    //   var a = document.querySelector("a");
-    //   var urls = ["data/csv/federal_public_employment_raw.csv", "data/csv/federal_public_employment_yoy.csv"];
 
-    //   function request(url) {
-    //     return new Promise(function(resolve) {
-    //       var httpRequest = new XMLHttpRequest();
-    //       httpRequest.open("GET", url);
-    //       httpRequest.onload = function() {
-    //         zip.file(url, this.responseText);
-    //         resolve()
-    //       }
-    //       httpRequest.send()
-    //     })
-    //   }
-
-    //   Promise.all(urls.map(function(url) {
-    //       return request(url)
-    //     }))
-    //     .then(function() {
-    //       console.log(zip);
-    //       zip.generateAsync({
-    //           type: "blob"
-    //       })
-    //       .then(function(content) {
-    //         // a.download = "folder" + new Date().getTime();
-    //         a.href = URL.createObjectURL(content)
-    //         window.open(URL.createObjectURL(content));
-    //         // a.innerHTML = "download " + a.download;
-    //       });
-    //     })
-    // }
-</script>
 </body>
 </html>

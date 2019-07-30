@@ -594,10 +594,22 @@ function updateSelectedStates(states, hoverState){
 		d3.select("#clearSelections").style("display", "none")
 	}
 
+	var downloadStateText = ""
 	for(var i = 0; i < nonUS.length; i++){
 		s = nonUS[i]
 		d3.select("#stateName_" + s).classed("active", true)
+		if(i < nonUS.length - 1){
+			if(nonUS.length == 2) downloadStateText += getStateName(s) + " "
+			else downloadStateText += getStateName(s) + ", "
+		}
+		// else if(i == nonUS.length - 2 ){
+		// 	downloadStateText += getStateName(s) + " "	
+		// }
+		else{
+			downloadStateText += " and " + getStateName(s)
+		}
 	}
+	d3.select("#pu-dlStates").text(downloadStateText)
 	if(nonUS.length > 1){
 		d3.selectAll(".stateDisplayName").text(multipleStatesText)
 		d3.select(".singleYear.tt-states").text(multipleStatesText)
@@ -640,6 +652,14 @@ function updateDateMenus(opts){
 		d3.select(".menuActive.timeRange").html(function(){
 			if(isQuarterly(indicator)){
 				return "Q" + ((startMonth-1)/3 + 1) + " " + startYear + "&ndash;" + "Q" + ((endMonth-1)/3 + 1) + " " + endYear
+			}else{
+				return monthFull[startMonth - 1] + " " + startYear + "&ndash;" + monthFull[endMonth - 1] + " " + endYear
+			}
+		})
+
+		d3.select("#pu-dlDateRange").html(function(){
+			if(isQuarterly(indicator)){
+				return "Q" + ((startMonth-1)/3 + 1) + " " + startYear + " to " + "Q" + ((endMonth-1)/3 + 1) + " " + endYear
 			}else{
 				return monthFull[startMonth - 1] + " " + startYear + "&ndash;" + monthFull[endMonth - 1] + " " + endYear
 			}
@@ -724,6 +744,15 @@ function updateDateMenus(opts){
 				return monthFull[startMonth - 1] + " " + startYear + "&ndash;" + monthFull[endMonth - 1] + " " + endYear
 			}
 		})
+
+		d3.select("#pu-dlDateSingle").html(function(){
+			if(isQuarterly(indicator)){
+				return "Q" + ((endMonth-1)/3 + 1) + " " + endYear
+			}else{
+				return monthFull[endMonth - 1] + " " + endYear
+			}
+		})
+
 		d3.select(".multiYear.tt-date.range").html(function(){
 			if(isQuarterly(indicator)){
 				return "Q" + ((startMonth-1)/3 + 1) + " " + startYear + "&ndash;" + "Q" + ((endMonth-1)/3 + 1) + " " + endYear
@@ -2248,6 +2277,7 @@ function updateIndicator(indicator, unit){
 	d3.select("#sn-" + section).classed("active", true)
 
 	d3.selectAll(".tt-indicator").text(indicatorNames[indicator])
+	d3.select("#pu-dlIndicator").text(indicatorNames[indicator])
 
 	if(section == "employment"){
 		d3.select(".employment.menuBlock").style("display", "block")
@@ -2343,6 +2373,9 @@ function showChart(chartType){
 		d3.select(".timeTypeContainer.bar img").attr("src", "img/barIcon.png")
 		d3.select(".timeTypeContainer.line img").attr("src", "img/lineIconActive.png")
 
+		d3.select("#pu-dlDateSingle").style("display", "none")
+		d3.select("#pu-dlDateRange").style("display", "block")
+
 	}else{
 		d3.selectAll(".calendarParent").classed("visible", false)
 
@@ -2360,6 +2393,9 @@ function showChart(chartType){
 
 		d3.select(".timeTypeContainer.bar img").attr("src", "img/barIconActive.png")
 		d3.select(".timeTypeContainer.line img").attr("src", "img/lineIcon.png")
+
+		d3.select("#pu-dlDateSingle").style("display", "block")
+		d3.select("#pu-dlDateRange").style("display", "none")
 	}
 	d3.selectAll(".timeTypeContainer").classed("active", false)
 	d3.select(".timeTypeContainer." + chartType).classed("active", true)
@@ -2491,8 +2527,32 @@ function popUp(selector){
 		.style("display", "block")
 		.transition()
 		.style("opacity", 1)
-	d3.select(".popupMenu." + selector)
-		.style("display", "block")
+	var pu = d3.select(".popupMenu." + selector)
+
+	pu.style("display", "block")
+	var h = pu.node().getBoundingClientRect().height;
+
+	pu.style("top", function(){
+			if(h > window.innerHeight){
+				return 0;
+			}else{
+				return "calc(50% - " + (h/2) + "px)"
+			}
+		})
+		.style("height", function(){
+			if(h > window.innerHeight){
+				return window.innerHeight + "px";
+			}else{
+				return "auto"
+			}
+		})
+		.style("overflow", function(){
+			if(h > window.innerHeight){
+				return "scroll";
+			}else{
+				return "auto"
+			}
+		})
 		.transition()
 		.style("opacity", 1)
 
@@ -2710,7 +2770,12 @@ function initControls(){
 
 		if(cb.classed("active")){
 			button.classed("disabled", true)
+			currentButton.classed("disabled", true)
+			a.classed("hidden", false)
 			cb.classed("active", false)
+			if(cb.classed("employment")){
+				d3.selectAll(".employmentButton").classed("active", false)
+			}
 		}else{
 			d3.selectAll(".pu-dlRow .pu-checkBox").classed("active", false)
 			cb.classed("active", true)
@@ -2719,12 +2784,8 @@ function initControls(){
 			if(cb.classed("current")){
 				currentButton.classed("disabled",false)
 				a.classed("hidden", true)
+				d3.selectAll(".employmentButton").classed("active", false)
 
-				// var masterData = [{"foo":1,"bar":2},{"foo":3,"bar":4}]
-
-
-
-				// var args = makeCSV(masterData)
 				var params = getParams(),
 					chartType = (d3.select("#barControlContainer").style("display") == "block") ? "bar" : "line",
 					filename = getFilename(chartType, params.indicator, params.unit, "csv")
@@ -2733,12 +2794,13 @@ function initControls(){
 					.filter(function(o){
 						if(chartType == "bar"){
 							return (params.states.indexOf(o.abbr) != -1 || o.abbr == "US") && o.date == getParams().endDate
+						}else{
+							return (params.states.indexOf(o.abbr) != -1 || o.abbr == "US") &&
+							moment(o.date).isBetween(params.startDate, params.endDate, "day", '[]')
 						}
 					})
 
 				var args = makeCSV(data, params.indicator, params.unit, filename)
-
-
 
 				d3.select(".dataDownloadCurrent").datum(args)
 
@@ -2746,6 +2808,7 @@ function initControls(){
 			}else{
 				currentButton.classed("disabled",true)
 				a.classed("hidden", false)
+				d3.selectAll(".employmentButton").classed("active", false)
 
 				if(cb.classed("all")){
 					a.attr("href","data/download/all_indicators-all_data.zip")
@@ -2759,7 +2822,12 @@ function initControls(){
 				else if(cb.classed("earnings")){
 					a.attr("href", "data/download/weekly_earnings-all_data.zip")	
 				}
-					
+				else if(cb.classed("employment")){
+					currentButton.classed("disabled",false)
+					a.classed("hidden", true)
+
+					d3.selectAll(".employmentButton").classed("active", true)
+				}
 			}
 
 
@@ -2769,12 +2837,43 @@ function initControls(){
 		}
 	})
 
+	d3.selectAll(".employmentButton").on("click", function(){
+		var cb = d3.select(".pu-checkBox.employment"),
+			button = d3.select(".pu-bigButton.dataDownload"),
+			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
+			a = d3.select("#pu-downloadLink")
+		
+		d3.select(this).classed("active", !d3.select(this).classed("active"))
+		d3.selectAll(".pu-checkBox").classed("active", false)
+
+		if(d3.selectAll(".employmentButton.active").nodes().length == 0){
+			button.classed("disabled", true)
+			currentButton.classed("disabled", true)
+			a.classed("hidden", false)
+			cb.classed("active", false)
+		}
+		else if(d3.selectAll(".employmentButton.active").nodes().length == 7){
+			button.classed("disabled", true)
+			currentButton.classed("disabled", false)
+			a.classed("hidden", true)
+			cb.classed("active", true)
+		}else{
+			button.classed("disabled", true)
+			currentButton.classed("disabled", false)
+			a.classed("hidden", true)
+			cb.classed("active", false)
+		}
+	})
+
 	d3.select(".dataDownloadCurrent").on("click", function(args){
-		// if(d3.select(this).attr("href") == "none"){ return false }
-		console.log("bearclaw")
-		// var args = $(this).data();
-		// Convert CSV and place as link
-		downloadDataFile(args.data, args.filename + ".csv", 'text/csv;encoding:utf-8');
+		var empButtons = d3.selectAll(".employmentButton.active")
+		if(empButtons.nodes().length == 0){
+			downloadDataFile(args.data, args.filename + ".csv", 'text/csv;encoding:utf-8');
+		}
+		else{
+			empIds = empButtons.nodes().map(function(o){ return o.id.replace("eb-","") })
+			downloadZipFile(empIds)
+		}
 	})
 
 // 	$(".result-file .download.link").click(function(e){

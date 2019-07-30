@@ -969,7 +969,7 @@ rect.bar.hovered{
 .pu-dlRow{
 	cursor: pointer;
 }
-#pu-dlIndicator, #pu-dlDate, #pu-dlStates{
+#pu-dlIndicator, #pu-dlDateSingle, #pu-dlDateRange, #pu-dlStates{
     font-size: 16px;
     color: #1696d2;
     margin-left: 34px;
@@ -997,7 +997,44 @@ rect.bar.hovered{
 #pu-downloadLink.hidden{
 	visibility: hidden;
 }
-
+.pu-smallButton.employmentButton{
+    margin-top: 10px;
+    margin-left: 34px;
+    display: table;
+}
+.employmentButton.indent1{
+	margin-left: 59px;
+}
+.employmentButton.indent2{
+	margin-left: 84px;
+}
+.employmentButton.indent3{
+	margin-left: 109px;
+}
+.iconIndent{
+	position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-top: 26px;
+}
+.ii-1{
+    left: 96px;
+    background: #9d9d9d;
+    border: 1px solid #9d9d9d;
+    border-radius: 100%;
+}
+.ii-2{
+    left: 121px;
+    background: #fff;
+    border: 1px solid #9d9d9d;
+    border-radius: 100%;
+}
+.ii-3{
+    left: 146px;
+    background: #9d9d9d;
+    border: 1px solid #9d9d9d;
+}
 /**********************************************************************/
 /************************ SAVE IMG POP UP *****************************/
 /**********************************************************************/

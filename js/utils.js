@@ -110,6 +110,46 @@ function downloadDataFile(content, fileName, mimeType) {
   }
 }
 
+function downloadZipFile(slugs){
+  var zip = new JSZip();
+  var a = document.querySelector("a");
+  var unflatUrls = slugs
+    .map(function(s){
+      if(s == "unemployment_rate"){
+        return [s + "_raw.csv"]
+      }else{
+        return [s + "_raw_in_thousands.csv", s + "_yoy_percent_change.csv"]
+      }
+    })
+  
+  var urls = [].concat.apply([], unflatUrls);
+
+  // console.log(urls)
+
+  function request(url) {
+    return new Promise(function(resolve) {
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open("GET", url);
+      httpRequest.onload = function() {
+        zip.file(url, this.responseText);
+        resolve()
+      }
+      httpRequest.send()
+    })
+  }
+
+  Promise.all(urls.map(function(url) {
+    return request(url)
+  }))
+  .then(function() {
+  zip.generateAsync({
+  type: "blob"
+  })
+  .then(function(blob) {
+    saveAs(blob, "employment_select_indicators.zip");
+  });
+  })
+}
 
 //clipboard functions from https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
 function fallbackCopyTextToClipboard(text) {
