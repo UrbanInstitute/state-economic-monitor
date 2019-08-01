@@ -2811,16 +2811,16 @@ function initControls(){
 				d3.selectAll(".employmentButton").classed("active", false)
 
 				if(cb.classed("all")){
-					a.attr("href","data/download/all_indicators-all_data.zip")
+					a.attr("href","static/data/download/all_indicators-all_data.zip")
 				}
 				else if(cb.classed("housing")){
-					a.attr("href", "data/download/house_price_index_yoy_percent_change.csv")
+					a.attr("href", "static/data/download/house_price_index_yoy_percent_change.csv")
 				}
 				else if(cb.classed("gdp")){
-					a.attr("href", "data/download/state_gdp-all_data.zip")
+					a.attr("href", "static/data/download/state_gdp-all_data.zip")
 				}
 				else if(cb.classed("earnings")){
-					a.attr("href", "data/download/weekly_earnings-all_data.zip")	
+					a.attr("href", "static/data/download/weekly_earnings-all_data.zip")	
 				}
 				else if(cb.classed("employment")){
 					currentButton.classed("disabled",false)
@@ -3002,9 +3002,9 @@ function init(allData, topojsonData, stateNamesData){
 	updateIndicator(indicator, unit)
 }
 
-d3.json(pathPrefix + "data/figures/data.json").then(function(allData){
-	d3.json(pathPrefix + "data/mapping/states.json").then(function(topojsonData){
-		d3.csv(pathPrefix + "data/mapping/state_fips.csv").then(function(stateNamesData){
+d3.json(pathPrefix + "static/data/figures/data.json").then(function(allData){
+	d3.json(pathPrefix + "static/data/mapping/states.json").then(function(topojsonData){
+		d3.csv(pathPrefix + "static/data/mapping/state_fips.csv").then(function(stateNamesData){
 			init(allData, topojsonData, stateNamesData)
 		})
 	})

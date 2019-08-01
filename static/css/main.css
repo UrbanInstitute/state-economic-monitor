@@ -143,8 +143,13 @@ select{
     display: inline-table;
     white-space: normal;
     position: relative;
+    word-break: break-word;
     left: 0px;
     cursor: pointer;
+}
+.card a{
+    color: #0A4C6A;
+    text-decoration: none;
 }
 .cardSectionTitle{
 	font-size: 13px;

@@ -1,4 +1,4 @@
-from json import dump
+from json import dump, load
 from utils import *
 from random import random
 import time
@@ -28,7 +28,7 @@ def cleanExcelRow(row, dateMode):
 
 
 def buildCSVs(indicator):
-	wb = xlrd.open_workbook('data/source/%s.xlsx'%indicator)
+	wb = xlrd.open_workbook('static/data/source/%s.xlsx'%indicator)
 	dateMode = wb.datemode
 
 	if(indicator != "house_price_index"):
@@ -71,7 +71,7 @@ def buildCSVs(indicator):
 
 
 
-fipsReader = csv.reader(open("data/mapping/state_fips.csv", 'rU'))
+fipsReader = csv.reader(open("static/data/mapping/state_fips.csv", 'rU'))
 nameToFips = {}
 for row in fipsReader:
 	nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
@@ -168,9 +168,9 @@ for tk in tempDict:
 
 dataOut["data"] = sorted(tempList, key=lambda k: datetime.datetime.strptime(k['date'], DATE_FORMAT))
 
-
-
-dataOut["cards"] = [{"states": ["US", "PA", "AK"], "indicator": "private_employment", "unit": "change", "endDate": "2018-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}, {"states": ["US", "PA", "CA"], "indicator": "state_gdp", "unit": "raw", "endDate": "2018-04-01", "startDate": "2006-01-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}, {"states": ["US", "CA", "AK"], "indicator": "house_price_index", "unit": "change", "endDate": "2015-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}, {"states": ["US", "NH", "VT"], "indicator": "total_employment", "unit": "change","startDate": "2012-03-01", "endDate": "2015-04-01", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}]
+with open('static/data/cards/cards.json') as inFile:
+    cardData = load(inFile)
+    dataOut["cards"] = cardData
 
 dataOut["terminalDates"] = terminalDates
 
@@ -180,11 +180,11 @@ dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 
 
 #write a pretty printed json for human readability
-with open('data/figures/pretty.json', 'wt') as out:
+with open('static/data/figures/pretty.json', 'wt') as out:
     res = dump(dataOut, out, sort_keys=True, indent=4, separators=(',', ': '))
 
 
 #write a one line json for consumption in JS
-with open('data/figures/data.json', 'wt') as out:
+with open('static/data/figures/data.json', 'wt') as out:
     res = dump(dataOut, out, sort_keys=True, separators=(',', ':'))
 
