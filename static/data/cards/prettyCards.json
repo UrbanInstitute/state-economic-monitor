@@ -1,43 +1,92 @@
 [
     {
-        "endDate": "1991-02-01",
-        "indicator": "total_employment",
+        "endDate": "2019-04-01",
+        "indicator": "weekly_earnings",
         "states": [
             "US",
-            "AR"
+            "AR",
+            "CA",
+            "CO",
+            "DC",
+            "KS",
+            "NV",
+            "UT",
+            "WY"
         ],
-        "text": "test\u2019s \u201cquotes\u201dtest\u2019s \u201cquotes\u201dtest\u2019s \u201cquotes\u201dtest\u2019s \u201cquotes\u201dtest\u2019s \u201cquotes\u201dtest\u2019s \u201cquotes\u201d test\u2019s",
+        "text": "Earnings rose at least 5.0 percent over the year in 7 states and the District of Columbia.",
         "unit": "change"
     },
     {
-        "endDate": "1990-02-01",
-        "indicator": "total_employment",
+        "endDate": "2019-04-01",
+        "indicator": "unemployment_rate",
         "states": [
-            "US",
-            "FL"
+            "US"
         ],
-        "text": "<a href=\"http://www.nyt.com\">nyt</a>\u2014\u2014\u2014\u2014\u2014\u2014\u2014foo bar bar bar",
+        "text": "32 states had June unemployment rates at or below the national rate of 3.7 percent.",
         "unit": "raw"
     },
     {
-        "endDate": "2019-02-01",
-        "indicator": "private_employment",
+        "endDate": "2019-04-01",
+        "indicator": "total_employment",
         "states": [
             "US",
-            "CA"
+            "AZ"
         ],
-        "text": "laskdjf laskdjflaskdjflaskdjflaskdjflaskdjflaskdjflaskdjflaskdjf laskdjf laskdjf laskdjf ",
+        "text": "Only Arizona saw total employment increase more than 3.0 percent over the year.",
         "unit": "change"
     },
     {
-        "endDate": "2018-04-01",
-        "indicator": "private_employment",
+        "endDate": "2019-04-01",
+        "indicator": "public_employment",
         "states": [
             "US",
+            "CT",
+            "NH",
+            "IN",
+            "WV",
+            "AK",
+            "LA",
+            "WA",
             "PA",
-            "AK"
+            "OH",
+            "KY",
+            "MS",
+            "DC",
+            "ND",
+            "OK"
         ],
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+        "text": "Public employment declined over the year in 13 states and the District of Columbia.",
         "unit": "change"
+    },
+    {
+        "endDate": "2019-04-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2009-04-01",
+        "states": [
+            "US",
+            "AL",
+            "AK",
+            "AR",
+            "CT",
+            "DE",
+            "GA",
+            "IA",
+            "LA",
+            "ME",
+            "MT",
+            "NV",
+            "NJ",
+            "ND",
+            "OH",
+            "PA",
+            "RI",
+            "TX",
+            "UT",
+            "VT",
+            "WV",
+            "WY"
+        ],
+        "text": "Unemployment reached a decade-low level for 21 states in June 2019.",
+        "unit": "raw"
     }
 ]
