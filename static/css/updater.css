@@ -28,6 +28,7 @@ select{
     width: 100%;
 }
 #cardContainer li {
+    background: white;
     margin: 3px 33px 33px 0;
     padding: 1px;
     float: left;
