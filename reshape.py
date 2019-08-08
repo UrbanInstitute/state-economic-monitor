@@ -55,7 +55,7 @@ def buildCSVs(indicator):
 
 	if(indicator != "unemployment_rate"):
 		change = wb.sheet_by_index(1)
-		changeFile = open(rootPath + '%s_yoy_percent_change.csv'%indicator, 'wb')
+		changeFile = open(rootPath + 'static/data/csv/%s_yoy_percent_change.csv'%indicator, 'wb')
 		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 		
 
@@ -130,7 +130,7 @@ for index, indicator in enumerate(indicators):
 	if(indicator != "unemployment_rate"):
 		key = str(index) + "c"
 		changeReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
-		changeCountReader = csv.reader(open(rootPath + "static/data/csv%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeCountReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
 		states = changeReader.next()
 
 		rowCount = sum(1 for row in changeCountReader) - 2
