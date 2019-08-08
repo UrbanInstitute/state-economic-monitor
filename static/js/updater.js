@@ -394,7 +394,7 @@ $(function() {
       console.log(form_data)
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=federal_public_employment',
+          url: '/semapp/upload?sheet=federal_public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -415,7 +415,7 @@ $(function() {
       var form_data = new FormData($('#upload-house_price_index')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=house_price_index',
+          url: '/semapp/upload?sheet=house_price_index',
           data: form_data,
           contentType: false,
           cache: false,
@@ -435,7 +435,7 @@ $(function() {
       var form_data = new FormData($('#upload-private_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=private_employment',
+          url: '/semapp/upload?sheet=private_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -455,7 +455,7 @@ $(function() {
       var form_data = new FormData($('#upload-public_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=public_employment',
+          url: '/semapp/upload?sheet=public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -476,7 +476,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_and_local_public_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=state_and_local_public_employment',
+          url: '/semapp/upload?sheet=state_and_local_public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -496,7 +496,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_gdp')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=state_gdp',
+          url: '/semapp/upload?sheet=state_gdp',
           data: form_data,
           contentType: false,
           cache: false,
@@ -516,7 +516,7 @@ $(function() {
       var form_data = new FormData($('#upload-total_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=total_employment',
+          url: '/semapp/upload?sheet=total_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -536,7 +536,7 @@ $(function() {
       var form_data = new FormData($('#upload-unemployment_rate')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=unemployment_rate',
+          url: '/semapp/upload?sheet=unemployment_rate',
           data: form_data,
           contentType: false,
           cache: false,
@@ -556,7 +556,7 @@ $(function() {
       var form_data = new FormData($('#upload-weekly_earnings')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=weekly_earnings',
+          url: '/semapp/upload?sheet=weekly_earnings',
           data: form_data,
           contentType: false,
           cache: false,
@@ -576,7 +576,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_and_local_public_education_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/upload?sheet=state_and_local_public_education_employment',
+          url: '/semapp/upload?sheet=state_and_local_public_education_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -600,7 +600,7 @@ $('.addIngredient').bind('click', function() {
   d3.select("#loading-text").html("Updating (this takes about a minute)&hellip;")
 $.ajax({
 type: 'POST',
-url: '/add',
+url: '/semapp/add',
 data: JSON.stringify(d3.selectAll(".draggableCard").data()),
 dataType: 'json',
 contentType: 'application/json; charset=utf-8',
@@ -609,7 +609,7 @@ contentType: 'application/json; charset=utf-8',
 success: function(data) {
 d3.select("#loading").style("visibility", "hidden")
 d3.select("#loading-text").text("Updated! Preview opening in new tab (you may need to enable popups).")
-var win = window.open('/preview', '_blank');
+var win = window.open('/semapp/preview', '_blank');
 if(win){
 //Browser has allowed it to be opened
 win.focus();
@@ -617,7 +617,7 @@ win.focus();
 //Broswer has blocked it
 if (window.confirm('Pop ups not enabled. Click OK to continue to the SEM preview')) 
 {
-window.location.href='/preview';
+window.location.href='/semapp/preview';
 };
 
 }
