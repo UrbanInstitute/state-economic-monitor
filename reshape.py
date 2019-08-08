@@ -7,6 +7,7 @@ import datetime
 
 
 DATE_FORMAT = "%Y-%m-%d"
+rootPath = "/var/www/html/semapp/"
 
 def cleanExcelRow(row, dateMode):
 	if str(row[0]).find("Q") != -1:
@@ -27,7 +28,7 @@ def cleanExcelRow(row, dateMode):
 
 
 def buildCSVs(indicator):
-	wb = xlrd.open_workbook('static/data/source/%s.xlsx'%indicator)
+	wb = xlrd.open_workbook(rootPath + 'static/data/source/%s.xlsx'%indicator)
 	dateMode = wb.datemode
 
 	if(indicator != "house_price_index"):
@@ -41,7 +42,7 @@ def buildCSVs(indicator):
 		else:
 			fileName += "_raw"
 
-		rawFile = open('%s.csv'%fileName, 'wb')
+		rawFile = open(rootPath + '%s.csv'%fileName, 'wb')
 		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 		
 		for rownum in range(4, raw.nrows):
@@ -54,7 +55,7 @@ def buildCSVs(indicator):
 
 	if(indicator != "unemployment_rate"):
 		change = wb.sheet_by_index(1)
-		changeFile = open('%s_yoy_percent_change.csv'%indicator, 'wb')
+		changeFile = open(rootPath + '%s_yoy_percent_change.csv'%indicator, 'wb')
 		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 		
 
@@ -70,7 +71,7 @@ def buildCSVs(indicator):
 
 
 
-fipsReader = csv.reader(open("static/data/mapping/state_fips.csv", 'rU'))
+fipsReader = csv.reader(open(rootPath + "static/data/mapping/state_fips.csv", 'rU'))
 nameToFips = {}
 for row in fipsReader:
 	nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
@@ -96,8 +97,8 @@ for index, indicator in enumerate(indicators):
 		else:
 			fileName += "_raw"
 
-		rawReader = csv.reader(open("%s.csv"%fileName, 'rU'))
-		rawCountReader = csv.reader(open("%s.csv"%fileName, 'rU'))
+		rawReader = csv.reader(open(rootPath + "%s.csv"%fileName, 'rU'))
+		rawCountReader = csv.reader(open(rootPath + "%s.csv"%fileName, 'rU'))
 		states = rawReader.next()
 
 		rowCount = sum(1 for row in rawCountReader) - 2
@@ -128,8 +129,8 @@ for index, indicator in enumerate(indicators):
 for index, indicator in enumerate(indicators):
 	if(indicator != "unemployment_rate"):
 		key = str(index) + "c"
-		changeReader = csv.reader(open("%s_yoy_percent_change.csv"%indicator, 'rU'))
-		changeCountReader = csv.reader(open("%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeReader = csv.reader(open(rootPath + "%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeCountReader = csv.reader(open(rootPath + "%s_yoy_percent_change.csv"%indicator, 'rU'))
 		states = changeReader.next()
 
 		rowCount = sum(1 for row in changeCountReader) - 2
@@ -167,7 +168,7 @@ for tk in tempDict:
 
 dataOut["data"] = sorted(tempList, key=lambda k: datetime.datetime.strptime(k['date'], DATE_FORMAT))
 
-with open('static/data/cards/cards.json') as inFile:
+with open(rootPath + 'static/data/cards/cards.json') as inFile:
     cardData = load(inFile)
     dataOut["cards"] = cardData
 
@@ -179,11 +180,11 @@ dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 
 
 #write a pretty printed json for human readability
-with open('static/data/figures/pretty.json', 'wt') as out:
+with open(rootPath + 'static/data/figures/pretty.json', 'wt') as out:
     res = dump(dataOut, out, sort_keys=True, indent=4, separators=(',', ': '))
 
 
 #write a one line json for consumption in JS
-with open('static/data/figures/data.json', 'wt') as out:
+with open(rootPath + 'static/data/figures/data.json', 'wt') as out:
     res = dump(dataOut, out, sort_keys=True, separators=(',', ':'))
 
