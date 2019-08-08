@@ -1,5 +1,4 @@
 from json import dump, load
-from utils import *
 from random import random
 import time
 import xlrd

@@ -1,8 +1,10 @@
 from zipfile import ZipFile
 from shutil import copyfile
 
+rootPath = "/var/www/html/semapp/"
+
 def createZip(fileNames, zipName):
-	zipObj = ZipFile('static/data/download/%s.zip'%zipName, 'w')
+	zipObj = ZipFile(rootPath + 'static/data/download/%s.zip'%zipName, 'w')
 	 
 	for fileName in fileNames:
 		zipObj.write('%s.csv'%fileName)
