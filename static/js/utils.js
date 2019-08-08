@@ -131,7 +131,7 @@ function downloadZipFile(slugs){
       var httpRequest = new XMLHttpRequest();
       httpRequest.open("GET", url);
       httpRequest.onload = function() {
-        zip.file(url, this.responseText);
+        zip.folder("static/data/csv").file(url, this.responseText);
         resolve()
       }
       httpRequest.send()

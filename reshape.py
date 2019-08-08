@@ -42,7 +42,7 @@ def buildCSVs(indicator):
 		else:
 			fileName += "_raw"
 
-		rawFile = open(rootPath + '%s.csv'%fileName, 'wb')
+		rawFile = open(rootPath + 'static/data/csv/%s.csv'%fileName, 'wb')
 		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 		
 		for rownum in range(4, raw.nrows):
@@ -97,8 +97,8 @@ for index, indicator in enumerate(indicators):
 		else:
 			fileName += "_raw"
 
-		rawReader = csv.reader(open(rootPath + "%s.csv"%fileName, 'rU'))
-		rawCountReader = csv.reader(open(rootPath + "%s.csv"%fileName, 'rU'))
+		rawReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
+		rawCountReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
 		states = rawReader.next()
 
 		rowCount = sum(1 for row in rawCountReader) - 2
@@ -129,8 +129,8 @@ for index, indicator in enumerate(indicators):
 for index, indicator in enumerate(indicators):
 	if(indicator != "unemployment_rate"):
 		key = str(index) + "c"
-		changeReader = csv.reader(open(rootPath + "%s_yoy_percent_change.csv"%indicator, 'rU'))
-		changeCountReader = csv.reader(open(rootPath + "%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
+		changeCountReader = csv.reader(open(rootPath + "static/data/csv%s_yoy_percent_change.csv"%indicator, 'rU'))
 		states = changeReader.next()
 
 		rowCount = sum(1 for row in changeCountReader) - 2
