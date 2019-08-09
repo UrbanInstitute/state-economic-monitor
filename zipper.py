@@ -7,7 +7,7 @@ def createZip(fileNames, zipName):
 	zipObj = ZipFile(rootPath + 'static/data/download/%s.zip'%zipName, 'w')
 	 
 	for fileName in fileNames:
-		zipObj.write(rootPath + 'static/data/csv/%s.csv'%fileName, rootPath + '%s.csv'%fileName)
+		zipObj.write(rootPath + 'static/data/csv/%s.csv'%fileName, '%s.csv'%fileName)
 
 	zipObj.close()
 
