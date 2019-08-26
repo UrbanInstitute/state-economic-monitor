@@ -1,92 +1,94 @@
 [
     {
-        "endDate": "2019-04-01",
+        "endDate": "2019-07-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "VT",
+            "ND"
+        ],
+        "text": "Vermont and North Dakota had the lowest unemployment rates in July.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2019-07-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "AR",
-            "CA",
-            "CO",
-            "DC",
-            "KS",
-            "NV",
-            "UT",
-            "WY"
+            "MS",
+            "WA"
         ],
-        "text": "Earnings rose at least 5.0 percent over the year in 7 states and the District of Columbia.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-04-01",
-        "indicator": "unemployment_rate",
-        "states": [
-            "US"
-        ],
-        "text": "32 states had June unemployment rates at or below the national rate of 3.7 percent.",
+        "text": "July average weekly earnings ranged from Mississippi's $721 to Washington\u2019s $1,167.",
         "unit": "raw"
     },
     {
-        "endDate": "2019-04-01",
+        "endDate": "2019-01-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "WY"
+        ],
+        "text": "Only Wyoming\u2019s GDP decreased between Q1 2018 and Q1 2019.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-07-01",
         "indicator": "total_employment",
         "states": [
             "US",
-            "AZ"
+            "LA"
         ],
-        "text": "Only Arizona saw total employment increase more than 3.0 percent over the year.",
+        "text": "Louisiana was the only state with a year-over-year decline in total employment in July.",
         "unit": "change"
     },
     {
-        "endDate": "2019-04-01",
-        "indicator": "public_employment",
+        "endDate": "2019-07-01",
+        "indicator": "private_employment",
         "states": [
             "US",
-            "CT",
-            "NH",
-            "IN",
-            "WV",
-            "AK",
-            "LA",
             "WA",
-            "PA",
-            "OH",
-            "KY",
-            "MS",
-            "DC",
-            "ND",
-            "OK"
+            "UT",
+            "NV",
+            "TX",
+            "ID"
         ],
-        "text": "Public employment declined over the year in 13 states and the District of Columbia.",
+        "text": "Private employment in July was up 3% or more over the year in five states.",
         "unit": "change"
     },
     {
-        "endDate": "2019-04-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2009-04-01",
+        "endDate": "2019-07-01",
+        "indicator": "state_and_local_public_employment",
         "states": [
             "US",
-            "AL",
-            "AK",
-            "AR",
-            "CT",
-            "DE",
-            "GA",
-            "IA",
-            "LA",
-            "ME",
-            "MT",
             "NV",
-            "NJ",
-            "ND",
-            "OH",
-            "PA",
+            "NM",
+            "ID",
             "RI",
-            "TX",
-            "UT",
-            "VT",
-            "WV",
-            "WY"
+            "DE"
         ],
-        "text": "Unemployment reached a decade-low level for 21 states in June 2019.",
+        "text": "Over the year, July state and local public employment increased the most in NV, NM, and ID.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-07-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2009-07-01",
+        "states": [
+            "US",
+            "UT"
+        ],
+        "text": "Utah was one of 21 states with a decade-low unemployment rate in July.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2019-01-01",
+        "indicator": "house_price_index",
+        "startDate": "2009-01-01",
+        "states": [
+            "US",
+            "AL"
+        ],
+        "text": "Alabama was one of 5 states with a decade-high annual growth in house prices in Q1 2019.",
+        "unit": "change"
     }
 ]
