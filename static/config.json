@@ -23,7 +23,7 @@
             ], 
             "text": "National average weekly earnings were 0.8 percent higher, in nominal dollars, between July 2018 and July 2019. In real (inflation-adjusted) terms, they decreased 1.0 percent over the year.<br/><br/>Real earnings also declined over the year in 34 states. The largest decreases were in Georgia (-4.0 percent), Rhode Island and Texas (-3.9 percent each), and South Dakota (-3.7 percent). Alaska, Idaho, Maryland, North Carolina, and Wisconsin also saw real average weekly earnings decrease 3.0 percent or more over the year.<br/><br/>Real earnings increased over the year in 15 states and the District of Columbia. The largest increases in real average weekly earnings were in the Nevada (3.5 percent), Kansas (2.4 percent), Arkansas (2.3 percent), and Wyoming (1.8 percent). Delaware's real average weekly earnings did not change over the year.<br/><br/>Note that weekly earnings data are fairly noisy from month to month."
         }, 
-        "date": "7/2019"
+        "date": "07/2019"
     }, 
     "employment": {
         "EMP": {
@@ -54,7 +54,7 @@
             ], 
             "text": "The national unemployment rate was 3.7 percent in July 2019. Among the states, Vermont had the lowest unemployment rate (2.1 percent), followed by North Dakota (2.4 percent), and Iowa and New Hampshire (2.5 percent each). July unemployment rates were also at or below 3.0 percent in nine other states: Colorado, Hawaii, Idaho, Maine, Massachusetts, South Dakota, Utah, Virginia, and Wisconsin. In total, July unemployment rates were at or below 4.0 percent in 37 states.<br/><br/>Alaska\u2019s 6.3 percent unemployment rate was the highest of any state. The next highest rates in July 2019 were in the District of Columbia (5.6 percent) and Mississippi (5.1 percent)."
         }, 
-        "date": "7/2019"
+        "date": "07/2019"
     }, 
     "housing": {
         "Figure3": {
