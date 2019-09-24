@@ -124,7 +124,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "{{excel}}",
-					"breaks": [-1,0,1,2,3,4],
+					"breaks": [0,1,2,3,4,5],
 					"source": "<a href = 'http://www.bls.gov/news.release/laus.t05.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"AWW":	{
@@ -150,7 +150,7 @@ var semConfig = {
 					"unit": "percent change year over year",
 					"unit-type": "percent",
 					"date-updated": "11/2014",
-					"breaks": [-5,-2,-1,0,2,4],
+					"breaks": [-3,-1,0,2,4,7],
 					"source": "<a href = 'http://www.bls.gov/sae/home.htm'>Bureau of Labor Statistics.</a>"
 				},
 		"HPChgYr":	{
