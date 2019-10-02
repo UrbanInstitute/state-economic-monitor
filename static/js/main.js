@@ -1819,7 +1819,7 @@ function getLineMargins(){
 	return margin = {top: 20, right: 30, bottom: 30, left: 30}
 }
 function getLineW(){
-	return 1100;
+	return 1085;
 }
 function getLineH(){
 	return 520;
@@ -1902,7 +1902,7 @@ function getBarMargins(){
 	return margin = {top: 30, right: 30, bottom: 30, left: 20}
 }
 function getBarW(){
-	return 1100;
+	return 1085;
 }
 function getBarH(){
 	return 260;
