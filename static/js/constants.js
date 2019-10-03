@@ -9,6 +9,7 @@ const 	defaultDateFormat = "YYYY-MM-DD",
 		indicatorUnits = {"federal_public_employment": {"raw":"people", "change":"percent change year over year, seasonally adjusted"}, "house_price_index": {"raw":"", "change": "percent change year over year, seasonally adjusted"}, "private_employment": {"raw":"people", "change":"percent change year over year, seasonally adjusted"}, "public_employment": {"raw":"people", "change":"percent change year over year, seasonally adjusted"}, "state_and_local_public_employment": {"raw":"people", "change":"percent change year over year, seasonally adjusted"}, "state_gdp":{"raw":"real dollars", "change":"percent change year over year, seasonally adjusted"}, "total_employment":{"raw":"people", "change":"percent change year over year, seasonally adjusted"}, "unemployment_rate":{"raw":"percent, seasonally adjusted", "change":""}, "weekly_earnings":{"raw": "real dollars", "change":"percent change year over year, not seasonally adjusted"}, "state_and_local_public_education_employment": {"raw":"people", "change":"percent change year over year, not seasonally adjusted"}},
 		indicatorFormatStrings = {"federal_public_employment": {"raw":".2s", "change":".2f"}, "house_price_index": {"raw":"", "change": ".2f"}, "private_employment": {"raw":".2s", "change":".2f"}, "public_employment": {"raw":".2s", "change":".2f"}, "state_and_local_public_employment": {"raw":".2s", "change":".2f"}, "state_gdp":{"raw":".2s", "change":".2f"}, "total_employment":{"raw":".2s", "change":".2f"}, "unemployment_rate":{"raw":".2f", "change":""}, "weekly_earnings":{"raw": ".2s", "change":".2f"}, "state_and_local_public_education_employment": {"raw":".2s", "change":".2f"}}
 		sectionNames = {"employment": "Employment", "earnings": "Earnings", "housing": "Housing", "gdp": "State GDP"},
+		sources = {"employment": "<a href = \"https://www.bls.gov/home.htm\" target = \"_blank\">Bureau of Labor Statistics</a>", "earnings": "<a href = \"https://www.bls.gov/home.htm\" target = \"_blank\">Bureau of Labor Statistics</a>", "housing": "<a href = \"https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx\" target = \"_blank\">Federal Housing Finance Agency</a>", "gdp": "<a href = \"https://www.bea.gov/\" target = \"_blank\">Bureau of Economic Analysis</a>"},
 		multipleStatesText = "Multiple States",
 		noStatesText = "None Selected",
 		menuHeights = {"time": 407, "state": 984, "employment": 354, "closed": 58},
@@ -35,7 +36,7 @@ const 	defaultDateFormat = "YYYY-MM-DD",
 		BAR_IMG_HEIGHT = 300,
 		MAP_IMG_WIDTH = 621,
 		LINE_IMG_WIDTH = 1000,
-		LINE_IMG_HEIGHT = 500
+		LINE_IMG_HEIGHT = 520
 
 
 

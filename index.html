@@ -2,6 +2,7 @@
 <head>
 <link rel="stylesheet" href="static/css/main.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="static/css/vendor/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic,900" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id = "chartData"></div>
@@ -89,6 +90,7 @@
 				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
 			<div id = "stateNameContainer">
+				<div class = "clearSelections inside">Clear selections</div>
 				<div class = "stateNameCol left"></div>
 				<div class = "stateNameCol right"></div>
 			</div>
@@ -192,7 +194,8 @@
 			</div>
 		</div>
 <!-- END UNIT CHECKBOXES -->
-		<div id = "clearSelections">Clear selections</div>
+		<div id = "hideUS" class = "show"><span>Hide</span> US line</div>
+		<div class = "clearSelections outside">Clear selections</div>
 		<div class = "multiYear tooltip">
 			<div class = "multiYear tt-top-row mouseover">
 				<div class = "multiYear tt-value">&hellip;</div>
@@ -233,6 +236,7 @@
 				<div id = "mapContainer">
 <!-- START CHART BUTTONS -->
 					<div id = "chartButtonContainer">
+						<div id = "sourceLine"></div>
 						<div class = "chartButton saveImage bar">Save chart</div>
 						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
@@ -304,6 +308,9 @@
 	</div>
 	<div class = "pu-checkRow labelAll">
 		<div class = "pu-checkBox labelAll"></div><div class = "pu-checkText">Include data labels on all states on <span class = "pu-chartName">map and bar chart</span></div>
+	</div>
+	<div class = "pu-checkRow labelNone">
+		<div class = "pu-checkBox labelNone"></div><div class = "pu-checkText">Do not include data labels on <span class = "pu-chartName">map and bar chart</span></div>
 	</div>
 	<div class = "pu-bigButton imgDownload">Download</div>
 </div>

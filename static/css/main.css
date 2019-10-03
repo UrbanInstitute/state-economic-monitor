@@ -263,7 +263,7 @@ select{
     padding-top: 14px;
     top: -14px;
     position: relative;
-    margin-bottom: -14px;
+    margin-bottom: -24px;
     padding-left: 15px;
     left: -15px;
     width: 286px;
@@ -327,15 +327,31 @@ select{
 	padding-top: 17px;
     padding-bottom: 17px;
 }
-#clearSelections{
-    top: 72px;
+.clearSelections.outside, #hideUS{
     position: absolute;
     left: 433px;
     font-size: 14px;
     color: #1696d2;
     font-style: italic;
     cursor: pointer;
-    display: none;
+}
+#hideUs{
+    top: 72px;
+    display: block;
+
+}
+.clearSelections.outside{
+    top: 94px;
+    visibility: hidden;
+    display: block;
+}
+.clearSelections.inside{
+    visibility: hidden;
+    font-size: 14px;
+    font-style: italic;
+    color: rgb(22, 150, 210);
+    margin-bottom: 3px;
+    cursor: pointer;
 }
 /**********************************************************************/
 /************************** TIME MENU  ********************************/
@@ -738,6 +754,7 @@ rect.bar.hovered{
 	opacity: 0;
     pointer-events: none;
     fill: rgba(255,255,255,.8);
+    /*display: none;*/
 }
 .barTooltipBg.active{
 	opacity: 1;
@@ -864,6 +881,20 @@ rect.bar.hovered{
 }
 .chartButton:hover, .chartButton.active{
 	background: #0A4C6A;
+}
+#sourceLine{
+    display: block;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+#sourceLine span{
+    font-weight: bold;
+    margin-right: 5px;
+}
+#sourceLine a{
+    text-decoration: none;
+    color: #1696d2;
 }
 /**********************************************************************/
 /**************************** ALL POP UPS *****************************/
@@ -1078,11 +1109,17 @@ rect.bar.hovered{
 	display: inline-block;
 	position: absolute;
 }
-.pu-bigButton.imgDownload, .pu-bigButton.dataDownload, .pu-bigButton.dataDownloadCurrent{
+.pu-bigButton.dataDownload, .pu-bigButton.dataDownloadCurrent{
     position: absolute;
     bottom: 50px;
     right: 60px;
 }
+.pu-bigButton.imgDownload{
+    margin-bottom: 60px;
+    float: right;
+    margin-top: 40px;
+}
+
 /**********************************************************************/
 /********************* SHARE URL POP UP ***************************/
 /**********************************************************************/
@@ -1166,6 +1203,7 @@ rect.bar.hovered{
 #hiddenBarChartContainer{
 	position: fixed;
 	top: -5000px;
+    /*top: 0px;*/
 	left: 0px;
 	background: white;
 	width: 2000px;
@@ -1202,6 +1240,13 @@ rect.bar.hovered{
 }
 .imgLogo tspan{
 	fill: #000;
+}
+.imgSource{
+    font-weight: bold;
+    font-size: 14px;
+}
+.imgSource tspan{
+    font-weight: normal;
 }
 .imgHidden{
 	display: none !important;
