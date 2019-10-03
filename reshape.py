@@ -32,7 +32,7 @@ def buildCSVs(indicator):
 	dateMode = wb.datemode
 
 	if(indicator != "house_price_index"):
-		raw = wb.sheet_by_index(0)
+		raw = wb.sheet_by_index(0)	
 		
 		fileName = indicator
 		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
@@ -54,7 +54,11 @@ def buildCSVs(indicator):
 		rawFile.close()
 
 	if(indicator != "unemployment_rate"):
-		change = wb.sheet_by_index(1)
+		if(indicator == "house_price_index"):
+			sheetIndex = 0
+		else:
+			sheetIndex = 1
+		change = wb.sheet_by_index(sheetIndex)
 		changeFile = open(rootPath + 'static/data/csv/%s_yoy_percent_change.csv'%indicator, 'wb')
 		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 		
