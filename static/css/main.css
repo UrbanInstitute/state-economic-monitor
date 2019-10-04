@@ -125,7 +125,8 @@ select{
 #cardContentContainer{
 	display: inline-block;
 	float: left;
-	overflow: hidden;
+	overflow-x: hidden;
+    overflow-y: visible;
     white-space: nowrap;
     z-index: 1;
     width: 100%;
@@ -159,9 +160,29 @@ select{
 .cardMainText{
 	font-size: 22.8px;
     margin-top: 4px;
+    height: 113px;
 }
-.cardButton.active, .cardButton.selected{
+.card.active .cardButton, .card.selected .cardButton{
 	background: #000;
+}
+.card.selected .cardDownArrow{
+    display: block;
+}
+.cardDownArrow{
+    width: calc(100% + 64px);
+    left: -32px;
+    height: 60px;
+    bottom: 0px;
+    background: white;
+    position: relative;
+    display: none;
+    z-index: 100;
+    margin-top: 39px;
+}
+.cardDownArrow img{
+    width: 70px;
+    left: calc(50% - 35px);
+    position: absolute;
 }
 .cardButton{
     margin-top: 22px;
@@ -335,6 +356,11 @@ select{
     font-style: italic;
     cursor: pointer;
 }
+.clearSelections.disabled, #hideUS.disabled{
+    color: #696969 !important;
+    opacity: .6;   
+    pointer-events: none;
+}
 #hideUs{
     top: 72px;
     display: block;
@@ -342,11 +368,9 @@ select{
 }
 .clearSelections.outside{
     top: 94px;
-    visibility: hidden;
     display: block;
 }
 .clearSelections.inside{
-    visibility: hidden;
     font-size: 14px;
     font-style: italic;
     color: rgb(22, 150, 210);
@@ -581,7 +605,7 @@ select{
 .unitCheckBox.disabled{
 	color: #696969;
 	opacity: .6;
-	pointer-events: none;
+	cursor: default;
 }
 .unitCheckBox{
 	display: block;
@@ -618,6 +642,48 @@ select{
 .tooltipIcon.hide{
 	display: none;
 	pointer-events: none;
+}
+.tt-unit {
+    background: #fff;
+    border: 2px solid #acd9ee;
+    display: block;
+    z-index: 1000000;
+    position: absolute;
+    width: 170px;
+    font-size: 13px;
+    padding: 10px;
+    display: none;
+}
+.tt-change{
+    top: -41px;
+    left: 240px;
+}
+.tt-raw{
+    left: 90px;
+    top: -16px;
+}
+.tt-unit:after, .tt-unit:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.tt-unit:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #fff;
+    border-width: 8px;
+    margin-top: -8px;
+}
+.tt-unit:before {
+    border-color: rgba(172, 213, 278, 0);
+    border-right-color: #acd9ee;
+    border-width: 11px;
+    margin-top: -11px;
 }
 
 /**********************************************************************/
@@ -663,6 +729,11 @@ select{
 	margin-top: 3px;
 	text-transform: uppercase;
 	font-size: 13px;
+}
+.singleYear.tt-indicator.long{
+    width: 230px;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 .tt-us{
 	font-size: 13px;
@@ -1317,6 +1388,10 @@ rect.bar.hovered{
 	display: block;
 	width: 100%;
 }
+.aboutContainer a{
+    text-decoration: none;
+    color: #1696d2;
+}
 .aboutLargeHead{
 	font-size: 27px;
 	font-weight: bold;
@@ -1360,6 +1435,16 @@ rect.bar.hovered{
 .aboutCategoryRow{
 	font-size: 14px;
 	color: #353535;
+}
+.aboutCategoryRow.note{
+    margin-top: 15px;
+}
+.aboutCategoryRow.sub{
+    margin-left: 38px;
+}
+.aboutCategoryRow.subHead{
+    margin-top: 5px;
+    font-weight: bold;
 }
 .aboutCreditsText{
 	font-size: 16px;

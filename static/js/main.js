@@ -256,7 +256,7 @@ function closeMenus(exception){
 		d3.selectAll(".copiedText").style("opacity",0)
 	}
 	if(exception != "cardButton"){
-		d3.selectAll(".cardButton").classed("selected", false)
+		d3.selectAll(".card").classed("selected", false)
 	}
 
 	if(exception != "employment" && exception == "state" && exception != "time"){
@@ -672,9 +672,9 @@ function updateSelectedStates(states, hoverState){
 	var params = getParams();
 	d3.selectAll(".stateName").classed("active", false)
 	if(nonUS.length > 0){
-		d3.selectAll(".clearSelections").style("visibility", "unset")
+		d3.selectAll(".clearSelections").classed("disabled", false)
 	}else{
-		d3.selectAll(".clearSelections").style("visibility", "hidden")
+		d3.selectAll(".clearSelections").classed("disabled", true)
 	}
 
 	var downloadStateText = ""
@@ -981,22 +981,26 @@ function buildCards(cardData, isDefault){
 		.selectAll(".card")
 		.data(cardData)
 		.enter().append("div")
-		.attr("class", "card")
+		.attr("class", function(d,i){
+			if (isDefault && i == 0) return "card selected"
+			else return "card"
+		})
+
 		.style("background-color", function(d,i){
 			var bgColors = ["#1696d2", "#46ABDB"]
 			return bgColors[i%2]
 		})
 		.on("mouseover", function(){
-			d3.select(this).select(".cardButton").classed("active", true)
+			d3.select(this).classed("active", true)
 		})
 		.on("mouseout", function(){
-			d3.select(this).select(".cardButton").classed("active", false)
+			d3.select(this).classed("active", false)
 		})
 		.on("click", function(d){
 			d3.event.stopPropagation();
 			closeMenus("cardButton")
-			d3.selectAll(".cardButton").classed("selected", false)
-			d3.select(this).select(".cardButton").classed("selected", true)
+			d3.selectAll(".card").classed("selected", false)
+			d3.select(this).classed("selected", true)
 
 			$("html, body").animate({ scrollTop: $('#sectionNames').offset().top - 20 }, 1000);
 
@@ -1025,10 +1029,7 @@ function buildCards(cardData, isDefault){
 		.attr("class", "cardBottomRow")
 
 	bottomRow.append("div")
-		.attr("class", function(d,i){
-			if (isDefault && i == 0) return "cardButton selected"
-			else return "cardButton"
-		})
+		.attr("class", "cardButton")
 		.text("See the chart")
 
 
@@ -1049,6 +1050,18 @@ function buildCards(cardData, isDefault){
 					window.open(getTwitterShare(buildShareURL(), d.text), "_blank")
 				})
 
+	var downArrow = card.append("div")
+		.attr("class", "cardDownArrow")
+		// .style("background-color", function(d,i){
+		// 	var bgColors = ["#1696d2", "#46ABDB"]
+		// 	return bgColors[i%2]
+		// })
+	downArrow.append("img")
+		.attr("src", function(d,i){
+			var downArrows = ["static/img/downArrow1.png", "static/img/downArrow2.png"]
+			return downArrows[i%2]
+		})
+
 	var wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
 		cardCount = cardData.length,
 		cardWidth = 342;
@@ -1059,7 +1072,6 @@ function buildCards(cardData, isDefault){
 		.on("click", function(){
 			d3.select(".cardArrow.right").style("display", "block").style("opacity",1)
 			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
-			// console.log(progress, cardCount)
 			if(progress == 0){
 				d3.select(this).style("opacity",.1)
 				return false
@@ -2433,6 +2445,11 @@ function updateIndicator(indicator, unit){
 
 	d3.selectAll(".tt-indicator").text(indicatorNames[indicator])
 	d3.select("#pu-dlIndicator").text(indicatorNames[indicator])
+	if(indicator == "state_and_local_public_education_employment"){
+		d3.select(".singleYear.tt-indicator").classed("long",true)
+	}else{
+		d3.selectAll(".singleYear.tt-indicator").classed("long",false)
+	}
 
 	if(section == "employment"){
 		d3.select(".employment.menuBlock").style("display", "block")
@@ -2483,6 +2500,12 @@ function updateIndicator(indicator, unit){
 		if(states.indexOf("US") == -1){
 			states.push("US")
 		}		
+	}
+
+	if(( unit == "raw" && indicator != "weekly_earnings" && indicator != "unemployment_rate")){
+		d3.select("#hideUS").classed("disabled",true)
+	}else{
+		d3.select("#hideUS").classed("disabled",false)
 	}
 
 
@@ -2739,8 +2762,24 @@ function initControls(){
 //Initialize unit checkbox
 	d3.selectAll(".unitCheckBox")
 		.on("click", function(){
+			if(d3.select(this).classed("disabled")){
+				return false;
+			}
 			var unit = (d3.select(this).classed("raw")) ? "raw" : "change";
 			updateIndicator(false, unit);
+		})
+	d3.selectAll(".tooltipIcon")
+		.on("mouseover", function(){
+			if(d3.select(this).classed("change")){
+				d3.select(".tt-change").style("display","block")
+				d3.select(".tt-raw").style("display","none")
+			}else{
+				d3.select(".tt-change").style("display","none")
+				d3.select(".tt-raw").style("display","block")
+			}
+		})
+		.on("mouseout", function(){
+			d3.selectAll(".tt-unit").style("display","none")
 		})
 
 //Initialize date range inputs
