@@ -116,9 +116,9 @@ function downloadZipFile(slugs){
   var unflatUrls = slugs
     .map(function(s){
       if(s == "unemployment_rate"){
-        return ["static/data/csv" + s + "_raw.csv"]
+        return ["static/data/csv/" + s + "_raw.csv"]
       }else{
-        return ["static/data/csv" + s + "_raw_in_thousands.csv", "static/data/csv" + s + "_yoy_percent_change.csv"]
+        return ["static/data/csv/" + s + "_raw_in_thousands.csv", "static/data/csv/" + s + "_yoy_percent_change.csv"]
       }
     })
   

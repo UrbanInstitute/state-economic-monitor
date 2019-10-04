@@ -54,6 +54,12 @@ function getKey(indicator, unit){
 }
 function makeCSV(data, indicator, unit, filename) {
   var key = getKey(indicator, unit)
+  if(isUSHidden()){
+  	data = data.filter(function(o){ return o.abbr != "US" })
+  }
+  // if(indicator == "state_and_local_public_education_employment"){
+  // 	data = data.filter(function(o){ return o.abbr != "US" })	
+  // }
   var divisor;
   	if(unit == "change"){
   		divisor = 1;
@@ -89,7 +95,11 @@ function makeCSV(data, indicator, unit, filename) {
 	  	}else{
 	  		newDate = infoObject["date"]
 	  	}
-	    infoArray = [newDate, infoObject["abbr"], (+infoObject[key]/divisor) ];
+	  	if(indicator == "state_and_local_public_education_employment" && (infoObject["abbr"] == "DC" || infoObject["abbr"] == "HI" || infoObject["abbr"] == "MO")){
+	  		infoArray = [newDate, infoObject["abbr"], "" ];
+	  	}else{
+	    	infoArray = [newDate, infoObject["abbr"], (+infoObject[key]/divisor) ];
+	    }
 
 
 	    // put a quote mark on the first item in each line            
@@ -144,6 +154,9 @@ function setToQuarterly(moment){
 	moment.month(m)
 }
 function formatValue(indicator, unit, value){
+	if(typeof(value) == "undefined" || value == ""){
+		return ""
+	}
 	if(unit == "change"){
 		return value.toFixed(2)
 	}
@@ -689,7 +702,8 @@ function updateSelectedStates(states, hoverState){
 		// 	downloadStateText += getStateName(s) + " "	
 		// }
 		else{
-			downloadStateText += " and " + getStateName(s)
+			if(i == 0) downloadStateText += getStateName(s)
+			else downloadStateText += " and " + getStateName(s)
 		}
 	}
 	d3.select("#pu-dlStates").text(downloadStateText)
@@ -1052,10 +1066,7 @@ function buildCards(cardData, isDefault){
 
 	var downArrow = card.append("div")
 		.attr("class", "cardDownArrow")
-		// .style("background-color", function(d,i){
-		// 	var bgColors = ["#1696d2", "#46ABDB"]
-		// 	return bgColors[i%2]
-		// })
+
 	downArrow.append("img")
 		.attr("src", function(d,i){
 			var downArrows = ["static/img/downArrow1.png", "static/img/downArrow2.png"]
@@ -1088,7 +1099,6 @@ function buildCards(cardData, isDefault){
 		.on("click", function(){
 			d3.select(".cardArrow.left").style("display", "block").style("opacity",1)
 			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
-			// console.log(progress, cardCount)
 			if(cardCount - progress == 1){
 				d3.select(this).style("opacity",.1)
 				return false
@@ -1295,13 +1305,13 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 
 
 	if(containerType == "screen"){
-		buildMap(data, topojsonData, key, colorScale, y.ticks(barTickCount), false)
+		buildMap(data, topojsonData, key, colorScale, indicator, y.ticks(barTickCount), false)
 	}else{
 
-		buildMap(data, topojsonData, key, colorScale, y.ticks(barTickCount), svg)
+		buildMap(data, topojsonData, key, colorScale, indicator, y.ticks(barTickCount), svg)
 	}
 }
-function buildMapLegend(legend, colorScale, ticks, svgInput){
+function buildMapLegend(legend, colorScale, ticks, indicator, svgInput){
 	legend.selectAll("*").remove()
 
 	var colorRange = colorScale.range(),
@@ -1310,8 +1320,9 @@ function buildMapLegend(legend, colorScale, ticks, svgInput){
 		keyHeight = 20,
 		width = getMapWidth(),
 		height = .6 * width,
-		translateX = (svgInput) ? 800 : width - keyWidth - 40,
-		translateY = (svgInput) ? 500 : height - colorRange.length * keyHeight - 10
+		noDataScootch = (indicator == "state_and_local_public_education_employment") ? -2*keyHeight : 0
+		translateX = (svgInput) ? 800 : width - keyWidth - 50,
+		translateY = (svgInput) ? 500 : height - colorRange.length * keyHeight - 10 + noDataScootch
 
 	colorDomain.unshift(ticks[0])
 		
@@ -1333,8 +1344,22 @@ function buildMapLegend(legend, colorScale, ticks, svgInput){
 		.attr("x",keyWidth + 5)
 		.attr("y", function(d,i){ return i * keyHeight + 5 })
 		.text(function(d){ return abbrevFormat(d) })
+
+	if(indicator == "state_and_local_public_education_employment"){
+		legend.append("rect")
+			.attr("width", keyWidth)
+			.attr("height", keyHeight)
+			.style("fill", "#d2d2d2")
+			.attr("x",0)
+			.attr("y", (ticks.length-1) * keyHeight )
+		legend.append("text")
+			.attr("class", "keyLabel")
+			.attr("x",keyWidth + 5)
+			.attr("y", (ticks.length-1) * keyHeight + 15 )
+			.text("No data")
+	}
 }
-function buildMap(data, topojsonData, key, colorScale, ticks, svgInput){
+function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInput){
 	if(!svgInput){
 	//TO BE UPDATED, abstract out to new function
 		var width = getMapWidth(),
@@ -1376,10 +1401,18 @@ function buildMap(data, topojsonData, key, colorScale, ticks, svgInput){
 		.enter().append("path")
 			.attr("class", function(d){ return "stateShape ss-" + d.properties.postal + printClass})
 			.style("fill", function(d){
-				return colorScale(d["properties"]["values"][key])
+				if(indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO")){
+					return "#d2d2d2"
+				}else{
+					return colorScale(d["properties"]["values"][key])
+				}
 			})
+
 			.attr("d", path)
 			.on("mouseover", function(d){
+				if(getParams().indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO")){
+					return false
+				}
 				params = getParams()
 				states = JSON.parse(JSON.stringify(params.states))
 				states.push(d.properties.postal)
@@ -1390,6 +1423,9 @@ function buildMap(data, topojsonData, key, colorScale, ticks, svgInput){
 				updateSelectedStates(params.states)		
 			})
 			.on("click", function(d){
+				if(getParams().indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO")){
+					return false
+				}
 				params = getParams()
 				states = JSON.parse(JSON.stringify(params.states))
 				if(states.indexOf(d.properties.postal) == -1){
@@ -1414,7 +1450,7 @@ function buildMap(data, topojsonData, key, colorScale, ticks, svgInput){
 		.attr("id", "mapLegend")
 		.attr("class", printClass)
 
-	buildMapLegend(legend, colorScale, ticks, svgInput)
+	buildMapLegend(legend, colorScale, ticks, indicator, svgInput)
 
 
 	if(svgInput){
@@ -1572,11 +1608,9 @@ function buildMap(data, topojsonData, key, colorScale, ticks, svgInput){
 			return start + scootch;
 		}
 
+		// d3.selectAll(".pu-ButtonRow .pu-smallButton.active")
 
 		var params = getParams()
-
-	// 		d3.select("#chartTitle").text(indicatorNames[indicator])
-	// d3.select("#chartUnits").html("(" + indicatorUnits[indicator][unit] + ")")
 
 		var title = svg.append("text")
 			.attr("class", "imgTitle imgMapHide")
@@ -1755,6 +1789,16 @@ function showImgLabels(states){
 				d3.selectAll("#hiddenBarChartContainer .mi-" + abbr).style("display","block")
 			}
 		})
+	}
+	if(getParams().indicator == "state_and_local_public_education_employment"){
+		var hide = ["DC","HI","MO"]
+		for(var i = 0; i < hide.length; i++){
+			d3.selectAll("#hiddenBarChartContainer .bt-" + hide[i]).style("display","none")
+			d3.selectAll("#hiddenBarChartContainer .br-" + hide[i]).style("display","none")
+			d3.selectAll("#hiddenBarChartContainer .mv-" + hide[i]).style("display","none")
+			d3.selectAll("#hiddenBarChartContainer .ml-" + hide[i]).style("display","none")
+			d3.selectAll("#hiddenBarChartContainer .mi-" + hide[i]).style("display","none")
+		}
 	}
 }
 function getColorScale(y, data, key){
@@ -1985,8 +2029,9 @@ function getLineX(startDate, endDate, width){
 	return x
 }
 function getLineY(extent, height){
+	var range = extent[1]-extent[0]
 	var y = d3.scaleLinear()
-		.domain(extent)
+		.domain([extent[0] - range*.1, extent[1] + range*.1])
 		.range([ height, 0 ]);
 
 	return y
@@ -2001,6 +2046,9 @@ function getLineH(){
 	return 520;
 }
 function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) {
+	if(indicator == "state_and_local_public_education_employment" && (d.data.abbr == "DC" || d.data.abbr == "MO" || d.data.abbr == "HI")){
+		return false;
+	}
 	var key = getKey(indicator, unit)
 
 	if (getParams().states.length == 0) return false
@@ -2252,28 +2300,24 @@ function updateBarChart(indicator, unit, date){
 
 }
 function updateMap(data, key, colorScale, ticks){
-	// var us = getTopojsonData()
-
-	// us.objects.states.geometries.forEach(function(u){
-	// 	u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
-	// })
-
-	// d3.selectAll("path.stateShape")
-	// 	.data(topojson.feature(us, us.objects.states).features)
-	// 	.transition()
-	// 		.duration(800)
-	// 		.style("fill", function(d){
-	// 			return colorScale(d["properties"]["values"][key])
-	// 		})
 	data.forEach(function(d){
 		d3.select(".ss-" + d.abbr)
+			.classed("disabled", function(){
+				return (getParams().indicator == "state_and_local_public_education_employment" && (d.abbr == "DC" || d.abbr == "HI" || d.abbr == "MO"))
+			})
 			.transition()
 			.duration(800)
-			.style("fill", colorScale(d[key]))
+			.style("fill", function(){
+				if(getParams().indicator == "state_and_local_public_education_employment" && (d.abbr == "DC" || d.abbr == "HI" || d.abbr == "MO")){
+					return "#d2d2d2"
+				}else{
+					return colorScale(d[key])
+				}
+			})
 	})
 
 	var legend = d3.select("#mapLegend")
-	buildMapLegend(legend, colorScale, ticks, false)
+	buildMapLegend(legend, colorScale, ticks, getParams().indicator, false)
 }
 
 function updateLineChart(indicator, unit, states, startDate, endDate){
@@ -2491,6 +2535,11 @@ function updateIndicator(indicator, unit){
 
 	d3.select("#chartTitle").text(indicatorNames[indicator])
 	d3.select("#chartUnits").html("(" + indicatorUnits[indicator][unit] + ")")
+	if(indicator == "state_and_local_public_education_employment" && unit == "change"){
+		d3.select("#chartUnits").classed("wrapUnit", true)
+	}else{
+		d3.select("#chartUnits").classed("wrapUnit", false)
+	}
 
 	if(isUSHidden() || ( unit == "raw" && indicator != "weekly_earnings" && indicator != "unemployment_rate")){
 		if(states.indexOf("US") != -1){
@@ -2531,6 +2580,17 @@ function updateIndicator(indicator, unit){
 		d3.select("#bcq-button").style("display", "none")
 		d3.select(".timeMenuLabel.month").style("display", "block")
 		d3.select(".timeMenuLabel.quarter").style("display", "none")
+	}
+
+	var hideNoData = (indicator == "state_and_local_public_education_employment")
+	var hide = ["DC","HI","MO"]
+	for(var i = 0; i < hide.length; i++){
+		d3.selectAll("#stateName_" + hide[i]).classed("disabled", hideNoData)
+		d3.selectAll(".bt-" + hide[i]).classed("disabled", hideNoData)
+		d3.selectAll(".b-" + hide[i]).classed("disabled", hideNoData)
+		d3.selectAll(".br-" + hide[i]).classed("disabled", hideNoData)
+		d3.selectAll(".state.line." + hide[i]).classed("disabled", hideNoData)
+		d3.selectAll(".stateLabel." + hide[i]).classed("disabled", hideNoData)
 	}
 
 }
@@ -2704,6 +2764,33 @@ function popUp(selector){
 		d3.select("#hiddenBarChartContainer").style("display", "block")
 		d3.select("#hiddenBarChartContainer").selectAll("svg").remove()
 		buildBarChart(chartData, topojsonData, params.indicator, params.unit, params.states, params.endDate, "hide")
+
+		var activeButton = d3.select(".pu-ButtonRow .pu-smallButton.active")
+		
+		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1}
+
+		d3.selectAll(".imgHidden").classed("imgHidden", false)
+
+		if(activeButton.classed("imgBoth")){
+			d3.selectAll(".imgBothHide").classed("imgHidden", true)
+			d3.selectAll(".pu-chartName").text("map and bar chart")
+		}
+		else if(activeButton.classed("imgMap")){
+			d3.selectAll(".imgMapHide").classed("imgHidden", true)
+			opts.top = 317;
+			opts.left = 226;
+			opts.width = 635;
+			opts.height = 416
+			d3.selectAll(".pu-chartName").text("map")
+		}
+		else if(activeButton.classed("imgBar")){
+			d3.selectAll(".imgBarHide").classed("imgHidden", true)
+			opts.height = 368		
+			d3.selectAll(".pu-chartName").text("bar chart")
+		}
+
+		d3.select(".pu-bigButton.imgDownload").datum(opts)
+
 	}
 }
 
@@ -2895,6 +2982,9 @@ function initControls(){
 		d3.event.stopPropagation();
 		var params = getParams();
 		var fileName = getFilename("bar", params.indicator, params.unit, "png")
+
+
+
 		saveSvgAsPng(document.getElementById("barChartHide"), fileName, d);
 
 	})
