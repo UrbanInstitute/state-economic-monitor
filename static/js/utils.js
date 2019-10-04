@@ -124,7 +124,6 @@ function downloadZipFile(slugs){
   
   var urls = [].concat.apply([], unflatUrls);
 
-  // console.log(urls)
 
   function request(url) {
     return new Promise(function(resolve) {

@@ -4,10 +4,13 @@ import time
 import xlrd
 import csv
 import datetime
+from tempfile import NamedTemporaryFile
+import shutil
 
 
 DATE_FORMAT = "%Y-%m-%d"
-rootPath = "/var/www/html/semapp/"
+# rootPath = "/var/www/html/semapp/"
+rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
 
 def cleanExcelRow(row, dateMode):
 	if str(row[0]).find("Q") != -1:
@@ -46,7 +49,8 @@ def buildCSVs(indicator):
 		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 		
 		for rownum in range(4, raw.nrows):
-			if(row[0] == "" and row[1] != "United States" and row[1] != "US Average"):
+			row = raw.row(rownum)
+			if(row[0].ctype == 0 and row[1].value != "United States" and row[1].value != "US Average"):
 				break
 			else:
 				rawWriter.writerow( cleanExcelRow(raw.row_values(rownum), dateMode) )
@@ -64,6 +68,8 @@ def buildCSVs(indicator):
 		
 
 		for rownum in range(4, change.nrows):
+			row = change.row(rownum)
+			# print row
 			if(row[0] == "" and row[1] != "United States"):
 				break
 			else:
@@ -108,6 +114,8 @@ for index, indicator in enumerate(indicators):
 		rowCount = sum(1 for row in rawCountReader) - 2
 		for rowIndex, row in enumerate(rawReader):
 			date = row[0]
+			if(date == ""):
+				print indicator
 			if(rowIndex == 0):
 				terminalDates[key] = {}
 				terminalDates[key]["firstDate"] = date
@@ -181,6 +189,32 @@ dataOut["terminalDates"] = terminalDates
 now = datetime.datetime.now()
 
 dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
+
+
+
+quarterly = ["house_price_index_yoy_percent_change.csv","state_gdp_raw_in_millions.csv","state_gdp_yoy_percent_change.csv"]
+
+for filename in quarterly:
+	tempfile = NamedTemporaryFile(delete=False)
+
+	with open(rootPath + 'static/data/csv/' + filename, 'rb') as csvFile, tempfile:
+	    reader = csv.reader(csvFile, delimiter=',', quotechar='"')
+	    writer = csv.writer(tempfile, delimiter=',', quotechar='"')
+
+	    for row in reader:
+	    	if row[0] == '':
+	    		writer.writerow(row)
+	    		continue
+	        tempDate = row[0].split("-")
+	        tempYear = tempDate[0]
+	        tempMonth = int(tempDate[1])
+	        tempQ = ((tempMonth-1)/3) + 1
+	        row[0] = tempYear + " Q" + str(tempQ)
+	        writer.writerow(row)
+
+	shutil.move(tempfile.name, rootPath + 'static/data/csv/' + filename)
+
+
 
 
 #write a pretty printed json for human readability

@@ -78,15 +78,28 @@ function makeCSV(data, indicator, unit, filename) {
   csvContent += headerString;
 
   data.forEach(function(infoObject, index) {
-    infoArray = [infoObject["date"], infoObject["abbr"], (+infoObject[key]/divisor) ];
+  	if(typeof(infoObject[key]) != "undefined"){
+	  	var newDate
+	  	if(indicator == "house_price_index" || indicator == "state_gdp"){
+	  		var tempDate = infoObject["date"].split("-"),
+	  			tempYear = tempDate[0],
+	  			tempQ = ((+tempDate[1]-1)/3)+1,
+	  			newDate = tempYear + " Q" + tempQ
 
-    // put a quote mark on the first item in each line            
-    // put a trailing quote mark on the last item in each line    
-    // add quotes around everything else as well
-    dataString = "\"" + infoArray.join('","') + "\"";
+	  	}else{
+	  		newDate = infoObject["date"]
+	  	}
+	    infoArray = [newDate, infoObject["abbr"], (+infoObject[key]/divisor) ];
 
-    // Add the whole line to the content
-    csvContent += index < data.length ? dataString + '\n' : dataString;
+
+	    // put a quote mark on the first item in each line            
+	    // put a trailing quote mark on the last item in each line    
+	    // add quotes around everything else as well
+	    dataString = "\"" + infoArray.join('","') + "\"";
+
+	    // Add the whole line to the content
+	    csvContent += index < data.length ? dataString + '\n' : dataString;
+	}
   });
   
   var args = {
@@ -218,7 +231,6 @@ function sanitizeDates(startDate, endDate, opts){
 
 }
 function closePopup(puClass){
-	console.log(puClass)
 	var popups = (puClass == "all") ? d3.selectAll(".popupMenu") : d3.select(".popupMenu." + puClass);
 	d3.selectAll(".pu-dlRow .pu-checkBox").classed("active", false)
 	d3.select(".popupScreen")
@@ -624,7 +636,6 @@ function buildStateMenu(stateNamesData, states){
 			var params = getParams(),
 				newStates = params.states;
 
-			console.log(params)
 			if(d3.select(this).classed("show")){
 				d3.select(this).classed("show", false)
 				d3.select(this).classed("hide", true)
@@ -1045,10 +1056,31 @@ function buildCards(cardData, isDefault){
 	if(cardCount * cardWidth > wellWidth) d3.select(".cardArrow.right").style("display", "block")
 
 	d3.select(".cardArrow.left")
+		.on("click", function(){
+			d3.select(".cardArrow.right").style("display", "block").style("opacity",1)
+			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
+			// console.log(progress, cardCount)
+			if(progress == 0){
+				d3.select(this).style("opacity",.1)
+				return false
+			}
+			// if(cardCount - progress == 1){
+			// 	return false
+			// }
+			d3.selectAll(".card")
+				.transition()
+				.style("left", ((progress - 1) * -1 * cardWidth) + "px")
+		})
 
 	d3.select(".cardArrow.right")
 		.on("click", function(){
+			d3.select(".cardArrow.left").style("display", "block").style("opacity",1)
 			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
+			// console.log(progress, cardCount)
+			if(cardCount - progress == 1){
+				d3.select(this).style("opacity",.1)
+				return false
+			}
 			d3.selectAll(".card")
 				.transition()
 				.style("left", ((progress + 1) * -1 * cardWidth) + "px")
@@ -1721,7 +1753,6 @@ function getColorScale(y, data, key){
 
 
 	tickBreaks.pop()
-	// console.log(tickBreaks)
 	if(tickBreaks[0] < 0) tickBreaks.shift()
 
 	for(var i = 1; i < tickBreaks.length; i += step){
@@ -2340,7 +2371,6 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				}
 				
 			});
-	console.log(data)
 
 	if(data.length > 0){
 		d3.select("#noStatesText")
@@ -2396,7 +2426,6 @@ function updateIndicator(indicator, unit){
 		section = getSection(indicator);
 	
 	d3.selectAll(".pu-section.hideable").classed("hide",true)
-	console.log(section)
 	d3.select(".pu-section." + section).classed("hide",false)
 
 	d3.selectAll(".sectionName").classed("active", false)

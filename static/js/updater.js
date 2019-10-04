@@ -30,7 +30,6 @@ function dispDate(date, indicator){
 }
 
 function buildCards(cards, init){
-    console.log(cards)
     d3.selectAll(".draggableCard").remove()
 
     var card = d3.select("#cardContainer")
@@ -391,7 +390,6 @@ $(function() {
 
   $('#file-federal_public_employment-button').change(function() {
       var form_data = new FormData($('#upload-federal_public_employment')[0]);
-      console.log(form_data)
       $.ajax({
           type: 'POST',
           url: '/semapp/upload?sheet=federal_public_employment',
@@ -400,7 +398,6 @@ $(function() {
           cache: false,
           processData: false,
           success: function(data) {
-            console.log(form_data)
               $("#federal_public_employment-status")
                 .css("opacity",1)
                 .text("Federal public employment data uploaded")
