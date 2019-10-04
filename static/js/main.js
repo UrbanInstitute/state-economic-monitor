@@ -1106,6 +1106,16 @@ function buildCards(cardData, isDefault){
 			d3.selectAll(".card")
 				.transition()
 				.style("left", ((progress + 1) * -1 * cardWidth) + "px")
+				// .style("left", function(){
+				// 	console.log(this.getBoundingClientRect().left )
+				// 	if(this.getBoundingClientRect().left < 0){
+				// 		return 800 + "px"
+				// 	}else{
+				// 		return ((progress + 1) * -1 * cardWidth) + "px"	
+				// 	}
+					
+				// })
+				// console.log("")
 		})
 
 
@@ -1804,12 +1814,22 @@ function showImgLabels(states){
 function getColorScale(y, data, key){
 	var tickBreaks = y.ticks(barTickCount),
 		colorBreaks = [],
-		vals = data.map(function(o){ return o[key]}).reverse(),
-		step = (tickBreaks.length > 12) ? 2 : 1
+		flipVals = data.map(function(o){ return o[key]})
+		// vals = data.map(function(o){ return o[key]}).reverse()
+
+	// console.log(flipVals, tickBreaks)
+	for(var i = tickBreaks.length - 1; i > 0; i--){
+		if(tickBreaks[i] > flipVals[0] && tickBreaks[i-1] > flipVals[0]){
+			tickBreaks.pop()
+		}else{
+			break;
+		}
+	}
+
+	var step = (tickBreaks.length > 13) ? 2 : 1
 
 
-	tickBreaks.pop()
-	if(tickBreaks[0] < 0) tickBreaks.shift()
+	var vals = flipVals.reverse()
 
 	for(var i = 1; i < tickBreaks.length; i += step){
 		if(vals[0] > tickBreaks[i]){

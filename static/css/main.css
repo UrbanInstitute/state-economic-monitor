@@ -653,18 +653,19 @@ select{
     display: block;
     z-index: 1000000;
     position: absolute;
-    width: 170px;
     font-size: 13px;
     padding: 10px;
     display: none;
 }
 .tt-change{
-    top: -41px;
+    top: -43px;
     left: 240px;
+    width: 150px;
 }
 .tt-raw{
     left: 90px;
     top: -16px;
+    width: 170px;
 }
 .tt-unit:after, .tt-unit:before {
     right: 100%;
