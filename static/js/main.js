@@ -1099,7 +1099,11 @@ function buildCards(cardData, isDefault){
 		.on("click", function(){
 			d3.select(".cardArrow.left").style("display", "block").style("opacity",1)
 			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
-			if(cardCount - progress == 1){
+			if
+			((d3.selectAll(".card").nodes()[cardCount-1].getBoundingClientRect().right  < window.innerWidth)
+			||
+			(cardCount - progress == 1))
+			{
 				d3.select(this).style("opacity",.1)
 				return false
 			}
