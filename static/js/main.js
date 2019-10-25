@@ -474,12 +474,15 @@ function buildLineDateMenu(startDate, endDate, menu){
 						.attr("data-year", function(d, i){ return i + firstYear})
 
 
-		yearContainer.append("div")
+		yearContainer.append("input")
 			.attr("class", function(d, i){
 				var active = (startYear <= (i + firstYear) && endYear >= (i + firstYear)) ? " active" : ""
 				return "calYearLabel" + active
 			})
-			.text(function(d,i){ return i + firstYear })
+			.attr("value", function(d,i){ return i + firstYear })
+			.on("input", function(d, i){
+				console.log(d, i, firstYear, this.value)
+			})
 
 		yearContainer.selectAll("calMonth")
 			.data(function(d){ return d})
@@ -1885,11 +1888,12 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		data = dataObj.data,
 		extent = dataObj.extent,
 		key = getKey(indicator, unit),
-		margin, width, height, svg, verticalScootch, horizontalScootch;
+		margin, width, height, svg, verticalScootch, horizontalScootch, xTickCount;
 
 	if(containerType == "screen"){
 		verticalScootch = 0;
 		horizontalScootch = 0;
+		xTickCount = 12;
 		margin = getLineMargins(),
 		width = getLineW() - margin.left - margin.right,
 		height = getLineH() - margin.top - margin.bottom;
@@ -1901,15 +1905,16 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	}else{
 		verticalScootch = 28;
 		horizontalScootch = 10;
+		xTickCount = 10;
 		margin = getLineMargins(),
 		width = LINE_IMG_WIDTH - margin.left - margin.right,
-		height = LINE_IMG_HEIGHT - margin.top - margin.bottom;
+		height = LINE_IMG_HEIGHT - margin.top - margin.bottom - 40;
 		
 		svg = d3.select("#hiddenLineChartContainer")
 			.append("svg")
 				.attr("id", "lineChartHide")
 				.attr("width", width + margin.left + margin.right + horizontalScootch)
-				.attr("height", height + margin.top + margin.bottom + verticalScootch + 10)
+				.attr("height", height + margin.top + margin.bottom + verticalScootch + 10 + 40)
 	}
 
 
@@ -1919,7 +1924,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	var g = svg.append("g")
 		.attr("id", "linesContainer")
 			.attr("width", width + margin.left + horizontalScootch + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("height", height + margin.top + margin.bottom )
 		.attr("transform","translate(" + margin.left + "," + (margin.top + verticalScootch) + ")");
 
 	var defs = svg.append("defs"),
@@ -1944,7 +1949,17 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	g.append("g")
 		.attr("class", "line axis x")
 		.attr("transform", "translate(0," + height + ")")
-		.call(d3.axisBottom(x).ticks(9));
+		.call(d3.axisBottom(x).ticks(xTickCount))
+		.selectAll("text").text(function(d, i){
+			var md = moment(d)
+			if(isQuarterly(indicator)){
+				return "Q" + (md.month()/3 + 1) + " " + md.year()
+			}else{
+				return (md.month()+1) + "/" + md.year()
+			}
+			
+		});
+
 
 	var axisSelection = g.append("g")
 		.attr("class", "line axis y")
@@ -2006,7 +2021,8 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			.enter().append("path")
 				.attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; })
 				.on("mouseover", function(d){ mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) })
-				.on("mouseout", mouseoutLineChart);
+				.on("mouseout", mouseoutLineChart)
+				.on("click", clickLineChart);
 	}
 
 	if(containerType == "hide"){
@@ -2037,7 +2053,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			.attr("class", "imgSource")
 			.text("Source: ")
 			.attr("x", 10)
-			.attr("y", 545)
+			.attr("y", LINE_IMG_HEIGHT + 25)
 		lineSource.append("tspan")
 			.attr("dx",5)
 			.text(sourceText)
@@ -2068,6 +2084,37 @@ function getLineW(){
 }
 function getLineH(){
 	return 520;
+}
+function clickLineChart(d, containerType){
+	var svg;
+	if(containerType == "hide"){
+		svg = d3.select("#hiddenLineChartContainer")
+	}else{
+		svg = d3.select("#lineChartContainer")
+	}
+	
+	var line = svg.select(".state.line." + d.data.abbr),
+		dot = svg.select(".linechartDot"),
+		label = svg.select(".stateLabel." + d.data.abbr)
+
+	clicked = line.classed("clicked")
+
+
+	if(clicked == true){
+		line.classed("clicked", false)
+		label.classed("clicked", false)
+		line.classed("active", false)
+		label.classed("active", false)
+	}else{
+		line.node().parentNode.appendChild(line.node())
+		label.node().parentNode.appendChild(label.node())
+
+		line.classed("clicked", true)
+		label.classed("clicked", true)
+	}
+	if(containerType != "hide"){
+		dot.node().parentNode.appendChild(dot.node())	
+	}
 }
 function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) {
 	if(indicator == "state_and_local_public_education_employment" && (d.data.abbr == "DC" || d.data.abbr == "MO" || d.data.abbr == "HI")){
@@ -2142,6 +2189,8 @@ function mouseoutLineChart(d) {
 	d3.select(".linechartDot").style("opacity",0)
 	d3.selectAll(".state.line").classed("active", false)
 	d3.selectAll(".stateLabel").classed("active", false)
+
+	d3.selectAll(".clicked").nodes().forEach(function(l){ l.parentNode.appendChild(l) })
 }
 function getBarMargins(){
 	return margin = {top: 30, right: 30, bottom: 30, left: 20}
@@ -2366,6 +2415,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 	var y = getLineY(extent, height)
 
 	var oldStates = d3.selectAll(".state.line").data().map(function(o){ return o.key })
+	var oldClicked = d3.selectAll(".state.line.clicked").data().map(function(o){ return o.key })
 
 	var stateLabels = d3.select("#linesContainer")
 		.selectAll(".stateLabel")
@@ -2380,7 +2430,10 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.enter()
 		.insert("g", ".stateLabel")
 		.merge(stateLabels)
-		.attr("class", function(d){ return d.key + " stateLabel" })
+		.attr("class", function(d){
+			clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
+			return d.key + " stateLabel" + clickedClass
+		})
 
 	stateLabel.transition()
 		.attr("transform", function(d){
@@ -2410,7 +2463,10 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 	lines.enter()
 		.insert("path", ".state.line")
 		.merge(lines)
-			.attr("class",function(d){ return d.key + " state line" })
+			.attr("class",function(d){
+				clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
+				return d.key + " state line" + clickedClass
+			})
 			.attr("clip-path", "url(#lineClippingPath)")
 			.attr("d", function(d, i){
 				var isNew = (oldStates.indexOf(d.key) == -1)
@@ -2488,11 +2544,14 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	vg.exit().remove()
 
+	d3.selectAll(".clicked").nodes().forEach(function(l){ l.parentNode.appendChild(l) })
+
 	vg.enter().append("path")
 		.merge(vg)
 			.attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; })
 			.on("mouseover", function(d){ mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) })
-			.on("mouseout", mouseoutLineChart);
+			.on("mouseout", mouseoutLineChart)
+			.on("click", clickLineChart);
 	
 }
 function updateIndicator(indicator, unit){
@@ -2582,7 +2641,7 @@ function updateIndicator(indicator, unit){
 	}
 
 
-	d3.select("#sourceLine").html(["<span>Source:</span>", sources[section]].join(""))
+	d3.selectAll(".sourceLine").html(["<span>Source:</span>", sources[section]].join(""))
 
 	setParams({"unit": unit, "states": states, "indicator": indicator, "startDate": cleanDates[0], "endDate": cleanDates[1], "firstDate": terminalDates.firstDate, "lastDate": terminalDates.lastDate })
 	updateDateMenus({"startDate": cleanDates[0], "endDate": cleanDates[1]})
@@ -2920,6 +2979,11 @@ function initControls(){
 
 		d3.select("#hiddenLineChartContainer").style("display", "block")
 		buildLineChart(chartData, params.indicator, params.unit, params.states, params.startDate, params.endDate, "hide", function(){
+				var clickedAbbrs = d3.selectAll(".stateLabel.clicked").data().map(function(d){ return d.key })
+				for (var i = 0; i < clickedAbbrs.length; i++){
+					clickLineChart({"data": {"abbr": clickedAbbrs[i] }}, "hide")	
+				}
+				
 				var fileName = getFilename("line", params.indicator, params.unit, "png")
 				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff"});
 				d3.select("#lineChartHide").remove()	
@@ -3089,7 +3153,7 @@ function initControls(){
 					a.attr("href","static/data/download/all_indicators-all_data.zip")
 				}
 				else if(cb.classed("housing")){
-					a.attr("href", "static/data/download/house_price_index_yoy_percent_change.csv")
+					a.attr("href", "static/data/download/housing-all_data.zip")
 				}
 				else if(cb.classed("gdp")){
 					a.attr("href", "static/data/download/state_gdp-all_data.zip")
@@ -3143,7 +3207,7 @@ function initControls(){
 	d3.select(".dataDownloadCurrent").on("click", function(args){
 		var empButtons = d3.selectAll(".employmentButton.active")
 		if(empButtons.nodes().length == 0){
-			downloadDataFile(args.data, args.filename + ".csv", 'text/csv;encoding:utf-8');
+			downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
 		}
 		else{
 			empIds = empButtons.nodes().map(function(o){ return o.id.replace("eb-","") })

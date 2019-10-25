@@ -508,6 +508,15 @@ select{
 }
 .calYearLabel{
 	margin-bottom: 5px;
+    font-size: 16px;
+    border: 1px solid #d2d2d2;
+    width: 46px;
+    cursor: text;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display: block;
+    font-family: Lato;
 }
 .calYearLabel.active{
 	color: #1696d2;
@@ -908,7 +917,7 @@ rect.bar.disabled{
 .state.line.disabled{
     display: none;
 }
-.state.line.active, .US.state.line.active{
+.state.line.active, .US.state.line.active, .state.line.clicked, .US.state.line.clicked{
 	stroke: #fdbf11;
 }
 .US.state.line{
@@ -918,6 +927,7 @@ rect.bar.disabled{
   fill: none;
   stroke: none;
   pointer-events: all;
+  cursor: pointer;
 }
 .stateLabel text{
 	font-size: 12px;
@@ -930,10 +940,10 @@ rect.bar.disabled{
 .stateLabel.disabled{
     display: none;
 }
-.stateLabel.active text{
+.stateLabel.active text, .stateLabel.clicked text{
 	fill: #fdbf11;
 }
-.stateLabel.active rect{
+.stateLabel.active rect, .stateLabel.clicked rect{
 	fill: rgba(255,255,255,1);
 }
 #noStatesText{
@@ -981,17 +991,17 @@ rect.bar.disabled{
 .chartButton:hover, .chartButton.active{
 	background: #0A4C6A;
 }
-#sourceLine{
+.sourceLine{
     display: block;
     font-size: 12px;
     margin-top: -10px;
     margin-bottom: 10px;
 }
-#sourceLine span{
+.sourceLine span{
     font-weight: bold;
     margin-right: 5px;
 }
-#sourceLine a{
+.sourceLine a{
     text-decoration: none;
     color: #1696d2;
 }
@@ -1469,6 +1479,11 @@ rect.bar.disabled{
 }
 .aboutCategoryRow.sub{
     margin-left: 38px;
+}
+.aboutSectionNote{
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 50px;
 }
 .aboutCategoryRow.subHead{
     margin-top: 5px;

@@ -108,6 +108,8 @@ function downloadDataFile(content, fileName, mimeType) {
   } else {
     location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
   }
+  window.open(["static/data/dictionaries/sem_earnings_data_dictionary.csv"])
+  window.focus()
 }
 
 function downloadZipFile(slugs){
@@ -123,6 +125,7 @@ function downloadZipFile(slugs){
     })
   
   var urls = [].concat.apply([], unflatUrls);
+  urls.push("static/data/dictionaries/sem_employment_data_dictionary.csv")
 
 
   function request(url) {

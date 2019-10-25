@@ -1,9 +1,8 @@
-- disabled opts tooltips
-- State and Local Public Education Employment file has missing (blank) data for DC, Hawaii, and Missouri for all time periods.
-- about page
-- state ed emp tt label
-- color breaks
-- christina card highlight
+New about design q
+change year, earliest year
+link to about
+zipped data dictionary
+
 
 
 
