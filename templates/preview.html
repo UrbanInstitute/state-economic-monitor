@@ -1,8 +1,38 @@
 <html>
 <head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@urbaninstitute">
+<meta name="twitter:creator" content="@urbaninstitute">
+<meta name="twitter:title" content="State Economic Monitor">
+<meta name="twitter:description" content="Track and analyze economic and fiscal trends at the state level.">
+<meta name="twitter:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png">
+<meta property="og:title" content="State Economic Monitor" />
+<meta property="og:description" content="Track and analyze economic and fiscal trends at the state level." />
+<meta property="og:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png" />
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://urbn.is/sem">
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "NewsArticle",
+	"headline": "State Economic Monitor",
+	"url": "https://apps.urban.org/features/state-economic-monitor/",
+	"thumbnailUrl": "http://apps.urban.org/features/state-economic-monitor/img/social.png",
+	"dateCreated": "2019-11-13T05:00:00.000Z",
+	"articleSection": "Interactive Feature",
+	"creator": [" Richard Auxier","Aravind Boddupalli","Erin Huffer","Kim Rueben","Christina Baird","Ben Chartoff","Michael Marazzi","Emily Peiffer"],
+	"keywords": ["Finance","Taxes and Budget"]
+}
+</script>
+
+
 <link rel="stylesheet" href="static/css/main.css" type="text/css">
 <link rel="stylesheet" href="static/css/responsive.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="static/css/vendor/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic,900" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id = "chartData"></div>
@@ -12,6 +42,12 @@
 <div id = "stateNamesData"></div>
 <div id = "isTransitioning"></div>
 
+<div class = "widthTester w1200"></div>
+<div class = "widthTester w1085"></div>
+<div class = "widthTester w900"></div>
+<div class = "widthTester w768"></div>
+<div class = "widthTester w600"></div>
+
 
 
 <!-- START HEADER -->
@@ -19,8 +55,32 @@
 	<div id = "headerLogo">
 		<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/logo.png"/></a>
 	</div>
-	<div id = "headerTitle">State Economic Monitor: preview</div>
+	<div id = "headerTitle">State Economic Monitor :: Preview</div>
+	<div id = "mobileHiglightsTitle">Highlights</div>
 	<div id = "lastUpdatedContainer">Last updated <span id = "lastUpdated">&hellip;</span></div>
+
+
+	<a href="mailto:%20?Subject=New Urban Institute tool&amp;Body=Hi! I thought you'd be interested in this new tool from the Urban Institute: &ldquo;State Economic Monitor&rdquo; https://urbn.is/sem" target="_blank" class="addthis_button_twitter at300b" title="Email">
+	<div id = "headerEmail">
+		<img src = "static/img/emailGrey.png">
+	</div>
+	</a>
+
+	<a href="https://twitter.com/intent/tweet?text=From%20%40urbaninstitute%3A%20Track%20and%20analyze%20economic%20and%20fiscal%20trends%20at%20the%20state%20level.%20https%3A%2F%2Furbn.is%2Fsem" target="_blank" class="addthis_button_twitter at300b" title="Tweet">
+	<div id = "headerTwitter">
+		<img src = "static/img/twitterGrey.png">
+	</div>
+	</a>
+
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//urbn.is/sem" target="_blank" class="addthis_button_twitter at300b" title="Facebook">
+	<div id = "headerFacebook">
+		<img src = "static/img/facebookGrey.png">
+	</div>
+	</a>
+
+
+
+
 </div>
 <!-- END HEADER -->
 
@@ -82,6 +142,8 @@
 			<div class = "menuTitle">Indicator</div>
 			<div class = "menuActive">&hellip;</div>
 		</div>
+
+		<div class = "menuSpacer ms1"></div>
 <!-- START STATE MENU -->
 		<div class = "stateMenu menuBlock">
 			<div class = "menuTop" id = "mt-state">
@@ -90,11 +152,17 @@
 				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
 			</div>
 			<div id = "stateNameContainer">
+				<div class = "clearSelections inside">Clear selections</div>
 				<div class = "stateNameCol left"></div>
 				<div class = "stateNameCol right"></div>
 			</div>
 		</div>
 <!-- END STATE MENU -->
+
+		<div class = "menuSpacer ms2"></div>
+		<div class = "mobileMenuArrow">
+			<img src="static/img/dropdown-bg.png" class="menuArrow down">
+		</div>
 <!-- START TIME MENU -->
 		<div class = "timeMenu menuBlock">
 			<div class = "menuTop" id = "mt-time">
@@ -185,15 +253,20 @@
 				<div class = "unitText change">Percent change year over year</div>
 				<div class = "tooltipIcon change"></div>
 			</div>
+			<div class = "tt-unit tt-change">We do not include the year-over-year percentage change for the unemployment rate because the unit is a percentage.</div>
+
 			<div class = "unitCheckBox raw">
 				<img src = "static/img/checked.png"/>
 				<span class = "disabledBox raw hide"></span>
 				<div class = "unitText raw">&hellip;</div>
 				<div class = "tooltipIcon raw"></div>
 			</div>
+			<div class = "tt-unit tt-raw">We do not include the raw index values because they are not illustrative for state-by-state home price comparisons on a single date.</div>
+
 		</div>
 <!-- END UNIT CHECKBOXES -->
-		<div id = "clearSelections">Clear selections</div>
+		<div id = "hideUS" class = "show disabled"><span>Hide</span> US line</div>
+		<div class = "clearSelections outside disabled">Clear selections</div>
 		<div class = "multiYear tooltip">
 			<div class = "multiYear tt-top-row mouseover">
 				<div class = "multiYear tt-value">&hellip;</div>
@@ -234,6 +307,8 @@
 				<div id = "mapContainer">
 <!-- START CHART BUTTONS -->
 					<div id = "chartButtonContainer">
+						<div class = "sourceLine"></div>
+						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
 						<div class = "chartButton saveImage bar">Save chart</div>
 						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
@@ -252,6 +327,8 @@
 				</div>
 <!-- START CHART BUTTONS -->
 					<div id = "chartButtonContainer">
+						<div class = "sourceLine"></div>
+						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
 						<div class = "chartButton saveImage line">Save chart</div>
 						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
@@ -276,13 +353,13 @@
 				<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/bigLogo.png"/></a>
 			</div>
 			<div id = "footerBigLinks">
-				<div class = footerBigLink><a href = "about.html">About</a></div>
-				<div class = footerBigLink><a href = "https://www.urban.org/aboutus/who-we-are/contact-us">Contact us</a></div>
+				<div class = footerBigLink><a href = "about.html" target = "_blank">About</a></div>
+				<div class = footerBigLink><a href = "https://www.urban.org/aboutus/who-we-are/contact-us" target = "_blank">Contact us</a></div>
 			</div>
 		</div>
 		<div id = "footerBottomRow">
-			<div class = footerSmallLink><a href = "https://www.urban.org/privacy-policy">Privacy</a></div>
-			<div class = footerSmallLink><a href = "https://www.urban.org/terms-service">Terms of Service</a></div>
+			<div class = footerSmallLink><a href = "https://www.urban.org/privacy-policy" target = "_blank">Privacy</a></div>
+			<div class = footerSmallLink><a href = "https://www.urban.org/terms-service" target = "_blank">Terms of Service</a></div>
 		</div>
 	</div>
 
@@ -305,6 +382,9 @@
 	</div>
 	<div class = "pu-checkRow labelAll">
 		<div class = "pu-checkBox labelAll"></div><div class = "pu-checkText">Include data labels on all states on <span class = "pu-chartName">map and bar chart</span></div>
+	</div>
+	<div class = "pu-checkRow labelNone">
+		<div class = "pu-checkBox labelNone"></div><div class = "pu-checkText">Do not include data labels on <span class = "pu-chartName">map and bar chart</span></div>
 	</div>
 	<div class = "pu-bigButton imgDownload">Download</div>
 </div>
@@ -380,10 +460,11 @@
 
 <!-- END POP UPS -->
 
+<script>var pathPrefix = ""</script>
 <div id = "hiddenBarChartContainer"></div>
 <div id = "hiddenLineChartContainer"></div>
 
-<script>var pathPrefix = ""</script>
+
 <script src="static/js/vendor/es6-promise.min.js"></script>
 <script src="static/js/vendor/es6-promise.auto.min.js"></script> 
 
