@@ -12,22 +12,42 @@ DATE_FORMAT = "%Y-%m-%d"
 # rootPath = "/var/www/html/semapp/"
 rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
 
-def cleanExcelRow(row, dateMode):
-	if str(row[0]).find("Q") != -1:
-		year = row[0].split(" ")[0]
-		month = "%02d" % (((int(row[0].split(" ")[1].replace("Q","")) - 1) * 3) + 1,)
-		row[0] = year + "-" + month + "-01"
+def cleanExcelRow(row, dateMode, isDate, colCount):
+	if isDate:
+		for i, r in enumerate(row):
+			if i >= colCount:
+				# row.remove(r)
+				del row[i:len(row)]
+				break
+			if r == "Geography":
+				continue
+			else:
+				if str(r).find("Q") != -1:
+					year = r.split(" ")[0]
+					month = "%02d" % (((int(r.split(" ")[1].replace("Q","")) - 1) * 3) + 1,)
+					row[i] = year + "-" + month + "-01"
+				else:
+					year, month, day, hour, minute, second = xlrd.xldate_as_tuple(r, dateMode)
+					pyDate = datetime.datetime(year, month, day, hour, minute, second)
+					row[i] = pyDate.strftime(DATE_FORMAT)
+					# return row
 		return row
-	if row[1] == "US Average":
-		row[1] = "United States"
-		return row
-	if row[0] == "":
-		return row
+	else:
+		for i, r in enumerate(row):
+			if i >= colCount:
+				del row[i:len(row)]
+				break
+		if row[0] == "US Average":
+			row[0] = "United States"
+			return row
+		if row[0] == "":
+			return row
+		else:
+			return row
 
-	year, month, day, hour, minute, second = xlrd.xldate_as_tuple(row[0], dateMode)
-	pyDate = datetime.datetime(year, month, day, hour, minute, second)
-	row[0] = pyDate.strftime(DATE_FORMAT)
-	return row
+
+
+
 
 
 def buildCSVs(indicator):
@@ -48,12 +68,15 @@ def buildCSVs(indicator):
 		rawFile = open(rootPath + 'static/data/csv/%s.csv'%fileName, 'wb')
 		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 		
-		for rownum in range(4, raw.nrows):
+		colCount = len(filter( lambda x : x.ctype != 0 and x != "", raw.row(5)))
+
+		for rownum in range(3, raw.nrows):
 			row = raw.row(rownum)
-			if(row[0].ctype == 0 and row[1].value != "United States" and row[1].value != "US Average"):
+			if(row[0].ctype == 0):
 				break
 			else:
-				rawWriter.writerow( cleanExcelRow(raw.row_values(rownum), dateMode) )
+				isDate = (rownum == 3)
+				rawWriter.writerow( cleanExcelRow(raw.row_values(rownum), dateMode, isDate, colCount) )
 		
 		rawFile.close()
 
@@ -66,14 +89,15 @@ def buildCSVs(indicator):
 		changeFile = open(rootPath + 'static/data/csv/%s_yoy_percent_change.csv'%indicator, 'wb')
 		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 		
+		colCount = len(filter( lambda x : x.ctype != 0 and x != "", change.row(5)))
 
-		for rownum in range(4, change.nrows):
+		for rownum in range(3, change.nrows):
 			row = change.row(rownum)
-			# print row
-			if(row[0] == "" and row[1] != "United States"):
+			if(row[0] == ""):
 				break
 			else:
-				changeWriter.writerow( cleanExcelRow(change.row_values(rownum), dateMode) )
+				isDate = (rownum == 3)
+				changeWriter.writerow( cleanExcelRow(change.row_values(rownum), dateMode, isDate, colCount) )
 
 		changeFile.close()
 
@@ -109,21 +133,17 @@ for index, indicator in enumerate(indicators):
 
 		rawReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
 		rawCountReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
-		states = rawReader.next()
+		dates = rawReader.next()
+		terminalDates[key] = {"firstDate" : dates[1], "lastDate" : dates[len(dates) - 1]}
 
 		rowCount = sum(1 for row in rawCountReader) - 2
 		for rowIndex, row in enumerate(rawReader):
-			date = row[0]
-			if(date == ""):
+			name = row[0]
+			if(name == ""):
 				print indicator
-			if(rowIndex == 0):
-				terminalDates[key] = {}
-				terminalDates[key]["firstDate"] = date
-			if(rowIndex == rowCount):	
-				terminalDates[key]["lastDate"] = date
 
 			for i in range(1, len(row)):
-				name = states[i]
+				date = dates[i]
 				abbr = nameToFips[name]["abbr"]
 				value = row[i]
 				tempKey = abbr + "_" + date
@@ -143,20 +163,16 @@ for index, indicator in enumerate(indicators):
 		key = str(index) + "c"
 		changeReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
 		changeCountReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
-		states = changeReader.next()
+		dates = changeReader.next()
+		terminalDates[key] = {"firstDate" : dates[1], "lastDate" : dates[len(dates) - 1]}
 
 		rowCount = sum(1 for row in changeCountReader) - 2
 
 		for rowIndex, row in enumerate(changeReader):
-			date = row[0]
-			if(rowIndex == 0):
-				terminalDates[key] = {}
-				terminalDates[key]["firstDate"] = date
-			if(rowIndex == rowCount):	
-				terminalDates[key]["lastDate"] = date
+			name = row[0]
 
 			for i in range(1, len(row)):
-				name = states[i]
+				date = dates[i]
 				abbr = nameToFips[name]["abbr"]
 				value = row[i]
 				tempKey = abbr + "_" + date
@@ -191,7 +207,6 @@ now = datetime.datetime.now()
 dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 
 
-
 quarterly = ["house_price_index_yoy_percent_change.csv","state_gdp_raw_in_millions.csv","state_gdp_yoy_percent_change.csv"]
 
 for filename in quarterly:
@@ -200,20 +215,24 @@ for filename in quarterly:
 	with open(rootPath + 'static/data/csv/' + filename, 'rb') as csvFile, tempfile:
 	    reader = csv.reader(csvFile, delimiter=',', quotechar='"')
 	    writer = csv.writer(tempfile, delimiter=',', quotechar='"')
-
-	    for row in reader:
-	    	if row[0] == '':
-	    		writer.writerow(row)
+	    dates = reader.next()
+	    newDates = []
+	    for i, r in enumerate(dates):
+	    	if r == "Geography":
+	    		newDates.append(r)
 	    		continue
-	        tempDate = row[0].split("-")
+	        tempDate = r.split("-")
 	        tempYear = tempDate[0]
 	        tempMonth = int(tempDate[1])
 	        tempQ = ((tempMonth-1)/3) + 1
-	        row[0] = tempYear + " Q" + str(tempQ)
+	        newDates.append(tempYear + " Q" + str(tempQ))
+
+	    writer.writerow(newDates)
+
+	    for row in reader:
 	        writer.writerow(row)
 
 	shutil.move(tempfile.name, rootPath + 'static/data/csv/' + filename)
-
 
 
 

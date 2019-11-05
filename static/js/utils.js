@@ -15,6 +15,9 @@ function abbrevFormat(d){
   if(d >= 1000) return d3.format(".2s")(d).replace("G","B")
   else return d 
 }
+function widthUnder(w){
+  return d3.select(".widthTester.w" + w).style("display") == "block"
+}
 
 
 if (!Array.prototype.fill) {

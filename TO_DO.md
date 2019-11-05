@@ -1,21 +1,12 @@
-New about design q
-change year, earliest year
-link to about
-zipped data dictionary
-
-
-
-
-- Mobile
-- carousel center
+- New about design q
+- change year, earliest year
+- zipped data dictionary
 - fix data upload
-- updater	
-	- if direct link from card, make sure that card is shown on load (new param)
-	- Mobile default, pick a card that has a state selected (ask richard)
+- Mobile
+- overall social share
+- metas
 
 
-Mobile notes:
-Cards?
 Menus are full screen takeover
 No charts below 600
 

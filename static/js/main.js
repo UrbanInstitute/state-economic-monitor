@@ -263,6 +263,11 @@ function closePopup(puClass){
 
 }
 function closeMenus(exception){
+	if(widthUnder(768)){
+		d3.selectAll(".menuBlock.fullScreen")
+			// .style("width","calc(100% - 70px)")
+			.classed("fullScreen",false)
+	}
 	if(exception != "shareChart"){
 		d3.selectAll(".shareTooltip").classed("hidden", true)
 		d3.selectAll(".chartButton.shareURL").classed("active", false)
@@ -272,22 +277,30 @@ function closeMenus(exception){
 		d3.selectAll(".card").classed("selected", false)
 	}
 
-	if(exception != "employment" && exception == "state" && exception != "time"){
-		d3.selectAll(".menuBlock")
+	if(!widthUnder(768)){
+		d3.selectAll(".menuSpacer")
 			.transition()
-				.style("height", menuHeights["closed"] + "px")
-				.style("border-left-color", "#fff")
-				.style("border-right-color", "#fff")
-	
-		d3.selectAll(".menuBlock").select(".menuTop").classed("open", false)
-	}else{
-		d3.selectAll(".menuBlock:not(." + exception +")")
-			.transition()
-				.style("height", menuHeights["closed"] + "px")
-				.style("border-left-color", "#fff")
-				.style("border-right-color", "#fff")
+		    	.style("border-left-color", "#fff")
+				.style("border-bottom-color", "#fff")
+				.style("border-right-color", "#fff");
 
-		d3.selectAll(".menuBlock:not(." + exception +")").select(".menuTop").classed("open", false)
+		if(exception != "employment" && exception == "state" && exception != "time"){
+			d3.selectAll(".menuBlock")
+				.transition()
+					.style("height", menuHeights["closed"] + "px")
+					.style("border-left-color", "#fff")
+					.style("border-right-color", "#fff")
+		
+			d3.selectAll(".menuBlock").select(".menuTop").classed("open", false)
+		}else{
+			d3.selectAll(".menuBlock:not(." + exception +")")
+				.transition()
+					.style("height", menuHeights["closed"] + "px")
+					.style("border-left-color", "#fff")
+					.style("border-right-color", "#fff")
+
+			d3.selectAll(".menuBlock:not(." + exception +")").select(".menuTop").classed("open", false)
+		}
 	}
 	d3.selectAll(".calendarParent").classed("visible", false)
 
@@ -407,11 +420,13 @@ function buildBarDateMenus(endDate, lastDate){
 	disableBarMenuMonths(endYear, params.lastDate)
 }
 function buildLineDateMenu(startDate, endDate, menu){
+	console.log(getParams())
 	var params = getParams(),
 		indicator = params.indicator,
 		lastDate = params.lastDate,
 		firstDate = params.firstDate,
 		firstYear = +(firstDate.split("-")[0]),
+		firstMonth = +(firstDate.split("-")[1]),
 		lastYear = +lastDate.split("-")[0],
 		lastMonth = +lastDate.split("-")[1],
 		startYear = +startDate.split("-")[0],
@@ -595,6 +610,78 @@ function buildLineDateMenu(startDate, endDate, menu){
 				})
 		})
 
+		d3.selectAll(".calYearLabel")
+			.on("input", function(){
+				var params = getParams(),
+					firstYear = +params.firstDate.split("-")[0],
+					lastYear = +params.lastDate.split("-")[0],
+					inputYear = this.value,
+					containerYear = d3.select(this.parentNode).attr("data-year"),
+					displayedYears = d3.selectAll(".calendarYearContainer.active").nodes().map(function(o){
+						// console.log(o)
+						return d3.select(o).attr("data-year")
+					}),
+					displayedIndex = displayedYears.indexOf(containerYear)
+
+					console.log(displayedIndex)
+
+				if(inputYear >= firstYear && inputYear <= lastYear){
+					// console.log(inputYear)
+					var startLeft, endLeft;
+					if(inputYear == containerYear){
+						return false;
+					}
+					else if(inputYear > containerYear){
+						startLeft = -1*calendarYearContainerWidth + "px"
+						endLeft = "0px"
+					}
+					else{
+						endLeft = -1*calendarYearContainerWidth + "px"
+						startLeft = "0px"
+
+					}
+
+					d3.select(this.parentNode.parentNode)
+						.style("left", startLeft)
+						.transition()
+						.style("left", endLeft)
+						.on("end", function(){
+							d3.select(this).style("left","0px")
+
+							var newYears;
+							if( (displayedIndex == 0 && +inputYear < lastYear - 1) || (+inputYear == +firstYear) || (+inputYear == +firstYear+1 && displayedIndex == 2)) {
+								newYears = [+inputYear, +inputYear+1, +inputYear+2, +inputYear+3]
+							}
+							else if(displayedIndex == 1 && +inputYear != +lastYear){
+								newYears = [+inputYear-1, +inputYear, +inputYear+1, +inputYear+2]
+							}
+							else if(displayedIndex == 2 || (+inputYear == +lastYear) || (+inputYear == +lastYear-1 && displayedIndex == 0)){
+								newYears = [+inputYear-2, +inputYear-1, +inputYear, +inputYear+1]	
+							}else{
+								return false
+							}
+
+
+							d3.select(this.parentNode.parentNode).selectAll(".calendarYearContainer").classed("active", false)
+							for(var i = 0; i < newYears.length; i++){
+								var ny = newYears[i]
+								if(ny <= +lastYear && ny >= +firstYear){
+									d3.select(this.parentNode.parentNode).select(".calendarYearContainer.y" + newYears[i]).classed("active", true)
+								}
+							}
+
+							d3.select(this).attr("value", containerYear)
+							d3.select(this).property("value", containerYear)
+
+						})
+				}
+			})
+			.on("blur", function(){
+				var inputYear = d3.select(this).attr("value"),
+					containerYear = d3.select(this.parentNode).attr("data-year")
+				d3.select(this).property("value", containerYear)
+			})
+
 		var doneButton = d3.select(menuSelector)
 			.append("div")
 			.attr("class", "calDoneButton")
@@ -603,6 +690,27 @@ function buildLineDateMenu(startDate, endDate, menu){
 				d3.event.stopPropagation();
 				d3.selectAll(".calendarParent").classed("visible", false)
 			})
+
+		d3.select(menuSelector).append("div")
+			.attr("class","datesAvailHeader")
+			.text("Available dates")
+
+		var datesAvailText = d3.select(menuSelector).append("div")
+			.attr("class", "datesAvailText")
+			.html(function(){
+							if(isQuarterly(indicator)){
+				return "Q" + ((firstMonth-1)/3 + 1) + " " + firstYear + "&ndash;" + "Q" + ((lastMonth-1)/3 + 1) + " " + lastYear
+			}else{
+				return monthFull[firstMonth - 1] + " " + firstYear + "&ndash;" + monthFull[lastMonth - 1] + " " + lastYear
+			}
+			})
+
+			// if(isQuarterly(indicator)){
+			// 	return "Q" + ((startMonth-1)/3 + 1) + " " + startYear + "&ndash;" + "Q" + ((endMonth-1)/3 + 1) + " " + endYear
+			// }else{
+			// 	return monthFull[startMonth - 1] + " " + startYear + "&ndash;" + monthFull[endMonth - 1] + " " + endYear
+			// }
+
 
 }
 function buildStateMenu(stateNamesData, states){
@@ -1164,9 +1272,10 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 
 	var g = svg.append("g").attr("transform", "translate(" + (margin.left + leftScootch) + "," + (margin.top + imgScootch) + ")").attr("class",printClass);
 
+	var pi = (widthUnder(768)) ? 0 : 0.1
 	var x = d3.scaleBand()
 		.range([0, width])
-		.paddingInner(0.1)
+		.paddingInner(pi)
 		.align(0.2)
 		.paddingOuter(0.8)
 		.domain(data.map(function (d) {
@@ -1218,11 +1327,12 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return y(d[key]);
 			})
 			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
+	var usXScootch = (widthUnder(768)) ? -3: 2;
 	g.selectAll(".usText")
 		.data(usData)
 		.enter().append("text")
 			.attr("class", "usText")
-			.attr("x", width-x.bandwidth() + 2)
+			.attr("x", width-x.bandwidth() + usXScootch)
 			.attr("text-anchor", "start")
 			.attr("y", function (d) {
 				return y(d[key]) + 4;
@@ -1243,6 +1353,13 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return y( Math.max(0, +d[key]) );
 			})
 			.style("fill", function(d){ return colorScale(d[key])})
+			.style("stroke", function(d){
+				if(widthUnder(768)){
+					return colorScale(d[key])
+				}else{
+					return "none"
+				}
+			})
 			.attr("width", x.bandwidth())
 			.attr("height", function (d) {
 				return Math.abs(y(+d[key]) - y(0));
@@ -1338,7 +1455,8 @@ function buildMapLegend(legend, colorScale, ticks, indicator, svgInput){
 		width = getMapWidth(),
 		height = .6 * width,
 		noDataScootch = (indicator == "state_and_local_public_education_employment") ? -2*keyHeight : 0
-		translateX = (svgInput) ? 800 : width - keyWidth - 50,
+		legendXScootch = (widthUnder(768)) ? 20 : 50,
+		translateX = (svgInput) ? 800 : width - keyWidth - legendXScootch,
 		translateY = (svgInput) ? 500 : height - colorRange.length * keyHeight - 10 + noDataScootch
 
 	colorDomain.unshift(ticks[0])
@@ -1888,12 +2006,11 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		data = dataObj.data,
 		extent = dataObj.extent,
 		key = getKey(indicator, unit),
-		margin, width, height, svg, verticalScootch, horizontalScootch, xTickCount;
+		margin, width, height, svg, verticalScootch, horizontalScootch;
 
 	if(containerType == "screen"){
 		verticalScootch = 0;
 		horizontalScootch = 0;
-		xTickCount = 12;
 		margin = getLineMargins(),
 		width = getLineW() - margin.left - margin.right,
 		height = getLineH() - margin.top - margin.bottom;
@@ -1905,7 +2022,6 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	}else{
 		verticalScootch = 28;
 		horizontalScootch = 10;
-		xTickCount = 10;
 		margin = getLineMargins(),
 		width = LINE_IMG_WIDTH - margin.left - margin.right,
 		height = LINE_IMG_HEIGHT - margin.top - margin.bottom - 40;
@@ -1949,7 +2065,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	g.append("g")
 		.attr("class", "line axis x")
 		.attr("transform", "translate(0," + height + ")")
-		.call(d3.axisBottom(x).ticks(xTickCount))
+		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType)))
 		.selectAll("text").text(function(d, i){
 			var md = moment(d)
 			if(isQuarterly(indicator)){
@@ -2080,10 +2196,29 @@ function getLineMargins(){
 	return margin = {top: 20, right: 30, bottom: 30, left: 30}
 }
 function getLineW(){
-	return 1085;
+	if(widthUnder(1085)){
+		return getBarW() + 20
+	}
+	else if(widthUnder(1200)){
+		return getBarW()  - 20
+	}else{
+		return getBarW();
+	}
 }
 function getLineH(){
 	return 520;
+}
+function getLineXTickCount(containerType){
+	if(containerType == "hide"){
+		console.log("foo")
+		return 30
+	}else{
+		if(widthUnder(1200)){
+			return 8
+		}else{
+			return 12
+		}
+	}
 }
 function clickLineChart(d, containerType){
 	var svg;
@@ -2193,16 +2328,32 @@ function mouseoutLineChart(d) {
 	d3.selectAll(".clicked").nodes().forEach(function(l){ l.parentNode.appendChild(l) })
 }
 function getBarMargins(){
-	return margin = {top: 30, right: 30, bottom: 30, left: 20}
+	var mr = (widthUnder(1200)) ? 10 : 30
+	return margin = {top: 30, right: mr, bottom: 30, left: 20}
 }
 function getBarW(){
-	return 1085;
+	if(widthUnder(768)){
+		return window.innerWidth - 40;;	
+	}
+	else if(widthUnder(1085)){
+		return window.innerWidth - 40;
+	}
+	else {
+		return 1085;
+	}
 }
 function getBarH(){
 	return 260;
 }
 function getMapWidth(){
-	return 621;
+	if(widthUnder(768)){
+		return d3.min([621, window.innerWidth - 40])
+	}
+	else if(widthUnder(900)){
+		return 570
+	}else{
+		return 621;
+	}
 }
 function getBarData(chartData, indicator, unit, date){
 	var indicatorData = chartData,
@@ -2267,9 +2418,10 @@ function updateBarChart(indicator, unit, date){
 		height = h - margin.top - margin.bottom;
 
 //TO BE UPDATED (abstract out to new func)
+	var pi = (widthUnder(768)) ? 0 : 0.1
 	var x = d3.scaleBand()
 		.range([0, width])
-		.paddingInner(0.1)
+		.paddingInner(pi)
 		.align(0.2)
 		.paddingOuter(0.8);
 
@@ -2344,6 +2496,13 @@ function updateBarChart(indicator, unit, date){
 							return Math.abs(y(d[key]) - y(0));
 						})
 						.style("fill", function(d){ return colorScale(d[key])})
+						.style("stroke", function(d){
+							if(widthUnder(768)){
+								return colorScale(d[key])
+							}else{
+								return "none"
+							}
+						})
 						.on("end", function(d,j){
 							if(i == 50){
 								highlightStates(getParams().states)
@@ -2497,7 +2656,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	d3.select(".line.axis.x")
 		.transition()
-			.call(d3.axisBottom(x).ticks(12))
+			.call(d3.axisBottom(x).ticks(getLineXTickCount("screen")))
 			.selectAll("text").text(function(d, i){
 				var md = moment(d)
 				if(isQuarterly(indicator)){
@@ -2680,11 +2839,17 @@ function updateIndicator(indicator, unit){
 
 function showChart(chartType){
 	//have 2 divs for bar/line that slide in/out cleanly 
-	var contentWidth = d3.select("#chartAreaContainer").node().getBoundingClientRect().width
+	var contentWidth = (widthUnder(1085)) ? window.innerWidth + 20 : d3.select("#chartAreaContainer").node().getBoundingClientRect().width
+	if(widthUnder(1200)){
+		d3.select("#singleYearContainer").style("width", getBarW() + "px")	
+		d3.select("#multiYearContainer").style("width", getBarW() + "px")	
+	}
 	if(chartType == "line"){
 		d3.select("#singleYearContainer")
+			.classed("active", false)
 			.transition()
 			.style("margin-left", (-1*contentWidth) + "px")
+		d3.select("#multiYearContainer").classed("active", true)
 
 		d3.select(".multiYear.tooltip").transition().style("opacity",1)
 		
@@ -2704,8 +2869,10 @@ function showChart(chartType){
 		d3.selectAll(".calendarParent").classed("visible", false)
 
 		d3.select("#singleYearContainer")
+			.classed("active", true)
 			.transition()
 			.style("margin-left", "0px")
+		d3.select("#multiYearContainer").classed("active", false)
 
 		d3.select(".multiYear.tooltip").transition().style("opacity",0)	
 		
@@ -2815,17 +2982,22 @@ function popUp(selector){
 
 	pu.style("display", "block")
 	var h = pu.node().getBoundingClientRect().height;
+	if(h > window.innerHeight - 20){
+		d3.selectAll(".pu-bigButton").classed("shortScreen",true)
+	}else{
+		d3.selectAll(".pu-bigButton").classed("shortScreen",false)
+	}
 
 	pu.style("top", function(){
-			if(h > window.innerHeight){
-				return 0;
+			if(h > window.innerHeight - 20){
+				return 10;
 			}else{
 				return "calc(50% - " + (h/2) + "px)"
 			}
 		})
 		.style("height", function(){
-			if(h > window.innerHeight){
-				return window.innerHeight + "px";
+			if(h > window.innerHeight - 20){
+				return (window.innerHeight - 90) + "px";
 			}else{
 				return "auto"
 			}
@@ -2878,6 +3050,31 @@ function popUp(selector){
 }
 
 function initControls(){
+
+	d3.select("#headerTwitter")
+		.on("mouseover", function(){
+			d3.select(this).select("img").attr("src", "static/img/twitterHeaderHover.png")
+		})
+		.on("mouseout", function(){
+			d3.select(this).select("img").attr("src", "static/img/twitterGrey.png")
+		})
+
+	d3.select("#headerEmail")
+		.on("mouseover", function(){
+			d3.select(this).select("img").attr("src", "static/img/emailHeaderHover.png")
+		})
+		.on("mouseout", function(){
+			d3.select(this).select("img").attr("src", "static/img/emailGrey.png")
+		})
+
+	d3.select("#headerFacebook")
+		.on("mouseover", function(){
+			d3.select(this).select("img").attr("src", "static/img/facebookHeaderHover.png")
+		})
+		.on("mouseout", function(){
+			d3.select(this).select("img").attr("src", "static/img/facebookGrey.png")
+		})
+
 //Initialize bar chart/line chart toggle buttons
 	d3.selectAll(".timeTypeContainer")
 		.on("click", function(){
@@ -2895,14 +3092,72 @@ function initControls(){
 			}else{
 				var key = this.id.split("mt-")[1]
 				closeMenus(key)
-				d3.select(this.parentNode)
+
+				if(widthUnder(768)){
+					d3.select(this.parentNode)
+						// .style("width", (window.innerWidth + "px"))
+						.classed("fullScreen",true)
+				}else{
+					d3.select(this.parentNode)
+						.transition()
+							.style("height", menuHeights[key] + "px")
+							.style("border-left-color", "#d2d2d2")
+							.style("border-right-color", "#d2d2d2")
+
+					// console.log(key)
+					if(key == "employment"){
+						d3.select(".menuSpacer.ms1")
+							.transition()
+						    	.style("border-left-color", "#d2d2d2")
+	    						.style("border-bottom-color", "#d2d2d2")
+					}
+					else if(key == "state"){
+						d3.select(".menuSpacer.ms2")
+							.transition()
+						    	.style("border-left-color", "#d2d2d2")
+	    						.style("border-bottom-color", "#d2d2d2")
+						d3.select(".menuSpacer.ms1")
+							.transition()
+						    	.style("border-right-color", "#d2d2d2")
+					}
+					else if(key == "time"){
+						d3.select(".menuSpacer.ms2")
+							.transition()
+						    	.style("border-right-color", "#d2d2d2")
+	    						.style("border-bottom-color", "#d2d2d2")
+					}
+				}
+
+				d3.select(this).classed("open", true)
+			}
+		})
+	d3.select(".mobileMenuArrow")
+		.on("click", function(){
+			d3.event.stopPropagation();
+			var stateMenu = d3.select("#mt-state"),
+				key = "state"
+
+			if(stateMenu.classed("open")){
+				closeMenus("none")
+			}else{
+				closeMenus(key)
+				d3.select(stateMenu.node().parentNode)
 					.transition()
 						.style("height", menuHeights[key] + "px")
 						.style("border-left-color", "#d2d2d2")
 						.style("border-right-color", "#d2d2d2")
 
-				d3.select(this).classed("open", true)
+				d3.select(".menuSpacer.ms2")
+					.transition()
+				    	.style("border-left-color", "#d2d2d2")
+						.style("border-bottom-color", "#d2d2d2")
+				d3.select(".menuSpacer.ms1")
+					.transition()
+				    	.style("border-right-color", "#d2d2d2")
+				stateMenu.classed("open", true)
+
 			}
+
 		})
 
 

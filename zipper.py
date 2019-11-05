@@ -11,7 +11,7 @@ def createZip(fileNames, zipName):
 		if fileName.find("dictionary") == -1:
 			zipObj.write(rootPath + 'static/data/csv/%s.csv'%fileName, '%s.csv'%fileName)
 		else:
-			zipObj.write(rootPath + 'static/data/dictionaries/%s.csv'%fileName, '%s.csv'%fileName)
+			zipObj.write(rootPath + 'static/data/dictionaries/%s.txt'%fileName, '%s.txt'%fileName)
 
 	zipObj.close()
 

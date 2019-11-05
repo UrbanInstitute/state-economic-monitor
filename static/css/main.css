@@ -65,6 +65,31 @@ select{
     display: table;
     margin: 0 auto;
 }
+#headerTwitter img{
+    width: 23px;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    cursor: pointer;
+}
+
+#headerEmail img{
+    width: 23px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+#headerFacebook img{
+    width: 19px;
+    position: absolute;
+    top: 10px;
+    right: 72px;
+    cursor: pointer;
+}
+
 
 /**********************************************************************/
 /*************************** CARDS ************************************/
@@ -197,9 +222,10 @@ select{
 .cardTwitterButton{
     display: inline-block;
     float: right;
-    position: relative;
-    top: 26px;
-    right: 14px;
+    position: absolute;
+    top: 206px;
+    right: 67px;
+    z-index: 3;
 }
 .cardTwitterImg{
 	background: url(../img/twitter.png) no-repeat center transparent;
@@ -215,9 +241,10 @@ select{
 .cardFacebookButton{
     display: inline-block;
     float: right;
-    position: relative;
-    top: 33px;
-    right: 0px;
+    position: absolute;
+    top: 213px;
+    right: 32px;
+    z-index: 3;
 }
 .cardFacebookImg{
 	background: url(../img/facebook.png) no-repeat center transparent;
@@ -592,6 +619,22 @@ select{
     margin-top: 24px;
     margin-bottom: 13px;
     cursor: pointer;
+}
+.datesAvailHeader{
+    position: absolute;
+    top: 326px;
+    left: 64px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #696969;
+}
+.datesAvailText{
+    position: absolute;
+    font-size: 15px;
+    top: 343px;
+    left: 64px;
+    font-style: italic;
+    color: #696969;
 }
 
 /**********************************************************************/
@@ -997,13 +1040,19 @@ rect.bar.disabled{
     margin-top: -10px;
     margin-bottom: 10px;
 }
-.sourceLine span{
+.sourceLine span, .notesLine span{
     font-weight: bold;
     margin-right: 5px;
 }
-.sourceLine a{
+.sourceLine a, .notesLine a{
     text-decoration: none;
     color: #1696d2;
+}
+.notesLine{
+    font-size: 12px;
+    top: -7px;
+    position: relative;
+    margin-bottom: 10px;
 }
 /**********************************************************************/
 /**************************** ALL POP UPS *****************************/
@@ -1095,7 +1144,7 @@ rect.bar.disabled{
     background: white;
     top: calc(50% - 255px);
     width: 636px;
-    z-index: 3;
+    z-index: 4;
     left: calc(50% - 378px);
     padding-bottom: 60px;
     padding-left: 60px;
@@ -1223,6 +1272,15 @@ rect.bar.disabled{
     bottom: 50px;
     right: 60px;
 }
+.pu-bigButton.dataDownload.shortScreen, .pu-bigButton.dataDownloadCurrent.shortScreen{
+    position: relative;
+    bottom: 0px;
+    right: 60px;
+    float: right;
+}
+.pu-bigButton.dataDownload.shortScreen{
+    right: -85px;
+}
 .pu-bigButton.imgDownload{
     margin-bottom: 60px;
     float: right;
@@ -1237,7 +1295,7 @@ rect.bar.disabled{
     position: absolute;
     background: #ffffff;
     border: 1px solid #d2d2d2;
-    top: -119px;
+    top: -69px;
     left: 39px;
     width: 320px;
     height: 90px;

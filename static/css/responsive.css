@@ -1,0 +1,357 @@
+.widthTester{
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 0px;
+	width: 0px;
+}
+.menuSpacer, .mobileMenuArrow, #mobileHiglightsTitle{
+	display: none;
+}
+@media(max-width: 1200px){
+	.widthTester.w1200{
+		display: block;
+	}
+	#barChartScreen, #chartTitleContainer, #lineChartContainer, #chartButtonContainer,#menuRow,#sectionNames{
+		margin-left: 10px;
+	}
+	#footerContentContainer {
+    	width: calc(100% - 40px);
+    	margin-left: 20px;
+    }
+
+}
+@media(max-width: 1085px){
+	.widthTester.w1085{
+		display: block;
+	}
+	#mapContainer{
+		left: -40px;
+    	position: relative;
+    }
+    #multiYearContainer{
+    	margin-left: 20px;
+    }
+    #multiYearContainer.active{
+    	margin-left: 0px;
+    }
+	.menuSpacer{
+		position: absolute;
+	}
+	#barChartScreen, #chartTitleContainer, #lineChartContainer, #chartButtonContainer,#menuRow,#sectionNames{
+		margin-left: 20px;
+	}
+
+	#mt-employment, .menuTop{
+		width: 192px;
+	}
+	.categoryMenu .menuActive, .menuActive.timeRange{
+	    width: 160px;
+	    overflow: hidden;
+	    height: 24px;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.stateMenu.menuBlock {
+    	left: 219px;
+    	z-index: 2;
+	}
+	.timeMenu.menuBlock {
+		left: 413px;
+    	z-index: 1;
+	}
+	.timeMenu .menuTop{
+		margin-left: 117px;
+    	width: 198px;
+	}
+	.calendarParent{
+		right: auto;
+		left: 160px;
+	}
+	.clearSelections.outside, #hideUS {
+    	left: 235px;
+    }
+    .menuSpacer{
+	    display: block;
+	    position: absolute;
+	    height: 58px;
+	    background: #fff;
+	    z-index: 3;
+	    border: 1px solid #fff;
+	    top: 0px;
+
+    }
+    .menuSpacer.ms1{
+	    left: 200px;
+	    width: 18px;
+    }
+    .menuSpacer.ms2{
+    	left: 510px;
+    	width: 29px;
+    }
+    .mobileMenuArrow{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		left: 379px;
+		top: 1px;
+		background: #fff;
+		height: 58px;
+		width: 130px;
+		cursor: pointer;
+    }
+    .mobileMenuArrow img{
+	    top: 21px;
+	    right: 24px;
+    }
+	.timeTypeContainer {
+    	margin-top: 10px;
+    }
+    .sectionName{
+    	margin-right: 43px;
+    }
+    #chartTitle {
+    	font-size: 21px;
+    }
+}
+@media(max-width: 900px){
+	.widthTester.w900{
+		display: block;
+	}
+	#mapContainer{
+		left: -90px;
+    }
+}
+@media(max-width: 780px){
+	.calendarParent{
+		left: 150px;
+	}
+}
+@media(max-width: 768px){
+	.widthTester.w768{
+		display: block;
+	}
+	#headerContainer {
+    	height: 47px;
+    }
+	#headerTitle{
+	    font-size: 12px;
+	    font-weight: 500;
+	    position: absolute;
+	    top: 16px;
+	    left: 51px;
+	}
+	#headerLogo {
+	    height: 30px;
+	    top: 8px;
+	    left: 10px;
+	    position: absolute;
+	}
+	#headerLogo img{
+		height: 30px;
+	}
+	#headerTwitter img{
+	    top: 14px;
+	}
+
+	#headerEmail img{
+	    top: 15px;
+	}
+	#headerFacebook img{
+	    top: 14px;
+	}
+	#lastUpdatedContainer{
+	    position: absolute;
+	    top: 381px;
+	    width: 100px;
+	    left: 10px;
+	    font-size: 12px;
+	    font-style: italic;
+	    z-index: 102;
+	    color: #fff;
+	}
+	#mobileHiglightsTitle{
+		display: block;
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 63px;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+	}
+	#cardContainer{
+		border-top: 50px solid #062635
+	}
+	#cardCurrentContainer{
+		display: none;
+	}
+	#cardSubcontainer{
+		width: 100%;
+	}
+	.cardArrow{
+		width: 45px;
+	}
+	.cardArrow img {
+    	width: 26px;
+    	top: 242px;
+	}
+
+	.bar.x.axis .tick, .barTooltip, .barTooltipBg{
+		display: none;
+	}
+	#mapContainer {
+ 	   left: 0px;
+ 	   top: -20px;
+	}
+	#chartButtonContainer{
+		width: calc(100% - 40px);
+    	white-space: normal;
+	}
+	#sectionNames{
+		margin-top: -40px;
+		margin: 0 auto;
+		position: relative;
+		top: -84px;
+		border-top: 50px solid #062635;
+		z-index: 90;
+	}
+	.sectionName{
+	    width: 100%;
+	    max-width: 500px;
+	    border-bottom: 1px solid #d2d2d2;
+	    padding-bottom: 10px;
+	    padding-top: 10px;
+	    font-size: 22px;
+	    text-align: center;
+	    margin: 0 auto;
+	    display: block;
+	}
+	.cardDownArrow{
+		width: 100%;
+		left: 0px;
+		background: transparent;
+    	height: 50px;
+    	z-index: 101;
+	}
+	.cardDownArrow img {
+    	width: 60px;
+    	left: calc(50% - 30px);
+	}
+	#contentContainer{
+		margin-top: 84px;
+	}
+	.menuSpacer, .mobileMenuArrow{
+		display: none;
+	}
+	.menuBlock{
+		margin: 0 auto;
+		max-width: 500px;
+		width: calc(100% - 70px);
+	}
+	.categoryMenu.menuBlock {
+	    width: calc(100% - 70px);
+	    top: -90px;
+	}
+	#unitCheckboxes {
+    	top: -27px;
+  		left: 16px;
+    }
+	.stateMenu.menuBlock {
+		left: 0px;
+		margin-left: 0px;
+		z-index: 2;
+		display: block;
+		top: 24px;
+	}
+	.timeMenu.menuBlock{
+		left: 0px;
+	}
+	#mt-employment, .menuTop {
+	    width: 100%;
+	}
+	.timeMenu.menuBlock{
+		top: 136px
+	}
+	.timeMenu .menuTop {
+	    margin-left: auto;
+	    width: auto;
+	}
+	#hideUs {
+    	top: 92px;
+    }
+	.clearSelections.outside {
+    	top: 111px;
+    }
+	.clearSelections.outside, #hideUS {
+    	left: 17px;
+	}
+
+	#chartAreaContainer{
+		margin-top: 65px;
+	}
+	#chartUnits{
+	    display: block;
+    	margin-left: 0px;
+	    margin-top: 8px;
+
+    }
+    #chartTitleContainer{
+    	width: calc(100% - 40px);
+    }
+    #chartTitle{
+    	white-space: normal;
+    }
+    #chartFrame{
+    	/*display: none;*/
+    }
+    .menuBlock.fullScreen{
+	    position: fixed;
+	    z-index: 10000;
+	    top: 0px;
+	    left: 0px;
+	    border: none;
+	    height: 100%;
+	    width: 100%;
+	    overflow: scroll;
+	    max-width: unset;
+    }
+    svg{
+    	pointer-events: none;
+    }
+	.multiYear.tooltip {
+	    position: absolute;
+	    right: 30px;
+	    top: 282px;
+	    text-align: right;
+	    opacity: 0;
+	    left: 0px;
+	    right: auto;
+	    text-align: left;
+    }
+    .multiYear.tt-top-row.mouseover, .multiYear.tt-value.hide, .multiYear.tt-states, .multiYear.tt-indicator{
+    	display: none;
+    }
+    .chartButton {
+	    display: inline-block;
+	    margin-right: 0px;
+	    margin-bottom: 20px;
+	    display: block;
+	    text-align: center;
+	    max-width: 200px;
+    }
+}
+
+@media(max-width: 500px){
+	#bigLogoContainer img {
+	    width: 100%;
+	}
+}
+@media(max-width: 1200px){
+	.widthTester.w600{
+		display: block;
+	}
+}
