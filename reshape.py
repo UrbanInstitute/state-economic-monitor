@@ -9,8 +9,8 @@ import shutil
 
 
 DATE_FORMAT = "%Y-%m-%d"
-# rootPath = "/var/www/html/semapp/"
-rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
+rootPath = "/var/www/html/semapp/"
+# rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
 
 def cleanExcelRow(row, dateMode, isDate, colCount):
 	if isDate:

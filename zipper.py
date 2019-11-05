@@ -1,8 +1,8 @@
 from zipfile import ZipFile
 from shutil import copyfile
 
-# rootPath = "/var/www/html/semapp/"
-rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
+rootPath = "/var/www/html/semapp/"
+# rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
 
 def createZip(fileNames, zipName):
 	zipObj = ZipFile(rootPath + 'static/data/download/%s.zip'%zipName, 'w')
