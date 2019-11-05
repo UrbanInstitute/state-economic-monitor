@@ -40,6 +40,15 @@ select{
 .headerPreview #headerTitle, .headerPreview #lastUpdatedContainer{
     color: #fff;
 }
+.cacheRefresh{
+    display: block;
+    font-size: 18px;
+    font-style: italic;
+    color: white;
+}
+.cacheRefresh a{
+    color: #1696d2;
+}
 #headerLogo{
     height: 50px;
     margin: 0 auto;
@@ -1564,3 +1573,7 @@ rect.bar.disabled{
 	text-transform: uppercase;
 	margin-right: 3px;
 }
+
+
+
+
