@@ -34,20 +34,28 @@ select{
 	width: 100%;
     height: 274px;
 }
+#headerContainer a{
+    text-decoration: none;
+}
 .headerPreview{
-    background: #ec008b;
+    background: #db2b27;
 }
 .headerPreview #headerTitle, .headerPreview #lastUpdatedContainer{
     color: #fff;
 }
 .cacheRefresh{
     display: block;
-    font-size: 18px;
+    font-size: 22px;
     font-style: italic;
     color: white;
+    position: absolute;
+    top: 190px;
+    width: 400px;
+    top: 10px;
+    left: 10px;
 }
 .cacheRefresh a{
-    color: #1696d2;
+    color: #d2d2d2;
 }
 #headerLogo{
     height: 50px;
@@ -752,6 +760,38 @@ select{
     margin-top: -11px;
 }
 
+
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #acd9ee;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 11px;
+    margin-left: -11px;
+}
+.arrow_box:before {
+    border-color: rgba(172, 217, 238, 0);
+    border-top-color: #acd9ee;
+    border-width: 14px;
+    margin-left: -14px;
+}
+
+
+
 /**********************************************************************/
 /*************************** TOOLTIP  *********************************/
 /**********************************************************************/
@@ -1073,7 +1113,7 @@ rect.bar.disabled{
     height: 100%;
     top: 0px;
     left: 0px;
-    z-index: 2;
+    z-index: 3;
     opacity: 0;
     display: none;
 }
@@ -1295,7 +1335,12 @@ rect.bar.disabled{
     float: right;
     margin-top: 40px;
 }
-
+.popupMenu.fullScreenPopup{
+    display: block;
+    top: 0px;
+    left: 0px;
+    overflow: scroll;
+}
 /**********************************************************************/
 /********************* SHARE URL POP UP ***************************/
 /**********************************************************************/

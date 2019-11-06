@@ -21,6 +21,7 @@ app = Flask(__name__)
 from math import ceil
 import logging
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 rootPath = "/var/www/html/semapp/"

@@ -6,7 +6,7 @@
 	height: 0px;
 	width: 0px;
 }
-.menuSpacer, .mobileMenuArrow, #mobileHiglightsTitle{
+.menuSpacer, .mobileMenuArrow, #mobileHiglightsTitle, #mobileStates{
 	display: none;
 }
 @media(max-width: 1200px){
@@ -132,6 +132,10 @@
 	.widthTester.w768{
 		display: block;
 	}
+	#contentContainer.aboutContainer{
+		width: calc(100% - 40px);
+		margin-left: 20px;
+	}
 	#headerContainer {
     	height: 47px;
     }
@@ -204,8 +208,16 @@
 		display: none;
 	}
 	#mapContainer {
- 	   left: 0px;
+ 	   left: 20px;
  	   top: -20px;
+	}
+	.singleYear.tooltip{
+		display: none;
+	}
+	.shareTooltip {
+		top: 11px;
+		left: calc(50% - 150px);
+		width: 300px;
 	}
 	#chartButtonContainer{
 		width: calc(100% - 40px);
@@ -251,10 +263,45 @@
 		margin: 0 auto;
 		max-width: 500px;
 		width: calc(100% - 70px);
+		left: calc(50% - 290px) !important;
+	}
+	.menuBlock{
+		left: calc(50% - 290px) !important;	
+	}
+	.menuBlock.fullScreen{
+		left: 0px !important;
+	}
+	#unitCheckboxes, #hideUS, .clearSelections.outside{
+		left: calc(50% - 274px) !important;	
 	}
 	.categoryMenu.menuBlock {
 	    width: calc(100% - 70px);
 	    top: -90px;
+	}
+	.menuTop.open{
+		max-width: 300px;
+		margin: 0 auto;
+		padding-left: 30px;
+		margin-top: 20px;
+	}
+	.employmentOption, #stateNameContainer, #barControlMenus, .timeMenuLabel.month, .timeMenu.menuBlock.fullScreen{
+		width: 300px;
+    	margin: 0 auto;
+	}
+	#barControlContainer{
+		clear: both;
+	}
+	.timeMenuLabel.month{
+		margin-bottom: 10px;
+		margin-left: 0px;
+	}
+	.timeTypeContainer{
+		float: left !important;
+		margin-bottom: 20px;
+	}
+	.timeTypeContainer.bar{
+		margin-right: 10px;
+		margin-left: 0px !important;
 	}
 	#unitCheckboxes {
     	top: -27px;
@@ -343,15 +390,245 @@
 	    text-align: center;
 	    max-width: 200px;
     }
-}
+    .popupMenu{
+    	z-index: 1000 !important;
+    	top: 0px !important;
+    	left: 0px !important;
+    	width: calc(100% - 40px) !important;
+    	padding-left: 20px !important;
+    	padding-right: 20px !important;
+    }
+	.pu-bigButton.dataDownload.shortScreen, .pu-bigButton.dataDownloadCurrent.shortScreen {
+	    position: relative;
+	    bottom: 0px;
+	    right: 60px;
+	    float: right;
+	    left: 0px;
+	    right: auto;
+	    float: left;
+	}
+	.pu-bigButton.dataDownload.shortScreen{
+		left: -111px;
+	}
+	.pu-smallButton.employmentButton {
+	    padding: 7px;
+	    font-size: 12px;
+	    text-align: center;
+	    width: 159px;
+	}
+	.popupMenu{
+	    width: 300px !important;
+	    padding-left: calc(50% - 150px) !important;
+	    padding-right: calc(50% - 150px) !important;
+	}
+	.pu-allSections{
+		width: 200px;
+	}
+	.ii-1 {
+    	left: calc(50% - 111px);
+    	margin-top: 20px;
+    }
+	.ii-2 {
+    	left: calc(50% - 85px);
+    	margin-top: 27px;
+    }
+	.ii-3 {
+    	left: calc(50% - 62px);
+    	margin-top: 27px;
+    }
+	#footerBigLinks {
+	    display: inline-block;
+	    top: -32px;
+	    left: -10px;
+	    position: relative;
+	    float: left;
+	    display: block;
+	    clear: both;
+	}
+	#bigLogoContainer {
+    	display: block;
+    	margin-bottom: 60px;
+    	margin-top: -32px;
+    }
+    #footerBottomRow{
+    	left: -180px;
+    	position: relative;
 
+    }
+    .calendarParent{
+	    z-index: 10000;
+	    top: 0px !important;
+	    left: 0px;
+	    position: fixed;
+	    width: 100%;
+	    height: 100%;
+    }
+    .calendarArrow.right {
+	    margin-left: 10px;
+	    position: fixed;
+	    top: 110px;
+	    right: 10px;
+	}
+    .calendarArrow.left {
+	    margin-left: 10px;
+	    position: fixed;
+	    top: 110px;
+	    left: 0px;
+	}
+	.calendarFrame{
+		margin-left: 60px;
+	}
+	.calYearLabel{
+		width: 90px;
+    	height: 40px;
+    	font-size: 26px !important;
+	}
+	#mobileStates{
+		display: block;
+		margin-bottom: 30px;
+	}
+	#mobileStateHeader{
+	    font-size: 21px;
+	    font-weight: bold;
+	}
+	#mobileStateDate, #mobileStateIndicator{
+		text-transform: uppercase;
+		font-size: 12px;
+		display: inline-block;
+	}
+	.mobileState{
+	    font-size: 16px;
+	    margin-top: 4px;
+	    color: #1696d2;
+	    font-weight: bold;
+	}
+
+
+}
+@media(max-width: 590px){
+	.menuBlock, #unitCheckboxes, #hideUS, .clearSelections.outside{
+		left: auto !important;
+	}
+	 #unitCheckboxes, #hideUS, .clearSelections.outside{
+	 	left: 16px !important;
+	 }
+	.menuBlock.fullScreen{
+		left: 0px !important;
+	}
+}
+@media(max-width: 560px){
+	.calendarFrame{
+		width: 310px;
+	}
+	.calDoneButton{
+		margin-left: 270px;
+	}
+}
 @media(max-width: 500px){
+	.widthTester.w500{
+		display: block;
+	}
 	#bigLogoContainer img {
 	    width: 100%;
 	}
+	.pu-bigButton.dataDownload.shortScreen {
+	    left: 0px;
+	    top: -67px;
+	    clear: both;
+	}
+	.pu-buttonRow .pu-smallButton {
+	    display: block;
+	    margin-right: 20px;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    text-align: center;
+	    max-width: 200px;
+	}
+	.pu-bigButton.imgDownload {
+	    float: left;
+	}
+	.pu-checkText {
+	    font-size: 16px;
+	    color: #353535;
+	    display: inline-block;
+	    position: relative;
+		width: 230px;
+	    top: 6px;
+
+	}
+	.pu-buttonRow{
+		margin-bottom: 60px;
+	}
+	.popupMenu.saveImage{
+	    width: 300px !important;
+	    padding-left: calc(50% - 150px) !important;
+	    padding-right: calc(50% - 150px) !important;
+	}
+	.shareTooltip {
+		top: 21px;
+	}
+
+
+.tt-change{
+    top: -158px;
+    left: 154px;
+    width: 104px;
 }
-@media(max-width: 1200px){
-	.widthTester.w600{
+.tt-raw{
+	left: -30px;
+    top: -86px;
+    width: 170px;
+}
+
+.tt-unit:after, .tt-unit:before {
+	top: 100%;
+	left: 50%;
+	right: auto;
+	margin-top: auto;
+}
+
+.tt-unit:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #fff;
+    border-width: 11px;
+    margin-left: -11px;
+}
+.tt-unit:before {
+    border-color: rgba(172, 213, 278, 0);
+    border-top-color: #acd9ee;
+    border-width: 14px;
+    margin-left: -14px;
+}
+}
+@media(max-width: 400px){
+	.widthTester.w400{
 		display: block;
 	}
+	.menuTop.open {
+	    width: calc(100% - 30px) !important;
+	    padding-left: 0px;
+	}
+	.employmentOption, #stateNameContainer, #barControlMenus {
+	    width: calc(100% - 30px);
+	    max-width: 300px;
+	    position: relative;
+	    left: -14px;
+    }
+    .ui-selectmenu-button.ui-button, .lineMenuDisplay{
+    	width: 286px;
+    }
+    .calendarFrame{
+    	width: 150px;
+    }
+    .calDoneButton{
+		margin-left: 56px;
+    	margin-top: 76px;
+    }
+}
+@media(max-width: 387px){
+	    #footerBottomRow{
+    	left: 10px;
+    	display: inline-block;
+
+    }
 }

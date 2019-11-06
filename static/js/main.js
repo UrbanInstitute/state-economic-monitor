@@ -250,13 +250,20 @@ function closePopup(puClass){
 		.transition()
 		.style("opacity",0)
 		.on("end", function(){
-			d3.select(this).style("display","none")
+			d3.select(this)
+				.style("display","none")
 		})
 	popups
 		.transition()
 		.style("opacity",0)
 		.on("end", function(){
-			d3.select(this).style("display","none")
+			d3.select(this)
+				.style("display","none")
+				.style("height", "auto")
+				.classed("fullScreenPopup", false)
+				.style("top", "0px")
+				.style("border-left", "none")
+				.style("border-right","none")
 		})
 	
 	d3.select("#hiddenBarChartContainer").selectAll("svg").remove()
@@ -267,6 +274,13 @@ function closeMenus(exception){
 		d3.selectAll(".menuBlock.fullScreen")
 			// .style("width","calc(100% - 70px)")
 			.classed("fullScreen",false)
+		d3.selectAll(".menuBlock").select(".menuTop").classed("open", false)
+
+		d3.selectAll(".menuArrow").attr("src", "static/img/dropdown-bg.png")
+
+		d3.select(".timeMenu.menuBlock")
+			.style("border-left", "none")
+			.style("border-right", "none")
 	}
 	if(exception != "shareChart"){
 		d3.selectAll(".shareTooltip").classed("hidden", true)
@@ -278,6 +292,7 @@ function closeMenus(exception){
 	}
 
 	if(!widthUnder(768)){
+		d3.selectAll(".menuArrow").attr("src", "static/img/dropdown-bg.png")
 		d3.selectAll(".menuSpacer")
 			.transition()
 		    	.style("border-left-color", "#fff")
@@ -420,7 +435,6 @@ function buildBarDateMenus(endDate, lastDate){
 	disableBarMenuMonths(endYear, params.lastDate)
 }
 function buildLineDateMenu(startDate, endDate, menu){
-	console.log(getParams())
 	var params = getParams(),
 		indicator = params.indicator,
 		lastDate = params.lastDate,
@@ -975,6 +989,13 @@ function updateDateMenus(opts){
 				return monthFull[endMonth - 1] + " " + endYear
 			}
 		})
+		d3.select("#mobileStateDate").html(function(){
+			if(isQuarterly(indicator)){
+				return "Q" + ((endMonth-1)/3 + 1) + " " + endYear
+			}else{
+				return monthFull[endMonth - 1] + " " + endYear
+			}
+		})
 
 		d3.select(".lineMenuDate.end").text(function(){
 			if(isQuarterly(indicator)){
@@ -1272,11 +1293,12 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 
 	var g = svg.append("g").attr("transform", "translate(" + (margin.left + leftScootch) + "," + (margin.top + imgScootch) + ")").attr("class",printClass);
 
-	var pi = (widthUnder(768)) ? 0 : 0.1
+	var paddingInner = (widthUnder(768)) ? 0 : 0.1
+	var align = (widthUnder(768)) ? 1 : 0.2
 	var x = d3.scaleBand()
 		.range([0, width])
-		.paddingInner(pi)
-		.align(0.2)
+		.paddingInner(paddingInner)
+		.align(align)
 		.paddingOuter(0.8)
 		.domain(data.map(function (d) {
 			return d.abbr;
@@ -1451,11 +1473,11 @@ function buildMapLegend(legend, colorScale, ticks, indicator, svgInput){
 	var colorRange = colorScale.range(),
 		colorDomain = colorScale.domain(),
 		keyWidth = 12,
-		keyHeight = 20,
+		keyHeight = widthUnder(500) ? 16 : 20,
 		width = getMapWidth(),
 		height = .6 * width,
 		noDataScootch = (indicator == "state_and_local_public_education_employment") ? -2*keyHeight : 0
-		legendXScootch = (widthUnder(768)) ? 20 : 50,
+		legendXScootch = (widthUnder(768)) ? (widthUnder(400) ? 0 : 40) : 50,
 		translateX = (svgInput) ? 800 : width - keyWidth - legendXScootch,
 		translateY = (svgInput) ? 500 : height - colorRange.length * keyHeight - 10 + noDataScootch
 
@@ -1498,19 +1520,21 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 	if(!svgInput){
 	//TO BE UPDATED, abstract out to new function
 		var width = getMapWidth(),
-			height = .6 * width
+			height = .6 * width,
+			svgWidth = (widthUnder(400) ? width + 50 : width)
 	//end update
 
 		var svg = d3.select("#mapContainer")
-			.style("width", width + "px")
+			.style("width", svgWidth + "px")
 			.insert("svg", "#chartButtonContainer")
-				.attr("width", width)
+				.attr("width", svgWidth)
 				.attr("height", height)
 				.append("g");
 
+		var xScootch = (widthUnder(768)) ? 18 : 0
 		var projection = d3.geoAlbersUsa()
 			.scale(1.2 * width)
-			.translate([width/2, height/2]);
+			.translate([width/2 - xScootch, height/2]);
 	}else{
 		var width = MAP_IMG_WIDTH,
 			height = .6 * width + 30
@@ -2346,8 +2370,11 @@ function getBarH(){
 	return 260;
 }
 function getMapWidth(){
+	if(widthUnder(400)){
+		return window.innerWidth - 80
+	}
 	if(widthUnder(768)){
-		return d3.min([621, window.innerWidth - 40])
+		return d3.min([621, window.innerWidth - 60])
 	}
 	else if(widthUnder(900)){
 		return 570
@@ -2418,11 +2445,12 @@ function updateBarChart(indicator, unit, date){
 		height = h - margin.top - margin.bottom;
 
 //TO BE UPDATED (abstract out to new func)
-	var pi = (widthUnder(768)) ? 0 : 0.1
+	var paddingInner = (widthUnder(768)) ? 0 : 0.1
+	var align = (widthUnder(768)) ? 1 : 0.2
 	var x = d3.scaleBand()
 		.range([0, width])
-		.paddingInner(pi)
-		.align(0.2)
+		.paddingInner(paddingInner)
+		.align(align)
 		.paddingOuter(0.8);
 
 	var y = d3.scaleLinear()
@@ -2752,6 +2780,8 @@ function updateIndicator(indicator, unit){
 		d3.select(".other.menuBlock .menuActive").text(indicatorNames[indicator])
 	}
 
+	d3.select("#mobileStateIndicator").html(indicatorNames[indicator] + "  :: " )
+
 	d3.select(".unitText.raw").text(indicatorRawLabel[indicator])
 	d3.selectAll(".unitCheckBox.disabled").classed("disabled", false)
 	d3.selectAll(".tooltipIcon").classed("hide", true)
@@ -2895,6 +2925,22 @@ function showChart(chartType){
 
 }
 function highlightStates(states, hoverState){
+
+	if(widthUnder(768)){
+		d3.select("#mobileStates").selectAll(".mobileState").remove()
+		var mobileState = d3.select("#mobileStates")
+			.selectAll(".mobileState")
+			.data(states)
+			.enter()
+			.append("div")
+			.attr("class", function(d){ return "mobileState mobileState_" + d })
+		mobileState.append("div")
+			.attr("class", "mobileStateName")
+		mobileState.append("div")
+			.attr("class", "mobileStateValue")
+			// .text(function(d){ return d })
+	}
+
 	d3.selectAll(".stateShape").classed("clicked", false).classed("hovered", false)
 	d3.selectAll(".bar").classed("clicked", false).classed("hovered", false)
 	d3.selectAll(".barTooltip").classed("active", false).style("opacity", 0)
@@ -2944,6 +2990,15 @@ function highlightStates(states, hoverState){
 			.text(function(){
 				return formatValue(params.indicator, params.unit, bval)
 			})
+
+		d3.select(".mobileState_" + state)
+			.html(function(){
+					var prefix = ((params.indicator == "state_gdp" || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
+						suffix = (params.unit == "change" || params.indicator == "unemployment_rate") ? "%" : ""
+					return getStateName(state) + " :: " + prefix + formatValue(params.indicator, params.unit, bval) + suffix
+
+				// return getStateName(state) + " " + formatValue(params.indicator, params.unit, bval)
+			})
 		d3.select(".br-" + state)
 			.attr("x", brx)
 			.attr("y", bry)
@@ -2981,7 +3036,9 @@ function popUp(selector){
 	var pu = d3.select(".popupMenu." + selector)
 
 	pu.style("display", "block")
-	var h = pu.node().getBoundingClientRect().height;
+	var h = pu.node().getBoundingClientRect().height,
+		w = pu.node().getBoundingClientRect().width
+
 	if(h > window.innerHeight - 20){
 		d3.selectAll(".pu-bigButton").classed("shortScreen",true)
 	}else{
@@ -2989,24 +3046,35 @@ function popUp(selector){
 	}
 
 	pu.style("top", function(){
-			if(h > window.innerHeight - 20){
-				return 10;
+			if(h > window.innerHeight - 20 || widthUnder(768)){
+				return "0px";
 			}else{
 				return "calc(50% - " + (h/2) + "px)"
 			}
 		})
 		.style("height", function(){
-			if(h > window.innerHeight - 20){
-				return (window.innerHeight - 90) + "px";
+			if(h > window.innerHeight - 20 || widthUnder(768)){
+				var heightScootch = (selector == "saveImage") ? 0 : 60
+				return (window.innerHeight - heightScootch) + "px";
 			}else{
 				return "auto"
 			}
 		})
-		.style("overflow", function(){
-			if(h > window.innerHeight){
-				return "scroll";
+		.classed("fullScreenPopup", function(){
+			return h > window.innerHeight || widthUnder(768)
+		})
+		.style("border-left", function(){
+			if(h > window.innerHeight || widthUnder(768)){
+				return ((window.innerWidth - w)*.5) + "px solid #fff"
 			}else{
-				return "auto"
+				return "none"
+			}
+		})
+		.style("border-right", function(){
+			if(h > window.innerHeight || widthUnder(768)){
+				return ((window.innerWidth - w)*.5) + "px solid #fff"
+			}else{
+				return "none"
 			}
 		})
 		.transition()
@@ -3093,10 +3161,23 @@ function initControls(){
 				var key = this.id.split("mt-")[1]
 				closeMenus(key)
 
+				var newImage = (widthUnder(768)) ? "static/img/closeIcon.png" : "static/img/dropdown-bg-active.png"
+
+				d3.select(this).select(".menuArrow").attr("src", newImage)
+
+				if(key == "state"){
+					d3.select(".mobileMenuArrow").select(".menuArrow").attr("src", newImage)					
+				}
+
 				if(widthUnder(768)){
 					d3.select(this.parentNode)
-						// .style("width", (window.innerWidth + "px"))
 						.classed("fullScreen",true)
+					if(key == "time"){
+						var pad = (window.innerWidth - 300)*.5
+						d3.select(this.parentNode)
+							.style("border-left", pad + "px solid #fff")
+							.style("border-right", pad + "px solid #fff")
+					}
 				}else{
 					d3.select(this.parentNode)
 						.transition()
@@ -3395,6 +3476,12 @@ function initControls(){
 					})
 
 				var args = makeCSV(data, params.indicator, params.unit, filename)
+				var dictionaryFileName = "sem_" + getSection(params.indicator) + "_data_dictionary.txt"
+				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
+					args["dictionaryText"] = text
+				})
+
+				args["dictionaryFileName"] = dictionaryFileName
 
 				d3.select(".dataDownloadCurrent").datum(args)
 
@@ -3463,6 +3550,8 @@ function initControls(){
 		var empButtons = d3.selectAll(".employmentButton.active")
 		if(empButtons.nodes().length == 0){
 			downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
+			// console.log(args)
+			downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
 		}
 		else{
 			empIds = empButtons.nodes().map(function(o){ return o.id.replace("eb-","") })

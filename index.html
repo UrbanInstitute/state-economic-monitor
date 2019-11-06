@@ -8,19 +8,22 @@
 <meta name="twitter:creator" content="@urbaninstitute">
 <meta name="twitter:title" content="State Economic Monitor">
 <meta name="twitter:description" content="Track and analyze economic and fiscal trends at the state level.">
-<meta name="twitter:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png">
+<meta name="twitter:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png">
 <meta property="og:title" content="State Economic Monitor" />
 <meta property="og:description" content="Track and analyze economic and fiscal trends at the state level." />
-<meta property="og:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png" />
+<meta property="og:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png" />
 <meta property="og:image:type" content="image/png">
 <meta property="og:url" content="https://urbn.is/sem">
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
 <script type="application/ld+json">
 {
-	"@context": "http://schema.org",
+	"@context": "https://schema.org",
 	"@type": "NewsArticle",
 	"headline": "State Economic Monitor",
 	"url": "https://apps.urban.org/features/state-economic-monitor/",
-	"thumbnailUrl": "http://apps.urban.org/features/state-economic-monitor/img/social.png",
+	"thumbnailUrl": "https://apps.urban.org/features/state-economic-monitor/img/social.png",
 	"dateCreated": "2019-11-13T05:00:00.000Z",
 	"articleSection": "Interactive Feature",
 	"creator": [" Richard Auxier","Aravind Boddupalli","Erin Huffer","Kim Rueben","Christina Baird","Ben Chartoff","Michael Marazzi","Emily Peiffer"],
@@ -47,6 +50,8 @@
 <div class = "widthTester w900"></div>
 <div class = "widthTester w768"></div>
 <div class = "widthTester w600"></div>
+<div class = "widthTester w500"></div>
+<div class = "widthTester w400"></div>
 
 
 
@@ -306,9 +311,19 @@
 
 				<div id = "mapContainer">
 <!-- START CHART BUTTONS -->
+
 					<div id = "chartButtonContainer">
+
+						<div id = "mobileStates">
+							<div id = "mobileStateHeader">Selected states</div>
+							<div id = "mobileStateIndicator"></div>
+							<div id = "mobileStateDate"></div>
+						</div>
 						<div class = "sourceLine"></div>
 						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
+
+
+
 						<div class = "chartButton saveImage bar">Save chart</div>
 						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
