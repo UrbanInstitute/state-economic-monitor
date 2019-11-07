@@ -183,6 +183,7 @@ function downloadZipFile(slugs){
   type: "blob"
   })
   .then(function(blob) {
+
     saveAs(blob, "employment_select_indicators.zip");
   });
   })

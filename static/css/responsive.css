@@ -6,7 +6,7 @@
 	height: 0px;
 	width: 0px;
 }
-.menuSpacer, .mobileMenuArrow, #mobileHiglightsTitle, #mobileStates{
+.menuSpacer, .mobileMenuArrow, #mobileHiglightsTitle, #mobileStates, #menu-mobile-close{
 	display: none;
 }
 @media(max-width: 1200px){
@@ -31,7 +31,7 @@
     	position: relative;
     }
     #multiYearContainer{
-    	margin-left: 20px;
+    	margin-left: 40px;
     }
     #multiYearContainer.active{
     	margin-left: 0px;
@@ -210,18 +210,27 @@
 	#mapContainer {
  	   left: 20px;
  	   top: -20px;
+ 	   margin-left: 0px;
 	}
 	.singleYear.tooltip{
 		display: none;
 	}
 	.shareTooltip {
-		top: 11px;
-		left: calc(50% - 150px);
-		width: 300px;
+	    top: 11px;
+	    left: -10px;
+	    position: absolute;
+	    width: 260px;
+	    bottom: 160px;
+	    top: auto;
 	}
+	.shareTooltip .shareText {
+    	border: 1px solid #d2d2d2;
+    	width: 140px;
+    }
 	#chartButtonContainer{
 		width: calc(100% - 40px);
     	white-space: normal;
+    	margin-left: 0px;
 	}
 	#sectionNames{
 		margin-top: -40px;
@@ -233,7 +242,6 @@
 	}
 	.sectionName{
 	    width: 100%;
-	    max-width: 500px;
 	    border-bottom: 1px solid #d2d2d2;
 	    padding-bottom: 10px;
 	    padding-top: 10px;
@@ -261,21 +269,19 @@
 	}
 	.menuBlock{
 		margin: 0 auto;
-		max-width: 500px;
-		width: calc(100% - 70px);
-		left: calc(50% - 290px) !important;
+		width: calc(100% - 80px);
 	}
 	.menuBlock{
-		left: calc(50% - 290px) !important;	
+		left: 0px !important;	
 	}
 	.menuBlock.fullScreen{
 		left: 0px !important;
 	}
 	#unitCheckboxes, #hideUS, .clearSelections.outside{
-		left: calc(50% - 274px) !important;	
+		left: 17px !important;	
 	}
 	.categoryMenu.menuBlock {
-	    width: calc(100% - 70px);
+	    width: calc(100% - 80px);
 	    top: -90px;
 	}
 	.menuTop.open{
@@ -312,7 +318,7 @@
 		margin-left: 0px;
 		z-index: 2;
 		display: block;
-		top: 24px;
+		top: 44px;
 	}
 	.timeMenu.menuBlock{
 		left: 0px;
@@ -321,24 +327,24 @@
 	    width: 100%;
 	}
 	.timeMenu.menuBlock{
-		top: 136px
+		top: 176px
 	}
 	.timeMenu .menuTop {
 	    margin-left: auto;
-	    width: auto;
+	    width: 100%;
 	}
 	#hideUs {
-    	top: 92px;
+    	top: 112px;
     }
 	.clearSelections.outside {
-    	top: 111px;
+    	top: 131px;
     }
 	.clearSelections.outside, #hideUS {
     	left: 17px;
 	}
 
 	#chartAreaContainer{
-		margin-top: 65px;
+		margin-top: 125px;
 	}
 	#chartUnits{
 	    display: block;
@@ -485,7 +491,9 @@
 	}
 	#mobileStates{
 		display: block;
-		margin-bottom: 30px;
+    	margin-bottom: 60px;
+    	margin-top: -30px;
+
 	}
 	#mobileStateHeader{
 	    font-size: 21px;
@@ -497,13 +505,45 @@
 		display: inline-block;
 	}
 	.mobileState{
-	    font-size: 16px;
-	    margin-top: 4px;
-	    color: #1696d2;
-	    font-weight: bold;
+    font-size: 16px;
+    margin-top: 4px;
+    color: #1696d2;
+    font-weight: bold;
+    border-bottom: 3px solid #fdbf11;
+    width: fit-content;
+    color: black;
+    padding-bottom: 3px;
+	}
+	.mobileState_US{
+		display: none;
 	}
 
+	.stateShape.clicked{
+	  fill: #fdbf11 !important;
+	  stroke: none !important;
+	}
 
+	rect.bar.clicked{
+	  fill: #fdbf11 !important;
+	  stroke: #fdbf11 !important;
+	  outline-color: transparent !important;
+	}
+	.pu-checkText {
+	    font-size: 16px;
+	    color: #353535;
+	    display: inline-block;
+	    position: relative;
+		width: 230px;
+	    top: 6px;
+	}
+	.pu-buttonRow .pu-smallButton {
+	    display: block;
+	    margin-right: 20px;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    text-align: center;
+	    max-width: 200px;
+	}
 }
 @media(max-width: 590px){
 	.menuBlock, #unitCheckboxes, #hideUS, .clearSelections.outside{
@@ -536,26 +576,11 @@
 	    top: -67px;
 	    clear: both;
 	}
-	.pu-buttonRow .pu-smallButton {
-	    display: block;
-	    margin-right: 20px;
-	    margin-top: 20px;
-	    margin-bottom: 20px;
-	    text-align: center;
-	    max-width: 200px;
-	}
+
 	.pu-bigButton.imgDownload {
 	    float: left;
 	}
-	.pu-checkText {
-	    font-size: 16px;
-	    color: #353535;
-	    display: inline-block;
-	    position: relative;
-		width: 230px;
-	    top: 6px;
 
-	}
 	.pu-buttonRow{
 		margin-bottom: 60px;
 	}
@@ -564,9 +589,7 @@
 	    padding-left: calc(50% - 150px) !important;
 	    padding-right: calc(50% - 150px) !important;
 	}
-	.shareTooltip {
-		top: 21px;
-	}
+
 
 
 .tt-change{

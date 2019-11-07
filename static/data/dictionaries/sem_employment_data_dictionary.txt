@@ -73,7 +73,7 @@ Notes: No data are available for the District of Columbia, Missouri, and Hawaii.
 
 
  
-Note: Data are seasonally adjusted to remove regularly occurring fluctuations (such as from weather or holidays) to better reflect nonseasonal trends and irregular changes in employment. For more on the Bureau of Labor Statistics’ adjustments, please see “Seasonal Adjustment Files and Documentation” (https://www.bls.gov/web/empsit/cesseasadj.htm) on its website.
+Note: Data are seasonally adjusted to remove regularly occurring fluctuations (such as from weather or holidays) to better reflect nonseasonal trends and irregular changes in employment. For more on the Bureau of Labor Statistics' adjustments, please see "Seasonal Adjustment Files and Documentation" (https://www.bls.gov/web/empsit/cesseasadj.htm) on its website.
 
 
 

@@ -281,6 +281,7 @@ function closeMenus(exception){
 		d3.select(".timeMenu.menuBlock")
 			.style("border-left", "none")
 			.style("border-right", "none")
+		d3.select("#menu-mobile-close").style("display","none")
 	}
 	if(exception != "shareChart"){
 		d3.selectAll(".shareTooltip").classed("hidden", true)
@@ -1148,7 +1149,8 @@ function buildCards(cardData, isDefault){
 			d3.selectAll(".card").classed("selected", false)
 			d3.select(this).classed("selected", true)
 
-			$("html, body").animate({ scrollTop: $('#sectionNames').offset().top - 20 }, 1000);
+			var scrollToSelector = (widthUnder(768)) ? "#chartAreaContainer" : "#sectionNames"
+			$("html, body").animate({ scrollTop: $(scrollToSelector).offset().top - 20 }, 1000);
 
 			var copy = JSON.parse(JSON.stringify(d))
 			var params = ["indicator", "startDate", "endDate", "unit", "states"]
@@ -1521,11 +1523,12 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 	//TO BE UPDATED, abstract out to new function
 		var width = getMapWidth(),
 			height = .6 * width,
-			svgWidth = (widthUnder(400) ? width + 50 : width)
+			svgWidth = widthUnder(400) ? width + 50 : width;
+			mapContainerWidth = (widthUnder(768)) ? ( (widthUnder(400) ? (width + 50) + "px" : (width + 50) + "px") ) : (width + 40) + "px";
 	//end update
 
 		var svg = d3.select("#mapContainer")
-			.style("width", svgWidth + "px")
+			.style("width", mapContainerWidth )
 			.insert("svg", "#chartButtonContainer")
 				.attr("width", svgWidth)
 				.attr("height", height)
@@ -1775,7 +1778,23 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("class", "imgTitle imgMapHide")
 			.attr("y",20)
 			.attr("x",10)
-			.text(indicatorNames[params.indicator])
+			.text(function(){
+					var params = getParams(),
+						indicator = params.indicator,
+						lastDate = params.lastDate,
+						firstDate = params.firstDate,
+						firstYear = +(firstDate.split("-")[0]),
+						firstMonth = +(firstDate.split("-")[1]),
+						lastYear = +lastDate.split("-")[0],
+						lastMonth = +lastDate.split("-")[1]
+
+					if(isQuarterly(indicator)){
+						return indicatorNames[indicator] + ",  Q" + ((lastMonth-1)/3 + 1) + " " + lastYear
+					}else{
+						return indicatorNames[indicator] + ", " + monthFull[lastMonth - 1] + " " + lastYear
+					}
+					
+				})
 		title.append("tspan")
 			.attr("class", "imgSubtitle")
 			.attr("dx", 10)
@@ -2091,6 +2110,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("transform", "translate(0," + height + ")")
 		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType)))
 		.selectAll("text").text(function(d, i){
+			console.log(containerType, getLineXTickCount(containerType))
 			var md = moment(d)
 			if(isQuarterly(indicator)){
 				return "Q" + (md.month()/3 + 1) + " " + md.year()
@@ -2121,14 +2141,32 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 					(d.values)
 			})
 
+	var labelYPositions = []
+	var labelHeight = 14
 	var stateLabel = g.selectAll(".stateLabel")
 		.data(data, function(d) { return d.key; })
 		.enter()
 		.append("g")
 		.attr("class", function(d){ return d.key + " stateLabel" })
-		.attr("transform", function(d){
-			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0]
-			return "translate(" + (width + 1) + "," + (y(dLast[key])+4) + ")"
+		.sort(function(a, b){
+			var aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
+			var bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
+			return y(aLast[key]) - y(bLast[key])
+		})
+		.attr("transform", function(d,i){
+			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
+				yPosition = y(dLast[key])+4
+			if(i == 0){
+				labelYPositions.push(yPosition)
+			}else{
+				if(labelYPositions[i-1] + 14 >= yPosition){
+					yPosition = labelYPositions[i-1] + labelHeight
+				}
+				labelYPositions.push(yPosition)
+
+			
+			}
+			return "translate(" + (width + 1) + "," + yPosition + ")"
 		})
 
 	stateLabel.append("rect")
@@ -2235,7 +2273,7 @@ function getLineH(){
 function getLineXTickCount(containerType){
 	if(containerType == "hide"){
 		console.log("foo")
-		return 30
+		return 12
 	}else{
 		if(widthUnder(1200)){
 			return 8
@@ -2613,6 +2651,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.style("opacity",0)
 		.remove()
 
+	var labelYPositions = []
 	var stateLabel = stateLabels
 		.enter()
 		.insert("g", ".stateLabel")
@@ -2621,12 +2660,32 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 			clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
 			return d.key + " stateLabel" + clickedClass
 		})
+	stateLabel.sort(function(a, b){
+		var aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
+		var bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
+		return y(aLast[key]) - y(bLast[key])
+	})
+	.transition()
+		.attr("transform", function(d,i){
+			// console.log(d,i)
 
-	stateLabel.transition()
-		.attr("transform", function(d){
-			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0]
-			return "translate(" + (width + 1) + "," + (y(dLast[key])+4) + ")"
+			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
+				yPosition = y(dLast[key])+4
+			if(i == 0){
+				labelYPositions.push(yPosition)
+			}else{
+				if(labelYPositions[i-1] + 14 >= yPosition){
+					yPosition = labelYPositions[i-1] + 14
+				}
+				labelYPositions.push(yPosition)
+
+			
+			}
+			return "translate(" + (width + 1) + "," + yPosition + ")"
 		})
+
+	stateLabel.selectAll("rect").remove()
+	stateLabel.selectAll("text").remove()
 
 	stateLabel.append("rect")
 		.attr("x",-1)
@@ -3090,7 +3149,7 @@ function popUp(selector){
 
 		var activeButton = d3.select(".pu-ButtonRow .pu-smallButton.active")
 		
-		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1}
+		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".imgHidden").classed("imgHidden", false)
 
@@ -3161,7 +3220,7 @@ function initControls(){
 				var key = this.id.split("mt-")[1]
 				closeMenus(key)
 
-				var newImage = (widthUnder(768)) ? "static/img/closeIcon.png" : "static/img/dropdown-bg-active.png"
+				var newImage = (widthUnder(768)) ? "static/img/none.png" : "static/img/dropdown-bg-active.png"
 
 				d3.select(this).select(".menuArrow").attr("src", newImage)
 
@@ -3170,6 +3229,7 @@ function initControls(){
 				}
 
 				if(widthUnder(768)){
+					d3.select("#menu-mobile-close").style("display","block")
 					d3.select(this.parentNode)
 						.classed("fullScreen",true)
 					if(key == "time"){
@@ -3321,7 +3381,7 @@ function initControls(){
 				}
 				
 				var fileName = getFilename("line", params.indicator, params.unit, "png")
-				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff"});
+				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff", "encoderOptions" : 1, "scale": 4 });
 				d3.select("#lineChartHide").remove()	
 		})
 		
@@ -3368,14 +3428,14 @@ function initControls(){
 	})
 //Save image pop up
 	d3.select(".pu-bigButton.imgDownload")
-		.datum({"backgroundColor": "#ffffff", "encoderOptions": 1})
+		.datum({"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 })
 	d3.selectAll(".pu-smallButton").on("click", function(){
 		d3.event.stopPropagation();
 		
 		var d3This = d3.select(this)
 		if(d3This.classed("active")) return false
 		
-		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1}
+		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".pu-smallButton").classed("active", false)
 		d3This.classed("active", true)
@@ -3435,6 +3495,7 @@ function initControls(){
 		closePopup("saveImage");
 		d3.select("#hiddenBarChartContainer").selectAll("svg").remove()
 	})
+	d3.select("menu-mobile-close").on("click", function(){ closeMenus("none") })
 
 //Download data pop up
 	d3.selectAll(".pu-dlRow").on("click", function(){
@@ -3474,9 +3535,10 @@ function initControls(){
 							moment(o.date).isBetween(params.startDate, params.endDate, "day", '[]')
 						}
 					})
-
+				var sectionFileName = (getSection(params.indicator) == "gdp") ? "state_gdp" : getSection(params.indicator)
 				var args = makeCSV(data, params.indicator, params.unit, filename)
-				var dictionaryFileName = "sem_" + getSection(params.indicator) + "_data_dictionary.txt"
+				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
+				console.log(dictionaryFileName)
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
 					args["dictionaryText"] = text
 				})
@@ -3549,9 +3611,22 @@ function initControls(){
 	d3.select(".dataDownloadCurrent").on("click", function(args){
 		var empButtons = d3.selectAll(".employmentButton.active")
 		if(empButtons.nodes().length == 0){
-			downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
-			// console.log(args)
-			downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
+			var zip = new JSZip();
+			zip.file(args.filename, args.data, { binary: true, createFolders: true });
+			zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true });
+
+			  zip.generateAsync({
+			  	type: "blob"
+			  })
+			  .then(function(blob) {
+			  	saveAs(blob, args.filename + ".zip");
+			  });
+ 
+
+
+			// downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
+			// // console.log(args)
+			// downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
 		}
 		else{
 			empIds = empButtons.nodes().map(function(o){ return o.id.replace("eb-","") })

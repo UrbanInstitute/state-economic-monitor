@@ -1,7 +1,17 @@
 - cross browser
 
 
+- digimal resomalution?
 
+- remove state label duplicate nodes
+
+- different bar/line button heights?
+- to mobile state list, add us avg
+
+- mobile card click scroll to correct location
+- mobile share tooltip
+
+- remove console logs
 - social share img
 - update sections on resize??
 - tools.pingdom.com
