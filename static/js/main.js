@@ -3546,7 +3546,7 @@ function initControls(){
 				var args = makeCSV(data, params.indicator, params.unit, filename)
 				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
-					args["dictionaryText"] = text.replace(/^([^\r\n]*)[\n|\r]+$/gm, '$1');
+					args["dictionaryText"] = text.replace(/^([^\r\n]*)[\n|\r]+$/gm, '$1foo');
 				})
 
 				args["dictionaryFileName"] = dictionaryFileName
