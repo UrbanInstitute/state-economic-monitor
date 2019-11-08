@@ -1483,53 +1483,86 @@ rect.bar.disabled{
 /**********************************************************************/
 /*************************** FOOTER ***********************************/
 /**********************************************************************/
+
 #footerContainer{
-    width: 100%;
     margin-top: 95px;
+    border-top: 2px solid #0A4C6A;
     background: #0A4C6A;
-    display: table;
 }
-#footerContentContainer{
-    width: 1085px;
+#footerContent{
+    width: 700px;
     margin: 0 auto;
-    margin-top: 70px;
-    display: block;
-    position: relative;
+    color: #fff;
 }
-#footerTopRow{
-	border-bottom: 1px solid #062635;
+#footerContent a{
+    color: #fff;
 }
-#bigLogoContainer{
-	display: inline-block;
-	margin-bottom: 42px;
-}
-#bigLogoContainer img{
-	width: 429px;
-}
-#footerBigLinks{
+.footerHeader{
+    margin-top: 50px;
+    margin-bottom: 8px;
+    font-size: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
     display: inline-block;
-    float: right;
-    top: 54px;
-    position: relative;
 }
-#footerContainer a{
-	text-decoration: none;
-	color: #fff;
+#topFooterHeader{
+    padding-top: 44px;
 }
-.footerBigLink{
-	text-transform: uppercase;
-	font-size: 15px;
-	font-weight: 700;
-	display: inline-block;
-	margin-left: 20px;
+.footerAbout, .footerCredits, .footerSpecialCredit{
+    font-size: 16px;
+    line-height: 26px;
 }
-.footerSmallLink{
-	margin-top: 30px;
-	font-size: 13px;
-	margin-right: 10px;
-	margin-bottom: 75px;
-	display: inline-block;
+.footerCredits, .footerSpecialCredit{
+    font-size: 14px;
+    font-style: italic;
+    line-height: 22px;
 }
+#bottomFooterCredits{
+    margin-bottom: 45px;
+}
+.creditsHeader{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.creditsNames{
+    margin-bottom: 30px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+#copyright{
+    margin-bottom: 100px;
+    display: inline-block;
+}
+#footerContent .button{
+    text-transform: uppercase;
+    width: 198px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 44px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#footerContent .button.bottom{
+    margin-top: 10px;
+}
+#footerContent .button{
+    border: 2px solid #fff;
+    color: #fff;
+    margin-right: 20px;
+    font-weight: normal;
+    display: inline-block;
+}
+.footerButtonLink{
+    text-decoration: none;
+}
+#footerContent .button:hover{
+    background: #000;
+    color: #fff;
+}
+
 
 
 /**********************************************************************/
@@ -1553,6 +1586,7 @@ rect.bar.disabled{
 	font-size: 27px;
 	font-weight: bold;
 	color: #000;
+    margin-bottom: 40px;
 }
 .aboutTopText{
 	font-size: 19px;

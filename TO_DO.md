@@ -1,24 +1,20 @@
 - cross browser
 
 
-- digimal resomalution?
-
-- remove state label duplicate nodes
+- fix cal pickers
+- footer
 
 - different bar/line button heights?
 - to mobile state list, add us avg
 
-- mobile card click scroll to correct location
-- mobile share tooltip
-
 - remove console logs
 - social share img
-- update sections on resize??
+- update sections on resize??	
 - tools.pingdom.com
 - GA
 - GTM
 - Parse.ly
-
+- github link
 
 Launch:
 redirect all SEM pages to home page

@@ -132,6 +132,18 @@
 	.widthTester.w768{
 		display: block;
 	}
+	#footerContainer{
+		width: calc(100% - 30px);
+		margin: 0 auto;
+	}
+	#footerContent {
+		width: calc(100% - 80px);
+    	left: 40px;
+	}
+	#topFooterHeader {
+		padding-top: 0px;
+	}
+
 	#contentContainer.aboutContainer{
 		width: calc(100% - 40px);
 		margin-left: 20px;
