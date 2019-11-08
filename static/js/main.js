@@ -630,18 +630,19 @@ function buildLineDateMenu(startDate, endDate, menu){
 				var params = getParams(),
 					firstYear = +params.firstDate.split("-")[0],
 					lastYear = +params.lastDate.split("-")[0],
-					inputYear = this.value,
+					inputYear = +this.value,
 					containerYear = d3.select(this.parentNode).attr("data-year"),
-					displayedYears = d3.selectAll(".calendarYearContainer.active").nodes().map(function(o){
+					displayedYears = d3.select(this.parentNode.parentNode).selectAll(".calendarYearContainer.active").nodes().map(function(o){
 						// console.log(o)
 						return d3.select(o).attr("data-year")
 					}),
 					displayedIndex = displayedYears.indexOf(containerYear)
 
-					console.log(displayedIndex)
+					var thisInd = this;
+					// console.log(inputYear, firstYear, lastYear)
 
 				if(inputYear >= firstYear && inputYear <= lastYear){
-					// console.log(inputYear)
+					console.log("a", thisInd)
 					var startLeft, endLeft;
 					if(inputYear == containerYear){
 						return false;
@@ -673,6 +674,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 							else if(displayedIndex == 2 || (+inputYear == +lastYear) || (+inputYear == +lastYear-1 && displayedIndex == 0)){
 								newYears = [+inputYear-2, +inputYear-1, +inputYear, +inputYear+1]	
 							}else{
+								console.log(displayedIndex, inputYear, lastYear, firstYear)
 								return false
 							}
 
@@ -685,8 +687,12 @@ function buildLineDateMenu(startDate, endDate, menu){
 								}
 							}
 
-							d3.select(this).attr("value", containerYear)
-							d3.select(this).property("value", containerYear)
+							console.log(thisInd)
+							// console.log(d3.select(this).select("input").node(), thisInd)
+
+							// d3.select(this).select("input").node().blur()
+							thisInd.blur()
+							// this.blur()
 
 						})
 				}
@@ -3538,9 +3544,8 @@ function initControls(){
 				var sectionFileName = (getSection(params.indicator) == "gdp") ? "state_gdp" : getSection(params.indicator)
 				var args = makeCSV(data, params.indicator, params.unit, filename)
 				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
-				console.log(dictionaryFileName)
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
-					args["dictionaryText"] = text
+					args["dictionaryText"] = text.replace(/^(.*?)[\n|\r]+$/g, '\1\r\n');
 				})
 
 				args["dictionaryFileName"] = dictionaryFileName
