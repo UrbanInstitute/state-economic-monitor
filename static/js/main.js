@@ -2279,7 +2279,6 @@ function getLineH(){
 }
 function getLineXTickCount(containerType){
 	if(containerType == "hide"){
-		console.log("foo")
 		return 12
 	}else{
 		if(widthUnder(1200)){
@@ -3546,7 +3545,12 @@ function initControls(){
 				var args = makeCSV(data, params.indicator, params.unit, filename)
 				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
-					args["dictionaryText"] = text.replace(/^([^\r\n]*)[\n|\r]+$/gm, '$1foo');
+					if(getOS() == 'Windows'){
+						args["dictionaryText"] = text.replace(/^([^\r\n]*)[\n|\r]+$/gm, '$1\r\n');	
+					}else{
+						args["dictionaryText"] = text
+					}
+					
 				})
 
 				args["dictionaryFileName"] = dictionaryFileName
