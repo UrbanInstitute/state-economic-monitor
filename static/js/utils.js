@@ -210,7 +210,8 @@ function downloadZipFile(slugs){
       httpRequest.open("GET", url);
       httpRequest.onload = function() {
         var filename = url.replace(/.*\//g, "");
-        zip.file(filename, this.responseText, { binary: true, createFolders: true });
+        var responseText = (getOS() == "Windows") ? this.responseText.replace(/\n/g,'\r\n') : this.responseText
+        zip.file(filename, responseText, { binary: true, createFolders: true, binary: true });
         resolve()
       }
       httpRequest.send()
