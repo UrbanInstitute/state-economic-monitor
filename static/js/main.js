@@ -3618,8 +3618,8 @@ function initControls(){
 		var empButtons = d3.selectAll(".employmentButton.active")
 		if(empButtons.nodes().length == 0){
 			var zip = new JSZip();
-			zip.file(args.filename, args.data, { binary: true, createFolders: true });
-			zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true });
+			zip.file(args.filename, args.data, { binary: true, createFolders: true, binary: true });
+			zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true, binary: true});
 
 			  zip.generateAsync({
 			  	type: "blob"
@@ -3764,6 +3764,11 @@ function init(allData, topojsonData, stateNamesData){
 	highlightStates(states)
 
 	updateIndicator(indicator, unit)
+
+	if(IS_IE()){
+		d3.select("#chartAreaContainer").style("overflow-y", "hidden")
+		d3.selectAll(".card").style("height","230px")
+	}
 }
 
 d3.json(pathPrefix + "static/data/figures/data.json").then(function(allData){
