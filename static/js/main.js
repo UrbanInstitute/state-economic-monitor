@@ -2712,40 +2712,77 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.style("opacity",0)
 		.remove()
 
-	lines.enter()
-		.insert("path", ".state.line")
-		.merge(lines)
-			.attr("class",function(d){
-				clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
-				return d.key + " state line" + clickedClass
-			})
-			.attr("clip-path", "url(#lineClippingPath)")
-			.attr("d", function(d, i){
-				var isNew = (oldStates.indexOf(d.key) == -1)
-				if(isNew){
-					return d3.line()
-						.x(0)
-						.y(function(d) { return y(+d[key]); })
-						(d.values)
-				}else{
-					return d3.select(this).attr("d")
-				}
-			})
-			.transition()
-				.duration(800)
-				.attrTween('d', function (d) {
-					var previous = d3.select(this).attr('d');
+	if(IS_IE()){
+		lines.enter()
+			.insert("path", ".state.line")
+			.merge(lines)
+				.attr("class",function(d){
+					clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
+					return d.key + " state line" + clickedClass
+				})
+				.attr("clip-path", "url(#lineClippingPath)")
+				.attr("d", function(d, i){
+					var isNew = (oldStates.indexOf(d.key) == -1)
+					if(isNew){
+						return d3.line()
+							.x(0)
+							.y(function(d) { return y(+d[key]); })
+							(d.values)
+					}else{
+						return d3.select(this).attr("d")
+					}
+				})
+				.transition()
+					.duration(800)
+					.attr('d', function (d) {
+						var previous = d3.select(this).attr('d');
 
-					var current = d3.line()
-						.x(function(d) {
-							return x(parseTime()(d.date));
-						})
-						.y(function(d) {
-							return y(+d[key]);
-						})(d.values)
+						var current = d3.line()
+							.x(function(d) {
+								return x(parseTime()(d.date));
+							})
+							.y(function(d) {
+								return y(+d[key]);
+							})(d.values)
 
-					return d3.interpolatePath(previous, current);
-				});
+						return current;
+					});
+	}else{
+		lines.enter()
+			.insert("path", ".state.line")
+			.merge(lines)
+				.attr("class",function(d){
+					clickedClass = (oldClicked.indexOf(d.key) == -1) ? "" : " clicked"
+					return d.key + " state line" + clickedClass
+				})
+				.attr("clip-path", "url(#lineClippingPath)")
+				.attr("d", function(d, i){
+					var isNew = (oldStates.indexOf(d.key) == -1)
+					if(isNew){
+						return d3.line()
+							.x(0)
+							.y(function(d) { return y(+d[key]); })
+							(d.values)
+					}else{
+						return d3.select(this).attr("d")
+					}
+				})
+				.transition()
+					.duration(800)
+					.attrTween('d', function (d) {
+						var previous = d3.select(this).attr('d');
+
+						var current = d3.line()
+							.x(function(d) {
+								return x(parseTime()(d.date));
+							})
+							.y(function(d) {
+								return y(+d[key]);
+							})(d.values)
+
+						return d3.interpolatePath(previous, current);
+					});
+		}
 
 	d3.select(".line.axis.x")
 		.transition()
