@@ -34,8 +34,8 @@ function setParams(params){
 		d3.select("#paramData").data([ params ])
 	}else{
 		var d = d3.select("#paramData").data()[0]
-		const keys = Object.keys(params)
-		for (const key of keys) {
+		var keys = Object.keys(params)
+		for (var key of keys) {
 			if (key != "text") d[key] = params[key]
 		}
 		d3.select("#paramData").data([d])
