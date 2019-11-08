@@ -3621,22 +3621,22 @@ function initControls(){
 	d3.select(".dataDownloadCurrent").on("click", function(args){
 		var empButtons = d3.selectAll(".employmentButton.active")
 		if(empButtons.nodes().length == 0){
-			// var zip = new JSZip();
-			// zip.file(args.filename, args.data, { binary: true, createFolders: true, binary: true });
-			// zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true, binary: true});
+			var zip = new JSZip();
+			zip.file(args.filename, args.data, { binary: true, createFolders: true, binary: true });
+			zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true, binary: true});
 
-			//   zip.generateAsync({
-			//   	type: "blob"
-			//   })
-			//   .then(function(blob) {
-			//   	saveAs(blob, args.filename + ".zip");
-			//   });
+			  zip.generateAsync({
+			  	type: "blob"
+			  })
+			  .then(function(blob) {
+			  	saveAs(blob, args.filename + ".zip");
+			  });
  
 
 
 			// downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
 			// // console.log(args)
-			downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
+			// downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
 		}
 		else{
 			empIds = empButtons.nodes().map(function(o){ return o.id.replace("eb-","") })
