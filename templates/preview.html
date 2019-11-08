@@ -8,19 +8,22 @@
 <meta name="twitter:creator" content="@urbaninstitute">
 <meta name="twitter:title" content="State Economic Monitor">
 <meta name="twitter:description" content="Track and analyze economic and fiscal trends at the state level.">
-<meta name="twitter:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png">
+<meta name="twitter:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png">
 <meta property="og:title" content="State Economic Monitor" />
 <meta property="og:description" content="Track and analyze economic and fiscal trends at the state level." />
-<meta property="og:image" content="http://apps.urban.org/features/state-economic-monitor/img/social.png" />
+<meta property="og:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png" />
 <meta property="og:image:type" content="image/png">
 <meta property="og:url" content="https://urbn.is/sem">
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
 <script type="application/ld+json">
 {
-	"@context": "http://schema.org",
+	"@context": "https://schema.org",
 	"@type": "NewsArticle",
 	"headline": "State Economic Monitor",
 	"url": "https://apps.urban.org/features/state-economic-monitor/",
-	"thumbnailUrl": "http://apps.urban.org/features/state-economic-monitor/img/social.png",
+	"thumbnailUrl": "https://apps.urban.org/features/state-economic-monitor/img/social.png",
 	"dateCreated": "2019-11-13T05:00:00.000Z",
 	"articleSection": "Interactive Feature",
 	"creator": [" Richard Auxier","Aravind Boddupalli","Erin Huffer","Kim Rueben","Christina Baird","Ben Chartoff","Michael Marazzi","Emily Peiffer"],
@@ -47,6 +50,10 @@
 <div class = "widthTester w900"></div>
 <div class = "widthTester w768"></div>
 <div class = "widthTester w600"></div>
+<div class = "widthTester w500"></div>
+<div class = "widthTester w400"></div>
+
+<img id = "menu-mobile-close" src = "static/img/closeIcon.png">
 
 
 
@@ -59,6 +66,7 @@
 	<div class = "cacheRefresh">This is a preview version of the SEM, not for sharing or public consumption. If you are not seeing your data update, try <a href = "https://www.refreshyourcache.com/en/home/" target = "_blank">clearing your browser cache</a></div>
 	<div id = "mobileHiglightsTitle">Highlights</div>
 	<div id = "lastUpdatedContainer">Last updated <span id = "lastUpdated">&hellip;</span></div>
+
 
 
 	<a href="mailto:%20?Subject=New Urban Institute tool&amp;Body=Hi! I thought you'd be interested in this new tool from the Urban Institute: &ldquo;State Economic Monitor&rdquo; https://urbn.is/sem" target="_blank" class="addthis_button_twitter at300b" title="Email">
@@ -307,9 +315,19 @@
 
 				<div id = "mapContainer">
 <!-- START CHART BUTTONS -->
+
 					<div id = "chartButtonContainer">
+
+						<div id = "mobileStates">
+							<div id = "mobileStateHeader">Selected states</div>
+							<div id = "mobileStateIndicator"></div>
+							<div id = "mobileStateDate"></div>
+						</div>
 						<div class = "sourceLine"></div>
 						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
+
+
+
 						<div class = "chartButton saveImage bar">Save chart</div>
 						<div class = "chartButton shareURL">Share chart</div>
 						<div class = "chartButton downloadData">Download data</div>
@@ -346,26 +364,49 @@
 <!-- END CHART AREA -->
 </div>
 <!-- END MAIN CONTENT -->
-<!-- START FOOTER -->
-<div id = "footerContainer">
-	<div id = "footerContentContainer">
-		<div id = "footerTopRow">
-			<div id = "bigLogoContainer">
-				<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/bigLogo.png"/></a>
-			</div>
-			<div id = "footerBigLinks">
-				<div class = footerBigLink><a href = "about.html" target = "_blank">About</a></div>
-				<div class = footerBigLink><a href = "https://www.urban.org/aboutus/who-we-are/contact-us" target = "_blank">Contact us</a></div>
-			</div>
-		</div>
-		<div id = "footerBottomRow">
-			<div class = footerSmallLink><a href = "https://www.urban.org/privacy-policy" target = "_blank">Privacy</a></div>
-			<div class = footerSmallLink><a href = "https://www.urban.org/terms-service" target = "_blank">Terms of Service</a></div>
-		</div>
-	</div>
 
-</div>
-<!-- END FOOTER -->
+
+
+  <!-- START FOOTER -->
+  <div id = "footerContainer">
+    <div id = "footerContent">
+
+      <div class = "footerHeader" id = "topFooterHeader">About the State Economic Monitor</div>
+
+
+
+      <p class = "footerAbout">The State Economic Monitor, created by the Urban Institute&rsquo;s State and Local Finance Initiative, tracks and analyzes economic and fiscal trends at the state level. Its interactive graphics highlight differences across all 50 states and the District of Columbia in employment, earnings, housing, and state GDP.</p>
+      
+      <p class = "footerAbout">The <a href = "https://www.urban.org/policy-centers/cross-center-initiatives/state-and-local-finance-initiative" target = "_blank">State and Local Finance Initiative</a> is an Urban Institute project in the <a href = "https://www.taxpolicycenter.org/" target = "_blank">Urban-Brookings Tax Policy Center</a>.</p>
+
+	   <a href = "about.html" class = "footerButtonLink" target = "_blank"><div class = "button">Data and sources</div></a>
+	   <a href = "" class = "footerButtonLink"><div class = "button">Contact us</div></a>
+
+
+      <div class = "footerHeader">PROJECT CREDITS</div>
+      <p class = "footerCredits">This project was funded by Arnold Ventures and other funders. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/aboutus/our-funding/funding-principles" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</p>
+
+
+      <div class = "creditsHeader">RESEARCH</div>
+      <div class = "creditsNames"><a href = "https://www.urban.org/author/richard-c-auxier" target = "_blank">Richard Auxier</a>, <a href = "https://www.urban.org/author/aravind-boddupalli" target = "_blank">Aravind Boddupalli</a>, <a href = "https://www.urban.org/author/erin-huffer" target = "_blank">Erin Huffer</a>, and <a href = "https://www.urban.org/author/kim-s-rueben" target = "_blank">Kim Rueben</a></div>
+
+      <div class = "creditsHeader">DESIGN</div>
+      <div class = "creditsNames">Christina Baird</div>
+
+      <div class = "creditsHeader">DEVELOPMENT</div>
+      <div class = "creditsNames">Ben Chartoff</div>
+
+      <div class = "creditsHeader">EDITING</div>
+      <div class = "creditsNames">Michael Marazzi</div>
+
+      <div class = "creditsHeader">WRITING</div>
+      <div class = "creditsNames">Emily Peiffer</div>
+
+      <div id = "copyright"><a href = "" target = "_blank">View this project on GitHub</a>.</div>
+
+    </div>
+  </div>
+  <!-- END FOOTER -->
 
 <!-- START POP UPS -->
 <div class = "popupScreen"></div>
@@ -468,6 +509,7 @@
 
 <script src="static/js/vendor/es6-promise.min.js"></script>
 <script src="static/js/vendor/es6-promise.auto.min.js"></script> 
+<script src="static/js/vendor/fetch.min.js"></script> 
 
 <script src = "static/js/vendor/filesaver.min.js"></script>
 <script src = "static/js/vendor/jszip.min.js"></script>
