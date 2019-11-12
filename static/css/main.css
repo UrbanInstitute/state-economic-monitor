@@ -175,7 +175,7 @@ select{
 }
 .card{
 	width: 264px;
-    width: 264px;
+    height: 230px;
     margin-right: 14px;
     height: 100%;
     display: inline-block;
@@ -437,6 +437,7 @@ select{
     background-color: #D2D2D2;
     color: #696969;
     cursor: pointer;
+    white-space: nowrap;
 }
 .timeTypeContainer img{
 	width: 20px;
@@ -1098,7 +1099,7 @@ rect.bar.disabled{
     color: #1696d2;
 }
 .notesLine{
-    font-size: 12px;
+    font-size: 12px !important;
     top: -7px;
     position: relative;
     margin-bottom: 10px;

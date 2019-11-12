@@ -133,7 +133,7 @@
 		display: block;
 	}
 	#footerContainer{
-		width: calc(100% - 30px);
+		width: 100%;
 		margin: 0 auto;
 	}
 	#footerContent {
@@ -397,7 +397,7 @@
 	    right: auto;
 	    text-align: left;
     }
-    .multiYear.tt-top-row.mouseover, .multiYear.tt-value.hide, .multiYear.tt-states, .multiYear.tt-indicator{
+    .multiYear.tt-top-row.mouseover, .multiYear.tt-value.hide, .multiYear.tt-states, .multiYear.tt-indicator, .multiYear.tt-date.range{
     	display: none;
     }
     .chartButton {
@@ -484,13 +484,13 @@
     .calendarArrow.right {
 	    margin-left: 10px;
 	    position: fixed;
-	    top: 110px;
+	    top: 280px;
 	    right: 10px;
 	}
     .calendarArrow.left {
 	    margin-left: 10px;
 	    position: fixed;
-	    top: 110px;
+	    top: 280px;
 	    left: 0px;
 	}
 	.calendarFrame{
