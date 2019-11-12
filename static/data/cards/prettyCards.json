@@ -10,6 +10,16 @@
         "unit": "raw"
     },
     {
+        "endDate": "2019-04-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "Hawaii\u2019s 2.6% year-over-year increase in GDP was the largest of any state.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-09-01",
         "indicator": "weekly_earnings",
         "states": [
@@ -19,17 +29,6 @@
         ],
         "text": "September average weekly earnings ranged from Mississippi's $755 to Washington\u2019s $1,198.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2019-04-01",
-        "indicator": "state_gdp",
-        "startDate": "2012-01-01",
-        "states": [
-            "US",
-            "DE"
-        ],
-        "text": "Delaware's GDP growth rate fell below the nation's growth rate for the first time since Q1 2012.",
-        "unit": "change"
     },
     {
         "endDate": "2019-04-01",
@@ -44,12 +43,13 @@
     },
     {
         "endDate": "2019-09-01",
-        "indicator": "state_and_local_public_education_employment",
+        "indicator": "total_employment",
+        "startDate": "2012-01-01",
         "states": [
             "US",
-            "NV"
+            "KS"
         ],
-        "text": "Nevada's 4.6% year-over-year increase in public education employment was the largest of any state.",
+        "text": "Kansas\u2019s job growth in September was greater than the US average for the first time since 2012.",
         "unit": "change"
     },
     {
@@ -65,34 +65,33 @@
     },
     {
         "endDate": "2019-09-01",
+        "indicator": "state_and_local_public_education_employment",
+        "states": [
+            "US",
+            "NV"
+        ],
+        "text": "Nevada's 4.6% year-over-year increase in public education employment was the largest of any state.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-04-01",
+        "indicator": "state_gdp",
+        "startDate": "2012-01-01",
+        "states": [
+            "US",
+            "DE"
+        ],
+        "text": "Delaware's GDP growth rate fell below the nation's growth rate for the first time since Q1 2012.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
         "indicator": "private_employment",
         "states": [
             "US",
             "UT"
         ],
         "text": "Utah\u2019s 3.3% year-over-year increase in private employment was the largest of any state.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-04-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "HI"
-        ],
-        "text": "Hawaii\u2019s 2.6% year-over-year increase in GDP was the largest of any state.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-09-01",
-        "indicator": "total_employment",
-        "states": [
-            "US",
-            "ID",
-            "NV",
-            "UT"
-        ],
-        "text": "Idaho, Nevada, and Utah saw the largest year-over-year increases in total employment.",
         "unit": "change"
     },
     {
