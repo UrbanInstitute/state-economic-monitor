@@ -1,20 +1,11 @@
 - cross browser
 
 
-- fix cal pickers
-- footer
 
 - different bar/line button heights?
 - to mobile state list, add us avg
 
-- remove console logs
-- social share img
 - update sections on resize??	
-- tools.pingdom.com
-- GA
-- GTM
-- Parse.ly
-- github link
 
 Launch:
 redirect all SEM pages to home page
