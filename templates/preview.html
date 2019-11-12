@@ -1,0 +1,529 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@urbaninstitute">
+<meta name="twitter:creator" content="@urbaninstitute">
+<meta name="twitter:title" content="State Economic Monitor">
+<meta name="twitter:description" content="Track and analyze economic and fiscal trends at the state level.">
+<meta name="twitter:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png">
+<meta property="og:title" content="State Economic Monitor" />
+<meta property="og:description" content="Track and analyze economic and fiscal trends at the state level." />
+<meta property="og:image" content="https://apps.urban.org/features/state-economic-monitor/img/social.png" />
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://urbn.is/sem">
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"headline": "State Economic Monitor",
+	"url": "https://apps.urban.org/features/state-economic-monitor/",
+	"thumbnailUrl": "https://apps.urban.org/features/state-economic-monitor/img/social.png",
+	"dateCreated": "2019-11-13T05:00:00.000Z",
+	"articleSection": "Interactive Feature",
+	"creator": [" Richard Auxier","Aravind Boddupalli","Erin Huffer","Kim Rueben","Christina Baird","Ben Chartoff","Michael Marazzi","Emily Peiffer"],
+	"keywords": ["Finance","Taxes and Budget"]
+}
+</script>
+
+
+<link rel="stylesheet" href="static/css/main.css" type="text/css">
+<link rel="stylesheet" href="static/css/responsive.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="static/css/vendor/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic,900" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id = "chartData"></div>
+<div id = "topojsonData"></div>
+<div id = "paramData"></div>
+<div id = "terminalDatesData"></div>
+<div id = "stateNamesData"></div>
+<div id = "isTransitioning"></div>
+
+<div class = "widthTester w1200"></div>
+<div class = "widthTester w1085"></div>
+<div class = "widthTester w900"></div>
+<div class = "widthTester w768"></div>
+<div class = "widthTester w600"></div>
+<div class = "widthTester w500"></div>
+<div class = "widthTester w400"></div>
+
+<img id = "menu-mobile-close" src = "static/img/closeIcon.png">
+
+
+
+<!-- START HEADER -->
+<div id = "headerContainer" class = "headerPreview">
+	<div id = "headerLogo">
+		<a href = "https://www.urban.org/" target = "_blank"><img src = "static/img/logo.png"/></a>
+	</div>
+	<div id = "headerTitle">State Economic Monitor :: Preview</div>
+	<div class = "cacheRefresh">This is a preview version of the SEM, not for sharing or public consumption. If you are not seeing your data update, try <a href = "https://www.refreshyourcache.com/en/home/" target = "_blank">clearing your browser cache</a></div>
+	<div id = "mobileHiglightsTitle">Highlights</div>
+	<div id = "lastUpdatedContainer">Last updated <span id = "lastUpdated">&hellip;</span></div>
+
+
+
+	<a href="mailto:%20?Subject=New Urban Institute tool&amp;Body=Hi! I thought you'd be interested in this new tool from the Urban Institute: &ldquo;State Economic Monitor&rdquo; https://urbn.is/sem" target="_blank" class="addthis_button_twitter at300b" title="Email">
+	<div id = "headerEmail">
+		<img src = "static/img/emailGrey.png">
+	</div>
+	</a>
+
+	<a href="https://twitter.com/intent/tweet?text=From%20%40urbaninstitute%3A%20Track%20and%20analyze%20economic%20and%20fiscal%20trends%20at%20the%20state%20level.%20https%3A%2F%2Furbn.is%2Fsem" target="_blank" class="addthis_button_twitter at300b" title="Tweet">
+	<div id = "headerTwitter">
+		<img src = "static/img/twitterGrey.png">
+	</div>
+	</a>
+
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//urbn.is/sem" target="_blank" class="addthis_button_twitter at300b" title="Facebook">
+	<div id = "headerFacebook">
+		<img src = "static/img/facebookGrey.png">
+	</div>
+	</a>
+
+
+
+
+</div>
+<!-- END HEADER -->
+
+
+<!-- START CARDS -->
+<div id = "cardContainer">
+	<div id = "cardCurrentContainer">
+		<div id = "cardCurrentText">Highlights</div>
+	</div>
+
+	<div id = "cardSubcontainer">
+		<div class = "cardArrow left">
+			<img src = "static/img/calendarArrow.png"/>
+		</div>
+
+		<div id = "cardContentContainer"></div>
+
+		<div class = "cardArrow right">
+			<img src = "static/img/calendarArrow.png"/>
+		</div>
+	</div>
+
+</div>
+<!-- END CARDS -->
+
+
+
+
+<!-- START MAIN CONTENT -->
+<div id = "contentContainer">
+<!-- START INPUT CONTROLS -->
+	<div id = "sectionNames">
+		<div class = "sectionName" id = "sn-employment">Employment</div>
+		<div class = "sectionName" id = "sn-earnings">Earnings</div>
+		<div class = "sectionName" id = "sn-housing">Housing</div>
+		<div class = "sectionName" id = "sn-gdp"">State gdp</div>
+	</div>
+
+	<div id = "menuRow">
+<!-- START EMPLOYMENT MENU -->
+		<div class = "categoryMenu active employment menuBlock">
+			<div class = "menuTop" id = "mt-employment">
+				<div class = "menuTitle">Indicator</div>
+				<div class = "menuActive">&hellip;</div>
+				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+
+			<div class = "employmentOption" id = "eo-unemployment_rate">Unemployment rate</div>
+			<div class = "employmentOption" id = "eo-total_employment">Total employment</div>
+			<div class = "employmentOption" id = "eo-private_employment">Private employment</div>
+			<div class = "employmentOption" id = "eo-public_employment">Public employment</div>
+			<div class = "employmentOption" id = "eo-federal_public_employment">Federal public employment</div>
+			<div class = "employmentOption" id = "eo-state_and_local_public_employment">State and local public employment</div>
+			<div class = "employmentOption" id = "eo-state_and_local_public_education_employment">State and local public education employment</div>
+
+		</div>
+<!-- END EMPLOYMENT MENU -->
+		<div class = "categoryMenu other menuBlock">
+			<div class = "menuTitle">Indicator</div>
+			<div class = "menuActive">&hellip;</div>
+		</div>
+
+		<div class = "menuSpacer ms1"></div>
+<!-- START STATE MENU -->
+		<div class = "stateMenu menuBlock">
+			<div class = "menuTop" id = "mt-state">
+				<div class = "menuTitle">State</div>
+				<div class = "menuActive stateDisplayName">&hellip;</div>
+				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+			<div id = "stateNameContainer">
+				<div class = "clearSelections inside">Clear selections</div>
+				<div class = "stateNameCol left"></div>
+				<div class = "stateNameCol right"></div>
+			</div>
+		</div>
+<!-- END STATE MENU -->
+
+		<div class = "menuSpacer ms2"></div>
+		<div class = "mobileMenuArrow">
+			<img src="static/img/dropdown-bg.png" class="menuArrow down">
+		</div>
+<!-- START TIME MENU -->
+		<div class = "timeMenu menuBlock">
+			<div class = "menuTop" id = "mt-time">
+				<div class = "menuTitle">Time frame</div>
+				<div class = "menuActive timeRange">&hellip;</div>
+				<div class = "menuActive timeSingle">&hellip;</div>
+				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+
+			<div class = "timeTypeContainer bar">
+				<img src = "static/img/barIcon.png"/>
+				<span>Single date</span>
+			</div>
+
+			<div class = "timeTypeContainer line">
+				<img src = "static/img/lineIcon.png"/>
+				<span>Date range</span>
+			</div>
+
+			<div id = "barControlContainer">
+				<div id = "barControlLabels">
+					<div class = "timeMenuLabel month">Month</div>
+					<div class = "timeMenuLabel quarter">Quarter</div>
+					
+				</div>
+				
+				<div id = "barControlMenus">
+					<select class = "dateMenu barChart month" id = "bcm">
+						<option class = "barMonth m1" value = "01">January</option>
+						<option class = "barMonth m2" value = "02">February</option>
+						<option class = "barMonth m3" value = "03">March</option>
+						<option class = "barMonth m4" value = "04">April</option>
+						<option class = "barMonth m5" value = "05">May</option>
+						<option class = "barMonth m6" value = "06">June</option>
+						<option class = "barMonth m7" value = "07">July</option>
+						<option class = "barMonth m8" value = "08">August</option>
+						<option class = "barMonth m9" value = "09">September</option>
+						<option class = "barMonth m10" value = "10">October</option>
+						<option class = "barMonth m11" value = "11">November</option>
+						<option class = "barMonth m12" value = "12">December</option>
+					</select>
+					
+					<select class = "dateMenu barChart quarter" id = "bcq">
+						<option class = "barMonth q1" value = "01">1st Quarter</option>
+						<option class = "barMonth q2" value = "04">2nd Quarter</option>
+						<option class = "barMonth q3" value = "07">3rd Quarer</option>
+						<option class = "barMonth q4" value = "10">4th Quarter</option>
+					</select>
+					
+					<div class = "timeMenuLabel year">Year</div>
+					<select class = "dateMenu barChart year">
+					</select>
+				</div>
+			</div>
+
+			<div id = "lineControlContainer">
+				<div class = "lineMenuContainer">
+					<div class = "lineMenuLabel start">Start date</div>
+					<div class = "lineMenuDisplay start">
+						<div class = "lineMenuDate start"></div>
+						<img class = "lineMenuCalIcon start" src = "static/img/calIcon.png"/>
+					</div>
+					
+				</div>
+
+				<div class = "lineMenuContainer">
+					<div class = "lineMenuLabel end">End date</div>
+					<div class = "lineMenuDisplay end">
+						<div class = "lineMenuDate end"></div>
+						<img class = "lineMenuCalIcon end" src = "static/img/calIcon.png"/>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+<!-- END TIME MENU -->
+<div class = "calendarParent startDate">
+	<div class = "calendarContainer startDate"></div>
+</div>
+<div class = "calendarParent endDate">
+	<div class = "calendarContainer endDate"></div>
+</div>
+<!-- START UNIT CHECKBOXES -->
+		<div id = "unitCheckboxes">
+			<div class = "unitCheckBox change active">
+				<img src = "static/img/checked.png"/>
+				<span class = "disabledBox change hide"></span>
+				<div class = "unitText change">Percent change year over year</div>
+				<div class = "tooltipIcon change"></div>
+			</div>
+			<div class = "tt-unit tt-change">We do not include the year-over-year percentage change for the unemployment rate because the unit is a percentage.</div>
+
+			<div class = "unitCheckBox raw">
+				<img src = "static/img/checked.png"/>
+				<span class = "disabledBox raw hide"></span>
+				<div class = "unitText raw">&hellip;</div>
+				<div class = "tooltipIcon raw"></div>
+			</div>
+			<div class = "tt-unit tt-raw">We do not include the raw index values because they are not illustrative for state-by-state home price comparisons on a single date.</div>
+
+		</div>
+<!-- END UNIT CHECKBOXES -->
+		<div id = "hideUS" class = "show disabled"><span>Hide</span> US line</div>
+		<div class = "clearSelections outside disabled">Clear selections</div>
+		<div class = "multiYear tooltip">
+			<div class = "multiYear tt-top-row mouseover">
+				<div class = "multiYear tt-value">&hellip;</div>
+				<div class = "multiYear tt-states"></div>
+				<div class = "multiYear tt-date point"></div>
+			</div>
+			<div class = "multiYear tt-top-row mouseout">
+				<div class = "multiYear tt-value hide">&hellip;</div>
+				<div class = "multiYear tt-states"></div>
+				<div class = "multiYear tt-date range"></div>
+			</div>
+			<div class = "multiYear tt-indicator"></div>
+			<div class = "multiYear tt-us"></div>
+		</div>
+	</div>
+<!-- END INPUT CONTROLS -->
+<!-- START CHART AREA -->
+	<div id = "chartAreaContainer">
+		<div id = "chartTitleContainer">
+			<span id = "chartTitle"></span>
+			<span id = "chartUnits"></span>
+		</div>
+
+		<div id = "chartFrame">
+			<div id = "singleYearContainer">
+				<div id = "barChartContainer">
+					<div class = "singleYear tooltip">
+						<div class = "singleYear tt-top-row">
+							<div class = "singleYear tt-value">&hellip;</div>
+							<div class = "singleYear tt-states"></div>
+							<div class = "singleYear tt-date"></div>
+						</div>
+						<div class = "singleYear tt-indicator"></div>
+						<div class = "singleYear tt-us"></div>
+					</div>
+				</div>
+
+				<div id = "mapContainer">
+<!-- START CHART BUTTONS -->
+
+					<div id = "chartButtonContainer">
+
+						<div id = "mobileStates">
+							<div id = "mobileStateHeader">Selected states</div>
+							<div id = "mobileStateIndicator"></div>
+							<div id = "mobileStateDate"></div>
+						</div>
+						<div class = "sourceLine"></div>
+						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
+
+
+
+						<div class = "chartButton saveImage bar">Save chart</div>
+						<div class = "chartButton shareURL">Share chart</div>
+						<div class = "chartButton downloadData">Download data</div>
+						<div class = "shareTooltip hidden">
+							<input class = "shareText">
+							<div class = "copyButton">Copy</div>
+							<div class = "copiedText">Copied to clipboard!</div>
+						</div>
+					</div>
+<!-- END CHART BUTTONS -->
+				</div>
+			</div>
+			<div id = "multiYearContainer">
+				<div id = "lineChartContainer">
+					<div id = "noStatesText">Select a state</div>
+				</div>
+<!-- START CHART BUTTONS -->
+					<div id = "chartButtonContainer">
+						<div class = "sourceLine"></div>
+						<div class = "notesLine"><span>Notes:</span>For more about this tool and descriptions of the underlying data, click <a href = "about.html" target = "_blank">here</a>.</div>
+						<div class = "chartButton saveImage line">Save chart</div>
+						<div class = "chartButton shareURL">Share chart</div>
+						<div class = "chartButton downloadData">Download data</div>
+						<div class = "shareTooltip hidden">
+							<input class = "shareText">
+							<div class = "copyButton">Copy</div>
+							<div class = "copiedText">Copied to clipboard!</div>
+						</div>
+					</div>
+<!-- END CHART BUTTONS -->
+			</div>
+		</div>
+	</div>
+<!-- END CHART AREA -->
+</div>
+<!-- END MAIN CONTENT -->
+
+
+
+  <!-- START FOOTER -->
+  <div id = "footerContainer">
+    <div id = "footerContent">
+
+      <div class = "footerHeader" id = "topFooterHeader">About the State Economic Monitor</div>
+
+
+
+      <p class = "footerAbout">The State Economic Monitor, created by the Urban Institute&rsquo;s State and Local Finance Initiative, tracks and analyzes economic and fiscal trends at the state level. Its interactive graphics highlight differences across all 50 states and the District of Columbia in employment, earnings, housing, and state GDP.</p>
+      
+      <p class = "footerAbout">The <a href = "https://www.urban.org/policy-centers/cross-center-initiatives/state-and-local-finance-initiative" target = "_blank">State and Local Finance Initiative</a> is an Urban Institute project in the <a href = "https://www.taxpolicycenter.org/" target = "_blank">Urban-Brookings Tax Policy Center</a>.</p>
+
+	   <a href = "about.html" class = "footerButtonLink" target = "_blank"><div class = "button">Data and sources</div></a>
+	   <a href = "" class = "footerButtonLink"><div class = "button">Contact us</div></a>
+
+
+      <div class = "footerHeader">PROJECT CREDITS</div>
+      <p class = "footerCredits">This project was funded by Arnold Ventures and other funders. We are grateful to them and to all our funders, who make it possible for Urban to advance its mission. The views expressed are those of the authors and should not be attributed to the Urban Institute, its trustees, or its funders. Funders do not determine research findings or the insights and recommendations of our experts. More information on our funding principles is available <a href = "https://www.urban.org/aboutus/our-funding/funding-principles" target = "_blank">here</a>. Read our terms of service <a href = "https://www.urban.org/terms-service" target = "_blank">here</a>.</p>
+
+
+      <div class = "creditsHeader">RESEARCH</div>
+      <div class = "creditsNames"><a href = "https://www.urban.org/author/richard-c-auxier" target = "_blank">Richard Auxier</a>, <a href = "https://www.urban.org/author/aravind-boddupalli" target = "_blank">Aravind Boddupalli</a>, <a href = "https://www.urban.org/author/erin-huffer" target = "_blank">Erin Huffer</a>, and <a href = "https://www.urban.org/author/kim-s-rueben" target = "_blank">Kim Rueben</a></div>
+
+      <div class = "creditsHeader">DESIGN</div>
+      <div class = "creditsNames">Christina Baird</div>
+
+      <div class = "creditsHeader">DEVELOPMENT</div>
+      <div class = "creditsNames">Ben Chartoff</div>
+
+      <div class = "creditsHeader">EDITING</div>
+      <div class = "creditsNames">Michael Marazzi</div>
+
+      <div class = "creditsHeader">WRITING</div>
+      <div class = "creditsNames">Emily Peiffer</div>
+
+      <div id = "copyright"><a href = "" target = "_blank">View this project on GitHub</a>.</div>
+
+    </div>
+  </div>
+  <!-- END FOOTER -->
+
+<!-- START POP UPS -->
+<div class = "popupScreen"></div>
+<div class = "popupMenu saveImage bar">
+	<img class = "pu-close saveImage" src = "static/img/closeIcon.png">
+	<div class = "pu-title">Save chart options</div>
+	<div class = "pu-subtitle">Chart elements</div>
+	<div class = "pu-buttonRow">
+		<div class = "pu-smallButton imgBoth active">Bar chart and map</div>
+		<div class = "pu-smallButton imgBar">Bar chart</div>
+		<div class = "pu-smallButton imgMap">Map</div>
+	</div>
+	<div class = "pu-checkRow labelSelected">
+		<div class = "pu-checkBox labelSelected active"></div><div class = "pu-checkText">Include data labels on selected states on <span class = "pu-chartName">map and bar chart</span></div>
+	</div>
+	<div class = "pu-checkRow labelAll">
+		<div class = "pu-checkBox labelAll"></div><div class = "pu-checkText">Include data labels on all states on <span class = "pu-chartName">map and bar chart</span></div>
+	</div>
+	<div class = "pu-checkRow labelNone">
+		<div class = "pu-checkBox labelNone"></div><div class = "pu-checkText">Do not include data labels on <span class = "pu-chartName">map and bar chart</span></div>
+	</div>
+	<div class = "pu-bigButton imgDownload">Download</div>
+</div>
+
+<div class = "popupMenu downloadData">
+	<img class = "pu-close downloadData" src = "static/img/closeIcon.png">
+	<div class = "pu-title">Download data options</div>
+	<div class = "pu-section current">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox current"></div>
+			<div class = "pu-subtitle">Current selections</div>
+		</div>
+		<div id = "pu-dlIndicator">&hellip;</div>
+		<div id = "pu-dlDateSingle">&hellip;</div>
+		<div id = "pu-dlDateRange">&hellip;</div>
+		<div id = "pu-dlStates">&hellip;</div>
+	</div>
+
+	<div class = "pu-section employment hideable hide">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox employment"></div>
+			<div class = "pu-subtitle">Employment data</div>
+		</div>
+		<div class = "pu-allStates">all states and all years</div>
+
+		<div class = "pu-smallButton employmentButton" id = "eb-unemployment_rate">Unemployment rate</div>
+		<div class = "pu-smallButton employmentButton" id = "eb-total_employment">Total employment</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-private_employment">Private employment</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-public_employment">Public employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton  indent2" id = "eb-federal_public_employment">Federal public employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-state_and_local_public_employment">State and local public employment</div>
+		<span class = "iconIndent ii-3"></span><div class = "pu-smallButton employmentButton indent3" id = "eb-state_and_local_public_education_employment">State and local public education employment</div>
+
+	</div>
+
+	<div class = "pu-section earnings hideable hide">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox earnings"></div>
+			<div class = "pu-subtitle">Earnings data</div>
+		</div>
+		<div class = "pu-allStates">all states and all years</div>
+	</div>
+
+	<div class = "pu-section gdp hideable hide">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox gdp"></div>
+			<div class = "pu-subtitle">State GDP data</div>
+		</div>
+		<div class = "pu-allStates">all states and all years</div>
+	</div>
+
+	<div class = "pu-section housing hideable hide">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox housing"></div>
+			<div class = "pu-subtitle">Housing data</div>
+		</div>
+		<div class = "pu-allStates">all states and all years</div>
+	</div>
+
+	<div class = "pu-section all">
+		<div class = "pu-dlRow">
+			<div class = "pu-checkBox all"></div>
+			<div class = "pu-subtitle">Full dataset</div>
+		</div>
+		<div class = "pu-allStates">all states and all years</div>
+		<div class = "pu-allSections">Employment, Earnings, Housing, and State GDP</div>
+	</div>
+	
+	<div class = "pu-bigButton dataDownloadCurrent disabled">Download</div></a>
+	<a href = "" id = "pu-downloadLink"><div class = "pu-bigButton dataDownload disabled">Download</div></a>
+
+</div>
+
+<!-- END POP UPS -->
+
+<script>var pathPrefix = ""</script>
+<div id = "hiddenBarChartContainer"></div>
+<div id = "hiddenLineChartContainer"></div>
+
+
+<script src="static/js/vendor/es6-promise.min.js"></script>
+<script src="static/js/vendor/es6-promise.auto.min.js"></script> 
+<script src="static/js/vendor/fetch.min.js"></script> 
+
+<script src = "static/js/vendor/filesaver.min.js"></script>
+<script src = "static/js/vendor/jszip.min.js"></script>
+<script src = "static/js/vendor/saveSvgAsPng.js"></script>
+<script src = "static/js/vendor/moment.min.js"></script>
+<script src = "static/js/vendor/jquery.1.8.min.js"></script>
+<script src = "static/js/vendor/jquery-ui.min.js"></script>
+<script src = "static/js/vendor/d3.v5.min.js"></script>
+<script src = "static/js/vendor/topojson.v2.min.js"></script>
+<script src = "static/js/vendor/d3-interpolate-path.min.js"></script>
+
+<script src = "static/js/constants.js"></script>
+<script src = "static/js/utils.js"></script>
+<script src = "static/js/main.js"></script>
+
+</body>
+</html>

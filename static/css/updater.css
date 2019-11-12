@@ -1,0 +1,410 @@
+
+.uploadContainer{
+    display: inline-block;
+    width: 228px;
+    height: 109px;
+    background: #fff;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    -webkit-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+    -moz-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+    box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+}
+select{
+    display: none;
+}
+.section{
+    display: block;
+    max-width: 1130px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+#cardContainer {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#cardContainer li {
+    background: white;
+    margin: 3px 33px 33px 0;
+    padding: 1px;
+    float: left;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    font-size: 16px;
+    text-align: left;
+    word-break: break-word;
+    cursor: pointer;
+    -webkit-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+    -moz-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+    box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+}
+
+.updaterCardRow{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.updaterCardRow a{
+    color: #1696d2 !important;
+}
+.updaterCardRow span{
+    font-weight: bold;
+    color: #1696d2;
+}
+
+.cardDelete{
+    text-transform: uppercase;
+    padding: 10px;
+    background: #1696d2;
+    display: inline-block;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.bigButton{
+    text-transform: uppercase;
+    padding: 14px;
+    background: #1696d2;
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cardDelete:hover, .bigButton:hover{
+    background: #353535;
+}
+
+.ui-draggable, .ui-droppable {
+    background-position: top;
+}
+.controlContainer{
+    display: inline-block;
+    float: left;
+    width: 300px;
+    height: 90px;
+}
+.controlContainer.states, .controlContainer.text{
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.controlContainer.chartType{
+    width: 176px
+}
+.controlContainer.indicator{
+    width: 371px;
+}
+.controlContainer.indicator .selectize-input{
+    width: 300px;
+}
+.controlContainer.states .selectize-input{
+    width: 100% !important;
+}
+.selectize-input.error{
+    border: 1px solid #db2b27;
+}
+.selectize-input.softError{
+    border: 1px solid #fdbf11;
+}
+.controlContainer.text textarea{
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid #d2d2d2;
+}
+.controlContainer.text.error textarea{
+    border: 1px solid #db2b27;
+    outline: none;
+}
+.controlContainer.text.softError textarea{
+    border: 1px solid #fdbf11;
+    outline: none;
+}
+.controlContainer.addCard{
+    margin-bottom: 50px;
+}
+.controlContainer.hide{
+    display: none;
+}
+.controlLabel{
+    text-transform: uppercase;
+    color: #1696d2;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+.buttonRow{
+    display: block;
+}
+.buttonRow input, .buttonRow div{
+    display: inline-block;
+}
+.controlButton{
+    padding: 10px;
+    background: #d2d2d2;
+    border: 1px solid #d2d2d2;
+    color: #353535;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.controlButton.active, .controlButton:hover{
+    background: #1696d2;
+    border: 1px solid #1696d2;
+    color: #fff;
+}
+.controlButton.error{
+    border: 1px solid #db2b27;
+}
+.invalidText{
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    color: #db2b27;
+    margin-top: -9px;
+    left: 175px;
+    position: relative;
+}
+.invalidText.hide{
+    display: none;
+}
+#cardDiv, #updater{
+    display: inline-block;
+/*    float: left;
+    clear: both;*/
+}
+.yearInput{
+    font-size: 16px;
+    width: 100px;
+    padding: 7px;
+    position: relative;
+    top: -11px;
+    font-family: Lato;
+    border: 1px solid #d2d2d2;
+}
+.yearInput.error{
+    border: 1px solid #db2b27;   
+    outline: none;
+}
+#hiddenText{
+    display: none;
+}
+.charCount{
+    float: right;
+    margin-top: 6px;
+    font-size: 14px;
+}
+.charCount.error{
+    color: #db2b27;
+}
+.charCount.softError{
+    color: #fdbf11;
+}
+body{
+    font-family: "Lato", arial, sans-serif;
+    font-size: 16px;
+    background: #ececec;
+    color: #333;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+h2{
+    height: 40px;
+    color: #1696d2;
+    font: 18px lato;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+h1{
+   color: #1696d2;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 40px 0 10px 0px;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+    display: block;
+}
+.instructions{
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 40px;
+    width: 100%;
+    display: block;
+}
+.instructions a{
+    text-decoration: none;
+    color: #1696d2;
+}
+
+h3{
+   margin-bottom: 10px;
+    margin-top: 30px;  
+    
+}
+hr{
+    clear: both;
+}
+
+
+fieldset{
+    border: medium none;
+    margin-bottom: -5px;
+    margin-top: 15px;
+    min-width: 250px;
+    padding: 0;
+    width: 250px;
+  
+}
+.ellipses{
+	float: left;
+	position: relative;
+	top: -2px;
+}
+#upload_left, #upload_left_historical{
+	float: left;
+    margin-left: 30px;
+}
+#upload_right, #upload_right_historical{
+	float: left;
+     margin-left: 30px;
+}
+
+.required{
+	color: red;
+	font-weight: 700;
+}
+
+.break{
+	width: 40px;
+	margin-left: 5px;
+}
+
+
+.status{
+    color: #1696d2;
+    font-size: 12px;
+    font-style: italic;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-top: 0;
+    opacity: 0;
+
+}
+
+#loading{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 36px;
+    margin-left: calc(50% - 146px);
+    visibility: hidden;
+}
+#loading-text{
+    margin-top: 40px;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 300px;
+}
+
+
+}
+.note{
+    margin-top: 4px;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: -20px;
+}
+.note.historical{
+    display: table-header-group;
+}
+
+
+
+.explainer{
+    padding-top: 18px;
+    padding-bottom: 18px;
+    margin-top: 10px;
+    text-indent: 50px;
+    line-height: 2em;
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+}
+.explainer a{
+    text-decoration: none;
+    color: #1696d2;
+    font-weight: bolder;
+}
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tab-links{
+    margin-bottom: 0;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#cfe8f3;
+            font-size:16px;
+            font-weight:600;
+            color:#4c4c4c;
+            text-decoration: none;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#a2d4ec;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#fff;
+        color:#4c4c4c;
+        text-decoration: none;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        min-height: 90%;
+        padding:15px;
+        /*border-radius:3px;*/
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+            overflow: auto;
+        }

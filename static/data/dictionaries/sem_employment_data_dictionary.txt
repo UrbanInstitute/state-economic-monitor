@@ -1,0 +1,84 @@
+
+
+
+EMPLOYMENT
+ (updated monthly)
+
+
+
+Unemployment rate
+	Source: Bureau of Labor Statistics, Local Area Unemployment Statistics (https://www.bls.gov/home.htm)
+	Unit: Percentage
+	Adjusted: Seasonally
+	Population: All people age 16 and older
+	Earliest available data: January 1976
+
+
+
+Total nonfarm payroll employment
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: Seasonally
+	Population: All employees
+	Earliest available data: January 1990
+
+
+	
+Total private-sector employment
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: Seasonally
+	Population: All employees
+	Earliest available data: January 1990
+
+
+
+Total public-sector employment
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: Seasonally
+	Population: All employees
+	Earliest available data: January 1990
+	Note: Public-sector employment refers to the Bureau of Labor Statistics’ government employment 
+	set of variables.
+
+
+
+Total federal public-sector employment
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: Seasonally
+	Population: All employees
+	Earliest available data: January 1990
+
+
+
+Total state and local public-sector employment 
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: Seasonally
+	Population: All employees
+	Earliest available data: January 1990
+
+
+
+Total state and local public-sector education employment
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Thousands of people
+	Adjusted: No
+	Population: All employees
+	Earliest available data: January 2012
+
+Notes: No data are available for the District of Columbia, Missouri, and Hawaii. For certain states, data going back to January 1990 may be available from the Bureau of Labor Statistics.
+
+
+ 
+Note: Data are seasonally adjusted to remove regularly occurring fluctuations (such as from weather or holidays) to better reflect nonseasonal trends and irregular changes in employment. For more on the Bureau of Labor Statistics' adjustments, please see "Seasonal Adjustment Files and Documentation" (https://www.bls.gov/web/empsit/cesseasadj.htm) on its website.
+
+
+
+
+
+Downloaded via the State Economic Monitor 
+(http://apps.urban.org/features/state-economic-monitor)
+

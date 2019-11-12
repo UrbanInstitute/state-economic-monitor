@@ -1,0 +1,21 @@
+
+
+
+HOUSING 
+(updated quarterly)
+
+House price index
+	Source: Federal Housing Finance Agency (https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx)
+	Data: Broad measure of single-family house prices
+	Unit: Index (Quarter 1, 1991 = 100)
+	Adjusted: Seasonally
+	Earliest available data: Quarter 1, 1991
+
+Note: Data are seasonally adjusted to remove regularly occurring fluctuations in housing markets to better reflect patterns in economic activity. For more on the Federal Housing Finance Agency's adjustments, please see "House Price Index Frequently Asked Questions" (https://www.fhfa.gov/Media/PublicAffairs/Pages/House-Price-Index-Frequently-Asked-Questions.aspx) on its website.
+
+
+
+
+
+Downloaded via the State Economic Monitor 
+(http://apps.urban.org/features/state-economic-monitor)

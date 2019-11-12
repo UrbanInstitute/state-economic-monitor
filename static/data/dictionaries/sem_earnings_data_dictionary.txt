@@ -1,0 +1,30 @@
+
+
+
+EARNINGS 
+(updated monthly)
+
+
+Average weekly earnings
+
+	Source: Bureau of Labor Statistics, Current Employment Statistics (https://www.bls.gov/home.htm)
+	Unit: Dollars
+	Adjusted: No
+	Population: Earnings of all private-sector employees
+	Earliest available data: January 2007
+
+Note: Historical average weekly earnings data are adjusted for inflation using the following data
+
+
+
+Consumer Price Index for All Urban Consumers: All Items
+	Source: Consumer Price Index (BLS) (https://www.bls.gov/cpi/questions-and-answers.htm)
+	Adjusted: Seasonally, Index (1982–1984 = 100)
+
+
+
+
+
+
+Downloaded via the State Economic Monitor 
+(http://apps.urban.org/features/state-economic-monitor)

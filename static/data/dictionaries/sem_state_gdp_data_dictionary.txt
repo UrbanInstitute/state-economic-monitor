@@ -1,0 +1,32 @@
+
+
+
+STATE GROSS DOMESTIC PRODUCT
+ (updated quarterly)
+
+
+Gross domestic product by state
+	Source: Bureau of Economic Analysis (https://www.bea.gov/)
+	Data: Value of the goods and services produced across all industries in a state
+	Unit: Millions of dollars
+	Adjusted: Seasonally
+	Earliest available data: Quarter 1, 2005
+
+Note: Historical quarterly gross domestic product data are adjusted for inflation using the following data
+
+
+
+
+Quantity indexes for real gross domestic product
+	Source: Bureau of Economic Analysis (https://www.bea.gov/resources/learning-center/what-to-know-prices-inflation)
+	Adjusted: Seasonally, Index (2012 = 100)
+
+Note: Data are seasonally adjusted to remove regularly occurring fluctuations (such as from weather, holidays, and production schedules) to better reflect patterns in economic activity. For more on the Bureau of Economic Analysis' adjustments, please see "How does BEA account for seasonality in GDP?" (https://www.bea.gov/help/faq/1069) on its website.
+
+
+
+
+
+
+Downloaded via the State Economic Monitor 
+(http://apps.urban.org/features/state-economic-monitor)

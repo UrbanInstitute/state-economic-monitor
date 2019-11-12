@@ -1,0 +1,1665 @@
+#chartsTemp, #controlsTemp{
+	display: inline-block;
+	float: left;
+	width: calc(50% - 50px);
+}
+#controlsTemp{
+	margin-left: 100px;
+}
+
+
+#contentContainer{
+	max-width: 1085px;
+	margin: 0 auto;
+	margin-top: 95px;
+
+}
+svg text, body{
+	font-family: Lato;
+}
+
+body{
+	margin: 0px;
+    padding: 0px;
+}
+select{
+	display: none;
+}
+
+/**********************************************************************/
+/*************************** HEADER ***********************************/
+/**********************************************************************/
+
+#headerContainer{
+	width: 100%;
+    height: 274px;
+}
+#headerContainer a{
+    text-decoration: none;
+}
+.headerPreview{
+    background: #db2b27;
+}
+.headerPreview #headerTitle, .headerPreview #lastUpdatedContainer{
+    color: #fff;
+}
+.cacheRefresh{
+    display: block;
+    font-size: 22px;
+    font-style: italic;
+    color: white;
+    position: absolute;
+    top: 190px;
+    width: 400px;
+    top: 10px;
+    left: 10px;
+}
+.cacheRefresh a{
+    color: #d2d2d2;
+}
+#headerLogo{
+    height: 50px;
+    margin: 0 auto;
+    top: 66px;
+    display: table;
+    position: relative;
+}
+#headerTitle{
+    color: #0A4C6A;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 0 auto;
+    display: table;
+    position: relative;
+    top: 79px;
+}
+#lastUpdatedContainer{
+    font-size: 14px;
+    color: #696969;
+    position: relative;
+    top: 132px;
+    display: table;
+    margin: 0 auto;
+}
+#headerTwitter img{
+    width: 23px;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    cursor: pointer;
+}
+
+#headerEmail img{
+    width: 23px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+#headerFacebook img{
+    width: 19px;
+    position: absolute;
+    top: 10px;
+    right: 72px;
+    cursor: pointer;
+}
+
+
+/**********************************************************************/
+/*************************** CARDS ************************************/
+/**********************************************************************/
+#cardContainer{
+	height: 275px;
+	width: 100%;
+    background: #0A4C6A;
+}
+#cardCurrentContainer{
+	width: 270px;
+    height: 100%;
+    display: inline-block;
+    float: left;
+}
+#cardCurrentText{
+	color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    top: 117px;
+    position: relative;
+    border-top: 1px solid #1696d2;
+    border-bottom: 1px solid #1696d2;
+    width: 95px;
+    margin: 0 auto;
+    padding: 7px 0px;
+}
+#cardSubcontainer{
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: calc(100% - 270px);
+}
+.cardArrow{
+	position: absolute;
+    width: 89px;
+    height: 275px;
+    cursor: pointer;
+    z-index: 2;
+    display: none;
+}
+.cardArrow.left{
+	left: 0px;
+}
+.cardArrow.right{
+	right: 0px;
+}
+.cardArrow img{
+    width: 66px;
+    top: 102px;
+    left: 10px;
+    position: relative;
+}
+.cardArrow.right img{
+    transform: rotate(180deg);
+}
+#cardContentContainer{
+	display: inline-block;
+	float: left;
+	overflow-x: hidden;
+    overflow-y: visible;
+    white-space: nowrap;
+    z-index: 1;
+    width: 100%;
+}
+.card{
+	width: 264px;
+    width: 264px;
+    margin-right: 14px;
+    height: 100%;
+    display: inline-block;
+    color: #fff;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 45px;
+    display: inline-table;
+    white-space: normal;
+    position: relative;
+    word-break: break-word;
+    left: 0px;
+    cursor: pointer;
+}
+.card a{
+    color: #0A4C6A;
+    text-decoration: none;
+}
+.cardSectionTitle{
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.cardMainText{
+	font-size: 22.8px;
+    margin-top: 4px;
+    height: 113px;
+}
+.card.active .cardButton, .card.selected .cardButton{
+	background: #000;
+}
+.card.selected .cardDownArrow{
+    display: block;
+}
+.cardDownArrow{
+    width: calc(100% + 64px);
+    left: -32px;
+    height: 60px;
+    bottom: 0px;
+    background: white;
+    position: relative;
+    display: none;
+    z-index: 100;
+    margin-top: 39px;
+}
+.cardDownArrow img{
+    width: 70px;
+    left: calc(50% - 35px);
+    position: absolute;
+}
+.cardButton{
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #0A4C6A;
+    display: inline-block;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+.cardTwitterButton{
+    display: inline-block;
+    float: right;
+    position: absolute;
+    top: 206px;
+    right: 67px;
+    z-index: 3;
+}
+.cardTwitterImg{
+	background: url(../img/twitter.png) no-repeat center transparent;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+}
+.cardTwitterImg:hover{
+	background: url(../img/twitterHover.png) no-repeat center transparent;	
+}
+.cardFacebookButton{
+    display: inline-block;
+    float: right;
+    position: absolute;
+    top: 213px;
+    right: 32px;
+    z-index: 3;
+}
+.cardFacebookImg{
+	background: url(../img/facebook.png) no-repeat center transparent;
+    background-size: 23px 23px;
+    width: 23px;
+    height: 23px;
+    display: block;
+    cursor: pointer;
+}
+.cardFacebookImg:hover{
+	background: url(../img/facebookHover.png) no-repeat center transparent;	
+}
+
+
+
+/**********************************************************************/
+/*********************** MENUS GENERAL ********************************/
+/**********************************************************************/
+#sectionNames{
+	width: 100%;
+}
+.sectionName{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 27px;
+	text-transform: uppercase;
+	margin-right: 35px;
+	cursor: pointer;
+}
+.sectionName.active{
+	color: #1696d2;
+}
+#menuRow{
+	width: 100%;
+	height: 156px;
+	margin-top: 35px;
+	position: relative;
+}
+.menuBlock{
+	position: absolute;
+	width: 282px;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 58px;
+	overflow: hidden;
+	background: #fff;
+	border-top: 1px solid #d2d2d2;
+	border-bottom: 1px solid #d2d2d2;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+
+	z-index: 2;
+}
+.categoryMenu.menuBlock{
+	width: 360px;
+}
+.stateMenu.menuBlock{
+	left: 417px;
+}
+.timeMenu.menuBlock{
+	left: 756px;
+}
+.menuTop{
+    padding-top: 14px;
+    top: -14px;
+    position: relative;
+    margin-bottom: -24px;
+    padding-left: 15px;
+    left: -15px;
+    width: 286px;
+    cursor: pointer;
+}
+#mt-employment{
+	width: 374px;
+}
+.menuTitle{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 13px;
+}
+.menuActive{
+	font-size: 16px;
+	font-weight: bold;
+	color: #1696d2;
+	margin-bottom: 20px;
+}
+.menuArrow{
+	position: absolute;
+	width: 16px;
+    top: 35px;
+    right: 24px;
+}
+
+/**********************************************************************/
+/*********************** CATEGORY MENU  *******************************/
+/**********************************************************************/
+.employmentOption{
+    width: 355px;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.employmentOption.active{
+	color: #1696d2;
+}
+
+/**********************************************************************/
+/************************* STATE MENU *********************************/
+/**********************************************************************/
+.stateNameCol{
+	float: left;
+	display: inline-block;
+    width: 135px;
+    font-size: 14px;
+}
+.stateName{
+    width: 114px;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.stateName.disabled{
+    color: #d2d2d2 !important;
+    pointer-events: none;
+}
+.stateName.active{
+	color: #1696d2;
+}
+#stateName_ND{
+	padding-top: 17px;
+    padding-bottom: 17px;
+}
+.clearSelections.outside, #hideUS{
+    position: absolute;
+    left: 433px;
+    font-size: 14px;
+    color: #1696d2;
+    font-style: italic;
+    cursor: pointer;
+}
+.clearSelections.disabled, #hideUS.disabled{
+    color: #696969 !important;
+    opacity: .6;   
+    pointer-events: none;
+}
+#hideUs{
+    top: 72px;
+    display: block;
+
+}
+.clearSelections.outside{
+    top: 94px;
+    display: block;
+}
+.clearSelections.inside{
+    font-size: 14px;
+    font-style: italic;
+    color: rgb(22, 150, 210);
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+/**********************************************************************/
+/************************** TIME MENU  ********************************/
+/**********************************************************************/
+.timeTypeContainer{
+	width: 113px;
+    display: inline-block;
+    padding: 21px 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #D2D2D2;
+    color: #696969;
+    cursor: pointer;
+}
+.timeTypeContainer img{
+	width: 20px;
+    margin-right: 3px;
+    top: 3px;
+    position: relative;
+    display: inline-block
+}
+#barControlLabels, #lineControlContainer{
+	margin-top: 30px;
+}
+.timeTypeContainer.line{
+	float: right;
+	padding-bottom: 19px;
+}
+.timeTypeContainer.line span{
+	top: -2px;
+    position: relative;
+}
+.timeTypeContainer.active{
+    color: #f5f5f5;
+    background-color: #1696d2;
+}
+.timeMenuLabel, .lineMenuLabel{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.lineMenuLabel.end{
+	margin-top: 30px;
+}
+.lineMenuDisplay{
+    width: 100%;
+    height: 54px;
+    background: #F5F5F5;
+    border: 1px solid #d2d2d2;
+    color: #1696d2;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+.lineMenuDate{
+	width: 140px;
+    float: left;
+    margin-top: 12px;
+    margin-left: 15px;
+}
+.lineMenuCalIcon{
+	float: right;
+    top: 11px;
+    width: 28px;
+    right: 10px;
+    position: relative;
+}
+
+
+
+/**********************************************************************/
+/********************* CALENDAR PICKERS *******************************/
+/**********************************************************************/
+.calendarParent{
+	display: none;
+	z-index: 3;
+    position: absolute;
+    background: white;
+    border: 1px solid #d2d2d2;
+    right: 0px;
+    padding: 45 10 30 10px;
+	-webkit-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+	-moz-box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+	box-shadow: -6px 8px 12px 3px rgba(53,53,53,0.3);
+}
+.calendarParent:after, .calendarParent:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.calendarParent:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #fff;
+	border-width: 23px;
+	margin-left: -23px;
+}
+.calendarParent:before {
+	border-color: rgba(210, 210, 210, 0);
+	border-bottom-color: #d2d2d2;
+	border-width: 24px;
+	margin-left: -24px;
+}
+.calendarParent.startDate{
+    top: 277px;	
+}
+.calendarParent.endDate{
+	top: 397px;
+}
+.calendarParent.visible{
+	display: block;
+}
+.calendarFrame{
+	display: inline-block;
+	overflow-x: hidden;
+    width: 460px;
+    white-space: nowrap;
+}
+.calendarSubcontainer{
+	position: relative;
+}
+.calYearLabel{
+	margin-bottom: 5px;
+    font-size: 16px;
+    border: 1px solid #d2d2d2;
+    width: 46px;
+    cursor: text;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display: block;
+    font-family: Lato;
+}
+.calYearLabel.active{
+	color: #1696d2;
+	font-weight: bold;
+	font-size: 16px;
+}
+.calendarYearContainer{
+	width: 157px;
+	white-space: normal;
+	display: none;
+}
+.calendarYearContainer.active{
+	display: inline-block;
+}
+.calMonth{
+    width: 34px;
+    height: 23px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    background: #D2D2D2;
+    color: #000;
+    font-size: 14px;
+    display: inline-block;
+    padding: 7px 4px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+.calMonth.active{
+	background: #1696d2;
+	color: #fff;
+}
+.calMonth.disabled{
+	color: #696969;
+	opacity: .6;
+	pointer-events: none;
+}
+.calendarArrow{
+	display: inline-block;
+	cursor: pointer;
+}
+.calendarArrow img{
+    width: 41px;
+    position: relative;
+    top: -72px;
+}
+.calendarArrow.left{
+	margin-right: 15px;
+}
+.calendarArrow.right{
+	margin-left: 10px;
+}
+.calendarArrow.right img{
+	transform: rotate(180deg);
+}
+.calMenuTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 29px;
+    margin-left: 55px;
+}
+.calDoneButton{
+    background: #353535;
+    width: 86px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 424px;
+    margin-top: 24px;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+.datesAvailHeader{
+    position: absolute;
+    top: 326px;
+    left: 64px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #696969;
+}
+.datesAvailText{
+    position: absolute;
+    font-size: 15px;
+    top: 343px;
+    left: 64px;
+    font-style: italic;
+    color: #696969;
+}
+
+/**********************************************************************/
+/************************ UNIT CHECKBOXES  ****************************/
+/**********************************************************************/
+#unitCheckboxes{
+	top: 70px;
+	position: absolute;
+}
+.unitCheckBox.active img{
+	/*color: #fff;*/
+	display: inline-block;
+	/*background: #1696d2;*/
+}
+.unitCheckbox img{
+	display: none;
+}
+.unitCheckbox span{
+	display: inline-block;
+}
+.unitCheckbox.active span{
+	display: none;
+}
+.unitCheckBox.disabled{
+	color: #696969;
+	opacity: .6;
+	cursor: default;
+}
+.unitCheckBox{
+	display: block;
+	background: #ffffff;
+	cursor: pointer;
+}
+.unitCheckBox.raw{
+	margin-top: 4px;
+}
+.unitText{
+	display: inline-block;
+    font-size: 14px;
+    color: #353535;
+}
+
+.disabledBox{
+	width: 11px;
+	height: 11px;
+	background: #D2D2D2;
+}
+.tooltipIcon{
+	width: 18px;
+    height: 18px;
+    margin-left: 7px;
+    background-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    top: 5px;
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+    background-image: url(../img/tooltipIcon.png);
+}
+.tooltipIcon.hide{
+	display: none;
+	pointer-events: none;
+}
+.tt-unit {
+    background: #fff;
+    border: 2px solid #acd9ee;
+    display: block;
+    z-index: 1000000;
+    position: absolute;
+    font-size: 13px;
+    padding: 10px;
+    display: none;
+}
+.tt-change{
+    top: -43px;
+    left: 240px;
+    width: 150px;
+}
+.tt-raw{
+    left: 90px;
+    top: -16px;
+    width: 170px;
+}
+.tt-unit:after, .tt-unit:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.tt-unit:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #fff;
+    border-width: 8px;
+    margin-top: -8px;
+}
+.tt-unit:before {
+    border-color: rgba(172, 213, 278, 0);
+    border-right-color: #acd9ee;
+    border-width: 11px;
+    margin-top: -11px;
+}
+
+
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #acd9ee;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 11px;
+    margin-left: -11px;
+}
+.arrow_box:before {
+    border-color: rgba(172, 217, 238, 0);
+    border-top-color: #acd9ee;
+    border-width: 14px;
+    margin-left: -14px;
+}
+
+
+
+/**********************************************************************/
+/*************************** TOOLTIP  *********************************/
+/**********************************************************************/
+.singleYear.tooltip{
+	position: absolute;
+    top: 268px;
+    right: 30px;
+    text-align: right;
+}
+.multiYear.tooltip{
+    position: absolute;
+    right: 30px;
+    top: 155px;
+    text-align: right;
+    opacity: 0;
+}
+.multiYear.tt-value.hide{
+	opacity: 0;
+}
+.multiYear.tt-top-row.mouseover{
+	display: none;
+}
+.tt-top-row div{
+	display: inline-block;
+}
+.tt-value{
+    font-size: 23px;
+    font-weight: bold;
+    color: #1696d2;
+    margin-right: 5px;
+}
+.tt-states{
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 4px;
+}
+.tt-date{
+	font-style: italic;
+}
+.tt-indicator{
+	margin-top: 3px;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+.singleYear.tt-indicator.long{
+    width: 230px;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+.tt-us{
+	font-size: 13px;
+	color: #696969;
+	margin-top: 3px;
+}
+/**********************************************************************/
+/************************* BOTH CHARTS ********************************/
+/**********************************************************************/
+#chartTitle{
+	font-size: 22.8px;
+    font-weight: bold;
+}
+#chartUnits{
+	font-size: 14px;
+    font-style: italic;
+    margin-left: 4px;
+}
+#chartUnits.wrapUnit{
+    display: block;
+    margin-left: 0px;
+}
+#chartAreaContainer{
+	white-space: nowrap;
+	overflow-x: hidden;
+	overflow-y: visible;
+	display: inline-block;
+	width: 100%;
+}
+#chartFrame{
+    white-space: nowrap;
+    display: inline-block;
+    width: 2200px;
+}
+#singleYearContainer, #multiYearContainer{
+	float: left;
+	width: 1085px;
+	display: inline-block;
+}
+.line.axis text{
+
+}
+.axis path{
+	display: none;
+}
+
+/**********************************************************************/
+/************************** BAR CHART *********************************/
+/**********************************************************************/
+#barChartContainer{
+	position: relative;
+}
+rect.bar{
+	fill: #1696d2;
+	stroke: none;
+	cursor: pointer;
+}
+rect.bar.clicked{
+  outline-color: #696969;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-offset: -3px;
+}
+rect.bar.hovered{
+  outline-color: #000;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-offset: -3px;
+}
+rect.bar.disabled{
+    display: none;
+}
+.usLine{
+	stroke: #0A4C6A;
+	stroke-width: 3px;
+	stroke-dasharray: 8px 6px;
+}
+.usText{
+	font-size: 12px;
+	font-weight: bold;
+	fill: #0A4C6A;
+}
+.barTooltip{
+    font-size: 12px;
+    text-anchor: middle;
+    opacity: 0;
+    pointer-events: none;
+}
+.barTooltip.active{
+	opacity: 1;
+}
+.barTooltip.disabled{
+    display: none;
+}
+.barTooltip.download{
+	opacity: 1 !important;
+}
+.barTooltipBg{
+	opacity: 0;
+    pointer-events: none;
+    fill: rgba(255,255,255,.8);
+    /*display: none;*/
+}
+.barTooltipBg.active{
+	opacity: 1;
+}
+.barTooltipBg.disabled{
+    display: none;
+}
+.barTooltipBg.download{
+	opacity: 1 !important;
+}
+.bar.x.axis line{
+	display: none;
+}
+/**********************************************************************/
+/********************** I'M A MAP I'M A MAP ***************************/
+/**********************************************************************/
+#mapContainer{
+	margin: 0 auto;
+}
+.stateShape{
+	stroke: #fff;
+	cursor: pointer;
+}
+.stateShape.clicked{
+	stroke: #696969;
+	stroke-width: 3px;
+}
+.stateShape.hovered{
+	stroke: #000;
+	stroke-width: 3px;
+}
+.stateShape.disabled{
+    stroke: none !important;
+    cursor: default !important;
+}
+
+
+.mapLabel{
+	font-size: 8px;
+}
+.mapName{
+	font-weight: bold;
+}
+.keyLabel{
+	font-size: 12px;
+}
+.mapImgLine{
+	stroke: #000;
+	fill: none;
+	stroke-width: 1px;
+}
+/**********************************************************************/
+/************************* LINE CHART *********************************/
+/**********************************************************************/
+#lineChartContainer{
+	position: relative;
+	margin-top: 19px
+}
+.state.line{
+	stroke: #1696d2;
+	stroke-width: 2px;
+	fill: none;
+	pointer-events: none;
+}
+.state.line.disabled{
+    display: none;
+}
+.state.line.active, .US.state.line.active, .state.line.clicked, .US.state.line.clicked{
+	stroke: #fdbf11;
+}
+.US.state.line{
+	stroke: #9D9D9D;
+}
+.voronoi path {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+  cursor: pointer;
+}
+.stateLabel text{
+	font-size: 12px;
+	font-weight: bold;
+}
+.stateLabel rect{
+	fill: rgba(255,255,255,.2);
+	stroke: none;
+}
+.stateLabel.disabled{
+    display: none;
+}
+.stateLabel.active text, .stateLabel.clicked text{
+	fill: #fdbf11;
+}
+.stateLabel.active rect, .stateLabel.clicked rect{
+	fill: rgba(255,255,255,1);
+}
+#noStatesText{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: calc(50% - 30px);
+    left: calc(50% - 70px);
+    background: white;
+    padding: 30px;
+    border: 1px solid #d2d2d2;
+    -webkit-box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    -moz-box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    box-shadow: 4px 5px 12px -2px rgba(53,53,53,0.3);
+    display: none;
+    opacity: 0;
+}
+.linechartDot{
+	fill: #fdbf11;
+	stroke: #000;
+	stroke-width: 3px;
+	pointer-events: none;
+}
+
+
+
+/**********************************************************************/
+/*************************** BUTTONS **********************************/
+/**********************************************************************/
+#chartButtonContainer{
+	margin-top: 40px;
+	position: relative;
+}
+.chartButton{
+	padding: 20px;
+	background: #000;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #fff;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.chartButton:hover, .chartButton.active{
+	background: #0A4C6A;
+}
+.sourceLine{
+    display: block;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.sourceLine span, .notesLine span{
+    font-weight: bold;
+    margin-right: 5px;
+}
+.sourceLine a, .notesLine a{
+    text-decoration: none;
+    color: #1696d2;
+}
+.notesLine{
+    font-size: 12px;
+    top: -7px;
+    position: relative;
+    margin-bottom: 10px;
+}
+/**********************************************************************/
+/**************************** ALL POP UPS *****************************/
+/**********************************************************************/
+.popupScreen{
+	position: fixed;
+    background: rgba(105,105,105,.25);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    opacity: 0;
+    display: none;
+}
+.pu-title{
+    margin-top: 78px;
+    margin-bottom: 35px;
+    padding-bottom: 13px;
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 1px solid #d2d2d2;
+    width: 100%;
+}
+.pu-subtitle{
+	text-transform: uppercase;
+    font-size: 19px;
+    font-weight: bold;
+}
+.pu-smallButton{
+    background: #d2d2d2;
+    color: #353535;
+    padding: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.pu-smallButton:hover, .pu-smallButton.active{
+	background: #1696d2;
+	color: #fff;
+}
+.pu-checkBox{
+    width: 14px;
+    height: 14px;
+    background: white;
+    display: inline-block;
+    border: 2px solid #9d9d9d;
+    margin-right: 11px;
+    cursor: pointer;
+}
+.pu-checkBox.active{
+    width: 18px;
+    height: 18px;
+    background: url(../img/checked.png);
+    background-size: 19px 16px;
+    border: none;
+    margin-right: 11px;
+}
+.pu-bigButton{
+	background: #1696d2;
+    display: inline-block;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+.pu-bigButton:hover{
+	background: #000;
+}
+.pu-bigButton.disabled{
+	pointer-events: none;
+	background: #d2d2d2;
+	color: #9d9d9d;
+}
+.pu-close{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+#menu-mobile-close{
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    z-index: 100000000000;
+}
+/**********************************************************************/
+/********************* DOWNLOAD DATA POP UP ***************************/
+/**********************************************************************/
+.popupMenu.downloadData{
+    position: fixed;
+    background: white;
+    top: calc(50% - 255px);
+    width: 636px;
+    z-index: 4;
+    left: calc(50% - 378px);
+    padding-bottom: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    opacity: 0;
+    display: none;
+}
+.pu-section{
+	margin-bottom: 35px;
+	display: block;
+}
+.pu-section.hide{
+	display: none;
+}
+.pu-section .pu-subtitle{
+	color: #353535;
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.pu-dlRow{
+	cursor: pointer;
+}
+#pu-dlIndicator, #pu-dlDateSingle, #pu-dlDateRange, #pu-dlStates{
+    font-size: 16px;
+    color: #1696d2;
+    margin-left: 34px;
+}
+#pu-dlIndicator{
+	font-weight: bold;
+	margin-top: 7px;
+}
+#pu-dlStates{
+	font-style: italic;
+	margin-top: 6px;
+}
+.pu-allStates{
+	font-size: 14px;
+	color: #353535;
+	font-style: italic;
+	margin-left: 34px;
+}
+.pu-allSections{
+	margin-top: 13px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 34px;
+}
+#pu-downloadLink.hidden{
+	visibility: hidden;
+}
+.pu-smallButton.employmentButton{
+    margin-top: 10px;
+    margin-left: 34px;
+    display: table;
+}
+.employmentButton.indent1{
+	margin-left: 59px;
+}
+.employmentButton.indent2{
+	margin-left: 84px;
+}
+.employmentButton.indent3{
+	margin-left: 109px;
+}
+.iconIndent{
+	position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-top: 26px;
+}
+.ii-1{
+    left: 96px;
+    background: #9d9d9d;
+    border: 1px solid #9d9d9d;
+    border-radius: 100%;
+}
+.ii-2{
+    left: 121px;
+    background: #fff;
+    border: 1px solid #9d9d9d;
+    border-radius: 100%;
+}
+.ii-3{
+    left: 146px;
+    background: #9d9d9d;
+    border: 1px solid #9d9d9d;
+}
+/**********************************************************************/
+/************************ SAVE IMG POP UP *****************************/
+/**********************************************************************/
+.popupMenu.saveImage{
+    position: fixed;
+    background: white;
+    top: calc(50% - 255px);
+    width: 636px;
+    z-index: 3;
+    left: calc(50% - 378px);
+    height: 510px;
+    padding-left: 60px;
+    padding-right: 60px;
+    opacity: 0;
+    display: none;
+}
+.pu-buttonRow .pu-smallButton{
+	display: inline-block;
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.pu-checkRow{
+	position: relative;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+.pu-checkText{
+	font-size: 16px;
+	color: #353535;
+	display: inline-block;
+	position: absolute;
+}
+.pu-bigButton.dataDownload, .pu-bigButton.dataDownloadCurrent{
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+}
+.pu-bigButton.dataDownload.shortScreen, .pu-bigButton.dataDownloadCurrent.shortScreen{
+    position: relative;
+    bottom: 0px;
+    right: 60px;
+    float: right;
+}
+.pu-bigButton.dataDownload.shortScreen{
+    right: -85px;
+}
+.pu-bigButton.imgDownload{
+    margin-bottom: 60px;
+    float: right;
+    margin-top: 40px;
+}
+.popupMenu.fullScreenPopup{
+    display: block;
+    top: 0px;
+    left: 0px;
+    overflow: scroll;
+}
+/**********************************************************************/
+/********************* SHARE URL POP UP ***************************/
+/**********************************************************************/
+.shareTooltip{
+	display: block;
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #d2d2d2;
+    top: -69px;
+    left: 39px;
+    width: 320px;
+    height: 90px;
+}
+.shareTooltip.hidden{
+	display: none;
+}
+.shareTooltip:after, .shareTooltip:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.shareTooltip:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 20px;
+	margin-left: -20px;
+}
+.shareTooltip:before {
+	border-color: rgba(210, 210, 210, 0);
+	border-top-color: #d2d2d2;
+	border-width: 21px;
+	margin-left: -21px;
+}
+.shareTooltip .shareText{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    top: 20px;
+    left: 20px;
+    position: relative;
+	padding-left: 10px;
+    font-size: 14px;
+    font-family: Lato;
+    text-overflow: ellipsis;
+}
+.shareTooltip .copyButton{
+    position: relative;
+    left: 37px;
+    top: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 11px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.shareTooltip .copyButton:hover{
+	background: #0A4C6A;
+}
+.shareTooltip .copiedText{
+	top: 64px;
+	left: 20px;
+	font-size: 14px;
+	font-style: italic;
+	color: #1696d2;
+	position: absolute;
+	display: inline-block;
+	opacity: 0;
+}
+
+/**********************************************************************/
+/************************** HIDDEN CHARTS *****************************/
+/**********************************************************************/
+#hiddenBarChartContainer{
+	position: fixed;
+	top: -5000px;
+    /*top: 0px;*/
+	left: 0px;
+	background: white;
+	width: 2000px;
+	height: 2000px;
+	z-index: 2;
+	display: none;
+}
+#hiddenLineChartContainer{
+	position: fixed;
+	top: -5000px;
+	left: 0px;
+	background: white;
+	width: 2000px;
+	height: 2000px;
+	z-index: 2;
+	display: none;
+}
+.imgTitle{
+	font-size: 23px;
+    font-weight: bold;
+}
+.imgSubtitle{
+	font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    margin-left: 10px;
+}
+.imgLogo{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    fill: #1696d2;
+}
+.imgLogo tspan{
+	fill: #000;
+}
+.imgSource{
+    font-weight: bold;
+    font-size: 14px;
+}
+.imgSource tspan{
+    font-weight: normal;
+}
+.imgHidden{
+	display: none !important;
+}
+
+/**********************************************************************/
+/*************************** FOOTER ***********************************/
+/**********************************************************************/
+
+#footerContainer{
+    margin-top: 95px;
+    border-top: 2px solid #0A4C6A;
+    background: #0A4C6A;
+}
+#footerContent{
+    width: 700px;
+    margin: 0 auto;
+    color: #fff;
+}
+#footerContent a{
+    color: #fff;
+}
+.footerHeader{
+    margin-top: 50px;
+    margin-bottom: 8px;
+    font-size: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+}
+#topFooterHeader{
+    padding-top: 44px;
+}
+.footerAbout, .footerCredits, .footerSpecialCredit{
+    font-size: 16px;
+    line-height: 26px;
+}
+.footerCredits, .footerSpecialCredit{
+    font-size: 14px;
+    font-style: italic;
+    line-height: 22px;
+}
+#bottomFooterCredits{
+    margin-bottom: 45px;
+}
+.creditsHeader{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.creditsNames{
+    margin-bottom: 30px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+#copyright{
+    margin-bottom: 100px;
+    display: inline-block;
+}
+#footerContent .button{
+    text-transform: uppercase;
+    width: 198px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 44px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#footerContent .button.bottom{
+    margin-top: 10px;
+}
+#footerContent .button{
+    border: 2px solid #fff;
+    color: #fff;
+    margin-right: 20px;
+    font-weight: normal;
+    display: inline-block;
+}
+.footerButtonLink{
+    text-decoration: none;
+}
+#footerContent .button:hover{
+    background: #000;
+    color: #fff;
+}
+
+
+
+/**********************************************************************/
+/************************** ABOUT PAGE ********************************/
+/**********************************************************************/
+.aboutHeader{
+	border-bottom: 1px solid #d2d2d2;
+}
+.aboutContainer{
+	max-width: 728px !important;
+}
+.aboutContainer div{
+	display: block;
+	width: 100%;
+}
+.aboutContainer a{
+    text-decoration: none;
+    color: #1696d2;
+}
+.aboutLargeHead{
+	font-size: 27px;
+	font-weight: bold;
+	color: #000;
+    margin-bottom: 40px;
+}
+.aboutTopText{
+	font-size: 19px;
+	color: #353535;
+	margin-top: 17px;
+    margin-bottom: 61px;
+    line-height: 1.5;
+}
+.aboutSmallHead{
+	margin-bottom: 17px;
+	font-size: 23px;
+	font-weight: bold;
+	color: #000;
+}
+.aboutSmallHead.bottom{
+	margin-top: 70px;
+}
+.aboutCategoryHead{
+	font-size: 19px;
+	color: #000;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #d2d2d2;
+}
+.aboutCategoryHead:not(.top){
+	margin-top: 34px;
+}
+.aboutCategoryHead span{
+	font-size: 14px;
+	color: #353535;
+}
+.aboutCategoryName{
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+	margin-top: 17px;
+}
+.aboutCategoryRow{
+	font-size: 14px;
+	color: #353535;
+}
+.aboutCategoryRow.note{
+    margin-top: 15px;
+}
+.aboutCategoryRow.sub{
+    margin-left: 38px;
+}
+.aboutSectionNote{
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 50px;
+}
+.aboutCategoryRow.subHead{
+    margin-top: 5px;
+    font-weight: bold;
+}
+.aboutCreditsText{
+	font-size: 16px;
+	font-style: italic;
+	color: #696969;
+	line-height: 1.5;
+	margin-bottom: 40px;
+}
+.aboutCreditsRow{
+	font-size: 14px;
+	color: #353535;
+	margin-bottom: 14px;
+}
+.aboutCreditsRow span{
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-right: 3px;
+}
+
+
+
+

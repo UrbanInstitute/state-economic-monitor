@@ -1,0 +1,107 @@
+[
+    {
+        "endDate": "2019-09-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "AK"
+        ],
+        "text": "Alaska\u2019s September unemployment rate (6.2%) was the highest of any state.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2019-04-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "Hawaii\u2019s 2.6% year-over-year increase in GDP was the largest of any state.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "weekly_earnings",
+        "states": [
+            "US",
+            "MS",
+            "WA"
+        ],
+        "text": "September average weekly earnings ranged from Mississippi's $755 to Washington\u2019s $1,198.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2019-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "ID",
+            "UT"
+        ],
+        "text": "Idaho and Utah had the largest increases in house prices between Q2 2018 and Q2 2019.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "total_employment",
+        "startDate": "2012-01-01",
+        "states": [
+            "US",
+            "KS"
+        ],
+        "text": "Kansas\u2019s job growth in September was greater than the US average for the first time since 2012.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2009-09-01",
+        "states": [
+            "US",
+            "CA"
+        ],
+        "text": "California was one of 19 states with a decade-low unemployment rate in September.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "state_and_local_public_education_employment",
+        "states": [
+            "US",
+            "NV"
+        ],
+        "text": "Nevada's 4.6% year-over-year increase in public education employment was the largest of any state.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-04-01",
+        "indicator": "state_gdp",
+        "startDate": "2012-01-01",
+        "states": [
+            "US",
+            "DE"
+        ],
+        "text": "Delaware's GDP growth rate fell below the nation's growth rate for the first time since Q1 2012.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "private_employment",
+        "states": [
+            "US",
+            "UT"
+        ],
+        "text": "Utah\u2019s 3.3% year-over-year increase in private employment was the largest of any state.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-09-01",
+        "indicator": "state_and_local_public_employment",
+        "states": [
+            "US",
+            "NH"
+        ],
+        "text": "Over the year, state and local public employment decreased the most in New Hampshire.",
+        "unit": "change"
+    }
+]

@@ -1,0 +1,355 @@
+<html>
+<head>
+  <style>
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/jquery-ui.css') }}">
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/updater.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/selectize.css') }}">
+</head>
+<body>
+<div class = "section">
+  <h1>Upload data files</h1>
+  <div class = "instructions">Files should be in xlsx format. The first tab should contain historical and current figure data, with dates in the leftmost column (format MM/DD/YYYY). The fifth row should contain state names, with the first cell being blank and the second cell containing the text "United States" or "US Average".</div>
+
+  <div class = "uploadContainer">
+      <h2>Unemployment rate</h2>
+      <form id="upload-unemployment_rate" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-unemployment_rate-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="unemployment_rate-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Total employment</h2>
+      <form id="upload-total_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-total_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="total_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Private employment</h2>
+      <form id="upload-private_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-private_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="private_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Public employment</h2>
+      <form id="upload-public_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-public_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="public_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Federal public employment</h2>
+      <form id="upload-federal_public_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-federal_public_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="federal_public_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>State and local public employment</h2>
+      <form id="upload-state_and_local_public_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-state_and_local_public_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="state_and_local_public_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>State and local public education employment</h2>
+      <form id="upload-state_and_local_public_education_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-state_and_local_public_education_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="state_and_local_public_education_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Weekly earnings</h2>
+      <form id="upload-weekly_earnings" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-weekly_earnings-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="weekly_earnings-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>House price index</h2>
+      <form id="upload-house_price_index" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-house_price_index-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="house_price_index-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>State GDP</h2>
+      <form id="upload-state_gdp" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-state_gdp-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="state_gdp-status">&hellip;</div>
+  </div>
+</div>
+
+<div class = "section">
+  <h1>Highlight cards</h1>
+  <div class = "instructions">Add or reorder the highlight cards using the controls below. The error validation on these controls is not as robust as on the live SEM (so you can, for example, enter a date in the future, or include raw units for HPI). However, the "Add card" button will give you an error message if you are missing required fields. Note: you may include html code or special characters (such as em dashes, &ldquo;pretty&rdquo; quotation marks, etc) in the "Card text" field. However, we would discourage you from including html hyperlinks to external sites.</div>
+
+
+    <div id = "updater">
+
+
+      <div class = "controlContainer chartType">
+        <div class = "controlLabel">Chart type</div>
+        <div class = "buttonRow">
+          <div class = "chartType bar controlButton">Bar</div><div class = "chartType line controlButton active">Line</div>
+        </div>
+      </div>
+
+
+      <div class = "controlContainer indicator">
+        <div class = "controlLabel">Indicator</div>
+        <select class="select-indicator" name="indicator[]"  placeholder="Select an indicator...">
+          <option value="">Select an indicator...</option>
+          <option value = "unemployment_rate">Unemployment rate</option>
+          <option value = "total_employment">Total employment</option>
+          <option value = "private_employment">Private employment</option>
+          <option value = "public_employment">Public employment</option>
+          <option value = "federal_public_employment">Federal public employment</option>
+          <option value = "state_and_local_public_employment">State and local public employment</option>
+          <option value = "state_and_local_public_education_employment">State and local public education employment</option>
+          <option value = "weekly_earnings">Average weekly earnings</option>
+          <option value = "house_price_index">House prices</option>
+          <option value = "state_gdp">State GDP</option>
+        </select>
+      </div>
+
+      <div class = "controlContainer">
+        <div class = "controlLabel">Units</div>
+        <div class = "buttonRow">
+          <div class = "unitType raw controlButton">Raw value</div><div class = "unitType change controlButton">Yoy % change</div>
+        </div>
+      </div>
+
+
+      <div class = "controlContainer start monthly">
+        <div class = "controlLabel">Start date</div>
+        <div class = "buttonRow">
+          <select class = "select-startMonth" name = "startmonth[]" placeholder = "Select a month...">
+            <option value = "">Select a month...</option>
+            <option value = "01">January</option>
+            <option value = "02">February</option>
+            <option value = "03">March</option>
+            <option value = "04">April</option>
+            <option value = "05">May</option>
+            <option value = "06">June</option>
+            <option value = "07">July</option>
+            <option value = "08">August</option>
+            <option value = "09">September</option>
+            <option value = "10">October</option>
+            <option value = "11">November</option>
+            <option value = "12">December</option>
+          </select>
+
+          <input placeholder = "4 digit year" class = "start year yearInput"></div>
+          <div class = "invalidText year hide">*Invalid year</div>
+        </div>
+
+
+      <div class = "controlContainer end monthly">
+        <div class = "controlLabel">End date</div>
+        <div class = "buttonRow">
+          <select class = "select-endMonth" name = "endmonth[]" placeholder = "Select a month...">
+            <option value = "">Select a month...</option>
+            <option value = "01">January</option>
+            <option value = "02">February</option>
+            <option value = "03">March</option>
+            <option value = "04">April</option>
+            <option value = "05">May</option>
+            <option value = "06">June</option>
+            <option value = "07">July</option>
+            <option value = "08">August</option>
+            <option value = "09">September</option>
+            <option value = "10">October</option>
+            <option value = "11">November</option>
+            <option value = "12">December</option>
+          </select>
+
+          <input placeholder = "4 digit year" class = "end year yearInput"></div>
+          <div class = "invalidText year hide">*Invalid year</div>
+        </div>
+
+      <div class = "controlContainer start quarterly hide">
+        <div class = "controlLabel">Start date</div>
+        <div class = "buttonRow">
+          <select class = "select-startQ" name = "startq[]" placeholder = "Select a quarter...">
+            <option value = "">Select a quarter...</option>
+            <option value = "1">Q1</option>
+            <option value = "2">Q2</option>
+            <option value = "3">Q3</option>
+            <option value = "4">Q4</option>
+          </select>
+
+          <input placeholder = "4 digit year" class = "start year yearInput"></div>
+          <div class = "invalidText year hide">*Invalid year</div>
+        </div>
+
+      <div class = "controlContainer end quarterly hide">
+        <div class = "controlLabel">End date</div>
+        <div class = "buttonRow">
+          <select class = "select-endQ" name = "endq[]" placeholder = "Select a quarter...">
+            <option value = "">Select a quarter...</option>
+            <option value = "1">Q1</option>
+            <option value = "2">Q2</option>
+            <option value = "3">Q3</option>
+            <option value = "4">Q4</option>
+          </select>
+
+          <input placeholder = "4 digit year" class = "end year yearInput"></div>
+          <div class = "invalidText year hide">*Invalid year</div>
+        </div>
+
+      <div class = "controlContainer states">
+        <div class = "controlLabel">States</div>
+        <select class="select-state" name="state[]" multiple  placeholder="Select states...">
+          <option value="">Select states...</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+
+    <div class = "controlContainer text">
+      <div class = "controlLabel">Card text</div>
+      <textarea id = "cardText"></textarea>
+      <div class = "charCount"><span>100</span> characters remaining</div>
+      <div id = "hiddenText"></div>
+    </div>
+
+    <div class = "controlContainer addCard">
+      <div class = "bigButton addCard">Add card</div>
+      <div id = "addCardError"></div>
+    </div>
+
+</div>
+
+<div class = "instructions">Click and drag the cards below to reorder them.</div>
+
+<div id = "cardDiv">
+  <ul id="cardContainer">
+  </ul>
+</div>
+</div>
+
+<div class = "section">
+  <h1>Update!</h1>
+  <div class = "instructions">Once you have uploaded all new data files and added or reordered highlight cards, click the button below to update. This will not push your changes live, but will open a preview version of the updated SEM in a new tab (you may need to <a href = "https://www.refreshyourcache.com/en/home/" target = "_blank">clear your browser cache</a> to see the changes at first). Then email Ben Chartoff at <a href = "mailto:bchartoff@urban.org">bchartoff@urban.org</a> to push the changes live, or report any issues or bugs.</div>
+
+  <div class = "bigButton addIngredient">Update the SEM</div>
+  <div id = "loading-text"></div>
+</div>
+
+<script type=text/javascript src="{{ url_for('static', filename='js/vendor/jquery.1.8.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/vendor/jquery-ui.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/vendor/d3.v5.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/vendor/selectize.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/vendor/he.js') }}"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script>var pathPrefix = ""</script>
+<script type=text/javascript src="{{ url_for('static', filename='js/updater.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
