@@ -154,39 +154,10 @@ function downloadDataFile(content, fileName, mimeType) {
     location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
   }
 
-  // var urlText = "static/data/dictionaries/sem_earnings_data_dictionary.txt"
-  // var aT = document.createElement('a');
-  // aT.href = 'data:text/plain;charset=UTF-8,' + '' + urlText;
-  // aT.download = urlText.substr(urlText.lastIndexOf('/') + 1);
-  // document.body.appendChild(aT);
-  // aT.click();
-  // document.body.removeChild(aT);
-
-
-  // window.open("static/data/dictionaries/sem_earnings_data_dictionary.txt","Download")
-  // window.focus()
 }
 
 
-// function readTextFile(file)
-// {
-//     var rawFile = new XMLHttpRequest();
-//     rawFile.open("GET", file, false);
-//     rawFile.onreadystatechange = function ()
-//     {
-//         if(rawFile.readyState === 4)
-//         {
-//             if(rawFile.status === 200 || rawFile.status == 0)
-//             {
-//                 var allText = rawFile.responseText;
-//                 return allText;
-//                 console.log(allText)
-//             }else return "a"
-//         }else return "b"
-//     }
-//     return "c"
-//     rawFile.send(null);
-// }
+
 
 function downloadZipFile(slugs){
   var zip = new JSZip();
