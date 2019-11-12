@@ -1811,7 +1811,26 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
 			.attr("y",344)
 			.attr("x",239)
-			.text(indicatorNames[params.indicator])
+			.text(function(){
+				var params = getParams(),
+					indicator = params.indicator,
+					lastDate = params.lastDate,
+					firstDate = params.firstDate,
+					firstYear = +(firstDate.split("-")[0]),
+					firstMonth = +(firstDate.split("-")[1]),
+					lastYear = +lastDate.split("-")[0],
+					lastMonth = +lastDate.split("-")[1]
+
+				if(isQuarterly(indicator)){
+					return indicatorNames[indicator] + ",  Q" + ((lastMonth-1)/3 + 1) + " " + lastYear
+				}else{
+					return indicatorNames[indicator] + ", " + monthFull[lastMonth - 1] + " " + lastYear
+				}
+			
+			})
+
+
+
 		bottomTitle.append("tspan")
 			.attr("class", "imgSubtitle")
 			.attr("dx", 10)
