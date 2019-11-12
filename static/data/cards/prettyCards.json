@@ -32,6 +32,17 @@
         "unit": "change"
     },
     {
+        "endDate": "2019-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "ID",
+            "UT"
+        ],
+        "text": "Idaho and Utah had the largest increases in house prices between Q2 2018 and Q2 2019.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-09-01",
         "indicator": "state_and_local_public_education_employment",
         "states": [
@@ -70,17 +81,6 @@
             "HI"
         ],
         "text": "Hawaii\u2019s 2.6% year-over-year increase in GDP was the largest of any state.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-04-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "ID",
-            "UT"
-        ],
-        "text": "Idaho and Utah had the largest increases in house prices between Q2 2018 and Q2 2019.",
         "unit": "change"
     },
     {
