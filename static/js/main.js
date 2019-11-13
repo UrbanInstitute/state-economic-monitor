@@ -58,6 +58,16 @@ function makeCSV(data, indicator, unit, filename) {
   if(isUSHidden()){
   	data = data.filter(function(o){ return o.abbr != "US" })
   }
+  data.sort(function(a,b){
+  	if(a.date == b.date){
+  		return 0
+  	}
+  	else if(moment(a.date).isBefore(moment(b.date))){
+  		return -1
+  	}else{
+  		return 1
+  	}
+  })
   // if(indicator == "state_and_local_public_education_employment"){
   // 	data = data.filter(function(o){ return o.abbr != "US" })	
   // }
@@ -79,39 +89,97 @@ function makeCSV(data, indicator, unit, filename) {
   // Building the CSV from the Data two-dimensional array
   // Each column is separated by ";" and new line "\n" for next row
   var csvContent = '';
-  
-  var header = ["date","geography", indicator + "_" + unit]
-  var headerString = "\"" + header.join('","') + "\"" + '\n';
-  csvContent += headerString;
+  var dates = []
+  var tempData = {}
 
   data.forEach(function(infoObject, index) {
-  	if(typeof(infoObject[key]) != "undefined"){
-	  	var newDate
-	  	if(indicator == "house_price_index" || indicator == "state_gdp"){
-	  		var tempDate = infoObject["date"].split("-"),
-	  			tempYear = tempDate[0],
-	  			tempQ = ((+tempDate[1]-1)/3)+1,
-	  			newDate = tempYear + " Q" + tempQ
+  	var newDate
+  	if(indicator == "house_price_index" || indicator == "state_gdp"){
+  		var tempDate = infoObject["date"].split("-"),
+  			tempYear = tempDate[0],
+  			tempQ = ((+tempDate[1]-1)/3)+1,
+  			newDate = tempYear + " Q" + tempQ
 
-	  	}else{
-	  		newDate = infoObject["date"]
-	  	}
-	  	if(indicator == "state_and_local_public_education_employment" && (infoObject["abbr"] == "DC" || infoObject["abbr"] == "HI" || infoObject["abbr"] == "MO")){
-	  		infoArray = [newDate, infoObject["abbr"], "" ];
-	  	}else{
-	    	infoArray = [newDate, infoObject["abbr"], (+infoObject[key]/divisor) ];
-	    }
+  	}else{
+  		newDate = infoObject["date"]
+  	}
 
 
-	    // put a quote mark on the first item in each line            
-	    // put a trailing quote mark on the last item in each line    
-	    // add quotes around everything else as well
-	    dataString = "\"" + infoArray.join('","') + "\"";
+  	if(tempData.hasOwnProperty(newDate)){
+  		tempData[newDate].push("")
+  	}
+  	// var sep = (index == data.length - 1) ? "" : ",";
+  	
+  	if(dates.indexOf(newDate) == -1) dates.push(newDate)
+  	headerString = "Geography," + dates.join(",")
 
-	    // Add the whole line to the content
-	    csvContent += index < data.length ? dataString + '\n' : dataString;
+  	var state = infoObject["abbr"];
+  	var value;
+
+
+
+
+	if(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO")){
+		value = "";
+	}else{
+		value = (+infoObject[key]/divisor);
 	}
-  });
+
+	if(tempData.hasOwnProperty(state)){
+		tempData[state].push(value)
+	}else{
+		tempData[state] = [state, value]
+	}
+
+
+
+
+  })
+  console.log(tempData)
+
+  csvContent = headerString + "\n"
+
+  for(s in tempData){
+  	csvContent += tempData[s].join(",") + "\n"
+  }
+
+  // tempData.forEach(function(o,i){
+  // 	csvContent += 0
+  // })
+  
+ //  var header = ["date","geography", indicator + "_" + unit]
+ //  var headerString = "\"" + header.join('","') + "\"" + '\n';
+ //  csvContent += headerString;
+
+ //  data.forEach(function(infoObject, index) {
+ //  	console.log(infoObject)
+ //  	if(typeof(infoObject[key]) != "undefined"){
+	//   	var newDate
+	//   	if(indicator == "house_price_index" || indicator == "state_gdp"){
+	//   		var tempDate = infoObject["date"].split("-"),
+	//   			tempYear = tempDate[0],
+	//   			tempQ = ((+tempDate[1]-1)/3)+1,
+	//   			newDate = tempYear + " Q" + tempQ
+
+	//   	}else{
+	//   		newDate = infoObject["date"]
+	//   	}
+	//   	if(indicator == "state_and_local_public_education_employment" && (infoObject["abbr"] == "DC" || infoObject["abbr"] == "HI" || infoObject["abbr"] == "MO")){
+	//   		infoArray = [newDate, infoObject["abbr"], "" ];
+	//   	}else{
+	//     	infoArray = [newDate, infoObject["abbr"], (+infoObject[key]/divisor) ];
+	//     }
+
+
+	//     // put a quote mark on the first item in each line            
+	//     // put a trailing quote mark on the last item in each line    
+	//     // add quotes around everything else as well
+	//     dataString = "\"" + infoArray.join('","') + "\"";
+
+	//     // Add the whole line to the content
+	//     csvContent += index < data.length ? dataString + '\n' : dataString;
+	// }
+ //  });
   
   var args = {
     data: csvContent,
@@ -3663,7 +3731,7 @@ function initControls(){
 			  	type: "blob"
 			  })
 			  .then(function(blob) {
-			  	saveAs(blob, args.filename + ".zip");
+			  	saveAs(blob, args.filename.replace(".csv","") + ".zip");
 			  });
  
 
