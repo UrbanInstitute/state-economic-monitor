@@ -511,9 +511,8 @@ function buildLineDateMenu(startDate, endDate, menu){
 				return "calYearLabel" + active
 			})
 			.attr("value", function(d,i){ return i + firstYear })
-			.on("input", function(d, i){
-				console.log(d, i, firstYear, this.value)
-			})
+			// .on("input", function(d, i){
+			// })
 
 		yearContainer.selectAll("calMonth")
 			.data(function(d){ return d})
@@ -634,16 +633,13 @@ function buildLineDateMenu(startDate, endDate, menu){
 					inputYear = +this.value,
 					containerYear = d3.select(this.parentNode).attr("data-year"),
 					displayedYears = d3.select(this.parentNode.parentNode).selectAll(".calendarYearContainer.active").nodes().map(function(o){
-						// console.log(o)
 						return d3.select(o).attr("data-year")
 					}),
 					displayedIndex = displayedYears.indexOf(containerYear)
 
 					var thisInd = this;
-					// console.log(inputYear, firstYear, lastYear)
 
 				if(inputYear >= firstYear && inputYear <= lastYear){
-					console.log("a", thisInd)
 					var startLeft, endLeft;
 					if(inputYear == containerYear){
 						return false;
@@ -675,7 +671,6 @@ function buildLineDateMenu(startDate, endDate, menu){
 							else if(displayedIndex == 2 || (+inputYear == +lastYear) || (+inputYear == +lastYear-1 && displayedIndex == 0)){
 								newYears = [+inputYear-2, +inputYear-1, +inputYear, +inputYear+1]	
 							}else{
-								console.log(displayedIndex, inputYear, lastYear, firstYear)
 								return false
 							}
 
@@ -688,10 +683,6 @@ function buildLineDateMenu(startDate, endDate, menu){
 								}
 							}
 
-							console.log(thisInd)
-							// console.log(d3.select(this).select("input").node(), thisInd)
-
-							// d3.select(this).select("input").node().blur()
 							thisInd.blur()
 							// this.blur()
 
@@ -1251,16 +1242,7 @@ function buildCards(cardData, isDefault){
 			d3.selectAll(".card")
 				.transition()
 				.style("left", ((progress + 1) * -1 * cardWidth) + "px")
-				// .style("left", function(){
-				// 	console.log(this.getBoundingClientRect().left )
-				// 	if(this.getBoundingClientRect().left < 0){
-				// 		return 800 + "px"
-				// 	}else{
-				// 		return ((progress + 1) * -1 * cardWidth) + "px"	
-				// 	}
-					
-				// })
-				// console.log("")
+
 		})
 
 
@@ -2011,7 +1993,6 @@ function getColorScale(y, data, key){
 		flipVals = data.map(function(o){ return o[key]})
 		// vals = data.map(function(o){ return o[key]}).reverse()
 
-	// console.log(flipVals, tickBreaks)
 	for(var i = tickBreaks.length - 1; i > 0; i--){
 		if(tickBreaks[i] > flipVals[0] && tickBreaks[i-1] > flipVals[0]){
 			tickBreaks.pop()
@@ -2136,7 +2117,6 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("transform", "translate(0," + height + ")")
 		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType)))
 		.selectAll("text").text(function(d, i){
-			console.log(containerType, getLineXTickCount(containerType))
 			var md = moment(d)
 			if(isQuarterly(indicator)){
 				return "Q" + (md.month()/3 + 1) + " " + md.year()
@@ -2692,7 +2672,6 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 	})
 	.transition()
 		.attr("transform", function(d,i){
-			// console.log(d,i)
 
 			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
 				yPosition = y(dLast[key])+4
@@ -3307,7 +3286,6 @@ function initControls(){
 							.style("border-left-color", "#d2d2d2")
 							.style("border-right-color", "#d2d2d2")
 
-					// console.log(key)
 					if(key == "employment"){
 						d3.select(".menuSpacer.ms1")
 							.transition()
@@ -3691,7 +3669,6 @@ function initControls(){
 
 
 			// downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
-			// // console.log(args)
 			// downloadDataFile(args.dictionaryText, args.dictionaryFileName , 'text;encoding:utf-8');
 		}
 		else{
