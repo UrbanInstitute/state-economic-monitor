@@ -10,14 +10,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2019-04-01",
-        "indicator": "state_gdp",
+        "endDate": "2019-07-01",
+        "indicator": "house_price_index",
         "states": [
             "US",
-            "FL",
-            "HI"
+            "ME",
+            "ID"
         ],
-        "text": "Florida and Hawaii saw the largest year-over-year increases in state GDP.",
+        "text": "Idaho and Maine had the largest increases in house prices between Q3 2018 and Q3 2019.",
         "unit": "change"
     },
     {
@@ -33,23 +33,13 @@
     },
     {
         "endDate": "2019-04-01",
-        "indicator": "house_price_index",
+        "indicator": "state_gdp",
         "states": [
             "US",
-            "ID",
-            "UT"
+            "FL",
+            "HI"
         ],
-        "text": "Idaho and Utah had the largest increases in house prices between Q2 2018 and Q2 2019.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-10-01",
-        "indicator": "private_employment",
-        "states": [
-            "US",
-            "MI"
-        ],
-        "text": "Only Michigan saw private employment decline over the year.",
+        "text": "Florida and Hawaii saw the largest year-over-year increases in state GDP.",
         "unit": "change"
     },
     {
@@ -61,6 +51,27 @@
             "UT"
         ],
         "text": "Utah\u2019s job growth has exceeded the US average each month since April 2010.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-07-01",
+        "indicator": "house_price_index",
+        "startDate": "2008-07-01",
+        "states": [
+            "US",
+            "IL"
+        ],
+        "text": "Illinois's annual house price growth has trailed the US average each quarter since 2009.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-10-01",
+        "indicator": "private_employment",
+        "states": [
+            "US",
+            "MI"
+        ],
+        "text": "Only Michigan saw private employment decline over the year.",
         "unit": "change"
     },
     {
