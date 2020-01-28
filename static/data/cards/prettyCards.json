@@ -1,23 +1,24 @@
 [
     {
-        "endDate": "2019-11-01",
-        "indicator": "unemployment_rate",
+        "endDate": "2019-12-01",
+        "indicator": "weekly_earnings",
         "states": [
             "US",
-            "VT"
+            "MS",
+            "DC"
         ],
-        "text": "Vermont\u2019s November unemployment rate (2.3%) was the lowest of any state.",
+        "text": "In December, average private-sector weekly earnings ranged from Mississippi's $768 to DC's $1,691.",
         "unit": "raw"
     },
     {
-        "endDate": "2019-07-01",
-        "indicator": "house_price_index",
-        "startDate": "2008-07-01",
+        "endDate": "2019-12-01",
+        "indicator": "total_employment",
+        "startDate": "2010-01-01",
         "states": [
             "US",
-            "IL"
+            "UT"
         ],
-        "text": "Illinois's annual house price growth has trailed the US average each quarter since 2009.",
+        "text": "Utah\u2019s year-over-year job growth has exceeded the US average each month since April 2010.",
         "unit": "change"
     },
     {
@@ -31,26 +32,36 @@
         "unit": "change"
     },
     {
-        "endDate": "2019-11-01",
-        "indicator": "weekly_earnings",
+        "endDate": "2019-07-01",
+        "indicator": "house_price_index",
+        "startDate": "2008-07-01",
         "states": [
             "US",
-            "MS",
-            "DC"
+            "IL"
         ],
-        "text": "In November, average weekly earnings ranged from Mississippi's $752 to DC\u2019s $1,597.",
+        "text": "Illinois's annual house price growth has trailed the US average each quarter since 2009.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-12-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "AK"
+        ],
+        "text": "Alaska\u2019s December unemployment rate (6.1%) was the highest of any state.",
         "unit": "raw"
     },
     {
-        "endDate": "2019-11-01",
-        "indicator": "total_employment",
-        "startDate": "2010-01-01",
+        "endDate": "2019-12-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2009-12-01",
         "states": [
             "US",
-            "UT"
+            "VA"
         ],
-        "text": "Utah\u2019s job growth has exceeded the US average each month since April 2010.",
-        "unit": "change"
+        "text": "Virginia was one of 22 states with a decade-low unemployment rate in December.",
+        "unit": "raw"
     },
     {
         "endDate": "2019-07-01",
@@ -64,35 +75,37 @@
         "unit": "change"
     },
     {
-        "endDate": "2019-11-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2009-11-01",
-        "states": [
-            "US",
-            "WA"
-        ],
-        "text": "Washington was one of 23 states with a decade-low unemployment rate in November.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2019-11-01",
+        "endDate": "2019-12-01",
         "indicator": "private_employment",
         "states": [
             "US",
+            "WY",
+            "WV",
             "OK",
-            "WY"
+            "IA"
         ],
-        "text": "Only Oklahoma and Wyoming saw private employment decline over the year.",
+        "text": "In December, only four states saw a year-over-year decline in private employment.",
         "unit": "change"
     },
     {
-        "endDate": "2019-11-01",
+        "endDate": "2019-12-01",
         "indicator": "state_and_local_public_employment",
         "states": [
             "US",
-            "NV"
+            "VT",
+            "NH",
+            "VA",
+            "CT",
+            "LA",
+            "WY",
+            "WI",
+            "NJ",
+            "KY",
+            "ME",
+            "MO",
+            "AR"
         ],
-        "text": "Over the year, state and local public employment increased the most in Nevada (3%).",
+        "text": "Between December 2018 and 2019, state and local public employment fell in 12 states.",
         "unit": "change"
     }
 ]
