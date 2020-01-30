@@ -2183,7 +2183,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	g.append("g")
 		.attr("class", "line axis x")
 		.attr("transform", "translate(0," + height + ")")
-		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType)))
+		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType, startDate, endDate, indicator)))
 		.selectAll("text").text(function(d, i){
 			var md = moment(d)
 			if(isQuarterly(indicator)){
@@ -2344,14 +2344,30 @@ function getLineW(){
 function getLineH(){
 	return 520;
 }
-function getLineXTickCount(containerType){
+function getLineXTickCount(containerType, startDate, endDate, indicator){
+	// console.log(startDate,endDate,indicator)
+	var monthsBetween = moment(endDate).diff(moment(startDate), 'months', true),
+		quartersBetween = (monthsBetween/3) + 1
+
 	if(containerType == "hide"){
-		return 12
+		if(isQuarterly(indicator)){
+			return (quartersBetween < 13) ? quartersBetween : 12
+		}else{
+			return (monthsBetween < 13) ? monthsBetween : 12
+		}
 	}else{
 		if(widthUnder(1200)){
-			return 8
+			if(isQuarterly(indicator)){
+				return (quartersBetween < 9) ? quartersBetween : 8
+			}else{
+				return (monthsBetween < 9) ? monthsBetween : 8
+			}
 		}else{
-			return 12
+			if(isQuarterly(indicator)){
+				return (quartersBetween < 13) ? quartersBetween : 12
+			}else{
+				return (monthsBetween < 13) ? monthsBetween : 12
+			}
 		}
 	}
 }
@@ -2852,7 +2868,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	d3.select(".line.axis.x")
 		.transition()
-			.call(d3.axisBottom(x).ticks(getLineXTickCount("screen")))
+			.call(d3.axisBottom(x).ticks(getLineXTickCount("screen",startDate,endDate,indicator)))
 			.selectAll("text").text(function(d, i){
 				var md = moment(d)
 				if(isQuarterly(indicator)){
