@@ -362,6 +362,7 @@
 	    display: block;
     	margin-left: 0px;
 	    margin-top: 8px;
+	    white-space: pre-wrap;
 
     }
     #chartTitleContainer{
