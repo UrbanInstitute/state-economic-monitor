@@ -1,5 +1,16 @@
 [
     {
+        "endDate": "2019-10-01",
+        "indicator": "house_price_index",
+        "startDate": "2008-07-01",
+        "states": [
+            "US",
+            "IL"
+        ],
+        "text": "Illinois\u2019s annual house price growth has trailed the US average each quarter since 2009.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-12-01",
         "indicator": "weekly_earnings",
         "states": [
@@ -12,14 +23,13 @@
     },
     {
         "endDate": "2019-12-01",
-        "indicator": "total_employment",
-        "startDate": "2010-01-01",
+        "indicator": "unemployment_rate",
         "states": [
             "US",
-            "UT"
+            "AK"
         ],
-        "text": "Utah\u2019s year-over-year job growth has exceeded the US average each month since April 2010.",
-        "unit": "change"
+        "text": "Alaska\u2019s December unemployment rate (6.1%) was the highest of any state.",
+        "unit": "raw"
     },
     {
         "endDate": "2019-07-01",
@@ -32,25 +42,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2019-07-01",
+        "endDate": "2019-10-01",
         "indicator": "house_price_index",
-        "startDate": "2008-07-01",
         "states": [
             "US",
-            "IL"
+            "ID",
+            "UT"
         ],
-        "text": "Illinois's annual house price growth has trailed the US average each quarter since 2009.",
+        "text": "Idaho and Utah had the largest increases in house prices between Q4 2018 and Q4 2019.",
         "unit": "change"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "unemployment_rate",
-        "states": [
-            "US",
-            "AK"
-        ],
-        "text": "Alaska\u2019s December unemployment rate (6.1%) was the highest of any state.",
-        "unit": "raw"
     },
     {
         "endDate": "2019-12-01",
@@ -64,17 +64,6 @@
         "unit": "raw"
     },
     {
-        "endDate": "2019-07-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "ME",
-            "ID"
-        ],
-        "text": "Idaho and Maine had the largest increases in house prices between Q3 2018 and Q3 2019.",
-        "unit": "change"
-    },
-    {
         "endDate": "2019-12-01",
         "indicator": "private_employment",
         "states": [
@@ -85,6 +74,17 @@
             "IA"
         ],
         "text": "In December, only four states saw a year-over-year decline in private employment.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2019-12-01",
+        "indicator": "total_employment",
+        "startDate": "2010-01-01",
+        "states": [
+            "US",
+            "UT"
+        ],
+        "text": "Utah\u2019s year-over-year job growth has exceeded the US average each month since April 2010.",
         "unit": "change"
     },
     {
