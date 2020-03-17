@@ -1,5 +1,41 @@
 [
     {
+        "endDate": "2020-01-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "AK",
+            "DC",
+            "LA",
+            "MS",
+            "WV"
+        ],
+        "text": "In January 2020, the unemployment rate was at or above 5% in only AK, DC, LA, MS, and WV.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-01-01",
+        "indicator": "weekly_earnings",
+        "states": [
+            "US",
+            "MS",
+            "DC"
+        ],
+        "text": "In January, average private-sector weekly earnings ranged from MS's $761 to DC's $1,648.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-01-01",
+        "indicator": "private_employment",
+        "startDate": "2010-01-01",
+        "states": [
+            "US",
+            "UT"
+        ],
+        "text": "Utah's year-over-year job growth has exceeded the US average each month since April 2010.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-10-01",
         "indicator": "house_price_index",
         "startDate": "2008-07-01",
@@ -9,27 +45,6 @@
         ],
         "text": "Illinois\u2019s annual house price growth has trailed the US average each quarter since 2009.",
         "unit": "change"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "weekly_earnings",
-        "states": [
-            "US",
-            "MS",
-            "DC"
-        ],
-        "text": "Average private-sector weekly earnings range from Mississippi's $768 to DC's $1,691.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "unemployment_rate",
-        "states": [
-            "US",
-            "AK"
-        ],
-        "text": "Alaska\u2019s December unemployment rate (6.1%) was the highest of any state.",
-        "unit": "raw"
     },
     {
         "endDate": "2019-07-01",
@@ -42,6 +57,46 @@
         "unit": "change"
     },
     {
+        "endDate": "2020-01-01",
+        "indicator": "private_employment",
+        "states": [
+            "US",
+            "IA"
+        ],
+        "text": "Iowa was one of 8 states that saw a year-over-year decline in private employment in January.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-01-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2009-11-01",
+        "states": [
+            "US",
+            "VA"
+        ],
+        "text": "Virginia was one of 31 states with a decade-low unemployment rate in January 2020.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-01-01",
+        "indicator": "state_and_local_public_employment",
+        "states": [
+            "US",
+            "AK",
+            "OH",
+            "MD",
+            "AR",
+            "CT",
+            "NH",
+            "IN",
+            "NE",
+            "ME",
+            "TN"
+        ],
+        "text": "Ten states saw a year-over-year decline in state and local public employment in January.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-10-01",
         "indicator": "house_price_index",
         "states": [
@@ -50,62 +105,6 @@
             "UT"
         ],
         "text": "Idaho and Utah had the largest increases in house prices between Q4 2018 and Q4 2019.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2009-12-01",
-        "states": [
-            "US",
-            "VA"
-        ],
-        "text": "Virginia was one of 22 states with a decade-low unemployment rate in December.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "private_employment",
-        "states": [
-            "US",
-            "WY",
-            "WV",
-            "OK",
-            "IA"
-        ],
-        "text": "In December, only four states saw a year-over-year decline in private employment.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "total_employment",
-        "startDate": "2010-01-01",
-        "states": [
-            "US",
-            "UT"
-        ],
-        "text": "Utah\u2019s year-over-year job growth has exceeded the US average each month since April 2010.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-12-01",
-        "indicator": "state_and_local_public_employment",
-        "states": [
-            "US",
-            "VT",
-            "NH",
-            "VA",
-            "CT",
-            "LA",
-            "WY",
-            "WI",
-            "NJ",
-            "KY",
-            "ME",
-            "MO",
-            "AR"
-        ],
-        "text": "Between December 2018 and 2019, state and local public employment fell in 12 states.",
         "unit": "change"
     }
 ]
