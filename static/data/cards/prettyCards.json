@@ -16,6 +16,22 @@
         "unit": "raw"
     },
     {
+        "endDate": "2019-10-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "TX",
+            "WV",
+            "NM",
+            "ND",
+            "OK",
+            "AK",
+            "WY"
+        ],
+        "text": "Texas and six other states saw a year-over-year decline in GDP from Q4 2019 to Q4 2019.",
+        "unit": "change"
+    },
+    {
         "endDate": "2020-02-01",
         "indicator": "weekly_earnings",
         "states": [
@@ -92,16 +108,6 @@
             "IL"
         ],
         "text": "Illinois\u2019s annual house price growth has trailed the US average each quarter since 2009.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-07-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "WY"
-        ],
-        "text": "Wyoming\u2019s GDP fell 3.2% since last year. It was the largest annual decline of any state in Q3 2019.",
         "unit": "change"
     },
     {
