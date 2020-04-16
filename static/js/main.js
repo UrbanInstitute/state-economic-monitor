@@ -1836,19 +1836,17 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("y",20)
 			.attr("x",10)
 			.text(function(){
+
 					var params = getParams(),
 						indicator = params.indicator,
-						lastDate = params.lastDate,
-						firstDate = params.firstDate,
-						firstYear = +(firstDate.split("-")[0]),
-						firstMonth = +(firstDate.split("-")[1]),
-						lastYear = +lastDate.split("-")[0],
-						lastMonth = +lastDate.split("-")[1]
+						endDate = params.endDate,
+						endYear = +(endDate.split("-")[0]),
+						endMonth = +(endDate.split("-")[1])
 
 					if(isQuarterly(indicator)){
-						return indicatorNames[indicator] + ",  Q" + ((lastMonth-1)/3 + 1) + " " + lastYear
+						return indicatorNames[indicator] + ",  Q" + ((endMonth-1)/3 + 1) + " " + endYear
 					}else{
-						return indicatorNames[indicator] + ", " + monthFull[lastMonth - 1] + " " + lastYear
+						return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
 					}
 					
 				})
@@ -1862,21 +1860,17 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("y",344)
 			.attr("x",239)
 			.text(function(){
-				var params = getParams(),
-					indicator = params.indicator,
-					lastDate = params.lastDate,
-					firstDate = params.firstDate,
-					firstYear = +(firstDate.split("-")[0]),
-					firstMonth = +(firstDate.split("-")[1]),
-					lastYear = +lastDate.split("-")[0],
-					lastMonth = +lastDate.split("-")[1]
+					var params = getParams(),
+						indicator = params.indicator,
+						endDate = params.endDate,
+						endYear = +(endDate.split("-")[0]),
+						endMonth = +(endDate.split("-")[1])
 
-				if(isQuarterly(indicator)){
-					return indicatorNames[indicator] + ",  Q" + ((lastMonth-1)/3 + 1) + " " + lastYear
-				}else{
-					return indicatorNames[indicator] + ", " + monthFull[lastMonth - 1] + " " + lastYear
-				}
-			
+					if(isQuarterly(indicator)){
+						return indicatorNames[indicator] + ",  Q" + ((endMonth-1)/3 + 1) + " " + endYear
+					}else{
+						return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
+					}
 			})
 
 
