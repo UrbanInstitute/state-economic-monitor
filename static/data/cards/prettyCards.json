@@ -18,7 +18,7 @@
             "MS",
             "DC"
         ],
-        "text": "In March, average private-sector weekly earnings ranged from MS\u2019s $772 to DC\u2019s $1,728.",
+        "text": "In March, average private-sector weekly earnings ranged from $772 in MS to $1,728 in DC.",
         "unit": "raw"
     },
     {
@@ -27,10 +27,10 @@
         "startDate": "2007-12-01",
         "states": [
             "US",
-            "WA",
-            "NY"
+            "NY",
+            "WA"
         ],
-        "text": "COVID-19 upended historic low unemployment rates in states like NY and WA.",
+        "text": "COVID-19 upended historically low unemployment in states including NY and WA.",
         "unit": "raw"
     },
     {
@@ -38,10 +38,31 @@
         "indicator": "private_employment",
         "states": [
             "US",
-            "IL"
+            "VT"
         ],
-        "text": "Illinois was one of 17 states that saw private employment decline over the year.",
+        "text": "Vermont was one of 18 states that saw private-sector employment decline over the year.",
         "unit": "change"
+    },
+    {
+        "endDate": "2020-03-01",
+        "indicator": "public_employment",
+        "states": [
+            "US",
+            "AK"
+        ],
+        "text": "Alaska was one of nine states that saw public-sector employment decline over the year.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-03-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2014-12-01",
+        "states": [
+            "US",
+            "LA"
+        ],
+        "text": "Louisiana\u2019s March unemployment rate (6.9%) has not been this high in over five years.",
+        "unit": "raw"
     },
     {
         "endDate": "2020-03-01",
@@ -55,12 +76,28 @@
             "OH",
             "AR",
             "WY",
+            "WV",
             "CT",
             "HI",
-            "MO",
+            "MS",
             "WI"
         ],
         "text": "Twelve states saw a year-over-year decline in state and local public employment in March.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-03-01",
+        "indicator": "weekly_earnings",
+        "states": [
+            "US",
+            "OH",
+            "VA",
+            "GA",
+            "NJ",
+            "RI",
+            "ND"
+        ],
+        "text": "In March, year-over-year private-sector weekly earnings declined in six states.",
         "unit": "change"
     },
     {
