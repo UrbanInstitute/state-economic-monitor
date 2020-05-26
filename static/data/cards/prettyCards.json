@@ -70,6 +70,28 @@
         "unit": "raw"
     },
     {
+        "endDate": "2020-01-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "AK",
+            "WV"
+        ],
+        "text": "Only AK and WV saw a year-over-year decline in house prices from Q1 2019 to Q1 2020.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-01-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-07-01",
+        "states": [
+            "US",
+            "WA"
+        ],
+        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014.",
+        "unit": "change"
+    },
+    {
         "endDate": "2019-10-01",
         "indicator": "state_gdp",
         "states": [
@@ -83,17 +105,6 @@
             "WY"
         ],
         "text": "Texas and six other states saw a year-over-year decline in GDP from Q4 2019 to Q4 2019.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2019-10-01",
-        "indicator": "house_price_index",
-        "startDate": "2008-07-01",
-        "states": [
-            "US",
-            "IL"
-        ],
-        "text": "Illinois\u2019s annual house price growth has trailed the US average each quarter since 2009.",
         "unit": "change"
     }
 ]
