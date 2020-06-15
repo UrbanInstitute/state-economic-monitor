@@ -97,14 +97,9 @@
         "states": [
             "US",
             "TX",
-            "WV",
-            "NM",
-            "ND",
-            "OK",
-            "AK",
-            "WY"
+            "UT"
         ],
-        "text": "Texas and six other states saw a year-over-year decline in GDP from Q4 2019 to Q4 2019.",
+        "text": "Texas and Utah saw the largest year-over-year increase in GDP from Q4 2018 to Q4 2019.",
         "unit": "change"
     }
 ]
