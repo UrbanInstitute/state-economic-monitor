@@ -6,8 +6,7 @@
             "US",
             "HI",
             "MI",
-            "NV",
-            "CA"
+            "NV"
         ],
         "text": "Unemployment rates in Hawaii, Michigan, and Nevada exceeded 20% in May.",
         "unit": "raw"
@@ -15,13 +14,12 @@
     {
         "endDate": "2020-05-01",
         "indicator": "state_and_local_public_employment",
-        "startDate": "2020-01-01",
+        "startDate": "2020-02-01",
         "states": [
             "US",
-            "IA",
-            "CT"
+            "WI"
         ],
-        "text": "All 50 states saw a decline in state and local public employment from February to May.",
+        "text": "All 50 states saw a decline in state and local public employment between February and May.",
         "unit": "raw"
     },
     {
@@ -55,19 +53,6 @@
             "UT"
         ],
         "text": "Nebraska and Utah had the lowest unemployment rates in May.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-05-01",
-        "indicator": "private_employment",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "HI",
-            "MI",
-            "NY"
-        ],
-        "text": "Three states saw private-sector employment fall more than 20% between February and May. ",
         "unit": "raw"
     },
     {
