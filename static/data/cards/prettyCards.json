@@ -14,24 +14,39 @@
     {
         "endDate": "2020-05-01",
         "indicator": "state_and_local_public_employment",
-        "startDate": "2020-02-01",
+        "startDate": "1990-01-01",
         "states": [
             "US",
-            "WI"
+            "LA",
+            "MI",
+            "ME"
         ],
-        "text": "All 50 states saw a decline in state and local public employment between February and May.",
+        "text": "May state and local public employment reached a 30-year low in Louisiana, Maine, and Michigan.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-05-01",
+        "indicator": "private_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "HI",
+            "DC",
+            "MT",
+            "VT"
+        ],
+        "text": "Between April and May, private employment increased in all states except Hawaii and DC.",
         "unit": "raw"
     },
     {
         "endDate": "2020-05-01",
         "indicator": "state_and_local_public_education_employment",
-        "startDate": "2020-01-01",
         "states": [
             "US",
-            "WY"
+            "WI"
         ],
-        "text": "State and local public education employment in Wyoming fell 23% from February to May.",
-        "unit": "raw"
+        "text": "Wisconsin\u2019s state and local public education employment in May is 20% less than a year prior.",
+        "unit": "change"
     },
     {
         "endDate": "2020-05-01",
@@ -42,17 +57,6 @@
             "FL"
         ],
         "text": "Unemployment rates in May set new 40-year highs in four states, including Florida.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-05-01",
-        "indicator": "unemployment_rate",
-        "states": [
-            "US",
-            "NE",
-            "UT"
-        ],
-        "text": "Nebraska and Utah had the lowest unemployment rates in May.",
         "unit": "raw"
     },
     {
