@@ -55,6 +55,37 @@
   </div>
 
   <div class = "uploadContainer">
+      <h2>Leisure and hospitality employment</h2>
+      <form id="upload-leisure_and_hospitality_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-leisure_and_hospitality_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="leisure_and_hospitality_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Manufacturing employment</h2>
+      <form id="upload-manufacturing_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-manufacturing_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="manufacturing_employment-status">&hellip;</div>
+  </div>
+
+
+    <div class = "uploadContainer">
+      <h2>Retail employment</h2>
+      <form id="upload-retail_trade_employment" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-retail_trade_employment-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="retail_trade_employment-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
       <h2>Public employment</h2>
       <form id="upload-public_employment" method="post" enctype="multipart/form-data">
           <fieldset>
@@ -123,6 +154,47 @@
       </form>
       <div class = "status" id ="state_gdp-status">&hellip;</div>
   </div>
+
+  <div class = "uploadContainer">
+      <h2>Accommodation and food services GDP</h2>
+      <form id="upload-accommodation_and_food_services_state_gdp" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-accommodation_and_food_services_state_gdp-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="accommodation_and_food_services_state_gdp-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Manufacturing GDP</h2>
+      <form id="upload-manufacturing_state_gdp" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-manufacturing_state_gdp-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="manufacturing_state_gdp-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Retail GDP</h2>
+      <form id="upload-retail_trade_state_gdp" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-retail_trade_state_gdp-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="retail_trade_state_gdp-status">&hellip;</div>
+  </div>
+
+  <div class = "uploadContainer">
+      <h2>Government GDP</h2>
+      <form id="upload-government_state_gdp" method="post" enctype="multipart/form-data">
+          <fieldset>
+              <input id = "file-government_state_gdp-button" name="file" type="file">
+          </fieldset>
+      </form>
+      <div class = "status" id ="government_state_gdp-status">&hellip;</div>
+  </div>
+
 </div>
 
 <div class = "section">
@@ -140,7 +212,6 @@
         </div>
       </div>
 
-
       <div class = "controlContainer indicator">
         <div class = "controlLabel">Indicator</div>
         <select class="select-indicator" name="indicator[]"  placeholder="Select an indicator...">
@@ -148,6 +219,9 @@
           <option value = "unemployment_rate">Unemployment rate</option>
           <option value = "total_employment">Total employment</option>
           <option value = "private_employment">Private employment</option>
+          <option value = "leisure_and_hospitality_employment">Leisure and hospitality employment</option>
+          <option value = "manufacturing_employment">Manufacturing employment</option>
+          <option value = "retail_trade_employment">Retail employment</option>
           <option value = "public_employment">Public employment</option>
           <option value = "federal_public_employment">Federal public employment</option>
           <option value = "state_and_local_public_employment">State and local public employment</option>
@@ -155,6 +229,10 @@
           <option value = "weekly_earnings">Average weekly earnings</option>
           <option value = "house_price_index">House prices</option>
           <option value = "state_gdp">State GDP</option>
+          <option value = "accommodation_and_food_services_state_gdp">Accommodation and food services GDP</option>
+          <option value = "manufacturing_state_gdp">Manufacturing GDP</option>
+          <option value = "retail_trade_state_gdp">Retail GDP</option>
+          <option value = "government_state_gdp">Government GDP</option>
         </select>
       </div>
 

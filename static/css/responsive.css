@@ -46,6 +46,9 @@
 	#mt-employment, .menuTop{
 		width: 192px;
 	}
+    #mt-gdp{
+        width: 192px;
+    }
 	.categoryMenu .menuActive, .menuActive.timeRange{
 	    width: 160px;
 	    overflow: hidden;
@@ -302,7 +305,7 @@
 		padding-left: 30px;
 		margin-top: 20px;
 	}
-	.employmentOption, #stateNameContainer, #barControlMenus, .timeMenuLabel.month, .timeMenu.menuBlock.fullScreen{
+	.employmentOption, .gdpOption, #stateNameContainer, #barControlMenus, .timeMenuLabel.month, .timeMenu.menuBlock.fullScreen{
 		width: 300px;
     	margin: 0 auto;
 	}
@@ -335,7 +338,7 @@
 	.timeMenu.menuBlock{
 		left: 0px;
 	}
-	#mt-employment, .menuTop {
+	#mt-employment, .menuTop, #mt-gdp {
 	    width: 100%;
 	}
 	.timeMenu.menuBlock{
@@ -435,6 +438,12 @@
 	    text-align: center;
 	    width: 159px;
 	}
+    .pu-smallButton.gdpButton {
+        padding: 7px;
+        font-size: 12px;
+        text-align: center;
+        width: 159px;
+    }
 	.popupMenu{
 	    width: 300px !important;
 	    padding-left: calc(50% - 150px) !important;
@@ -644,7 +653,7 @@
 	    width: calc(100% - 30px) !important;
 	    padding-left: 0px;
 	}
-	.employmentOption, #stateNameContainer, #barControlMenus {
+	.employmentOption, #stateNameContainer, #barControlMenus, .gdpOption {
 	    width: calc(100% - 30px);
 	    max-width: 300px;
 	    position: relative;

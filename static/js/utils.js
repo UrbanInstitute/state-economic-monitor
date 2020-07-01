@@ -159,20 +159,31 @@ function downloadDataFile(content, fileName, mimeType) {
 
 
 
-function downloadZipFile(slugs){
+function downloadZipFile(slugs, section){
   var zip = new JSZip();
   var a = document.querySelector("a");
-  var unflatUrls = slugs
-    .map(function(s){
-      if(s == "unemployment_rate"){
-        return ["static/data/csv/" + s + "_raw.csv"]
-      }else{
-        return ["static/data/csv/" + s + "_raw_in_thousands.csv", "static/data/csv/" + s + "_yoy_percent_change.csv"]
-      }
-    })
-  
-  var urls = [].concat.apply([], unflatUrls);
-  urls.push("static/data/dictionaries/sem_employment_data_dictionary.txt")
+
+  if(section == "employment"){
+    var unflatUrls = slugs
+      .map(function(s){
+        if(s == "unemployment_rate"){
+          return ["static/data/csv/" + s + "_raw.csv"]
+        }else{
+          return ["static/data/csv/" + s + "_raw_in_thousands.csv", "static/data/csv/" + s + "_yoy_percent_change.csv"]
+        }
+      })
+    
+    var urls = [].concat.apply([], unflatUrls);
+    urls.push("static/data/dictionaries/sem_employment_data_dictionary.txt")
+  }else{
+    var unflatUrls = slugs
+      .map(function(s){
+        return ["static/data/csv/" + s + "_raw_in_millions.csv", "static/data/csv/" + s + "_yoy_percent_change.csv"]
+      })
+    
+    var urls = [].concat.apply([], unflatUrls);
+    urls.push("static/data/dictionaries/sem_state_gdp_data_dictionary.txt")
+  }
 
 
   function request(url) {
@@ -197,8 +208,8 @@ function downloadZipFile(slugs){
   type: "blob"
   })
   .then(function(blob) {
-
-    saveAs(blob, "employment_select_indicators.zip");
+    var zipFileName = (section == "employment") ? "employment_select_indicators.zip" : "state_gdp_select_indicators.zip";
+    saveAs(blob, zipFileName);
   });
   })
 }

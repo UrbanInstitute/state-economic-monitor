@@ -2,6 +2,11 @@ const charMax = 100;
 const hardMax = 150;
 const charMin = 20;
 
+
+// var rootSlug = '/semapp/'
+var rootSlug = '/'
+
+
 function encodeHtmlEntity(str){
   var buf = [];
   for (var i=str.length-1;i>=0;i--) {
@@ -11,9 +16,8 @@ function encodeHtmlEntity(str){
 }
 
 
-
 function isQuarterly(indicator){
-  return (indicator == "house_price_index" || indicator == "state_gdp")
+  return (indicator == "house_price_index" || indicator == "state_gdp" || indicator == "accommodation_and_food_services_state_gdp" || indicator == "manufacturing_state_gdp" || indicator == "retail_trade_state_gdp" || indicator == "government_state_gdp"  )
 }
 
 function dispDate(date, indicator){
@@ -392,7 +396,7 @@ $(function() {
       var form_data = new FormData($('#upload-federal_public_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=federal_public_employment',
+          url: rootSlug + 'upload?sheet=federal_public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -412,7 +416,7 @@ $(function() {
       var form_data = new FormData($('#upload-house_price_index')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=house_price_index',
+          url: rootSlug + 'upload?sheet=house_price_index',
           data: form_data,
           contentType: false,
           cache: false,
@@ -432,7 +436,7 @@ $(function() {
       var form_data = new FormData($('#upload-private_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=private_employment',
+          url: rootSlug + 'upload?sheet=private_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -448,11 +452,71 @@ $(function() {
       });
   });
 
+  $('#file-leisure_and_hospitality_employment-button').change(function() {
+      var form_data = new FormData($('#upload-leisure_and_hospitality_employment')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=leisure_and_hospitality_employment',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#leisure_and_hospitality_employment-status")
+                .css("opacity",1)
+                .text("Leisure and hospitality employment data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
+  $('#file-manufacturing_employment-button').change(function() {
+      var form_data = new FormData($('#upload-manufacturing_employment')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=manufacturing_employment',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#manufacturing_employment-status")
+                .css("opacity",1)
+                .text("Manufacturing employment data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
+  $('#file-retail_trade_employment-button').change(function() {
+      var form_data = new FormData($('#upload-retail_trade_employment')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=retail_trade_employment',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#retail_trade_employment-status")
+                .css("opacity",1)
+                .text("Retail employment data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
   $('#file-public_employment-button').change(function() {
       var form_data = new FormData($('#upload-public_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=public_employment',
+          url: rootSlug + 'upload?sheet=public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -473,7 +537,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_and_local_public_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=state_and_local_public_employment',
+          url: rootSlug + 'upload?sheet=state_and_local_public_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -493,7 +557,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_gdp')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=state_gdp',
+          url: rootSlug + 'upload?sheet=state_gdp',
           data: form_data,
           contentType: false,
           cache: false,
@@ -509,11 +573,91 @@ $(function() {
       });
   });
 
+  $('#file-accommodation_and_food_services_state_gdp-button').change(function() {
+      var form_data = new FormData($('#upload-accommodation_and_food_services_state_gdp')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=accommodation_and_food_services_state_gdp',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#accommodation_and_food_services_state_gdp-status")
+                .css("opacity",1)
+                .text("Accommodation and food services GDP data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
+  $('#file-manufacturing_state_gdp-button').change(function() {
+      var form_data = new FormData($('#upload-manufacturing_state_gdp')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=manufacturing_state_gdp',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#manufacturing_state_gdp-status")
+                .css("opacity",1)
+                .text("Manufacturing GDP data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
+  $('#file-retail_trade_state_gdp-button').change(function() {
+      var form_data = new FormData($('#upload-retail_trade_state_gdp')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=retail_trade_state_gdp',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#retail_trade_state_gdp-status")
+                .css("opacity",1)
+                .text("Retail GDP data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
+  $('#file-government_state_gdp-button').change(function() {
+      var form_data = new FormData($('#upload-government_state_gdp')[0]);
+      $.ajax({
+          type: 'POST',
+          url: rootSlug + 'upload?sheet=government_state_gdp',
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data) {
+              $("#government_state_gdp-status")
+                .css("opacity",1)
+                .text("Government GDP data uploaded")
+          },
+          fail: function(e){
+            alert("Something went wrong uploading the file, try reloading the page and trying again")
+          }
+      });
+  });
+
   $('#file-total_employment-button').change(function() {
       var form_data = new FormData($('#upload-total_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=total_employment',
+          url: rootSlug + 'upload?sheet=total_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -533,7 +677,7 @@ $(function() {
       var form_data = new FormData($('#upload-unemployment_rate')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=unemployment_rate',
+          url: rootSlug + 'upload?sheet=unemployment_rate',
           data: form_data,
           contentType: false,
           cache: false,
@@ -553,7 +697,7 @@ $(function() {
       var form_data = new FormData($('#upload-weekly_earnings')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=weekly_earnings',
+          url: rootSlug + 'upload?sheet=weekly_earnings',
           data: form_data,
           contentType: false,
           cache: false,
@@ -573,7 +717,7 @@ $(function() {
       var form_data = new FormData($('#upload-state_and_local_public_education_employment')[0]);
       $.ajax({
           type: 'POST',
-          url: '/semapp/upload?sheet=state_and_local_public_education_employment',
+          url: rootSlug + 'upload?sheet=state_and_local_public_education_employment',
           data: form_data,
           contentType: false,
           cache: false,
@@ -597,7 +741,7 @@ $('.addIngredient').bind('click', function() {
   d3.select("#loading-text").html("Updating (this takes about a minute)&hellip;")
 $.ajax({
 type: 'POST',
-url: '/semapp/add',
+url: rootSlug + 'add',
 data: JSON.stringify(d3.selectAll(".draggableCard").data()),
 dataType: 'json',
 contentType: 'application/json; charset=utf-8',
@@ -606,7 +750,7 @@ contentType: 'application/json; charset=utf-8',
 success: function(data) {
 d3.select("#loading").style("visibility", "hidden")
 d3.select("#loading-text").text("Updated! Preview opening in new tab (you may need to enable popups).")
-var win = window.open('/semapp/preview', '_blank');
+var win = window.open(rootSlug + 'preview', '_blank');
 if(win){
 //Browser has allowed it to be opened
 win.focus();
@@ -614,7 +758,7 @@ win.focus();
 //Broswer has blocked it
 if (window.confirm('Pop ups not enabled. Click OK to continue to the SEM preview')) 
 {
-window.location.href='/semapp/preview';
+window.location.href=rootSlug + 'preview';
 };
 
 }

@@ -9,8 +9,8 @@ import shutil
 
 
 DATE_FORMAT = "%Y-%m-%d"
-rootPath = "/var/www/html/semapp/"
-# rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
+# rootPath = "/var/www/html/semapp/"
+rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
 
 def cleanExcelRow(row, dateMode, isDate, colCount):
 	if isDate:
@@ -58,9 +58,9 @@ def buildCSVs(indicator):
 		raw = wb.sheet_by_index(0)	
 		
 		fileName = indicator
-		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment" or indicator == "leisure_and_hospitality_employment" or indicator == "manufacturing_employment" or indicator == "retail_trade_employment"):
 			fileName += "_raw_in_thousands"
-		elif(indicator == "state_gdp"):
+		elif(indicator == "state_gdp" or indicator == "accommodation_and_food_services_state_gdp" or indicator == "retail_trade_state_gdp" or indicator == "government_state_gdp" or indicator == "manufacturing_state_gdp" ):
 			fileName += "_raw_in_millions"
 		else:
 			fileName += "_raw"
@@ -111,7 +111,7 @@ for row in fipsReader:
 	nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
 
 
-indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings","state_and_local_public_education_employment"]
+indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings","state_and_local_public_education_employment","leisure_and_hospitality_employment","manufacturing_employment","retail_trade_employment","accommodation_and_food_services_state_gdp","retail_trade_state_gdp","government_state_gdp","manufacturing_state_gdp"]
 
 tempDict = {}
 terminalDates = {}
@@ -124,9 +124,9 @@ for index, indicator in enumerate(indicators):
 	if(indicator != "house_price_index"):
 		key = str(index) + "r"
 		fileName = indicator
-		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment" or indicator == "leisure_and_hospitality_employment" or indicator == "manufacturing_employment" or indicator == "retail_trade_employment" ):
 			fileName += "_raw_in_thousands"
-		elif(indicator == "state_gdp"):
+		elif(indicator == "state_gdp" or indicator == "accommodation_and_food_services_state_gdp" or indicator == "retail_trade_state_gdp" or indicator == "government_state_gdp" or indicator == "manufacturing_state_gdp" ):
 			fileName += "_raw_in_millions"
 		else:
 			fileName += "_raw"
@@ -152,9 +152,9 @@ for index, indicator in enumerate(indicators):
 					tempDict[tempKey] = {}
 
 				cleanVal = "" if (value == "") else float(value)
-				if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment"):
+				if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment" or indicator == "leisure_and_hospitality_employment" or indicator == "manufacturing_employment" or indicator == "retail_trade_employment" ):
 					cleanVal *= 1000
-				elif(indicator == "state_gdp"):
+				elif(indicator == "state_gdp" or indicator == "accommodation_and_food_services_state_gdp" or indicator == "retail_trade_state_gdp" or indicator == "government_state_gdp" or indicator == "manufacturing_state_gdp" ):
 					cleanVal *= 1000000
 				tempDict[tempKey][key] = cleanVal
 
@@ -207,7 +207,7 @@ now = datetime.datetime.now()
 dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 
 
-quarterly = ["house_price_index_yoy_percent_change.csv","state_gdp_raw_in_millions.csv","state_gdp_yoy_percent_change.csv"]
+quarterly = ["house_price_index_yoy_percent_change.csv","state_gdp_raw_in_millions.csv","state_gdp_yoy_percent_change.csv","accommodation_and_food_services_state_gdp_raw_in_millions.csv", "accommodation_and_food_services_state_gdp_yoy_percent_change.csv", "retail_trade_state_gdp_raw_in_millions.csv", "retail_trade_state_gdp_yoy_percent_change.csv", "government_state_gdp_raw_in_millions.csv", "government_state_gdp_yoy_percent_change.csv", "manufacturing_state_gdp_raw_in_millions.csv", "manufacturing_state_gdp_yoy_percent_change.csv"]
 
 for filename in quarterly:
 	tempfile = NamedTemporaryFile(delete=False)

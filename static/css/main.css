@@ -337,6 +337,9 @@ select{
 #mt-employment{
 	width: 374px;
 }
+#mt-gdp{
+    width: 374px;
+}
 .menuTitle{
     text-transform: uppercase;
     font-size: 14px;
@@ -358,14 +361,14 @@ select{
 /**********************************************************************/
 /*********************** CATEGORY MENU  *******************************/
 /**********************************************************************/
-.employmentOption{
+.employmentOption, .gdpOption{
     width: 355px;
     border-bottom: 1px solid #D2D2D2;
     padding-bottom: 5px;
     padding-top: 10px;
     cursor: pointer;
 }
-.employmentOption.active{
+.employmentOption.active, .gdpOption.active{
 	color: #1696d2;
 }
 
@@ -854,6 +857,13 @@ select{
 	font-size: 22.8px;
     font-weight: bold;
 }
+#chartSupertitle{
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #696969;
+    margin-bottom: 4px;
+}
 #chartUnits{
 	font-size: 14px;
     font-style: italic;
@@ -1267,6 +1277,37 @@ rect.bar.disabled{
 .employmentButton.indent3{
 	margin-left: 109px;
 }
+
+.pu-smallButton.gdpButton{
+    margin-top: 10px;
+    margin-left: 34px;
+    display: table;
+}
+.gdpButton.indent1{
+    margin-left: 59px;
+}
+.gdpButton.indent2{
+    margin-left: 84px;
+}
+.gdpButton.indent3{
+    margin-left: 109px;
+}
+
+.pu-smallButton.gdpButton{
+    margin-top: 10px;
+    margin-left: 34px;
+    display: table;
+}
+.gdpButton.indent1{
+    margin-left: 59px;
+}
+.gdpButton.indent2{
+    margin-left: 84px;
+}
+.gdpButton.indent3{
+    margin-left: 109px;
+}
+
 .iconIndent{
 	position: absolute;
     display: inline-block;
@@ -1453,6 +1494,10 @@ rect.bar.disabled{
 .imgTitle{
 	font-size: 23px;
     font-weight: bold;
+}
+.imgSuperTitle{
+    font-size: 14px;
+    fill: #696969;
 }
 .imgSubtitle{
 	font-size: 14px;

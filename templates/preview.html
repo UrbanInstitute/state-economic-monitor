@@ -139,11 +139,15 @@
 
 			<div class = "employmentOption" id = "eo-unemployment_rate">Unemployment rate</div>
 			<div class = "employmentOption" id = "eo-total_employment">Total employment</div>
-			<div class = "employmentOption" id = "eo-private_employment">Private employment</div>
-			<div class = "employmentOption" id = "eo-public_employment">Public employment</div>
+			<div class = "employmentOption" id = "eo-private_employment">Total private employment</div>
+			<div class = "employmentOption" id = "eo-leisure_and_hospitality_employment">Leisure and hospitality employment</div>
+			<div class = "employmentOption" id = "eo-manufacturing_employment">Manufacturing employment</div>
+			<div class = "employmentOption" id = "eo-retail_trade_employment">Retail employment</div>
+			<div class = "employmentOption" id = "eo-public_employment">Total public employment</div>
 			<div class = "employmentOption" id = "eo-federal_public_employment">Federal public employment</div>
 			<div class = "employmentOption" id = "eo-state_and_local_public_employment">State and local public employment</div>
 			<div class = "employmentOption" id = "eo-state_and_local_public_education_employment">State and local public education employment</div>
+
 
 		</div>
 <!-- END EMPLOYMENT MENU -->
@@ -151,6 +155,25 @@
 			<div class = "menuTitle">Indicator</div>
 			<div class = "menuActive">&hellip;</div>
 		</div>
+
+
+<!-- START GDP MENU -->
+		<div class = "categoryMenu gdp menuBlock">
+			<div class = "menuTop" id = "mt-gdp">
+				<div class = "menuTitle">Indicator</div>
+				<div class = "menuActive">&hellip;</div>
+				<img src = "static/img/dropdown-bg.png" class = "menuArrow down"/>
+			</div>
+
+			<div class = "gdpOption" id = "go-state_gdp">Total GDP</div>
+			<div class = "gdpOption" id = "go-accommodation_and_food_services_state_gdp">Accommodation and food services GDP</div>
+			<div class = "gdpOption" id = "go-manufacturing_state_gdp">Manufacturing GDP</div>
+			<div class = "gdpOption" id = "go-retail_trade_state_gdp">Retail GDP</div>
+			<div class = "gdpOption" id = "go-government_state_gdp">Government GDP</div>
+
+		</div>
+<!-- END GDP MENU -->
+
 
 		<div class = "menuSpacer ms1"></div>
 <!-- START STATE MENU -->
@@ -295,6 +318,7 @@
 <!-- START CHART AREA -->
 	<div id = "chartAreaContainer">
 		<div id = "chartTitleContainer">
+			<span id = "chartSupertitle"></span>
 			<span id = "chartTitle"></span>
 			<span id = "chartUnits"></span>
 		</div>
@@ -455,6 +479,9 @@
 		<div class = "pu-smallButton employmentButton" id = "eb-unemployment_rate">Unemployment rate</div>
 		<div class = "pu-smallButton employmentButton" id = "eb-total_employment">Total employment</div>
 		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-private_employment">Private employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-leisure_and_hospitality_employment">Leisure and hospitality employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-manufacturing_employment">Manufacturing employment</div>
+		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-retail_trade_employment">Retail employment</div>
 		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton employmentButton indent1" id = "eb-public_employment">Public employment</div>
 		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton  indent2" id = "eb-federal_public_employment">Federal public employment</div>
 		<span class = "iconIndent ii-2"></span><div class = "pu-smallButton employmentButton indent2" id = "eb-state_and_local_public_employment">State and local public employment</div>
@@ -476,6 +503,13 @@
 			<div class = "pu-subtitle">State GDP data</div>
 		</div>
 		<div class = "pu-allStates">all states and all years</div>
+
+		<div class = "pu-smallButton gdpButton" id = "gb-state_gdp">Total GDP</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton gdpButton indent1" id = "gb-accommodation_and_food_services_state_gdp">Accommodation and food services GDP</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton gdpButton indent1" id = "gb-manufacturing_state_gdp">Manufacturing GDP</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton gdpButton indent1" id = "gb-retail_trade_state_gdp">Retail GDP</div>
+		<span class = "iconIndent ii-1"></span><div class = "pu-smallButton gdpButton indent1" id = "gb-government_state_gdp">Government GDP</div>
+
 	</div>
 
 	<div class = "pu-section housing hideable hide">

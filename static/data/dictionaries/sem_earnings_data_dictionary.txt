@@ -16,13 +16,9 @@ Average weekly earnings
 Note: Historical average weekly earnings data are adjusted for inflation using the following data
 
 
-
 Consumer Price Index for All Urban Consumers: All Items
 	Source: Consumer Price Index (BLS) (https://www.bls.gov/cpi/questions-and-answers.htm)
 	Adjusted: Seasonally, Index (1982–1984 = 100)
-
-
-
 
 
 
