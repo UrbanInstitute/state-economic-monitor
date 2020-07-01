@@ -24,11 +24,11 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-# rootPath = "/var/www/html/semapp/"
-# pyPath = "/usr/bin/python"
+rootPath = "/var/www/html/semapp/"
+pyPath = "/usr/bin/python"
 
-rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
-pyPath = "/usr/bin/python2.7"
+# rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
+# pyPath = "/usr/bin/python2.7"
 
 @app.route("/upload", methods=["POST", "GET"])
 def upload():

@@ -3,8 +3,8 @@ const hardMax = 150;
 const charMin = 20;
 
 
-// var rootSlug = '/semapp/'
-var rootSlug = '/'
+var rootSlug = '/semapp/'
+// var rootSlug = '/'
 
 
 function encodeHtmlEntity(str){
