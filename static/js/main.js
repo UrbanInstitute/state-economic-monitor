@@ -126,7 +126,13 @@ function makeCSV(data, indicator, unit, filename) {
 
 
 
-	if(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO")){
+	if(
+		(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO"))
+		||
+		(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY")) 
+		||
+		((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY")) 
+	){
 		value = "";
 	}else{
 		value = (+infoObject[key]/divisor);
@@ -1630,7 +1636,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 
 		var projection = d3.geoAlbersUsa()
 			.scale(1.2 * width)
-			.translate([BAR_IMG_WIDTH/2, BAR_IMG_HEIGHT + 230]);
+			.translate([BAR_IMG_WIDTH/2, BAR_IMG_HEIGHT + 230 + 5]);
 	}
 
 	var year = moment(data[0].date).year(),
@@ -1879,7 +1885,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		var params = getParams()
 
 		var superTitleText;
-		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment"){
+		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earnings"){
 			superTitleText = "PRIVATE"
 		}
 		else if(indicator == "federal_public_employment" || indicator == "public_employment" || indicator == "state_and_local_public_employment" || indicator == "state_and_local_public_education_employment"){
@@ -1919,7 +1925,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
 		
 		var superTitleText;
-		if(params.indicator =="private_employment" || params.indicator == "leisure_and_hospitality_employment" || params.indicator == "manufacturing_employment" || params.indicator == "retail_trade_employment"){
+		if(params.indicator =="private_employment" || params.indicator == "leisure_and_hospitality_employment" || params.indicator == "manufacturing_employment" || params.indicator == "retail_trade_employment" || params.indicator == "weekly_earnings"){
 			superTitleText = "PRIVATE"
 		}
 		else if(params.indicator == "federal_public_employment" || params.indicator == "public_employment" || params.indicator == "state_and_local_public_employment" || params.indicator == "state_and_local_public_education_employment"){
@@ -1927,36 +1933,71 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		}else{
 			superTitleText = ""
 		}
-		var superTitleEl = svg.append("text")
-			.attr("class", "imgSuperTitle imgBarHide imgBothHide imgHidden")
-			.attr("y",BAR_IMG_HEIGHT + 24)
-			.attr("x", 239)
-			.text(superTitleText)
-
-		var bottomTitle = svg.append("text")
-			.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
-			.attr("y",BAR_IMG_HEIGHT + 52)
-			.attr("x",239)
-			.text(function(){
-					var params = getParams(),
-						indicator = params.indicator,
-						endDate = params.endDate,
-						endYear = +(endDate.split("-")[0]),
-						endMonth = +(endDate.split("-")[1])
-
-					if(isQuarterly(indicator)){
-						return indicatorNames[indicator] + ",  Q" + ((endMonth-1)/3 + 1) + " " + endYear
-					}else{
-						return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
-					}
-			})
 
 
 
-		bottomTitle.append("tspan")
-			.attr("class", "imgSubtitle")
-			.attr("dx", 10)
-			.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
+
+		if(params.unit == "change"){
+			var superTitleEl = svg.append("text")
+				.attr("class", "imgSuperTitle imgBarHide imgBothHide imgHidden")
+				.attr("y",BAR_IMG_HEIGHT + 20)
+				.attr("x", 239)
+				.text(superTitleText)
+
+			var bottomTitle = svg.append("text")
+				.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
+				.attr("y",BAR_IMG_HEIGHT + 43)
+				.attr("x",239)
+				.text(function(){
+						var params = getParams(),
+							indicator = params.indicator,
+							endDate = params.endDate,
+							endYear = +(endDate.split("-")[0]),
+							endMonth = +(endDate.split("-")[1])
+
+						if(isQuarterly(indicator)){
+							return indicatorNames[indicator] + ",  Q" + ((endMonth-1)/3 + 1) + " " + endYear
+						}else{
+							return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
+						}
+				})
+			var bottomSubtitle = svg.append("text")
+					.attr("class", "imgSubtitle imgBarHide imgBothHide imgHidden")
+					.attr("y",BAR_IMG_HEIGHT + 60)
+					.attr("x",239)
+					.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
+
+		}else{
+			var superTitleEl = svg.append("text")
+				.attr("class", "imgSuperTitle imgBarHide imgBothHide imgHidden")
+				.attr("y",BAR_IMG_HEIGHT + 24)
+				.attr("x", 239)
+				.text(superTitleText)
+
+			var bottomTitle = svg.append("text")
+				.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
+				.attr("y",BAR_IMG_HEIGHT + 52)
+				.attr("x",239)
+				.text(function(){
+						var params = getParams(),
+							indicator = params.indicator,
+							endDate = params.endDate,
+							endYear = +(endDate.split("-")[0]),
+							endMonth = +(endDate.split("-")[1])
+
+						if(isQuarterly(indicator)){
+							return indicatorNames[indicator] + ",  Q" + ((endMonth-1)/3 + 1) + " " + endYear
+						}else{
+							return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
+						}
+				})
+				bottomTitle.append("tspan")
+					.attr("class", "imgSubtitle")
+					.attr("dx", 10)
+					.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
+
+
+		}
 
 		var section = getSection(getParams().indicator),
 			sourceText = sources[section].replace(/<[^>]*>?/gm, '') + " via the State Economic Monitor"
@@ -2002,7 +2043,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("class", "imgLogo imgBarHide imgBothHide imgHidden")
 			.text("Urban")
 			.attr("x", 711)
-			.attr("y", 421 + BAR_IMG_HEIGHT)
+			.attr("y", 426 + BAR_IMG_HEIGHT)
 		mapLogo.append("tspan")
 			.attr("dx",5)
 			.text("Institute")
@@ -2011,7 +2052,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("class", "imgSource imgBarHide imgBothHide imgHidden")
 			.text("Source:")
 			.attr("x", 240)
-			.attr("y", 421 + BAR_IMG_HEIGHT)
+			.attr("y", 426 + BAR_IMG_HEIGHT)
 		mapSource.append("tspan")
 			.attr("dx",5)
 			.text(sourceText)
@@ -2078,15 +2119,15 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					return mapTextColor(d, d.properties.postal)
 				});
 
-		drawMapLine(745, 757, 119 + BAR_IMG_HEIGHT, svg, "MA")
-		drawMapLine(743, 757, 132 + BAR_IMG_HEIGHT, svg, "RI")
-		drawMapLine(723, 736, 157 + BAR_IMG_HEIGHT, svg, "NJ")
-		drawMapLine(710, 731, 169 + BAR_IMG_HEIGHT, svg, "DE")
-		drawMapElbow(737, 733, 145 + BAR_IMG_HEIGHT, 137 + BAR_IMG_HEIGHT, svg, "CT")
-		drawMapElbow(691, 726, 174 + BAR_IMG_HEIGHT, 177 + BAR_IMG_HEIGHT, svg, "DC")
-		drawMapElbow(718, 711, 193 + BAR_IMG_HEIGHT, 185 + BAR_IMG_HEIGHT, svg, "MD")
-		drawMapElbow(720, 729, 55 + BAR_IMG_HEIGHT, 83 + BAR_IMG_HEIGHT, svg, "NH")
-		drawMapElbow(704, 719, 75 + BAR_IMG_HEIGHT, 89 + BAR_IMG_HEIGHT, svg, "VT")
+		drawMapLine(745, 757, 5+ 119 + BAR_IMG_HEIGHT, svg, "MA")
+		drawMapLine(743, 757, 5+ 132 + BAR_IMG_HEIGHT, svg, "RI")
+		drawMapLine(723, 736, 5+ 157 + BAR_IMG_HEIGHT, svg, "NJ")
+		drawMapLine(710, 731, 5+ 169 + BAR_IMG_HEIGHT, svg, "DE")
+		drawMapElbow(737, 733, 5+ 145 + BAR_IMG_HEIGHT, 5+ 137 + BAR_IMG_HEIGHT, svg, "CT")
+		drawMapElbow(691, 726, 5+ 174 + BAR_IMG_HEIGHT, 5+ 177 + BAR_IMG_HEIGHT, svg, "DC")
+		drawMapElbow(718, 711, 5+ 193 + BAR_IMG_HEIGHT, 5+ 185 + BAR_IMG_HEIGHT, svg, "MD")
+		drawMapElbow(720, 729, 5+ 55 + BAR_IMG_HEIGHT, 5+ 83 + BAR_IMG_HEIGHT, svg, "NH")
+		drawMapElbow(704, 719, 5+ 75 + BAR_IMG_HEIGHT, 5+ 89 + BAR_IMG_HEIGHT, svg, "VT")
 
 		// drawMapLine(745, 757, 419, svg)
 
@@ -2352,7 +2393,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 	if(containerType == "hide"){
 		var superTitleText;
-		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment"){
+		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earningsf"){
 			superTitleText = "PRIVATE"
 		}
 		else if(indicator == "federal_public_employment" || indicator == "public_employment" || indicator == "state_and_local_public_employment" || indicator == "state_and_local_public_education_employment"){
@@ -3068,7 +3109,12 @@ function updateIndicator(indicator, unit, oldIndicator){
 
 	d3.selectAll(".tt-indicator").text(indicatorNames[indicator])
 	d3.select("#pu-dlIndicator").text(indicatorNames[indicator])
-	if(indicator == "state_and_local_public_education_employment"){
+	if(
+		indicator == "state_and_local_public_education_employment"
+		|| indicator == "accommodation_and_food_services_state_gdp"
+		|| indicator == "leisure_and_hospitality_employment"
+		|| indicator == "state_and_local_public_employment"
+	){
 		d3.select(".singleYear.tt-indicator").classed("long",true)
 	}else{
 		d3.selectAll(".singleYear.tt-indicator").classed("long",false)
@@ -3126,10 +3172,9 @@ function updateIndicator(indicator, unit, oldIndicator){
 
 	d3.selectAll(".unitCheckBox").classed("active", false)
 	d3.select(".unitCheckBox." + unit).classed("active", true)
-// "state_and_local_public_education_employment",
 
 	var superTitle;
-	if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment"){
+	if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earnings"){
 		superTitle = "private"
 	}
 	else if(indicator == "federal_public_employment" || indicator == "public_employment" || indicator == "state_and_local_public_employment" || indicator == "state_and_local_public_education_employment"){
@@ -3140,7 +3185,13 @@ function updateIndicator(indicator, unit, oldIndicator){
 	d3.select("#chartSupertitle").text(superTitle)
 	d3.select("#chartTitle").text(indicatorNames[indicator])
 	d3.select("#chartUnits").html("(" + indicatorUnits[indicator][unit] + ")")
-	if(indicator == "state_and_local_public_education_employment" && unit == "change"){
+	if(
+		unit == "change" &&
+		(indicator == "state_and_local_public_education_employment"
+		|| indicator == "accommodation_and_food_services_state_gdp"
+		|| indicator == "leisure_and_hospitality_employment"
+		|| indicator == "state_and_local_public_employment")
+	){
 		d3.select("#chartUnits").classed("wrapUnit", true)
 	}else{
 		d3.select("#chartUnits").classed("wrapUnit", false)

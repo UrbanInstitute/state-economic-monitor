@@ -400,6 +400,7 @@
 	    left: 0px;
 	    right: auto;
 	    text-align: left;
+        display: none;
     }
     .multiYear.tt-top-row.mouseover, .multiYear.tt-value.hide, .multiYear.tt-states, .multiYear.tt-indicator, .multiYear.tt-date.range{
     	display: none;
