@@ -1244,7 +1244,7 @@ function buildCards(cardData, isDefault){
 			else showChart("bar")
 			setParams(copy)
 			updateSelectedStates(copy.states)
-			updateIndicator(d.indicator, false, oldIndicator)
+			updateIndicator(d.indicator, false, false)
 		})
 
 	card.append("div")
