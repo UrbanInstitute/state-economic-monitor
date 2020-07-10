@@ -2486,13 +2486,15 @@ function getLineXTickCount(containerType, startDate, endDate, indicator){
 	}else{
 		if(widthUnder(1200)){
 			if(isQuarterly(indicator)){
-				return (quartersBetween < 9) ? quartersBetween : 8
+				if(quartersBetween == 2){ return 1 }
+				else return (quartersBetween < 9) ? quartersBetween : 8
 			}else{
 				return (monthsBetween < 9) ? monthsBetween : 8
 			}
 		}else{
 			if(isQuarterly(indicator)){
-				return (quartersBetween < 13) ? quartersBetween : 12
+				if(quartersBetween == 2){ return 1 }
+				else return (quartersBetween < 13) ? quartersBetween : 12
 			}else{
 				return (monthsBetween < 13) ? monthsBetween : 12
 			}
