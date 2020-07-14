@@ -1394,6 +1394,13 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		.rangeRound([height, 0])
 		.domain([newYMin, newYMax])
 		.nice();
+	if(y.domain()[1] <= 0){
+		y.domain([newYMin, 0]).nice()
+	}
+	else if(y.domain()[0] >= 0){
+		y.domain([0, newYMax]).nice()
+	}
+
 
 	g.append("g")
 		.attr("class", "bar x axis")
@@ -2450,6 +2457,7 @@ function getLineX(startDate, endDate, width){
 	return x
 }
 function getLineY(extent, height){
+
 	var range = extent[1]-extent[0]
 	var y = d3.scaleLinear()
 		.domain([extent[0] - range*.1, extent[1] + range*.1])
@@ -2724,8 +2732,16 @@ function updateBarChart(indicator, unit, date){
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
 		newYMax = yMax + (.2 * yRange)
+
 	y.domain([newYMin, newYMax]
 	).nice();
+
+	if(y.domain()[1] <= 0){
+		y.domain([newYMin, 0]).nice()
+	}
+	else if(y.domain()[0] >= 0){
+		y.domain([0, newYMax]).nice()
+	}
 //end update
 
 
