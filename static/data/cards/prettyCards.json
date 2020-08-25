@@ -11,17 +11,6 @@
         "unit": "raw"
     },
     {
-        "endDate": "2020-04-01",
-        "indicator": "house_price_index",
-        "startDate": "2013-07-01",
-        "states": [
-            "US",
-            "WA"
-        ],
-        "text": "this is a test card this is a test card this is a test card this is a test card ",
-        "unit": "change"
-    },
-    {
         "endDate": "2020-07-01",
         "indicator": "unemployment_rate",
         "startDate": "1980-07-01",
