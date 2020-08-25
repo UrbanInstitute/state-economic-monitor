@@ -24,16 +24,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2020-07-01",
-        "indicator": "retail_trade_employment",
+        "endDate": "2020-04-01",
+        "indicator": "house_price_index",
         "states": [
             "US",
-            "CT",
-            "NH",
-            "NY",
-            "PA"
+            "ND",
+            "ID"
         ],
-        "text": "CT, NH, NY, and PA have all seen retail employment fall over 10% since July 2019.",
+        "text": "All 50 states and DC saw a year-over-year increase in house prices from Q2 2019 to Q2 2020. ",
         "unit": "change"
     },
     {
@@ -45,6 +43,19 @@
             "NY"
         ],
         "text": "Hawaii and New York saw the largest declines in GDP from Q1 2019 to Q1 2020.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-07-01",
+        "indicator": "retail_trade_employment",
+        "states": [
+            "US",
+            "CT",
+            "NH",
+            "NY",
+            "PA"
+        ],
+        "text": "CT, NH, NY, and PA have all seen retail employment fall over 10% since July 2019.",
         "unit": "change"
     },
     {
@@ -73,6 +84,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2020-04-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-07-01",
+        "states": [
+            "US",
+            "WA"
+        ],
+        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014. ",
+        "unit": "change"
+    },
+    {
         "endDate": "2020-01-01",
         "indicator": "accommodation_and_food_services_state_gdp",
         "states": [
@@ -80,28 +102,6 @@
             "DC"
         ],
         "text": "DC\u2019s Q1 2020 GDP from accommodation and food services fell 9 percent compared to Q1 2019.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "AK",
-            "WV"
-        ],
-        "text": "Only AK and WV saw a year-over-year decline in house prices from Q1 2019 to Q1 2020.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-01-01",
-        "indicator": "house_price_index",
-        "startDate": "2013-07-01",
-        "states": [
-            "US",
-            "WA"
-        ],
-        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014.",
         "unit": "change"
     }
 ]
