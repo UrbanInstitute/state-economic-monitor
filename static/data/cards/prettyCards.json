@@ -1,26 +1,34 @@
 [
     {
-        "endDate": "2020-07-01",
+        "endDate": "2020-08-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "MA",
-            "UT"
+            "NV",
+            "NE"
         ],
-        "text": "July unemployment rates ranged from 4.5% in Utah to 16.1% in Massachusetts.",
+        "text": "August unemployment rates ranged from 4.0% in Nebraska to 13.2% in Nevada.",
         "unit": "raw"
     },
     {
-        "endDate": "2020-07-01",
-        "indicator": "unemployment_rate",
-        "startDate": "1980-07-01",
+        "endDate": "2020-08-01",
+        "indicator": "leisure_and_hospitality_employment",
         "states": [
             "US",
-            "CT",
-            "NM",
-            "NY"
+            "HI"
         ],
-        "text": "July unemployment set a 40-year high in Connecticut, New Mexico, and New York.",
+        "text": "Hawaii had 52% fewer leisure and hospitality jobs in August 2020 than in August 2019.\n",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-08-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2007-08-01",
+        "states": [
+            "US",
+            "PA"
+        ],
+        "text": "Unemployment in PA fell from its April peak but was higher than during the Great Recession.",
         "unit": "raw"
     },
     {
@@ -42,46 +50,30 @@
             "HI",
             "NY"
         ],
-        "text": "Hawaii and New York saw the largest declines in GDP from Q1 2019 to Q1 2020.",
+        "text": "20 states saw total GDP declines between Q1 2019 and Q1 2020.\n",
         "unit": "change"
     },
     {
-        "endDate": "2020-07-01",
-        "indicator": "retail_trade_employment",
-        "states": [
-            "US",
-            "CT",
-            "NH",
-            "NY",
-            "PA"
-        ],
-        "text": "CT, NH, NY, and PA have all seen retail employment fall over 10% since July 2019.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-07-01",
-        "indicator": "state_and_local_public_employment",
-        "states": [
-            "US",
-            "CT",
-            "KY",
-            "NY",
-            "VA",
-            "WI"
-        ],
-        "text": "State and local public employment is down 10% or more over the year in five states.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-07-01",
+        "endDate": "2020-08-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "DC",
-            "MS"
+            "MS",
+            "DC"
         ],
-        "text": "In July, average private-sector weekly earnings ranged from $774 in MS to $1,781 in DC.",
+        "text": "In August, average private-sector weekly earnings ranged from $787 (MS) to $1,869 (DC).\n",
         "unit": "raw"
+    },
+    {
+        "endDate": "2020-08-01",
+        "indicator": "retail_trade_employment",
+        "states": [
+            "US",
+            "ID",
+            "WY"
+        ],
+        "text": "Retail employment was higher in August 2020 than in August 2019 in only 14 states.",
+        "unit": "change"
     },
     {
         "endDate": "2020-04-01",
@@ -92,6 +84,16 @@
             "WA"
         ],
         "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014. ",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-08-01",
+        "indicator": "state_and_local_public_employment",
+        "states": [
+            "US",
+            "OH"
+        ],
+        "text": "Ohio\u2019s state and local public jobs fell nearly 10% from August 2019 to August 2020.",
         "unit": "change"
     },
     {
