@@ -11,13 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2020-08-01",
-        "indicator": "leisure_and_hospitality_employment",
+        "endDate": "2020-04-01",
+        "indicator": "state_gdp",
         "states": [
             "US",
-            "HI"
+            "HI",
+            "UT"
         ],
-        "text": "Hawaii had 52% fewer leisure and hospitality jobs in August 2020 than in August 2019.\n",
+        "text": "Compared with a year prior, Q2 2020 GDP declines ranged from 4.6% in UT to 13.9% in HI. ",
         "unit": "change"
     },
     {
@@ -33,6 +34,17 @@
     },
     {
         "endDate": "2020-04-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2006-01-01",
+        "states": [
+            "US",
+            "WV"
+        ],
+        "text": "WV's real GDP from manufacturing dropped to a 15-year low in Q2 2020.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-04-01",
         "indicator": "house_price_index",
         "states": [
             "US",
@@ -43,15 +55,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-01-01",
-        "indicator": "state_gdp",
+        "endDate": "2020-04-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "HI",
             "NY"
         ],
-        "text": "20 states saw total GDP declines between Q1 2019 and Q1 2020.\n",
-        "unit": "change"
+        "text": "NY\u2019s Q2 2020 GDP from accommodation and food services was one-third what it was in Q2 2019.",
+        "unit": "raw"
     },
     {
         "endDate": "2020-08-01",
@@ -63,6 +75,26 @@
         ],
         "text": "In August, average private-sector weekly earnings ranged from $787 (MS) to $1,869 (DC).\n",
         "unit": "raw"
+    },
+    {
+        "endDate": "2020-08-01",
+        "indicator": "state_and_local_public_employment",
+        "states": [
+            "US",
+            "OH"
+        ],
+        "text": "Ohio\u2019s state and local public jobs fell nearly 10% from August 2019 to August 2020.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2020-08-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "Hawaii had 52% fewer leisure and hospitality jobs in August 2020 than in August 2019.\n",
+        "unit": "change"
     },
     {
         "endDate": "2020-08-01",
@@ -84,26 +116,6 @@
             "WA"
         ],
         "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014. ",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-08-01",
-        "indicator": "state_and_local_public_employment",
-        "states": [
-            "US",
-            "OH"
-        ],
-        "text": "Ohio\u2019s state and local public jobs fell nearly 10% from August 2019 to August 2020.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-01-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
-        "states": [
-            "US",
-            "DC"
-        ],
-        "text": "DC\u2019s Q1 2020 GDP from accommodation and food services fell 9 percent compared to Q1 2019.",
         "unit": "change"
     }
 ]
