@@ -34,13 +34,13 @@
     },
     {
         "endDate": "2020-04-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
+        "indicator": "manufacturing_state_gdp",
         "startDate": "2006-01-01",
         "states": [
             "US",
-            "WV"
+            "NY"
         ],
-        "text": "WV's real GDP from manufacturing dropped to a 15-year low in Q2 2020.",
+        "text": "New York\u2019s real GDP from manufacturing dropped to a 15-year low in Q2 2020.",
         "unit": "raw"
     },
     {
@@ -57,12 +57,12 @@
     {
         "endDate": "2020-04-01",
         "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-01-01",
+        "startDate": "2016-01-01",
         "states": [
             "US",
-            "NY"
+            "SC"
         ],
-        "text": "NY\u2019s Q2 2020 GDP from accommodation and food services was one-third what it was in Q2 2019.",
+        "text": "SC\u2019s Q2 2020 GDP from accommodation and food services was half of what it was in Q2 2019.",
         "unit": "raw"
     },
     {
