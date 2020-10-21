@@ -27,8 +27,8 @@ def cleanExcelRow(row, dateMode, isDate, colCount):
 					month = "%02d" % (((int(r.split(" ")[1].replace("Q","")) - 1) * 3) + 1,)
 					row[i] = year + "-" + month + "-01"
 				else:
-					year, month, day, hour, minute, second = xlrd.xldate_as_tuple(r, dateMode)
-					pyDate = datetime.datetime(year, month, day, hour, minute, second)
+					# year, month, day, hour, minute, second = xlrd.xldate_as_tuple(r, dateMode)
+					pyDate = datetime.datetime.strptime(r,"%m/%d/%Y")
 					row[i] = pyDate.strftime(DATE_FORMAT)
 					# return row
 		return row
