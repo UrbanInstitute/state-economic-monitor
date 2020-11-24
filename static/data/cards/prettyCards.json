@@ -11,6 +11,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2020-07-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "ND",
+            "ID"
+        ],
+        "text": "From Q3 2019 to Q3 2020, house price increases ranged from 4.0% in ND to 14.4% in ID.",
+        "unit": "change"
+    },
+    {
         "endDate": "2020-04-01",
         "indicator": "state_gdp",
         "states": [
@@ -60,6 +71,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2020-07-01",
+        "indicator": "house_price_index",
+        "startDate": "2010-07-01",
+        "states": [
+            "US",
+            "TN"
+        ],
+        "text": "Tennessee and 19 other states hit a decade high in annual house price growth in Q3 2020.",
+        "unit": "change"
+    },
+    {
         "endDate": "2020-10-01",
         "indicator": "manufacturing_employment",
         "states": [
@@ -95,14 +117,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-04-01",
+        "endDate": "2020-07-01",
         "indicator": "house_price_index",
+        "startDate": "2014-01-01",
         "states": [
             "US",
-            "ND",
-            "ID"
+            "WA"
         ],
-        "text": "All 50 states and DC saw a year-over-year increase in house prices from Q2 2019 to Q2 2020. ",
+        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014.",
         "unit": "change"
     },
     {
@@ -115,16 +137,5 @@
         ],
         "text": "New York\u2019s real GDP from manufacturing dropped to a 15-year low in Q2 2020.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2020-04-01",
-        "indicator": "house_price_index",
-        "startDate": "2013-07-01",
-        "states": [
-            "US",
-            "WA"
-        ],
-        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014. ",
-        "unit": "change"
     }
 ]
