@@ -1,13 +1,25 @@
 [
     {
-        "endDate": "2020-10-01",
+        "endDate": "2020-11-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "HI",
-            "NE"
+            "VT",
+            "NE",
+            "NJ"
         ],
-        "text": "October unemployment rates ranged from 3.0% in Nebraska to 14.3% in Hawaii.",
+        "text": "November unemployment rates ranged from 3.1% in NE and VT to 10.2% in NJ.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-11-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "OR"
+        ],
+        "text": "14 states and DC have lost 25% or more of their leisure and hospitality jobs since January.",
         "unit": "raw"
     },
     {
@@ -33,41 +45,28 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-10-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "MA"
-        ],
-        "text": "21 states and DC have lost 20% or more of their leisure and hospitality jobs since January. ",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-10-01",
+        "endDate": "2020-11-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "MS",
-            "DC"
+            "MA",
+            "MS"
         ],
-        "text": "Average private weekly earnings in October ranged from $783 in MS to $1,822 in DC.",
+        "text": "Average private weekly earnings among states range from $792 in MS to $1,250 in MA.",
         "unit": "raw"
     },
     {
-        "endDate": "2020-10-01",
+        "endDate": "2020-11-01",
         "indicator": "unemployment_rate",
         "startDate": "2007-08-01",
         "states": [
             "US",
+            "ND",
+            "NJ",
             "HI",
-            "LA",
-            "MD",
-            "NM",
-            "NY",
-            "ND"
+            "AK"
         ],
-        "text": "Unemployment rates remain above their Great Recession peaks in six states.",
+        "text": "Unemployment rates remain above their Great Recession peaks in AK, HI, ND, and NJ.",
         "unit": "raw"
     },
     {
@@ -82,16 +81,13 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-10-01",
-        "indicator": "manufacturing_employment",
+        "endDate": "2020-11-01",
+        "indicator": "retail_trade_employment",
         "states": [
             "US",
-            "CO",
-            "ID",
-            "UT",
-            "WV"
+            "UT"
         ],
-        "text": "Only four states saw a year-over-year increase in manufacturing employment in October.",
+        "text": "Only 12 states saw a year-over-year increase in retail employment in November.",
         "unit": "change"
     },
     {
@@ -106,14 +102,13 @@
         "unit": "raw"
     },
     {
-        "endDate": "2020-10-01",
+        "endDate": "2020-11-01",
         "indicator": "state_and_local_public_employment",
         "states": [
             "US",
-            "NH",
-            "NV"
+            "NH"
         ],
-        "text": "The number of state and local public jobs is lower than a year prior in all 50 states. ",
+        "text": "State and local public jobs in New Hampshire are 11% lower than in November 2019.",
         "unit": "change"
     },
     {
