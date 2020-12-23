@@ -12,6 +12,18 @@
         "unit": "raw"
     },
     {
+        "endDate": "2020-07-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "ID",
+            "WA",
+            "UT"
+        ],
+        "text": "Q3 2020 state GDP was 2.8% lower overall than a year prior, and only three states saw increases.",
+        "unit": "change"
+    },
+    {
         "endDate": "2020-11-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2020-01-01",
@@ -31,17 +43,6 @@
             "ID"
         ],
         "text": "From Q3 2019 to Q3 2020, house price increases ranged from 4.0% in ND to 14.4% in ID.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-04-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "HI",
-            "UT"
-        ],
-        "text": "Compared with a year prior, Q2 2020 GDP declines ranged from 4.6% in UT to 13.9% in HI. ",
         "unit": "change"
     },
     {
@@ -71,14 +72,15 @@
     },
     {
         "endDate": "2020-07-01",
-        "indicator": "house_price_index",
-        "startDate": "2010-07-01",
+        "indicator": "manufacturing_state_gdp",
+        "startDate": "2020-01-01",
         "states": [
             "US",
-            "TN"
+            "IN",
+            "MI"
         ],
-        "text": "Tennessee and 19 other states hit a decade high in annual house price growth in Q3 2020.",
-        "unit": "change"
+        "text": "Between Q2 and Q3 2020, real GDP from manufacturing increased in all 50 states and DC.",
+        "unit": "raw"
     },
     {
         "endDate": "2020-11-01",
@@ -91,14 +93,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-04-01",
+        "endDate": "2020-07-01",
         "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2016-01-01",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "SC"
+            "HI"
         ],
-        "text": "SC\u2019s Q2 2020 GDP from accommodation and food services was half of what it was in Q2 2019.",
+        "text": "Hawaii\u2019s Q3 2020 GDP from accommodation and food services nearly halved from Q3 2019.",
         "unit": "raw"
     },
     {
@@ -114,23 +116,12 @@
     {
         "endDate": "2020-07-01",
         "indicator": "house_price_index",
-        "startDate": "2014-01-01",
+        "startDate": "2010-07-01",
         "states": [
             "US",
-            "WA"
+            "TN"
         ],
-        "text": "Washington\u2019s annual house price growth has exceeded the US average each quarter since 2014.",
+        "text": "Tennessee and 19 other states hit a decade high in annual house price growth in Q3 2020.",
         "unit": "change"
-    },
-    {
-        "endDate": "2020-04-01",
-        "indicator": "manufacturing_state_gdp",
-        "startDate": "2006-01-01",
-        "states": [
-            "US",
-            "NY"
-        ],
-        "text": "New York\u2019s real GDP from manufacturing dropped to a 15-year low in Q2 2020.",
-        "unit": "raw"
     }
 ]
