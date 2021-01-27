@@ -1,14 +1,14 @@
 [
     {
-        "endDate": "2020-11-01",
+        "endDate": "2020-12-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "VT",
+            "SD",
             "NE",
-            "NJ"
+            "HI"
         ],
-        "text": "November unemployment rates ranged from 3.1% in NE and VT to 10.2% in NJ.",
+        "text": "December unemployment rates ranged from 3.0% in NE and SD to 9.3% in HI.",
         "unit": "raw"
     },
     {
@@ -20,19 +20,18 @@
             "WA",
             "UT"
         ],
-        "text": "Q3 2020 state GDP was 2.8% lower overall than a year prior, and only three states saw increases.",
+        "text": "Only ID, UT, and WA saw an increase in Q3 GDP over the year.",
         "unit": "change"
     },
     {
-        "endDate": "2020-11-01",
+        "endDate": "2020-12-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2020-01-01",
         "states": [
             "US",
-            "OR"
+            "ID"
         ],
-        "text": "14 states and DC have lost 25% or more of their leisure and hospitality jobs since January.",
-        "unit": "raw"
+        "text": "Every state except ID saw a yearly decline in leisure and hospitality jobs in December.",
+        "unit": "change"
     },
     {
         "endDate": "2020-07-01",
@@ -46,29 +45,49 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-11-01",
+        "endDate": "2020-12-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "MA",
+            "DC",
             "MS"
         ],
-        "text": "Average private weekly earnings among states range from $792 in MS to $1,250 in MA.",
+        "text": "Average private weekly earnings in December ranged from $778 in MS to $1,862 in DC.",
         "unit": "raw"
     },
     {
-        "endDate": "2020-11-01",
+        "endDate": "2020-12-01",
         "indicator": "unemployment_rate",
         "startDate": "2007-08-01",
         "states": [
             "US",
-            "ND",
-            "NJ",
+            "CO",
             "HI",
-            "AK"
+            "NM"
         ],
-        "text": "Unemployment rates remain above their Great Recession peaks in AK, HI, ND, and NJ.",
+        "text": "Unemployment rates remain above their Great Recession peaks in CO, HI, and NM.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2020-07-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "Hawaii\u2019s Q3 2020 GDP from accommodation and food services nearly halved from Q3 2019.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2020-12-01",
+        "indicator": "retail_trade_employment",
+        "states": [
+            "US",
+            "NY"
+        ],
+        "text": "In 24 states and DC, December 2020 retail employment was lower than in December 2019. ",
+        "unit": "change"
     },
     {
         "endDate": "2020-07-01",
@@ -83,34 +102,15 @@
         "unit": "raw"
     },
     {
-        "endDate": "2020-11-01",
-        "indicator": "retail_trade_employment",
-        "states": [
-            "US",
-            "UT"
-        ],
-        "text": "Only 12 states saw a year-over-year increase in retail employment in November.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2020-07-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-01-01",
-        "states": [
-            "US",
-            "HI"
-        ],
-        "text": "Hawaii\u2019s Q3 2020 GDP from accommodation and food services nearly halved from Q3 2019.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-11-01",
+        "endDate": "2020-12-01",
         "indicator": "state_and_local_public_employment",
         "states": [
             "US",
-            "NH"
+            "NH",
+            "ME",
+            "NV"
         ],
-        "text": "State and local public jobs in New Hampshire are 11% lower than in November 2019.",
+        "text": "Yearly state and local public jobs declined more than 10% in ME, NV, and NH.",
         "unit": "change"
     },
     {
