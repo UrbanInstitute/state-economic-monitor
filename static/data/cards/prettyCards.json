@@ -11,7 +11,7 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-10-01",
+        "endDate": "2020-10-01",
         "indicator": "state_gdp",
         "states": [
             "US",
