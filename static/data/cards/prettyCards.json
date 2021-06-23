@@ -1,16 +1,13 @@
 [
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NE",
-            "NH",
-            "SD",
-            "UT",
-            "HI"
+            "HI",
+            "NH"
         ],
-        "text": "April unemployment rates ranged from 2.8% in NE, NH, SD, and UT to 8.5% in HI.",
+        "text": "May unemployment rates ranged from 2.5% in New Hampshire to 8.1% in Hawaii.",
         "unit": "raw"
     },
     {
@@ -38,25 +35,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2020-01-01",
         "states": [
             "US",
-            "AK",
-            "RI"
+            "DE"
         ],
-        "text": "After a year of volatility, leisure jobs are up in all states, from 29% in AK to 101% in RI.",
-        "unit": "change"
+        "text": "Leisure jobs are up in all states over the year but below pre-pandemic levels in most states.",
+        "unit": "raw"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "MS",
-            "CA"
+            "CA",
+            "MS"
         ],
-        "text": "Among states, average private weekly earnings in April ranged from $778 in MS to $1,245 in CA.",
+        "text": "Among states, average private weekly earnings in May ranged from $784 in MS to $1,279 in CA.",
         "unit": "raw"
     },
     {
@@ -71,26 +68,27 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "state_and_local_public_education_employment",
         "states": [
             "US",
-            "CA",
-            "OR",
-            "NC"
+            "AZ",
+            "FL",
+            "RI",
+            "VT"
         ],
-        "text": "State and local public education jobs declined over the year in 25 states.",
+        "text": "State and local public education jobs declined between May 2020 and May 2021 in 14 states.",
         "unit": "change"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "unemployment_rate",
         "startDate": "2020-01-01",
         "states": [
             "US",
-            "MI"
+            "NV"
         ],
-        "text": "Michigan\u2019s unemployment rate was 4.9% in April 2021, down from 23.6% in April 2020.",
+        "text": "Nevada\u2019s unemployment rate was 7.8% in May 2021, down from 24.5% in May 2020.",
         "unit": "raw"
     },
     {
@@ -105,14 +103,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-05-01",
         "indicator": "retail_trade_employment",
         "startDate": "2020-01-01",
         "states": [
             "US",
             "ID"
         ],
-        "text": "Retail employment in April 2021 exceeded January 2020 levels in only nine states.",
+        "text": "Retail employment in May 2021 exceeded January 2020 levels in only eight states.",
         "unit": "raw"
     },
     {
