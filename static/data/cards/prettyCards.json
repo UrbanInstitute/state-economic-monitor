@@ -22,16 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2020-10-01",
+        "endDate": "2021-01-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "IA",
-            "SD",
-            "UT",
-            "WA"
+            "HI",
+            "UT"
         ],
-        "text": "Only IA, SD, UT, and WA saw an increase in GDP from Q4 2019 to Q4 2020.",
+        "text": "GDP growth between Q1 2020 and Q1 2021 ranged from -5.2% in Hawaii to 5.1% in Utah.",
         "unit": "change"
     },
     {
@@ -42,7 +40,7 @@
             "US",
             "DE"
         ],
-        "text": "Leisure jobs are up in all states over the year but below pre-pandemic levels in most states.",
+        "text": "May leisure jobs were up in all states over the year but below prepandemic levels in most states.",
         "unit": "raw"
     },
     {
@@ -58,6 +56,28 @@
     },
     {
         "endDate": "2021-01-01",
+        "indicator": "manufacturing_state_gdp",
+        "startDate": "2006-01-01",
+        "states": [
+            "US",
+            "WI"
+        ],
+        "text": "In Q1 2021, 20 states saw manufacturing GDP exceed prepandemic levels.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2021-05-01",
+        "indicator": "retail_trade_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "ID"
+        ],
+        "text": "Retail employment in May 2021 exceeded January 2020 levels in only eight states.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2021-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
@@ -66,6 +86,17 @@
         ],
         "text": "From Q1 2020 to Q1 2021, house price increases ranged from 4.7% in HI to 23.7% in ID.",
         "unit": "change"
+    },
+    {
+        "endDate": "2021-01-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "OK"
+        ],
+        "text": "Only Oklahoma saw accommodation and food services GDP rise between Q1 2020 and Q1 2021.",
+        "unit": "raw"
     },
     {
         "endDate": "2021-05-01",
@@ -81,47 +112,16 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-05-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2020-01-01",
+        "endDate": "2021-01-01",
+        "indicator": "retail_trade_state_gdp",
+        "startDate": "2006-01-01",
         "states": [
             "US",
-            "NV"
+            "CA",
+            "FL",
+            "TX"
         ],
-        "text": "Nevada\u2019s unemployment rate was 7.8% in May 2021, down from 24.5% in May 2020.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-10-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-01-01",
-        "states": [
-            "US",
-            "NY"
-        ],
-        "text": "NY\u2019s accommodation and food services GDP fell 46% between Q4 2019 and Q4 2020.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2021-05-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "ID"
-        ],
-        "text": "Retail employment in May 2021 exceeded January 2020 levels in only eight states.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2020-10-01",
-        "indicator": "manufacturing_state_gdp",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "IN"
-        ],
-        "text": "Manufacturing GDP increased in 44 states and DC between Q3 2020 and Q4 2020.",
+        "text": "In Q1 2021, 39 states saw retail GDP exceed prepandemic levels.",
         "unit": "raw"
     }
 ]
