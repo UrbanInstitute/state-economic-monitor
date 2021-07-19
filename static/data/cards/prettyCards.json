@@ -90,17 +90,6 @@
     },
     {
         "endDate": "2021-01-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-01-01",
-        "states": [
-            "US",
-            "OK"
-        ],
-        "text": "Only OK saw accommodation and food services GDP rise between Q1 2020 and Q1 2021.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2021-01-01",
         "indicator": "retail_trade_state_gdp",
         "startDate": "2006-01-01",
         "states": [
@@ -110,6 +99,17 @@
             "TX"
         ],
         "text": "In Q1 2021, 39 states saw retail GDP exceed prepandemic levels.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2021-01-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "OK"
+        ],
+        "text": "Only OK saw GDP from accommodation and food services rise between Q1 2020 and Q1 2021.",
         "unit": "raw"
     }
 ]
