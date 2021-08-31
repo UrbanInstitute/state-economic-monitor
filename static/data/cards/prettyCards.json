@@ -11,14 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-01-01",
+        "endDate": "2021-04-01",
         "indicator": "house_price_index",
         "startDate": "1992-01-01",
         "states": [
             "US",
-            "TX"
+            "ID"
         ],
-        "text": "Twenty-two states saw three-decade peaks in annual house price growth in Q1 2021.  ",
+        "text": "In Q2 2021, 35 states saw their greatest annual house price growth in three decades.",
         "unit": "change"
     },
     {
@@ -55,6 +55,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2021-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "AK",
+            "ID"
+        ],
+        "text": "From Q2 2020 to Q2 2021, house price increases ranged from 8.2% in AK to 37.1% in ID.",
+        "unit": "change"
+    },
+    {
         "endDate": "2021-01-01",
         "indicator": "manufacturing_state_gdp",
         "startDate": "2006-01-01",
@@ -75,17 +86,6 @@
         ],
         "text": "Retail employment in July 2021 exceeded February 2020 levels in only 12 states.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2021-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "HI",
-            "ID"
-        ],
-        "text": "From Q1 2020 to Q1 2021, house price increases ranged from 4.7% in HI to 23.7% in ID.",
-        "unit": "change"
     },
     {
         "endDate": "2021-01-01",
