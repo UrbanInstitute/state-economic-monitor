@@ -12,6 +12,17 @@
     },
     {
         "endDate": "2021-04-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "AK",
+            "TN"
+        ],
+        "text": "GDP growth between Q2 2020 and Q2 2021 ranged from 6.6% in Alaska to 18.1% in Tennessee.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2021-04-01",
         "indicator": "house_price_index",
         "startDate": "1992-01-01",
         "states": [
@@ -19,17 +30,6 @@
             "MT"
         ],
         "text": "In Q2 2021, 35 states saw their greatest annual house price growth in three decades.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2021-01-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "HI",
-            "UT"
-        ],
-        "text": "GDP growth between Q1 2020 and Q1 2021 ranged from -5.2% in Hawaii to 5.1% in Utah.",
         "unit": "change"
     },
     {
@@ -56,6 +56,17 @@
     },
     {
         "endDate": "2021-04-01",
+        "indicator": "manufacturing_state_gdp",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "MI"
+        ],
+        "text": "Michigan and 35 other states saw manufacturing GDP exceed prepandemic levels in Q2 2021. ",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2021-04-01",
         "indicator": "house_price_index",
         "states": [
             "US",
@@ -66,14 +77,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-01-01",
-        "indicator": "manufacturing_state_gdp",
-        "startDate": "2006-01-01",
+        "endDate": "2021-04-01",
+        "indicator": "state_gdp",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "WI"
+            "WA"
         ],
-        "text": "In Q1 2021, 20 states saw manufacturing GDP exceed prepandemic levels.",
+        "text": "In Q2 2021, Washington State saw the highest growth in total GDP from prepandemic levels.",
         "unit": "raw"
     },
     {
@@ -89,14 +100,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-01-01",
+        "endDate": "2021-04-01",
         "indicator": "accommodation_and_food_services_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "OK"
+            "NY"
         ],
-        "text": "Only OK's accommodation and food services GDP rose between Q1 2020 and Q1 2021.",
+        "text": "New York\u2019s accommodation and food services GDP in Q2 2021 was 26% below prepandemic levels.",
         "unit": "raw"
     }
 ]
