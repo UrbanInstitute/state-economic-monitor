@@ -11,15 +11,15 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-11-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2020-01-01",
+        "endDate": "2021-07-01",
+        "indicator": "state_gdp",
         "states": [
             "US",
-            "AK"
+            "AK",
+            "TN"
         ],
-        "text": "Leisure and hospitality jobs were at least 20% below prepandemic levels in 5 states and DC.",
-        "unit": "raw"
+        "text": "GDP growth between Q3 2020 and Q3 2021 ranged from 0.2% in Alaska to 7.4% in Tennessee.",
+        "unit": "change"
     },
     {
         "endDate": "2021-07-01",
@@ -34,15 +34,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-04-01",
-        "indicator": "state_gdp",
+        "endDate": "2021-11-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2019-11-01",
         "states": [
             "US",
-            "AK",
-            "TN"
+            "HI"
         ],
-        "text": "GDP growth between Q2 2020 and Q2 2021 ranged from 6.6% in Alaska to 18.1% in Tennessee.",
-        "unit": "change"
+        "text": "Leisure and hospitality jobs were at least 20% below prepandemic levels in 5 states and DC.",
+        "unit": "raw"
     },
     {
         "endDate": "2021-11-01",
@@ -57,14 +57,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-04-01",
+        "endDate": "2021-07-01",
         "indicator": "manufacturing_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "MI"
+            "MN"
         ],
-        "text": "Michigan and 35 other states saw manufacturing GDP exceed prepandemic levels in Q2 2021.",
+        "text": "MN and 39 other states saw manufacturing GDP exceed prepandemic levels in Q3 2021.",
         "unit": "raw"
     },
     {
@@ -79,17 +79,6 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-11-01",
-        "indicator": "private_employment",
-        "startDate": "2019-11-01",
-        "states": [
-            "US",
-            "TX"
-        ],
-        "text": "Private employment levels in November were above prepandemic levels in only 5 states.",
-        "unit": "raw"
-    },
-    {
         "endDate": "2021-07-01",
         "indicator": "house_price_index",
         "states": [
@@ -101,14 +90,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-04-01",
-        "indicator": "state_gdp",
+        "endDate": "2021-07-01",
+        "indicator": "retail_trade_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "WA"
+            "WA",
+            "NY"
         ],
-        "text": "In Q2 2021, Washington State saw the highest growth in total GDP from prepandemic levels.",
+        "text": "In Q3 2021, retail GDP was below prepandemic levels in every state except Washington.",
         "unit": "raw"
     }
 ]
