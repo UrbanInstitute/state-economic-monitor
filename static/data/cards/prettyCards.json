@@ -24,14 +24,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-07-01",
+        "endDate": "2021-10-01",
         "indicator": "state_gdp",
         "states": [
             "US",
             "AK",
-            "TN"
+            "HI"
         ],
-        "text": "GDP growth between Q3 2020 and Q3 2021 ranged from 0.2% in Alaska to 7.4% in Tennessee.",
+        "text": "GDP growth between Q4 2020 and Q4 2021 ranged from 0.0% in Alaska to 8.8% in Hawaii.",
         "unit": "change"
     },
     {
@@ -69,14 +69,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-07-01",
+        "endDate": "2021-10-01",
         "indicator": "manufacturing_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "MN"
+            "WI"
         ],
-        "text": "MN and 39 other states saw manufacturing GDP exceed prepandemic levels in Q3 2021.",
+        "text": "In Q4 2021, manufacturing GDP was above Q4 2019 levels in WI and 41 other states.",
         "unit": "raw"
     },
     {
@@ -102,15 +102,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-07-01",
+        "endDate": "2021-10-01",
         "indicator": "retail_trade_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "WA",
-            "NY"
+            "WA"
         ],
-        "text": "In Q3 2021, retail GDP was below prepandemic levels in every state except Washington.",
+        "text": "In Q4 2021, retail GDP was above Q4 2019 levels in only WA and seven other states. ",
         "unit": "raw"
     }
 ]
