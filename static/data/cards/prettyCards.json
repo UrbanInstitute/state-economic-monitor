@@ -1,15 +1,14 @@
 [
     {
-        "endDate": "2022-03-01",
+        "endDate": "2022-04-01",
         "indicator": "unemployment_rate",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "GA",
-            "IN",
-            "TN"
+            "KY",
+            "WV"
         ],
-        "text": "In March 2022, 12 states saw their lowest unemployment rates in over 45 years.",
+        "text": "In April 2022, 10 states saw their lowest unemployment rates in over 45 years.",
         "unit": "raw"
     },
     {
@@ -36,36 +35,36 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-03-01",
+        "endDate": "2022-04-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "Average private weekly earnings in March ranged from $812 in MS to $1,302 in MA.",
+        "text": "Average private weekly earnings in April ranged from $813 in MS to $1,315 in MA.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-03-01",
+        "endDate": "2022-04-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-03-01",
+        "startDate": "2020-01-01",
         "states": [
             "US",
             "MT"
         ],
-        "text": "Leisure and hospitality jobs in March were above prepandemic levels in only ID, MT, and SD.",
+        "text": "Leisure and hospitality jobs in April were above prepandemic levels in only ID, MT, SD, and WY.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-03-01",
+        "endDate": "2022-04-01",
         "indicator": "state_and_local_public_education_employment",
-        "startDate": "2019-03-01",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "AL"
+            "TX"
         ],
-        "text": "March state and local public education jobs were above prepandemic levels in AL, ID, and SC.",
+        "text": "State and local public education jobs in April 2022 were above April 2019 levels in only six states.",
         "unit": "raw"
     },
     {
@@ -91,15 +90,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-03-01",
+        "endDate": "2022-04-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "NE",
             "UT",
-            "NM"
+            "DC"
         ],
-        "text": "March unemployment rates ranged from 2.0% in NE and UT to 5.3% in NM.",
+        "text": "April unemployment rates ranged from 1.9% in NE and UT to 5.8% in DC.",
         "unit": "raw"
     },
     {
