@@ -12,15 +12,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-10-01",
+        "endDate": "2022-01-01",
         "indicator": "house_price_index",
         "startDate": "1992-01-01",
         "states": [
             "US",
-            "MS",
-            "SC"
+            "AL"
         ],
-        "text": "In Q4 2021, eight states saw their greatest annual house price growth in three decades.",
+        "text": "In Q1 2022, 14 states saw their greatest nominal annual house price growth in three decades.",
         "unit": "change"
     },
     {
@@ -64,7 +63,7 @@
             "US",
             "TX"
         ],
-        "text": "State and local public education jobs in April 2022 were above April 2019 levels in only six states.",
+        "text": "State and local public education jobs in April 2022 were above April 2019 levels in six states.",
         "unit": "raw"
     },
     {
@@ -79,14 +78,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-10-01",
+        "endDate": "2022-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "DC",
-            "AZ"
+            "FL",
+            "ND"
         ],
-        "text": "Every state (but not DC) saw annual house price increases exceed 10% in Q4 2021.",
+        "text": "Every state (but not DC) saw nominal annual house price increases exceed 10% in Q1 2022.",
         "unit": "change"
     },
     {
