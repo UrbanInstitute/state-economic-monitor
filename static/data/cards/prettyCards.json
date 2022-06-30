@@ -22,14 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-10-01",
+        "endDate": "2022-01-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "AK",
+            "NE",
             "HI"
         ],
-        "text": "GDP growth between Q4 2020 and Q4 2021 ranged from 0.0% in Alaska to 8.8% in Hawaii.",
+        "text": "GDP growth between Q1 2021 and Q1 2022 ranged from -1.7% in Nebraska to 6.6% in Hawaii.",
         "unit": "change"
     },
     {
@@ -66,14 +66,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2021-10-01",
-        "indicator": "manufacturing_state_gdp",
+        "endDate": "2022-01-01",
+        "indicator": "retail_trade_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "WI"
+            "WA"
         ],
-        "text": "In Q4 2021, manufacturing GDP was above Q4 2019 levels in WI and 41 other states.",
+        "text": "Retail GDP in Q1 2021 was higher than in Q1 2020 and Q1 2022 in 47 states.",
         "unit": "raw"
     },
     {
@@ -99,14 +99,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2021-10-01",
-        "indicator": "retail_trade_state_gdp",
+        "endDate": "2022-01-01",
+        "indicator": "manufacturing_state_gdp",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "WA"
+            "MI"
         ],
-        "text": "In Q4 2021, retail GDP was above Q4 2019 levels in only WA and seven other states. ",
+        "text": "In Q1 2022, manufacturing GDP was above Q1 2020 levels in MI and 36 other states.",
         "unit": "raw"
     }
 ]
