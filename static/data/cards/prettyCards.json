@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2022-05-01",
+        "endDate": "2022-06-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NE",
+            "MN",
             "DC"
         ],
-        "text": "May unemployment rates ranged from 1.9% in NE to 5.7% in DC.",
+        "text": "June unemployment rates ranged from 1.8% in MN to 5.5% in DC.",
         "unit": "raw"
     },
     {
@@ -33,36 +33,36 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-05-01",
+        "endDate": "2022-06-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "Average private weekly earnings in May ranged from $824 in MS to $1,340 in MA.",
+        "text": "Average private weekly earnings in June ranged from $819 in MS to $1,311 in MA.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-05-01",
+        "endDate": "2022-06-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
             "MT"
         ],
-        "text": "Leisure and hospitality jobs in May 2022 were above May 2019 levels in only nine states.",
+        "text": "Leisure and hospitality jobs in June 2022 were above June 2019 levels in only nine states.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-05-01",
+        "endDate": "2022-06-01",
         "indicator": "state_and_local_public_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "IN"
+            "TN"
         ],
-        "text": "State and local public jobs in May 2022 were above May 2019 levels in only four states and DC.",
+        "text": "June 2022 state and local public sector jobs were above prepandemic levels in only eight states.",
         "unit": "raw"
     },
     {
@@ -77,17 +77,6 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-05-01",
-        "indicator": "unemployment_rate",
-        "startDate": "1976-01-01",
-        "states": [
-            "US",
-            "MN"
-        ],
-        "text": "In May 2022, nine states saw their lowest unemployment rates in over 45 years.",
-        "unit": "raw"
-    },
-    {
         "endDate": "2022-01-01",
         "indicator": "house_price_index",
         "states": [
@@ -97,6 +86,17 @@
         ],
         "text": "Every state (but not DC) saw nominal annual house price increases exceed 10% in Q1 2022.",
         "unit": "change"
+    },
+    {
+        "endDate": "2022-06-01",
+        "indicator": "unemployment_rate",
+        "startDate": "1976-01-01",
+        "states": [
+            "US",
+            "KY"
+        ],
+        "text": "In June 2022, KY and seven other states saw their lowest unemployment rates in over 45 years.",
+        "unit": "raw"
     },
     {
         "endDate": "2022-01-01",
