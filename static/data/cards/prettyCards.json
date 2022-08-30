@@ -11,14 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-01-01",
+        "endDate": "2022-04-01",
         "indicator": "house_price_index",
         "startDate": "1992-01-01",
         "states": [
             "US",
-            "AL"
+            "NM"
         ],
-        "text": "In Q1 2022, 14 states saw their greatest nominal annual house price growth in three decades.",
+        "text": "In Q2 2022, 8 states saw their greatest nominal annual house price growth in three decades.",
         "unit": "change"
     },
     {
@@ -77,14 +77,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-01-01",
+        "endDate": "2022-04-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "FL",
-            "ND"
+            "ND",
+            "FL"
         ],
-        "text": "Every state (but not DC) saw nominal annual house price increases exceed 10% in Q1 2022.",
+        "text": "All 50 states saw nominal annual house price increases exceed 10% in Q2 2022.",
         "unit": "change"
     },
     {
