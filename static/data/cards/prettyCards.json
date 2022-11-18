@@ -1,24 +1,25 @@
 [
     {
-        "endDate": "2022-09-01",
+        "endDate": "2022-10-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "MN",
+            "UT",
             "DC"
         ],
-        "text": "September unemployment rates ranged from 2.0% in MN to 4.7% in DC.",
+        "text": "October unemployment rates ranged from 2.1% in MN and UT to 4.8% in DC.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-09-01",
+        "endDate": "2022-10-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "September average private weekly earnings ranged from $838 (MS) to $1,348 (MA) for states.",
+        "text": "October average private weekly earnings for states ranged from $862 in MS to $1,366 in MA.",
         "unit": "raw"
     },
     {
@@ -33,14 +34,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-09-01",
+        "endDate": "2022-10-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-09-01",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "KY"
+            "TX"
         ],
-        "text": "Leisure and hospitality jobs in September 2022 were above prepandemic levels in 14 states.",
+        "text": "Leisure and hospitality jobs in October 2022 were above October 2019 levels in 15 states.",
         "unit": "raw"
     },
     {
@@ -55,14 +56,15 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-09-01",
+        "endDate": "2022-10-01",
         "indicator": "unemployment_rate",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "MO"
+            "LA",
+            "PA"
         ],
-        "text": "In September 2022, Missouri saw its lowest unemployment rate in over 45 years.",
+        "text": "In October 2022, LA and PA saw their lowest unemployment rates in over 45 years.",
         "unit": "raw"
     },
     {
@@ -77,14 +79,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-09-01",
+        "endDate": "2022-10-01",
         "indicator": "manufacturing_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "TX"
+            "AZ"
         ],
-        "text": "Manufacturing jobs in September 2022 were above September 2019 levels in 24 states.",
+        "text": "Manufacturing jobs in October 2022 were above October 2019 levels in 28 states.",
         "unit": "raw"
     },
     {
