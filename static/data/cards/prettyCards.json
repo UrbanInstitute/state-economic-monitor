@@ -1,25 +1,24 @@
 [
     {
-        "endDate": "2022-10-01",
+        "endDate": "2022-11-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "MN",
             "UT",
-            "DC"
+            "NV"
         ],
-        "text": "October unemployment rates ranged from 2.1% in MN and UT to 4.8% in DC.",
+        "text": "Unemployment rates in November ranged from 2.2% in UT to 4.9% in NV.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2022-11-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "October average private weekly earnings for states ranged from $862 in MS to $1,366 in MA.",
+        "text": "November state average private weekly earnings ranged from $856 in MS to $1,345 in MA.",
         "unit": "raw"
     },
     {
@@ -34,14 +33,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2022-11-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
             "TX"
         ],
-        "text": "Leisure and hospitality jobs in October 2022 were above October 2019 levels in 15 states.",
+        "text": "Leisure and hospitality jobs in November 2022 were above November 2019 levels in 16 states.",
         "unit": "raw"
     },
     {
@@ -56,15 +55,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2022-11-01",
         "indicator": "unemployment_rate",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "LA",
-            "PA"
+            "DC"
         ],
-        "text": "In October 2022, LA and PA saw their lowest unemployment rates in over 45 years.",
+        "text": "In November 2022, DC saw its lowest unemployment rate in over 45 years.",
         "unit": "raw"
     },
     {
@@ -79,14 +77,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2022-11-01",
         "indicator": "manufacturing_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "AZ"
+            "MT"
         ],
-        "text": "Manufacturing jobs in October 2022 were above October 2019 levels in 28 states.",
+        "text": "Manufacturing jobs in November 2022 were above November 2019 levels in 27 states.",
         "unit": "raw"
     },
     {
