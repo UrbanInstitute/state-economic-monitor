@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2022-11-01",
+        "endDate": "2022-12-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "UT",
-            "NV"
+            "NV",
+            "UT"
         ],
-        "text": "Unemployment rates in November ranged from 2.2% in UT to 4.9% in NV.",
+        "text": "December unemployment rates ranged from 2.2% in UT to 5.2% in NV.",
         "unit": "raw"
     },
     {
@@ -22,25 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-11-01",
+        "endDate": "2022-12-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "November state average private weekly earnings ranged from $856 in MS to $1,345 in MA.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2022-07-01",
-        "indicator": "retail_trade_state_gdp",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "OK"
-        ],
-        "text": "Real retail GDP in Q3 2022 was higher than in Q3 2021 in 32 states.",
+        "text": "December average private weekly earnings in states ranged from $854 (MS) to $1,349 (MA).",
         "unit": "raw"
     },
     {
@@ -55,6 +44,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2022-12-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "TX"
+        ],
+        "text": "Leisure and hospitality jobs in December 2022 were above December 2019 levels in 14 states.",
+        "unit": "raw"
+    },
+    {
         "endDate": "2022-07-01",
         "indicator": "manufacturing_state_gdp",
         "startDate": "2005-01-01",
@@ -66,36 +66,37 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-11-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-01-01",
-        "states": [
-            "US",
-            "TX"
-        ],
-        "text": "Leisure and hospitality jobs in November 2022 were above November 2019 levels in 16 states.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2022-11-01",
+        "endDate": "2022-12-01",
         "indicator": "unemployment_rate",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "DC"
+            "AK",
+            "PA"
         ],
-        "text": "In November 2022, DC saw its lowest unemployment rate in over 45 years.",
+        "text": "In December 2022, AK and PA saw their lowest unemployment rates in over 45 years.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-11-01",
+        "endDate": "2022-07-01",
+        "indicator": "retail_trade_state_gdp",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "OK"
+        ],
+        "text": "Real retail GDP in Q3 2022 was higher than in Q3 2021 in 32 states.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2022-12-01",
         "indicator": "manufacturing_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "MT"
+            "AZ"
         ],
-        "text": "Manufacturing jobs in November 2022 were above November 2019 levels in 27 states.",
+        "text": "Manufacturing jobs in December 2022 were above December 2019 levels in 27 states.",
         "unit": "raw"
     },
     {
