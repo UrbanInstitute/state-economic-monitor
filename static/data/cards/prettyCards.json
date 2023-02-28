@@ -11,6 +11,16 @@
         "unit": "raw"
     },
     {
+        "endDate": "2022-10-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "FL"
+        ],
+        "text": "Between Q4 2021 and Q4 2022, house prices increased at least 10% in 15 states.",
+        "unit": "change"
+    },
+    {
         "endDate": "2022-07-01",
         "indicator": "state_gdp",
         "states": [
@@ -30,17 +40,6 @@
             "MA"
         ],
         "text": "December average private weekly earnings in states ranged from $854 (MS) to $1,349 (MA).",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2022-07-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "OR",
-            "FL"
-        ],
-        "text": "Between Q3 2021 and Q3 2022, house prices increased at least 7% in each of the 50 states.",
         "unit": "raw"
     },
     {
@@ -100,14 +99,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-07-01",
+        "endDate": "2022-10-01",
         "indicator": "house_price_index",
-        "startDate": "2017-01-01",
+        "startDate": "2012-10-01",
         "states": [
             "US",
-            "ID"
+            "CA"
         ],
-        "text": "Q3 2022 was the first quarter since 2017 that ID\u2019s annual house price growth was under 10%.",
+        "text": "CA\u2019s 2.3 percent year-over-year house price growth in Q4 2022 was its lowest in a decade.",
         "unit": "change"
     }
 ]
