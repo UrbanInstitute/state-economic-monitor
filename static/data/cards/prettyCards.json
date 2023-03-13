@@ -1,13 +1,14 @@
 [
     {
-        "endDate": "2022-12-01",
+        "endDate": "2023-01-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NV",
-            "UT"
+            "ND",
+            "SD",
+            "NV"
         ],
-        "text": "December unemployment rates ranged from 2.2% in UT to 5.2% in NV.",
+        "text": "January unemployment rates ranged from 2.1% in ND and SD to 5.5% in NV.",
         "unit": "raw"
     },
     {
@@ -32,25 +33,26 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-12-01",
+        "endDate": "2023-01-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
-            "MA"
+            "MA",
+            "DC"
         ],
-        "text": "December average private weekly earnings in states ranged from $854 (MS) to $1,349 (MA).",
+        "text": "January average private weekly earnings ranged from $865 in MS to MA's $1,379 and DC's $1,826.",
         "unit": "raw"
     },
     {
-        "endDate": "2022-12-01",
+        "endDate": "2023-01-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-01-01",
+        "startDate": "2020-01-01",
         "states": [
             "US",
-            "TX"
+            "AR"
         ],
-        "text": "Leisure and hospitality jobs in December 2022 were above December 2019 levels in 14 states.",
+        "text": "Leisure and hospitality jobs in January 2023 were above January 2020 levels in 16 states.",
         "unit": "raw"
     },
     {
@@ -65,15 +67,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-12-01",
-        "indicator": "unemployment_rate",
+        "endDate": "2023-01-01",
+        "indicator": "state_and_local_public_employment",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "AK",
-            "PA"
+            "TX"
         ],
-        "text": "In December 2022, AK and PA saw their lowest unemployment rates in over 45 years.",
+        "text": "January state and local public jobs saw 30-year record highs in ID, NV, TX, and UT.",
         "unit": "raw"
     },
     {
@@ -88,14 +89,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-12-01",
+        "endDate": "2023-01-01",
         "indicator": "manufacturing_employment",
-        "startDate": "2019-01-01",
+        "startDate": "2020-01-01",
         "states": [
             "US",
             "AZ"
         ],
-        "text": "Manufacturing jobs in December 2022 were above December 2019 levels in 27 states.",
+        "text": "Manufacturing jobs in January 2023 were above January 2020 levels in 35 states.",
         "unit": "raw"
     },
     {
