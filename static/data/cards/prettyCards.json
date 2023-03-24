@@ -1,6 +1,6 @@
 [
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-02-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
@@ -8,7 +8,7 @@
             "SD",
             "NV"
         ],
-        "text": "January unemployment rates ranged from 2.1% in ND and SD to 5.5% in NV.",
+        "text": "February unemployment rates ranged from 2.1% in ND and SD to 5.5% in NV.",
         "unit": "raw"
     },
     {
@@ -33,26 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-02-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
-            "MA",
-            "DC"
+            "MA"
         ],
-        "text": "January average private weekly earnings ranged from $865 in MS to MA's $1,379 and DC's $1,826.",
+        "text": "February average private weekly earnings in states ranged from $856 in MS to MA\u2019s $1,367.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-02-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2020-01-01",
         "states": [
             "US",
-            "AR"
+            "MT"
         ],
-        "text": "Leisure and hospitality jobs in January 2023 were above January 2020 levels in 16 states.",
+        "text": "Leisure and hospitality jobs in February 2023 were above February 2020 levels in 17 states.",
         "unit": "raw"
     },
     {
@@ -67,14 +66,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-02-01",
         "indicator": "state_and_local_public_employment",
         "startDate": "1976-01-01",
         "states": [
             "US",
             "TX"
         ],
-        "text": "January state and local public jobs saw 30-year record highs in ID, NV, TX, and UT.",
+        "text": "February state and local public jobs saw 30-year record highs in AL, ID, SD, TX, and UT.",
         "unit": "raw"
     },
     {
@@ -89,14 +88,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-02-01",
         "indicator": "manufacturing_employment",
         "startDate": "2020-01-01",
         "states": [
             "US",
-            "AZ"
+            "UT"
         ],
-        "text": "Manufacturing jobs in January 2023 were above January 2020 levels in 35 states.",
+        "text": "Manufacturing jobs in February 2023 were above February 2020 levels in 33 states.",
         "unit": "raw"
     },
     {
