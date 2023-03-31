@@ -22,14 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2022-07-01",
+        "endDate": "2022-10-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "LA",
-            "ID"
+            "NH",
+            "TX"
         ],
-        "text": "Real GDP growth between Q3 2021 and Q3 2022 ranged from -2.2% in Louisiana to 5.7% in Idaho.",
+        "text": "Real GDP growth between Q4 2021 and Q4 2022 ranged from -3.3% in NH to 4.4% in TX.",
         "unit": "change"
     },
     {
@@ -55,14 +55,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-07-01",
+        "endDate": "2022-10-01",
         "indicator": "manufacturing_state_gdp",
         "startDate": "2005-01-01",
         "states": [
             "US",
-            "NV"
+            "KS"
         ],
-        "text": "Nevada saw its highest real manufacturing GDP since 2005 in Q3 2022.",
+        "text": "Kansas saw its highest real manufacturing GDP level since 2005 in Q4 2022.",
         "unit": "raw"
     },
     {
@@ -77,14 +77,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-07-01",
+        "endDate": "2022-10-01",
         "indicator": "retail_trade_state_gdp",
         "startDate": "2020-01-01",
         "states": [
             "US",
             "OK"
         ],
-        "text": "Real retail GDP in Q3 2022 was higher than in Q3 2021 in 32 states.",
+        "text": "Real retail GDP in Q4 2022 was higher than in Q4 2021 in 37 states.",
         "unit": "raw"
     },
     {
