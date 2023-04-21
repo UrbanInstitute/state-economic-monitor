@@ -1,14 +1,13 @@
 [
     {
-        "endDate": "2023-02-01",
+        "endDate": "2023-03-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "ND",
             "SD",
             "NV"
         ],
-        "text": "February unemployment rates ranged from 2.1% in ND and SD to 5.5% in NV.",
+        "text": "March unemployment rates ranged from 1.9% in SD to 5.5% in NV. ",
         "unit": "raw"
     },
     {
@@ -22,6 +21,17 @@
         "unit": "change"
     },
     {
+        "endDate": "2023-03-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "FL"
+        ],
+        "text": "Leisure and hospitality jobs in March 2023 were above March 2020 levels in 35 states. ",
+        "unit": "raw"
+    },
+    {
         "endDate": "2022-10-01",
         "indicator": "state_gdp",
         "states": [
@@ -33,25 +43,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-02-01",
-        "indicator": "weekly_earnings",
+        "endDate": "2023-03-01",
+        "indicator": "state_and_local_public_employment",
+        "startDate": "1990-01-01",
         "states": [
             "US",
-            "MS",
-            "MA"
+            "ID"
         ],
-        "text": "February average private weekly earnings in states ranged from $856 in MS to MA\u2019s $1,367.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2023-02-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "MT"
-        ],
-        "text": "Leisure and hospitality jobs in February 2023 were above February 2020 levels in 17 states.",
+        "text": "State and local public jobs saw 30-year record highs in March in ID, TX, and UT.",
         "unit": "raw"
     },
     {
@@ -66,14 +65,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-02-01",
-        "indicator": "state_and_local_public_employment",
-        "startDate": "1976-01-01",
+        "endDate": "2023-03-01",
+        "indicator": "weekly_earnings",
         "states": [
             "US",
-            "TX"
+            "MS",
+            "MA"
         ],
-        "text": "February state and local public jobs saw 30-year record highs in AL, ID, SD, TX, and UT.",
+        "text": "March average private weekly earnings in states ranged from $861 in MS to MA\u2019s $1,346. ",
         "unit": "raw"
     },
     {
@@ -88,14 +87,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-02-01",
+        "endDate": "2023-03-01",
         "indicator": "manufacturing_employment",
         "startDate": "2020-01-01",
         "states": [
             "US",
-            "UT"
+            "MT"
         ],
-        "text": "Manufacturing jobs in February 2023 were above February 2020 levels in 33 states.",
+        "text": "Manufacturing jobs in March 2023 were above March 2020 levels in 35 states. ",
         "unit": "raw"
     },
     {
