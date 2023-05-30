@@ -11,13 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2023-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "FL"
+            "UT",
+            "NV"
         ],
-        "text": "Between Q4 2021 and Q4 2022, house prices increased at least 10% in 15 states.",
+        "text": "Between Q1 2022 and Q1 2023, seven states and DC saw negative house price growth.",
         "unit": "change"
     },
     {
@@ -99,14 +100,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2022-10-01",
+        "endDate": "2023-01-01",
         "indicator": "house_price_index",
-        "startDate": "2012-10-01",
+        "startDate": "2012-01-01",
         "states": [
             "US",
             "CA"
         ],
-        "text": "CA\u2019s 2.3 percent year-over-year house price growth in Q4 2022 was its lowest in a decade.",
+        "text": "In Q1 2023, CA\u2019s year-over-year house prices declined for the first time since Q1 2012.",
         "unit": "change"
     },
     {
