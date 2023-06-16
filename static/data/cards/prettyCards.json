@@ -1,13 +1,14 @@
 [
     {
-        "endDate": "2023-04-01",
+        "endDate": "2023-05-01",
         "indicator": "unemployment_rate",
+        "startDate": "1976-01-01",
         "states": [
             "US",
-            "SD",
-            "NV"
+            "OH",
+            "PA"
         ],
-        "text": "April unemployment rates ranged from 1.9% in SD to 5.4% in NV.",
+        "text": "In May 2023, seven states (AR, MD, MS, NE, NH, OH, and PA) saw historic lows in unemployment.",
         "unit": "raw"
     },
     {
@@ -33,25 +34,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-04-01",
+        "endDate": "2023-05-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "MA"
         ],
-        "text": "April average private weekly earnings in states ranged from MS\u2019 $870 to MA\u2019s $1,390.",
+        "text": "May average private weekly earnings in states ranged from MS\u2019 $872 to MA\u2019s $1,357.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-04-01",
-        "indicator": "leisure_and_hospitality_employment",
+        "endDate": "2023-05-01",
+        "indicator": "state_and_local_public_education_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "UT"
+            "DE"
         ],
-        "text": "Leisure and hospitality jobs in April 2023 were above April 2019 levels in 22 states.",
+        "text": "State and local public education jobs in May 2023 were above 2019 levels in only 11 states.",
         "unit": "raw"
     },
     {
@@ -66,15 +67,16 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-04-01",
+        "endDate": "2023-05-01",
         "indicator": "unemployment_rate",
-        "startDate": "1976-01-01",
         "states": [
             "US",
-            "AZ",
-            "MD"
+            "NE",
+            "NH",
+            "SD",
+            "NV"
         ],
-        "text": "AZ, MD, and eight others saw historic lows in unemployment in April 2023.",
+        "text": "May unemployment rates ranged from 1.9% in NE, NH, and SD to 5.4% in NV.",
         "unit": "raw"
     },
     {
@@ -89,14 +91,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-04-01",
+        "endDate": "2023-05-01",
         "indicator": "manufacturing_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "MO"
+            "AZ"
         ],
-        "text": "Manufacturing jobs in April 2023 were above April 2019 levels in 29 states.",
+        "text": "Manufacturing jobs in May 2023 were above May 2019 levels in 29 states.",
         "unit": "raw"
     },
     {
@@ -111,14 +113,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-04-01",
-        "indicator": "state_and_local_public_education_employment",
+        "endDate": "2023-05-01",
+        "indicator": "leisure_and_hospitality_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "DE"
+            "ID"
         ],
-        "text": "State and local public education jobs in April 2023 were above 2019 levels in only 10 states.",
+        "text": "Leisure and hospitality jobs in May 2023 were above May 2019 levels in 24 states.",
         "unit": "raw"
     }
 ]
