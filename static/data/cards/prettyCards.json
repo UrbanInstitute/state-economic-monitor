@@ -1,14 +1,13 @@
 [
     {
-        "endDate": "2023-06-01",
+        "endDate": "2023-07-01",
         "indicator": "unemployment_rate",
-        "startDate": "1976-01-01",
         "states": [
             "US",
-            "OH",
-            "PA"
+            "NH",
+            "NV"
         ],
-        "text": "Nine states saw historic lows in unemployment in June 2023.",
+        "text": "July unemployment rates ranged from 1.7% in NH to 5.3% in NV.",
         "unit": "raw"
     },
     {
@@ -19,7 +18,7 @@
             "CT",
             "IN"
         ],
-        "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN.",
+        "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN. ",
         "unit": "raw"
     },
     {
@@ -27,21 +26,20 @@
         "indicator": "house_price_index",
         "states": [
             "US",
-            "UT",
-            "NV"
+            "UT"
         ],
         "text": "Between Q1 2022 and Q1 2023, seven states and DC saw negative house price growth.",
         "unit": "change"
     },
     {
-        "endDate": "2023-06-01",
+        "endDate": "2023-07-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "June average private weekly earnings in states ranged from $873 in MS to $1,363 in WA.",
+        "text": "July average private weekly earnings in states ranged from $887 in MS to $1,397 in WA.",
         "unit": "raw"
     },
     {
@@ -49,34 +47,34 @@
         "indicator": "manufacturing_state_gdp",
         "states": [
             "US",
-            "AR",
+            "AK",
             "NV",
             "TX"
         ],
-        "text": "Real manufacturing GDP growth Q1 2022 to Q1 2023 ranged from -6.8% in AK to 2.1% in NV and TX.",
+        "text": "Real manufacturing GDP growth Q1 2022 and Q1 2023 ranged from -6.8% in AK to 2.1% in NV and TX.",
         "unit": "change"
     },
     {
-        "endDate": "2023-06-01",
+        "endDate": "2023-07-01",
         "indicator": "retail_trade_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "TX"
+            "SD"
         ],
-        "text": "Retail jobs in June 2023 were above June 2019 levels in 23 states.",
+        "text": "Retail jobs in July 2023 were above July 2019 levels in 27 states.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-06-01",
+        "endDate": "2023-07-01",
         "indicator": "unemployment_rate",
+        "startDate": "1976-01-01",
         "states": [
             "US",
-            "NH",
-            "SD",
-            "NV"
+            "OH",
+            "PA"
         ],
-        "text": "June unemployment rates ranged from 1.8% in NH and SD to 5.4% in NV.",
+        "text": "Eleven states saw historic lows in unemployment in July 2023.",
         "unit": "raw"
     },
     {
@@ -91,14 +89,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-06-01",
+        "endDate": "2023-07-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
             "ID"
         ],
-        "text": "Leisure and hospitality jobs in June 2023 were above June 2019 levels in 28 states.",
+        "text": "Leisure and hospitality jobs in July 2023 were above July 2019 levels in 24 states.",
         "unit": "raw"
     },
     {
