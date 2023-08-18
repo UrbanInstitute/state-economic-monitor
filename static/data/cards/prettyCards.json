@@ -19,7 +19,7 @@
             "IN"
         ],
         "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN. ",
-        "unit": "raw"
+        "unit": "change"
     },
     {
         "endDate": "2023-01-01",
@@ -60,7 +60,7 @@
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "SD"
+            "FL"
         ],
         "text": "Retail jobs in July 2023 were above July 2019 levels in 27 states.",
         "unit": "raw"
@@ -71,7 +71,6 @@
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "OH",
             "PA"
         ],
         "text": "Eleven states saw historic lows in unemployment in July 2023.",
@@ -86,7 +85,7 @@
             "CA"
         ],
         "text": "In Q1 2023, CA\u2019s year-over-year house prices declined for the first time since Q1 2012.",
-        "unit": "change"
+        "unit": "raw"
     },
     {
         "endDate": "2023-07-01",
