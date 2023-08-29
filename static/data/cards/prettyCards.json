@@ -11,6 +11,18 @@
         "unit": "raw"
     },
     {
+        "endDate": "2023-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "DC",
+            "NV",
+            "UT"
+        ],
+        "text": "Eight states and DC saw house prices fall between Q2 2022 and Q2 2023.",
+        "unit": "change"
+    },
+    {
         "endDate": "2023-01-01",
         "indicator": "state_gdp",
         "states": [
@@ -19,16 +31,6 @@
             "IN"
         ],
         "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN. ",
-        "unit": "change"
-    },
-    {
-        "endDate": "2023-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "UT"
-        ],
-        "text": "Between Q1 2022 and Q1 2023, seven states and DC saw negative house price growth.",
         "unit": "change"
     },
     {
@@ -77,15 +79,15 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-01-01",
+        "endDate": "2023-04-01",
         "indicator": "house_price_index",
-        "startDate": "2012-01-01",
+        "startDate": "2011-01-01",
         "states": [
             "US",
-            "CA"
+            "AZ"
         ],
-        "text": "In Q1 2023, CA\u2019s year-over-year house prices declined for the first time since Q1 2012.",
-        "unit": "raw"
+        "text": "In Q2 2023, AZ\u2019s year-over-year house prices declined for the first time since Q4 2011.",
+        "unit": "change"
     },
     {
         "endDate": "2023-07-01",
