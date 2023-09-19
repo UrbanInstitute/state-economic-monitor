@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-08-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NH",
+            "MD",
             "NV"
         ],
-        "text": "July unemployment rates ranged from 1.7% in NH to 5.3% in NV.",
+        "text": "August unemployment rates ranged from 1.7% in MD to 5.4% in NV.",
         "unit": "raw"
     },
     {
@@ -34,14 +34,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-08-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "July average private weekly earnings in states ranged from $887 in MS to $1,397 in WA.",
+        "text": "August average private weekly earnings in states ranged from $890 in MS to $1,356 in WA.",
         "unit": "raw"
     },
     {
@@ -57,25 +57,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-08-01",
         "indicator": "retail_trade_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
             "FL"
         ],
-        "text": "Retail jobs in July 2023 were above July 2019 levels in 27 states.",
+        "text": "Retail jobs in August 2023 were above August 2019 levels in 17 states.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-08-01",
         "indicator": "unemployment_rate",
         "startDate": "1976-01-01",
         "states": [
             "US",
-            "PA"
+            "LA"
         ],
-        "text": "Eleven states saw historic lows in unemployment in July 2023.",
+        "text": "Louisiana, Maryland, and North Dakota saw historic lows in unemployment in August 2023.",
         "unit": "raw"
     },
     {
@@ -90,14 +90,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-08-01",
         "indicator": "leisure_and_hospitality_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
-            "ID"
+            "AR"
         ],
-        "text": "Leisure and hospitality jobs in July 2023 were above July 2019 levels in 24 states.",
+        "text": "Leisure and hospitality jobs in August 2023 were above August 2019 levels in 26 states.",
         "unit": "raw"
     },
     {
