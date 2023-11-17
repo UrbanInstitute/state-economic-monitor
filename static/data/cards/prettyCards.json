@@ -1,13 +1,21 @@
 [
     {
+<<<<<<< HEAD
         "endDate": "2023-09-01",
+=======
+        "endDate": "2023-02-01",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "MD",
             "NV"
         ],
+<<<<<<< HEAD
         "text": "September unemployment rates ranged from 1.6% in MD to 5.4% in NV.",
+=======
+        "text": "February unemployment rates ranged from 2.1% in ND and SD to 5.5% in NV.",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "unit": "raw"
     },
     {
@@ -23,6 +31,7 @@
         "unit": "change"
     },
     {
+<<<<<<< HEAD
         "endDate": "2023-01-01",
         "indicator": "state_gdp",
         "states": [
@@ -35,10 +44,14 @@
     },
     {
         "endDate": "2023-09-01",
+=======
+        "endDate": "2023-02-01",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
+<<<<<<< HEAD
             "WA"
         ],
         "text": "September average private weekly earnings in states ranged from $897 in MS to $1,369 in WA.",
@@ -46,6 +59,26 @@
     },
     {
         "endDate": "2023-01-01",
+=======
+            "MA"
+        ],
+        "text": "February average private weekly earnings in states ranged from $856 in MS to MA\u2019s $1,367.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2023-02-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "MT"
+        ],
+        "text": "Leisure and hospitality jobs in February 2023 were above February 2020 levels in 17 states.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2022-07-01",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "indicator": "manufacturing_state_gdp",
         "states": [
             "US",
@@ -68,13 +101,19 @@
         "unit": "raw"
     },
     {
+<<<<<<< HEAD
         "endDate": "2023-09-01",
         "indicator": "unemployment_rate",
+=======
+        "endDate": "2023-02-01",
+        "indicator": "state_and_local_public_employment",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "startDate": "1976-01-01",
         "states": [
             "US",
             "PA"
         ],
+<<<<<<< HEAD
         "text": "MD, PA, and RI saw historic lows in unemployment in September 2023.",
         "unit": "raw"
     },
@@ -82,10 +121,31 @@
         "endDate": "2023-04-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
+=======
+        "text": "February state and local public jobs saw 30-year record highs in AL, ID, SD, TX, and UT.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2022-07-01",
+        "indicator": "retail_trade_state_gdp",
+        "startDate": "2020-01-01",
         "states": [
             "US",
-            "AZ"
+            "OK"
         ],
+        "text": "Real retail GDP in Q3 2022 was higher than in Q3 2021 in 32 states.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2023-02-01",
+        "indicator": "manufacturing_employment",
+        "startDate": "2020-01-01",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
+        "states": [
+            "US",
+            "UT"
+        ],
+<<<<<<< HEAD
         "text": "In Q2 2023, AZ\u2019s year-over-year house prices declined for the first time since Q4 2011.",
         "unit": "change"
     },
@@ -98,6 +158,9 @@
             "GA"
         ],
         "text": "Leisure and hospitality jobs in September 2023 were above 2019 levels in 28 states.",
+=======
+        "text": "Manufacturing jobs in February 2023 were above February 2020 levels in 33 states.",
+>>>>>>> ee2a499 (SEM Update on March 24, 2023)
         "unit": "raw"
     },
     {
