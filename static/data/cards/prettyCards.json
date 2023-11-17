@@ -1,14 +1,26 @@
 [
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-10-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NH",
+            "MD",
             "NV"
         ],
-        "text": "July unemployment rates ranged from 1.7% in NH to 5.3% in NV.",
+        "text": "October unemployment rates ranged from 1.7% in MD to 5.4% in NV.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2023-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "DC",
+            "NV",
+            "UT"
+        ],
+        "text": "Eight states and DC saw house prices fall between Q2 2022 and Q2 2023.",
+        "unit": "change"
     },
     {
         "endDate": "2023-01-01",
@@ -22,24 +34,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "UT"
-        ],
-        "text": "Between Q1 2022 and Q1 2023, seven states and DC saw negative house price growth.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2023-07-01",
+        "endDate": "2023-10-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "July average private weekly earnings in states ranged from $887 in MS to $1,397 in WA.",
+        "text": "October average private weekly earnings in states ranged from $891 in MS to $1,409 in WA.",
         "unit": "raw"
     },
     {
@@ -55,47 +57,52 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-10-01",
         "indicator": "retail_trade_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
+            "MS",
+            "WA"
+        ],
+        "text": "Retail jobs in October 2023 were at or above 2019 levels for 28 states.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2023-10-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2023-09-01",
+        "states": [
+            "US",
+            "AL",
             "FL"
         ],
-        "text": "Retail jobs in July 2023 were above July 2019 levels in 27 states.",
+        "text": "The unemployment rate increased in 39 states from September to October.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-07-01",
-        "indicator": "unemployment_rate",
-        "startDate": "1976-01-01",
-        "states": [
-            "US",
-            "PA"
-        ],
-        "text": "Eleven states saw historic lows in unemployment in July 2023.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2023-01-01",
+        "endDate": "2023-04-01",
         "indicator": "house_price_index",
-        "startDate": "2012-01-01",
+        "startDate": "2011-01-01",
         "states": [
             "US",
-            "CA"
+            "AZ"
         ],
-        "text": "In Q1 2023, CA\u2019s year-over-year house prices declined for the first time since Q1 2012.",
-        "unit": "raw"
+        "text": "In Q2 2023, AZ\u2019s year-over-year house prices declined for the first time since Q4 2011.",
+        "unit": "change"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-10-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-01-01",
+        "startDate": "2022-10-01",
         "states": [
             "US",
-            "ID"
+            "MS",
+            "NH",
+            "SD",
+            "WV"
         ],
-        "text": "Leisure and hospitality jobs in July 2023 were above July 2019 levels in 24 states.",
+        "text": "Leisure and hospitality jobs in October 2023 were at or above October 2022 levels for all but four states.",
         "unit": "raw"
     },
     {
