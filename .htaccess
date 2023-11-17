@@ -1,4 +1,0 @@
-AuthUserFile /var/www/private/.htpasswd
-AuthName "Members & Researchers Only"
-AuthType Basic
-require valid-user
