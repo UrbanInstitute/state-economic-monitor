@@ -6,7 +6,9 @@ import csv
 import datetime
 from tempfile import NamedTemporaryFile
 import shutil
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 
 DATE_FORMAT = "%Y-%m-%d"
 rootPath = "/var/www/html/semapp/"
@@ -233,7 +235,7 @@ for filename in quarterly:
 
 	    for row in reader:
 	        writer.writerow(row)
-
+	logging.debug("Attempting to move %s to %s", tempfile.name, rootPath + 'static/data/csv/' + filename)
 	shutil.move(tempfile.name, rootPath + 'static/data/csv/' + filename)
 
 
