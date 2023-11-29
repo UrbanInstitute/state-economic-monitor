@@ -1,119 +1,117 @@
 [
     {
-      "endDate": "2023-10-01",
-      "indicator": "unemployment_rate",
-      "states": [
-        "US",
-        "MD",
-        "NV"
-      ],
-      "text": "October unemployment rates ranged from 1.7% in MD to 5.4% in NV.",
-      "unit": "raw"
+        "endDate": "2023-10-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "MD",
+            "NV"
+        ],
+        "text": "October unemployment rates ranged from 1.7% in MD to 5.4% in NV.",
+        "unit": "raw"
     },
     {
-      "endDate": "2023-04-01",
-      "indicator": "house_price_index",
-      "states": [
-        "US",
-        "DC",
-        "NV",
-        "UT"
-      ],
-      "text": "Eight states and DC saw house prices fall between Q2 2022 and Q2 2023.",
-      "unit": "change"
+        "endDate": "2023-07-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "HI",
+            "DC"
+        ],
+        "text": "Only Hawaii and DC saw house prices fall between Q3 2022 and Q3 2023.",
+        "unit": "change"
     },
     {
-      "endDate": "2023-01-01",
-      "indicator": "state_gdp",
-      "states": [
-        "US",
-        "CT",
-        "IN"
-      ],
-      "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN. ",
-      "unit": "change"
+        "endDate": "2023-01-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "CT",
+            "IN"
+        ],
+        "text": "Real state GDP in Q1 2023 was higher than in Q1 2022 in all states except CT and IN. ",
+        "unit": "change"
     },
     {
-      "endDate": "2023-10-01",
-      "indicator": "weekly_earnings",
-      "states": [
-        "US",
-        "MS",
-        "WA"
-      ],
-      "text": "October average private weekly earnings in states ranged from $891 in MS to $1,409 in WA.",
-      "unit": "raw"
+        "endDate": "2023-10-01",
+        "indicator": "weekly_earnings",
+        "states": [
+            "US",
+            "MS",
+            "WA"
+        ],
+        "text": "October average private weekly earnings in states ranged from $891 in MS to $1,409 in WA.",
+        "unit": "raw"
     },
     {
-      "endDate": "2023-01-01",
-      "indicator": "manufacturing_state_gdp",
-      "states": [
-        "US",
-        "AK",
-        "NV",
-        "TX"
-      ],
-      "text": "Real manufacturing GDP growth Q1 2022 and Q1 2023 ranged from -6.8% in AK to 2.1% in NV and TX.",
-      "unit": "change"
+        "endDate": "2023-01-01",
+        "indicator": "manufacturing_state_gdp",
+        "states": [
+            "US",
+            "AK",
+            "NV",
+            "TX"
+        ],
+        "text": "Real manufacturing GDP growth Q1 2022 and Q1 2023 ranged from -6.8% in AK to 2.1% in NV and TX.",
+        "unit": "change"
     },
     {
-      "endDate": "2023-10-01",
-      "indicator": "retail_trade_employment",
-      "startDate": "2019-01-01",
-      "states": [
-        "US",
-        "MS",
-        "WA"
-      ],
-      "text": "Retail jobs in October 2023 were at or above 2019 levels for 28 states.",
-      "unit": "raw"
+        "endDate": "2023-10-01",
+        "indicator": "retail_trade_employment",
+        "startDate": "2019-01-01",
+        "states": [
+            "US",
+            "MS",
+            "WA"
+        ],
+        "text": "Retail jobs in October 2023 were at or above 2019 levels for 28 states.",
+        "unit": "raw"
     },
     {
-      "endDate": "2023-10-01",
-      "indicator": "unemployment_rate",
-      "startDate": "2023-09-01",
-      "states": [
-        "US",
-        "AL",
-        "FL"
-      ],
-      "text": "The unemployment rate increased in 39 states from September to October.",
-      "unit": "raw"
+        "endDate": "2023-10-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2023-09-01",
+        "states": [
+            "US",
+            "AL",
+            "FL"
+        ],
+        "text": "The unemployment rate increased in 39 states from September to October.",
+        "unit": "raw"
     },
     {
-      "endDate": "2023-04-01",
-      "indicator": "house_price_index",
-      "startDate": "2011-01-01",
-      "states": [
-        "US",
-        "AZ"
-      ],
-      "text": "In Q2 2023, AZ\u2019s year-over-year house prices declined for the first time since Q4 2011.",
-      "unit": "change"
+        "endDate": "2023-07-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-01-01",
+        "states": [
+            "US",
+            "MN"
+        ],
+        "text": "MN and 31 other states have seen continuous growth in house prices since Q1 2013.",
+        "unit": "change"
     },
     {
-      "endDate": "2023-10-01",
-      "indicator": "leisure_and_hospitality_employment",
-      "startDate": "2022-10-01",
-      "states": [
-        "US",
-        "MS",
-        "NH",
-        "SD",
-        "WV"
-      ],
-      "text": "Leisure and hospitality jobs in October 2023 were at or above October 2022 levels for all but four states.",
-      "unit": "raw"
+        "endDate": "2023-10-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "states": [
+            "US",
+            "NH",
+            "SD",
+            "WV",
+            "MS"
+        ],
+        "text": "Leisure and hospitality jobs in Oct 2023 were at or above Oct 2022 levels in all but four states.",
+        "unit": "change"
     },
     {
-      "endDate": "2023-01-01",
-      "indicator": "retail_trade_state_gdp",
-      "startDate": "2005-01-01",
-      "states": [
-        "US",
-        "RI"
-      ],
-      "text": "Four states saw lower real retail GDP levels in Q1 2023 than Q1 2005: CT, NH, RI, and WV.",
-      "unit": "raw"
+        "endDate": "2023-01-01",
+        "indicator": "retail_trade_state_gdp",
+        "startDate": "2005-01-01",
+        "states": [
+            "US",
+            "RI"
+        ],
+        "text": "Four states saw lower real retail GDP levels in Q1 2023 than Q1 2005: CT, NH, RI, and WV.",
+        "unit": "raw"
     }
-  ]
+]
