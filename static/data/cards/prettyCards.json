@@ -28,7 +28,7 @@
             "US",
             "DE"
         ],
-        "text": "Real state GDP in Q3 2023 was higher than in Q3 2022 in all states except Delaware.",
+        "text": "State real GDP in Q3 2023 was higher than in Q3 2022 in all states except Delaware.",
         "unit": "change"
     },
     {
@@ -61,19 +61,19 @@
             "DC",
             "SC"
         ],
-        "text": "Q3 2023 retail GDP growth over the year was at least 8% in every state and DC.",
+        "text": "Q3 2023 retail real GDP growth over the year was at least 8% in every state and DC.",
         "unit": "change"
     },
     {
         "endDate": "2023-11-01",
         "indicator": "unemployment_rate",
-        "startDate": "2022-11-01",
+        "startDate": "2019-11-01",
         "states": [
             "US",
             "PA"
         ],
-        "text": "Unemployment rates in Nov 2023 were lower than in Nov 2022 in 26 states.",
-        "unit": "raw"
+        "text": "Unemployment rates in Nov 2023 were lower than in Nov 2019 in 25 states.",
+        "unit": "change"
     },
     {
         "endDate": "2023-07-01",
