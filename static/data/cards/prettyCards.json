@@ -26,8 +26,7 @@
         "indicator": "state_gdp",
         "states": [
             "US",
-            "MD",
-            "NV"
+            "DE"
         ],
         "text": "Real state GDP in Q3 2023 was higher than in Q3 2022 in all states except Delaware.",
         "unit": "change"
@@ -49,7 +48,7 @@
         "startDate": "2019-11-01",
         "states": [
             "US",
-            "TN"
+            "AZ"
         ],
         "text": "Manufacturing jobs in Nov 2023 were at or above Nov 2019 levels for 29 states.",
         "unit": "raw"
