@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2023-10-01",
+        "endDate": "2023-11-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "MD",
             "NV"
         ],
-        "text": "October unemployment rates ranged from 1.7% in MD to 5.4% in NV.",
+        "text": "November unemployment rates ranged from 1.8% in MD to 5.4% in NV.",
         "unit": "raw"
     },
     {
@@ -22,60 +22,58 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-04-01",
+        "endDate": "2023-07-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "DE",
-            "WI"
+            "MD",
+            "NV"
         ],
-        "text": "Real state GDP in Q2 2023 was higher than in Q2 2022 in all states except DE and WI.",
+        "text": "Real state GDP in Q3 2023 was higher than in Q3 2022 in all states except Delaware.",
         "unit": "change"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2023-11-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "October average private weekly earnings in states ranged from $891 in MS to $1,409 in WA.",
+        "text": "Nov average private weekly earnings in states ranged from $880 in MS to $1,367 in WA.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-10-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2019-01-01",
+        "endDate": "2023-11-01",
+        "indicator": "manufacturing_employment",
+        "startDate": "2019-11-01",
         "states": [
             "US",
-            "MS",
-            "WA"
+            "TN"
         ],
-        "text": "Retail jobs in October 2023 were at or above 2019 levels for 28 states.",
+        "text": "Manufacturing jobs in Nov 2023 were at or above Nov 2019 levels for 29 states.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-04-01",
-        "indicator": "manufacturing_state_gdp",
+        "endDate": "2023-07-01",
+        "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
-            "OR",
-            "ND"
+            "DC",
+            "SC"
         ],
-        "text": "Manufacturing GDP growth year-over-year in Q2 2023 ranged from OR\u2019s -5.2% to ND\u2019s 7.0%.",
+        "text": "Q3 2023 retail GDP growth over the year was at least 8% in every state and DC.",
         "unit": "change"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2023-11-01",
         "indicator": "unemployment_rate",
-        "startDate": "2023-09-01",
+        "startDate": "2022-11-01",
         "states": [
             "US",
-            "AL",
-            "FL"
+            "PA"
         ],
-        "text": "The unemployment rate increased in 39 states from September to October.",
+        "text": "Unemployment rates in Nov 2023 were lower than in Nov 2022 in 26 states.",
         "unit": "raw"
     },
     {
@@ -90,16 +88,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-10-01",
-        "indicator": "leisure_and_hospitality_employment",
+        "endDate": "2023-11-01",
+        "indicator": "public_employment",
         "states": [
             "US",
-            "NH",
-            "SD",
-            "WV",
-            "MS"
+            "MT",
+            "WV"
         ],
-        "text": "Leisure and hospitality jobs in Oct 2023 were at or above Oct 2022 levels in all but four states.",
+        "text": "Public jobs in Nov 2023 were at or above Nov 2022 levels in all but two states.",
         "unit": "change"
     }
 ]
