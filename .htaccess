@@ -1,1 +1,4 @@
-Redirect 301 /wages.html /earnings.html
+AuthUserFile /var/www/private/.htpasswd
+AuthName "Members Only"
+AuthType Basic
+require valid-user
