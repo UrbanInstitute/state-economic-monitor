@@ -1,4 +1,1 @@
-AuthUserFile /var/www/private/.htpasswd
-AuthName "Members Only"
-AuthType Basic
-require valid-user
+Redirect 301 /wages.html /earnings.html
