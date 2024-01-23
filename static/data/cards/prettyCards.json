@@ -4,7 +4,6 @@
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "MD",
             "ND",
             "NV"
         ],
@@ -82,9 +81,9 @@
         "startDate": "2019-12-01",
         "states": [
             "US",
-            "VT"
+            "GA"
         ],
-        "text": "Leisure jobs in Dec 2023 were above Dec 2019 levels in 25 states and DC.",
+        "text": "Leisure jobs in Dec 2023 were above Dec 2019 levels in 27 states.",
         "unit": "raw"
     },
     {
