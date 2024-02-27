@@ -1,5 +1,27 @@
 [
     {
+        "endDate": "2023-10-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "RI",
+            "VT"
+        ],
+        "text": "RI and VT saw the highest house price growth between Q4 2022 and Q4 2023.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2023-10-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-10-01",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "HI housing prices reached a decade low in Q4 2023.",
+        "unit": "change"
+    },
+    {
         "endDate": "2023-12-01",
         "indicator": "unemployment_rate",
         "states": [
@@ -9,17 +31,6 @@
         ],
         "text": "Dec unemployment rates ranged from 1.9% in MD and ND to 5.4% in NV.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2023-07-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "HI",
-            "DC"
-        ],
-        "text": "Only HI and DC saw house prices fall between Q3 2022 and Q3 2023.",
-        "unit": "change"
     },
     {
         "endDate": "2023-07-01",
@@ -85,16 +96,5 @@
         ],
         "text": "Leisure jobs in Dec 2023 were above Dec 2019 levels in 27 states.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2023-07-01",
-        "indicator": "house_price_index",
-        "startDate": "2013-01-01",
-        "states": [
-            "US",
-            "MN"
-        ],
-        "text": "MN and 31 other states have seen continuous growth in house prices since Q1 2013.",
-        "unit": "change"
     }
 ]
