@@ -1,5 +1,16 @@
 [
     {
+        "endDate": "2024-01-01",
+        "indicator": "unemployment_rate",
+        "states": [
+            "US",
+            "ND",
+            "NV"
+        ],
+        "text": "Jan unemployment rates ranged from 1.9% ND to 5.3% in NV.",
+        "unit": "raw"
+    },
+    {
         "endDate": "2023-10-01",
         "indicator": "house_price_index",
         "states": [
@@ -9,28 +20,6 @@
         ],
         "text": "RI and VT saw the highest house price growth between Q4 2022 and Q4 2023.",
         "unit": "change"
-    },
-    {
-        "endDate": "2023-10-01",
-        "indicator": "house_price_index",
-        "startDate": "2013-10-01",
-        "states": [
-            "US",
-            "HI"
-        ],
-        "text": "HI housing prices reached a decade low in Q4 2023.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2023-12-01",
-        "indicator": "unemployment_rate",
-        "states": [
-            "US",
-            "ND",
-            "NV"
-        ],
-        "text": "Dec unemployment rates ranged from 1.9% in MD and ND to 5.4% in NV.",
-        "unit": "raw"
     },
     {
         "endDate": "2023-07-01",
@@ -43,25 +32,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-12-01",
+        "endDate": "2024-01-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Dec average private weekly earnings in states ranged from $894 in MS to $1,387 in WA.",
+        "text": "Jan average private weekly earnings in states ranged from $889 in MS to $1,377 in WA.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-12-01",
-        "indicator": "manufacturing_employment",
-        "startDate": "2019-12-01",
+        "endDate": "2024-01-01",
+        "indicator": "private_employment",
+        "startDate": "2019-01-01",
         "states": [
             "US",
-            "AZ"
+            "ID"
         ],
-        "text": "Manufacturing job totals in Dec 2023 were above Dec 2019 levels in 31 states.",
+        "text": "Total private sector jobs in Jan 2024 were above Jan 2019 levels in 44 states.",
         "unit": "raw"
     },
     {
@@ -76,25 +65,37 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-12-01",
+        "endDate": "2024-01-01",
         "indicator": "unemployment_rate",
-        "startDate": "1976-01-01",
+        "startDate": "2014-01-01",
         "states": [
             "US",
-            "ND"
+            "WY"
         ],
-        "text": "ND\u2019s Dec 2023 unemployment rate was its lowest in 45+ years.",
+        "text": "Wyoming saw a 10-year low in its unemployment rate in Jan 2024.",
         "unit": "raw"
     },
     {
-        "endDate": "2023-12-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-12-01",
+        "endDate": "2024-01-01",
+        "indicator": "manufacturing_employment",
         "states": [
             "US",
-            "GA"
+            "VT",
+            "OR",
+            "AR"
         ],
-        "text": "Leisure jobs in Dec 2023 were above Dec 2019 levels in 27 states.",
-        "unit": "raw"
+        "text": "Manufacturing jobs in Jan 2024 were below Jan 2023 levels in 23 states.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2023-10-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-10-01",
+        "states": [
+            "US",
+            "HI"
+        ],
+        "text": "HI housing prices reached a decade low in Q4 2023.",
+        "unit": "change"
     }
 ]
