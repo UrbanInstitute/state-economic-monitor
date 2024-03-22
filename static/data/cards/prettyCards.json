@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-01-01",
+        "endDate": "2024-02-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "ND",
-            "NV"
+            "CA"
         ],
-        "text": "Jan unemployment rates ranged from 1.9% ND to 5.3% in NV.",
+        "text": "Feb unemployment rates ranged from 2.0% in ND to 5.3% in CA.",
         "unit": "raw"
     },
     {
@@ -32,25 +32,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-01-01",
+        "endDate": "2024-02-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Jan average private weekly earnings in states ranged from $889 in MS to $1,377 in WA.",
+        "text": "Feb average private weekly earnings in states ranged from $906 in MS to $1,388 in WA.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-01-01",
+        "endDate": "2024-02-01",
         "indicator": "private_employment",
         "startDate": "2019-01-01",
         "states": [
             "US",
             "ID"
         ],
-        "text": "Total private sector jobs in Jan 2024 were above Jan 2019 levels in 44 states.",
+        "text": "Total private sector jobs in Feb 2024 were above Feb 2019 levels in 44 states.",
         "unit": "raw"
     },
     {
@@ -65,26 +65,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-01-01",
+        "endDate": "2024-02-01",
         "indicator": "unemployment_rate",
-        "startDate": "2014-01-01",
+        "startDate": "2004-01-01",
         "states": [
             "US",
-            "WY"
+            "MS"
         ],
-        "text": "Wyoming saw a 10-year low in its unemployment rate in Jan 2024.",
+        "text": "MS\u2019s unemployment rate was 3.1% in Feb 2024. In Feb 2004, it was 5.7%.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-01-01",
-        "indicator": "manufacturing_employment",
+        "endDate": "2024-02-01",
+        "indicator": "leisure_and_hospitality_employment",
         "states": [
             "US",
-            "VT",
-            "OR",
-            "AR"
+            "SC",
+            "NY"
         ],
-        "text": "Manufacturing jobs in Jan 2024 were below Jan 2023 levels in 23 states.",
+        "text": "Leisure and hospitality jobs in Feb 2024 were below Feb 2023 levels in 44 states and DC.",
         "unit": "change"
     },
     {
