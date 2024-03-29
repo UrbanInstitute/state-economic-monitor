@@ -12,6 +12,16 @@
     },
     {
         "endDate": "2023-10-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "DE"
+        ],
+        "text": "State GDP in Q4 2023 was higher than in Q4 2022, in real terms, in all states except DE.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2023-10-01",
         "indicator": "house_price_index",
         "states": [
             "US",
@@ -19,16 +29,6 @@
             "VT"
         ],
         "text": "RI and VT saw the highest house price growth between Q4 2022 and Q4 2023.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2023-07-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "DE"
-        ],
-        "text": "State real GDP in Q3 2023 was higher than in Q3 2022 in all states except DE.",
         "unit": "change"
     },
     {
@@ -54,14 +54,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-07-01",
+        "endDate": "2023-10-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
-            "DC",
-            "SC"
+            "OR",
+            "FL"
         ],
-        "text": "Q3 2023 retail real GDP growth over the year was at least 8% in every state and DC.",
+        "text": "Q4 2023 retail real GDP growth over the year ranged from 6% in OR to 14% in FL.",
         "unit": "change"
     },
     {
