@@ -22,14 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2024-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "RI",
+            "DC",
             "VT"
         ],
-        "text": "RI and VT saw the highest house price growth between Q4 2022 and Q4 2023.",
+        "text": "Q1 2024 house price growth over the year ranged from -1.5% in DC to 12.8% in VT.",
         "unit": "change"
     },
     {
@@ -88,14 +88,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2024-01-01",
         "indicator": "house_price_index",
-        "startDate": "2013-10-01",
+        "startDate": "2015-01-01",
         "states": [
             "US",
-            "HI"
+            "NC"
         ],
-        "text": "HI housing prices reached a decade low in Q4 2023.",
+        "text": "NC\u2019s annual house price growth has exceeded 5% every quarter since 2015.",
         "unit": "change"
     }
 ]
