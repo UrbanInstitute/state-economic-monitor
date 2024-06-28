@@ -12,13 +12,15 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2024-01-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "DE"
+            "IA",
+            "MS",
+            "TX"
         ],
-        "text": "State GDP in Q4 2023 was higher than in Q4 2022, in real terms, in all states except DE.",
+        "text": "Q1 2024 real state GDP growth over the year ranged from 0.8% in IA and MS to 5.0% in TX.",
         "unit": "change"
     },
     {
@@ -55,14 +57,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2023-10-01",
+        "endDate": "2024-01-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
-            "OR",
+            "HI",
             "FL"
         ],
-        "text": "Q4 2023 retail real GDP growth over the year ranged from 6% in OR to 14% in FL.",
+        "text": "Every state and DC saw year-over-year retail GDP growth exceed 6% in real terms in Q1 2024.",
         "unit": "change"
     },
     {
@@ -86,6 +88,17 @@
             "NV"
         ],
         "text": "State and local public jobs in May 2024 were above May 2019 levels in 32 states and DC.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2024-01-01",
+        "indicator": "manufacturing_state_gdp",
+        "startDate": "2018-01-01",
+        "states": [
+            "US",
+            "MO"
+        ],
+        "text": "Between Q1 2018 and Q1 2024, MO\u2019s real manufacturing GDP has grown from $42 billion to $50 billion.",
         "unit": "raw"
     },
     {
