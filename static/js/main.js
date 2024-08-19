@@ -4137,7 +4137,9 @@ function init(allData, topojsonData, stateNamesData){
 		key = getKey(indicator, unit)
 
 		firstDate = allData["terminalDates"][key]["firstDate"]
+		console.log(firstDate)
 		lastDate = allData["terminalDates"][key]["lastDate"]
+		console.log(lastDate)
 
 		isDefault = true;
 
