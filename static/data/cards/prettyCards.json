@@ -4,11 +4,11 @@
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "DC",
-            "SD"
+            "SD",
+            "DC"
         ],
         "text": "July unemployment rates ranged from 2.0% in SD to 5.5% in DC. ",
-        "unit": "change"
+        "unit": "raw"
     },
     {
         "endDate": "2024-01-01",

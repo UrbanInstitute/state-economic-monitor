@@ -6,3 +6,5 @@ import os
 import sys
 sys.path.append('/var/www/html')
 from semapp import app as application
+application.debug = True
+
