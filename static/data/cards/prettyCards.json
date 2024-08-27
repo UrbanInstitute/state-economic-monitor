@@ -11,6 +11,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2024-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "ID",
+            "VT"
+        ],
+        "text": "Q2 2024 house price growth over the year ranged from 1.1% in ID to 13.4% in VT.",
+        "unit": "change"
+    },
+    {
         "endDate": "2024-01-01",
         "indicator": "state_gdp",
         "states": [
@@ -20,17 +31,6 @@
             "TX"
         ],
         "text": "Q1 2024 real state GDP growth over the year ranged from 0.8% in IA and MS to 5.0% in TX.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2024-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "DC",
-            "VT"
-        ],
-        "text": "Q1 2024 house price growth over the year ranged from -1.5% in DC to 12.8% in VT.",
         "unit": "change"
     },
     {
@@ -100,14 +100,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2024-01-01",
+        "endDate": "2024-04-01",
         "indicator": "house_price_index",
         "startDate": "2015-01-01",
         "states": [
             "US",
             "NC"
         ],
-        "text": "NC\u2019s annual house price growth has exceeded 5% every quarter since 2015.",
+        "text": "NC\u2019s annual house price growth has exceeded 5% every quarter since 2015. ",
         "unit": "change"
     }
 ]
