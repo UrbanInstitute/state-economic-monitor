@@ -1388,18 +1388,13 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		yMin = Math.min( 0, d3.min(data, function (d) { return d[key]; }) ),
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
-		newYMax = yMax + (.2 * yRange)
+		newYMax = 0.2 * yRange;
 
 	var y = d3.scaleLinear()
 		.rangeRound([height, 0])
-		.domain([newYMin, newYMax])
+		.domain([0, newYMax])
 		.nice();
-	if(y.domain()[1] <= 0){
-		y.domain([newYMin, 0]).nice()
-	}
-	else if(y.domain()[0] >= 0){
-		y.domain([0, newYMax]).nice()
-	}
+
 
 
 	g.append("g")
@@ -1414,21 +1409,10 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 
 	var axisSelection = g.append("g")
 		.attr("class", "bar y axis")
-		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount)
-			.tickFormat(function(d) {
-				return d <= displayMax ? abbrevFormat(d) : "";
-			}));
-
-	g.append("clipPath")
-		.attr("id", "chart-area")
-		.append("rect")
-		.attr("width", width)
-		.attr("height", y(displayMax));
+		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount).tickFormat(abbrevFormat))
 
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getBarMargins().left)
-	axisSelection.selectAll("line")
-		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
-		.attr("opacity", function(d) { return d <= displayMax ? 1 : 0;});
+	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
 
 	var colorScale = getColorScale(y, data, key)
@@ -2328,7 +2312,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 	var axisSelection = g.append("g")
 		.attr("class", "line axis y")
-		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat())
+		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
 
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
