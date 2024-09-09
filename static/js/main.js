@@ -24,10 +24,10 @@ function isTransitioning(){
 	return d3.select("#isTransitioning").classed("active")
 }
 function startTransition(){
-	d3.select("#isTransitioning").classed("active", true)	
+	d3.select("#isTransitioning").classed("active", true)
 }
 function endTransition(){
-	d3.select("#isTransitioning").classed("active", false)		
+	d3.select("#isTransitioning").classed("active", false)
 }
 function setParams(params){
 	if(typeof(params.init) != "undefined"){
@@ -74,7 +74,7 @@ function makeCSV(data, indicator, unit, filename) {
   	}
   })
   // if(indicator == "state_and_local_public_education_employment"){
-  // 	data = data.filter(function(o){ return o.abbr != "US" })	
+  // 	data = data.filter(function(o){ return o.abbr != "US" })
   // }
   var divisor;
   	if(unit == "change"){
@@ -116,7 +116,7 @@ function makeCSV(data, indicator, unit, filename) {
   		tempData[newDate].push("")
   	}
   	// var sep = (index == data.length - 1) ? "" : ",";
-  	
+
   	if(dates.indexOf(newDate) == -1) dates.push(newDate)
   	headerString = "Geography," + dates.join(",")
 
@@ -129,9 +129,9 @@ function makeCSV(data, indicator, unit, filename) {
 	if(
 		(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO"))
 		||
-		(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY")) 
+		(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY"))
 		||
-		((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY")) 
+		((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (state == "DC" || state == "WY"))
 	){
 		value = "";
 	}else{
@@ -158,7 +158,7 @@ function makeCSV(data, indicator, unit, filename) {
   // tempData.forEach(function(o,i){
   // 	csvContent += 0
   // })
-  
+
  //  var header = ["date","geography", indicator + "_" + unit]
  //  var headerString = "\"" + header.join('","') + "\"" + '\n';
  //  csvContent += headerString;
@@ -182,8 +182,8 @@ function makeCSV(data, indicator, unit, filename) {
 	//     }
 
 
-	//     // put a quote mark on the first item in each line            
-	//     // put a trailing quote mark on the last item in each line    
+	//     // put a quote mark on the first item in each line
+	//     // put a trailing quote mark on the last item in each line
 	//     // add quotes around everything else as well
 	//     dataString = "\"" + infoArray.join('","') + "\"";
 
@@ -191,10 +191,10 @@ function makeCSV(data, indicator, unit, filename) {
 	//     csvContent += index < data.length ? dataString + '\n' : dataString;
 	// }
  //  });
-  
+
   var args = {
     data: csvContent,
-    filename: filename,      
+    filename: filename,
   };
 
   return args
@@ -296,7 +296,7 @@ function sanitizeDates(startDate, endDate, opts){
 		endMoment = moment(lastMoment)
 	}
 	if(endMoment.isBefore(firstMoment)){
-		
+
 		endMoment = moment(firstMoment)
 		endMoment.add(defaultLinechartMonthRange/12, "years")
 	}
@@ -320,7 +320,7 @@ function sanitizeDates(startDate, endDate, opts){
 			startMoment = moment(endMoment)
 			if(startMoment.diff(firstMoment, "years", true) >= defaultLinechartMonthRange/12) startMoment.subtract(defaultLinechartMonthRange/12, "years")
 			else startMoment = moment(firstMoment)
-			
+
 		}else{
 //otherwise, start at first date and go 5 years in future. No need to check if this pushes us past last date, since we always have a minimum of 2007-2019 (at time of publication)
 			// startMoment = moment(firstMoment)
@@ -353,7 +353,7 @@ function closePopup(puClass){
 				.style("border-left", "none")
 				.style("border-right","none")
 		})
-	
+
 	d3.select("#hiddenBarChartContainer").selectAll("svg").remove()
 
 }
@@ -394,7 +394,7 @@ function closeMenus(exception){
 					.style("height", menuHeights["closed"] + "px")
 					.style("border-left-color", "#fff")
 					.style("border-right-color", "#fff")
-		
+
 			d3.selectAll(".menuBlock").select(".menuTop").classed("open", false)
 		}else{
 			d3.selectAll(".menuBlock:not(." + exception +")")
@@ -420,19 +420,19 @@ function disableBarMenuMonths(year, lastDate){
 				$(".barMonth.q" + i).prop("disabled", true)
 			}
 
-			$(".dateMenu.barChart.quarter" ).selectmenu("refresh")  
+			$(".dateMenu.barChart.quarter" ).selectmenu("refresh")
 		}else{
 			for(var i = lastMonth+1; i <= 12; i++){
 				$(".barMonth.m" + i).prop("disabled", true)
 			}
 
-			$(".dateMenu.barChart.month" ).selectmenu("refresh") 
+			$(".dateMenu.barChart.month" ).selectmenu("refresh")
 
-		}			
+		}
 	}else{
 		$(".barMonth").prop("disabled", false)
-		$(".dateMenu.barChart.month" ).selectmenu("refresh")  
-		$(".dateMenu.barChart.quarter" ).selectmenu("refresh")  
+		$(".dateMenu.barChart.month" ).selectmenu("refresh")
+		$(".dateMenu.barChart.quarter" ).selectmenu("refresh")
 	}
 }
 function buildBarDateMenus(endDate, lastDate){
@@ -557,7 +557,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 		leftArrow.on("click", function(){
 			d3.event.stopPropagation();
 			var rightMostYear = (+d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year") + 3),
-			
+
 			firstYear = +(getParams().firstDate.split("-")[0])
 			if(firstYear + 3 == rightMostYear) return false
 
@@ -643,9 +643,9 @@ function buildLineDateMenu(startDate, endDate, menu){
 				.text(function(d){
 					if(isQuarterly(indicator)){
 						if(d == "Jan") return "Q1"
-						else if(d == "Apr") return "Q2"	
+						else if(d == "Apr") return "Q2"
 						else if(d == "Jul") return "Q3"
-						else if(d == "Oct") return "Q4"	
+						else if(d == "Oct") return "Q4"
 					}else{
 						return d
 					}
@@ -660,7 +660,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 					if(isQuarterly(indicator)){
 						var month = (i + 1),
 							quarterly = (month == 1 || month == 4 || month == 7 || month == 10)
-						
+
 						return (quarterly) ? "block" : "none"
 					}else{
 						return "inline-block"
@@ -756,7 +756,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 								newYears = [+inputYear-1, +inputYear, +inputYear+1, +inputYear+2]
 							}
 							else if(displayedIndex == 2 || (+inputYear == +lastYear) || (+inputYear == +lastYear-1 && displayedIndex == 0)){
-								newYears = [+inputYear-2, +inputYear-1, +inputYear, +inputYear+1]	
+								newYears = [+inputYear-2, +inputYear-1, +inputYear, +inputYear+1]
 							}else{
 								return false
 							}
@@ -883,7 +883,7 @@ function buildStateMenu(stateNamesData, states){
 				d3.selectAll(".usText").transition().style("opacity",1)
 				d3.selectAll(".usLine").transition().style("opacity",1)
 			}
-			
+
 			// var params = getParams(),
 			// 	cleared = params.states.filter(function(o){ return o == "US" })
 
@@ -910,7 +910,7 @@ function updateSelectedStates(states, hoverState){
 			else downloadStateText += getStateName(s) + ", "
 		}
 		// else if(i == nonUS.length - 2 ){
-		// 	downloadStateText += getStateName(s) + " "	
+		// 	downloadStateText += getStateName(s) + " "
 		// }
 		else{
 			if(i == 0) downloadStateText += getStateName(s)
@@ -939,7 +939,7 @@ function updateSelectedStates(states, hoverState){
 	updateLineChart(params.indicator, params.unit, states, params.startDate, params.endDate)
 }
 function updateDateMenus(opts){
-	
+
 	var params = getParams(),
 		firstDate = params.firstDate.split("-"),
 		lastDate = params.lastDate.split("-"),
@@ -985,7 +985,7 @@ function updateDateMenus(opts){
 			if(isQuarterly(indicator)){
 				return "Q" + ((startMonth-1)/3 + 1) + " " + startYear
 			}else{
-				return startMonth + "/" + startYear	
+				return startMonth + "/" + startYear
 			}
 		})
 
@@ -1087,7 +1087,7 @@ function updateDateMenus(opts){
 			if(isQuarterly(indicator)){
 				return "Q" + ((endMonth-1)/3 + 1) + " " + endYear
 			}else{
-				return endMonth + "/" + endYear	
+				return endMonth + "/" + endYear
 			}
 		})
 
@@ -1153,7 +1153,7 @@ function updateDateMenus(opts){
 					month = monthAbbrs.indexOf(d) + 1,
 					quarterly = (month == 1 || month == 4 || month == 7 || month == 10) ? " quarterShow" : " quarterHide",
 					calClass = "calMonth end m" + month + quarterly;
-				
+
 				if(year > startYear && year < endYear){
 					calClass += " active"
 				}
@@ -1296,7 +1296,7 @@ function buildCards(cardData, isDefault){
 	var wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
 		cardCount = cardData.length,
 		cardWidth = 342;
-	
+
 	if(cardCount * cardWidth > wellWidth) d3.select(".cardArrow.right").style("display", "block")
 
 	d3.select(".cardArrow.left")
@@ -1362,7 +1362,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 			h = BAR_IMG_HEIGHT,
 			width = w - margin.left - margin.right,
 			height = h - margin.top - margin.bottom;
-		
+
 		var svg = d3.select("#hiddenBarChartContainer").append("svg").attr("id", "barChartHide").attr("width", w - 20 + 10).attr("height", 60 + h + MAP_IMG_WIDTH *.6)
 		printClass = "imgMapHide"
 	}
@@ -1414,14 +1414,25 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 
 	var axisSelection = g.append("g")
 		.attr("class", "bar y axis")
-		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount).tickFormat(abbrevFormat))
+		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount)
+			.tickFormat(function(d) {
+				return d <= displayMax ? abbrevFormat(d) : "";
+			}));
+
+	g.append("clipPath")
+		.attr("id", "chart-area")
+		.append("rect")
+		.attr("width", width)
+		.attr("height", y(displayMax));
 
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getBarMargins().left)
-	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
+	axisSelection.selectAll("line")
+		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
+		.attr("opacity", function(d) { return d <= displayMax ? 1 : 0;});
 
 
 	var colorScale = getColorScale(y, data, key)
-	
+
 	g.selectAll(".usLine")
 		.data(usData)
 		.enter().append("line")
@@ -1480,7 +1491,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 			})
 			.on("mouseout", function(d){
 				params = getParams()
-				updateSelectedStates(params.states)		
+				updateSelectedStates(params.states)
 			})
 			.on("click", function(d){
 				params = getParams()
@@ -1575,7 +1586,7 @@ function buildMapLegend(legend, colorScale, ticks, indicator, year, unit, svgInp
 		translateY = (svgInput) ? BAR_IMG_HEIGHT + 200 : height - colorRange.length * keyHeight - 10 + noDataScootch
 
 	colorDomain.unshift(ticks[0])
-		
+
 	legend.attr("transform", "translate(" + translateX + "," + translateY + ")")
 
 	legend.selectAll("rect")
@@ -1586,7 +1597,7 @@ function buildMapLegend(legend, colorScale, ticks, indicator, year, unit, svgInp
 		.style("fill", function(d){ return d})
 		.attr("x",0)
 		.attr("y", function(d,i){ return i * keyHeight })
-	
+
 	legend.selectAll("text.keyLabel")
 		.data(colorDomain)
 		.enter().append("text")
@@ -1594,7 +1605,7 @@ function buildMapLegend(legend, colorScale, ticks, indicator, year, unit, svgInp
 		.attr("x",keyWidth + 5)
 		.attr("y", function(d,i){ return i * keyHeight + 5 })
 		.text(function(d){ return abbrevFormat(d) })
-	
+
 	if(
 		indicator == "state_and_local_public_education_employment"
 		||
@@ -1623,7 +1634,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			svgWidth = widthUnder(400) ? width + 50 : width;
 			mapContainerWidth = (widthUnder(768)) ? ( (widthUnder(400) ? (width + 50) + "px" : (width + 50) + "px") ) : (width + 40) + "px";
 	//end update
-		
+
 		var svg = d3.select("#mapContainer")
 			.style("width", mapContainerWidth )
 			.insert("svg", "#chartButtonContainer")
@@ -1665,9 +1676,9 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 				if(
 					(indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO"))
 					||
-					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 					||
-					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 				){
 					return "#d2d2d2"
 				}else{
@@ -1680,9 +1691,9 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 				if(
 					(indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO"))
 					||
-					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 					||
-					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 				){
 					return false
 				}
@@ -1693,15 +1704,15 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			})
 			.on("mouseout", function(d){
 				params = getParams()
-				updateSelectedStates(params.states)		
+				updateSelectedStates(params.states)
 			})
 			.on("click", function(d){
 				if(
 					(indicator == "state_and_local_public_education_employment" && (d.properties.postal == "DC" || d.properties.postal == "HI" || d.properties.postal == "MO"))
 					||
-					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 					||
-					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY")) 
+					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.properties.postal == "DC" || d.properties.postal == "WY"))
 				){
 					return false
 				}
@@ -1724,7 +1735,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		.style("fill", "none")
 		.attr("d", path(topojson.mesh(topojsonData, topojsonData.objects.states, function(a, b) { return a !== b; })));
 
-	
+
 	var legend = svg.append("g")
 		.attr("id", "mapLegend")
 		.attr("class", printClass)
@@ -1829,7 +1840,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					scootch += 30
 					break
 			}
-			
+
 			return start + scootch;
 		}
 		function mapTextY(d, abbr, row){
@@ -1924,13 +1935,13 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					}else{
 						return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
 					}
-					
+
 				})
 		title.append("tspan")
 			.attr("class", "imgSubtitle")
 			.attr("dx", 10)
 			.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
-		
+
 		var superTitleText;
 		if(params.indicator =="private_employment" || params.indicator == "leisure_and_hospitality_employment" || params.indicator == "manufacturing_employment" || params.indicator == "retail_trade_employment" || params.indicator == "weekly_earnings"){
 			superTitleText = "PRIVATE"
@@ -2081,7 +2092,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					return mapTextX(d, d.properties.postal, 1)
 				})
 				.attr("y", function(d){
-					return mapTextY(d, d.properties.postal, 1)    
+					return mapTextY(d, d.properties.postal, 1)
 				})
 				.attr("text-anchor", function(d){
 					if(d.properties.postal == "FL" || d.properties.postal == "NH" || d.properties.postal == "VT"){
@@ -2147,12 +2158,12 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 }
 function showImgLabels(states){
 	var disp = (states == "all") ? "block" : "none"
-	
+
 	d3.selectAll("#hiddenBarChartContainer .barTooltipBg").style("display",disp)
 	d3.selectAll("#hiddenBarChartContainer .barTooltip").style("display",disp)
 	d3.selectAll("#hiddenBarChartContainer .mapLabel").style("display",disp)
 	d3.selectAll("#hiddenBarChartContainer .mapImgLine").style("display",disp)
-	
+
 	if(states != "all" && states != "none"){
 		states.forEach(function(abbr){
 			if(abbr != "US"){
@@ -2252,7 +2263,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		margin = getLineMargins(),
 		width = getLineW() - margin.left - margin.right,
 		height = getLineH() - margin.top - margin.bottom;
-		
+
 		svg = d3.select("#lineChartContainer")
 			.append("svg")
 				.attr("width", width + margin.left + margin.right)
@@ -2263,7 +2274,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		margin = getLineMargins(),
 		width = LINE_IMG_WIDTH - margin.left - margin.right,
 		height = LINE_IMG_HEIGHT - margin.top - margin.bottom - 40;
-		
+
 		svg = d3.select("#hiddenLineChartContainer")
 			.append("svg")
 				.attr("id", "lineChartHide")
@@ -2311,13 +2322,13 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			}else{
 				return (md.month()+1) + "/" + md.year()
 			}
-			
+
 		});
 
 
 	var axisSelection = g.append("g")
 		.attr("class", "line axis y")
-		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
+		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat())
 
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
@@ -2359,7 +2370,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 				}
 				labelYPositions.push(yPosition)
 
-			
+
 			}
 			return "translate(" + (width + 1) + "," + yPosition + ")"
 		})
@@ -2516,7 +2527,7 @@ function clickLineChart(d, containerType){
 	}else{
 		svg = d3.select("#lineChartContainer")
 	}
-	
+
 	var line = svg.select(".state.line." + d.data.abbr),
 		dot = svg.select(".linechartDot"),
 		label = svg.select(".stateLabel." + d.data.abbr)
@@ -2537,7 +2548,7 @@ function clickLineChart(d, containerType){
 		label.classed("clicked", true)
 	}
 	if(containerType != "hide"){
-		dot.node().parentNode.appendChild(dot.node())	
+		dot.node().parentNode.appendChild(dot.node())
 	}
 }
 function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) {
@@ -2563,7 +2574,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 			var prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
 			return "United States " + prefix + formatValue(indicator, unit, usData[key]) + suffix
-			
+
 		})
 
 	var x = getLineX(startDate, endDate, width)
@@ -2571,7 +2582,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 
 	d3.selectAll(".state.line").classed("active", false)
 	d3.selectAll(".stateLabel").classed("active", false)
-	
+
 	var line = d3.select(".state.line." + d.data.abbr),
 		dot = d3.select(".linechartDot"),
 		label = d3.select(".stateLabel." + d.data.abbr)
@@ -2582,7 +2593,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 
 	line.classed("active", true)
 	label.classed("active", true)
-	
+
 	dot
 		.style("opacity",1)
 		.attr("cx", x(parseTime()(d.data.date)))
@@ -2622,7 +2633,7 @@ function getBarMargins(){
 }
 function getBarW(){
 	if(widthUnder(768)){
-		return window.innerWidth - 40;;	
+		return window.innerWidth - 40;;
 	}
 	else if(widthUnder(1085)){
 		return window.innerWidth - 40;
@@ -2752,7 +2763,7 @@ function updateBarChart(indicator, unit, date){
 			var prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
 			return "United States " + prefix + formatValue(indicator, unit, usData[0][key]) + suffix
-			
+
 		})
 	d3.selectAll(".usLine")
 		.data(usData)
@@ -2859,11 +2870,11 @@ function updateMap(data, key, colorScale, ticks){
 				return (
 					(indicator == "state_and_local_public_education_employment" && (d.abbr == "DC" || d.abbr == "HI" || d.abbr == "MO"))
 					||
-					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY")) 
+					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY"))
 					||
-					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY")) 
+					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY"))
 				)
-				
+
 			})
 			.transition()
 			.duration(800)
@@ -2871,9 +2882,9 @@ function updateMap(data, key, colorScale, ticks){
 				if(
 					(indicator == "state_and_local_public_education_employment" && (d.abbr == "DC" || d.abbr == "HI" || d.abbr == "MO"))
 					||
-					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY")) 
+					(year == 2017 && unit == "r" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY"))
 					||
-					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY")) 
+					((year == 2017 || year == 2018) && unit == "c" && indicator == "manufacturing_state_gdp" && (d.abbr == "DC" || d.abbr == "WY"))
 				){
 					return "#d2d2d2"
 				}else{
@@ -2914,7 +2925,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 	var stateLabels = d3.select("#linesContainer")
 		.selectAll(".stateLabel")
 		.data(data, function(d) { return d.key; })
-		
+
 	stateLabels.exit()
 		.transition()
 		.style("opacity",0)
@@ -2947,7 +2958,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				}
 				labelYPositions.push(yPosition)
 
-			
+
 			}
 			return "translate(" + (width + 1) + "," + yPosition + ")"
 		})
@@ -3060,7 +3071,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				}else{
 					return (md.month()+1) + "/" + md.year()
 				}
-				
+
 			});
 
 	if(data.length > 0){
@@ -3083,7 +3094,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 			.transition()
 				.style("opacity", 1)
 	}
-	
+
 
 
 
@@ -3107,7 +3118,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 			.on("mouseover", function(d){ mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, width, height) })
 			.on("mouseout", mouseoutLineChart)
 			.on("click", clickLineChart);
-	
+
 }
 function updateIndicator(indicator, unit, oldIndicator){
 	var params = getParams(),
@@ -3118,7 +3129,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 		startDate = params.startDate,
 		endDate = params.endDate,
 		section = getSection(indicator);
-	
+
 	d3.selectAll(".pu-section.hideable").classed("hide",true)
 	d3.select(".pu-section." + section).classed("hide",false)
 
@@ -3222,7 +3233,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 	}else{
 		if(states.indexOf("US") == -1){
 			states.push("US")
-		}		
+		}
 	}
 
 	if(( unit == "raw" && indicator != "weekly_earnings" && indicator != "unemployment_rate")){
@@ -3268,7 +3279,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 	}
 
 	var isLine = d3.select(".timeTypeContainer.active").classed("line")
-	
+
 	var hideNoDataGdp = (
 		indicator == "manufacturing_state_gdp"
 		&& !isLine
@@ -3288,11 +3299,11 @@ function updateIndicator(indicator, unit, oldIndicator){
 }
 
 function showChart(chartType){
-	//have 2 divs for bar/line that slide in/out cleanly 
+	//have 2 divs for bar/line that slide in/out cleanly
 	var contentWidth = (widthUnder(1085)) ? window.innerWidth + 20 : d3.select("#chartAreaContainer").node().getBoundingClientRect().width
 	if(widthUnder(1200)){
-		d3.select("#singleYearContainer").style("width", getBarW() + "px")	
-		d3.select("#multiYearContainer").style("width", getBarW() + "px")	
+		d3.select("#singleYearContainer").style("width", getBarW() + "px")
+		d3.select("#multiYearContainer").style("width", getBarW() + "px")
 	}
 	if(chartType == "line"){
 		d3.select("#singleYearContainer")
@@ -3302,7 +3313,7 @@ function showChart(chartType){
 		d3.select("#multiYearContainer").classed("active", true)
 
 		d3.select(".multiYear.tooltip").transition().style("opacity",1)
-		
+
 		d3.select("#barControlContainer").style("display", "none")
 		d3.select("#lineControlContainer").style("display", "block")
 
@@ -3324,8 +3335,8 @@ function showChart(chartType){
 			.style("margin-left", "0px")
 		d3.select("#multiYearContainer").classed("active", false)
 
-		d3.select(".multiYear.tooltip").transition().style("opacity",0)	
-		
+		d3.select(".multiYear.tooltip").transition().style("opacity",0)
+
 		d3.select(".menuActive.timeSingle").style("display", "block")
 		d3.select(".menuActive.timeRange").style("display", "none")
 
@@ -3409,7 +3420,7 @@ function highlightStates(states, hoverState){
 			d3.select(".br-" + state).classed("active", true).style("opacity", 1)
 
 
-			
+
 			barState.classed(newClass, true)
 		}
 
@@ -3445,11 +3456,11 @@ function highlightStates(states, hoverState){
 			.attr("x", brx)
 			.attr("y", bry)
 
-		
+
 		if( (((state == hoverState)) ||
 			(states.length == 2 && state != "US" && states.indexOf("US") != -1) ||
 			(states.length == 1 && states.indexOf("US") == -1)  ) && states.indexOf(state) != -1 ){
-			
+
 			if(state == hoverState){
 				d3.selectAll(".stateDisplayName").text(getStateName(state))
 				d3.select(".singleYear.tt-states").text(getStateName(state))
@@ -3461,7 +3472,7 @@ function highlightStates(states, hoverState){
 					var prefix = ((params.indicator.search("state_gdp") != -1 || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
 						suffix = (params.unit == "change" || params.indicator == "unemployment_rate") ? "%" : ""
 					return prefix + formatValue(params.indicator, params.unit, bval) + suffix
-					
+
 				})
 		}
 	}
@@ -3531,7 +3542,7 @@ function popUp(selector){
 		buildBarChart(chartData, topojsonData, params.indicator, params.unit, params.states, params.endDate, "hide")
 
 		var activeButton = d3.select(".pu-ButtonRow .pu-smallButton.active")
-		
+
 		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".imgHidden").classed("imgHidden", false)
@@ -3614,7 +3625,7 @@ function initControls(){
 				d3.select(this).select(".menuArrow").attr("src", newImage)
 
 				if(key == "state"){
-					d3.select(".mobileMenuArrow").select(".menuArrow").attr("src", newImage)					
+					d3.select(".mobileMenuArrow").select(".menuArrow").attr("src", newImage)
 				}
 
 				if(widthUnder(768)){
@@ -3766,21 +3777,21 @@ function initControls(){
 	})
 	d3.select(".chartButton.saveImage.line").on("click", function(){
 		d3.event.stopPropagation()
-		var chartData = getChartData(),	
+		var chartData = getChartData(),
 			params = getParams();
 
 		d3.select("#hiddenLineChartContainer").style("display", "block")
 		buildLineChart(chartData, params.indicator, params.unit, params.states, params.startDate, params.endDate, "hide", function(){
 				var clickedAbbrs = d3.selectAll(".stateLabel.clicked").data().map(function(d){ return d.key })
 				for (var i = 0; i < clickedAbbrs.length; i++){
-					clickLineChart({"data": {"abbr": clickedAbbrs[i] }}, "hide")	
+					clickLineChart({"data": {"abbr": clickedAbbrs[i] }}, "hide")
 				}
-				
+
 				var fileName = getFilename("line", params.indicator, params.unit, "png")
 				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff", "encoderOptions" : 1, "scale": 4 });
-				d3.select("#lineChartHide").remove()	
+				d3.select("#lineChartHide").remove()
 		})
-		
+
 
 	})
 	d3.selectAll(".chartButton.downloadData").on("click", function(){
@@ -3803,7 +3814,7 @@ function initControls(){
 				tt.classed("hidden", false)
 				tt.select(".shareText").attr("value", buildShareURL())
 			}
-			
+
 		})
 	d3.selectAll(".shareText").on("click", function(){
 		d3.event.stopPropagation();
@@ -3827,10 +3838,10 @@ function initControls(){
 		.datum({"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 })
 	d3.selectAll(".pu-smallButton").on("click", function(){
 		d3.event.stopPropagation();
-		
+
 		var d3This = d3.select(this)
 		if(d3This.classed("active")) return false
-		
+
 		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".pu-smallButton").classed("active", false)
@@ -3878,7 +3889,7 @@ function initControls(){
 
 		d3.selectAll(".pu-checkBox").classed("active", false)
 		d3This.select(".pu-checkBox").classed("active", true)
-		
+
 
 		if(d3This.classed("labelSelected")){
 			showImgLabels(getParams().states)
@@ -3944,18 +3955,18 @@ function initControls(){
 				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
 					if(getOS() == 'Windows'){
-						args["dictionaryText"] = text.replace(/\n/g, '\r\n');	
+						args["dictionaryText"] = text.replace(/\n/g, '\r\n');
 					}else{
 						args["dictionaryText"] = text
 					}
-					
+
 				})
 
 				args["dictionaryFileName"] = dictionaryFileName
 
 				d3.select(".dataDownloadCurrent").datum(args)
 
-				
+
 			}else{
 				currentButton.classed("disabled",true)
 				a.classed("hidden", false)
@@ -3974,7 +3985,7 @@ function initControls(){
 					d3.selectAll(".gdpButton").classed("active", true)
 				}
 				else if(cb.classed("earnings")){
-					a.attr("href", "static/data/download/weekly_earnings-all_data.zip")	
+					a.attr("href", "static/data/download/weekly_earnings-all_data.zip")
 				}
 				else if(cb.classed("employment")){
 					currentButton.classed("disabled",false)
@@ -3986,7 +3997,7 @@ function initControls(){
 
 
 
-			
+
 
 		}
 	})
@@ -3996,7 +4007,7 @@ function initControls(){
 			button = d3.select(".pu-bigButton.dataDownload"),
 			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
 			a = d3.select("#pu-downloadLink")
-		
+
 		d3.select(this).classed("active", !d3.select(this).classed("active"))
 		d3.selectAll(".pu-checkBox").classed("active", false)
 
@@ -4023,7 +4034,7 @@ function initControls(){
 			button = d3.select(".pu-bigButton.dataDownload"),
 			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
 			a = d3.select("#pu-downloadLink")
-		
+
 		d3.select(this).classed("active", !d3.select(this).classed("active"))
 		d3.selectAll(".pu-checkBox").classed("active", false)
 
@@ -4060,7 +4071,7 @@ function initControls(){
 			  .then(function(blob) {
 			  	saveAs(blob, args.filename.replace(".csv","") + ".zip");
 			  });
- 
+
 
 
 			// downloadDataFile(args.data, args.filename , 'text/csv;encoding:utf-8');
@@ -4159,9 +4170,9 @@ function init(allData, topojsonData, stateNamesData){
 		lastDate = allData["terminalDates"][key]["lastDate"]
 
 		endDate = (qEndDate == "") ? lastDate : getDateString(qEndDate.split("-")[0], qEndDate.split("-")[1])
-		
+
 		var endMoment = moment(endDate, defaultDateFormat, true)
-		
+
 		startDate = (qStartDate == "") ? endMoment.subtract(defaultLinechartMonthRange, "months").format(defaultDateFormat) : getDateString(qStartDate.split("-")[0], qStartDate.split("-")[1])
 
 		isDefault = false;
