@@ -2325,16 +2325,22 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	var tickValues = axisSelection.selectAll(".tick").data();
 	console.log(tickValues); // Log the values to the console
 
+	// Determine the maximum value displayed on the chart
+	var maxDisplayedValue = d3.max(data, function(d) {
+		return d3.max(d.values, function(v) { return +v[key]; });
+	});
+	console.log(maxDisplayedValue);
+
 	axisSelection.selectAll("text")
 		.attr("text-anchor", "start")
 		.attr("x", -1*getLineMargins().left + horizontalScootch)
 		.style("opacity", function(d) {
-			return d > d3.max(tickValues) ? 0 : 1;  // Hide labels higher than the highest tick value
+			return d > maxDisplayedValue ? 0 : 1;  // Hide labels higher than the highest tick value
 		});
 	axisSelection.selectAll("line")
 		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 		.style("opacity", function(d) {
-			return d > d3.max(tickValues) ? 0 : 1;  // Hide lines higher than the highest tick value
+			return d > maxDisplayedValue ? 0 : 1;  // Hide lines higher than the highest tick value
 		});
 
 	g.selectAll(".state.line")
