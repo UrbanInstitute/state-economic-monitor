@@ -2322,44 +2322,63 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("class", "line axis y")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
 
-	var tickValues = axisSelection.selectAll(".tick").data();
-	console.log(tickValues); // Log the values to the console
-	var yDomain = y.domain();
-	console.log(`yDomain: ${yDomain}`);
-	// Determine the maximum value displayed on the chart
-	var maxDisplayedValue = d3.max(data, function(d) {
-		return d3.max(d.values, function(v) { return +v[key]; });
-	});
-	console.log(maxDisplayedValue);
-
-	axisSelection.selectAll("text")
-		.attr("text-anchor", "start")
-		.attr("x", -1*getLineMargins().left + horizontalScootch)
-		.style("opacity", function(d) {
-			console.log("Label value:", d);
-			if (maxDisplayedValue < 10) {
-				// Hide both 10 and 15 if `d` is less than 10
-				return [10, 15].includes(d) ? 0 : 1;
-			} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
-				// Hide only 15 if `d` is greater than 10 but less than 15
-				return d == 15 ? 0 : 1;
-			}
-			return 1;  // Show all labels otherwise
+	if(indicator == 'unemployment_rate'){
+		var tickValues = axisSelection.selectAll(".tick").data();
+		console.log(tickValues); // Log the values to the console
+		var yDomain = y.domain();
+		console.log(`yDomain: ${yDomain}`);
+		// Determine the maximum value displayed on the chart
+		var maxDisplayedValue = d3.max(data, function(d) {
+			return d3.max(d.values, function(v) { return +v[key]; });
 		});
-	axisSelection.selectAll("line")
-		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
-		.style("opacity", function(d) {
-			console.log("Line value:", d);
-			if (maxDisplayedValue < 10) {
-				// Hide both 10 and 15 if `d` is less than 10
-				return [10, 15].includes(d) ? 0 : 1;
-			} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
-				// Hide only 15 if `d` is greater than 10 but less than 15
-				return d == 15 ? 0 : 1;
-			}
-			return 1;  // Show all labels otherwise
-		});
+		console.log(maxDisplayedValue);
 
+		axisSelection.selectAll("text")
+			.attr("text-anchor", "start")
+			.attr("x", -1*getLineMargins().left + horizontalScootch)
+			.style("opacity", function(d) {
+				console.log("Label value:", d);
+				if (maxDisplayedValue < 10) {
+					// Hide both 10 and 15 if `d` is less than 10
+					return [10, 15].includes(d) ? 0 : 1;
+				} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
+					// Hide only 15 if `d` is greater than 10 but less than 15
+					return d == 15 ? 0 : 1;
+				}
+				return 1;  // Show all labels otherwise
+			});
+		axisSelection.selectAll("line")
+			.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
+			.style("opacity", function(d) {
+				console.log("Line value:", d);
+				if (maxDisplayedValue < 10) {
+					// Hide both 10 and 15 if `d` is less than 10
+					return [10, 15].includes(d) ? 0 : 1;
+				} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
+					// Hide only 15 if `d` is greater than 10 but less than 15
+					return d == 15 ? 0 : 1;
+				}
+				return 1;  // Show all labels otherwise
+			});
+
+	}else{
+		axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
+		axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
+
+		g.selectAll(".state.line")
+			.data(data, function(d) { return d.key; })
+			.enter()
+			.append("path")
+				.attr("class",function(d){ return d.key + " state line" })
+				.attr("clip-path", "url(#lineClippingPath)")
+				.attr("d", function(d){
+					return d3.line()
+						.defined(function(d){ return d[key] != "" })
+						.x(function(d) { return x(parseTime()(d.date)); })
+						.y(function(d) { return y(+d[key]); })
+						(d.values)
+				})
+	}
 	g.selectAll(".state.line")
 		.data(data, function(d) { return d.key; })
 		.enter()
