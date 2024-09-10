@@ -2596,10 +2596,17 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	line.classed("active", true)
 	label.classed("active", true)
 
-	dot
-		.style("opacity",1)
-		.attr("cx", x(parseTime()(d.data.date)))
-		.attr("cy",y(d["data"][key]))
+	var yValue = y(d["data"][key]);
+
+	// Check if the y-value is within the desired range
+	if (d["data"][key] >= extent[0] && d["data"][key] <= extent[1]) {
+		dot
+			.style("opacity", 1)
+			.attr("cx", x(parseTime()(d.data.date)))
+			.attr("cy", yValue);
+	} else {
+		dot.style("opacity", 0); // Hide the dot if it's out of range
+	}
 
 	d3.selectAll(".stateDisplayName").text(getStateName(d.data.abbr))
 	d3.select(".multiYear.tt-states").text(getStateName(d.data.abbr))
