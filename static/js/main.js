@@ -2324,7 +2324,9 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	axisSelection.each(function() {
 		var ticks = d3.select(this).selectAll(".tick");
 		var lineTickCount = ticks.size();
-		console.log(lineTickCount);
+		var scale = d3.select(this).call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat));
+		console.log(`Line Tick Count ${lineTickCount}`);
+		console.log(`Scale for Y Axis: ${scale}`);
 		});
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
