@@ -1890,6 +1890,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					scootch -= 2
 					break
 			}
+			console.log(`scootch: ${scootch}`)
 
 			return start + scootch;
 		}
