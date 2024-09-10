@@ -2763,6 +2763,9 @@ function updateBarChart(indicator, unit, date){
 		})
 	d3.selectAll(".usLine")
 		.data(usData)
+		.each(function(d, i) {
+			console.log("Data bound to element", i, ":", d);
+		})
 		.transition()
 		.duration(800)
 			.attr("y1", function (d) {
@@ -2770,7 +2773,7 @@ function updateBarChart(indicator, unit, date){
 				return y(d[key]);
 			})
 			.attr("y2", function (d) {
-				console.log("usLine Y1-axis position for", d, "is", y(d[key]));
+				console.log("usLine Y2-axis position for", d, "is", y(d[key]));
 				return y(d[key]);
 			})
 
@@ -2782,7 +2785,7 @@ function updateBarChart(indicator, unit, date){
 				console.log("usText Y-axis position for", d, "is", y(d[key]));
 				return y(d[key]) + 4;
 			})
-
+	console.log(d3.selectAll(".usText").data(usData));
 
 	d3.selectAll(".barTooltip.active").transition().style("opacity",0)
 	d3.selectAll(".barTooltipBg.active").transition().style("opacity",0)
