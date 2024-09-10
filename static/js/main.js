@@ -1842,7 +1842,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		function mapTextY(d, abbr, row){
 			var scootch = (row == 2 && !mapTextExternalOneRow(abbr)) ? 10 : 0,
 				start = path.centroid(d)[1];
-
+			console.log(`scootch: ${scootch}`)
 			switch(abbr){
 				case 'MI':
 					scootch += 16
@@ -1890,7 +1890,6 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					scootch -= 2
 					break
 			}
-			console.log(`scootch: ${scootch}`)
 
 			return start + scootch;
 		}
