@@ -2324,7 +2324,8 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 	var tickValues = axisSelection.selectAll(".tick").data();
 	console.log(tickValues); // Log the values to the console
-
+	var yDomain = y.domain();
+	console.log(`yDomain: ${yDomain}`);
 	// Determine the maximum value displayed on the chart
 	var maxDisplayedValue = d3.max(data, function(d) {
 		return d3.max(d.values, function(v) { return +v[key]; });
