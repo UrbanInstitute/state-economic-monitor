@@ -60,8 +60,10 @@ function getKey(indicator, unit){
 }
 function makeCSV(data, indicator, unit, filename) {
   var key = getKey(indicator, unit)
+  console.log(`cheke key: ${key}`)
   if(isUSHidden()){
   	data = data.filter(function(o){ return o.abbr != "US" })
+	console.log(`eseye sa: ${data}`)
   }
   data.sort(function(a,b){
   	if(a.date == b.date){
@@ -1419,6 +1421,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getBarMargins().left)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
+
 	var colorScale = getColorScale(y, data, key)
 
 	g.selectAll(".usLine")
@@ -1433,14 +1436,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 			.attr("y2", function (d) {
 				return y(d[key]);
 			})
-			.style("opacity", function(d) {
-				// Only show if the value is within the tick range
-				var yValue = y(d[key]);
-				if (yValue < y(10) || yValue > y(15)) {
-					return 0; // Hide if the value is outside the desired range
-				}
-				return (isUSHidden()) ? 0 : 1;
-			});
+			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
 	var usXScootch = (widthUnder(768)) ? -3: 2;
 	g.selectAll(".usText")
 		.data(usData)
@@ -1452,13 +1448,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return y(d[key]) + 4;
 			})
 			.text("US")
-			.style("opacity", function(d) {
-				var yValue = y(d[key]) + 4;
-				if (yValue < y(10) || yValue > y(15)) {
-					return 0; // Hide if the value is outside the range of 10 to 15
-				}
-				return (isUSHidden()) ? 0 : 1;
-			});
+			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
 
 	g.selectAll("rect.bar")
 		.data(data)
@@ -2473,8 +2463,7 @@ function getLineY(extent, height){
 	var range = extent[1]-extent[0]
 	var y = d3.scaleLinear()
 		.domain([extent[0] - range*.1, extent[1] + range*.1])
-		.range([ height, 0 ])
-		.clamp(true);
+		.range([ height, 0 ]);
 
 	return y
 }
@@ -2596,17 +2585,10 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	line.classed("active", true)
 	label.classed("active", true)
 
-	var yValue = y(d["data"][key]);
-
-	// Check if the y-value is within the desired range
-	if (d["data"][key] >= extent[0] && d["data"][key] <= extent[1]) {
-		dot
-			.style("opacity", 1)
-			.attr("cx", x(parseTime()(d.data.date)))
-			.attr("cy", yValue);
-	} else {
-		dot.style("opacity", 0); // Hide the dot if it's out of range
-	}
+	dot
+		.style("opacity",1)
+		.attr("cx", x(parseTime()(d.data.date)))
+		.attr("cy",y(d["data"][key]))
 
 	d3.selectAll(".stateDisplayName").text(getStateName(d.data.abbr))
 	d3.select(".multiYear.tt-states").text(getStateName(d.data.abbr))
@@ -4157,7 +4139,9 @@ function init(allData, topojsonData, stateNamesData){
 		key = getKey(indicator, unit)
 
 		firstDate = allData["terminalDates"][key]["firstDate"]
+		console.log(firstDate)
 		lastDate = allData["terminalDates"][key]["lastDate"]
+		console.log(lastDate)
 
 		isDefault = true;
 
