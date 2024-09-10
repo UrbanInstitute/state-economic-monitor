@@ -1396,7 +1396,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		.rangeRound([height, 0])
 		.domain([newYMin, newYMax])
 		.nice();
-	console.log(`cheke y2 la: ${y}`);
+		console.log(`cheke y1 la: ${y.domain()}`);
 	if(y.domain()[1] <= 0){
 		y.domain([newYMin, 0]).nice()
 	}
@@ -2723,7 +2723,6 @@ function updateBarChart(indicator, unit, date){
 
 	var y = d3.scaleLinear()
 		.rangeRound([height, 0]);
-	console.log(`cheke y la: ${y}`);
 	x.domain(data.map(
 		function (d) {
 			return d.abbr;
@@ -2738,7 +2737,7 @@ function updateBarChart(indicator, unit, date){
 
 	y.domain([newYMin, newYMax]
 	).nice();
-
+	console.log(`cheke y2 la: ${y.domain()}`);
 	if(y.domain()[1] <= 0){
 		y.domain([newYMin, 0]).nice()
 	}
