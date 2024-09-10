@@ -2766,9 +2766,11 @@ function updateBarChart(indicator, unit, date){
 		.transition()
 		.duration(800)
 			.attr("y1", function (d) {
+				console.log("usLine Y1-axis position for", d, "is", y(d[key]));
 				return y(d[key]);
 			})
 			.attr("y2", function (d) {
+				console.log("usLine Y1-axis position for", d, "is", y(d[key]));
 				return y(d[key]);
 			})
 
@@ -2777,6 +2779,7 @@ function updateBarChart(indicator, unit, date){
 		.transition()
 		.duration(800)
 			.attr("y", function (d) {
+				console.log("usText Y-axis position for", d, "is", y(d[key]));
 				return y(d[key]) + 4;
 			})
 
