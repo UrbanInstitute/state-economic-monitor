@@ -1389,11 +1389,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
 		newYMax = yMax + (.2 * yRange)
-	console.log(`yMax: ${yMax}`)
-	console.log(`yMin: ${yMin}`)
-	console.log(`yRange: ${yRange}`)
-	console.log(`newYMin: ${newYMin}`)
-	console.log(`newYMax: ${newYMax}`)
+
 	var y = d3.scaleLinear()
 		.rangeRound([height, 0])
 		.domain([newYMin, newYMax])
@@ -1891,7 +1887,23 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					break
 			}
 
-			return start + scootch;
+			// Calculate the final y-position
+			var finalY = start + scootch;
+			console.log(`finalY ${finalY}`);
+
+			// Set conditions for not displaying certain y-axis values
+			if (finalY < 15) {
+				// Do not display the bar at 15 on the y-axis if finalY < 15
+				console.log('Not displaying bar at y=15 because finalY is too small.');
+				return null;  // Or handle in a way that hides the label
+			} else if (finalY < 10) {
+				// Do not display the bar at 10 on the y-axis if finalY < 10
+				console.log('Not displaying bar at y=10 because finalY is too small.');
+				return null;  // Or handle in a way that hides the label
+			}
+
+			// Otherwise, return the calculated y-position
+			return finalY;
 		}
 
 		// d3.selectAll(".pu-ButtonRow .pu-smallButton.active")
@@ -2739,7 +2751,11 @@ function updateBarChart(indicator, unit, date){
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
 		newYMax = yMax + (.2 * yRange)
-
+	console.log(`yMax: ${yMax}`);
+	console.log(`yMin: ${yMin}`);
+	console.log(`yRange: ${yRange}`);
+	console.log(`newYMin: ${newYMin}`);
+	console.log(`newYMax: ${newYMax}`);
 	y.domain([newYMin, newYMax]
 	).nice();
 
