@@ -1388,13 +1388,23 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		yMin = Math.min( 0, d3.min(data, function (d) { return d[key]; }) ),
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
-		newYMax = 0.2 * yRange;
-
+		newYMax = yMax + (.2 * yRange)
+	console.log(`yMax: ${yMax}`)
+	console.log(`yMin: ${yMin}`)
+	console.log(`yRange: ${yRange}`)
+	console.log(`newYMin: ${newYMin}`)
+	console.log(`newYMax: ${newYMax}`)
 	var y = d3.scaleLinear()
 		.rangeRound([height, 0])
-		.domain([0, newYMax])
+		.domain([newYMin, newYMax])
 		.nice();
-
+	console.log(`y: ${y}`)
+	if(y.domain()[1] <= 0){
+		y.domain([newYMin, 0]).nice()
+	}
+	else if(y.domain()[0] >= 0){
+		y.domain([0, newYMax]).nice()
+	}
 
 
 	g.append("g")
@@ -1410,12 +1420,14 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 	var axisSelection = g.append("g")
 		.attr("class", "bar y axis")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount).tickFormat(abbrevFormat))
+	console.log(`axisSelection: ${axisSelection}`)
 
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getBarMargins().left)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
 
 	var colorScale = getColorScale(y, data, key)
+	console.log(`colorScale: ${colorScale}`)
 
 	g.selectAll(".usLine")
 		.data(usData)
