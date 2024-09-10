@@ -2301,6 +2301,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
+	console.log(`cheke y1 la: ${y}`)
 
 	g.append("g")
 		.attr("class", "line axis x")
@@ -2570,6 +2571,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
+	console.log(`cheke y2 la: ${y}`)
 
 	d3.selectAll(".state.line").classed("active", false)
 	d3.selectAll(".stateLabel").classed("active", false)
@@ -2909,6 +2911,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
+	console.log(`cheke y3 la: ${y}`)
 
 	var oldStates = d3.selectAll(".state.line").data().map(function(o){ return o.key })
 	var oldClicked = d3.selectAll(".state.line.clicked").data().map(function(o){ return o.key })
@@ -4139,9 +4142,7 @@ function init(allData, topojsonData, stateNamesData){
 		key = getKey(indicator, unit)
 
 		firstDate = allData["terminalDates"][key]["firstDate"]
-		console.log(firstDate)
 		lastDate = allData["terminalDates"][key]["lastDate"]
-		console.log(lastDate)
 
 		isDefault = true;
 
