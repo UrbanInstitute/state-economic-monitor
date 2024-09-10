@@ -2336,12 +2336,12 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("text-anchor", "start")
 		.attr("x", -1*getLineMargins().left + horizontalScootch)
 		.style("opacity", function(d) {
-			return d > maxDisplayedValue ? 0 : 1;  // Hide labels higher than the highest tick value
+			return d > yDomain[1]  ? 0 : 1;  // Hide labels higher than the highest tick value
 		});
 	axisSelection.selectAll("line")
 		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 		.style("opacity", function(d) {
-			return d > maxDisplayedValue ? 0 : 1;  // Hide lines higher than the highest tick value
+			return d > yDomain[1]  ? 0 : 1;  // Hide lines higher than the highest tick value
 		});
 
 	g.selectAll(".state.line")
