@@ -2336,10 +2336,11 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("text-anchor", "start")
 		.attr("x", -1*getLineMargins().left + horizontalScootch)
 		.style("opacity", function(d) {
-			if (d < 10) {
+			console.log("Label value:", d);
+			if (maxDisplayedValue < 10) {
 				// Hide both 10 and 15 if `d` is less than 10
 				return [10, 15].includes(d) ? 0 : 1;
-			} else if (d > 10 && d < 15) {
+			} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
 				// Hide only 15 if `d` is greater than 10 but less than 15
 				return d == 15 ? 0 : 1;
 			}
@@ -2348,10 +2349,11 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	axisSelection.selectAll("line")
 		.attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 		.style("opacity", function(d) {
-			if (d < 10) {
+			console.log("Line value:", d);
+			if (maxDisplayedValue < 10) {
 				// Hide both 10 and 15 if `d` is less than 10
 				return [10, 15].includes(d) ? 0 : 1;
-			} else if (d > 10 && d < 15) {
+			} else if (maxDisplayedValue > 10 && maxDisplayedValue < 15) {
 				// Hide only 15 if `d` is greater than 10 but less than 15
 				return d == 15 ? 0 : 1;
 			}
