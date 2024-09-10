@@ -2321,7 +2321,11 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	var axisSelection = g.append("g")
 		.attr("class", "line axis y")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
-
+	axisSelection.each(function() {
+		var ticks = d3.select(this).selectAll(".tick");
+		var lineTickCount = ticks.size();
+		console.log(lineTickCount);
+		});
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
