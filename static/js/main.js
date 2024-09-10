@@ -243,6 +243,7 @@ function formatValue(indicator, unit, value){
 		return value.toFixed(2)
 	}
 	else if(indicator == "unemployment_rate"){
+		console.log(`Unemployment ${value.toFixed(1)}`);
 		return value.toFixed(1)
 	}
 	else if(getSection(indicator) == "employment"){
@@ -1437,7 +1438,17 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 			.attr("y2", function (d) {
 				return y(d[key]);
 			})
-			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
+			.style("opacity", function(d) {
+				// Hide the line if y(d[key]) is below the threshold of 15 or 10
+				var yValue = y(d[key]);
+				if (yValue < y(15)) {
+					return 0; // Hide if below 15
+				} else if (yValue < y(10)) {
+					return 0; // Hide if below 10
+				} else {
+					return (isUSHidden()) ? 0 : 1;
+				}
+			});
 	var usXScootch = (widthUnder(768)) ? -3: 2;
 	g.selectAll(".usText")
 		.data(usData)
@@ -1449,7 +1460,17 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return y(d[key]) + 4;
 			})
 			.text("US")
-			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
+			.style("opacity", function(d) {
+				// Hide the text if y(d[key]) is below the threshold of 15 or 10
+				var yValue = y(d[key]) + 4;
+				if (yValue < y(15)) {
+					return 0; // Hide if below 15
+				} else if (yValue < y(10)) {
+					return 0; // Hide if below 10
+				} else {
+					return (isUSHidden()) ? 0 : 1;
+				}
+			});
 
 	g.selectAll("rect.bar")
 		.data(data)
