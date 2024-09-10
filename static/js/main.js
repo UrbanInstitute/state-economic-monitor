@@ -2321,13 +2321,26 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	var axisSelection = g.append("g")
 		.attr("class", "line axis y")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
+	// Access the maximum displayed value from the data
+	var maxDisplayedValue = d3.max(data, function(d) { return +d[key]; });
+
 	axisSelection.each(function() {
 		var ticks = d3.select(this).selectAll(".tick");
 		var lineTickCount = ticks.size();
 		var scale = d3.select(this).call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat));
+
 		console.log(`Line Tick Count ${lineTickCount}`);
-		console.log(`Scale for Y Axis: ${scale}`);
-		});
+
+		// Filter ticks based on the maximum displayed value
+		ticks.filter(function(d) {
+			var tickValue = +d; // Convert tick value to a number
+			return tickValue > maxDisplayedValue; // Hide ticks above the max value
+		}).style("opacity", 0); // Hide invisible ticks by setting opacity
+
+		console.log(`Filtered Scale for Y Axis:`);
+		console.log(scale); // Log the scale for informational purposes
+	});
+
 	axisSelection.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left + horizontalScootch)
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
