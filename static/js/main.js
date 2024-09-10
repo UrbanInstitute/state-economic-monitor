@@ -1396,6 +1396,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		.rangeRound([height, 0])
 		.domain([newYMin, newYMax])
 		.nice();
+	console.log(`cheke y2 la: ${y}`);
 	if(y.domain()[1] <= 0){
 		y.domain([newYMin, 0]).nice()
 	}
@@ -2301,7 +2302,6 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
-	console.log(`cheke y1 la: ${y}`)
 
 	g.append("g")
 		.attr("class", "line axis x")
@@ -2571,7 +2571,6 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
-	console.log(`cheke y2 la: ${y}`)
 
 	d3.selectAll(".state.line").classed("active", false)
 	d3.selectAll(".stateLabel").classed("active", false)
@@ -2724,7 +2723,7 @@ function updateBarChart(indicator, unit, date){
 
 	var y = d3.scaleLinear()
 		.rangeRound([height, 0]);
-
+	console.log(`cheke y la: ${y}`);
 	x.domain(data.map(
 		function (d) {
 			return d.abbr;
@@ -2911,7 +2910,6 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	var x = getLineX(startDate, endDate, width)
 	var y = getLineY(extent, height)
-	console.log(`cheke y3 la: ${y}`)
 
 	var oldStates = d3.selectAll(".state.line").data().map(function(o){ return o.key })
 	var oldClicked = d3.selectAll(".state.line.clicked").data().map(function(o){ return o.key })
