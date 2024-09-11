@@ -2663,7 +2663,9 @@ function getBarData(chartData, indicator, unit, date){
 function getLineData(chartData, indicator, unit, states, startDate, endDate){
 	var indicatorData = chartData,
 		key = getKey(indicator, unit),
-		dateFilteredData = indicatorData.filter(function(o){ return key in o }),
+		startDateD = parseTime()(startDate),
+		endDateD = parseTime()(endDate),
+		dateFilteredData = indicatorData.filter(function(o){ return key in o && parseTime()(o.date) >= startDateD && parseTime()(o.date) <= endDateD }),
 		extent = d3.extent(dateFilteredData, function(d){ if (states.indexOf(d.abbr) != -1) return d[key]}),
 		dataByState = d3.nest()
 			.key(function(d){ return d.abbr })
