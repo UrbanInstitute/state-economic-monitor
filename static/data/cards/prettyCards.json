@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-08-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "SD",
-            "DC"
+            "SC",
+            "IL"
         ],
-        "text": "July unemployment rates ranged from 2.0% in SD to 5.5% in DC. ",
+        "text": "August unemployment rates increased for 31 states and DC compared to the previous month.",
         "unit": "raw"
     },
     {
@@ -34,25 +34,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-08-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, July average private weekly earnings ranged from NM\u2019s $929 to WA\u2019s $1,371. ",
+        "text": "Among states, August average private weekly earnings ranged from MS\u2019s $928 to WA\u2019s $1,387.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-07-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2019-07-01",
+        "endDate": "2024-08-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2023-08-01",
         "states": [
             "US",
-            "MS"
+            "OK"
         ],
-        "text": "Retail and trade jobs in July 2024 were above July 2019 levels in 24 states. ",
+        "text": "Leisure and hospitality jobs in August 2024 were above August 2023 levels in 34 states and DC.",
         "unit": "raw"
     },
     {
@@ -67,25 +67,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-08-01",
         "indicator": "unemployment_rate",
-        "startDate": "2021-09-01",
+        "startDate": "1994-08-01",
         "states": [
             "US",
-            "GA"
+            "PA"
         ],
-        "text": "GA\u2019s unemployment rate has remained at or between 3.0% and 3.5% since September 2021. ",
-        "unit": "change"
+        "text": "PA\u2019s unemployment rate has been 3.4% every month since October 2023. ",
+        "unit": "raw"
     },
     {
-        "endDate": "2024-07-01",
-        "indicator": "private_employment",
-        "startDate": "2019-07-01",
+        "endDate": "2024-08-01",
+        "indicator": "state_and_local_public_employment",
+        "startDate": "2019-08-01",
         "states": [
             "US",
-            "LA"
+            "RI"
         ],
-        "text": "Private jobs in July 2024 were below July 2019 levels in 5 states. ",
+        "text": "Public employment was down for four states (LA, MI, PA, RI) in August 2024 compared to 2019 levels.",
         "unit": "raw"
     },
     {
