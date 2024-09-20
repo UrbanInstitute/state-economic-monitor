@@ -38,7 +38,7 @@
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "NM",
+            "MS",
             "WA"
         ],
         "text": "Among states, August average private weekly earnings ranged from MS\u2019s $928 to WA\u2019s $1,387.",
@@ -69,12 +69,12 @@
     {
         "endDate": "2024-08-01",
         "indicator": "unemployment_rate",
-        "startDate": "1994-08-01",
+        "startDate": "2023-10-01",
         "states": [
             "US",
             "PA"
         ],
-        "text": "PA\u2019s unemployment rate has been 3.4% every month since October 2023. ",
+        "text": "PA\u2019s unemployment rate has been 3.4% every month since October 2023.",
         "unit": "raw"
     },
     {
@@ -83,7 +83,7 @@
         "startDate": "2019-08-01",
         "states": [
             "US",
-            "RI"
+            "LA"
         ],
         "text": "Public employment was down for four states (LA, MI, PA, RI) in August 2024 compared to 2019 levels.",
         "unit": "raw"
