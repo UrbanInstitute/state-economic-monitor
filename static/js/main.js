@@ -123,8 +123,7 @@ function makeCSV(data, indicator, unit, filename) {
   	var state = infoObject["abbr"];
   	var value;
 
-
-
+  var year;
 
 	if(
 		(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO"))
@@ -4139,9 +4138,7 @@ function init(allData, topojsonData, stateNamesData){
 		key = getKey(indicator, unit)
 
 		firstDate = allData["terminalDates"][key]["firstDate"]
-		console.log(firstDate)
 		lastDate = allData["terminalDates"][key]["lastDate"]
-		console.log(lastDate)
 
 		isDefault = true;
 
