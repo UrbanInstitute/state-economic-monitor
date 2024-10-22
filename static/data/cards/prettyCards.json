@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-08-01",
+        "endDate": "2024-09-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "SC",
-            "IL"
+            "SD",
+            "NV"
         ],
-        "text": "August unemployment rates increased for 31 states and DC compared to the previous month.",
+        "text": "September unemployment rates ranged from 2% in South Dakota to 5.6% in Nevada. ",
         "unit": "raw"
     },
     {
@@ -33,25 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-08-01",
+        "endDate": "2024-09-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, August average private weekly earnings ranged from MS\u2019s $928 to WA\u2019s $1,387.",
+        "text": "Among states, September average weekly earnings ranged from MS\u2019s $941 to WA\u2019s $1,441.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-08-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2023-08-01",
+        "endDate": "2024-09-01",
+        "indicator": "manufacturing_employment",
+        "startDate": "2023-09-01",
         "states": [
             "US",
-            "OK"
+            "DE"
         ],
-        "text": "Leisure and hospitality jobs in August 2024 were above August 2023 levels in 34 states and DC.",
+        "text": "Manufacturing jobs in September 2024 were above September 2023 levels in 8 states.",
         "unit": "raw"
     },
     {
@@ -66,25 +66,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-08-01",
+        "endDate": "2024-09-01",
         "indicator": "unemployment_rate",
-        "startDate": "2023-10-01",
+        "startDate": "2023-07-01",
         "states": [
             "US",
-            "PA"
+            "NC"
         ],
-        "text": "PA\u2019s unemployment rate has been 3.4% every month since October 2023.",
+        "text": "North Carolina\u2019s unemployment rate has been below 4% since November 2021.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-08-01",
-        "indicator": "state_and_local_public_employment",
-        "startDate": "2019-08-01",
+        "endDate": "2024-09-01",
+        "indicator": "retail_trade_employment",
+        "startDate": "2019-09-01",
         "states": [
             "US",
-            "LA"
+            "AK"
         ],
-        "text": "Public employment was down for four states (LA, MI, PA, RI) in August 2024 compared to 2019 levels.",
+        "text": "Retail and trade employment was up for 24 states in September 2024 compared to 2019 levels.",
         "unit": "raw"
     },
     {
