@@ -7,7 +7,7 @@
             "SD",
             "NV"
         ],
-        "text": "October unemployment rates ranged from 1.9% in South Dakota to 5.7% in Nevada and DC.",
+        "text": "October unemployment rates ranged from 1.9% in South Dakota to 5.7% in both Nevada and DC.",
         "unit": "raw"
     },
     {
@@ -49,9 +49,10 @@
         "startDate": "2019-10-01",
         "states": [
             "US",
-            "WY"
+            "HI",
+            "MI"
         ],
-        "text": "Leisure and hospitality jobs in October 2024 were below October 2019 levels in 11 states. ",
+        "text": "Leisure and hospitality jobs in October 2024 were below October 2019 levels in 20 states and DC.",
         "unit": "raw"
     },
     {
@@ -73,7 +74,7 @@
             "US",
             "SD"
         ],
-        "text": "South Dakota\u2019s unemployment rate reached a 30-year low in October 2024 at 1.9%.",
+        "text": "South Dakota's unemployment rate reached a 30-year low of 1.9% in October 2024.",
         "unit": "raw"
     },
     {
@@ -84,7 +85,7 @@
             "US",
             "AK"
         ],
-        "text": "Private jobs in October 2024 were at or above October 2023 levels in all states.",
+        "text": "Private-sector jobs in October 2024 were at or above October 2023 levels in all states.",
         "unit": "raw"
     },
     {
