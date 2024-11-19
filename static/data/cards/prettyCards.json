@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-09-01",
+        "endDate": "2024-10-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "NV"
         ],
-        "text": "September unemployment rates ranged from 2% in South Dakota to 5.6% in Nevada. ",
+        "text": "October unemployment rates ranged from 1.9% in South Dakota to 5.7% in Nevada and DC.",
         "unit": "raw"
     },
     {
@@ -33,25 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-09-01",
+        "endDate": "2024-10-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, September average weekly earnings ranged from MS\u2019s $941 to WA\u2019s $1,441.",
+        "text": "Among states, October average weekly earnings ranged from MS\u2019s $946 to WA\u2019s $1,409.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-09-01",
-        "indicator": "manufacturing_employment",
-        "startDate": "2023-09-01",
+        "endDate": "2024-10-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2019-10-01",
         "states": [
             "US",
-            "DE"
+            "WY"
         ],
-        "text": "Manufacturing jobs in September 2024 were above September 2023 levels in 8 states.",
+        "text": "Leisure and hospitality jobs in October 2024 were below October 2019 levels in 11 states. ",
         "unit": "raw"
     },
     {
@@ -66,25 +66,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-09-01",
+        "endDate": "2024-10-01",
         "indicator": "unemployment_rate",
-        "startDate": "2023-07-01",
+        "startDate": "1994-10-01",
         "states": [
             "US",
-            "NC"
+            "SD"
         ],
-        "text": "North Carolina\u2019s unemployment rate has been below 4% since November 2021.",
+        "text": "South Dakota\u2019s unemployment rate reached a 30-year low in October 2024 at 1.9%.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-09-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2019-09-01",
+        "endDate": "2024-10-01",
+        "indicator": "private_employment",
+        "startDate": "2023-10-01",
         "states": [
             "US",
             "AK"
         ],
-        "text": "Retail and trade employment was up for 24 states in September 2024 compared to 2019 levels.",
+        "text": "Private jobs in October 2024 were at or above October 2023 levels in all states.",
         "unit": "raw"
     },
     {
