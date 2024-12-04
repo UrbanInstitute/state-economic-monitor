@@ -102,12 +102,12 @@
     {
         "endDate": "2024-04-01",
         "indicator": "manufacturing_state_gdp",
-        "startDate": "2018-04-01",
+        "startDate": "2014-04-01",
         "states": [
             "US",
             "AZ"
         ],
-        "text": "Between Q2 2018 and Q2 2024, AZ\u2019s real manufacturing GDP grew from $33 billion to $46 billion.",
+        "text": "Between Q2 2014 and Q2 2024, AZ\u2019s real manufacturing GDP grew from $27 billion to $46 billion.",
         "unit": "raw"
     }
 ]
