@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-11-01",
+        "endDate": "2024-12-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "SD",
-            "NV"
+            "NV",
+            "SD"
         ],
-        "text": "Nov. unemployment rates ranged from 1.9% in SD to 5.7% in NV.",
+        "text": "Dec. 2024 unemployment rates ranged from 1.9% in SD to 5.7% in NV.",
         "unit": "raw"
     },
     {
@@ -34,25 +34,26 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-11-01",
+        "endDate": "2024-12-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "MS",
+            "NM",
             "WA"
         ],
-        "text": "Among states, Nov. average weekly earnings ranged from MS\u2019s $943 to WA\u2019s $1,428.",
+        "text": "Among states, Dec. 2024 average weekly earnings ranged from NM\u2019s $974 to WA\u2019s $1,476.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-11-01",
-        "indicator": "federal_public_employment",
-        "startDate": "2019-11-01",
+        "endDate": "2024-12-01",
+        "indicator": "retail_trade_employment",
+        "startDate": "2019-12-01",
         "states": [
             "US",
-            "VT"
+            "AL",
+            "NH"
         ],
-        "text": "Federal public jobs in Nov. 2024 were below Nov. 2019 levels in only Vermont and DC.",
+        "text": "Retail and trade jobs in Dec. 2024 were above Dec. 2019 levels in 28 states.",
         "unit": "raw"
     },
     {
@@ -78,17 +79,6 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-11-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2014-11-01",
-        "states": [
-            "US",
-            "CT"
-        ],
-        "text": "Connecticut's unemployment rate equaled its 20-year low of 3% in Nov. 2024.",
-        "unit": "raw"
-    },
-    {
         "endDate": "2024-07-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
@@ -98,5 +88,27 @@
         ],
         "text": "Every state and DC saw year-over-year retail GDP growth exceed 5% in real terms in Q3 2024.",
         "unit": "change"
+    },
+    {
+        "endDate": "2024-12-01",
+        "indicator": "private_employment",
+        "startDate": "2019-12-01",
+        "states": [
+            "US",
+            "LA"
+        ],
+        "text": "Compared to 2019, private employment was down for four states (HI, LA, MD, VT) and DC.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2024-12-01",
+        "indicator": "unemployment_rate",
+        "startDate": "2019-12-01",
+        "states": [
+            "US",
+            "CA"
+        ],
+        "text": "In Dec. 2024, the unemployment rate was higher than it was in Dec. 2019 for 18 states and DC.",
+        "unit": "raw"
     }
 ]
