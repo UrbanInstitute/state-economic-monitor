@@ -11,6 +11,18 @@
         "unit": "raw"
     },
     {
+        "endDate": "2024-10-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "CT",
+            "NJ",
+            "MS"
+        ],
+        "text": "Q4 2024 house price growth over the year ranged from -0.2% in MS to 8.3% in CT and NJ.",
+        "unit": "change"
+    },
+    {
         "endDate": "2024-07-01",
         "indicator": "state_gdp",
         "states": [
@@ -20,17 +32,6 @@
             "WV"
         ],
         "text": "Q3 2024 real state GDP growth over the year ranged from -2.1% in ND to 4.6% in ID and WV.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2024-07-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "DC",
-            "HI"
-        ],
-        "text": "Q3 2024 house price growth over the year ranged from -3.1% in DC to 10.4% in Hawaii.",
         "unit": "change"
     },
     {
@@ -68,25 +69,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-10-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
         "states": [
             "US",
-            "LA"
+            "ND"
         ],
-        "text": "Louisiana\u2019s Q3 2024 annual house prices declined for the first time since 2011.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2024-07-01",
-        "indicator": "retail_trade_state_gdp",
-        "states": [
-            "US",
-            "OR",
-            "NH"
-        ],
-        "text": "Every state and DC saw year-over-year retail GDP growth exceed 5% in real terms in Q3 2024.",
+        "text": "North Dakota\u2019s year-over-year house prices have grown every quarter since Q1 2011.",
         "unit": "change"
     },
     {
@@ -99,6 +89,17 @@
         ],
         "text": "Compared to 2019, private employment was down for four states (HI, LA, MD, VT) and DC.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2024-07-01",
+        "indicator": "retail_trade_state_gdp",
+        "states": [
+            "US",
+            "OR",
+            "NH"
+        ],
+        "text": "Every state and DC saw year-over-year retail GDP growth exceed 5% in real terms in Q3 2024.",
+        "unit": "change"
     },
     {
         "endDate": "2024-12-01",
