@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2024-12-01",
+        "endDate": "2025-01-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "NV",
-            "SD"
+            "SD",
+            "NV"
         ],
-        "text": "Dec. 2024 unemployment rates ranged from 1.9% in SD to 5.7% in NV.",
+        "text": "Jan. 2025 unemployment rates ranged from 1.9% in SD to 5.8% in NV.",
         "unit": "raw"
     },
     {
@@ -35,26 +35,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-12-01",
+        "endDate": "2025-01-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, Dec. 2024 average weekly earnings ranged from NM\u2019s $974 to WA\u2019s $1,476.",
+        "text": "Among states, Jan. 2025 average weekly earnings ranged from NM\u2019s $953 to WA\u2019s $1,427.",
         "unit": "raw"
     },
     {
-        "endDate": "2024-12-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2019-12-01",
+        "endDate": "2025-01-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2020-01-01",
         "states": [
             "US",
-            "AL",
-            "NC"
+            "HI"
         ],
-        "text": "Retail and trade jobs in Dec. 2024 were above Dec. 2019 levels in 28 states.",
+        "text": "Leisure and hospitality jobs in Jan. 2025 were below Jan. 2020 levels in 22 states.",
         "unit": "raw"
     },
     {
@@ -69,6 +68,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2025-01-01",
+        "indicator": "retail_trade_employment",
+        "startDate": "2020-01-01",
+        "states": [
+            "US",
+            "MT"
+        ],
+        "text": "Retail jobs in Jan. 2025 were above Jan. 2020 levels in MT and 26 other states.",
+        "unit": "raw"
+    },
+    {
         "endDate": "2024-10-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
@@ -80,17 +90,6 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-12-01",
-        "indicator": "private_employment",
-        "startDate": "2019-12-01",
-        "states": [
-            "US",
-            "LA"
-        ],
-        "text": "Compared to 2019, private employment was down for four states (HI, LA, MD, VT) and DC.",
-        "unit": "raw"
-    },
-    {
         "endDate": "2024-07-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
@@ -100,16 +99,5 @@
         ],
         "text": "Every state and DC saw year-over-year retail GDP growth exceed 5% in real terms in Q3 2024.",
         "unit": "change"
-    },
-    {
-        "endDate": "2024-12-01",
-        "indicator": "unemployment_rate",
-        "startDate": "2019-12-01",
-        "states": [
-            "US",
-            "CA"
-        ],
-        "text": "In Dec. 2024, the unemployment rate was higher than it was in Dec. 2019 for 18 states and DC.",
-        "unit": "raw"
     }
 ]
