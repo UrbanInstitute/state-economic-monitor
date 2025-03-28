@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2025-01-01",
+        "endDate": "2025-02-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "NV"
         ],
-        "text": "Jan. 2025 unemployment rates ranged from 1.9% in SD to 5.8% in NV.",
+        "text": "Feb. 2025 unemployment rates ranged from 1.9% in SD to 5.8% in NV.",
         "unit": "raw"
     },
     {
@@ -23,59 +23,47 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-10-01",
         "indicator": "state_gdp",
         "states": [
             "US",
             "ND",
-            "ID",
-            "WV"
+            "AR"
         ],
-        "text": "Q3 2024 real state GDP growth over the year ranged from -2.1% in ND to 4.6% in ID and WV.",
+        "text": "Q4 2024 real state GDP growth over the year ranged from -2.3% in ND to 4.6% in AR.",
         "unit": "change"
     },
     {
-        "endDate": "2025-01-01",
+        "endDate": "2025-02-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, Jan. 2025 average weekly earnings ranged from NM\u2019s $953 to WA\u2019s $1,427.",
+        "text": "Among states, Feb. 2025 average weekly earnings ranged from NM\u2019s $975 to WA\u2019s $1,472.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-01-01",
-        "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2020-01-01",
+        "endDate": "2025-02-01",
+        "indicator": "federal_public_employment",
         "states": [
             "US",
-            "HI"
+            "NM",
+            "WY"
         ],
-        "text": "Leisure and hospitality jobs in Jan. 2025 were below Jan. 2020 levels in 22 states.",
-        "unit": "raw"
+        "text": "NM and WY saw the largest declines in federal government jobs between Feb. 2024 and Feb. 2025.",
+        "unit": "change"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-10-01",
         "indicator": "manufacturing_state_gdp",
-        "startDate": "2014-07-01",
+        "startDate": "2014-10-01",
         "states": [
             "US",
             "AZ"
         ],
-        "text": "Between Q3 2014 and Q3 2024, AZ\u2019s real manufacturing GDP grew from $28 billion to $46 billion.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2025-01-01",
-        "indicator": "retail_trade_employment",
-        "startDate": "2020-01-01",
-        "states": [
-            "US",
-            "MT"
-        ],
-        "text": "Retail jobs in Jan. 2025 were above Jan. 2020 levels in MT and 26 other states.",
+        "text": "AZ\u2019s real manufacturing GDP grew from $29 billion to $47 billion over the past 10 years.",
         "unit": "raw"
     },
     {
@@ -90,14 +78,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-07-01",
+        "endDate": "2024-10-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
             "OR",
             "NH"
         ],
-        "text": "Every state and DC saw year-over-year retail GDP growth exceed 5% in real terms in Q3 2024.",
+        "text": "Every state and DC saw year-over-year retail GDP growth exceed 3% in real terms in Q4 2024.",
         "unit": "change"
+    },
+    {
+        "endDate": "2025-02-01",
+        "indicator": "manufacturing_employment",
+        "startDate": "2019-02-01",
+        "states": [
+            "US",
+            "UT"
+        ],
+        "text": "Manufacturing jobs in Feb. 2025 were above Feb. 2019 levels in UT and 21 other states.",
+        "unit": "raw"
     }
 ]
