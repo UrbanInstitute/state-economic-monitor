@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2025-02-01",
+        "endDate": "2025-03-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "NV"
         ],
-        "text": "Feb. 2025 unemployment rates ranged from 1.9% in SD to 5.8% in NV.",
+        "text": "March 2025 unemployment rates ranged from 1.8% in SD to 5.7% in NV.",
         "unit": "raw"
     },
     {
@@ -34,25 +34,26 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-02-01",
+        "endDate": "2025-03-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, Feb. 2025 average weekly earnings ranged from NM\u2019s $975 to WA\u2019s $1,472.",
+        "text": "Among states, Mar. 2025 average weekly earnings ranged from NM\u2019s $975 to WA\u2019s $1,464.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-02-01",
+        "endDate": "2025-03-01",
         "indicator": "federal_public_employment",
         "states": [
             "US",
             "NM",
-            "WY"
+            "WY",
+            "HI"
         ],
-        "text": "NM and WY saw the largest declines in federal government jobs between Feb. 2024 and Feb. 2025.",
+        "text": "NM, WY, and HI saw the largest declines in federal gov. jobs between Mar. 2024 and Mar. 2025.",
         "unit": "change"
     },
     {
@@ -89,14 +90,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-02-01",
+        "endDate": "2025-03-01",
         "indicator": "manufacturing_employment",
-        "startDate": "2019-02-01",
+        "startDate": "2019-03-01",
         "states": [
             "US",
             "UT"
         ],
-        "text": "Manufacturing jobs in Feb. 2025 were above Feb. 2019 levels in UT and 21 other states.",
+        "text": "Manufacturing jobs in Mar. 2025 were above Mar. 2019 levels in UT and 20 other states.",
         "unit": "raw"
     }
 ]
