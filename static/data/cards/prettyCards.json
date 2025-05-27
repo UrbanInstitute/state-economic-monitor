@@ -11,15 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2024-10-01",
+        "endDate": "2025-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "CT",
-            "NJ",
-            "MS"
+            "HI",
+            "RI"
         ],
-        "text": "Q4 2024 house price growth over the year ranged from -0.2% in MS to 8.3% in CT and NJ.",
+        "text": "Q1 2025 house price growth over the year ranged from -2.2% in HI to 11.4% in RI.",
         "unit": "change"
     },
     {
@@ -47,14 +46,13 @@
     {
         "endDate": "2025-04-01",
         "indicator": "state_and_local_public_employment",
-        "startDate": "2024-04-01",
         "states": [
             "US",
             "CT",
             "WV"
         ],
-        "text": "Only CT and WT saw a decline in state and local public employment between April 2024 and April 2025.",
-        "unit": "raw"
+        "text": "Only CT and WV saw state and local public jobs fall between April 2024 and April 2025.",
+        "unit": "change"
     },
     {
         "endDate": "2024-10-01",
@@ -68,14 +66,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2024-10-01",
+        "endDate": "2025-01-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
         "states": [
             "US",
             "ND"
         ],
-        "text": "North Dakota\u2019s year-over-year house prices have grown every quarter since Q1 2011.",
+        "text": "Only ND has seen year-over-year house price growth every quarter since Q1 2011.",
         "unit": "change"
     },
     {
