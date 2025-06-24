@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-05-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "DC",
-            "SD"
+            "SD",
+            "DC"
         ],
-        "text": "April 2025 unemployment rates ranged from 1.8% in SD to 5.8% in DC. ",
+        "text": "May 2025 unemployment rates ranged from 1.8% in SD to 5.9% in DC. ",
         "unit": "raw"
     },
     {
@@ -33,26 +33,27 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-05-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, April 2025 average weekly earnings ranged from NM\u2019s $985 to WA\u2019s $1,431. ",
+        "text": "Among states, May 2025 average weekly earnings ranged from NM\u2019s $971 to WA\u2019s $1,453.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-04-01",
-        "indicator": "state_and_local_public_employment",
+        "endDate": "2025-05-01",
+        "indicator": "manufacturing_employment",
+        "startDate": "2024-05-01",
         "states": [
             "US",
-            "CT",
-            "WV"
+            "OK",
+            "TN"
         ],
-        "text": "Only CT and WV saw state and local public jobs fall between April 2024 and April 2025.",
-        "unit": "change"
+        "text": "Manufacturing employment declined between May 2024 and May 2025 in 34 states and DC.",
+        "unit": "raw"
     },
     {
         "endDate": "2024-10-01",
@@ -88,15 +89,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
-        "indicator": "private_employment",
-        "startDate": "2024-04-01",
+        "endDate": "2025-05-01",
+        "indicator": "federal_public_employment",
         "states": [
             "US",
-            "IA",
-            "KS"
+            "MS",
+            "WI"
         ],
-        "text": "In April 2025, private-sector employment fell below April 2024 levels in IA, KS, and MO.",
-        "unit": "raw"
+        "text": "In May 2025, federal public employment dropped year-over-year in DC and 41 states.",
+        "unit": "change"
     }
 ]
