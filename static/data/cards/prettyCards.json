@@ -12,6 +12,18 @@
     },
     {
         "endDate": "2025-01-01",
+        "indicator": "state_gdp",
+        "states": [
+            "US",
+            "IA",
+            "AL",
+            "AR"
+        ],
+        "text": "Q1 2025 real state GDP growth over the year ranged from -0.7% in IA to 3.5% in AL and AR.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2025-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
@@ -19,17 +31,6 @@
             "RI"
         ],
         "text": "Q1 2025 house price growth over the year ranged from -2.2% in HI to 11.4% in RI.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2024-10-01",
-        "indicator": "state_gdp",
-        "states": [
-            "US",
-            "ND",
-            "AR"
-        ],
-        "text": "Q4 2024 real state GDP growth over the year ranged from -2.3% in ND to 4.6% in AR.",
         "unit": "change"
     },
     {
@@ -41,6 +42,17 @@
             "WA"
         ],
         "text": "Among states, May 2025 average weekly earnings ranged from NM\u2019s $971 to WA\u2019s $1,453.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2025-01-01",
+        "indicator": "accommodation_and_food_services_state_gdp",
+        "startDate": "2005-01-01",
+        "states": [
+            "US",
+            "TN"
+        ],
+        "text": "TN\u2019s real accommodation and food services GDP has grown 48 percent over the past 20 years.",
         "unit": "raw"
     },
     {
@@ -56,17 +68,6 @@
         "unit": "raw"
     },
     {
-        "endDate": "2024-10-01",
-        "indicator": "manufacturing_state_gdp",
-        "startDate": "2014-10-01",
-        "states": [
-            "US",
-            "AZ"
-        ],
-        "text": "AZ\u2019s real manufacturing GDP grew from $29 billion to $47 billion over the past 10 years.",
-        "unit": "raw"
-    },
-    {
         "endDate": "2025-01-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
@@ -78,14 +79,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2024-10-01",
+        "endDate": "2025-01-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
-            "OR",
-            "NH"
+            "KY",
+            "MT"
         ],
-        "text": "Every state and DC saw year-over-year retail GDP growth exceed 3% in real terms in Q4 2024.",
+        "text": "Every state and DC saw year-over-year retail GDP growth exceed 2% in real terms in Q1 2025.",
         "unit": "change"
     },
     {
