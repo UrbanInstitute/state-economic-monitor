@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2025-05-01",
+        "endDate": "2025-07-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "DC"
         ],
-        "text": "May 2025 unemployment rates ranged from 1.8% in SD to 5.9% in DC. ",
+        "text": "State unemployment rates in July 2025 ranged from 1.9% in SD to 6.0% in DC.",
         "unit": "raw"
     },
     {
@@ -34,15 +34,28 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-05-01",
+        "endDate": "2025-07-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, May 2025 average weekly earnings ranged from NM\u2019s $971 to WA\u2019s $1,453.",
+        "text": "Among states, July 2025 average weekly earnings ranged from NM\u2019s $965 to WA\u2019s $1,451.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2025-07-01",
+        "indicator": "federal_public_employment",
+        "startDate": "2020-07-01",
+        "states": [
+            "US",
+            "MD",
+            "DC",
+            "VA"
+        ],
+        "text": "In July 2025, federal gov. jobs dropped year-over-year in 45 states and DC, led by MD.",
+        "unit": "change"
     },
     {
         "endDate": "2025-01-01",
@@ -53,18 +66,6 @@
             "TN"
         ],
         "text": "TN\u2019s real accommodation and food services GDP has grown 48 percent over the past 20 years.",
-        "unit": "raw"
-    },
-    {
-        "endDate": "2025-05-01",
-        "indicator": "manufacturing_employment",
-        "startDate": "2024-05-01",
-        "states": [
-            "US",
-            "OK",
-            "TN"
-        ],
-        "text": "Manufacturing employment declined between May 2024 and May 2025 in 34 states and DC.",
         "unit": "raw"
     },
     {
@@ -79,6 +80,18 @@
         "unit": "change"
     },
     {
+        "endDate": "2025-07-01",
+        "indicator": "manufacturing_employment",
+        "states": [
+            "US",
+            "OR",
+            "MT",
+            "CA"
+        ],
+        "text": "In July 2025, manufacturing employment fell year-over-year in 29 states.",
+        "unit": "change"
+    },
+    {
         "endDate": "2025-01-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
@@ -87,17 +100,6 @@
             "MT"
         ],
         "text": "Every state and DC saw year-over-year retail GDP growth exceed 2% in real terms in Q1 2025.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-05-01",
-        "indicator": "federal_public_employment",
-        "states": [
-            "US",
-            "MS",
-            "WI"
-        ],
-        "text": "In May 2025, federal public employment dropped year-over-year in DC and 41 states.",
         "unit": "change"
     }
 ]
