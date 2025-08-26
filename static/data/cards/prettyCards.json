@@ -11,6 +11,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2025-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "DC",
+            "NY"
+        ],
+        "text": "Q2 2025 house price growth over the year ranged from -7.6% in DC to 8.0% in NY.",
+        "unit": "change"
+    },
+    {
         "endDate": "2025-01-01",
         "indicator": "state_gdp",
         "states": [
@@ -20,17 +31,6 @@
             "AR"
         ],
         "text": "Q1 2025 real state GDP growth over the year ranged from -0.7% in IA to 3.5% in AL and AR.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-01-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "HI",
-            "RI"
-        ],
-        "text": "Q1 2025 house price growth over the year ranged from -2.2% in HI to 11.4% in RI.",
         "unit": "change"
     },
     {
@@ -69,14 +69,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2025-01-01",
+        "endDate": "2025-04-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
         "states": [
             "US",
-            "ND"
+            "FL"
         ],
-        "text": "Only ND has seen year-over-year house price growth every quarter since Q1 2011.",
+        "text": "FL\u2019s annual house price change in Q2 2025 was negative for the first time since Q4 2011.",
         "unit": "change"
     },
     {
