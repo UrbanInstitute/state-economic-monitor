@@ -1,25 +1,15 @@
 [
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-08-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
+            "CA",
             "DC"
         ],
-        "text": "State unemployment rates in July 2025 ranged from 1.9% in SD to 6.0% in DC.",
+        "text": "State unemployment rates in August 2025 ranged from 1.9% in SD to 5.5% in CA and 6% in DC.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2025-04-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "DC",
-            "NY"
-        ],
-        "text": "Q2 2025 house price growth over the year ranged from -7.6% in DC to 8.0% in NY.",
-        "unit": "change"
     },
     {
         "endDate": "2025-01-01",
@@ -34,27 +24,35 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-04-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "DC",
+            "NY"
+        ],
+        "text": "Q2 2025 house price growth over the year ranged from -7.6% in DC to 8.0% in NY.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2025-08-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "NM",
             "WA"
         ],
-        "text": "Among states, July 2025 average weekly earnings ranged from NM\u2019s $965 to WA\u2019s $1,451.",
+        "text": "Among states, August 2025 average weekly earnings ranged from NM\u2019s $983 to WA\u2019s $1,464.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-08-01",
         "indicator": "federal_public_employment",
-        "startDate": "2020-07-01",
         "states": [
             "US",
-            "MD",
-            "DC",
-            "VA"
+            "TX"
         ],
-        "text": "In July 2025, federal gov. jobs dropped year-over-year in 45 states and DC, led by MD.",
+        "text": "In August 2025, federal gov. jobs dropped year-over-year in all 50 states and DC except TX.",
         "unit": "change"
     },
     {
@@ -69,6 +67,18 @@
         "unit": "raw"
     },
     {
+        "endDate": "2025-08-01",
+        "indicator": "retail_trade_employment",
+        "states": [
+            "US",
+            "DC",
+            "RI",
+            "LA"
+        ],
+        "text": "In August 2025, retail employment fell year-over-year in 22 states and DC.",
+        "unit": "change"
+    },
+    {
         "endDate": "2025-04-01",
         "indicator": "house_price_index",
         "startDate": "2011-01-01",
@@ -77,18 +87,6 @@
             "FL"
         ],
         "text": "FL\u2019s annual house price change in Q2 2025 was negative for the first time since Q4 2011.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-07-01",
-        "indicator": "manufacturing_employment",
-        "states": [
-            "US",
-            "OR",
-            "MT",
-            "CA"
-        ],
-        "text": "In July 2025, manufacturing employment fell year-over-year in 29 states.",
         "unit": "change"
     },
     {
