@@ -12,15 +12,15 @@
         "unit": "raw"
     },
     {
-        "endDate": "2025-01-01",
+        "endDate": "2025-04-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "IA",
-            "AL",
-            "AR"
+            "ND",
+            "FL",
+            "SC"
         ],
-        "text": "Q1 2025 real state GDP growth over the year ranged from -0.7% in IA to 3.5% in AL and AR.",
+        "text": "Q2 2025 state GDP growth over the year ranged from 0.1% in ND to 3.5% in FL and SC.",
         "unit": "change"
     },
     {
@@ -56,14 +56,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-01-01",
+        "endDate": "2025-04-01",
         "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2005-01-01",
+        "startDate": "2019-04-01",
         "states": [
             "US",
-            "TN"
+            "CT"
         ],
-        "text": "TN\u2019s real accommodation and food services GDP has grown 48 percent over the past 20 years.",
+        "text": "Q2 2025 real accommodation and food services GDP was below pre-pandemic levels in 22 states and DC.",
         "unit": "raw"
     },
     {
@@ -90,14 +90,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-01-01",
-        "indicator": "retail_trade_state_gdp",
+        "endDate": "2025-04-01",
+        "indicator": "manufacturing_state_gdp",
         "states": [
             "US",
-            "KY",
-            "MT"
+            "NY",
+            "IN"
         ],
-        "text": "Every state and DC saw year-over-year retail GDP growth exceed 2% in real terms in Q1 2025.",
+        "text": "Q2 2025 manufacturing GDP growth over the year ranged from -3.4% in NY to 5.7% in IN.",
         "unit": "change"
     }
 ]
