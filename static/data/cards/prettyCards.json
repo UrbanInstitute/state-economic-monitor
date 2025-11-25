@@ -24,14 +24,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-07-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "DC",
-            "NY"
+            "FL",
+            "IL"
         ],
-        "text": "Q2 2025 house price growth over the year ranged from -7.6% in DC to 8.0% in NY.",
+        "text": "Q3 2025 house price growth over the year ranged from -2.3% in FL to 6.9% in IL.",
         "unit": "change"
     },
     {
@@ -67,6 +67,17 @@
         "unit": "raw"
     },
     {
+        "endDate": "2025-07-01",
+        "indicator": "house_price_index",
+        "startDate": "2011-01-01",
+        "states": [
+            "US",
+            "TX"
+        ],
+        "text": "TX\u2019s annual house price change in Q3 2025 was negative for the first time since Q3 2011.",
+        "unit": "change"
+    },
+    {
         "endDate": "2025-08-01",
         "indicator": "retail_trade_employment",
         "states": [
@@ -76,17 +87,6 @@
             "LA"
         ],
         "text": "In August 2025, retail employment fell year-over-year in 22 states and DC.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-04-01",
-        "indicator": "house_price_index",
-        "startDate": "2011-01-01",
-        "states": [
-            "US",
-            "FL"
-        ],
-        "text": "FL\u2019s annual house price change in Q2 2025 was negative for the first time since Q4 2011.",
         "unit": "change"
     },
     {
