@@ -1,6 +1,6 @@
 [
     {
-        "endDate": "2025-08-01",
+        "endDate": "2025-09-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
@@ -8,8 +8,19 @@
             "CA",
             "DC"
         ],
-        "text": "State unemployment rates in August 2025 ranged from 1.9% in SD to 5.5% in CA and 6% in DC.",
+        "text": "Unemployment rates in Sep. 2025 ranged from 2.0% in SD to 5.6% in CA and 6.2% in DC.",
         "unit": "raw"
+    },
+    {
+        "endDate": "2025-07-01",
+        "indicator": "house_price_index",
+        "states": [
+            "US",
+            "FL",
+            "IL"
+        ],
+        "text": "Q3 2025 house price growth over the year ranged from -2.3% in FL to 6.9% in IL.",
+        "unit": "change"
     },
     {
         "endDate": "2025-04-01",
@@ -24,35 +35,26 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-07-01",
-        "indicator": "house_price_index",
-        "states": [
-            "US",
-            "FL",
-            "IL"
-        ],
-        "text": "Q3 2025 house price growth over the year ranged from -2.3% in FL to 6.9% in IL.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-08-01",
+        "endDate": "2025-09-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "NM",
+            "MS",
             "WA"
         ],
-        "text": "Among states, August 2025 average weekly earnings ranged from NM\u2019s $983 to WA\u2019s $1,464.",
+        "text": "Among states, Sep. 2025 average weekly earnings ranged from MS\u2019s $993 to WA\u2019s $1,939.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-08-01",
-        "indicator": "federal_public_employment",
+        "endDate": "2025-09-01",
+        "indicator": "retail_trade_employment",
         "states": [
             "US",
-            "TX"
+            "DC",
+            "RI",
+            "NH"
         ],
-        "text": "In August 2025, federal gov. jobs dropped year-over-year in all 50 states and DC except TX.",
+        "text": "In Sep. 2025, retail employment fell year-over-year in 18 states and DC.",
         "unit": "change"
     },
     {
@@ -78,18 +80,6 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-08-01",
-        "indicator": "retail_trade_employment",
-        "states": [
-            "US",
-            "DC",
-            "RI",
-            "LA"
-        ],
-        "text": "In August 2025, retail employment fell year-over-year in 22 states and DC.",
-        "unit": "change"
-    },
-    {
         "endDate": "2025-04-01",
         "indicator": "manufacturing_state_gdp",
         "states": [
@@ -98,6 +88,18 @@
             "IN"
         ],
         "text": "Q2 2025 manufacturing GDP growth over the year ranged from -3.4% in NY to 5.7% in IN.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2025-09-01",
+        "indicator": "federal_public_employment",
+        "states": [
+            "US",
+            "MD",
+            "MT",
+            "ID"
+        ],
+        "text": "In Sep. 2025, MD, MT, and ID saw the steepest year-over-year declines in federal gov. jobs.",
         "unit": "change"
     }
 ]
