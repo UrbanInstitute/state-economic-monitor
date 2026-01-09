@@ -1,6 +1,6 @@
 [
     {
-        "endDate": "2025-09-01",
+        "endDate": "2025-11-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
@@ -8,7 +8,7 @@
             "CA",
             "DC"
         ],
-        "text": "Unemployment rates in Sep. 2025 ranged from 2.0% in SD to 5.6% in CA and 6.2% in DC.",
+        "text": "Unemployment rates in Nov. 2025 ranged from 2.1% in SD to 5.5% in CA and 6.5% in DC.",
         "unit": "raw"
     },
     {
@@ -35,26 +35,28 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-09-01",
+        "endDate": "2025-11-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, Sep. 2025 average weekly earnings ranged from MS\u2019s $993 to WA\u2019s $1,939.",
+        "text": "Among states, Nov. 2025 average weekly earnings ranged from MS\u2019s $986 to WA\u2019s $1,550.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-09-01",
+        "endDate": "2025-11-01",
         "indicator": "retail_trade_employment",
         "states": [
             "US",
-            "DC",
+            "UT",
+            "IL",
             "RI",
-            "NH"
+            "LA",
+            "DC"
         ],
-        "text": "In Sep. 2025, retail employment fell year-over-year in 18 states and DC.",
+        "text": "Retail employment in Nov. 2025 fell year-over-year in 19 states and DC.",
         "unit": "change"
     },
     {
@@ -91,15 +93,13 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-09-01",
-        "indicator": "federal_public_employment",
+        "endDate": "2025-11-01",
+        "indicator": "leisure_and_hospitality_employment",
         "states": [
             "US",
-            "MD",
-            "MT",
-            "ID"
+            "NH"
         ],
-        "text": "In Sep. 2025, MD, MT, and ID saw the steepest year-over-year declines in federal gov. jobs.",
+        "text": "In Nov. 2025, NH saw the steepest year-over-year decline in leisure and hospitality jobs.",
         "unit": "change"
     }
 ]
