@@ -23,15 +23,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-07-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "ND",
-            "FL",
+            "WY",
             "SC"
         ],
-        "text": "Q2 2025 state GDP growth over the year ranged from 0.1% in ND to 3.5% in FL and SC.",
+        "text": "Q3 2025 state GDP growth over the year ranged from 0.3% in WY to 3.5% in SC.",
         "unit": "change"
     },
     {
@@ -60,14 +59,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-07-01",
         "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-04-01",
+        "startDate": "2019-07-01",
         "states": [
             "US",
-            "CT"
+            "HI"
         ],
-        "text": "Q2 2025 real accommodation and food services GDP was below pre-pandemic levels in 22 states and DC.",
+        "text": "Q3 2025 real accommodation and food services GDP was below pre-pandemic levels in 23 states and DC.",
         "unit": "raw"
     },
     {
@@ -82,14 +81,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-04-01",
+        "endDate": "2025-07-01",
         "indicator": "manufacturing_state_gdp",
         "states": [
             "US",
-            "NY",
-            "IN"
+            "AZ",
+            "NV"
         ],
-        "text": "Q2 2025 manufacturing GDP growth over the year ranged from -3.4% in NY to 5.7% in IN.",
+        "text": "Q3 2025 manufacturing GDP growth over the year ranged from -2.6% in AZ to 8.7% in NV.",
         "unit": "change"
     },
     {
