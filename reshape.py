@@ -1,7 +1,7 @@
 from json import dump, load
 from random import random
 import time
-import xlrd
+import openpyxl
 import csv
 import datetime
 from tempfile import NamedTemporaryFile
@@ -10,13 +10,12 @@ import shutil
 
 DATE_FORMAT = "%Y-%m-%d"
 rootPath = "/var/www/html/semapp/"
-# rootPath = "/Users/bchartof/Projects/state-economic-monitor/"
+# rootPath = "/Users/silke/Repos/state-economic-monitor/"
 
-def cleanExcelRow(row, dateMode, isDate, colCount):
+def cleanExcelRow(row, isDate, colCount):
 	if isDate:
 		for i, r in enumerate(row):
 			if i >= colCount:
-				# row.remove(r)
 				del row[i:len(row)]
 				break
 			if r == "Geography":
@@ -27,12 +26,13 @@ def cleanExcelRow(row, dateMode, isDate, colCount):
 					month = "%02d" % (((int(r.split(" ")[1].replace("Q","")) - 1) * 3) + 1,)
 					row[i] = year + "-" + month + "-01"
 				else:
-                                        print r
-                                        print row
-					# year, month, day, hour, minute, second = xlrd.xldate_as_tuple(r, dateMode)
-					pyDate = datetime.datetime.strptime(r,"%m/%d/%Y")
+					print(r)
+					print(row)
+					if isinstance(r, datetime.datetime):
+						pyDate = r
+					else:
+						pyDate = datetime.datetime.strptime(str(r), "%m/%d/%Y")
 					row[i] = pyDate.strftime(DATE_FORMAT)
-					# return row
 		return row
 	else:
 		for i, r in enumerate(row):
@@ -42,23 +42,18 @@ def cleanExcelRow(row, dateMode, isDate, colCount):
 		if row[0] == "US Average":
 			row[0] = "United States"
 			return row
-		if row[0] == "":
+		if row[0] == "" or row[0] is None:
 			return row
 		else:
 			return row
 
 
-
-
-
-
 def buildCSVs(indicator):
-	wb = xlrd.open_workbook(rootPath + 'static/data/source/%s.xlsx'%indicator)
-	dateMode = wb.datemode
+	wb = openpyxl.load_workbook(rootPath + 'static/data/source/%s.xlsx' % indicator, data_only=True)
 
 	if(indicator != "house_price_index"):
-		raw = wb.sheet_by_index(0)	
-		
+		raw = wb.worksheets[0]
+
 		fileName = indicator
 		if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment" or indicator == "leisure_and_hospitality_employment" or indicator == "manufacturing_employment" or indicator == "retail_trade_employment"):
 			fileName += "_raw_in_thousands"
@@ -67,50 +62,48 @@ def buildCSVs(indicator):
 		else:
 			fileName += "_raw"
 
-		rawFile = open(rootPath + 'static/data/csv/%s.csv'%fileName, 'wb')
-		rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
-		
-		colCount = len(filter( lambda x : x.ctype != 0 and x != "", raw.row(5)))
+		with open(rootPath + 'static/data/csv/%s.csv' % fileName, 'w', newline='') as rawFile:
+			rawWriter = csv.writer(rawFile, quoting=csv.QUOTE_ALL)
 
-		for rownum in range(3, raw.nrows):
-			row = raw.row(rownum)
-			if(row[0].ctype == 0):
-				break
-			else:
-				isDate = (rownum == 3)
-				rawWriter.writerow( cleanExcelRow(raw.row_values(rownum), dateMode, isDate, colCount) )
-		
-		rawFile.close()
+			# Count non-empty cells in row 6 (0-indexed row 5)
+			row6 = [cell.value for cell in raw[6]]
+			colCount = len(list(filter(lambda x: x is not None and x != "", row6)))
+
+			for rownum in range(4, raw.max_row + 1):
+				row = [cell.value for cell in raw[rownum]]
+				if(row[0] is None or row[0] == ""):
+					break
+				else:
+					isDate = (rownum == 4)
+					rawWriter.writerow(cleanExcelRow(row, isDate, colCount))
 
 	if(indicator != "unemployment_rate"):
 		if(indicator == "house_price_index"):
 			sheetIndex = 0
 		else:
 			sheetIndex = 1
-		change = wb.sheet_by_index(sheetIndex)
-		changeFile = open(rootPath + 'static/data/csv/%s_yoy_percent_change.csv'%indicator, 'wb')
-		changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
-		
-		colCount = len(filter( lambda x : x.ctype != 0 and x != "", change.row(5)))
+		change = wb.worksheets[sheetIndex]
 
-		for rownum in range(3, change.nrows):
-			row = change.row(rownum)
-			if(row[0] == ""):
-				break
-			else:
-				isDate = (rownum == 3)
-				changeWriter.writerow( cleanExcelRow(change.row_values(rownum), dateMode, isDate, colCount) )
+		with open(rootPath + 'static/data/csv/%s_yoy_percent_change.csv' % indicator, 'w', newline='') as changeFile:
+			changeWriter = csv.writer(changeFile, quoting=csv.QUOTE_ALL)
 
-		changeFile.close()
+			row6 = [cell.value for cell in change[6]]
+			colCount = len(list(filter(lambda x: x is not None and x != "", row6)))
 
-
+			for rownum in range(4, change.max_row + 1):
+				row = [cell.value for cell in change[rownum]]
+				if(row[0] is None or row[0] == ""):
+					break
+				else:
+					isDate = (rownum == 4)
+					changeWriter.writerow(cleanExcelRow(row, isDate, colCount))
 
 
-
-fipsReader = csv.reader(open(rootPath + "static/data/mapping/state_fips.csv", 'rU'))
-nameToFips = {}
-for row in fipsReader:
-	nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
+with open(rootPath + "static/data/mapping/state_fips.csv", 'r') as fipsFile:
+	fipsReader = csv.reader(fipsFile)
+	nameToFips = {}
+	for row in fipsReader:
+		nameToFips[row[2]] = { "abbr": row[1], "fips": row[0], "name": row[2] }
 
 
 indicators = ["federal_public_employment", "house_price_index", "private_employment", "public_employment", "state_and_local_public_employment", "state_gdp", "total_employment", "unemployment_rate", "weekly_earnings","state_and_local_public_education_employment","leisure_and_hospitality_employment","manufacturing_employment","retail_trade_employment","accommodation_and_food_services_state_gdp","retail_trade_state_gdp","government_state_gdp","manufacturing_state_gdp"]
@@ -133,16 +126,17 @@ for index, indicator in enumerate(indicators):
 		else:
 			fileName += "_raw"
 
-		rawReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
-		rawCountReader = csv.reader(open(rootPath + "static/data/csv/%s.csv"%fileName, 'rU'))
-		dates = rawReader.next()
+		with open(rootPath + "static/data/csv/%s.csv" % fileName, 'r') as rawCsvFile:
+			rawReader = csv.reader(rawCsvFile)
+			rows = list(rawReader)
+
+		dates = rows[0]
 		terminalDates[key] = {"firstDate" : dates[1], "lastDate" : dates[len(dates) - 1]}
 
-		rowCount = sum(1 for row in rawCountReader) - 2
-		for rowIndex, row in enumerate(rawReader):
+		for row in rows[1:]:
 			name = row[0]
 			if(name == ""):
-				print indicator
+				print(indicator)
 
 			for i in range(1, len(row)):
 				date = dates[i]
@@ -153,7 +147,7 @@ for index, indicator in enumerate(indicators):
 				if tempKey not in tempDict:
 					tempDict[tempKey] = {}
 
-				cleanVal = "" if (value == "") else float(value)
+				cleanVal = "" if (value == "" or value is None or str(value).startswith("#")) else float(value)
 				if(indicator == "federal_public_employment" or indicator == "private_employment" or indicator == "public_employment" or indicator == "state_and_local_public_employment" or indicator == "total_employment" or indicator == "state_and_local_public_education_employment" or indicator == "leisure_and_hospitality_employment" or indicator == "manufacturing_employment" or indicator == "retail_trade_employment" ):
 					cleanVal *= 1000
 				elif(indicator == "state_gdp" or indicator == "accommodation_and_food_services_state_gdp" or indicator == "retail_trade_state_gdp" or indicator == "government_state_gdp" or indicator == "manufacturing_state_gdp" ):
@@ -163,14 +157,15 @@ for index, indicator in enumerate(indicators):
 for index, indicator in enumerate(indicators):
 	if(indicator != "unemployment_rate"):
 		key = str(index) + "c"
-		changeReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
-		changeCountReader = csv.reader(open(rootPath + "static/data/csv/%s_yoy_percent_change.csv"%indicator, 'rU'))
-		dates = changeReader.next()
+
+		with open(rootPath + "static/data/csv/%s_yoy_percent_change.csv" % indicator, 'r') as changeCsvFile:
+			changeReader = csv.reader(changeCsvFile)
+			rows = list(changeReader)
+
+		dates = rows[0]
 		terminalDates[key] = {"firstDate" : dates[1], "lastDate" : dates[len(dates) - 1]}
 
-		rowCount = sum(1 for row in changeCountReader) - 2
-
-		for rowIndex, row in enumerate(changeReader):
+		for row in rows[1:]:
 			name = row[0]
 
 			for i in range(1, len(row)):
@@ -180,8 +175,8 @@ for index, indicator in enumerate(indicators):
 				tempKey = abbr + "_" + date
 				if tempKey not in tempDict:
 					tempDict[tempKey] = {}
-				
-				cleanVal = "" if (value == "") else float(value)
+
+				cleanVal = "" if (value == "" or value is None or str(value).startswith("#")) else float(value)
 				tempDict[tempKey][key] = cleanVal
 
 
@@ -212,27 +207,27 @@ dataOut["lastUpdated"] = now.strftime("%B %d, %Y")
 quarterly = ["house_price_index_yoy_percent_change.csv","state_gdp_raw_in_millions.csv","state_gdp_yoy_percent_change.csv","accommodation_and_food_services_state_gdp_raw_in_millions.csv", "accommodation_and_food_services_state_gdp_yoy_percent_change.csv", "retail_trade_state_gdp_raw_in_millions.csv", "retail_trade_state_gdp_yoy_percent_change.csv", "government_state_gdp_raw_in_millions.csv", "government_state_gdp_yoy_percent_change.csv", "manufacturing_state_gdp_raw_in_millions.csv", "manufacturing_state_gdp_yoy_percent_change.csv"]
 
 for filename in quarterly:
-	tempfile = NamedTemporaryFile(delete=False)
+	tempfile = NamedTemporaryFile(mode='w', delete=False, newline='')
 
-	with open(rootPath + 'static/data/csv/' + filename, 'rb') as csvFile, tempfile:
-	    reader = csv.reader(csvFile, delimiter=',', quotechar='"')
-	    writer = csv.writer(tempfile, delimiter=',', quotechar='"')
-	    dates = reader.next()
-	    newDates = []
-	    for i, r in enumerate(dates):
-	    	if r == "Geography":
-	    		newDates.append(r)
-	    		continue
-	        tempDate = r.split("-")
-	        tempYear = tempDate[0]
-	        tempMonth = int(tempDate[1])
-	        tempQ = ((tempMonth-1)/3) + 1
-	        newDates.append(tempYear + " Q" + str(tempQ))
+	with open(rootPath + 'static/data/csv/' + filename, 'r', newline='') as csvFile, tempfile:
+		reader = csv.reader(csvFile, delimiter=',', quotechar='"')
+		writer = csv.writer(tempfile, delimiter=',', quotechar='"')
+		dates = next(reader)
+		newDates = []
+		for i, r in enumerate(dates):
+			if r == "Geography":
+				newDates.append(r)
+				continue
+			tempDate = r.split("-")
+			tempYear = tempDate[0]
+			tempMonth = int(tempDate[1])
+			tempQ = ((tempMonth-1)//3) + 1
+			newDates.append(tempYear + " Q" + str(tempQ))
 
-	    writer.writerow(newDates)
+		writer.writerow(newDates)
 
-	    for row in reader:
-	        writer.writerow(row)
+		for row in reader:
+			writer.writerow(row)
 
 	shutil.move(tempfile.name, rootPath + 'static/data/csv/' + filename)
 
@@ -246,4 +241,3 @@ with open(rootPath + 'static/data/figures/pretty.json', 'wt') as out:
 #write a one line json for consumption in JS
 with open(rootPath + 'static/data/figures/data.json', 'wt') as out:
     res = dump(dataOut, out, sort_keys=True, separators=(',', ':'))
-

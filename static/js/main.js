@@ -33,10 +33,10 @@ function setParams(params){
 	if(typeof(params.init) != "undefined"){
 		d3.select("#paramData").data([ params ])
 	}else{
-		var d = d3.select("#paramData").data()[0]
-		var keys = Object.keys(params)
-		for (var i = 0; i < keys.length; i++) {
-			var key = keys[i]
+		const d = d3.select("#paramData").data()[0]
+		const keys = Object.keys(params)
+		for (let i = 0; i < keys.length; i++) {
+			const key = keys[i]
 			if (key != "text") d[key] = params[key]
 		}
 		d3.select("#paramData").data([d])
@@ -59,7 +59,7 @@ function getKey(indicator, unit){
 	return orderedIndicators.indexOf(indicator) + unit[0]
 }
 function makeCSV(data, indicator, unit, filename) {
-  var key = getKey(indicator, unit)
+  const key = getKey(indicator, unit)
   if(isUSHidden()){
   	data = data.filter(function(o){ return o.abbr != "US" })
   }
@@ -76,7 +76,7 @@ function makeCSV(data, indicator, unit, filename) {
   // if(indicator == "state_and_local_public_education_employment"){
   // 	data = data.filter(function(o){ return o.abbr != "US" })	
   // }
-  var divisor;
+  let divisor;
   	if(unit == "change"){
   		divisor = 1;
   	}
@@ -95,16 +95,16 @@ function makeCSV(data, indicator, unit, filename) {
 
   // Building the CSV from the Data two-dimensional array
   // Each column is separated by ";" and new line "\n" for next row
-  var csvContent = '';
-  var dates = []
-  var tempData = {}
+  let csvContent = '';
+  const dates = []
+  const tempData = {}
 
   data.forEach(function(infoObject, index) {
-  	var newDate
+  	let newDate
   	if(indicator == "house_price_index" || indicator.search("state_gdp") != -1){
-  		var tempDate = infoObject["date"].split("-"),
+  		const tempDate = infoObject["date"].split("-"),
   			tempYear = tempDate[0],
-  			tempQ = ((+tempDate[1]-1)/3)+1,
+  			tempQ = ((+tempDate[1]-1)/3)+1
   			newDate = tempYear + " Q" + tempQ
 
   	}else{
@@ -120,10 +120,10 @@ function makeCSV(data, indicator, unit, filename) {
   	if(dates.indexOf(newDate) == -1) dates.push(newDate)
   	headerString = "Geography," + dates.join(",")
 
-  	var state = infoObject["abbr"];
-  	var value;
+  	const state = infoObject["abbr"];
+  	let value;
 
-  var year;
+  let year;
 
 	if(
 		(indicator == "state_and_local_public_education_employment" && (state == "DC" || state == "HI" || state == "MO"))
@@ -191,16 +191,16 @@ function makeCSV(data, indicator, unit, filename) {
 	// }
  //  });
   
-  var args = {
+  const args = {
     data: csvContent,
-    filename: filename,      
+    filename: filename,
   };
 
   return args
 }
 
 function getFilename(chartType, indicator, unit, filetype){
-	var newUnit;
+	let newUnit;
 	if(filetype == "csv"){
 		if(unit == "change"){
 			newUnit = "yoy_percent_change"
@@ -230,7 +230,7 @@ function getFilename(chartType, indicator, unit, filetype){
 }
 
 function setToQuarterly(moment){
-	var q = (Math.floor(moment.month()/3)),
+	const q = (Math.floor(moment.month()/3)),
 		m = q*3
 	moment.month(m)
 }
@@ -268,8 +268,8 @@ function formatValue(indicator, unit, value){
 	}
 }
 function sanitizeDates(startDate, endDate, opts){
-	var params = getParams()
-	var startMoment = moment(startDate),
+	const params = getParams()
+	let startMoment = moment(startDate),
 		endMoment = moment(endDate),
 		firstMoment = (opts.hasOwnProperty("firstDate")) ? moment(opts.firstDate) : moment(params.firstDate),
 		lastMoment = (opts.hasOwnProperty("lastDate")) ? moment(opts.lastDate) : moment(params.lastDate);
@@ -331,7 +331,7 @@ function sanitizeDates(startDate, endDate, opts){
 
 }
 function closePopup(puClass){
-	var popups = (puClass == "all") ? d3.selectAll(".popupMenu") : d3.select(".popupMenu." + puClass);
+	const popups = (puClass == "all") ? d3.selectAll(".popupMenu") : d3.select(".popupMenu." + puClass);
 	d3.selectAll(".pu-dlRow .pu-checkBox").classed("active", false)
 	d3.select(".popupScreen")
 		.transition()
@@ -410,18 +410,18 @@ function closeMenus(exception){
 }
 function disableBarMenuMonths(year, lastDate){
 	if(year == moment(lastDate).year()){
-		var lastMonth = moment(lastDate).month() +1,
+		const lastMonth = moment(lastDate).month() +1,
 			lastQuarter = Math.ceil(+lastMonth/3.0),
 			indicator = getParams().indicator,
 			quarterly = isQuarterly(indicator)
 		if(quarterly){
-			for(var i = lastQuarter+1; i <= 4; i++){
+			for(let i = lastQuarter+1; i <= 4; i++){
 				$(".barMonth.q" + i).prop("disabled", true)
 			}
 
 			$(".dateMenu.barChart.quarter" ).selectmenu("refresh")  
 		}else{
-			for(var i = lastMonth+1; i <= 12; i++){
+			for(let i = lastMonth+1; i <= 12; i++){
 				$(".barMonth.m" + i).prop("disabled", true)
 			}
 
@@ -435,7 +435,7 @@ function disableBarMenuMonths(year, lastDate){
 	}
 }
 function buildBarDateMenus(endDate, lastDate){
-	var params = getParams(),
+	const params = getParams(),
 		firstYear = params.firstDate.split("-")[0],
 		endYear = moment(endDate).year(),
 		endMonth = moment(endDate).month(),
@@ -445,7 +445,7 @@ function buildBarDateMenus(endDate, lastDate){
 
 	barYearMenu.selectAll("option").remove()
 
-	for(var yr = firstYear; yr <= lastYear; yr++){
+	for(let yr = firstYear; yr <= lastYear; yr++){
 		barYearMenu.append("option")
 			.attr("value", yr)
 			.attr("class", "barYear y" + yr)
@@ -463,7 +463,7 @@ function buildBarDateMenus(endDate, lastDate){
 		},
 		change: function(event, d){
 			event.stopPropagation();
-			var params = getParams(),
+			const params = getParams(),
 				endMonth = +params.endDate.split("-")[1],
 				endString = getDateString(endMonth, +d.item.value),
 				cleanDates = sanitizeDates(params.startDate, endString, {});
@@ -487,7 +487,7 @@ function buildBarDateMenus(endDate, lastDate){
 		},
 		change: function(event, d){
 			event.stopPropagation();
-			var params = getParams(),
+			const params = getParams(),
 				endYear = +params.endDate.split("-")[0],
 				endString = getDateString(+d.item.value, endYear),
 				cleanDates = sanitizeDates(params.startDate, endString, {});
@@ -508,7 +508,7 @@ function buildBarDateMenus(endDate, lastDate){
 		},
 		change: function(event, d){
 			event.stopPropagation();
-			var params = getParams(),
+			const params = getParams(),
 				endYear = +params.endDate.split("-")[0],
 				endString = getDateString(+d.item.value, endYear),
 				cleanDates = sanitizeDates(params.startDate, endString, {});
@@ -523,7 +523,7 @@ function buildBarDateMenus(endDate, lastDate){
 	disableBarMenuMonths(endYear, params.lastDate)
 }
 function buildLineDateMenu(startDate, endDate, menu){
-	var params = getParams(),
+	const params = getParams(),
 		indicator = params.indicator,
 		lastDate = params.lastDate,
 		firstDate = params.firstDate,
@@ -548,15 +548,15 @@ function buildLineDateMenu(startDate, endDate, menu){
 			.attr("class", "calMenuTitle")
 			.text(calMenuTitle)
 
-		var leftArrow = d3.select(menuSelector)
+		const leftArrow = d3.select(menuSelector)
 			.append("div")
 			.attr("class", "left calendarArrow")
 		leftArrow.append("img")
 			.attr("src", pathPrefix + "static/img/calendarArrow.png")
 		leftArrow.on("click", function(){
 			d3.event.stopPropagation();
-			var rightMostYear = (+d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year") + 3),
-			
+			const rightMostYear = (+d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year") + 3),
+
 			firstYear = +(getParams().firstDate.split("-")[0])
 			if(firstYear + 3 == rightMostYear) return false
 
@@ -571,7 +571,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 				})
 		})
 
-		var yearContainer = d3.select(menuSelector)
+		const yearContainer = d3.select(menuSelector)
 			.append("div")
 				.attr("class", "calendarFrame")
 				.append("div")
@@ -580,7 +580,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 					.data(data)
 					.enter().append("div")
 						.attr("class", function(d, i){
-							var active;
+							let active;
 							if(menu == "start"){
 								active = ( (i + firstYear) < startYear || (i + firstYear) > startYear + 3) ? "" : " active"
 							}else{
@@ -593,7 +593,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 		yearContainer.append("input")
 			.attr("class", function(d, i){
-				var active = (startYear <= (i + firstYear) && endYear >= (i + firstYear)) ? " active" : ""
+				const active = (startYear <= (i + firstYear) && endYear >= (i + firstYear)) ? " active" : ""
 				return "calYearLabel" + active
 			})
 			.attr("value", function(d,i){ return i + firstYear })
@@ -604,7 +604,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 			.data(function(d){ return d})
 			.enter().append("div")
 				.attr("class", function(d, i){
-					var year = +d3.select(this.parentNode).attr("data-year"),
+					let year = +d3.select(this.parentNode).attr("data-year"),
 						month = (i + 1),
 						quarterly = (month == 1 || month == 4 || month == 7 || month == 10) ? " quarterShow" : " quarterHide",
 						calClass = "calMonth " + menu + " m" + month + quarterly;
@@ -657,7 +657,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 					// return (quarterly && isQuarterly(indicator)) ? ""
 					if(isQuarterly(indicator)){
-						var month = (i + 1),
+						const month = (i + 1),
 							quarterly = (month == 1 || month == 4 || month == 7 || month == 10)
 						
 						return (quarterly) ? "block" : "none"
@@ -668,7 +668,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 				.on("click", function(d, i){
 					d3.event.stopPropagation();
 					if(d3.select(this).classed("start")){
-						var year = +d3.select(this.parentNode).attr("data-year"),
+						const year = +d3.select(this.parentNode).attr("data-year"),
 							params = getParams(),
 							endDate = params.endDate,
 							startString = getDateString(i+1, year)
@@ -677,7 +677,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 						updateDateMenus({"startDate": startString, "endDate": endDate, "calClick": true })
 						updateLineChart(params.indicator, params.unit, params.states, startString, params.endDate)
 					}else{
-						var year = +d3.select(this.parentNode).attr("data-year"),
+						const year = +d3.select(this.parentNode).attr("data-year"),
 							params = getParams(),
 							startDate = params.startDate,
 							endString = getDateString(i+1, year)
@@ -691,14 +691,14 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 				})
 
-		var rightArrow = d3.select(menuSelector)
+		const rightArrow = d3.select(menuSelector)
 			.append("div")
 			.attr("class", "right calendarArrow")
 		rightArrow.append("img")
 			.attr("src", pathPrefix + "static/img/calendarArrow.png")
 		rightArrow.on("click", function(){
 			d3.event.stopPropagation();
-			var leftMostYear = d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year"),
+			const leftMostYear = d3.select(this.parentNode).select(".calendarYearContainer.active").attr("data-year"),
 				lastYear = +getParams().lastDate.split("-")[0]
 			if(+leftMostYear == lastYear){ return false}
 			d3.select(this.parentNode).select(".calendarSubcontainer")
@@ -713,7 +713,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 		d3.selectAll(".calYearLabel")
 			.on("input", function(){
-				var params = getParams(),
+				const params = getParams(),
 					firstYear = +params.firstDate.split("-")[0],
 					lastYear = +params.lastDate.split("-")[0],
 					inputYear = +this.value,
@@ -723,10 +723,10 @@ function buildLineDateMenu(startDate, endDate, menu){
 					}),
 					displayedIndex = displayedYears.indexOf(containerYear)
 
-					var thisInd = this;
+					const thisInd = this;
 
 				if(inputYear >= firstYear && inputYear <= lastYear){
-					var startLeft, endLeft;
+					let startLeft, endLeft;
 					if(inputYear == containerYear){
 						return false;
 					}
@@ -747,7 +747,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 						.on("end", function(){
 							d3.select(this).style("left","0px")
 
-							var newYears;
+							let newYears;
 							if( (displayedIndex == 0 && +inputYear < lastYear - 1) || (+inputYear == +firstYear) || (+inputYear == +firstYear+1 && displayedIndex == 2)) {
 								newYears = [+inputYear, +inputYear+1, +inputYear+2, +inputYear+3]
 							}
@@ -762,8 +762,8 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 
 							d3.select(this.parentNode.parentNode).selectAll(".calendarYearContainer").classed("active", false)
-							for(var i = 0; i < newYears.length; i++){
-								var ny = newYears[i]
+							for(let i = 0; i < newYears.length; i++){
+								const ny = newYears[i]
 								if(ny <= +lastYear && ny >= +firstYear){
 									d3.select(this.parentNode.parentNode).select(".calendarYearContainer.y" + newYears[i]).classed("active", true)
 								}
@@ -776,12 +776,12 @@ function buildLineDateMenu(startDate, endDate, menu){
 				}
 			})
 			.on("blur", function(){
-				var inputYear = d3.select(this).attr("value"),
+				const inputYear = d3.select(this).attr("value"),
 					containerYear = d3.select(this.parentNode).attr("data-year")
 				d3.select(this).property("value", containerYear)
 			})
 
-		var doneButton = d3.select(menuSelector)
+		const doneButton = d3.select(menuSelector)
 			.append("div")
 			.attr("class", "calDoneButton")
 			.text("Done")
@@ -794,7 +794,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 			.attr("class","datesAvailHeader")
 			.text("Available dates")
 
-		var datesAvailText = d3.select(menuSelector).append("div")
+		const datesAvailText = d3.select(menuSelector).append("div")
 			.attr("class", "datesAvailText")
 			.html(function(){
 							if(isQuarterly(indicator)){
@@ -813,7 +813,7 @@ function buildLineDateMenu(startDate, endDate, menu){
 
 }
 function buildStateMenu(stateNamesData, states){
-	var leftData = stateNamesData.slice(0, 26),
+	const leftData = stateNamesData.slice(0, 26),
 		rightData = stateNamesData.slice(26,51),
 		left = d3.select(".stateNameCol.left")
 			.selectAll(".stateName")
@@ -833,7 +833,7 @@ function buildStateMenu(stateNamesData, states){
 		.attr("id", function(d){ return "stateName_" + d.abbr})
 		.on("click", function(d){
 			d3.event.stopPropagation();
-			var params = getParams()
+			const params = getParams()
 
 			if(d3.select(this).classed("active")){
 				d3.select(this).classed("active", false)
@@ -848,7 +848,7 @@ function buildStateMenu(stateNamesData, states){
 		})
 	d3.selectAll(".clearSelections")
 		.on("click", function(d){
-			var params = getParams(),
+			const params = getParams(),
 				cleared = params.states.filter(function(o){ return o == "US" })
 
 			setParams({"states": cleared})
@@ -856,7 +856,7 @@ function buildStateMenu(stateNamesData, states){
 		})
 	d3.select("#hideUS")
 		.on("click", function(){
-			var params = getParams(),
+			let params = getParams(),
 				newStates = params.states;
 
 			if(d3.select(this).classed("show")){
@@ -891,8 +891,8 @@ function buildStateMenu(stateNamesData, states){
 		})
 }
 function updateSelectedStates(states, hoverState){
-	var nonUS = states.filter(function(o){ return o != "US" })
-	var params = getParams();
+	const nonUS = states.filter(function(o){ return o != "US" })
+	const params = getParams();
 	d3.selectAll(".stateName").classed("active", false)
 	if(nonUS.length > 0){
 		d3.selectAll(".clearSelections").classed("disabled", false)
@@ -900,8 +900,8 @@ function updateSelectedStates(states, hoverState){
 		d3.selectAll(".clearSelections").classed("disabled", true)
 	}
 
-	var downloadStateText = ""
-	for(var i = 0; i < nonUS.length; i++){
+	let downloadStateText = ""
+	for(let i = 0; i < nonUS.length; i++){
 		s = nonUS[i]
 		d3.select("#stateName_" + s).classed("active", true)
 		if(i < nonUS.length - 1){
@@ -939,7 +939,7 @@ function updateSelectedStates(states, hoverState){
 }
 function updateDateMenus(opts){
 	
-	var params = getParams(),
+	const params = getParams(),
 		firstDate = params.firstDate.split("-"),
 		lastDate = params.lastDate.split("-"),
 		firstYear = +firstDate[0],
@@ -949,7 +949,7 @@ function updateDateMenus(opts){
 
 
 	if(opts.hasOwnProperty("startDate")){
-		var startDate = opts.startDate,
+		const startDate = opts.startDate,
 			endDate = opts.endDate,
 			startYear = +startDate.split("-")[0],
 			endYear = +endDate.split("-")[0],
@@ -1002,7 +1002,7 @@ function updateDateMenus(opts){
 		d3.select(".calendarContainer.startDate")
 			.selectAll(".calMonth")
 			.attr("class", function(d, i){
-				var year = +d3.select(this.parentNode).attr("data-year"),
+				let year = +d3.select(this.parentNode).attr("data-year"),
 					month = monthAbbrs.indexOf(d) + 1,
 					quarterly = (month == 1 || month == 4 || month == 7 || month == 10) ? " quarterShow" : " quarterHide",
 					calClass = "calMonth start m" + month + quarterly;
@@ -1031,13 +1031,13 @@ function updateDateMenus(opts){
 			d3.select(".calendarContainer.startDate")
 				.selectAll(".calendarYearContainer")
 				.attr("class", function(d, i){
-					var active = ( (i + firstYear) < startYear || (i + firstYear) > startYear + 3) ? "" : " active"
+					const active = ( (i + firstYear) < startYear || (i + firstYear) > startYear + 3) ? "" : " active"
 					return "calendarYearContainer y" + (i + firstYear) +  active
 				})
 		}
 	}
 	if(opts.hasOwnProperty("endDate")){
-		var startDate = opts.startDate,
+		const startDate = opts.startDate,
 			endDate = opts.endDate,
 			startYear = +startDate.split("-")[0],
 			endYear = +endDate.split("-")[0],
@@ -1148,7 +1148,7 @@ function updateDateMenus(opts){
 		d3.select(".calendarContainer.endDate")
 			.selectAll(".calMonth")
 			.attr("class", function(d, i){
-				var year = +d3.select(this.parentNode).attr("data-year"),
+				let year = +d3.select(this.parentNode).attr("data-year"),
 					month = monthAbbrs.indexOf(d) + 1,
 					quarterly = (month == 1 || month == 4 || month == 7 || month == 10) ? " quarterShow" : " quarterHide",
 					calClass = "calMonth end m" + month + quarterly;
@@ -1179,7 +1179,7 @@ function updateDateMenus(opts){
 			d3.select(".calendarContainer.endDate")
 				.selectAll(".calendarYearContainer")
 				.attr("class", function(d, i){
-					var active = ( (i + firstYear) > endYear + 2 || (i + firstYear) < endYear - 2) ? "" : " active"
+					const active = ( (i + firstYear) > endYear + 2 || (i + firstYear) < endYear - 2) ? "" : " active"
 					return "calendarYearContainer y" + (i + firstYear) +  active
 				})
 		}
@@ -1190,10 +1190,10 @@ function updateDateMenus(opts){
 
 function buildShareURL(){
 	// states, indicator, unit, startDate, endDate
-	var params = getParams()
-	var shareURL = window.location.origin + window.location.pathname + "?"
+	const params = getParams()
+	let shareURL = window.location.origin + window.location.pathname + "?"
 
-	var startString = parseInt(params.startDate.split("-")[1]) + "-" + params.startDate.split("-")[0],
+	const startString = parseInt(params.startDate.split("-")[1]) + "-" + params.startDate.split("-")[0],
 		endString = parseInt(params.endDate.split("-")[1]) + "-" + params.endDate.split("-")[0],
 		stateString = params.states.join("-"),
 		indicatorString = params.indicator,
@@ -1208,7 +1208,7 @@ function buildShareURL(){
 
 }
 function buildCards(cardData, isDefault){
-	var card = d3.select("#cardContentContainer")
+	const card = d3.select("#cardContentContainer")
 		.selectAll(".card")
 		.data(cardData)
 		.enter().append("div")
@@ -1218,7 +1218,7 @@ function buildCards(cardData, isDefault){
 		})
 
 		.style("background-color", function(d,i){
-			var bgColors = ["#1696d2", "#46ABDB"]
+			const bgColors = ["#1696d2", "#46ABDB"]
 			return bgColors[i%2]
 		})
 		.on("mouseover", function(){
@@ -1229,16 +1229,16 @@ function buildCards(cardData, isDefault){
 		})
 		.on("click", function(d){
 			d3.event.stopPropagation();
-			var oldIndicator = getParams().indicator
+			const oldIndicator = getParams().indicator
 			closeMenus("cardButton")
 			d3.selectAll(".card").classed("selected", false)
 			d3.select(this).classed("selected", true)
 
-			var scrollToSelector = (widthUnder(768)) ? "#chartAreaContainer" : "#sectionNames"
+			const scrollToSelector = (widthUnder(768)) ? "#chartAreaContainer" : "#sectionNames"
 			$("html, body").animate({ scrollTop: $(scrollToSelector).offset().top - 20 }, 1000);
 
-			var copy = JSON.parse(JSON.stringify(d))
-			var params = ["indicator", "startDate", "endDate", "unit", "states"]
+			const copy = JSON.parse(JSON.stringify(d))
+			const params = ["indicator", "startDate", "endDate", "unit", "states"]
 			if(copy.hasOwnProperty("startDate")) showChart("line")
 			else showChart("bar")
 			setParams(copy)
@@ -1258,7 +1258,7 @@ function buildCards(cardData, isDefault){
 		})
 
 
-	var bottomRow = card.append("div")
+	const bottomRow = card.append("div")
 		.attr("class", "cardBottomRow")
 
 	bottomRow.append("div")
@@ -1283,16 +1283,16 @@ function buildCards(cardData, isDefault){
 					window.open(getTwitterShare(buildShareURL(), d.text), "_blank")
 				})
 
-	var downArrow = card.append("div")
+	const downArrow = card.append("div")
 		.attr("class", "cardDownArrow")
 
 	downArrow.append("img")
 		.attr("src", function(d,i){
-			var downArrows = ["static/img/downArrow1.png", "static/img/downArrow2.png"]
+			const downArrows = ["static/img/downArrow1.png", "static/img/downArrow2.png"]
 			return downArrows[i%2]
 		})
 
-	var wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
+	const wellWidth = d3.select("#cardContentContainer").node().getBoundingClientRect().width,
 		cardCount = cardData.length,
 		cardWidth = 342;
 	
@@ -1301,7 +1301,7 @@ function buildCards(cardData, isDefault){
 	d3.select(".cardArrow.left")
 		.on("click", function(){
 			d3.select(".cardArrow.right").style("display", "block").style("opacity",1)
-			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
+			const progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
 			if(progress == 0){
 				d3.select(this).style("opacity",.1)
 				return false
@@ -1317,7 +1317,7 @@ function buildCards(cardData, isDefault){
 	d3.select(".cardArrow.right")
 		.on("click", function(){
 			d3.select(".cardArrow.left").style("display", "block").style("opacity",1)
-			var progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
+			const progress = Math.abs(Math.round(+(d3.select(".card").style("left").replace("px",""))/cardWidth))
 			if
 			((d3.selectAll(".card").nodes()[cardCount-1].getBoundingClientRect().right  < window.innerWidth)
 			||
@@ -1335,45 +1335,45 @@ function buildCards(cardData, isDefault){
 
 }
 function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate, containerType){
-	var allGeographies = getBarData(chartData, indicator, unit, endDate),
+	const allGeographies = getBarData(chartData, indicator, unit, endDate),
 		data = allGeographies.states,
 		usData = allGeographies.US,
 		key = getKey(indicator, unit);
 
-	var margin = getBarMargins(),
+	let margin = getBarMargins(),
 		w = getBarW(),
 		h = getBarH(),
 		width = w - margin.left - margin.right,
 		height = h - margin.top - margin.bottom;
 
-	var printClass;
+	let printClass, svg;
 	if(containerType == "screen"){
-		var margin = getBarMargins(),
-			w = getBarW(),
-			h = getBarH(),
-			width = w - margin.left - margin.right,
-			height = h - margin.top - margin.bottom;
-		var svg = d3.select("#barChartContainer").append("svg").attr("id", "barChartScreen").attr("width", w).attr("height", h)
+		margin = getBarMargins();
+		w = getBarW();
+		h = getBarH();
+		width = w - margin.left - margin.right;
+		height = h - margin.top - margin.bottom;
+		svg = d3.select("#barChartContainer").append("svg").attr("id", "barChartScreen").attr("width", w).attr("height", h)
 		printClass = ""
 	}else{
-		var margin = getBarMargins(),
-			w = BAR_IMG_WIDTH,
-			h = BAR_IMG_HEIGHT,
-			width = w - margin.left - margin.right,
-			height = h - margin.top - margin.bottom;
-		
-		var svg = d3.select("#hiddenBarChartContainer").append("svg").attr("id", "barChartHide").attr("width", w - 20 + 10).attr("height", 60 + h + MAP_IMG_WIDTH *.6)
+		margin = getBarMargins();
+		w = BAR_IMG_WIDTH;
+		h = BAR_IMG_HEIGHT;
+		width = w - margin.left - margin.right;
+		height = h - margin.top - margin.bottom;
+
+		svg = d3.select("#hiddenBarChartContainer").append("svg").attr("id", "barChartHide").attr("width", w - 20 + 10).attr("height", 60 + h + MAP_IMG_WIDTH *.6)
 		printClass = "imgMapHide"
 	}
 
-	var imgScootch = (containerType == "screen") ? 0 : 30;
-	var leftScootch = (containerType == "screen") ? 0 : 10;
+	const imgScootch = (containerType == "screen") ? 0 : 30;
+	const leftScootch = (containerType == "screen") ? 0 : 10;
 
-	var g = svg.append("g").attr("transform", "translate(" + (margin.left + leftScootch) + "," + (margin.top + imgScootch) + ")").attr("class",printClass);
+	const g = svg.append("g").attr("transform", "translate(" + (margin.left + leftScootch) + "," + (margin.top + imgScootch) + ")").attr("class",printClass);
 
-	var paddingInner = (widthUnder(768)) ? 0 : 0.1
-	var align = (widthUnder(768)) ? 1 : 0.2
-	var x = d3.scaleBand()
+	const paddingInner = (widthUnder(768)) ? 0 : 0.1
+	const align = (widthUnder(768)) ? 1 : 0.2
+	const x = d3.scaleBand()
 		.range([0, width])
 		.paddingInner(paddingInner)
 		.align(align)
@@ -1383,13 +1383,13 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		}));
 
 
-	var yMax = d3.max(data, function (d) { return d[key]; }),
+	const yMax = d3.max(data, function (d) { return d[key]; }),
 		yMin = Math.min( 0, d3.min(data, function (d) { return d[key]; }) ),
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
 		newYMax = yMax + (.2 * yRange)
 
-	var y = d3.scaleLinear()
+	const y = d3.scaleLinear()
 		.rangeRound([height, 0])
 		.domain([newYMin, newYMax])
 		.nice();
@@ -1411,7 +1411,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				.attr("dy", "-.55em")
 				.attr("transform", "rotate(-90)" );
 
-	var axisSelection = g.append("g")
+	const axisSelection = g.append("g")
 		.attr("class", "bar y axis")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount).tickFormat(abbrevFormat))
 
@@ -1419,8 +1419,8 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 	axisSelection.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
 
-	var colorScale = getColorScale(y, data, key)
-	
+	const colorScale = getColorScale(y, data, key)
+
 	g.selectAll(".usLine")
 		.data(usData)
 		.enter().append("line")
@@ -1434,7 +1434,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return y(d[key]);
 			})
 			.style("opacity", function(){ return (isUSHidden()) ? 0 : 1})
-	var usXScootch = (widthUnder(768)) ? -3: 2;
+	const usXScootch = (widthUnder(768)) ? -3: 2;
 	g.selectAll(".usText")
 		.data(usData)
 		.enter().append("text")
@@ -1499,8 +1499,8 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		.data(data)
 		.enter().append("rect")
 			.attr("class", function(d){
-				var active = (states.indexOf(d.abbr) == -1) ? "" : " active"
-				var download = (containerType == "screen") ? "" : " download"
+				const active = (states.indexOf(d.abbr) == -1) ? "" : " active"
+				const download = (containerType == "screen") ? "" : " download"
 				return "barTooltipBg br-" + d.abbr + active + download;
 			})
 			.attr("x", function (d, i) {
@@ -1518,8 +1518,8 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 		.data(data)
 		.enter().append("text")
 			.attr("class", function(d){
-				var active = (states.indexOf(d.abbr) == -1) ? "" : " active"
-				var download = (containerType == "screen") ? "" : " download"
+				const active = (states.indexOf(d.abbr) == -1) ? "" : " active"
+				const download = (containerType == "screen") ? "" : " download"
 				return "barTooltip bt-" + d.abbr + active + download;
 			})
 			.attr("text-anchor", "end")
@@ -1527,12 +1527,12 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 				return x(d.abbr) + .5*x.bandwidth() + 4;
 			})
 			.attr("y", function (d) {
-				var chars = formatValue(indicator, unit, d[key]).replace(".","").replace(",","").length
+				const chars = formatValue(indicator, unit, d[key]).replace(".","").replace(",","").length
 				return (+d[key] > 0) ? y(+d[key]) - chars*6 : y(0) + Math.abs(y(+d[key]) - y(0)) + ((chars-1)*6)
 			})
 			.attr("transform",function(d){
 
-				var bx = x(d.abbr) + .5*x.bandwidth() + 4,
+				const bx = x(d.abbr) + .5*x.bandwidth() + 4,
 					chars = formatValue(indicator, unit, d[key]).replace(".","").replace(",","").length,
 					by = (+d[key] > 0) ? y(+d[key]) - chars*6 : y(0) + Math.abs(y(+d[key]) - y(0)) + ((chars-1)*6)
 
@@ -1555,7 +1555,7 @@ function buildBarChart(chartData, topojsonData, indicator, unit, states, endDate
 function buildMapLegend(legend, colorScale, ticks, indicator, year, unit, svgInput){
 	legend.selectAll("*").remove()
 
-	var colorRange = colorScale.range(),
+	const colorRange = colorScale.range(),
 		colorDomain = colorScale.domain(),
 		keyWidth = 12,
 		keyHeight = widthUnder(500) ? 16 : 20,
@@ -1615,47 +1615,48 @@ function buildMapLegend(legend, colorScale, ticks, indicator, year, unit, svgInp
 	}
 }
 function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInput){
+	let width, height, svg, projection;
 	if(!svgInput){
 	//TO BE UPDATED, abstract out to new function
-		var width = getMapWidth(),
-			height = .6 * width,
-			svgWidth = widthUnder(400) ? width + 50 : width;
+		width = getMapWidth();
+		height = .6 * width;
+		const svgWidth = widthUnder(400) ? width + 50 : width;
 			mapContainerWidth = (widthUnder(768)) ? ( (widthUnder(400) ? (width + 50) + "px" : (width + 50) + "px") ) : (width + 40) + "px";
 	//end update
-		
-		var svg = d3.select("#mapContainer")
+
+		svg = d3.select("#mapContainer")
 			.style("width", mapContainerWidth )
 			.insert("svg", "#chartButtonContainer")
 				.attr("width", svgWidth)
 				.attr("height", height)
 				.append("g");
 
-		var xScootch = (widthUnder(768)) ? 18 : 0
-		var projection = d3.geoAlbersUsa()
+		const xScootch = (widthUnder(768)) ? 18 : 0
+		projection = d3.geoAlbersUsa()
 			.scale(1.2 * width)
 			.translate([width/2 - xScootch, height/2]);
 	}else{
-		var width = MAP_IMG_WIDTH,
-			height = .6 * width + 30
+		width = MAP_IMG_WIDTH;
+		height = .6 * width + 30
 
 		svg = svgInput.append("g")
 
-		var projection = d3.geoAlbersUsa()
+		projection = d3.geoAlbersUsa()
 			.scale(1.2 * width)
 			.translate([BAR_IMG_WIDTH/2, BAR_IMG_HEIGHT + 230 + 5]);
 	}
 
-	var year = moment(data[0].date).year(),
+	const year = moment(data[0].date).year(),
 		unit = key.slice(-1)
 
-	var path = d3.geoPath()
+	const path = d3.geoPath()
 		.projection(projection);
 
 	topojsonData.objects.states.geometries.forEach(function(u){
 		u["properties"]["values"] = data.filter(function(o){ return o.abbr == u.properties.postal })[0]
 	})
 
-	var printClass = (svgInput) ? " imgBarHide" : ""
+	const printClass = (svgInput) ? " imgBarHide" : ""
 	svg.selectAll("path.stateShape")
 		.data(topojson.feature(topojsonData, topojsonData.objects.states).features)
 		.enter().append("path")
@@ -1724,7 +1725,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		.attr("d", path(topojson.mesh(topojsonData, topojsonData.objects.states, function(a, b) { return a !== b; })));
 
 	
-	var legend = svg.append("g")
+	const legend = svg.append("g")
 		.attr("id", "mapLegend")
 		.attr("class", printClass)
 
@@ -1744,7 +1745,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 		}
 		function mapTextColor(d, abbr){
 			if(mapTextExternal(abbr)) return "#000"
-		  	var bgColor = colorScale(d["properties"]["values"][key])
+		  	const bgColor = colorScale(d["properties"]["values"][key])
 		  	return (bgColor == blue1 || bgColor == blue2 || bgColor == blue3) ? "#000" : "#fff"
 		}
 		function drawMapElbow(x1, x2, y1, y2, s, abbr){
@@ -1772,7 +1773,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 				.attr("class", "mapImgLine imgBarHide mi-" + abbr)
 		}
 		function mapTextX(d, abbr, row){
-			var scootch = (mapTextExternalOneRow(abbr) && row == 2) ? 10 : 0,
+			let scootch = (mapTextExternalOneRow(abbr) && row == 2) ? 10 : 0,
 				start = path.centroid(d)[0];
 
 			switch(abbr){
@@ -1832,7 +1833,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			return start + scootch;
 		}
 		function mapTextY(d, abbr, row){
-			var scootch = (row == 2 && !mapTextExternalOneRow(abbr)) ? 10 : 0,
+			let scootch = (row == 2 && !mapTextExternalOneRow(abbr)) ? 10 : 0,
 				start = path.centroid(d)[1];
 
 			switch(abbr){
@@ -1888,9 +1889,9 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 
 		// d3.selectAll(".pu-ButtonRow .pu-smallButton.active")
 
-		var params = getParams()
+		const params = getParams()
 
-		var superTitleText;
+		let superTitleText;
 		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earnings"){
 			superTitleText = "PRIVATE"
 		}
@@ -1900,19 +1901,19 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			superTitleText = ""
 		}
 
-		var superTitleEl = svg.append("text")
+		const superTitleEl = svg.append("text")
 			.attr("class", "imgSuperTitle imgMapHide")
 			.attr("y",0)
 			.attr("x", 10)
 			.text(superTitleText)
 
-		var title = svg.append("text")
+		const title = svg.append("text")
 			.attr("class", "imgTitle imgMapHide")
 			.attr("y",28)
 			.attr("x",10)
 			.text(function(){
 
-					var params = getParams(),
+					const params = getParams(),
 						indicator = params.indicator,
 						endDate = params.endDate,
 						endYear = +(endDate.split("-")[0]),
@@ -1923,14 +1924,14 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					}else{
 						return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
 					}
-					
+
 				})
 		title.append("tspan")
 			.attr("class", "imgSubtitle")
 			.attr("dx", 10)
 			.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
 		
-		var superTitleText;
+		superTitleText = undefined;
 		if(params.indicator =="private_employment" || params.indicator == "leisure_and_hospitality_employment" || params.indicator == "manufacturing_employment" || params.indicator == "retail_trade_employment" || params.indicator == "weekly_earnings"){
 			superTitleText = "PRIVATE"
 		}
@@ -1944,18 +1945,18 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 
 
 		if(params.unit == "change"){
-			var superTitleEl = svg.append("text")
+			const superTitleEl = svg.append("text")
 				.attr("class", "imgSuperTitle imgBarHide imgBothHide imgHidden")
 				.attr("y",BAR_IMG_HEIGHT + 20)
 				.attr("x", 239)
 				.text(superTitleText)
 
-			var bottomTitle = svg.append("text")
+			const bottomTitle = svg.append("text")
 				.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
 				.attr("y",BAR_IMG_HEIGHT + 43)
 				.attr("x",239)
 				.text(function(){
-						var params = getParams(),
+						const params = getParams(),
 							indicator = params.indicator,
 							endDate = params.endDate,
 							endYear = +(endDate.split("-")[0]),
@@ -1967,25 +1968,25 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 							return indicatorNames[indicator] + ", " + monthFull[endMonth - 1] + " " + endYear
 						}
 				})
-			var bottomSubtitle = svg.append("text")
+			const bottomSubtitle = svg.append("text")
 					.attr("class", "imgSubtitle imgBarHide imgBothHide imgHidden")
 					.attr("y",BAR_IMG_HEIGHT + 60)
 					.attr("x",239)
 					.text("(" + indicatorUnits[params.indicator][params.unit] + ")")
 
 		}else{
-			var superTitleEl = svg.append("text")
+			const superTitleEl = svg.append("text")
 				.attr("class", "imgSuperTitle imgBarHide imgBothHide imgHidden")
 				.attr("y",BAR_IMG_HEIGHT + 24)
 				.attr("x", 239)
 				.text(superTitleText)
 
-			var bottomTitle = svg.append("text")
+			const bottomTitle = svg.append("text")
 				.attr("class", "imgTitle imgBarHide imgBothHide imgHidden")
 				.attr("y",BAR_IMG_HEIGHT + 52)
 				.attr("x",239)
 				.text(function(){
-						var params = getParams(),
+						const params = getParams(),
 							indicator = params.indicator,
 							endDate = params.endDate,
 							endYear = +(endDate.split("-")[0]),
@@ -2005,10 +2006,10 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 
 		}
 
-		var section = getSection(getParams().indicator),
+		const section = getSection(getParams().indicator),
 			sourceText = sources[section].replace(/<[^>]*>?/gm, '') + " via the State Economic Monitor"
 
-		var barLogo = svg.append("text")
+		const barLogo = svg.append("text")
 			.attr("class", "imgLogo imgMapHide imgBothHide imgHidden")
 			.text("Urban")
 			.attr("x", 850)
@@ -2017,7 +2018,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("dx",5)
 			.text("Institute")
 
-		var barSource = svg.append("text")
+		const barSource = svg.append("text")
 			.attr("class", "imgSource imgMapHide imgBothHide imgHidden")
 			.text("Source:")
 			.attr("x", 10)
@@ -2027,7 +2028,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.text(sourceText)
 
 
-		var bothLogo = svg.append("text")
+		const bothLogo = svg.append("text")
 			.attr("class", "imgLogo imgBarHide imgMapHide")
 			.text("Urban")
 			.attr("x", 850)
@@ -2036,7 +2037,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("dx",5)
 			.text("Institute")
 
-		var bothSource = svg.append("text")
+		const bothSource = svg.append("text")
 			.attr("class", "imgSource imgBarHide imgMapHide")
 			.text("Source:")
 			.attr("x", 10)
@@ -2045,7 +2046,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("dx",5)
 			.text(sourceText)
 
-		var mapLogo = svg.append("text")
+		const mapLogo = svg.append("text")
 			.attr("class", "imgLogo imgBarHide imgBothHide imgHidden")
 			.text("Urban")
 			.attr("x", 711)
@@ -2054,7 +2055,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 			.attr("dx",5)
 			.text("Institute")
 
-		var mapSource = svg.append("text")
+		const mapSource = svg.append("text")
 			.attr("class", "imgSource imgBarHide imgBothHide imgHidden")
 			.text("Source:")
 			.attr("x", 240)
@@ -2101,7 +2102,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 					return "mapVal mapLabel imgBarHide " + "mv-" + d.properties.postal
 				})
 				.text(function(d){
-					var mval = d["properties"]["values"][key]
+					const mval = d["properties"]["values"][key]
 					return formatValue(params.indicator, params.unit, mval)
 					// return "77.77M"
 				})
@@ -2137,7 +2138,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 
 		// drawMapLine(745, 757, 419, svg)
 
-		var allStates = d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr != "US" }).map(function(o){ return o.abbr })
+		const allStates = d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr != "US" }).map(function(o){ return o.abbr })
 		// highlightStates(allStates)
 
 		showImgLabels(params.states)
@@ -2145,7 +2146,7 @@ function buildMap(data, topojsonData, key, colorScale, indicator, ticks, svgInpu
 	}
 }
 function showImgLabels(states){
-	var disp = (states == "all") ? "block" : "none"
+	const disp = (states == "all") ? "block" : "none"
 	
 	d3.selectAll("#hiddenBarChartContainer .barTooltipBg").style("display",disp)
 	d3.selectAll("#hiddenBarChartContainer .barTooltip").style("display",disp)
@@ -2164,8 +2165,8 @@ function showImgLabels(states){
 		})
 	}
 	if(getParams().indicator == "state_and_local_public_education_employment"){
-		var hide = ["DC","HI","MO"]
-		for(var i = 0; i < hide.length; i++){
+		const hide = ["DC","HI","MO"]
+		for(let i = 0; i < hide.length; i++){
 			d3.selectAll("#hiddenBarChartContainer .bt-" + hide[i]).style("display","none")
 			d3.selectAll("#hiddenBarChartContainer .br-" + hide[i]).style("display","none")
 			d3.selectAll("#hiddenBarChartContainer .mv-" + hide[i]).style("display","none")
@@ -2175,12 +2176,12 @@ function showImgLabels(states){
 	}
 }
 function getColorScale(y, data, key){
-	var tickBreaks = y.ticks(barTickCount),
+	const tickBreaks = y.ticks(barTickCount),
 		colorBreaks = [],
 		flipVals = data.map(function(o){ return o[key]})
 		// vals = data.map(function(o){ return o[key]}).reverse()
 
-	for(var i = tickBreaks.length - 1; i > 0; i--){
+	for(let i = tickBreaks.length - 1; i > 0; i--){
 		if(tickBreaks[i] > flipVals[0] && tickBreaks[i-1] > flipVals[0]){
 			tickBreaks.pop()
 		}else{
@@ -2188,12 +2189,12 @@ function getColorScale(y, data, key){
 		}
 	}
 
-	var step = (tickBreaks.length > 13) ? 2 : 1
+	const step = (tickBreaks.length > 13) ? 2 : 1
 
 
-	var vals = flipVals.reverse()
+	const vals = flipVals.reverse()
 
-	for(var i = 1; i < tickBreaks.length; i += step){
+	for(let i = 1; i < tickBreaks.length; i += step){
 		if(vals[0] > tickBreaks[i]){
 			continue;
 		}else{
@@ -2207,7 +2208,7 @@ function getColorScale(y, data, key){
 	}
 
 
-	var colorRange;
+	let colorRange;
 	switch (colorBreaks.length){
 		case 3:
 			colorRange = fourBlues;
@@ -2229,7 +2230,7 @@ function getColorScale(y, data, key){
 			break;
 	}
 
-	var colorScale = d3.scaleThreshold()
+	const colorScale = d3.scaleThreshold()
 		.range(colorRange)
 		.domain(colorBreaks)
 
@@ -2239,7 +2240,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 //ADD FUNCTIONALITY
 	//if active, show linecontainer by default and hide barcontainer
 
-	var dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
+	let dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
 		data = dataObj.data,
 		extent = dataObj.extent,
 		key = getKey(indicator, unit),
@@ -2274,13 +2275,13 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 
 
 
-	var g = svg.append("g")
+	const g = svg.append("g")
 		.attr("id", "linesContainer")
 			.attr("width", width + margin.left + horizontalScootch + margin.right)
 			.attr("height", height + margin.top + margin.bottom )
 		.attr("transform","translate(" + margin.left + "," + (margin.top + verticalScootch) + ")");
 
-	var defs = svg.append("defs"),
+	const defs = svg.append("defs"),
 		lineClippingPath = defs.append("clipPath").attr("id", "lineClippingPath"),
 		dotClippingPath = defs.append("clipPath").attr("id", "dotClippingPath");
 
@@ -2296,25 +2297,25 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		.attr("width", width+20)
 		.attr("height", height+20)
 
-	var x = getLineX(startDate, endDate, width)
-	var y = getLineY(extent, height)
+	const x = getLineX(startDate, endDate, width)
+	const y = getLineY(extent, height)
 
 	g.append("g")
 		.attr("class", "line axis x")
 		.attr("transform", "translate(0," + height + ")")
 		.call(d3.axisBottom(x).ticks(getLineXTickCount(containerType, startDate, endDate, indicator)))
 		.selectAll("text").text(function(d, i){
-			var md = moment(d)
+			const md = moment(d)
 			if(isQuarterly(indicator)){
 				return "Q" + (md.month()/3 + 1) + " " + md.year()
 			}else{
 				return (md.month()+1) + "/" + md.year()
 			}
-			
+
 		});
 
 
-	var axisSelection = g.append("g")
+	const axisSelection = g.append("g")
 		.attr("class", "line axis y")
 		.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
 
@@ -2335,20 +2336,20 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 					(d.values)
 			})
 
-	var labelYPositions = []
-	var labelHeight = 14
-	var stateLabel = g.selectAll(".stateLabel")
+	const labelYPositions = []
+	const labelHeight = 14
+	const stateLabel = g.selectAll(".stateLabel")
 		.data(data, function(d) { return d.key; })
 		.enter()
 		.append("g")
 		.attr("class", function(d){ return d.key + " stateLabel" })
 		.sort(function(a, b){
-			var aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
-			var bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
+			const aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
+			const bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
 			return y(aLast[key]) - y(bLast[key])
 		})
 		.attr("transform", function(d,i){
-			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
+			let dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
 				yPosition = y(dLast[key])+4
 			if(i == 0){
 				labelYPositions.push(yPosition)
@@ -2380,12 +2381,12 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			.attr("cx",0)
 			.attr("cy",0)
 
-		var voronoi = d3.voronoi()
+		const voronoi = d3.voronoi()
 			.x(function(d) { return x(parseTime()(d.date)); })
 			.y(function(d) { return y(d[key]); })
 			.extent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
 
-		var voronoiGroup = g.append("g")
+		const voronoiGroup = g.append("g")
 			.attr("class", "voronoi");
 
 		voronoiGroup.selectAll("path")
@@ -2398,7 +2399,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	}
 
 	if(containerType == "hide"){
-		var superTitleText;
+		let superTitleText;
 		if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earningsf"){
 			superTitleText = "PRIVATE"
 		}
@@ -2407,13 +2408,13 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 		}else{
 			superTitleText = ""
 		}
-		var superTitleEl = svg.append("text")
+		const superTitleEl = svg.append("text")
 			.attr("class", "imgSuperTitle")
 			.attr("y",0)
 			.attr("x", 10)
 			.text(superTitleText)
 
-		var title = svg.append("text")
+		const title = svg.append("text")
 			.attr("class", "imgTitle")
 			.attr("y",28)
 			.attr("x", 10)
@@ -2423,7 +2424,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			.attr("dx", 10)
 			.text("(" + indicatorUnits[indicator][unit] + ")")
 
-		var lineLogo = svg.append("text")
+		const lineLogo = svg.append("text")
 			.attr("class", "imgLogo")
 			.text("Urban")
 			.attr("x", 860)
@@ -2433,10 +2434,10 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 			.text("Institute")
 
 
-		var section = getSection(getParams().indicator),
+		const section = getSection(getParams().indicator),
 			sourceText = sources[section].replace(/<[^>]*>?/gm, '') + " via the State Economic Monitor"
 
-		var lineSource = svg.append("text")
+		const lineSource = svg.append("text")
 			.attr("class", "imgSource")
 			.text("Source: ")
 			.attr("x", 10)
@@ -2449,7 +2450,7 @@ function buildLineChart(chartData, indicator, unit, states, startDate, endDate, 
 	callback()
 }
 function getLineX(startDate, endDate, width){
-	var x = d3.scaleTime()
+	const x = d3.scaleTime()
 		.domain([parseTime()(startDate), parseTime()(endDate)])
 		.range([ 0, width ]);
 
@@ -2457,8 +2458,8 @@ function getLineX(startDate, endDate, width){
 }
 function getLineY(extent, height){
 
-	var range = extent[1]-extent[0]
-	var y = d3.scaleLinear()
+	const range = extent[1]-extent[0]
+	const y = d3.scaleLinear()
 		.domain([extent[0] - range*.1, extent[1] + range*.1])
 		.range([ height, 0 ]);
 
@@ -2481,7 +2482,7 @@ function getLineH(){
 	return 520;
 }
 function getLineXTickCount(containerType, startDate, endDate, indicator){
-	var monthsBetween = moment(endDate).diff(moment(startDate), 'months', true),
+	const monthsBetween = moment(endDate).diff(moment(startDate), 'months', true),
 		quartersBetween = (monthsBetween/3) + 1
 
 	if(containerType == "hide"){
@@ -2509,14 +2510,14 @@ function getLineXTickCount(containerType, startDate, endDate, indicator){
 	}
 }
 function clickLineChart(d, containerType){
-	var svg;
+	let svg;
 	if(containerType == "hide"){
 		svg = d3.select("#hiddenLineChartContainer")
 	}else{
 		svg = d3.select("#lineChartContainer")
 	}
-	
-	var line = svg.select(".state.line." + d.data.abbr),
+
+	const line = svg.select(".state.line." + d.data.abbr),
 		dot = svg.select(".linechartDot"),
 		label = svg.select(".stateLabel." + d.data.abbr)
 
@@ -2543,7 +2544,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	if(indicator == "state_and_local_public_education_employment" && (d.data.abbr == "DC" || d.data.abbr == "MO" || d.data.abbr == "HI")){
 		return false;
 	}
-	var key = getKey(indicator, unit)
+	const key = getKey(indicator, unit)
 
 	if (getParams().states.length == 0) return false
 
@@ -2551,7 +2552,7 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 		return false;
 	}
 
-	var chartData = getChartData(),
+	const chartData = getChartData(),
 		usData = chartData.filter(function(o){ return (o.date == d.data.date && o.abbr == "US")})[0]
 
 	d3.select(".multiYear.tt-top-row.mouseover").style("display","block")
@@ -2559,19 +2560,19 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	d3.select(".multiYear.tt-us")
 		.style("display", "block")
 		.text(function(){
-			var prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
+			const prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
 			return "United States " + prefix + formatValue(indicator, unit, usData[key]) + suffix
-			
+
 		})
 
-	var x = getLineX(startDate, endDate, width)
-	var y = getLineY(extent, height)
+	const x = getLineX(startDate, endDate, width)
+	const y = getLineY(extent, height)
 
 	d3.selectAll(".state.line").classed("active", false)
 	d3.selectAll(".stateLabel").classed("active", false)
 	
-	var line = d3.select(".state.line." + d.data.abbr),
+	const line = d3.select(".state.line." + d.data.abbr),
 		dot = d3.select(".linechartDot"),
 		label = d3.select(".stateLabel." + d.data.abbr)
 
@@ -2590,12 +2591,12 @@ function mouseoverLineChart(d, indicator, unit, startDate, endDate, extent, widt
 	d3.selectAll(".stateDisplayName").text(getStateName(d.data.abbr))
 	d3.select(".multiYear.tt-states").text(getStateName(d.data.abbr))
 	d3.selectAll(".multiYear.tt-value").text(function(){
-		var prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
+		const prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 			suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
 		return prefix + formatValue(indicator, unit, d["data"][key]) + suffix
 	})
 	d3.select(".multiYear.tt-date.point").text(function(){
-		var md = moment(d.data.date)
+		const md = moment(d.data.date)
 		if(isQuarterly(indicator)){
 			return "Q" + (md.month()/3 + 1) + " " + md.year()
 		}else{
@@ -2616,7 +2617,7 @@ function mouseoutLineChart(d) {
 	d3.selectAll(".clicked").nodes().forEach(function(l){ l.parentNode.appendChild(l) })
 }
 function getBarMargins(){
-	var mr = (widthUnder(1200)) ? 10 : 30
+	const mr = (widthUnder(1200)) ? 10 : 30
 	return margin = {top: 30, right: mr, bottom: 30, left: 20}
 }
 function getBarW(){
@@ -2647,20 +2648,20 @@ function getMapWidth(){
 	}
 }
 function getBarData(chartData, indicator, unit, date){
-	var indicatorData = chartData,
+	const indicatorData = chartData,
 		key = getKey(indicator, unit),
 		dataByDate = d3.nest()
 			.key(function(d){ return d.date })
 			.entries(indicatorData)
 
-	var allGeographies = dataByDate.filter(function(d){ return d.key == date })[0].values,
+	const allGeographies = dataByDate.filter(function(d){ return d.key == date })[0].values,
 		usData = allGeographies.filter(function(d){ return d.abbr == "US" }),
 		stateData = allGeographies.filter(function(d){ return d.abbr != "US" }).sort(function(a, b){ return b[key] - a[key] })
 
 	return {"US": usData, "states": stateData}
 }
 function getLineData(chartData, indicator, unit, states, startDate, endDate){
-	var indicatorData = chartData,
+	const indicatorData = chartData,
 		key = getKey(indicator, unit),
 		startDateD = parseTime()(startDate),
 		endDateD = parseTime()(endDate),
@@ -2695,31 +2696,31 @@ function updateBarChart(indicator, unit, date){
 		}, 200)
 	}
 
-	var chartData = getChartData()
-	var allGeographies = getBarData(chartData, indicator, unit, date),
+	const chartData = getChartData()
+	const allGeographies = getBarData(chartData, indicator, unit, date),
 
 	data = allGeographies.states,
 	usData = allGeographies.US
 
-	var key = getKey(indicator, unit)
+	const key = getKey(indicator, unit)
 
 
-	var margin = getBarMargins(),
+	const margin = getBarMargins(),
 		w = getBarW(),
 		h = getBarH(),
 		width = w - margin.left - margin.right,
 		height = h - margin.top - margin.bottom;
 
 //TO BE UPDATED (abstract out to new func)
-	var paddingInner = (widthUnder(768)) ? 0 : 0.1
-	var align = (widthUnder(768)) ? 1 : 0.2
-	var x = d3.scaleBand()
+	const paddingInner = (widthUnder(768)) ? 0 : 0.1
+	const align = (widthUnder(768)) ? 1 : 0.2
+	const x = d3.scaleBand()
 		.range([0, width])
 		.paddingInner(paddingInner)
 		.align(align)
 		.paddingOuter(0.8);
 
-	var y = d3.scaleLinear()
+	const y = d3.scaleLinear()
 		.rangeRound([height, 0]);
 
 	x.domain(data.map(
@@ -2728,7 +2729,7 @@ function updateBarChart(indicator, unit, date){
 		})
 	);
 
-	var yMax = d3.max(data, function (d) { return d[key]; }),
+	const yMax = d3.max(data, function (d) { return d[key]; }),
 		yMin = Math.min( 0, d3.min(data, function (d) { return d[key]; }) ),
 		yRange = yMax - yMin,
 		newYMin = (yMin == 0) ? 0 : yMin - (.2*yRange),
@@ -2746,11 +2747,11 @@ function updateBarChart(indicator, unit, date){
 //end update
 
 
-	var colorScale = getColorScale(y, data, key)
+	const colorScale = getColorScale(y, data, key)
 
 	d3.select(".singleYear.tt-us")
 		.text(function(){
-			var prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
+			const prefix = ((indicator.search("state_gdp") != -1 || indicator == "weekly_earnings") && unit == "raw") ? "$" : "",
 				suffix = (unit == "change" || indicator == "unemployment_rate") ? "%" : ""
 			return "United States " + prefix + formatValue(indicator, unit, usData[0][key]) + suffix
 			
@@ -2821,7 +2822,7 @@ function updateBarChart(indicator, unit, date){
 			.call(d3.axisBottom(x))
 			.selectAll(".tick")
 			.delay(function(d, i){ return  i * 10 });
-	var axisTransition = d3.select(".bar.y.axis")
+	const axisTransition = d3.select(".bar.y.axis")
 		.transition()
 		.duration(500)
 			.call(d3.axisLeft(y).tickSize(-width).ticks(barTickCount).tickFormat(abbrevFormat))
@@ -2829,8 +2830,8 @@ function updateBarChart(indicator, unit, date){
 		axisTransition.selectAll("text").attr("text-anchor", "start").attr("x", -1*getBarMargins().left)
 		axisTransition.selectAll("line").attr("stroke", function(d,i){ return (d == 0) ? "#000" : "#dedddd" })
 
-	var isLine = d3.select(".timeTypeContainer.active").classed("line")
-	var hideNoDataGdp = (
+	const isLine = d3.select(".timeTypeContainer.active").classed("line")
+	const hideNoDataGdp = (
 		indicator == "manufacturing_state_gdp"
 		&& !isLine
 		&& ( ( moment(date).year() == 2017 && unit == "raw")
@@ -2838,8 +2839,8 @@ function updateBarChart(indicator, unit, date){
 			(( (moment(date).year() == 2017 || moment(date).year() == 2018 ) && unit == "change"))
 			)
 		)
-	var hideGdp = ["DC","WY"]
-	for(var i = 0; i < hideGdp.length; i++){
+	const hideGdp = ["DC","WY"]
+	for(let i = 0; i < hideGdp.length; i++){
 		d3.selectAll("#stateName_" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 		d3.selectAll(".bt-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 		d3.selectAll(".b-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
@@ -2851,9 +2852,9 @@ function updateBarChart(indicator, unit, date){
 
 }
 function updateMap(data, key, colorScale, ticks){
-	var indicator = orderedIndicators[+key.slice(0,-1)],
+	const indicator = orderedIndicators[+key.slice(0,-1)],
 		unit = key.slice(-1)
-	var year = moment(data[0].date).year()
+	const year = moment(data[0].date).year()
 	data.forEach(function(d){
 		d3.select(".ss-" + d.abbr)
 			.classed("disabled", function(){
@@ -2883,7 +2884,7 @@ function updateMap(data, key, colorScale, ticks){
 			})
 	})
 
-	var legend = d3.select("#mapLegend")
+	const legend = d3.select("#mapLegend")
 	buildMapLegend(legend, colorScale, ticks, indicator, year, unit, false)
 }
 
@@ -2893,26 +2894,26 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 	mouseoutLineChart();
 
-	var chartData = getChartData();
+	const chartData = getChartData();
 
-	var dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
+	const dataObj = getLineData(chartData, indicator, unit, states, startDate, endDate),
 		data = dataObj.data,
 		extent = dataObj.extent;
 
 
-	var key = getKey(indicator, unit);
+	const key = getKey(indicator, unit);
 
-	var margin = getLineMargins(),
+	const margin = getLineMargins(),
 		width = getLineW() - margin.left - margin.right,
 		height = getLineH() - margin.top - margin.bottom;
 
-	var x = getLineX(startDate, endDate, width)
-	var y = getLineY(extent, height)
+	const x = getLineX(startDate, endDate, width)
+	const y = getLineY(extent, height)
 
-	var oldStates = d3.selectAll(".state.line").data().map(function(o){ return o.key })
-	var oldClicked = d3.selectAll(".state.line.clicked").data().map(function(o){ return o.key })
+	const oldStates = d3.selectAll(".state.line").data().map(function(o){ return o.key })
+	const oldClicked = d3.selectAll(".state.line.clicked").data().map(function(o){ return o.key })
 
-	var stateLabels = d3.select("#linesContainer")
+	const stateLabels = d3.select("#linesContainer")
 		.selectAll(".stateLabel")
 		.data(data, function(d) { return d.key; })
 		
@@ -2921,8 +2922,8 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.style("opacity",0)
 		.remove()
 
-	var labelYPositions = []
-	var stateLabel = stateLabels
+	const labelYPositions = []
+	const stateLabel = stateLabels
 		.enter()
 		.insert("g", ".stateLabel")
 		.merge(stateLabels)
@@ -2931,14 +2932,14 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 			return d.key + " stateLabel" + clickedClass
 		})
 	stateLabel.sort(function(a, b){
-		var aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
-		var bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
+		const aLast = a["values"].filter(function(o){ return o.date == endDate })[0]
+		const bLast = b["values"].filter(function(o){ return o.date == endDate })[0]
 		return y(aLast[key]) - y(bLast[key])
 	})
 	.transition()
 		.attr("transform", function(d,i){
 
-			var dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
+			let dLast = d["values"].filter(function(o){ return o.date == endDate })[0],
 				yPosition = y(dLast[key])+4
 			if(i == 0){
 				labelYPositions.push(yPosition)
@@ -2966,7 +2967,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.text(function(d){ return d.key })
 
 
-	var lines = d3.select("#linesContainer")
+	const lines = d3.select("#linesContainer")
 		.selectAll(".state.line")
 		.data(data, function(d) { return d.key; })
 
@@ -2985,7 +2986,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				})
 				.attr("clip-path", "url(#lineClippingPath)")
 				.attr("d", function(d, i){
-					var isNew = (oldStates.indexOf(d.key) == -1)
+					const isNew = (oldStates.indexOf(d.key) == -1)
 					if(isNew){
 						return d3.line()
 							.defined(function(d){ return d[key] != "" })
@@ -2999,9 +3000,9 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				.transition()
 					.duration(800)
 					.attr('d', function (d) {
-						var previous = d3.select(this).attr('d');
+						const previous = d3.select(this).attr('d');
 
-						var current = d3.line()
+						const current = d3.line()
 							.defined(function(d){ return d[key] != "" })
 							.x(function(d) {
 								return x(parseTime()(d.date));
@@ -3022,7 +3023,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				})
 				.attr("clip-path", "url(#lineClippingPath)")
 				.attr("d", function(d, i){
-					var isNew = (oldStates.indexOf(d.key) == -1)
+					const isNew = (oldStates.indexOf(d.key) == -1)
 					if(isNew){
 						return d3.line()
 							.defined(function(d){ return d[key] != "" })
@@ -3036,9 +3037,9 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 				.transition()
 					.duration(800)
 					.attrTween('d', function (d) {
-						var previous = d3.select(this).attr('d');
+						const previous = d3.select(this).attr('d');
 
-						var current = d3.line()
+						const current = d3.line()
 							.defined(function(d){ return d[key] != "" })
 							.x(function(d) {
 								return x(parseTime()(d.date));
@@ -3055,7 +3056,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 		.transition()
 			.call(d3.axisBottom(x).ticks(getLineXTickCount("screen",startDate,endDate,indicator)))
 			.selectAll("text").text(function(d, i){
-				var md = moment(d)
+				const md = moment(d)
 				if(isQuarterly(indicator)){
 					return "Q" + (md.month()/3 + 1) + " " + md.year()
 				}else{
@@ -3073,7 +3074,7 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 					d3.select(this).style("display", "none")
 				})
 
-		var axisTransition = d3.select(".line.axis.y")
+		const axisTransition = d3.select(".line.axis.y")
 			.transition()
 				.call(d3.axisLeft(y).tickSize(-width).ticks(lineTickCount).tickFormat(abbrevFormat))
 		axisTransition.selectAll("text").attr("text-anchor", "start").attr("x", -1*getLineMargins().left)
@@ -3088,14 +3089,14 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 
 
 
-	var voronoi = d3.voronoi()
+	const voronoi = d3.voronoi()
 		.x(function(d) { return x(parseTime()(d.date)); })
 		.y(function(d) { return y(d[key]); })
 		.extent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
 
-	var voronoiGroup = d3.select(".voronoi");
+	const voronoiGroup = d3.select(".voronoi");
 
-	var vg = voronoiGroup.selectAll("path")
+	const vg = voronoiGroup.selectAll("path")
 		.data(voronoi.polygons(d3.merge(data.map(function(d) { return d.values; }))))
 
 	vg.exit().remove()
@@ -3111,14 +3112,13 @@ function updateLineChart(indicator, unit, states, startDate, endDate){
 	
 }
 function updateIndicator(indicator, unit, oldIndicator){
-	var params = getParams(),
-		states = params.states,
-		indicator = (indicator) ? indicator : params.indicator,
-		unit = (unit) ? unit : params.unit,
+	let params = getParams(),
 		states = params.states,
 		startDate = params.startDate,
-		endDate = params.endDate,
-		section = getSection(indicator);
+		endDate = params.endDate;
+	indicator = (indicator) ? indicator : params.indicator;
+	unit = (unit) ? unit : params.unit;
+	let section = getSection(indicator);
 	
 	d3.selectAll(".pu-section.hideable").classed("hide",true)
 	d3.select(".pu-section." + section).classed("hide",false)
@@ -3183,7 +3183,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 		d3.select(".tooltipIcon.raw").classed("hide", false)
 	}
 
-	var key = getKey(indicator, unit),
+	const key = getKey(indicator, unit),
 		terminalDates = getTerminalDates(key),
 		firstDate = terminalDates.firstDate,
 		lastDate = terminalDates.lastDate,
@@ -3192,7 +3192,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 	d3.selectAll(".unitCheckBox").classed("active", false)
 	d3.select(".unitCheckBox." + unit).classed("active", true)
 
-	var superTitle;
+	let superTitle;
 	if(indicator =="private_employment" || indicator == "leisure_and_hospitality_employment" || indicator == "manufacturing_employment" || indicator == "retail_trade_employment" || indicator == "weekly_earnings"){
 		superTitle = "private"
 	}
@@ -3257,9 +3257,9 @@ function updateIndicator(indicator, unit, oldIndicator){
 		d3.select(".timeMenuLabel.quarter").style("display", "none")
 	}
 
-	var hideNoData = (indicator == "state_and_local_public_education_employment")
-	var hide = ["DC","HI","MO"]
-	for(var i = 0; i < hide.length; i++){
+	const hideNoData = (indicator == "state_and_local_public_education_employment")
+	const hide = ["DC","HI","MO"]
+	for(let i = 0; i < hide.length; i++){
 		d3.selectAll("#stateName_" + hide[i]).classed("disabled", hideNoData)
 		d3.selectAll(".bt-" + hide[i]).classed("disabled", hideNoData)
 		d3.selectAll(".b-" + hide[i]).classed("disabled", hideNoData)
@@ -3268,9 +3268,9 @@ function updateIndicator(indicator, unit, oldIndicator){
 		d3.selectAll(".stateLabel." + hide[i]).classed("disabled", hideNoData)
 	}
 
-	var isLine = d3.select(".timeTypeContainer.active").classed("line")
-	
-	var hideNoDataGdp = (
+	const isLine = d3.select(".timeTypeContainer.active").classed("line")
+
+	const hideNoDataGdp = (
 		indicator == "manufacturing_state_gdp"
 		&& !isLine
 		&& ( ( moment(endDate).year() == 2017 && unit == "raw")
@@ -3278,8 +3278,8 @@ function updateIndicator(indicator, unit, oldIndicator){
 			(( (moment(endDate).year() == 2017 || moment(endDate).year() == 2018 ) && unit == "change"))
 			)
 		)
-	var hideGdp = ["DC","WY"]
-	for(var i = 0; i < hideGdp.length; i++){
+	const hideGdp = ["DC","WY"]
+	for(let i = 0; i < hideGdp.length; i++){
 		d3.selectAll("#stateName_" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 		d3.selectAll(".bt-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 		d3.selectAll(".b-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
@@ -3290,7 +3290,7 @@ function updateIndicator(indicator, unit, oldIndicator){
 
 function showChart(chartType){
 	//have 2 divs for bar/line that slide in/out cleanly 
-	var contentWidth = (widthUnder(1085)) ? window.innerWidth + 20 : d3.select("#chartAreaContainer").node().getBoundingClientRect().width
+	const contentWidth = (widthUnder(1085)) ? window.innerWidth + 20 : d3.select("#chartAreaContainer").node().getBoundingClientRect().width
 	if(widthUnder(1200)){
 		d3.select("#singleYearContainer").style("width", getBarW() + "px")	
 		d3.select("#multiYearContainer").style("width", getBarW() + "px")	
@@ -3343,11 +3343,11 @@ function showChart(chartType){
 	d3.select(".timeTypeContainer." + chartType).classed("active", true)
 
 	if(typeof(getParams()) != "undefined"){
-		var unit = getParams().unit,
+		const unit = getParams().unit,
 			indicator = getParams().indicator,
 			isLine = d3.select(".timeTypeContainer.active").classed("line"),
 			date = getParams().endDate
-		var hideNoDataGdp = (
+		const hideNoDataGdp = (
 			indicator == "manufacturing_state_gdp"
 			&& !isLine
 			&& ( ( moment(date).year() == 2017 && unit == "raw")
@@ -3355,8 +3355,8 @@ function showChart(chartType){
 				(( (moment(date).year() == 2017 || moment(date).year() == 2018 ) && unit == "change"))
 				)
 		)
-		var hideGdp = ["DC","WY"]
-		for(var i = 0; i < hideGdp.length; i++){
+		const hideGdp = ["DC","WY"]
+		for(let i = 0; i < hideGdp.length; i++){
 			d3.selectAll("#stateName_" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 			d3.selectAll(".bt-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
 			d3.selectAll(".b-" + hideGdp[i]).classed("disabled", hideNoDataGdp)
@@ -3371,7 +3371,7 @@ function highlightStates(states, hoverState){
 
 	if(widthUnder(768)){
 		d3.select("#mobileStates").selectAll(".mobileState").remove()
-		var mobileState = d3.select("#mobileStates")
+		const mobileState = d3.select("#mobileStates")
 			.selectAll(".mobileState")
 			.data(states)
 			.enter()
@@ -3389,18 +3389,18 @@ function highlightStates(states, hoverState){
 	d3.selectAll(".barTooltip").classed("active", false).style("opacity", 0)
 	d3.selectAll(".barTooltipBg").classed("active", false).style("opacity", 0)
 	params = getParams();
-	var allStates = d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr != "US" }).map(function(o){ return o.abbr })
+	const allStates = d3.select("#stateNamesData").data()[0].filter(function(o){ return o.abbr != "US" }).map(function(o){ return o.abbr })
 
-	for(var i = 0; i < allStates.length; i++){
-		var state = allStates[i],
+	for(let i = 0; i < allStates.length; i++){
+		const state = allStates[i],
 			newClass = (state == hoverState) ? "hovered" : "clicked"
 
 		if(state == "US") continue
 
-		var barState = d3.select(".b-" + state)
+		const barState = d3.select(".b-" + state)
 
 		if(states.indexOf(state) != -1){
-			var mapState = d3.select(".ss-" + state)
+			const mapState = d3.select(".ss-" + state)
 			mapState.classed(newClass, true)
 			mapState.node().parentNode.appendChild(mapState.node())
 
@@ -3415,11 +3415,11 @@ function highlightStates(states, hoverState){
 		}
 
 		if(typeof(hoverState) != "undefined"){
-			var mapHoverState = d3.select(".ss-" + hoverState)
+			const mapHoverState = d3.select(".ss-" + hoverState)
 			mapHoverState.node().parentNode.appendChild(mapHoverState.node())
 		}
 
-		var bval = barState.datum()[getKey(params.indicator, params.unit)],
+		const bval = barState.datum()[getKey(params.indicator, params.unit)],
 			chars = formatValue(params.indicator, params.unit, bval).replace(".","").replace(",","").length,
 			bx = +barState.attr("x") + .5*(+barState.attr("width")) + 3,
 			by = (bval < 0) ?  +barState.attr("y") + +barState.attr("height") + ((chars-1)*5+2) : +barState.attr("y") - chars*5,
@@ -3436,7 +3436,7 @@ function highlightStates(states, hoverState){
 
 		d3.select(".mobileState_" + state)
 			.html(function(){
-					var prefix = ((params.indicator.search("state_gdp") != -1 || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
+					const prefix = ((params.indicator.search("state_gdp") != -1 || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
 						suffix = (params.unit == "change" || params.indicator == "unemployment_rate") ? "%" : ""
 					return getStateName(state) + " :: " + prefix + formatValue(params.indicator, params.unit, bval) + suffix
 
@@ -3459,7 +3459,7 @@ function highlightStates(states, hoverState){
 			d3.select(".singleYear.tt-value")
 				.style("opacity",1)
 				.text(function(){
-					var prefix = ((params.indicator.search("state_gdp") != -1 || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
+					const prefix = ((params.indicator.search("state_gdp") != -1 || params.indicator == "weekly_earnings") && params.unit == "raw") ? "$" : "",
 						suffix = (params.unit == "change" || params.indicator == "unemployment_rate") ? "%" : ""
 					return prefix + formatValue(params.indicator, params.unit, bval) + suffix
 					
@@ -3476,10 +3476,10 @@ function popUp(selector){
 		.style("display", "block")
 		.transition()
 		.style("opacity", 1)
-	var pu = d3.select(".popupMenu." + selector)
+	const pu = d3.select(".popupMenu." + selector)
 
 	pu.style("display", "block")
-	var h = pu.node().getBoundingClientRect().height,
+	const h = pu.node().getBoundingClientRect().height,
 		w = pu.node().getBoundingClientRect().width
 
 	if(h > window.innerHeight - 20){
@@ -3497,7 +3497,7 @@ function popUp(selector){
 		})
 		.style("height", function(){
 			if(h > window.innerHeight - 20 || widthUnder(768)){
-				var heightScootch = (selector == "saveImage") ? 0 : 60
+				const heightScootch = (selector == "saveImage") ? 0 : 60
 				return (window.innerHeight - heightScootch) + "px";
 			}else{
 				return "auto"
@@ -3524,16 +3524,16 @@ function popUp(selector){
 		.style("opacity", 1)
 
 	if(selector == "saveImage"){
-		var chartData = getChartData(),
+		const chartData = getChartData(),
 			topojsonData = getTopojsonData(),
 			params = getParams();
 		d3.select("#hiddenBarChartContainer").style("display", "block")
 		d3.select("#hiddenBarChartContainer").selectAll("svg").remove()
 		buildBarChart(chartData, topojsonData, params.indicator, params.unit, params.states, params.endDate, "hide")
 
-		var activeButton = d3.select(".pu-ButtonRow .pu-smallButton.active")
-		
-		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
+		const activeButton = d3.select(".pu-ButtonRow .pu-smallButton.active")
+
+		const opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".imgHidden").classed("imgHidden", false)
 
@@ -3607,10 +3607,10 @@ function initControls(){
 			if(d3.select(this).classed("open")){
 				closeMenus("none")
 			}else{
-				var key = this.id.split("mt-")[1]
+				const key = this.id.split("mt-")[1]
 				closeMenus(key)
 
-				var newImage = (widthUnder(768)) ? "static/img/none.png" : "static/img/dropdown-bg-active.png"
+				const newImage = (widthUnder(768)) ? "static/img/none.png" : "static/img/dropdown-bg-active.png"
 
 				d3.select(this).select(".menuArrow").attr("src", newImage)
 
@@ -3623,7 +3623,7 @@ function initControls(){
 					d3.select(this.parentNode)
 						.classed("fullScreen",true)
 					if(key == "time"){
-						var pad = (window.innerWidth - 300)*.5
+						const pad = (window.innerWidth - 300)*.5
 						d3.select(this.parentNode)
 							.style("border-left", pad + "px solid #fff")
 							.style("border-right", pad + "px solid #fff")
@@ -3664,7 +3664,7 @@ function initControls(){
 	d3.select(".mobileMenuArrow")
 		.on("click", function(){
 			d3.event.stopPropagation();
-			var stateMenu = d3.select("#mt-state"),
+			const stateMenu = d3.select("#mt-state"),
 				key = "state"
 
 			if(stateMenu.classed("open")){
@@ -3694,13 +3694,13 @@ function initControls(){
 //Initialize indicator tabs and menus
 	d3.selectAll(".sectionName")
 		.on("click", function(){
-			var oldIndicator = getParams().indicator
+			const oldIndicator = getParams().indicator
 			if(d3.select(this).classed("active")){ return false }
 
 			d3.selectAll(".sectionName").classed("active", false)
 			d3.select(this).classed("active", true)
 
-			var section = this.id.split("sn-")[1]
+			const section = this.id.split("sn-")[1]
 			if(section == "housing") updateIndicator("house_price_index", false, oldIndicator)
 			else if (section == "earnings") updateIndicator("weekly_earnings", false, oldIndicator)
 			else if(section == "gdp") updateIndicator("state_gdp", false, oldIndicator)
@@ -3711,14 +3711,14 @@ function initControls(){
 
 	d3.selectAll(".employmentOption")
 		.on("click", function(){
-			var oldIndicator = getParams().indicator
-			var indicator = this.id.split("eo-")[1]
+			const oldIndicator = getParams().indicator
+			const indicator = this.id.split("eo-")[1]
 			updateIndicator(indicator, false, oldIndicator)
 		})
 	d3.selectAll(".gdpOption")
 		.on("click", function(){
-			var oldIndicator = getParams().indicator
-			var indicator = this.id.split("go-")[1]
+			const oldIndicator = getParams().indicator
+			const indicator = this.id.split("go-")[1]
 			updateIndicator(indicator, false, oldIndicator)
 		})
 
@@ -3728,7 +3728,7 @@ function initControls(){
 			if(d3.select(this).classed("disabled")){
 				return false;
 			}
-			var unit = (d3.select(this).classed("raw")) ? "raw" : "change";
+			const unit = (d3.select(this).classed("raw")) ? "raw" : "change";
 			updateIndicator(false, unit, false);
 		})
 	d3.selectAll(".tooltipIcon")
@@ -3749,7 +3749,7 @@ function initControls(){
 	d3.selectAll(".lineMenuDisplay")
 		.on("click", function(){
 			d3.event.stopPropagation();
-			var cal = (d3.select(this).classed("start")) ? d3.select(".calendarParent.startDate") : d3.select(".calendarParent.endDate")
+			const cal = (d3.select(this).classed("start")) ? d3.select(".calendarParent.startDate") : d3.select(".calendarParent.endDate")
 
 			if(cal.classed("visible")){
 				d3.selectAll(".calendarParent").classed("visible", false)
@@ -3767,17 +3767,17 @@ function initControls(){
 	})
 	d3.select(".chartButton.saveImage.line").on("click", function(){
 		d3.event.stopPropagation()
-		var chartData = getChartData(),	
+		const chartData = getChartData(),
 			params = getParams();
 
 		d3.select("#hiddenLineChartContainer").style("display", "block")
 		buildLineChart(chartData, params.indicator, params.unit, params.states, params.startDate, params.endDate, "hide", function(){
-				var clickedAbbrs = d3.selectAll(".stateLabel.clicked").data().map(function(d){ return d.key })
-				for (var i = 0; i < clickedAbbrs.length; i++){
+				const clickedAbbrs = d3.selectAll(".stateLabel.clicked").data().map(function(d){ return d.key })
+				for (let i = 0; i < clickedAbbrs.length; i++){
 					clickLineChart({"data": {"abbr": clickedAbbrs[i] }}, "hide")	
 				}
 				
-				var fileName = getFilename("line", params.indicator, params.unit, "png")
+				const fileName = getFilename("line", params.indicator, params.unit, "png")
 				saveSvgAsPng(document.getElementById("lineChartHide"), fileName, {backgroundColor: "#fff", "encoderOptions" : 1, "scale": 4 });
 				d3.select("#lineChartHide").remove()	
 		})
@@ -3800,7 +3800,7 @@ function initControls(){
 			}else{
 				closeMenus("shareChart")
 				d3.select(this).classed("active", true)
-				var tt = d3.select(this.parentNode).select(".shareTooltip")
+				const tt = d3.select(this.parentNode).select(".shareTooltip")
 				tt.classed("hidden", false)
 				tt.select(".shareText").attr("value", buildShareURL())
 			}
@@ -3829,10 +3829,10 @@ function initControls(){
 	d3.selectAll(".pu-smallButton").on("click", function(){
 		d3.event.stopPropagation();
 		
-		var d3This = d3.select(this)
+		const d3This = d3.select(this)
 		if(d3This.classed("active")) return false
-		
-		var opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
+
+		const opts = {"backgroundColor": "#ffffff", "encoderOptions": 1, "scale": 4 }
 
 		d3.selectAll(".pu-smallButton").classed("active", false)
 		d3This.classed("active", true)
@@ -3865,8 +3865,8 @@ function initControls(){
 
 	d3.select(".pu-bigButton.imgDownload").on("click", function(d){
 		d3.event.stopPropagation();
-		var params = getParams();
-		var fileName = getFilename("bar", params.indicator, params.unit, "png")
+		const params = getParams();
+		const fileName = getFilename("bar", params.indicator, params.unit, "png")
 
 
 
@@ -3875,7 +3875,7 @@ function initControls(){
 	})
 	d3.selectAll(".pu-checkRow").on("click", function(){
 		d3.event.stopPropagation();
-		var d3This = d3.select(this)
+		const d3This = d3.select(this)
 
 		d3.selectAll(".pu-checkBox").classed("active", false)
 		d3This.select(".pu-checkBox").classed("active", true)
@@ -3900,7 +3900,7 @@ function initControls(){
 
 //Download data pop up
 	d3.selectAll(".pu-dlRow").on("click", function(){
-		var cb = d3.select(this).select(".pu-checkBox"),
+		const cb = d3.select(this).select(".pu-checkBox"),
 			button = d3.select(".pu-bigButton.dataDownload"),
 			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
 			a = d3.select("#pu-downloadLink")
@@ -3927,11 +3927,11 @@ function initControls(){
 				d3.selectAll(".employmentButton").classed("active", false)
 				d3.selectAll(".gdpButton").classed("active", false)
 
-				var params = getParams(),
+				const params = getParams(),
 					chartType = (d3.select("#barControlContainer").style("display") == "block") ? "bar" : "line",
 					filename = getFilename(chartType, params.indicator, params.unit, "csv")
 
-				var data = getChartData()
+				const data = getChartData()
 					.filter(function(o){
 						if(chartType == "bar"){
 							return (params.states.indexOf(o.abbr) != -1 || o.abbr == "US") && o.date == getParams().endDate
@@ -3940,9 +3940,9 @@ function initControls(){
 							moment(o.date).isBetween(params.startDate, params.endDate, "day", '[]')
 						}
 					})
-				var sectionFileName = (getSection(params.indicator) == "gdp") ? "state_gdp" : getSection(params.indicator)
-				var args = makeCSV(data, params.indicator, params.unit, filename)
-				var dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
+				const sectionFileName = (getSection(params.indicator) == "gdp") ? "state_gdp" : getSection(params.indicator)
+				const args = makeCSV(data, params.indicator, params.unit, filename)
+				const dictionaryFileName = "sem_" + sectionFileName + "_data_dictionary.txt"
 				d3.text("static/data/dictionaries/" + dictionaryFileName).then(function(text) {
 					if(getOS() == 'Windows'){
 						args["dictionaryText"] = text.replace(/\n/g, '\r\n');	
@@ -3993,11 +3993,11 @@ function initControls(){
 	})
 
 	d3.selectAll(".employmentButton").on("click", function(){
-		var cb = d3.select(".pu-checkBox.employment"),
+		const cb = d3.select(".pu-checkBox.employment"),
 			button = d3.select(".pu-bigButton.dataDownload"),
 			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
 			a = d3.select("#pu-downloadLink")
-		
+
 		d3.select(this).classed("active", !d3.select(this).classed("active"))
 		d3.selectAll(".pu-checkBox").classed("active", false)
 
@@ -4020,11 +4020,11 @@ function initControls(){
 		}
 	})
 	d3.selectAll(".gdpButton").on("click", function(){
-		var cb = d3.select(".pu-checkBox.employment"),
+		const cb = d3.select(".pu-checkBox.employment"),
 			button = d3.select(".pu-bigButton.dataDownload"),
 			currentButton = d3.select(".pu-bigButton.dataDownloadCurrent")
 			a = d3.select("#pu-downloadLink")
-		
+
 		d3.select(this).classed("active", !d3.select(this).classed("active"))
 		d3.selectAll(".pu-checkBox").classed("active", false)
 
@@ -4048,10 +4048,10 @@ function initControls(){
 	})
 
 	d3.select(".dataDownloadCurrent").on("click", function(args){
-		var empButtons = d3.selectAll(".employmentButton.active"),
+		const empButtons = d3.selectAll(".employmentButton.active"),
 			gdpButtons = d3.selectAll(".gdpButton.active")
 		if(empButtons.nodes().length == 0 && gdpButtons.nodes().length == 0){
-			var zip = new JSZip();
+			const zip = new JSZip();
 			zip.file(args.filename, args.data, { binary: true, createFolders: true, binary: true });
 			zip.file(args.dictionaryFileName, args.dictionaryText, { binary: true, createFolders: true, binary: true});
 
@@ -4095,7 +4095,7 @@ function initControls(){
 	    return; // Should do nothing if the default action has been cancelled
 	  }
 
-	  var handled = false;
+	  let handled = false;
 	  if (event.key == "Escape") {
 	    // Handle the event with KeyboardEvent.key and set handled true.
 	    closeMenus("none")
@@ -4113,16 +4113,16 @@ function initControls(){
 
 function init(allData, topojsonData, stateNamesData){
 
-	var qStates = getQueryString("states"),
+	const qStates = getQueryString("states"),
 		qIndicator = getQueryString("indicator"),
 		qStartDate = getQueryString("start"),
 		qEndDate = getQueryString("end"),
 		qUnit = getQueryString("unit");
 
-	var states, indicator, startDate, endDate, unit, activeChart, key, firstDate, lastDate, isDefault;
+	let states, indicator, startDate, endDate, unit, activeChart, key, firstDate, lastDate, isDefault;
 
 	if(qStates == "" && qIndicator == "" && qStartDate == "" && qEndDate == "" && qUnit == ""){
-		var defaultCard = allData.cards[0]
+		const defaultCard = allData.cards[0]
 		states = defaultCard.states
 		indicator = defaultCard.indicator
 		unit = defaultCard.unit
@@ -4143,7 +4143,7 @@ function init(allData, topojsonData, stateNamesData){
 		isDefault = true;
 
 	}else{
-		var states = (qStates == "") ? ["US"] : qStates.split("-"),
+		states = (qStates == "") ? ["US"] : qStates.split("-");
 		indicator = (orderedIndicators.indexOf(qIndicator) == -1) ? defaultIndicator : qIndicator;
 
 		if(states.indexOf("US") == -1) states.push("US")
@@ -4159,7 +4159,7 @@ function init(allData, topojsonData, stateNamesData){
 
 		endDate = (qEndDate == "") ? lastDate : getDateString(qEndDate.split("-")[0], qEndDate.split("-")[1])
 		
-		var endMoment = moment(endDate, defaultDateFormat, true)
+		const endMoment = moment(endDate, defaultDateFormat, true)
 		
 		startDate = (qStartDate == "") ? endMoment.subtract(defaultLinechartMonthRange, "months").format(defaultDateFormat) : getDateString(qStartDate.split("-")[0], qStartDate.split("-")[1])
 
@@ -4168,10 +4168,10 @@ function init(allData, topojsonData, stateNamesData){
 	}
 
 
-	var abbrs = stateNamesData.map(function(o){ return o.abbr}),
-		states = states.filter(function(o){
-			return abbrs.indexOf(o) != -1
-		})
+	const abbrs = stateNamesData.map(function(o){ return o.abbr});
+	states = states.filter(function(o){
+		return abbrs.indexOf(o) != -1
+	})
 
 	cleanDates = sanitizeDates(startDate, endDate, {"indicator": indicator, "firstDate": firstDate, "lastDate": lastDate })
 

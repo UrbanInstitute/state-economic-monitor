@@ -392,351 +392,56 @@ $(function() {
   })
 
 
-  $('#file-federal_public_employment-button').change(function() {
-      var form_data = new FormData($('#upload-federal_public_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=federal_public_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#federal_public_employment-status")
-                .css("opacity",1)
-                .text("Federal public employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
+  function bindUploadHandler(sheet, statusText) {
+      $('#file-' + sheet + '-button').change(function() {
+          var form_data = new FormData($('#upload-' + sheet)[0]);
+          $.ajax({
+              type: 'POST',
+              url: rootSlug + 'upload?sheet=' + sheet,
+              data: form_data,
+              contentType: false,
+              cache: false,
+              processData: false,
+              success: function(data) {
+                  $("#" + sheet + "-status")
+                    .css("opacity",1)
+                    .text(statusText)
+              },
+              fail: function(e){
+                alert("Something went wrong uploading the file, try reloading the page and trying again")
+              }
+          });
       });
-  });
+  }
 
-  $('#file-house_price_index-button').change(function() {
-      var form_data = new FormData($('#upload-house_price_index')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=house_price_index',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#house_price_index-status")
-                .css("opacity",1)
-                .text("HPI data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
+  var uploadIndicators = [
+      ["federal_public_employment", "Federal public employment data uploaded"],
+      ["house_price_index", "HPI data uploaded"],
+      ["private_employment", "Private employment data uploaded"],
+      ["leisure_and_hospitality_employment", "Leisure and hospitality employment data uploaded"],
+      ["manufacturing_employment", "Manufacturing employment data uploaded"],
+      ["retail_trade_employment", "Retail employment data uploaded"],
+      ["public_employment", "Public employment data uploaded"],
+      ["state_and_local_public_employment", "State and local employment data uploaded"],
+      ["state_gdp", "State GDP data uploaded"],
+      ["accommodation_and_food_services_state_gdp", "Accommodation and food services GDP data uploaded"],
+      ["manufacturing_state_gdp", "Manufacturing GDP data uploaded"],
+      ["retail_trade_state_gdp", "Retail GDP data uploaded"],
+      ["government_state_gdp", "Government GDP data uploaded"],
+      ["total_employment", "Total employment data uploaded"],
+      ["unemployment_rate", "Unemployment rate data uploaded"],
+      ["weekly_earnings", "Earnings data uploaded"],
+      ["state_and_local_public_education_employment", "Education data uploaded"]
+  ];
 
-  $('#file-private_employment-button').change(function() {
-      var form_data = new FormData($('#upload-private_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=private_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#private_employment-status")
-                .css("opacity",1)
-                .text("Private employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-leisure_and_hospitality_employment-button').change(function() {
-      var form_data = new FormData($('#upload-leisure_and_hospitality_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=leisure_and_hospitality_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#leisure_and_hospitality_employment-status")
-                .css("opacity",1)
-                .text("Leisure and hospitality employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-manufacturing_employment-button').change(function() {
-      var form_data = new FormData($('#upload-manufacturing_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=manufacturing_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#manufacturing_employment-status")
-                .css("opacity",1)
-                .text("Manufacturing employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-retail_trade_employment-button').change(function() {
-      var form_data = new FormData($('#upload-retail_trade_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=retail_trade_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#retail_trade_employment-status")
-                .css("opacity",1)
-                .text("Retail employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-public_employment-button').change(function() {
-      var form_data = new FormData($('#upload-public_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=public_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-
-              $("#public_employment-status")
-                .css("opacity",1)
-                .text("Public employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-state_and_local_public_employment-button').change(function() {
-      var form_data = new FormData($('#upload-state_and_local_public_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=state_and_local_public_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#state_and_local_public_employment-status")
-                .css("opacity",1)
-                .text("State and local employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-state_gdp-button').change(function() {
-      var form_data = new FormData($('#upload-state_gdp')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=state_gdp',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#state_gdp-status")
-                .css("opacity",1)
-                .text("State GDP data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-accommodation_and_food_services_state_gdp-button').change(function() {
-      var form_data = new FormData($('#upload-accommodation_and_food_services_state_gdp')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=accommodation_and_food_services_state_gdp',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#accommodation_and_food_services_state_gdp-status")
-                .css("opacity",1)
-                .text("Accommodation and food services GDP data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-manufacturing_state_gdp-button').change(function() {
-      var form_data = new FormData($('#upload-manufacturing_state_gdp')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=manufacturing_state_gdp',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#manufacturing_state_gdp-status")
-                .css("opacity",1)
-                .text("Manufacturing GDP data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-retail_trade_state_gdp-button').change(function() {
-      var form_data = new FormData($('#upload-retail_trade_state_gdp')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=retail_trade_state_gdp',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#retail_trade_state_gdp-status")
-                .css("opacity",1)
-                .text("Retail GDP data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-government_state_gdp-button').change(function() {
-      var form_data = new FormData($('#upload-government_state_gdp')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=government_state_gdp',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#government_state_gdp-status")
-                .css("opacity",1)
-                .text("Government GDP data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-total_employment-button').change(function() {
-      var form_data = new FormData($('#upload-total_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=total_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#total_employment-status")
-                .css("opacity",1)
-                .text("Total employment data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-unemployment_rate-button').change(function() {
-      var form_data = new FormData($('#upload-unemployment_rate')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=unemployment_rate',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#unemployment_rate-status")
-                .css("opacity",1)
-                .text("Unemployment rate data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-weekly_earnings-button').change(function() {
-      var form_data = new FormData($('#upload-weekly_earnings')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=weekly_earnings',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#weekly_earnings-status")
-                .css("opacity",1)
-                .text("Earnings data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
-  });
-
-  $('#file-state_and_local_public_education_employment-button').change(function() {
-      var form_data = new FormData($('#upload-state_and_local_public_education_employment')[0]);
-      $.ajax({
-          type: 'POST',
-          url: rootSlug + 'upload?sheet=state_and_local_public_education_employment',
-          data: form_data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(data) {
-              $("#state_and_local_public_education_employment-status")
-                .css("opacity",1)
-                .text("Education data uploaded")
-          },
-          fail: function(e){
-            alert("Something went wrong uploading the file, try reloading the page and trying again")
-          }
-      });
+  uploadIndicators.forEach(function(item) {
+      bindUploadHandler(item[0], item[1]);
   });
 
 
 
 
-$('.addIngredient').bind('click', function() {
+$('.addIngredient').on('click', function() {
   d3.select("#loading").style("visibility", "visible")
   d3.select("#loading-text").html("Updating (this takes about a minute)&hellip;")
 $.ajax({
