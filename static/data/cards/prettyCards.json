@@ -13,14 +13,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-10-01",
         "indicator": "house_price_index",
         "states": [
             "US",
             "FL",
-            "IL"
+            "ND"
         ],
-        "text": "Q3 2025 house price growth over the year ranged from -2.3% in FL to 6.9% in IL.",
+        "text": "Q4 2025 house price growth over the year ranged from -2.7% in FL to 6.4% in ND.",
         "unit": "change"
     },
     {
@@ -50,10 +50,10 @@
         "indicator": "manufacturing_employment",
         "states": [
             "US",
-            "AL",
-            "MT"
+            "MT",
+            "AK"
         ],
-        "text": "Manufacturing employment in Dec. 2025 fell year-over-year in 33 states and DC. ",
+        "text": "Manufacturing employment in Dec. 2025 fell year-over-year in 33 states and DC.",
         "unit": "change"
     },
     {
@@ -68,14 +68,26 @@
         "unit": "raw"
     },
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-10-01",
         "indicator": "house_price_index",
-        "startDate": "2011-01-01",
+        "startDate": "2012-01-01",
         "states": [
             "US",
-            "TX"
+            "GA"
         ],
-        "text": "TX\u2019s annual house price change in Q3 2025 was negative for the first time since Q3 2011.",
+        "text": "GA\u2019s annual house price change in Q4 2025 was negative for the first time since Q1 2012.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2025-12-01",
+        "indicator": "federal_public_employment",
+        "states": [
+            "US",
+            "DC",
+            "MD",
+            "VA"
+        ],
+        "text": "In Dec. 2025, fed. gov. jobs fell year-over-year in every state and DC, totaling 289,000 jobs lost.",
         "unit": "change"
     },
     {
@@ -87,18 +99,6 @@
             "NV"
         ],
         "text": "Q3 2025 manufacturing GDP growth over the year ranged from -2.6% in AZ to 8.7% in NV.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-12-01",
-        "indicator": "federal_public_employment",
-        "states": [
-            "US",
-            "DC",
-            "MD",
-            "GA"
-        ],
-        "text": "In Dec. 2025, fed. gov. jobs fell year-over-year in every state and DC, totaling 289,000 jobs lost. ",
         "unit": "change"
     }
 ]
