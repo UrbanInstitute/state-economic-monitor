@@ -1,15 +1,16 @@
 [
     {
-        "endDate": "2025-12-01",
+        "endDate": "2026-01-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
-            "CA",
             "HI",
+            "CA",
+            "DE",
             "DC"
         ],
-        "text": "Unemployment rates in Dec. 2025 ranged from 2.2% in SD and HI to 5.5% in CA and 6.7% in DC. ",
+        "text": "Unemployment rates in Jan. 2026 ranged from 2.2% in SD and HI to 5.4% in CA and DE and 6.7% in DC.",
         "unit": "raw"
     },
     {
@@ -24,48 +25,48 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-07-01",
+        "endDate": "2025-10-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "WY",
-            "SC"
+            "MA",
+            "MD"
         ],
-        "text": "Q3 2025 state GDP growth over the year ranged from 0.3% in WY to 3.5% in SC.",
+        "text": "Q4 2025 state GDP growth over the year ranged from -0.1% in MD to 3.3% in MA.",
         "unit": "change"
     },
     {
-        "endDate": "2025-12-01",
+        "endDate": "2026-01-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, Dec. 2025 average weekly earnings ranged from MS\u2019s $992 to WA\u2019s $1,507. ",
+        "text": "Among states, Jan. 2026 average weekly earnings ranged from MS\u2019s $987 to WA\u2019s $1,524.",
         "unit": "raw"
     },
     {
-        "endDate": "2025-12-01",
-        "indicator": "manufacturing_employment",
+        "endDate": "2026-01-01",
+        "indicator": "retail_trade_employment",
         "states": [
             "US",
-            "MT",
-            "AK"
+            "UT",
+            "VT"
         ],
-        "text": "Manufacturing employment in Dec. 2025 fell year-over-year in 33 states and DC.",
+        "text": "Retail and trade employment in Jan. 2026 fell year-over-year in 37 states and DC.",
         "unit": "change"
     },
     {
-        "endDate": "2025-07-01",
-        "indicator": "accommodation_and_food_services_state_gdp",
-        "startDate": "2019-07-01",
+        "endDate": "2025-10-01",
+        "indicator": "government_state_gdp",
         "states": [
             "US",
-            "HI"
+            "TX",
+            "MI"
         ],
-        "text": "Q3 2025 real accommodation and food services GDP was below pre-pandemic levels in 23 states and DC.",
-        "unit": "raw"
+        "text": "Only two states saw Q4 2025 GDP growth over the year: 0.9% in MI and 1.0% in TX.",
+        "unit": "change"
     },
     {
         "endDate": "2025-10-01",
@@ -79,26 +80,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-12-01",
-        "indicator": "federal_public_employment",
-        "states": [
-            "US",
-            "DC",
-            "MD",
-            "VA"
-        ],
-        "text": "In Dec. 2025, fed. gov. jobs fell year-over-year in every state and DC, totaling 289,000 jobs lost.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-07-01",
-        "indicator": "manufacturing_state_gdp",
+        "endDate": "2025-10-01",
+        "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
             "AZ",
-            "NV"
+            "WA"
         ],
-        "text": "Q3 2025 manufacturing GDP growth over the year ranged from -2.6% in AZ to 8.7% in NV.",
+        "text": "Q4 2025 retail and trade GDP growth over the year ranged from \u20137.5% in WA and 1.6% in AZ.",
+        "unit": "change"
+    },
+    {
+        "endDate": "2026-01-01",
+        "indicator": "state_and_local_public_employment",
+        "states": [
+            "US",
+            "SC",
+            "MI"
+        ],
+        "text": "In Jan. 2026, state and local public jobs rose year-over-year in 32 states.",
         "unit": "change"
     }
 ]
