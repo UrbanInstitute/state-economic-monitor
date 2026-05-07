@@ -4,6 +4,9 @@ import time
 import openpyxl
 import csv
 import datetime
+import os
+import re
+import zipfile
 from tempfile import NamedTemporaryFile
 import shutil
 
@@ -11,6 +14,28 @@ import shutil
 DATE_FORMAT = "%Y-%m-%d"
 rootPath = "/var/www/html/semapp/"
 # rootPath = "/Users/silke/Repos/state-economic-monitor/"
+
+# R's openxlsx sometimes writes a worksheet rels entry pointing to a
+# drawing part that isn't actually included in the archive. Strict openpyxl
+# versions raise KeyError on load. We only read cell values, so drop any
+# drawing relationships before handing the file to openpyxl.
+_DRAWING_REL_RE = re.compile(rb'<Relationship[^>]*Type="[^"]*/drawing"[^>]*/>')
+
+
+def loadWorkbookSafely(path):
+	tmp = NamedTemporaryFile(suffix=".xlsx", delete=False)
+	tmp.close()
+	try:
+		with zipfile.ZipFile(path, "r") as zin, \
+				zipfile.ZipFile(tmp.name, "w", zipfile.ZIP_DEFLATED) as zout:
+			for item in zin.infolist():
+				data = zin.read(item.filename)
+				if item.filename.endswith(".rels"):
+					data = _DRAWING_REL_RE.sub(b"", data)
+				zout.writestr(item, data)
+		return openpyxl.load_workbook(tmp.name, data_only=True)
+	finally:
+		os.remove(tmp.name)
 
 def cleanExcelRow(row, isDate, colCount):
 	if isDate:
@@ -49,7 +74,7 @@ def cleanExcelRow(row, isDate, colCount):
 
 
 def buildCSVs(indicator):
-	wb = openpyxl.load_workbook(rootPath + 'static/data/source/%s.xlsx' % indicator, data_only=True)
+	wb = loadWorkbookSafely(rootPath + 'static/data/source/%s.xlsx' % indicator)
 
 	if(indicator != "house_price_index"):
 		raw = wb.worksheets[0]
