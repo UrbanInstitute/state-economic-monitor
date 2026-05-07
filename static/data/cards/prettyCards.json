@@ -1,16 +1,14 @@
 [
     {
-        "endDate": "2026-02-01",
+        "endDate": "2026-03-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
-            "HI",
-            "CA",
             "DE",
             "DC"
         ],
-        "text": "Unemployment rates in Feb. 2026 ranged from 2.3% in SD and HI to 5.4% in CA and DE and 6.5% in DC.",
+        "text": "Unemployment rates in Mar. 2026 ranged from 2.3% in SD to 5.4% in DE and 6.3% in DC.",
         "unit": "raw"
     },
     {
@@ -36,25 +34,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-02-01",
+        "endDate": "2026-03-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, Feb. 2026 average weekly earnings ranged from MS\u2019s $1,035 to WA\u2019s $1,567.",
+        "text": "Among states, Mar. 2026 average weekly earnings ranged from MS\u2019s $1,031 to WA\u2019s $1,543.",
         "unit": "raw"
     },
     {
-        "endDate": "2026-02-01",
-        "indicator": "retail_trade_employment",
+        "endDate": "2026-03-01",
+        "indicator": "manufacturing_employment",
         "states": [
             "US",
-            "WI",
-            "OK"
+            "NE",
+            "VA"
         ],
-        "text": "Retail employment in Feb. 2026 fell year-over-year in 35 states and DC.",
+        "text": "In Mar. 2026, manufacturing employment fell year-over-year in 39 states.",
         "unit": "change"
     },
     {
@@ -91,14 +89,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-02-01",
+        "endDate": "2026-03-01",
         "indicator": "state_and_local_public_employment",
         "states": [
             "US",
             "VA",
             "MI"
         ],
-        "text": "In Feb. 2026, state and local public jobs rose year-over-year in 34 states.",
+        "text": "In Mar. 2026, state and local public jobs rose year-over-year in 32 states.",
         "unit": "change"
     }
 ]
