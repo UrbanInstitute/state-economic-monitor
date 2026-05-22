@@ -1,14 +1,13 @@
 [
     {
-        "endDate": "2026-03-01",
+        "endDate": "2026-04-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
-            "DE",
             "DC"
         ],
-        "text": "Unemployment rates in Mar. 2026 ranged from 2.3% in SD to 5.4% in DE and 6.3% in DC.",
+        "text": "Unemployment rates in Apr. 2026 ranged from 2.2% in SD to 6.2% in DC.",
         "unit": "raw"
     },
     {
@@ -34,25 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-03-01",
+        "endDate": "2026-04-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "MS",
-            "WA"
+            "WA",
+            "MS"
         ],
-        "text": "Among states, Mar. 2026 average weekly earnings ranged from MS\u2019s $1,031 to WA\u2019s $1,543.",
+        "text": "Among states, Apr. 2026 average weekly earnings ranged from MS\u2019s $1,020 to WA\u2019s $1,523.",
         "unit": "raw"
     },
     {
-        "endDate": "2026-03-01",
+        "endDate": "2026-04-01",
         "indicator": "manufacturing_employment",
         "states": [
             "US",
             "NE",
             "VA"
         ],
-        "text": "In Mar. 2026, manufacturing employment fell year-over-year in 39 states.",
+        "text": "In Apr. 2026, manufacturing employment fell year-over-year in 38 states.",
         "unit": "change"
     },
     {
@@ -68,17 +67,6 @@
     },
     {
         "endDate": "2025-10-01",
-        "indicator": "house_price_index",
-        "startDate": "2012-01-01",
-        "states": [
-            "US",
-            "GA"
-        ],
-        "text": "GA\u2019s annual house price change in Q4 2025 was negative for the first time since Q1 2012.",
-        "unit": "change"
-    },
-    {
-        "endDate": "2025-10-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
@@ -89,14 +77,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-03-01",
-        "indicator": "state_and_local_public_employment",
+        "endDate": "2026-04-01",
+        "indicator": "leisure_and_hospitality_employment",
+        "startDate": "2006-04-01",
         "states": [
             "US",
-            "VA",
-            "MI"
+            "DC"
         ],
-        "text": "In Mar. 2026, state and local public jobs rose year-over-year in 32 states.",
+        "text": "As of Apr. 2026, DC\u2019s leisure and hospitality jobs remained below pre-pandemic highs.",
+        "unit": "raw"
+    },
+    {
+        "endDate": "2025-10-01",
+        "indicator": "house_price_index",
+        "startDate": "2012-01-01",
+        "states": [
+            "US",
+            "GA"
+        ],
+        "text": "GA\u2019s annual house price change in Q4 2025 was negative for the first time since Q1 2012.",
         "unit": "change"
     }
 ]
