@@ -11,14 +11,14 @@
         "unit": "raw"
     },
     {
-        "endDate": "2025-10-01",
+        "endDate": "2026-01-01",
         "indicator": "house_price_index",
         "states": [
             "US",
-            "FL",
-            "ND"
+            "CO",
+            "IL"
         ],
-        "text": "Q4 2025 house price growth over the year ranged from -2.7% in FL to 6.4% in ND.",
+        "text": "Q1 2026 house price growth over the year ranged from -2.4% in CO to 7.3% in IL.",
         "unit": "change"
     },
     {
@@ -66,6 +66,17 @@
         "unit": "change"
     },
     {
+        "endDate": "2026-01-01",
+        "indicator": "house_price_index",
+        "startDate": "2013-01-01",
+        "states": [
+            "US",
+            "RI"
+        ],
+        "text": "In Q1 2026, house prices in RI declined year-on-year for the first time in 13 years.",
+        "unit": "change"
+    },
+    {
         "endDate": "2025-10-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
@@ -86,16 +97,5 @@
         ],
         "text": "As of Apr. 2026, DC\u2019s leisure and hospitality jobs remained below pre-pandemic highs.",
         "unit": "raw"
-    },
-    {
-        "endDate": "2025-10-01",
-        "indicator": "house_price_index",
-        "startDate": "2012-01-01",
-        "states": [
-            "US",
-            "GA"
-        ],
-        "text": "GA\u2019s annual house price change in Q4 2025 was negative for the first time since Q1 2012.",
-        "unit": "change"
     }
 ]
