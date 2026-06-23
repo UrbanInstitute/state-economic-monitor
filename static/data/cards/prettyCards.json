@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2026-04-01",
+        "endDate": "2026-05-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "DC"
         ],
-        "text": "Unemployment rates in Apr. 2026 ranged from 2.2% in SD to 6.2% in DC.",
+        "text": "Unemployment rates in May 2026 ranged from 2.1% in SD to 6.1% in DC.",
         "unit": "raw"
     },
     {
@@ -33,25 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-04-01",
+        "endDate": "2026-05-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
-            "WA",
-            "MS"
+            "MS",
+            "WA"
         ],
-        "text": "Among states, Apr. 2026 average weekly earnings ranged from MS\u2019s $1,020 to WA\u2019s $1,523.",
+        "text": "Among states, May 2026 average weekly earnings ranged from MS\u2019s $1,028 to WA\u2019s $1,516.",
         "unit": "raw"
     },
     {
-        "endDate": "2026-04-01",
+        "endDate": "2026-05-01",
         "indicator": "manufacturing_employment",
         "states": [
             "US",
-            "NE",
+            "AK",
             "VA"
         ],
-        "text": "In Apr. 2026, manufacturing employment fell year-over-year in 38 states.",
+        "text": "In May 2026, manufacturing employment fell year-over-year in 35 states.",
         "unit": "change"
     },
     {
@@ -88,14 +88,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-04-01",
+        "endDate": "2026-05-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2006-04-01",
+        "startDate": "2019-05-01",
         "states": [
             "US",
-            "DC"
+            "WV"
         ],
-        "text": "As of Apr. 2026, DC\u2019s leisure and hospitality jobs remained below pre-pandemic highs.",
+        "text": "Leisure and hospitality jobs in May 2026 were below May 2019 levels in 14 states and DC.",
         "unit": "raw"
     }
 ]
