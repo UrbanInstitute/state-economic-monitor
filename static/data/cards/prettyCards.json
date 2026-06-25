@@ -22,14 +22,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-10-01",
+        "endDate": "2026-01-01",
         "indicator": "state_gdp",
         "states": [
             "US",
-            "MA",
-            "MD"
+            "DC",
+            "KS"
         ],
-        "text": "Q4 2025 state GDP growth over the year ranged from -0.1% in MD to 3.3% in MA.",
+        "text": "Q1 2026 state GDP growth over the year ranged from -1.3% in DC to 3.7% in KS.",
         "unit": "change"
     },
     {
@@ -55,14 +55,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-10-01",
+        "endDate": "2026-01-01",
         "indicator": "government_state_gdp",
         "states": [
             "US",
-            "TX",
-            "MI"
+            "MI",
+            "TX"
         ],
-        "text": "Only two states saw Q4 2025 government GDP growth over the year: 0.9% in MI and 1.0% in TX.",
+        "text": "Only two states saw year-over-year growth in gov. GDP in Q1 2026: MI (+0.1%) and TX (+1.3%).",
         "unit": "change"
     },
     {
@@ -77,14 +77,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2025-10-01",
+        "endDate": "2026-01-01",
         "indicator": "retail_trade_state_gdp",
         "states": [
             "US",
-            "AZ",
-            "WA"
+            "AR",
+            "TX"
         ],
-        "text": "Q4 2025 retail and trade GDP growth over the year ranged from \u20137.5% in WA and 1.6% in AZ.",
+        "text": "Just two states posted year-over-year growth in retail GDP in Q1 2026: AR and TX (both 0.1%).",
         "unit": "change"
     },
     {
