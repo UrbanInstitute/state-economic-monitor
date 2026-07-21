@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "2026-05-01",
+        "endDate": "2026-06-01",
         "indicator": "unemployment_rate",
         "states": [
             "US",
             "SD",
             "DC"
         ],
-        "text": "Unemployment rates in May 2026 ranged from 2.1% in SD to 6.1% in DC.",
+        "text": "State unemployment rates in June 2026 ranged from 2% in SD to 6% in DC.",
         "unit": "raw"
     },
     {
@@ -33,25 +33,25 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-05-01",
+        "endDate": "2026-06-01",
         "indicator": "weekly_earnings",
         "states": [
             "US",
             "MS",
             "WA"
         ],
-        "text": "Among states, May 2026 average weekly earnings ranged from MS\u2019s $1,028 to WA\u2019s $1,516.",
+        "text": "Among states, June 2026 average weekly earnings ranged from MS\u2019s $1,029 to WA\u2019s $1,512.",
         "unit": "raw"
     },
     {
-        "endDate": "2026-05-01",
+        "endDate": "2026-06-01",
         "indicator": "manufacturing_employment",
         "states": [
             "US",
-            "AK",
+            "NE",
             "VA"
         ],
-        "text": "In May 2026, manufacturing employment fell year-over-year in 35 states.",
+        "text": "In June 2026, manufacturing employment fell year-over-year in 34 states and DC.",
         "unit": "change"
     },
     {
@@ -88,14 +88,14 @@
         "unit": "change"
     },
     {
-        "endDate": "2026-05-01",
+        "endDate": "2026-06-01",
         "indicator": "leisure_and_hospitality_employment",
-        "startDate": "2019-05-01",
+        "startDate": "2019-06-01",
         "states": [
             "US",
-            "WV"
+            "VT"
         ],
-        "text": "Leisure and hospitality jobs in May 2026 were below May 2019 levels in 14 states and DC.",
+        "text": "Leisure and hospitality jobs in June 2026 were below June 2019 levels in 17 states and DC.",
         "unit": "raw"
     }
 ]
