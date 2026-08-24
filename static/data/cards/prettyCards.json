@@ -4,8 +4,8 @@
         "indicator": "unemployment_rate",
         "states": [
             "US",
-            "SD",
-            "DC"
+            "DC",
+            "SD"
         ],
         "text": "State unemployment rates in July 2026 ranged from 2% in SD to 5.9% in DC.",
         "unit": "raw"
@@ -49,10 +49,16 @@
         "states": [
             "US",
             "NE",
+<<<<<<< HEAD
             "DE",
             "DC"
         ],
         "text": "In July 2026, manufacturing jobs fell year-over-year in 27 states and DC.",
+=======
+            "DE"
+        ],
+        "text": "In July 2026, manufacturing employment fell year-over-year in 27 states and DC.",
+>>>>>>> d369c7e0cd9c4db1bcd0b3cfd91bc7047630591d
         "unit": "change"
     },
     {
