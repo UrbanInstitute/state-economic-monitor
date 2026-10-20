@@ -15,7 +15,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 rootPath = "/var/www/html/semapp/"
-pyPath = "/usr/bin/python"
+pyPath = "/usr/bin/python3"
 
 # rootPath = "/Users/silke/Repos/state-economic-monitor/"
 # pyPath = "python3"
